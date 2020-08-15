@@ -1,0 +1,22 @@
+{{ $file := .Get "file" }}
+{{ $code := "" }}
+{{ $code = $.Inner }}
+{{ $langs := (slice "py" "c") }}
+
+{{ $path := print $.Page.File.Dir $file }}
+
+<div class="code relative" {{ with $file }}id="{{ . | urlize}}"{{ end }}>
+	<div class="code-nav flex flex-nowrap items-stretch" style="margin-bottom:-20px;">
+		{{ range $langs }}
+			<button data-toggle-tab="{{ . }}" class="tab-button {{ cond (eq . "py") "active" ""}} ba san-serif f6 dib lh-solid ph2 pv2">{{ cond (eq . "py") "Python" "C/C++" }}</button>&nbsp;
+		{{ end }}
+	</div>
+	<div class="tab-content">
+		{{ range $langs }}
+			<div data-pane="{{ . }}" class="code-copy-content nt3 tab-pane {{ cond (eq . "py") "active" ""}}">
+				{{ highlight (readFile (print $path "." .) | safeHTML) . ""}}
+			</div>
+		{{ end }}
+	</div>
+
+</div>

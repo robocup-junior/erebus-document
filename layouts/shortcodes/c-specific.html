@@ -1,0 +1,10 @@
+{{ $description := "" }}
+{{ $description = $.Inner }}
+
+<div class="code relative">
+	<div class="tab-content">
+			<div data-pane="c" class="code-copy-content nt3 tab-pane">
+				{{ $description  | markdownify}}
+			</div>
+	</div>
+</div>
