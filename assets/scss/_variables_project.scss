@@ -13,7 +13,10 @@ Add styles or override variables from the theme here.
 	position: relative;
 	z-index: 1;
 	color:#333;
-	border-color:#ccc;
+
+  border: 1px solid;
+  border-color:#ccc;
+  border-bottom: none;
 	outline: none;
 	background-color:white;
 }
