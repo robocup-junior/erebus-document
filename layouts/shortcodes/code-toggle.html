@@ -1,20 +1,52 @@
 {{ $file := .Get "file" }}
 {{ $code := "" }}
 {{ $code = $.Inner }}
-{{ $langs := (slice "py" "c") }}
 
 {{ $path := print $.Page.File.Dir $file }}
 
-<div class="code relative" {{ with $file }}id="{{ . | urlize}}"{{ end }}>
+{{ $acN := false }}
+{{ $acC := false }}
+
+<div class="code relative" {{ with $file }}id="{{ . | urlize}}"{{ end }} style="margin-bottom:40px;">
 	<div class="code-nav flex flex-nowrap items-stretch" style="margin-bottom:-33px;margin-left:5px;">
-		{{ range $langs }}
-			<button data-toggle-tab="{{ . }}" class="tab-button {{ cond (eq . "py") "active" ""}} ba san-serif f6 dib lh-solid ph2 pv2">{{ cond (eq . "py") "Python" "C/C++" }}</button>&nbsp;
+		{{ if (fileExists (print $path ".py")) }}
+			<button data-toggle-tab="Python" class="tab-button active ba san-serif f6 dib lh-solid ph2 pv2">Python</button>&nbsp;
+			{{ $acN = true }}
+		{{ end }}
+		{{ if (fileExists (print $path ".c")) }}
+			<button data-toggle-tab="C/C++" class="tab-button {{ cond $acN "" "active"  }} ba san-serif f6 dib lh-solid ph2 pv2">C/C++</button>&nbsp;
+			{{ $acN = true }}
+		{{ end }}
+		{{ if (fileExists (print $path ".java")) }}
+			<button data-toggle-tab="Java" class="tab-button {{ cond $acN "" "active"  }} ba san-serif f6 dib lh-solid ph2 pv2">Java</button>&nbsp;
+			{{ $acN = true }}
+		{{ end }}
+		{{ if (fileExists (print $path ".m")) }}
+			<button data-toggle-tab="Matlab" class="tab-button {{ cond $acN "" "active"  }} ba san-serif f6 dib lh-solid ph2 pv2">Matlab</button>&nbsp;
 		{{ end }}
 	</div>
 	<div class="tab-content">
-		{{ range $langs }}
-			<div data-pane="{{ . }}" class="code-copy-content nt3 tab-pane {{ cond (eq . "py") "active" ""}}">
-				{{ highlight (readFile (print $path "." .) | safeHTML) . ""}}
+		{{ if (fileExists (print $path ".py")) }}
+			<div data-pane="Python" class="code-copy-content nt3 tab-pane active">
+				{{ highlight (readFile (print $path ".py") | safeHTML) "python" ""}}
+			</div>
+			{{ $acC = true }}
+		{{ end }}
+		{{ if (fileExists (print $path ".c")) }}
+			<div data-pane="C/C++" class="code-copy-content nt3 tab-pane {{ cond $acC "" "active"  }}">
+				{{ highlight (readFile (print $path ".c") | safeHTML) "C" ""}}
+			</div>
+			{{ $acC = true }}
+		{{ end }}
+		{{ if (fileExists (print $path ".java")) }}
+			<div data-pane="Java" class="code-copy-content nt3 tab-pane {{ cond $acC "" "active"  }}">
+				{{ highlight (readFile (print $path ".java") | safeHTML) "java" ""}}
+			</div>
+			{{ $acC = true }}
+		{{ end }}
+		{{ if (fileExists (print $path ".m")) }}
+			<div data-pane="Matlab" class="code-copy-content nt3 tab-pane {{ cond $acC "" "active"  }}">
+				{{ highlight (readFile (print $path ".m") | safeHTML) "matlab" ""}}
 			</div>
 		{{ end }}
 	</div>
