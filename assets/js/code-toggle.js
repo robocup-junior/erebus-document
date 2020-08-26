@@ -23,6 +23,10 @@ function toggleTabs(event) {
 	var selectedTabs = document.querySelectorAll("[data-toggle-tab='" + targetKey + "']");
 	var selectedPanes = document.querySelectorAll("[data-pane='" + targetKey + "']");
 
+	if(selectedTabs.length == 0){
+		return;
+	}
+
 	for (var i = 0; i < allTabs.length; i++) {
 		allTabs[i].classList.remove("active");
 	}
