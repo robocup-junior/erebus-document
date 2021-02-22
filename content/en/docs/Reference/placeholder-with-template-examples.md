@@ -1,6 +1,6 @@
 ---
-title: "Parameter Reference"
-linkTitle: "Parameter Reference"
+title: "placeholder with template examples"
+linkTitle: "placeholder with template examples"
 date: 2017-01-05
 description: >
   A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.

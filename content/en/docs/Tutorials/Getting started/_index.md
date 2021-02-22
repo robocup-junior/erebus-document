@@ -1,11 +1,13 @@
-
 ---
-title: "1: Run the sample code"
-linkTitle: "1: Run the sample code"
+title: "Getting Started"
+linkTitle: "Getting Started"
 weight: 1
 description: >
-  Let's run the provided sample code.
+  Get your robot perform its first moves
 ---
+
+## First Steps to start with Erebus
+In this first tutorial you will run the sample code and run your first program on the Simulator
 
 ## Get the sample code
 Get the [sample code](sample.py) and save it to your working location.

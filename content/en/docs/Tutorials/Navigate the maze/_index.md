@@ -1,11 +1,16 @@
 
 ---
-title: "2: Moving"
-linkTitle: "2: Moving"
-weight: 2
+title: "Navigate the maze"
+linkTitle: "Navigate the maze"
+weight: 4	
 description: >
   In this seminar we cover how to generate a first robot controller to navigate around a maze like environment.
 ---
+
+> *Use parts of this tutorial in the component specific tutorials.*
+
+> *This tutorial could be used after the component tutorials as a bigger project oriented one*
+
 
 {{% pageinfo %}}
 This page is under construction.

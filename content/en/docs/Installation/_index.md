@@ -1,7 +1,7 @@
 ---
-title: "Getting Started"
-linkTitle: "Getting Started"
-weight: 2
+title: "Installation"
+linkTitle: "Installation"
+weight: 4
 description: >
   This section explains how to setup the environment.
 ---
@@ -23,4 +23,4 @@ There are key components which make up the simulation system. These must each be
 * RAM: 2 GB
 * Nvidia 512MB or AMD OpenGL 512MB
 
-## Installation
+## Installation for the different platforms
