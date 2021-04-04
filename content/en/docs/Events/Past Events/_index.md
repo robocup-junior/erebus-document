@@ -1,14 +1,14 @@
 ---
-title: "Event"
-linkTitle: "Event"
-weight: 1
+title: "Past Events"
+linkTitle: "Past Events"
+weight: 2
 description: >
-  List of related events that are scheduled to be held
+  List of related events that were held in the past
 ---
 
-# September 2020 International Online Demonstration Competition
+## September 2020 International Online Demonstration Competition
 
-We will be hosting the first international, online competition in September 2020. Teams should work on their programs, and then submit these to be test against others around the world on an unseen map.
+We hosted the first international, online competition in September 2020. Teams worked on their programs, and then submitted these to be tested against other around the world on an unseen map.
 
 |Action|Deadline|
 |------|--------|
@@ -17,3 +17,5 @@ We will be hosting the first international, online competition in September 2020
 |Completion of registration of interest| 	09/18/20 23:59:59 UTC|
 
 For more information, please visit the [official page](https://rescue.rcj.cloud/events/2020/simulation/index.html) of the demonstration competition.
+
+> *Include link to YouTube livestream*
