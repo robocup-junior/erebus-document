@@ -6,16 +6,19 @@ description: >
   Installation Guide for Windows
 ---
 
-## Installation Guide
-1. Download & Install Python 3.7 64 bit from the [official website](https://www.python.org/ftp/python/3.7.8/python-3.7.8-amd64.exe). Check out this great installation guide if you need some help! During the install option, please make your python installation is referenced in your PATH (see picture below!)
+## Quick Installation Guide
+1. Download & Install Python **3.9** 64 bit from the [official website](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe). During the install option, please make your python installation is referenced in your PATH (see picture below!)
 ![](python-path.png)
 
-1. Download & Install the Webots version 2020.a revision 1 from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2020a-rev1/webots-R2020a-rev1_setup.exe).
+1. Download & Install the Webots version **2021.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2021a/webots-R2021a_setup.exe).
 
-1. Download and extract the latest Erebus [Release Build](https://github.com/Shadow149/RescueMaze/releases).
+1. Download and extract the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
+![](download_erebus.png)
+
 
 ## Run the environment
-Run the world.wbt file from `/game/worlds/newworld.wbt`, opening it in Webots.
+Double click to run the world.wbt file from `/game/worlds/world1.wbt`, opening it in Webots.
+The first time you run the simulator, it will automatically install the Python libraries needed to run the simulation, which may take some time.
 
 ## Common problems & Fixes
 * **If your Webots screen comes up blank/black.** Copy and the download, unzip to a separate folder before opening the world. It should then work.
