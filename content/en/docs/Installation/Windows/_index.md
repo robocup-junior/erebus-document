@@ -40,3 +40,10 @@ This most likely means that Python has not been added to the Path correctly. To 
 1/ To check this has worked, open a new command prompt windows and type 'python' - python should now open
 1. Now tell Webots where python is. Open webots --> tools--> prefereces --> python command. enter 'python' of the same word used in your path.
 Paths are messy and frustrating, and it can take a bit of work to iron out all the issues!
+
+### The simulation runs too slowly
+This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure.
+1. Open Tools -> Preferences in the top navigation bar.
+2. Open the OpenGL tab
+3. Set the various parameters appropriately. In particular, it is recommended to enable "Disable shadows".
+![](opengl.png)
