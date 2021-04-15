@@ -6,47 +6,61 @@ description: >
   Here is a brief introduction to the rules of the competition.
 ---
 
-official rules can be found [here](https://junior.robocup.org/wp-content/uploads/2020Rules/final_2020rules/RescueSim-Webot-DemosimulationRules-071920.pdf).
+The official rules can be found on the [official RoboCupJunior homepage](https://junior.robocup.org/robocupjuniorrescue-league-new-simulation-demonstration/). 
 
-> *would be nice to embed the pdf of the rules directly for example using: https://github.com/anvithks/hugo-embed-pdf-shortcode if that's possible*
+Corrections and clarifications can be found on the [official RoboCupJunior Forum](https://junior.forum.robocup.org/)
 
-We summarise some of the key rules below.
+We summarise some of the key rules below as a quick summary.
 
-> *Update according to final rules*
+
+## Mission and objective
+![](rules_environment.png)  
+In the simulation challenge on the Erebus platform, there are three main missions. 
+- Navigating around a complex maze environment
+- Mapping the area accurately
+- Detection and identification of victims
+
 
 ## The Maze Based Simulation Environment
-![](rules1.png)  
-Robots must search a maze like world with edge and middle 'floating walls' to find as many victims as possible. Each game lasts 8 minutes.
+The basic environemnt is comprised of tiles and walls. The smallest division used is the quarter-tile. 
 
-## Swamps, Traps & Obstacles
-![](rules2.png)  
-
-* Swamp (Brown area) - leads to speed being reduced slowing process (Should be avoided!)
-* Black holes – robot drops through, and is then relocated
-* Obstacles – must be navigated around
-
-## Victims
-![](rules3.png)
-
-H: Harmed victim: S: Stable victim U:Unharmed victim
-
-To identify a victim, the robot must stop for 3 seconds, and send the location and victim type to the game manager The robot must be close (1/2 tile away) from the victim
-
-* +10/+30 points per victim depending on location
-* +10 points for correct identification of type!
-* -5 points for misidentification
-
-## Lack of Progress
-Robot falls through hole, or Static location for 20+ seconds. Called by team captain.
-
-* -5 point deduction
-
-## Areas and tiles
-In area 1 the field is divided in 30 cm by 30 cm tiles. In areas 2 and 3 each tile is subdivided in four 15 cm by 15 cm squares. The connection tiles between two areas are colorcoded.
-Particularities of each area:
+![](rules_tiles.png)  
 - Area 1: walls are on the edge of each tile
 - Area 2: walls can be placed on the edges of each quarter-tile with at least a full tile-width between two walls
 - Area 3: walls can be placed on the edges of each quarter-tile with at least a full tile-width between two walls, 90° corners may be rounded into quarter circles
 
+## Swamps, Traps & Obstacles
+![](rules_obstacles.png)  
+
+* Swamp (Brown area) - leads to speed being reduced slowing process
+* Black holes – robot drops through, and is then relocated
+* Obstacles – must be navigated around
+
+## Victims and Hazard maps
+![](rules_victims.png)
+
+Victims are comprised of letters H, S, and U representing, H: Harmed victim: S: Stable victim U:Unharmed victim. 
+
+![](rules_hazmap.png)
+
+Hazard maps are lebles given to hazardous materials and equipment (used in real life). The four labels shown above are used in the Erebus environment. 
+
+To identify a victim or hazard map, the robot must stop for 1 seconds, and send the location and victim type to the game manager The robot must be close (1/2 tile away) from the victim/hazard map.
+
+
+## Lack of Progress
+When a lack of progress(LoP) happens or is called, the robot will restart from the most recent visited check point tiles (marked by a silver colour). A LoP happens when,
+- The robot has fallen into a hole.
+- Robot being in a static location for 20 seconds or more (automatically called).
+- The referee determines the robot is not completely static but is stuck in sequence of motion.
+- There will be a button to execute a manual lack of progress (used by referees in the 2021 competition).
+- The robot autonomously calls for a LoP.
+
+## Mapping
+Mapping is scored as a multiplier to the overall scores obtained during the run. To obtain a mapping multiplier, the robot must submit a matrix to the game's main supervisor at the end of the game. Here, the submitted matrix is compared against the "answer key" to produce a correctness score. 
+
+How this matrix is constructed is detailed in the rules. 
+
+
 ## Exit Bonus
-Navigate back to the start before the end of the game for an extra 10% of your score.
+If the robot is able to return to the start tile before the end of the game, an extra 10% increase is given to your score.
