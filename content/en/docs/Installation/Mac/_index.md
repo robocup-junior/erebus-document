@@ -9,7 +9,7 @@ description: >
 ## Installation & Setup Guide
 1. Download & Install Python **3.8** 64 bit from the [official website](https://www.python.org/ftp/python/3.8.9/python-3.8.9-macosx10.9.pkg).  **Even if you have Python installed on your system via brew, anaconda, etc., we recommend that you install it afresh. Otherwise, the simulation may not work properly.** 
 
-1. Download & Install the Webots version **2021.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2021a/webots-R2021a_setup.exe).
+1. Download & Install the Webots version **2021.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2021a/webots-R2021a.dmg).
 
 1. **Specify the Python path to Webots.**
     1. Open Webots -> Preferences.  
