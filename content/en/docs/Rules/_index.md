@@ -37,13 +37,24 @@ The basic environemnt is comprised of tiles and walls. The smallest division use
 * Obstacles – must be navigated around
 
 ## Victims and Hazard maps
+Victims are comprised of letters H, S, and U.
+* H: Harmed victim
+* S: Stable victim
+* U: Unharmed victim
+
 ![](rules_victims.png)
 
-Victims are comprised of letters H, S, and U representing, H: Harmed victim: S: Stable victim U:Unharmed victim. 
+Hazard maps are lebles given to hazardous materials and equipment (used in real life). The four labels shown above are used in the Erebus environment. 
 
+* Flammable Gas (F)
+* Poison (P)
+* Corrosive (C)
+* Organic Peroxide (O)
 ![](rules_hazmap.png)
 
-Hazard maps are lebles given to hazardous materials and equipment (used in real life). The four labels shown above are used in the Erebus environment. 
+
+
+
 
 To identify a victim or hazard map, the robot must stop for 1 seconds, and send the location and victim type to the game manager The robot must be close (1/2 tile away) from the victim/hazard map.
 
