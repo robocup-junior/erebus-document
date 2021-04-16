@@ -11,16 +11,16 @@ There are key components which make up the simulation system. These must each be
 
 ![](components.png)
 
-1. Webots Robot Simulator Version **2020.a revision 1** - the simulation environment
-1. Competition Controller - Custom controller to implement the rules and scoring.
-1. Python Version **3.7** - to write controllers for the robots
+1. Webots Robot Simulator Version **2021.a** - the simulation environment
+1. Competition Supervisor - Implement the rules and scoring
+1. Python Version **3.x** - to write controllers for the robots
 
-## System Requirements
-* OS-Linux: LTS version 18.04, Linux 64 (x86-64)
-* OS-Windows: Win 10, 8.1, 7 64 bit
-* OS-Mac: macOS 10.12 'Sierra' or newer (not tested on Big Sur)
+## Minimum System Requirements
+* OS-Linux: Ubuntu 18.04 LTS, 20.04 LTS 64bit
+* OS-Windows: Win 10, 8.1 64 bit
+* OS-Mac: macOS 10.14 'Mojave' or newer (not tested on Big Sur)
 * CPU: Dual Core 2 GHz
 * RAM: 2 GB
 * Nvidia 512MB or AMD OpenGL 512MB
 
-## Installation for the different platforms
+## Installation Guide

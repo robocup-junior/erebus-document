@@ -1,21 +1,47 @@
 ---
-title: "Linux"
+title: "Linux (Ubuntu 20.04)"
 linkTitle: "Linux"
 weight: 4
 description: >
-  Installation Guide for Linux
+  Installation Guide for Linux (Ubuntu 20.04)
 ---
-{{% pageinfo %}}
-This page is under construction.
-{{% /pageinfo %}}
 
 ## Installation Guide
-1. Download & Install Python 3.7 64 bit from the [official website](https://www.python.org/ftp/python/3.7.8/python-3.7.8-amd64.exe). Check out this great installation guide if you need some help! During the install option, please make your python installation is referenced in your PATH (see picture below!)
-![](python-path.png)
+1. Install pip3 & required libraries
+    1. Open the terminal window.
+    2. Run the following command to install pip:  
+    `sudo apt install python3-pip`
+    3. Run the following command to install libraries:  
+    `python3 -m pip install numpy termcolor`
 
-1. Download & Install the Webots version 2020.a revision 1 from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2020a-rev1/webots-R2020a-rev1_setup.exe).
+1. Download & Install the Webots version **2021.a**
+    1. Open the terminal window.
+    2. Run the following command to download the installation package:  
+      `wget https://github.com/cyberbotics/webots/releases/download/R2021a/webots_2021a_amd64.deb`
+    3. Run the following command to install it:  
+      `sudo apt install ./webots_2021a_amd64.deb`
 
-1. Download and extract the latest Erebus [Release Build](https://github.com/Shadow149/RescueMaze/releases).
+1. Download and **extract** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
+![](download_erebus.png)
 
 ## Run the environment
-Run the world.wbt file from `/game/worlds/newworld.wbt`, opening it in Webots.
+Run the world1.wbt file from terminal. If the file located in `/home/USER_NAME/EREBUS_FOLDER/game/worlds/world1.wbt`  
+, just run the following command:  
+`webots '/home/USER_NAME/EREBUS_FOLDER/game/worlds/world1.wbt'`  
+
+The first time you run the simulator, it will automatically install the Python libraries needed to run the simulation, which may take some time (Initializing Process).
+
+If the time limit is not displayed, as in the following image, the initializing process is in progress. This process can take up to a minutes, depending on the performance of your computer.  
+![](initializing.png)
+
+
+## Troubleshooting
+### If your Webots screen comes up blank/black
+Copy and the download, unzip to a separate folder before opening the world. It should then work.
+
+### The simulation runs too slowly
+This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure.
+1. Open Tools -> Preferences in the top navigation bar.
+2. Open the OpenGL tab
+3. Set the various parameters appropriately. In particular, it is recommended to enable "Disable shadows".
+![](opengl.png)
