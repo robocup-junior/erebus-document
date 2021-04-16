@@ -18,7 +18,8 @@ We are currently not actively looking for new developers for the simulation plat
 
 ## Contributions to the documentation
 
-For the time being, if you find mistakes/editing points on the documentation, please inform us through the Discord server. 
+- Raising issues by clicking on the [Documentation issue](https://gitlab.com/rcj-rescue-tc/erebus/erebus-document/issues/new?title=Contribution%20Guidelines) and creating an issue on the project repository. 
+- Talk to us through the Discord server: You can communicate to us (develpers, RCJ Rescue committee) through the discord server. Please share your ideas with us!
 
 <!--
 {{% pageinfo %}}
