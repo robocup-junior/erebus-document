@@ -3,9 +3,24 @@ title: "Contribution Guidelines"
 linkTitle: "Contribution Guidelines"
 weight: 10
 description: >
-  How to contribute to the docs
+  How to contribute to Erebus
 ---
 
+## Contributions to the Erebus platform 
+
+If you would like to contribute to the Erebus platform, there are currently a few ways to do so. 
+- Raising issues in the repository: Let us know if you find any bugs of the platform or a feature which you think must be included.
+- Pull requests: If you manage to fix the bug yourself, you can make a pull request for that change to be potentially be applied. 
+- Talk to us through the Discord server: You can communicate to us (develpers, RCJ Rescue committee) through the discord server. Please share your ideas with us!
+
+### Deeper involvement
+We are currently not actively looking for new developers for the simulation platform. However, we are always in the search for new talent to sustain this platform for the future generation. If you strongly feel that you have the skills and would like to be part of the developing team for this platform, please contact [Kai Junge](mailto:kaijunge21@gmail.com) (RCJ Rescue 2021 Technical Committee chair).
+
+## Contributions to the documentation
+
+For the time being, if you find mistakes/editing points on the documentation, please inform us through the Discord server. 
+
+<!--
 {{% pageinfo %}}
 These basic sample guidelines assume that your Docsy site is deployed using Netlify and your files are stored in GitHub. You can use the guidelines "as is" or adapt them with your own instructions: for example, other deployment options, information about your doc project's file structure, project-specific review guidelines, versioning guidelines, or any other information your users might find useful when updating your site. [Kubeflow](https://github.com/kubeflow/website/blob/master/README.md) has a great example.
 
@@ -78,4 +93,4 @@ If you've found a problem in the docs, but you're not sure how to fix it yoursel
 * [Hugo documentation](https://gohugo.io/documentation/): Comprehensive reference for Hugo.
 * [Github Hello World!](https://guides.github.com/activities/hello-world/): A basic introduction to GitHub concepts and workflow.
 
-
+-->

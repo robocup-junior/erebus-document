@@ -6,7 +6,7 @@ description: >
   List of related events that are scheduled to be held in the future
 ---
 
-## RoboCupJunior 2021 Virtual International Competition
+## RoboCupJunior 2021 International Competition
 
 The Erebus simulator will be used for participants competiting in the RoboCupJunior Rescue New Simulation (Demonstration) competition. 
 
