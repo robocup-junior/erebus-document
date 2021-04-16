@@ -14,7 +14,7 @@ If you would like to contribute to the Erebus platform, there are currently a fe
 - Talk to us through the Discord server: You can communicate to us (develpers, RCJ Rescue committee) through the discord server. Please share your ideas with us!
 
 ### Deeper involvement
-We are currently not actively looking for new developers for the simulation platform. However, we are always in the search for new talent to sustain this platform for the future generation. If you strongly feel that you have the skills and would like to be part of the developing team for this platform, please contact [Kai Junge](mailto:kaijunge21@gmail.com) (RCJ Rescue 2021 Technical Committee chair).
+We are currently not actively looking for new developers for the simulation platform. However, we are always in the search for new talent to sustain this platform for the future generation. If you strongly feel that you have the skills and would like to be part of the developing team for this platform, please contact [Kai Junge](mailto:support@rcj.freshdesk.com) (RCJ Rescue 2021 Technical Committee chair).
 
 ## Contributions to the documentation
 

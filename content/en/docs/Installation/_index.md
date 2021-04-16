@@ -18,7 +18,7 @@ There are key components which make up the simulation system. These must each be
 ## System Requirements
 * OS-Linux: LTS version 18.04, Linux 64 (x86-64)
 * OS-Windows: Win 10, 8.1, 7 64 bit
-* OS-Mac: macOS 10.12 'Sierra' or newer (not tested on Catalina)
+* OS-Mac: macOS 10.12 'Sierra' or newer (not tested on Big Sur)
 * CPU: Dual Core 2 GHz
 * RAM: 2 GB
 * Nvidia 512MB or AMD OpenGL 512MB
