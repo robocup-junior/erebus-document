@@ -8,7 +8,7 @@
 {{ $acC := false }}
 
 <div class="code relative" {{ with $file }}id="{{ . | urlize}}"{{ end }} style="margin-bottom:40px;">
-	<div class="code-nav flex flex-nowrap items-stretch" style="margin-bottom:-33px;margin-left:5px;">
+	<div class="code-nav flex flex-nowrap items-stretch" style="margin-left:5px;">
 		{{ if (fileExists (print $path ".py")) }}
 			<button data-toggle-tab="Python" class="tab-button active ba san-serif f6 dib lh-solid ph2 pv2">Python</button>&nbsp;
 			{{ $acN = true }}
