@@ -22,5 +22,5 @@ List of useful links for learning and working on the Erebus Simulator:
 - [C++ Documentation](https://www.cplusplus.com/doc/tutorial/)
 - [Quick introduction to computer vision](https://towardsdatascience.com/everything-you-ever-wanted-to-know-about-computer-vision-heres-a-look-why-it-s-so-awesome-e8a58dfb641e)
 - [Quick introduction to search algorithms 1](https://towardsdatascience.com/ai-search-algorithms-every-data-scientist-should-know-ed0968a43a7a)
-- [Quick introduction to search algorithms 1](https://towardsdatascience.com/search-algorithm-introduction-1-a71e4a1911b3)
+- [Quick introduction to search algorithms 2](https://towardsdatascience.com/search-algorithm-introduction-1-a71e4a1911b3)
 

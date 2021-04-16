@@ -6,5 +6,5 @@ description: >
   List of related events
 ---
 
-## Related Events to the Erebus Rescue Maze Simulator
-The subpages provide an overview of related Events.
+## Related Events to the Erebus Simulator
+The subpages provide an overview of related events.
