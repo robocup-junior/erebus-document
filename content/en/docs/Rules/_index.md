@@ -59,8 +59,7 @@ When a lack of progress(LoP) happens or is called, the robot will restart from t
 ## Mapping
 Mapping is scored as a multiplier to the overall scores obtained during the run. To obtain a mapping multiplier, the robot must submit a matrix to the game's main supervisor at the end of the game. Here, the submitted matrix is compared against the "answer key" to produce a correctness score. 
 
-How this matrix is constructed is detailed in the rules. 
-
+For more detailed mapping instructions, see [here](/docs/rules/mapping/).
 
 ## Exit Bonus
 If the robot is able to return to the start tile before the end of the game, an extra 10% increase is given to your score.
