@@ -187,3 +187,9 @@ enable = false
 
 [params.assets]
   js = ["js/code-toggle.js"]
+
+[[menu.main]]
+        name = "GitLab"
+        weight = 50
+        url = "https://gitlab.com/rcj-rescue-tc/erebus/erebus"
+        pre = "<i class='fab fa-gitlab'></i>"
