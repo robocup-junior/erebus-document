@@ -28,7 +28,6 @@ By default the e-puck robot has the following components:
 * Cameras - Three RGB cameras on the front of the robot to provide visual recognition and one camera pointing downwards to act as a colour sensor.
 * Gyroscope - Which can be used to measure the rotational speed of the robot.
 * Accelerometer - Which can be used to measure the acceleration (or change in speed) of the robot.
-* Heat Sensors - Two thermal sensors, one in each side of the robot, used to locate humans.
 * GPS - Which can be used to get an absolute position value of the robot.
 
 {{< figure src="robot-custom.png" class="center">}}
