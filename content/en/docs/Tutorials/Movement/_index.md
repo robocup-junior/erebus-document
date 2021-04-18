@@ -3,7 +3,7 @@ title: "Movement"
 linkTitle: "Movement"
 weight: 2
 description: >
-  Explination of the commands used to control the robots movement
+  Explanation of the commands used to control the robot's movement
 ---
 
 {{% pageinfo %}}

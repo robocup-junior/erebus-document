@@ -3,7 +3,7 @@ title: "Getting Started"
 linkTitle: "Getting Started"
 weight: 1
 description: >
-  Get your robot perform its first moves
+  Get your robot to perform its first moves
 ---
 
 ## First Steps to start with Erebus
