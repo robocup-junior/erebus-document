@@ -9,29 +9,31 @@ description: >
 ## First Steps to start with Erebus
 In this first tutorial you will run the sample code and run your first program on the Simulator
 
-## Get the sample code
-Get the [sample code](sample.py) and save it to your working location.
+## Download the release
+Download the most latest release from [here](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 
 
 ## Run the sample code
-1. Run the world.wbt file from /game/worlds/newworld.wbt, opening it in Webots.
-1. Press the LOAD CONTROLLER button in the Competition Controller displayed on the left side of the screen, and select the sample code you just downloaded.
-{{< figure src="panel.jpg" class="center">}}  
-When the program is loaded, the color of the LOAD CONTROLLER button changes to orange.
-{{< figure src="loaded.jpg" class="center">}}  
+1. Run the world.wbt file from /game/worlds/world1.wbt, opening it in Webots.
+1. Press the LOAD button in the Competition Controller displayed on the left side of the screen, and select the sample code included in the release you just downloaded located in the "player_controllers" folder (currently the general sample code is named "ExamplePlayerController_updated.py").
+{{< figure src="main_screen_unloaded.png" class="center">}}  
+When the program is loaded, the colour of the LOAD button changes to orange.
+{{< figure src="main_screen_loaded.png" class="center">}} 
+1. The interface to control the simulation is shown below. The top band is for loading the robot controller and a custom robot if you do make one. Two bands below, the three circular buttons is what you will use to interact with the simulation once the robot is moving. Below that, the remaining time and the current score is displayed.
+{{< figure src="controller.png" class="center">}}  
 1. When you press the start button, the robot appears in the world and starts moving.
-{{< figure src="play.jpg" class="center">}}  
+{{< figure src="start_button.png" class="center">}}  
 1. To stop the robot temporarily, press the pause button.
-{{< figure src="pause.jpg" class="center">}}  
-1. If the robot is stuck, pressing the RELOCATE button will relocate the robot to the last reached checkpoint.
-{{< figure src="relocate.jpg" class="center">}}  
-1. Press the reset button to reset the loaded program and the game in progress.
-{{< figure src="reset.jpg" class="center">}}  
+{{< figure src="pause_button.png" class="center">}}  
+1. If the robot is stuck, pressing the restart button will trigger a lack of progress to relocate the robot to the last reached checkpoint.
+{{< figure src="lop_button.png" class="center">}}  
+1. Press the reset button to reset the loaded program and the game in progress. The setting button on the left hand side of the reset button allows you to toggle some debuggin options.
+{{< figure src="reset_buttons.png" class="center">}} 
 
 
 ## Manually move the robot where you want it to go
 When you click on a robot in the simulation window, red, blue, and green arrows will appear. You can move the robot to any position by grabbing this arrow with the mouse. Note that the robot will not be displayed until the program is started.
-{{< figure src="manual.jpg" class="center">}}  
+{{< figure src="manual.png" class="center">}}  
 
 ## Common problems & Fixes
 ### Competition Controller does not appear
