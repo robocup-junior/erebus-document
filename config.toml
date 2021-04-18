@@ -25,7 +25,7 @@ pygmentsUseClasses = false
 pygmentsUseClassic = false
 #pygmentsOptions = "linenos=table"
 # See https://help.farbox.com/pygments.html
-pygmentsStyle = "tango"
+pygmentsStyle = "monokai"
 
 # Configure how URLs look like per section.
 [permalinks]
@@ -72,10 +72,10 @@ weight = 1
       unsafe = true
   [markup.highlight]
       codeFences = true
-      guessSyntax = false
+      guessSyntax = true
       hl_Lines = ""
       lineNoStart = 1
-      lineNos = false
+      lineNos = true
       lineNumbersInTable = true
       noClasses = true
       style = "monokai"

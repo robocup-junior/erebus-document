@@ -34,7 +34,7 @@
 		{{ end }}
 		{{ if (fileExists (print $path ".c")) }}
 			<div data-pane="C/C++" class="code-copy-content nt3 tab-pane {{ cond $acC "" "active"  }}">
-				{{ highlight (readFile (print $path ".c") | safeHTML) "C" ""}}
+				{{ highlight (readFile (print $path ".c") | safeHTML) "c++" ""}}
 			</div>
 			{{ $acC = true }}
 		{{ end }}
