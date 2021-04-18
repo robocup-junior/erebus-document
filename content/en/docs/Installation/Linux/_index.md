@@ -12,7 +12,7 @@ description: >
     2. Run the following command to install pip:  
     `sudo apt install python3-pip`
     3. Run the following command to install libraries:  
-    `python3 -m pip install numpy termcolor`
+    `python3 -m pip install numpy termcolor requests`
 
 1. Download & Install the Webots version **2021.a**
     1. Open the terminal window.
