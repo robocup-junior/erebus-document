@@ -20,7 +20,7 @@ Download the most latest release from [here](https://gitlab.com/rcj-rescue-tc/er
 When the program is loaded, the colour of the LOAD button changes to orange.
 {{< figure src="main_screen_loaded.png" class="center">}} 
 1. The interface to control the simulation is shown below. The top band is for loading the robot controller and a custom robot if you do make one (see [here](https://erebus.rcj.cloud/docs/rules/the-robot/) for more info). Two bands below, the three circular buttons is what you will use to interact with the simulation once the robot is moving. Below that, the remaining time and the current score is displayed.
-{{< figure src="controller.png" class="center">}}  
+{{< figure src="controller.png" class="center" height="200">}}  
 1. When you press the start button, the robot appears in the world and starts moving.
 {{< figure src="start_button.png" class="center">}}  
 1. To stop the robot temporarily, press the pause button.
