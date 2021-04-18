@@ -32,7 +32,7 @@ If the time limit is not displayed, as in the following image, the initializing 
 
 
 ## Troubleshooting
-### The initial processing is not finished forever
+### The initializing process is not finished forever
 1. First of all, please check the console window. If you see any errors, you will need to try to resolve them.
 2. If you don't see any errors, the automatic installation of the required libraries may not be working properly; start Terminal and run the following command.
   `/Library/Frameworks/Python.framework/Versions/3.8/bin/python3 -m pip install numpy termcolor requests`
