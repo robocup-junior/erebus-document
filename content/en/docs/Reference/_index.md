@@ -4,6 +4,7 @@ linkTitle: "Reference"
 weight: 9
 description: >
   Reference for funtions and parameters
+toc_hide: true
 ---
 
 {{% pageinfo %}}
