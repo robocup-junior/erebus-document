@@ -173,7 +173,7 @@ enable = false
 
 [[params.links.user]]
 	name = "RoboCupJunior Forum"
-	url = "https:/junior.forum.robocup.org"
+	url = "https://junior.forum.robocup.org"
 	icon = "fab fa-discourse"
         desc = "Practical questions and curated answers"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
