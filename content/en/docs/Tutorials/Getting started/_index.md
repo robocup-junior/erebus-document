@@ -7,10 +7,9 @@ description: >
 ---
 
 ## First Steps to start with Erebus
-In this first tutorial you will run the sample code and run your first program on the Simulator
+In this first tutorial you will run the sample code and run your first program on the Simulator.  
+This assumes you have correctly installed Webots and downloaded the release. If not please visit the [installation page](/docs/installation/).
 
-## Download the release
-Download the most latest release from [here](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 
 
 ## Run the sample code
