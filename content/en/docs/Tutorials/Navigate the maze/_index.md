@@ -1,10 +1,10 @@
-
 ---
 title: "Navigate the maze"
 linkTitle: "Navigate the maze"
 weight: 4	
 description: >
   In this seminar we cover how to generate a first robot controller to navigate around a maze like environment.
+toc_hide: true
 ---
 
 > *Use parts of this tutorial in the component specific tutorials.*
