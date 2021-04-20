@@ -1,7 +1,7 @@
 ---
 title: "Emitter and Receiver"
 linkTitle: "Emitter and Receiver"
-weight: 1
+weight: 7
 description: >
   Communicate with the Main Supervisor
 ---
