@@ -42,8 +42,8 @@ This most likely means that Python has not been added to the Path correctly. To 
 Paths are messy and frustrating, and it can take a bit of work to iron out all the issues!
 
 ### The simulation runs too slowly
-This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure.
+This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure. However, you should take into account that these "adjustments" are only valid for testing in your environment, and that in a competition the game may be run under different adjustments.
 1. Open Tools -> Preferences in the top navigation bar.
 2. Open the OpenGL tab
-3. Set the various parameters appropriately. In particular, it is recommended to enable "Disable shadows".
+3. Set the various parameters appropriately.
 ![](opengl.png)

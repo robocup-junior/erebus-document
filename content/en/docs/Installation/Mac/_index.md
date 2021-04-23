@@ -38,8 +38,8 @@ If the time limit is not displayed, as in the following image, the initializing 
   `/Library/Frameworks/Python.framework/Versions/3.8/bin/python3 -m pip install numpy termcolor requests`
 
 ### The simulation runs too slowly
-This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure.
+This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure. However, you should take into account that these "adjustments" are only valid for testing in your environment, and that in a competition the game may be run under different adjustments.
 1. Open Webots -> Preferences.
 2. Open the OpenGL tab
-3. Set the various parameters appropriately. In particular, it is recommended to enable "Disable shadows".
+3. Set the various parameters appropriately.
 ![](opengl.png)
