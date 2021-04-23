@@ -19,7 +19,7 @@ description: >
     ![](preferences.png) 
 
 
-1. Download and **extract** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
+1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 ![](download_erebus.png)
 
 
