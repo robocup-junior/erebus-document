@@ -1,16 +1,31 @@
 #include <webots/Robot.hpp>
-using namespace webots;
-...
+#include <webots/Motor.hpp>
+#include <webots/DistanceSensor.hpp>
+#include <webots/Camera.hpp>
+#include <webots/Emitter.hpp>
+#include <webots/GPS.hpp>
+#include <opencv2/opencv.hpp>
+#include <vector>
 
-//Inside main:
+using namespace webots;
+using namespace cv;
+using namespace std;
+
 Robot *robot = new Robot();
 
 int timeStep = (int)robot->getBasicTimeStep();      // Set the time step for the simulation
-float max_velocity = 6.28;                          // Set a maximum velocity time constant
+float max_velocity = 6.27;                          // Set a maximum velocity time constant
 
 Motor *wheel_left = robot->getMotor("left wheel motor");     // Create an object to control the left wheel
 Motor *wheel_right = robot->getMotor("right wheel motor");   // Create an object to control the right wheel
 
-DistanceSensor *leftSensors[2];     // Create an empty array to store the left sensor values
-DistanceSensor *rightSensors[2];     // Create an empty array to store the right sensor values
-DistanceSensor *frontSensors[2];     // Create an empty array to store the front sensor values
+DistanceSensor *leftDist, *frontDist, *rightDist; // Objects for left, front, and right distance sensor
+
+Camera *cam; // Create an object to control the camera
+Camera *colorSensor; // Color sensor is a 1 pixel camera
+
+Emitter *emitter; // Used to send messages to supervisor (report victims/hazards)
+GPS *gps;
+
+// [left wheel speed, right wheel speed]
+float speeds[2] = { max_velocity, max_velocity };

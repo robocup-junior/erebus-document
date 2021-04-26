@@ -1,14 +1,20 @@
-frontSensors.append(robot.getDistanceSensor("ps7"))
-frontSensors[0].enable(timeStep)
-frontSensors.append(robot.getDistanceSensor("ps0"))
-frontSensors[1].enable(timeStep)
+#Create objects for all robot sensors
+leftDist = robot.getDevice("leftDist")      # Get robot's left distance sensor
+leftDist.enable(timeStep)     # Enable left distance sensor
 
-rightSensors.append(robot.getDistanceSensor("ps1"))
-rightSensors[0].enable(timeStep)
-rightSensors.append(robot.getDistanceSensor("ps2"))
-rightSensors[1].enable(timeStep)
+frontDist = robot.getDevice("frontDist")
+frontDist.enable(timeStep)
 
-leftSensors.append(robot.getDistanceSensor("ps5"))
-leftSensors[0].enable(timeStep)
-leftSensors.append(robot.getDistanceSensor("ps6"))
-leftSensors[1].enable(timeStep)
+rightDist = robot.getDevice("rightDist")
+rightDist.enable(timeStep)
+
+cam = robot.getDevice("camera")
+cam.enable(timeStep)
+
+colorSensor = robot.getDevice("color")
+colorSensor.enable(timeStep)
+
+emitter = robot.getDevice("emitter")    # Emitter doesn't need enable
+
+gps = robot.getDevice("gps")
+gps.enable(timeStep)

@@ -4,32 +4,22 @@ linkTitle: "Navigate the maze"
 weight: 8
 description: >
   In this seminar we cover how to generate a first robot controller to navigate around a maze like environment.
-toc_hide: true
 ---
-
-> *Use parts of this tutorial in the component specific tutorials.*
-
-> *This tutorial could be used after the component tutorials as a bigger project oriented one*
-
-
-{{% pageinfo %}}
-This page is under construction.
-{{% /pageinfo %}}
-
 ## Introducing Your Robot
-In this challenge, the robot is fixed and as Epuc (this is actually a real world robot!) Your robot has a number of components:
-* Left and Right wheels. Can be controlled independently to set the speed
-* Distance Sensors. A number of distance sensors around the robot to detect walls/objects
-* Camera. Two RGB cameras on the front of the robot to provide visual information
+In this challenge, the robot is a customizable Epuck. You can design your robot [here](https://robot.erebus.rcj.cloud/), adding the optimal sensors at the optimal positions. From there, you can export your robot as a JSON file, which you can then load into the robot window in Webots.
 
 {{< figure src="real_robot.thumbnail.jpg" class="center">}}
 
-
 ## Field
-The field/environment which accompanies this tutorial (and is shown to the right) can be downloaded [here](https://drive.google.com/file/d/1_SvSJFczGxnr_OfCWiB8iGYwRkC1bd2f/view).  
-Once downloaded, copy the files into `/game/world`.  
-{{< figure src="field1.png" class="center">}}
-We also have a short video showing how to change fields [here](https://youtu.be/VjHYlgjHD74).
+For the sample program, we will be working in a field similar to the one shown below. If you are unfamilar with how to find the various fields, visit the "Getting Started" section of the "Tutorials" section.
+
+<figure>
+  <center> 
+  <img
+  src="field1.png" width="400" height="400">
+  </center>
+</figure>
+
 
 ## Tasks/Activities
 After working on this seminar, work through the following tasks (of increasing difficulty):
@@ -41,57 +31,55 @@ After working on this seminar, work through the following tasks (of increasing d
 Remember, for help/advice, or if you want to share ideas, head to [discord](https://discord.com/invite/6FJxZxk).
 
 ## Exemplar Code
-Below we step through the example code developed step by step, explaining what is going on. Try and build this up by yourself first, referring back to this if you need. The full uninterrupted program can be found [here](https://github.com/Shadow149/RescueMaze/blob/master/docs/tutorials/code1.py).
+Below we step through the example code developed step by step, explaining what is going on. Try and build this up by yourself first, referring back to this if you need. The full uninterrupted program can be found here: <a href="sample.cpp" download>C++</a> | <a href="sample.py" download>Python</a>
 
 ---
 
-If you are new to Python, please don't worry, we will try and explain as we go along. One thing to watch out for is that the spacing/tabbing really matters, so be careful with that. This are also many useful Python 'cheat' sheets online such as [this one](https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf) to help you.
-
 ## Step-by-Step Introduction of the Code
-First we initialise the robot and sensors. We import the controller class as we set the timestep and also the maximum velocity of the robot. We also set create a wheel_left and wheel_right object. (More details on the API can be found [here](https://github.com/Shadow149/RescueMaze/wiki/Abstraction-Layer)).
+First we initialise the robot and sensors. We import/include the necessary classes as we set the time step and also the maximum velocity of the robot. We also create a wheel_left and wheel_right object. (More details on the API can be found [here](https://cyberbotics.com/doc/reference/nodes-and-api-functions)). Lastly, we initialize an array to store the left and right motor speeds - we start by initalizing these to the max speed.
 
 {{< code-toggle file="moving1">}}
 {{</code-toggle>}}
 
-In the next step in the program, we get the distance sensor readings, stored them in the lists and enable the sensors to update with ever time step.
+In the next step of the program, we initialize our distance sensors, camera, color sensor, emitter, and GPS. Remember that you can customize your own robot [here](https://robot.erebus.rcj.cloud/). Here is the layout for our sample robot:
+1. Three distance sensors facing left, forward, and right
+2. One forward facing camera for victim and hazard detection
+3. One downward facing color sensor to detect black pits
+4. One GPS for the robot's position when reporting victims and hazards
+5. An emitter for reporting victims and hazards (not in diagram, on robot by default)
 
-The robot has an number of distance sensors with two front, two left, two right and two backwards (for details about the robot and sensors visit the Webots site [here](https://cyberbotics.com/doc/guide/epuck). The picture here shows the location of these on the robots, and how they are named:
+Here is the JSON file for the sample robot: <a href="SampleRobot.json" download>Sample Robot JSON</a>
 
-{{< figure src="sensors_and_leds.png" class="center">}}
-
+{{< figure src="robot.png" class="center">}}
 
 {{< code-toggle file="moving2">}}
 {{</code-toggle>}}
 
-Next, we create an array in which we set the speeds - we start by initalizing these to the max speed (which we defined at the beginning). We also set the 'position', we set this to be infinite, as this allows the wheels to turn infinitely, they are not limited by turning a certain amount.
+Next, we set the 'position', we set this to be infinite, as this allows the wheels to turn infinitely, they are not limited by turning a certain amount.
 
 {{< code-toggle file="moving3">}}
 {{</code-toggle>}}
 
-We setup some functions which we can then call to set the movement of the robot. In each of these we set the speed of the left and right wheel using the speeds list.
+We setup some functions which we can then call to set the movement of the robot. In each of these we set the speed of the left and right wheel using the speeds list. We also define a delay function for prolonged movements and a getColor function to retrieve the brightness level seen by the color sensor (grayscaled value from 0 (black) to 255 (white)).
 
 {{< code-toggle file="moving4">}}
 {{</code-toggle>}}
 
-{{< python-specific>}}
-Here we have the main body of the program. First we setup a while loop that runs whilst the game is running (i.e. for the 8 minutes). We do this using `while robot.step(timeStep) != -1:` - so while the simulation is running and progressing, this will be true, and hence the while loop will run.
+We also create a several functions to help detect victims and hazards. The first function accepts a camera image and returns true if it detects a victim or hazard. It searches for contours (a contiguous shape within the image) whose area and width to height ratio fit within a certain range. Note that this function is by no means the optimal solution: it is prone to misdetections, can miss victims, and cannot differentiate between different letters and hazards - it is meant as an introduction into victim detection for you to improve upon.
 
-We then have a number of if statements, that check the different sensors to detect walls or obstacles. First, we consider the left and right sensors. There are two of each of the sensors so we loop through these using a for loop with a range of 2 `for i in range(2):`. Inside this, we then check to see if the sensors are below 80, and is we then turn the correct way to avoid the wall. Now, how do we decide what sensor value to use? The figure below shows the values that you return from the distance sensors - Y-axis is the sensor value (units), X-axis is the distance from the sensor in meters.
-{{</python-specific>}}
-
-{{< c-specific>}}
-C-specific explanations here.  
-You can use markdown format.
-{{</c-specific>}}
-
-
-{{< figure src="distance_sensor_lookup_table.png" class="center">}}
-
-As you can see 80 corresponds to around xxx, which is a reasonable choice give the size of the worlds we are considering.
-
-Next we also check the two front sensors. Note, we put this **after** the left and right sensors as this is higher priority - we do not want to crash into walls
-
-At the end of the while loop, the last two commands then take the speeds we have set in the speeds array, and actually set the wheels to these positions using `wheel_left.setVelocity(speeds[0])` and the equivalent for the right.
+After retrieving the image from the camera sensor, this function uses OpenCV to scan for victims. OpenCV for C++ can be difficult to install, and OpenCV in it of itself can be difficult to learn. Thus, if you feel a different method of victim detection will suffice, by all means comment out this function and implement your own solution. Do note, however, that the best solution essentially requires OpenCV or some other image processing library and that the internet has many useful resources for learning OpenCV.
 
 {{< code-toggle file="moving5">}}
 {{</code-toggle>}}
+
+To receieve points for a victim or hazard detection, you must report its location and type to the supervisor. The following function accepts a character for the victim/hazard type and reports it to the supervisor.
+
+{{< code-toggle file="moving6">}}
+{{</code-toggle>}}
+
+Here we have the main body of the program. First we setup a while loop that runs whilst the game is running (i.e. for the 8 minutes). It first checks for walls on the left, right, and front side, and turns away from any detected walls. It then uses the color sensor to check for a black pit, spinning away if detected. Lastly, it checks for a victim in view of the front camera and reports it anything it sees. Since the sample victim detection function is unable to differentiate between letters, it always reports 'T' for a thermal victim as a guess.
+
+{{< code-toggle file="moving7">}}
+{{</code-toggle>}}
+
+That about concludes the sample program. Again, you can find the interrupted full programs here: <a href="sample.cpp" download>C++</a> | <a href="sample.py" download>Python</a>. Note that this sample program is by no means an optimal solution, it is just meant to introduce you to working in the Webots environment in Rescue Maze. Good luck programming!
