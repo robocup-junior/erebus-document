@@ -1,14 +1,20 @@
-frontSensors[0] = robot->getDistanceSensor("ps7");
-frontSensors[0]->enable(timeStep);
-frontSensors[1] = robot->getDistanceSensor("ps0");
-frontSensors[1]->enable(timeStep);
+//Inside of main
+leftDist = robot->getDistanceSensor("leftDist");    // Grab robot's left distance sensor
+leftDist->enable(timeStep);     // Enable the distance sensor
 
-rightSensors[0] = robot->getDistanceSensor("ps1");
-rightSensors[0]->enable(timeStep);
-rightSensors[1] = robot->getDistanceSensor("ps2");
-rightSensors[1]->enable(timeStep);
+frontDist = robot->getDistanceSensor("frontDist");
+frontDist->enable(timeStep);
 
-leftSensors[0] = robot->getDistanceSensor("ps5");
-leftSensors[0]->enable(timeStep);
-leftSensors[1] = robot->getDistanceSensor("ps6");
-leftSensors[1]->enable(timeStep);
+rightDist = robot->getDistanceSensor("rightDist");
+rightDist->enable(timeStep);
+
+cam = robot->getCamera("camera");
+cam->enable(timeStep);
+
+colorSensor = robot->getCamera("color");
+colorSensor->enable(timeStep);
+
+emitter = robot->getEmitter("emitter");     // Emitter doesn't need enable
+
+gps = robot->getGPS("gps");
+gps->enable(timeStep);

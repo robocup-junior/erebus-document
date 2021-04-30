@@ -2,7 +2,7 @@ from controller import Robot, Camera # Step 1: Import Camera
 
 robot = Robot()
 
-colorSensor = robot.getDevice("colour_sensor" # Step 2: Retrieve the sensor, named "colour_sensor", from the robot. Note that the sensor name may differ between robots)
+colorSensor = robot.getDevice("colour_sensor") # Step 2: Retrieve the sensor, named "colour_sensor", from the robot. Note that the sensor name may differ between robots)
 
 timestep = int(robot.getBasicTimeStep())
 

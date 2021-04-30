@@ -1,21 +1,19 @@
-while (robot->step(timeStep) != -1) {
-    speeds[0] = max_velocity;
-    speeds[1] = max_velocity;
+bool checkVic(void *img) {
+    Rect boundRect;
+    float contArea, ratio;
+    vector<vector<Point>> contours;
+    Mat frame(cam->getHeight(), cam->getWidth(), CV_8UC4, img); // Create frame using camera image
 
-    // Check left and right sensors to avoid walls
-    for (int i = 0; i < 2; i++) {   // Loop through the two sensors for each of the left and right
-        //for sensors on the left, either
-        if (leftSensors[i]->getValue() > 80)
-            turn_right();      // We see a wall on the left, so turn right away from the wall
-        //for sensors on the right, either
-        if (rightSensors[i]->getValue() > 80)
-            turn_left();
+    cvtColor(frame, frame, COLOR_BGR2GRAY); // Grayscale image
+    threshold(frame, frame, 80, 255, THRESH_BINARY_INV); // Inverse threshold image (0-80 -> white; 80-255 -> black)
+    findContours(frame, contours, RETR_TREE, CHAIN_APPROX_SIMPLE); // Find all shapes within thresholded image
+    for (int i = 0; i < contours.size(); i++) {
+        boundRect = boundingRect(contours[i]); // Draw a rectnagle around shape for width to height ratio
+        contArea = fabs(contourArea(Mat(contours[i]))); // Area covered by the shape
+        ratio = (float)boundRect.width / boundRect.height; // Calculate width to height ratio
+        //if the contour area and width to height ratio are within certain ranges
+        if (contArea > 300 && contArea < 1000 && ratio > 0.65 && ratio < 0.95)
+            return true;
     }
-
-    // for both front sensors
-    if (frontSensors[0]->getValue() > 80 && frontSensors[1]->getValue() > 80)
-        spin();
-
-    wheel_left->setVelocity(speeds[0]);              // Send the speed values we have choosen to the robot
-    wheel_right->setVelocity(speeds[1]);
-};
+    return false;
+}
