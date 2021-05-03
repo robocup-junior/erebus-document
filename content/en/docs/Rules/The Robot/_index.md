@@ -30,7 +30,6 @@ By default the e-puck robot has the following components:
 * Accelerometer - Which can be used to measure the acceleration (or change in speed) of the robot.
 * GPS - Which can be used to get an absolute position value of the robot.
 
-{{< figure src="robot-custom.png" class="center">}}
 
 More information regarding this robot may be found here: https://github.com/cyberbotics/webots/blob/master/docs/guide/epuck.md
 
