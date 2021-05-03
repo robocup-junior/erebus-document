@@ -5,8 +5,8 @@ from controller import PositionSensor
 robot = Robot() # Create robot object
 timeStep = 32   # timeStep = number of milliseconds between world updates
 
-leftMotor = robot.getDevice("left wheel motor")    # Motor initialization
-rightMotor = robot.getDevice("right wheel motor")
+leftMotor = robot.getDevice("wheel1 motor")    # Motor initialization
+rightMotor = robot.getDevice("wheel2 motor")
 leftMotor.setPosition(float('inf'))
 rightMotor.setPosition(float('inf'))
 

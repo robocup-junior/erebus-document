@@ -2,8 +2,8 @@
 ...
 
 //Inside main:
-Motor *leftMotor = robot->getMotor("left wheel motor");    //Step 1
-Motor *rightMotor = robot->getMotor("right wheel motor");
+Motor *leftMotor = robot->getMotor("wheel1 motor");    //Step 1
+Motor *rightMotor = robot->getMotor("wheel2 motor");
 
 leftMotor->setPosition(INFINITY);   //Step 2
 rightMotor->setPosition(INFINITY);

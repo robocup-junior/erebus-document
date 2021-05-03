@@ -8,8 +8,8 @@ int main() {
     Robot *robot = new Robot(); // Create robot object
     int timeStep = (int)robot->getBasicTimeStep();  // timeStep = number of milliseconds between world updates
 
-    Motor *leftMotor = robot->getMotor("left wheel motor");    // Motor initialization
-    Motor *rightMotor = robot->getMotor("right wheel motor");
+    Motor *leftMotor = robot->getMotor("wheel1 motor");    // Motor initialization
+    Motor *rightMotor = robot->getMotor("wheel2 motor");
     leftMotor->setPosition(INFINITY);
     rightMotor->setPosition(INFINITY);
 
