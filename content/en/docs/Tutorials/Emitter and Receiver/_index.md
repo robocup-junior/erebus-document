@@ -12,7 +12,7 @@ This page is under construction.
 
 ## Basics
 
-The emitter and receiver are used to communicate with the Main Supervisor, Erebus' game manager. The emitter can be used to <b>score victims or hazard maps</b> as well as signify the <b>end of run</b> to receive an exit bonus, while the receiver can be used to notify the robot controller in the event of a <b>Lack of Progress</b>.
+The emitter and receiver are used to communicate with the Main Supervisor, Erebus' game manager. The emitter can be used to <b>score victims or hazard maps</b> as well as signify the <b>end of play</b> to receive an exit bonus, while the receiver can be used to notify the robot controller in the event of a <b>Lack of Progress</b>.
 
 First, set up the emitter and receiver:
 
@@ -32,9 +32,9 @@ X Pos <b>(integer),</b> Z Pos <b>(integer),</b> Victim Type <b>(character)</b>
 {{< code-toggle file="scoring">}}
 {{</code-toggle>}}
 
-#### Signaling End of Run
+#### Signaling End of Play
 
-To signal to the Main Supervisor the end of run in order to receive an exit bonus, send the character <b>'E'</b> using the emitter:
+To signal to the Main Supervisor the end of play in order to receive an exit bonus, send the character <b>'E'</b> using the emitter:
 
 {{< code-toggle file="endOfRun">}}
 {{</code-toggle>}}
