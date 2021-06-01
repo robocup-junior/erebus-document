@@ -32,6 +32,13 @@ X Pos <b>(integer),</b> Z Pos <b>(integer),</b> Victim Type <b>(character)</b>
 {{< code-toggle file="scoring">}}
 {{</code-toggle>}}
 
+#### Signaling Lack of Progress
+
+To call of lack of progress autonomously (using your program), send the character <b>'L'</b> using the emitter. The letter <b>'L'</b> will be sent back to the robot's receiver as per the <b>Lack of Progress</b> section below.
+
+{{< code-toggle file="sendLOP">}}
+{{</code-toggle>}}
+
 #### Signaling End of Play
 
 To signal to the Main Supervisor the end of play in order to receive an exit bonus, send the character <b>'E'</b> using the emitter:
@@ -43,7 +50,12 @@ To signal to the Main Supervisor the end of play in order to receive an exit bon
 
 The receiver can be used to detect lack of progress messages sent by the Main Supervisor, so that the robot controller can respond accordingly:
 
-
-
 {{< code-toggle file="LOP">}}
+{{</code-toggle>}}
+
+#### Game Information
+
+Your program can retrieve the robot's current game score and the time remaining in your run. Use the emitter to send the character <b>'G'</b> to the supervisor, and it will send back a package that starts with the letter <b>'G'</b> and is followed by the score and time remaining:
+
+{{< code-toggle file="gameInfo">}}
 {{</code-toggle>}}

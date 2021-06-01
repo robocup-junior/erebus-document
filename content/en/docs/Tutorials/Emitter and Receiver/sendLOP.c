@@ -1,0 +1,2 @@
+char message[1] = { 'L' }; // message = 'L' to activate lack of progress
+emitter->send(message, sizeof(message)); // Send out the message array. Note that the 2nd parameter must be the size of the message
