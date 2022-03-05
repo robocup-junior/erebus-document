@@ -8,8 +8,8 @@ max_velocity = 6.28      # Set a maximum velocity time constant
 
 robot = Robot()
 
-wheel_left = robot.getDevice("wheel1 motor")   # Create an object to control the left wheel
-wheel_right = robot.getDevice("wheel2 motor") # Create an object to control the right wheel
+leftMotor = robot.getDevice("wheel1 motor")   # Create an object to control the left wheel
+rightMotor = robot.getDevice("wheel2 motor") # Create an object to control the right wheel
 
 #[left wheel speed, right wheel speed]
 speeds = [max_velocity,max_velocity]

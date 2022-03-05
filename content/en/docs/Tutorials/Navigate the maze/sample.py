@@ -8,8 +8,8 @@ max_velocity = 6.28      # Set a maximum velocity time constant
 
 robot = Robot()
 
-wheel_left = robot.getDevice("wheel1 motor")   # Create an object to control the left wheel
-wheel_right = robot.getDevice("wheel2 motor") # Create an object to control the right wheel
+leftMotor = robot.getDevice("wheel1 motor")   # Create an object to control the left wheel
+rightMotor = robot.getDevice("wheel2 motor") # Create an object to control the right wheel
 
 #[left wheel speed, right wheel speed]
 speeds = [max_velocity,max_velocity]
@@ -35,8 +35,8 @@ emitter = robot.getDevice("emitter")    # Emitter doesn't need enable
 gps = robot.getDevice("gps")
 gps.enable(timeStep)
 
-wheel_left.setPosition(float("inf"))
-wheel_right.setPosition(float("inf"))
+leftMotor.setPosition(float("inf"))
+rightMotor.setPosition(float("inf"))
 
 def turn_right():
     #set left wheel speed
@@ -87,8 +87,8 @@ def report(victimType):
     # Last byte stores type of victim
     #     Victims: H, S, U, T
     #     Hazards: F, P, C, O
-    wheel_left.setVelocity(0)   # Stop for 1 second
-    wheel_right.setVelocity(0)
+    leftMotor.setVelocity(0)   # Stop for 1 second
+    rightMotor.setVelocity(0)
     delay(1300)
     victimType = bytes(victimType, "utf-8")    # Convert victimType to character for struct.pack
     posX = int(gps.getValues()[0] * 100)    # Convert from cm to m
@@ -116,13 +116,13 @@ while robot.step(timeStep) != -1:
     # if on black, turn away
     if getColor() < 80:
         spin()
-        wheel_left.setVelocity(speeds[0])
-        wheel_right.setVelocity(speeds[1])
+        leftMotor.setVelocity(speeds[0])
+        rightMotor.setVelocity(speeds[1])
         delay(600)
 
     # if sees victim, report it
     if checkVic(cam.getImage()):
         report('T') # Cannot determine type of victim, so always try 'T' for now
 
-    wheel_left.setVelocity(speeds[0])              # Send the speed values we have choosen to the robot
-    wheel_right.setVelocity(speeds[1])
+    leftMotor.setVelocity(speeds[0])              # Send the speed values we have choosen to the robot
+    rightMotor.setVelocity(speeds[1])

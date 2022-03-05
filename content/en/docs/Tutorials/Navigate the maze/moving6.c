@@ -5,8 +5,8 @@ void report(char victimType) {
     // Last byte stores type of victim
     //     Victims: H, S, U, T
     //     Hazards: F, P, C, O
-    wheel_left->setVelocity(0);     // Stop for 1 second
-	wheel_right->setVelocity(0);
+    leftMotor->setVelocity(0);     // Stop for 1 second
+	rightMotor->setVelocity(0);
     delay(1300);
     char message[9];
     int posX = gps->getValues()[0] * 100, posZ = gps->getValues()[2] * 100;

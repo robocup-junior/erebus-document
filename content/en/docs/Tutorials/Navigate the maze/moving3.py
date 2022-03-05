@@ -1,2 +1,2 @@
-wheel_left.setPosition(float("inf"))
-wheel_right.setPosition(float("inf"))
+leftMotor.setPosition(float("inf"))
+rightMotor.setPosition(float("inf"))
