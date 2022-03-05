@@ -1,8 +1,8 @@
 from controller import PositionSensor
 ...
 
-leftEncoder = leftMotor.getPositionSensor()    #Step 1
-rightEncoder = rightMotor.getPositionSensor()
+leftEncoder = wheel_left.getPositionSensor()    #Step 1
+rightEncoder = wheel_right.getPositionSensor()
 
 leftEncoder.enable(timeStep)    #Step 2
 rightEncoder.enable(timeStep)

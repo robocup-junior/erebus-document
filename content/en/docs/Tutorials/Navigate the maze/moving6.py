@@ -5,8 +5,8 @@ def report(victimType):
     # Last byte stores type of victim
     #     Victims: H, S, U, T
     #     Hazards: F, P, C, O
-    leftMotor.setVelocity(0)   # Stop for 1 second
-    rightMotor.setVelocity(0)
+    wheel_left.setVelocity(0)   # Stop for 1 second
+    wheel_right.setVelocity(0)
     delay(1300)
     victimType = bytes(victimType, "utf-8")    # Convert victimType to character for struct.pack
     posX = int(gps.getValues()[0] * 100)    # Convert from cm to m

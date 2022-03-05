@@ -17,13 +17,13 @@ while robot.step(timeStep) != -1:
     # if on black, turn away
     if getColor() < 80:
         spin()
-        leftMotor.setVelocity(speeds[0])
-        rightMotor.setVelocity(speeds[1])
+        wheel_left.setVelocity(speeds[0])
+        wheel_right.setVelocity(speeds[1])
         delay(600)
 
     # if sees victim, report it
     if checkVic(cam.getImage()):
         report('T') # Cannot determine type of victim, so always try 'T' for now
 
-    leftMotor.setVelocity(speeds[0])      # Send the speed values we have choosen to the robot
-    rightMotor.setVelocity(speeds[1])
+    wheel_left.setVelocity(speeds[0])      # Send the speed values we have choosen to the robot
+    wheel_right.setVelocity(speeds[1])

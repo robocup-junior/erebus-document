@@ -2,8 +2,8 @@
 ...
 
 //Inside main:
-PositionSensor *leftEncoders = leftMotor->getPositionSensor();     //Step 1
-PositionSensor *rightEncoders = rightMotor->getPositionSensor();
+PositionSensor *leftEncoders = wheel_left->getPositionSensor();     //Step 1
+PositionSensor *rightEncoders = wheel_right->getPositionSensor();
 
 leftEncoders->enable(timeStep);    //Step 2
 rightEncoders->enable(timeStep);

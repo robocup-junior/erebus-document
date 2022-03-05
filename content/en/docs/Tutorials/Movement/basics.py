@@ -1,11 +1,11 @@
 from controller import Motor
 ...
 
-leftMotor = robot.getDevice("wheel1 motor")     #Step 1
-rightMotor = robot.getDevice("wheel2 motor")
+wheel_left = robot.getDevice("wheel1 motor")     #Step 1
+wheel_right = robot.getDevice("wheel2 motor")
 
-leftMotor.setPosition(float('inf'))    #Step 2
-rightMotor.setPosition(float('inf'))
+wheel_left.setPosition(float('inf'))    #Step 2
+wheel_right.setPosition(float('inf'))
 
-leftMotor.setVelocity(5.0)     #Step 3
-rightMotor.setVelocity(5.0)
+wheel_left.setVelocity(5.0)     #Step 3
+wheel_right.setVelocity(5.0)

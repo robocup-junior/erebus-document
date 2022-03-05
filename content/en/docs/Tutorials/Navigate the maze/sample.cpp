@@ -16,8 +16,8 @@ Robot *robot = new Robot();
 int timeStep = (int)robot->getBasicTimeStep();      // Set the time step for the simulation
 float max_velocity = 6.27;                          // Set a maximum velocity time constant
 
-Motor *leftMotor = robot->getMotor("wheel1 motor");     // Create an object to control the left wheel
-Motor *rightMotor = robot->getMotor("wheel2 motor");   // Create an object to control the right wheel
+Motor *wheel_left = robot->getMotor("wheel1 motor");     // Create an object to control the left wheel
+Motor *wheel_right = robot->getMotor("wheel2 motor");   // Create an object to control the right wheel
 
 DistanceSensor *leftDist, *frontDist, *rightDist; // Objects for left, front, and right distance sensor
 
@@ -92,8 +92,8 @@ void report(char victimType) {
 	// Last byte stores type of victim
 	//     Victims: H, S, U, T
 	//     Hazards: F, P, C, O
-	leftMotor->setVelocity(0);     // Stop for 1 second
-	rightMotor->setVelocity(0);
+	wheel_left->setVelocity(0);     // Stop for 1 second
+	wheel_right->setVelocity(0);
 	delay(1300);
 	char message[9];
 	int posX = gps->getValues()[0] * 100, posZ = gps->getValues()[2] * 100;
@@ -126,8 +126,8 @@ int main() {
 	gps = robot->getGPS("gps");
 	gps->enable(timeStep);
 
-	leftMotor->setPosition(INFINITY);
-	rightMotor->setPosition(INFINITY);
+	wheel_left->setPosition(INFINITY);
+	wheel_right->setPosition(INFINITY);
 
 	while (robot->step(timeStep) != -1) {
 		speeds[0] = max_velocity;
@@ -148,8 +148,8 @@ int main() {
 		// if on black, turn away
 		if (getColor() < 80) {
 			spin();
-			leftMotor->setVelocity(speeds[0]);
-			rightMotor->setVelocity(speeds[1]);
+			wheel_left->setVelocity(speeds[0]);
+			wheel_right->setVelocity(speeds[1]);
 			delay(600);
 		}
 
@@ -157,7 +157,7 @@ int main() {
 		if (checkVic((void*)cam->getImage()))
 			report('T'); // Cannot determine type of victim, so always try 'T' for now
 
-		leftMotor->setVelocity(speeds[0]);              // Send the speed values we have choosen to the robot
-		rightMotor->setVelocity(speeds[1]);
+		wheel_left->setVelocity(speeds[0]);              // Send the speed values we have choosen to the robot
+		wheel_right->setVelocity(speeds[1]);
 	};
 }

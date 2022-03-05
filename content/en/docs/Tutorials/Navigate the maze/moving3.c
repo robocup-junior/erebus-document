@@ -1,3 +1,3 @@
 //Inside main
-leftMotor->setPosition(INFINITY);
-rightMotor->setPosition(INFINITY);
+wheel_left->setPosition(INFINITY);
+wheel_right->setPosition(INFINITY);

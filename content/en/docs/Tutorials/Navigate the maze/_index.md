@@ -36,7 +36,7 @@ Below we step through the example code developed step by step, explaining what i
 ---
 
 ## Step-by-Step Introduction of the Code
-First we initialise the robot and sensors. We import/include the necessary classes as we set the time step and also the maximum velocity of the robot. We also create a leftMotor and rightMotor object. (More details on the API can be found [here](https://cyberbotics.com/doc/reference/nodes-and-api-functions)). Lastly, we initialize an array to store the left and right motor speeds - we start by initalizing these to the max speed.
+First we initialise the robot and sensors. We import/include the necessary classes as we set the time step and also the maximum velocity of the robot. We also create a wheel_left and wheel_right object. (More details on the API can be found [here](https://cyberbotics.com/doc/reference/nodes-and-api-functions)). Lastly, we initialize an array to store the left and right motor speeds - we start by initalizing these to the max speed.
 
 {{< code-toggle file="moving1">}}
 {{</code-toggle>}}
