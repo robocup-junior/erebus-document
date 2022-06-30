@@ -39,4 +39,4 @@ When you click on a robot in the simulation window, red, blue, and green arrows 
 ### Competition Controller does not appear
 1. If the Scene Tree is not displayed, go to Tools --> Scene Tree in the top menu to display it.
 2. Find "DEF MAINSUPERVISOR Robot" in the Scene Tree and right-click it. Click on "Show Robot Window".
-{{< figure src="showrobot.png" class="center" width="400">}}  
+{{< figure src="showrobot.png" class="center" width="400">}}
