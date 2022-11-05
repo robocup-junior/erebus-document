@@ -107,6 +107,8 @@ version = "v22"
 # point people to the main doc site.
 url_latest_version = "https://erebus.rcj.cloud"
 
+version_menu_pagelinks = true
+
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://gitlab.com/rcj-rescue-tc/erebus/erebus-document"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
