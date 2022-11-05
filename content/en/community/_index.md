@@ -21,7 +21,7 @@ Robbie Goldman
 Victor Hu  
 Jeffrey Cheng  
 Ryo Unemoto  
-Kai Junge
+Kai Junge  
 Alexander Jeddeloh
 {{% /contributor %}}
 
@@ -31,8 +31,8 @@ Victor Hu
 Jeffrey Cheng  
 Tom Linnemann  
 Ryo Unemoto  
-Kai Junge
-Alexander Jeddeloh
+Kai Junge  
+Alexander Jeddeloh  
 Tom Linnemann
 {{% /contributor %}}
 
