@@ -5,10 +5,6 @@ enableRobotsTXT = true
 
 googleAnalytics = "G-E7X49H6V3V"
 
-
-# Hugo allows theme composition (and inheritance). The precedence is from left to right.
-theme = ["docsy"]
-
 # Will give values to .Lastmod etc.
 enableGitInfo = true
 
@@ -197,8 +193,15 @@ enable = false
         url = "https://gitlab.com/rcj-rescue-tc/erebus/erebus"
         pre = "<i class='fab fa-gitlab'></i>"
 [module]
-proxy = "direct"
-[[module.imports]]
-path = "github.com/google/docsy"
-[[module.imports]]
-path = "github.com/google/docsy/dependencies"
+  proxy = "direct"
+  # uncomment line below for temporary local development of module
+  # replacements = "github.com/google/docsy -> ../../docsy"
+  [module.hugoVersion]
+    extended = true
+    min = "0.73.0"
+  [[module.imports]]
+    path = "github.com/google/docsy"
+    disable = false
+  [[module.imports]]
+    path = "github.com/google/docsy/dependencies"
+    disable = false
