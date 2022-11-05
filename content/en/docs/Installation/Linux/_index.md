@@ -1,5 +1,5 @@
 ---
-title: "Linux (Ubuntu 20.04)"
+title: "Linux (Ubuntu)"
 linkTitle: "Linux"
 weight: 4
 description: >
