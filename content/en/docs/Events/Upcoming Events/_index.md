@@ -10,4 +10,4 @@ description: >
 
 The Erebus simulator will be used for participants competiting in the RoboCupJunior Rescue Simulation competition. 
 
-For more information, please visit the [community webpage](https://rescue.rcj.cloud/events/2023/robocup2023/simulation) for the 2023 RCJ Rescue competition. 
+For more information, please visit the [community webpage](https://rescue.rcj.cloud/events/2023/RoboCup2023/simulation) for the 2023 RCJ Rescue competition. 
