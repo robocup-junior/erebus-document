@@ -3,7 +3,7 @@ title: "Linux (Ubuntu 20.04)"
 linkTitle: "Linux"
 weight: 4
 description: >
-  Installation Guide for Linux (Ubuntu 20.04)
+  Installation Guide for Linux (Ubuntu 20.04 LTS / 22.04 LTS)
 ---
 
 ## Installation Guide
@@ -14,12 +14,12 @@ description: >
     3. Run the following command to install libraries:  
     `python3 -m pip install numpy termcolor requests`
 
-1. Download & Install the Webots version **2021.a**
+1. Download & Install the Webots version **2022.a**
     1. Open the terminal window.
     2. Run the following command to download the installation package:  
-      `wget https://github.com/cyberbotics/webots/releases/download/R2021a/webots_2021a_amd64.deb`
+      `wget https://github.com/cyberbotics/webots/releases/download/R2022a/webots_2022a_amd64.deb`
     3. Run the following command to install it:  
-      `sudo apt install ./webots_2021a_amd64.deb`
+      `sudo apt install ./webots_2022a_amd64.deb`
 
 1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 ![](download_erebus.png)

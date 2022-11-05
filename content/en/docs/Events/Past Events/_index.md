@@ -6,6 +6,12 @@ description: >
   List of related events that were held in the past
 ---
 
+## RoboCupJunior 2022 International Competition
+
+The Erebus simulator will be used for participants competiting in the RoboCupJunior Rescue Simulation competition. 
+
+For more information, please visit the [community webpage](https://rescue.rcj.cloud/events/2022/robocup2022/simulation) for the 2022 RCJ Rescue competition. 
+
 ## October 2020 International Online Demonstration Competition
 
 We hosted the first international, online competition in October 2020. Teams worked on their programs, and then submitted these to be tested against other around the world on an unseen map.

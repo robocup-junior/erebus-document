@@ -36,7 +36,7 @@ The basic environemnt is comprised of tiles and walls. The smallest division use
 * Black holes – robot drops through, and is then relocated
 * Obstacles – must be navigated around
 
-## Victims and Hazard maps
+## Victims and Hazmat Signs
 Victims are comprised of letters H, S, and U.
 * H: Harmed victim
 * S: Stable victim
@@ -44,7 +44,7 @@ Victims are comprised of letters H, S, and U.
 
 ![](rules_victims.png)
 
-Hazard maps are lebles given to hazardous materials and equipment (used in real life). The four labels shown above are used in the Erebus environment. 
+Hazmat Signs are lebles given to hazardous materials and equipment (used in real life). The four labels shown above are used in the Erebus environment. 
 
 * Flammable Gas (F)
 * Poison (P)

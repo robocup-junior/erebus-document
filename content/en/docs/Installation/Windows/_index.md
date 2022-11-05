@@ -7,10 +7,10 @@ description: >
 ---
 
 ## Quick Installation Guide
-1. Download & Install Python **3.9** 64 bit from the [official website](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe). During the install option, please make your python installation is referenced in your PATH (see picture below!)
+1. Download & Install Python **3.9.x** or **3.10.x** 64 bit from the [official website](https://www.python.org/downloads/windows/). During the install option, please make your python installation is referenced in your PATH (see picture below!)
 ![](python-path.png)
 
-1. Download & Install the Webots version **2021.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2021a/webots-R2021a_setup.exe).
+1. Download & Install the Webots version **2022.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2022a/webots-R2022a_setup.exe).
 
 1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 ![](download_erebus.png)
