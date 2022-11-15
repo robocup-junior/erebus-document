@@ -13,10 +13,11 @@ int main(int argc, char **argv) {
   
   Emitter* emitter = robot->getEmitter("emitter"); // Retrieve the receiver and emitter by device name
   Receiver* receiver = robot->getReceiver("receiver");
+  GPS *gps = robot->getGPS("gps"); // Retrieve the gps by device name
 
   int timeStep = (int)robot->getBasicTimeStep();
   
-  receiver->enable(timeStep); // Enable the reciever. Note that the emitter does not need to be enabled.
+  receiver->enable(timeStep); // Enable the receiver. Note that the emitter does not need to be enabled.
   
   while (robot->step(timeStep) != -1) {
     
