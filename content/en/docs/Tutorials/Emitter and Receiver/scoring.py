@@ -1,3 +1,4 @@
+from turtle import position
 from controller import Robot, Receiver, Emitter
 import struct # Use the struct module in order to pack the message sent to the Main Supervisor
 

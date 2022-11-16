@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   
   Emitter* emitter = robot->getEmitter("emitter"); // Retrieve the receiver and emitter by device name
   Receiver* receiver = robot->getReceiver("receiver");
-  GPS *gps = robot->getGPS("gps"); // Retrieve the gps by device name
+  GPS* gps = robot->getGPS("gps"); // Retrieve the gps by device name
 
   int timeStep = (int)robot->getBasicTimeStep();
   
