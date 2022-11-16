@@ -4,6 +4,7 @@ robot = Robot()
 
 receiver = robot.getDevice("receiver") # Retrieve the receiver and emitter by device name
 emitter = robot.getDevice("emitter")
+gps = robot.getDevice("gps") # Retrieve the gps by device name
 
 timestep = int(robot.getBasicTimeStep())
 
