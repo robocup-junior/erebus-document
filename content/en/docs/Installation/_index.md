@@ -11,7 +11,7 @@ There are key components which make up the simulation system. These must each be
 
 ![](components.png)
 
-1. Webots Robot Simulator Version **2022.a** - the simulation environment
+1. Webots Robot Simulator Version **2023.a** - the simulation environment
 1. Competition Supervisor - Implement the rules and scoring
 1. (Python Version **3.x** or C/C++) - to write controllers for the robots
 
