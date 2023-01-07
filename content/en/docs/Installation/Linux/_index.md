@@ -17,7 +17,7 @@ description: >
 1. Download & Install the Webots version **2022.a**
     1. Open the terminal window.
     2. Run the following command to download the installation package:  
-      `wget https://github.com/cyberbotics/webots/releases/download/R2022a/webots_2022a_amd64.deb`
+      `wget https://github.com/cyberbotics/webots/releases/download/R2023a/webots_2023a_amd64.deb`
     3. Run the following command to install it:  
       `sudo apt install ./webots_2022a_amd64.deb`
 
