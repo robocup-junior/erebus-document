@@ -55,3 +55,20 @@ Placement of victims| Provides a grid a to place the victims on the respective p
 |-|-|
 Empty 2x2 grid| Provides the possibility to place half-walls and curved walls. Clicking on one of the 4 inner  walls will add or remove it. Clicking on the quarter-tiles will place/ rotate the curved walls.<br>It also works as a preview for the selected victims.
 victim matrix| Provides a matrix with which victims can be placed in all 16 possible positions. The small map above serves as a guide to where the victims are placed.<br>To remove a victim from a position, you have to tick the box at the bottom (the crossed out stick figure). Be aware that multiple victims per tile can be placed
+
+### Room 4
+Currently, to insert a 4th room into their custom map, contestants must choose from a list of predefined room 4s to use. Below 
+are steps on how to do so, or watch [this](https://youtu.be/BrPiRcHxqqM) YouTube video explanation with visual demonstration.
+1. Go to your erebus folder that you downloaded. Navigate to erebus/game/protos, and look for the Area4_i.jpg files. Each file 
+is a picture of one of the room 4s you can choose from. Pick which room 4 you would like to use and write down the following values:
+    * The room 4 number (Area4_2.jpg -> room 4 #2)
+    * The tile distance between the green and red entrance tiles. This is fixed.
+2. Go to the world editor, find the "Select Room 4 Configuration Button," and select which room 4 you picked from step 1. The dropdown will tell you the size of that room 4.
+3. Create the outer border of room 4 manually
+4. Use the "Select Room 4 Tiles" button to select all tiles that belong to room 4.
+5. Use the "Cell Color" function to place your green and red tile. Note that the distance between them must be the same 
+as from step 1.
+    * If desired, the selected room 4 has the ability to be rotated. If you place the red and green tile with the appropriate distance
+between them, but rotate them 90, 180, or 270 degrees relative to your room 4 tiles, the imported room 4 will automatically be rotated appropriately.
+6. After the world is exported, you may notice that the victims and hazards of room 4 are slightly off due to rounding error. You can
+manually adjust this and then save your world.
