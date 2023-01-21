@@ -16,8 +16,8 @@ Robot *robot = new Robot();
 int timeStep = (int)robot->getBasicTimeStep();      // Set the time step for the simulation
 float max_velocity = 6.27;                          // Set a maximum velocity time constant
 
-Motor *wheel_left = robot->getMotor("wheel1 motor");     // Create an object to control the left wheel
-Motor *wheel_right = robot->getMotor("wheel2 motor");   // Create an object to control the right wheel
+Motor *wheel_left = robot->getMotor("left wheel motor");     // Create an object to control the left wheel
+Motor *wheel_right = robot->getMotor("right wheel motor");   // Create an object to control the right wheel
 
 DistanceSensor *leftDist, *frontDist, *rightDist; // Objects for left, front, and right distance sensor
 
