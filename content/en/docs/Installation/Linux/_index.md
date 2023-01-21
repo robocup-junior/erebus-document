@@ -21,7 +21,7 @@ description: >
     3. Run the following command to install it:  
       `sudo apt install ./webots_2021a_amd64.deb`
 
-1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
+1. Download and **unzip** the latest Erebus **v21.x.x** [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 ![](download_erebus.png)
 
 ## Run the environment

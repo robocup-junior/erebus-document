@@ -12,7 +12,7 @@ description: >
 
 1. Download & Install the Webots version **2021.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2021a/webots-R2021a_setup.exe).
 
-1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
+1. Download and **unzip** the latest Erebus **v21.x.x** [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 ![](download_erebus.png)
 
 
