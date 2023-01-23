@@ -8,21 +8,8 @@
 		"y": 15,
 		"z": 0,
 		"rx": 0,
-		"ry": 0,
-		"rz": -1,
-		"a": 1.57
-	},
-	"Wheel 2": {
-		"dictName": "Wheel 2",
-		"name": "Wheel",
-		"customName": "left wheel",
-		"type": "",
-		"x": -260,
-		"y": 15,
-		"z": 0,
-		"rx": 0,
-		"ry": 0,
-		"rz": -1,
+		"ry": -1,
+		"rz": 0,
 		"a": 1.57
 	},
 	"camera1": {
@@ -33,10 +20,10 @@
 		"x": 0,
 		"y": 90,
 		"z": -370,
-		"rx": 0,
-		"ry": 1,
-		"rz": 0,
-		"a": 1.57
+		"rx": -0.58,
+		"ry": 0.58,
+		"rz": 0.58,
+		"a": 2.09
 	},
 	"colsensor": {
 		"dictName": "colsensor",
@@ -44,12 +31,12 @@
 		"customName": "color",
 		"type": "add",
 		"x": 0,
-		"y": 0,
+		"y": -100,
 		"z": -370,
-		"rx": 0,
-		"ry": 0,
-		"rz": 1,
-		"a": 4.71
+		"rx": -0.58,
+		"ry": -0.58,
+		"rz": 0.58,
+		"a": 2.09
 	},
 	"gps": {
 		"dictName": "gps",
@@ -59,10 +46,10 @@
 		"x": 0,
 		"y": 335,
 		"z": 0,
-		"rx": 0,
-		"ry": 1,
-		"rz": 0,
-		"a": 1.57
+		"rx": -0.58,
+		"ry": 0.58,
+		"rz": 0.58,
+		"a": 2.09
 	},
 	"Distance Sensor 1": {
 		"dictName": "Distance Sensor 1",
@@ -73,8 +60,8 @@
 		"y": 335,
 		"z": 0,
 		"rx": 0,
-		"ry": 1,
-		"rz": 0,
+		"ry": 0.71,
+		"rz": 0.71,
 		"a": 3.14
 	},
 	"Distance Sensor 2": {
@@ -85,10 +72,10 @@
 		"x": 0,
 		"y": 335,
 		"z": -370,
-		"rx": 0,
-		"ry": 1,
-		"rz": 0,
-		"a": 1.57
+		"rx": -0.58,
+		"ry": 0.58,
+		"rz": 0.58,
+		"a": 2.09
 	},
 	"Distance Sensor 3": {
 		"dictName": "Distance Sensor 3",
@@ -98,9 +85,22 @@
 		"x": 370,
 		"y": 335,
 		"z": 0,
-		"rx": 0,
-		"ry": 1,
+		"rx": -1,
+		"ry": 0,
 		"rz": 0,
-		"a": 0
+		"a": 1.57
+	},
+	"Wheel 2": {
+		"dictName": "Wheel 2",
+		"name": "Wheel",
+		"customName": "wheel2",
+		"type": "",
+		"x": -260,
+		"y": 15,
+		"z": 0,
+		"rx": 0,
+		"ry": -1,
+		"rz": 0,
+		"a": 1.57
 	}
 }
