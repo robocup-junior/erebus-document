@@ -40,16 +40,23 @@ Mapping is scored as a multiplier to the overall scores obtained during the run.
         <td>6</td>
         </tr>
         <tr>
-        <td>Connection tiles from area 1 to 3</td>
+        <td>Connection tiles from area 2 to 3</td>
         <td>7</td>
         </tr>
         <tr>
-        <td>Connection tiles from area 2 to 3</td>
+        <td>Connection tiles from area 3 to 4</td>
         <td>8</td>
         </tr>
         <tr>
+        <td>Connection tiles from area 1 to 4</td>
+        <td>9</td>
+        <tr>
         <td>Victims</td>
         <td>The corresponding victim code (H,S,U,F,P,C,O)</td>
+        </tr>
+        <tr>
+        <td>All area 4 tiles/edges/vertices</td>
+        <td>Any character</td>
         </tr>
         <tr>
         <td>Any other tiles/edges/vertices</td>
@@ -72,7 +79,7 @@ The exception is the following case, where one side of the wall is a normal righ
 
 
 ## Examples
-These are examples of correct answers for some of the maps. The world files used here are provided to you as sample worlds.
+These are examples of correct answers for some of the maps. The world files used here are provided to you as sample worlds. Note that worlds world1.wbt and world2.wbt do not have area 4s, so technically the connection tiles are not correct. The correct map answer will be applied to room4.wbt.
 
 ### world1.wbt
 {{<figure src="world1.png" class="center">}}
