@@ -155,6 +155,7 @@ These are examples of correct answers for some of the maps. The world files used
     ]
 ```
 
+<!---
 ### world2.wbt
 {{<figure src="world3.png" class="center">}}
 
@@ -183,3 +184,4 @@ These are examples of correct answers for some of the maps. The world files used
         ['0', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0']
     ]
 ```
+-->
