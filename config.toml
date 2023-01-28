@@ -209,5 +209,5 @@ enable = false
     disable = false
 
 [[params.versions]]
-  version = "v22"
-  url = "https://v22.erebus.rcj.cloud"
+  version = "v23"
+  url = "https://v23.erebus.rcj.cloud"
