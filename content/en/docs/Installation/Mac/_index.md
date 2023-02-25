@@ -9,15 +9,7 @@ description: >
 ## Installation & Setup Guide
 1. Download & Install Python **3.10.x** 64 bit from the [official website](https://www.python.org/downloads/macos/).  **Even if you have Python installed on your system via brew, anaconda, etc., we recommend that you install it afresh. Otherwise, the simulation may not work properly.** 
 
-1. Download & Install the Webots version **2023.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2023a/webots-R2023a.dmg).
-
-1. **Specify the Python path to Webots.**
-    1. Open Webots -> Preferences.  
-    ![](preferences_open.png)
-    1. Set the following path to "Python command" field.  
-    `/Library/Frameworks/Python.framework/Versions/3.10/bin/python3` 
-    ![](preferences.png) 
-
+1. Download & Install the Webots version **2023.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2023a/webots-R2023a.dmg).   
 
 1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
 ![](download_erebus.png)
@@ -32,10 +24,16 @@ If the time limit is not displayed, as in the following image, the initializing 
 
 
 ## Troubleshooting
-### The initializing process is not finished forever
-1. First of all, please check the console window. If you see any errors, you will need to try to resolve them.
-2. If you don't see any errors, the automatic installation of the required libraries may not be working properly; start Terminal and run the following command.
-  `/Library/Frameworks/Python.framework/Versions/3.10/bin/python3 -m pip install numpy termcolor requests`
+First of all, please check the console window. If you see any errors, you will need to try to resolve them.
+
+### Common Errors
+#### `WARNING: Python was not found`
+1. Open the terminal and excute following command  
+`which python`
+2. Open Webots -> Preferences.  
+![](preferences_open.png)
+1. Set the path found in step1 to "Python command" field.  
+![](preferences.png)
 
 ### The simulation runs too slowly
 This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure. However, you should take into account that these "adjustments" are only valid for testing in your environment, and that in a competition the game may be run under different adjustments.
