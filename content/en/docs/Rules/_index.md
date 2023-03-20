@@ -6,7 +6,7 @@ description: >
   Here is a brief introduction to the rules of the competition.
 ---
 
-The official rules can be found on the [official RoboCupJunior homepage](https://junior.robocup.org/robocupjuniorrescue-league-new-simulation-demonstration/). 
+Past official rules can be found on the [previous year’s rules page](https://junior.robocup.org/previous-years-rules/). 
 
 Corrections and clarifications can be found on the [official RoboCupJunior Forum](https://junior.forum.robocup.org/)
 
