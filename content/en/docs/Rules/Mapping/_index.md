@@ -157,6 +157,16 @@ These are examples of correct answers for some of the maps. The world files used
 ]
 ```
 
+### room4_small.wbt
+
+
+Webots environment             |  Corresponding world editor setup
+:-------------------------:|:-------------------------:
+![](mapping_bonus_environment.png)  |  ![](mapping_bonus_editor.png)
+
+{{<figure src="mapping_bonus_matrix.png" class="center" caption="Corresponding matrix for mapping bonus">}}
+
+
 <!---
 ### world2.wbt
 {{<figure src="world3.png" class="center">}}
