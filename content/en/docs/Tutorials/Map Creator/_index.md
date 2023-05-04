@@ -60,7 +60,7 @@ victim matrix| Provides a matrix with which victims can be placed in all 16 poss
 
 Currently, to insert a 4th room into their custom map, contestants can choose from a list of predefined room 4s to use, or create a custom layout.
 
-Below are the steps to add a predefined 4th room, or watch beginning of [this](https://youtu.be/BrPiRcHxqqM) Youtube video for a visual demonstration and explanation.
+Below are the steps to add a predefined 4th room, or watch beginning of [this](https://youtu.be/AIDqrw8Zoqo) Youtube video for a visual demonstration and explanation.
 
 1. Go to your erebus folder that you downloaded. Navigate to erebus/game/protos, and look for the Area4_i.jpg files. Each file 
 is a picture of one of the room 4s you can choose from. Pick which room 4 you would like to use and write down the following values:
@@ -76,4 +76,4 @@ between them, but rotate them 90, 180, or 270 degrees relative to your room 4 ti
 6. After the world is exported, you may notice that the victims and hazards of room 4 are slightly off due to rounding error. You can
 manually adjust this and then save your world.
 
-Alternatively, contestants can draw custom room layouts. Watch [this](https://youtu.be/BrPiRcHxqqM) YouTube video explanation for a full visual demonstration on how to achieve this.
+Alternatively, contestants can draw custom room layouts. Watch [this](https://youtu.be/AIDqrw8Zoqo) YouTube video explanation for a full visual demonstration on how to achieve this.
