@@ -12,7 +12,7 @@ After you've conquered the test maps and your robot is able to run simple mazes,
 For this you have access to the online [Map Creator Tool](https://osaka.rcj.cloud/service/editor/simulation/2023).
 
 ## Building the Maze
-If you're just building small maps for testing, then the correctness of the field is probably not of much importance to you. But if you're planning on building an actual competition field, then you should definitely read through the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2022Rules/2022_RescueSimulation_Rules_final02.pdf).
+If you're just building small maps for testing, then the correctness of the field is probably not of much importance to you. But if you're planning on building an actual competition field, then you should definitely read through the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2023/02/RCJRescueSimulation2023RulesFinal.pdf).
 
 ### Setting the size
 The first step of creating your maze, is choosing the right size to start with.  
