@@ -9,10 +9,10 @@ description: >
 ## Background
 
 After you've conquered the test maps and your robot is able to run simple mazes, maybe you want something more challenging, or you want to test out some specific szenarios that our maps don't offer.  
-For this you have access to the online [Map Creator Tool](https://osaka.rcj.cloud/service/editor/simulation/2021).
+For this you have access to the online [Map Creator Tool](https://osaka.rcj.cloud/service/editor/simulation/2023).
 
 ## Building the Maze
-If you're just building small maps for testing, then the correctness of the field is probably not of much importance to you. But if you're planning on building an actual competition field, then you should definitely read through the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2022Rules/2022_RescueSimulation_Rules_final02.pdf).
+If you're just building small maps for testing, then the correctness of the field is probably not of much importance to you. But if you're planning on building an actual competition field, then you should definitely read through the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2023/02/RCJRescueSimulation2023RulesFinal.pdf).
 
 ### Setting the size
 The first step of creating your maze, is choosing the right size to start with.  
@@ -57,8 +57,11 @@ Empty 2x2 grid| Provides the possibility to place half-walls and curved walls. C
 victim matrix| Provides a matrix with which victims can be placed in all 16 possible positions. The small map above serves as a guide to where the victims are placed.<br>To remove a victim from a position, you have to tick the box at the bottom (the crossed out stick figure). Be aware that multiple victims per tile can be placed
 
 ### Room 4
-Currently, to insert a 4th room into their custom map, contestants must choose from a list of predefined room 4s to use. Below 
-are steps on how to do so, or watch [this](https://youtu.be/BrPiRcHxqqM) YouTube video explanation with visual demonstration.
+
+Currently, to insert a 4th room into their custom map, contestants can choose from a list of predefined room 4s to use, or create a custom layout.
+
+Below are the steps to add a predefined 4th room, or watch beginning of [this](https://youtu.be/AIDqrw8Zoqo) Youtube video for a visual demonstration and explanation.
+
 1. Go to your erebus folder that you downloaded. Navigate to erebus/game/protos, and look for the Area4_i.jpg files. Each file 
 is a picture of one of the room 4s you can choose from. Pick which room 4 you would like to use and write down the following values:
     * The room 4 number (Area4_2.jpg -> room 4 #2)
@@ -66,9 +69,11 @@ is a picture of one of the room 4s you can choose from. Pick which room 4 you wo
 2. Go to the world editor, find the "Select Room 4 Configuration Button," and select which room 4 you picked from step 1. The dropdown will tell you the size of that room 4.
 3. Create the outer border of room 4 manually
 4. Use the "Select Room 4 Tiles" button to select all tiles that belong to room 4.
-5. Use the "Cell Color" function to place your green and red tile. Note that the distance between them must be the same 
+5. Use the "Cell Color" function to place your green and red tile. Note that the distance between them must be the same
 as from step 1.
     * If desired, the selected room 4 has the ability to be rotated. If you place the red and green tile with the appropriate distance
 between them, but rotate them 90, 180, or 270 degrees relative to your room 4 tiles, the imported room 4 will automatically be rotated appropriately.
 6. After the world is exported, you may notice that the victims and hazards of room 4 are slightly off due to rounding error. You can
 manually adjust this and then save your world.
+
+Alternatively, contestants can draw custom room layouts. Watch [this](https://youtu.be/AIDqrw8Zoqo) YouTube video explanation for a full visual demonstration on how to achieve this.
