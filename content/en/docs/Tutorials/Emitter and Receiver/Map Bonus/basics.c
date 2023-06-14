@@ -64,8 +64,8 @@ int main(int argc, char **argv) {
 
   char message[8 + flattened.size()]; // message array
 
-  memcpy(message, &width, sizeof(width)); // The first 2 integers in the message array are width, height
-  memcpy(&message[4], &height, sizeof(height));
+  memcpy(message, &height, sizeof(height)); // The first 2 integers in the message array are height, width
+  memcpy(&message[4], &width, sizeof(width));
 
   memcpy(&message[8], flattened.c_str(), flattened.size()); // Copy in the flattened map afterwards
 
