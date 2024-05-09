@@ -34,6 +34,7 @@ Ryo Unemoto
 Kai Junge  
 Alexander Jeddeloh  
 Tom Linnemann
+Alfred Roberts
 {{% /contributor %}}
 
 {{< /blocks/section >}}
