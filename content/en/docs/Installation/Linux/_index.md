@@ -14,14 +14,14 @@ description: >
     3. Run the following command to install libraries:  
     `python3 -m pip install numpy termcolor requests`
 
-1. Download & Install the Webots version **2023.a**
+1. Download & Install the Webots version **2023.b**
     1. Open the terminal window.
     2. Run the following command to download the installation package:  
-      `wget https://github.com/cyberbotics/webots/releases/download/R2023a/webots_2023a_amd64.deb`
+      `wget https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb`
     3. Run the following command to install it:  
-      `sudo apt install ./webots_2023a_amd64.deb`
+      `sudo apt install ./webots_2023b_amd64.deb`
 
-1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
+1. Download and **unzip** the latest Erebus [Release Build](https://github.com/robocup-junior/erebus/releases).
 ![](download_erebus.png)
 
 ## Run the environment
