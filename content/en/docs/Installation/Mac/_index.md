@@ -9,9 +9,9 @@ description: >
 ## Installation & Setup Guide
 1. Download & Install Python **3.10.x** 64 bit from the [official website](https://www.python.org/downloads/macos/).  **Even if you have Python installed on your system via brew, anaconda, etc., we recommend that you install it afresh. Otherwise, the simulation may not work properly.** 
 
-1. Download & Install the Webots version **2023.a** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2023a/webots-R2023a.dmg).   
+1. Download & Install the Webots version **2023.b** from their [official repository](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b.dmg).   
 
-1. Download and **unzip** the latest Erebus [Release Build](https://gitlab.com/rcj-rescue-tc/erebus/erebus/-/releases).
+1. Download and **unzip** the latest Erebus [Release Build](https://github.com/robocup-junior/erebus/releases).
 ![](download_erebus.png)
 
 

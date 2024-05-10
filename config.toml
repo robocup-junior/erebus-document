@@ -91,7 +91,7 @@ copyright = "Erebus - Development Team"
 
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
-version_menu = "v23"
+version_menu = "v24"
 
 # Flag used in the "version-banner" partial to decide whether to display a
 # banner on every page indicating that this is an archived version of the docs.
@@ -101,7 +101,7 @@ archived_version = false
 # The version number for the version of the docs represented in this doc set.
 # Used in the "version-banner" partial to display a version number for the
 # current doc set.
-version = "v23"
+version = "v24"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
@@ -110,9 +110,9 @@ url_latest_version = "https://erebus.rcj.cloud"
 version_menu_pagelinks = true
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://gitlab.com/rcj-rescue-tc/erebus/erebus-document"
+github_repo = "https://github.com/robocup-junior/erebus-document"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-github_project_repo = "https://gitlab.com/rcj-rescue-tc/erebus/erebus"
+github_project_repo = "https://github.com/robocup-junior/erebus"
 
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""
@@ -146,8 +146,8 @@ footer_about_disable = true
 [params.ui.feedback]
 enable = true
 # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-yes = 'Glad to hear it! Please <a href="https://gitlab.com/rcj-rescue-tc/erebus-document/-/issues/new">tell us how we can improve</a>.'
-no = 'Sorry to hear that. Please <a href="https://gitlab.com/rcj-rescue-tc/erebus-document/-/issues/new">tell us how we can improve</a>.'
+yes = 'Glad to hear it! Please <a href="https://github.com/robocup-junior/erebus-document/issues">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://github.com/robocup-junior/erebus-document/issues">tell us how we can improve</a>.'
 
 # Adds a reading time to the top of each doc.
 # If you want this feature, but occasionally need to remove the Reading time from a single page,
@@ -176,9 +176,9 @@ enable = false
         desc = "Practical questions and curated answers"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
-	name = "GitLab"
-	url = "https://gitlab.com/rcj-rescue-tc/erebus"
-	icon = "fab fa-gitlab"
+	name = "GitHub"
+	url = "https://github.com/robocup-junior/erebus"
+	icon = "fab fa-github"
         desc = "Development takes place here!"
 [[params.links.developer]]
 	name = "Discord"
@@ -190,10 +190,10 @@ enable = false
   js = ["js/code-toggle.js"]
 
 [[menu.main]]
-        name = "GitLab"
+        name = "GitHub"
         weight = 50
-        url = "https://gitlab.com/rcj-rescue-tc/erebus/erebus"
-        pre = "<i class='fab fa-gitlab'></i>"
+        url = "https://github.com/robocup-junior/erebus"
+        pre = "<i class='fab fa-github'></i>"
 [module]
   proxy = "direct"
   # uncomment line below for temporary local development of module
@@ -209,5 +209,5 @@ enable = false
     disable = false
 
 [[params.versions]]
-  version = "v21"
-  url = "https://v21.erebus.rcj.cloud"
+  version = "v23"
+  url = "https://v23.erebus.rcj.cloud"
