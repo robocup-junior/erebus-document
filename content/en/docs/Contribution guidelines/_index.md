@@ -18,8 +18,9 @@ We are currently not actively looking for new developers for the simulation plat
 
 ## Contributions to the documentation
 
-- Raising issues by clicking on the [Documentation issue](https://gitlab.com/rcj-rescue-tc/erebus/erebus-document/issues/new?title=Contribution%20Guidelines) and creating an issue on the project repository. 
+- Raising issues by clicking on the [Documentation issue](https://github.com/robocup-junior/erebus-document/issues) and creating an issue on the project repository. 
 - Talk to us through the Discord server: You can communicate to us (develpers, RCJ Rescue committee) through the discord server. Please share your ideas with us!
+- Become an active documentation editor! If you'd like to be actively involved in writing documentation, please DM @kormit_ (Alfred Roberts) on the Discord.
 
 <!--
 {{% pageinfo %}}
