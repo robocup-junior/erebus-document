@@ -20,7 +20,7 @@ If the Robot Window is not displayed, right-click on the “MAINSUPERVISOR” an
 Open PowerShell. You can usually find it in the list of applications.  
 ![](powerShell.png)
 
-Execute the following command within PowerShell. But replace <Your controller path> with the path to your controller program.
+Execute the following command within PowerShell. But replace `<Your controller path>` with the path to your controller program.
 
 `webots-controller.exe <Your controller path>`
 
@@ -47,7 +47,7 @@ The PC running your controller (Client) and the game server (Server) must be con
 
 1. (Server) Start Webots on the server PC, open the world and turn on Remote Mode from the Robot Window. 
 2. (Server) Find out the IP address of that PC. You can refer [this artcile for your reference](https://support.microsoft.com/en-gb/windows/find-your-ip-address-in-windows-f21a9bbc-c582-55cd-35e0-73431160a1b9).
-3. (Client) Execute the following command within PowerShell. But replace <Your controller path> with the path to your controller program and <Server IP address> with the IP address which we figured out in previous step.   
+3. (Client) Execute the following command within PowerShell. But replace `<Your controller path>` with the path to your controller program and `<Server IP address>` with the IP address which we figured out in previous step.   
 `webots-controller.exe --protocol=tcp --ip-address=<Server IP address> <Your controller path>`
 4. (Server) Start the game by puhsing start button.
 
