@@ -41,3 +41,7 @@ This is probably due to the low performance of your computer. This may be improv
 2. Open the OpenGL tab
 3. Set the various parameters appropriately.
 ![](opengl.png)
+
+### Competition Controller does not appear
+After some minutes, if the time limit is not displayed, as in the following image, please check the following [help](/docs/tutorials/getting-started/#competition-controller-does-not-appear).
+![](initializing.png)
