@@ -29,13 +29,18 @@ Run the world1.wbt file from terminal. If the file located in `/home/USER_NAME/E
 , just run the following command:  
 `webots '/home/USER_NAME/EREBUS_FOLDER/game/worlds/world1.wbt'`  
 
-The first time you run the simulator, it will automatically install the Python libraries needed to run the simulation, which may take some time (Initializing Process).
+It shows you the Competition Supervisor automatically. If the window does not appear automatically, please check the troubleshooting section to solve the issue.
 
-If the time limit is not displayed, as in the following image, the initializing process is in progress. This process can take up to a minutes, depending on the performance of your computer.  
 ![](initializing.png)
 
+The first time you run the simulator, it will automatically install the Python libraries needed to run the simulation, which may take some time (Initializing Process).
 
 ## Troubleshooting
+### The Competition Supervisor does not appear
+1. If the Scene Tree is not displayed, go to Tools --> Scene Tree in the top menu to display it.
+2. Find "DEF MAINSUPERVISOR Robot" in the Scene Tree and right-click it. Click on "Show Robot Window".
+{{< figure src="showrobot.png" class="center" width="400">}}
+
 ### If your Webots screen comes up blank/black
 Copy and the download, unzip to a separate folder before opening the world. It should then work.
 
@@ -45,3 +50,7 @@ This is probably due to the low performance of your computer. This may be improv
 2. Open the OpenGL tab
 3. Set the various parameters appropriately.
 ![](opengl.png)
+
+### Competition Controller does not appear
+After some minutes, if the time limit is not displayed, as in the following image, please check the following [help](/docs/tutorials/getting-started/#competition-controller-does-not-appear).
+![](initializing.png)
