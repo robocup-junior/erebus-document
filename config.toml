@@ -91,7 +91,7 @@ copyright = "Erebus - Development Team"
 
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
-version_menu = "v24"
+version_menu = "v25"
 
 # Flag used in the "version-banner" partial to decide whether to display a
 # banner on every page indicating that this is an archived version of the docs.
@@ -101,7 +101,7 @@ archived_version = false
 # The version number for the version of the docs represented in this doc set.
 # Used in the "version-banner" partial to display a version number for the
 # current doc set.
-version = "v24"
+version = "v25"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
@@ -208,6 +208,9 @@ enable = false
     path = "github.com/google/docsy/dependencies"
     disable = false
 
+[[params.versions]]
+  version = "v24"
+  url = "https://v24.erebus.rcj.cloud"
 [[params.versions]]
   version = "v23"
   url = "https://v23.erebus.rcj.cloud"
