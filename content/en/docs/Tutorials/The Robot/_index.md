@@ -36,7 +36,7 @@ More information regarding this robot may be found here: https://github.com/cybe
 ### Custom Robots
 Before the game begins a custom robot may be loaded from a .json file.
 
-A tool to allow the teams to create these custom robots may be found here: https://v23.robot.erebus.rcj.cloud/
+A tool to allow the teams to create these custom robots may be found here: https://v25.robot.erebus.rcj.cloud/
 
 The basic structure of these robots will be the same but teams may customize the placement of different components as well as deciding which ones they want to use.
 
