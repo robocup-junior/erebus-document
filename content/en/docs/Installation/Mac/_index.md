@@ -39,6 +39,10 @@ First of all, please check the console window. If you see any errors, you will n
 1. Set the path found in step1 to "Python command" field.  
 ![](preferences.png)
 
+#### If your Webots screen comes up blank/black
+
+Make sure to unzip the folder, and also move the folder into another location, such as `~/robotics/erebus`. MacOS blocks third-party apps like Webots from reading the contents of certain folders like Downloads, Documents and Desktop.
+
 ### The simulation runs too slowly
 This is probably due to the low performance of your computer. This may be improved by adjusting the "accuracy" of the graphics according to the following procedure. However, you should take into account that these "adjustments" are only valid for testing in your environment, and that in a competition the game may be run under different adjustments.
 1. Open Webots -> Preferences.
