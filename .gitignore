@@ -1,6 +1,6 @@
-
-public/
-resources/
 node_modules/
-tech-doc-hugo
-
+dist/
+.astro/
+.DS_Store
+.wrangler/
+__pycache__/

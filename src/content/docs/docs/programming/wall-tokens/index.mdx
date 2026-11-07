@@ -1,0 +1,60 @@
+---
+title: Wall Tokens
+description: How to tell letter victims, cognitive targets and fakes apart.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## What the robot has to do
+Wall tokens are worth most of your points, and every wrong report costs 5 points. So for each token you find, you have to decide between:
+
+| It is... | What to do |
+|---|---|
+| A letter victim (Φ, Ψ, Ω) | Report `H`, `S` or `U` |
+| A fake victim (the same symbols, three-dimensional) | Do not report it, and leave it out of the map |
+| A cognitive target with a sum of 0 to 3 | Report `F`, `P`, `C` or `O` |
+| A cognitive target with any other sum | It is fake: do not report it, and leave it out of the map |
+
+See [Rules](/docs/rules/#wall-tokens) for the exact definitions, and [Communication](/docs/programming/communication/#scoring-wall-tokens) for how to send the report.
+
+## What the camera sees
+The default cameras have 64 × 40 pixels. At that resolution, a token is only a few pixels until the robot is close, so it is best to look for candidates from a distance, and then get closer to read them. Remember that a report needs the robot within half a tile of the token, and that custom cameras can have a higher resolution, at a cost.
+
+![A cognitive target seen by a 64 by 40 camera](./camera_target.png)
+
+
+Letter victims are black symbols on a white square, and they can be rotated to any angle, so your method must not depend on the orientation.
+
+![A letter victim on a wall in the simulator](./letter_victim.png)
+
+
+## Reading a cognitive target
+A cognitive target is made of five concentric parts, so there is no need to recognize its shape: once you have found its center and its outer radius, you can sample the colour in the middle of each part. The parts have radii of 0.5, 1, 1.5, 2 and 2.5 cm, so their middle points are at 0, 0.3, 0.5, 0.7 and 0.9 of the outer radius.
+
+This function does that with OpenCV in Python. To find the center and the radius, you can for example use the contour of the target, as in [Navigate the maze](/docs/programming/navigate-the-maze/).
+
+<CodeTabs file="readRings" />
+
+In a real run, the target may be viewed at an angle, in which case it looks like an ellipse. Getting in front of it, using the colours that look wrong as a warning, or reading several frames will make the result more reliable.
+
+## Calculating the type
+Once you have the five colours, the code to report comes from their sum. Each of the five parts always counts, even when neighbouring colours are the same.
+
+<CodeTabs file="targetCode" />
+
+For example, `['Y', 'B', 'R', 'K', 'G']` adds up to 0, so it is `F`, and `['B', 'Y', 'K', 'K', 'K']` adds up to -4, so it is fake.
+
+## Detecting fake victims
+Fake victims show the same symbols as real ones, but the letters are three-dimensional. From the front, a camera alone may not be able to tell them apart:
+
+![A fake victim seen from the front](./fake_victim_front.png)
+
+
+The rules state that the depth can be detected with one of the sensors available in the Robot Customizer. Some ideas to explore:
+
+- Compare distance measurements taken across the token, with a Lidar or with distance sensors, to look for a height difference.
+- Look at the token from an angle, where a relief changes the shape of the symbol.
+
+Worlds `world3.wbt` and `world4.wbt` include fake victims, and the [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) can add them to your own maps. Erebus also includes the script `scripts/update_maps_with_fakes.py`, which randomly transforms victims of existing worlds into fakes.
+
+Reporting a fake costs 5 points as a misidentification, while a real victim on a linear tile is worth 15 points with its type in Area 1, and more in other areas. Keep that in mind when you decide how sure your robot must be before it reports.

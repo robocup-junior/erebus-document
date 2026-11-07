@@ -1,0 +1,28 @@
+---
+title: Sensors
+description: Overview of the sensors and sensor specific tutorials.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## General
+
+Sensors are used to retrieve information about the robot's surrounding environment. In general, there are a few things to know regarding usage of sensors in Erebus:
+
+1. Each type of sensor has a respective class that must be imported/included in the controller.
+2. Sensors must be enabled before they are used (usually at the beginning of the controller program).
+3. Sensor values are only updated after each simulation timestep.
+4. Sensors have noise, like real sensors. Your program must be robust to it. Organizers will not change the noise levels for the competition.
+
+The device name you pass to `getDevice()` depends on your robot. The names of the default robot are listed in the [Reference](/docs/reference/parameters/#device-names-of-the-default-robot). For a custom robot, they are the names you set in the Robot Customizer.
+
+Please see the individual pages for specific details and samples for each sensor.
+
+## Different Sensors
+
+<CardGrid>
+	<LinkCard title="Distance Sensor" description="Distance to objects in front of the sensor" href="/docs/robot/sensors/distance-sensor/" />
+	<LinkCard title="Location Sensor" description="The position of the robot in the field" href="/docs/robot/sensors/location-sensor/" />
+	<LinkCard title="RGB Camera" description="Images for tokens, colours and more" href="/docs/robot/sensors/rgb-camera/" />
+	<LinkCard title="LIDAR" description="Distances all around the robot" href="/docs/robot/sensors/lidar/" />
+</CardGrid>

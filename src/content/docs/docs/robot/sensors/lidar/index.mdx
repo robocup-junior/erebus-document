@@ -1,0 +1,31 @@
+---
+title: LIDAR
+description: Gets distances to objects in the environment in a wider field of view.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Basics
+
+The Lidar returns the distances to the objects in the environment in **meters**, similar to the Distance Sensor, but provides 360 degrees of full coverage. The default robot does not have a Lidar: add one with the [Robot Customizer](https://robot.erebus.rcj.cloud/), which also lets you choose its name. The two basic properties of a Lidar in Webots are the **number of layers** and the **horizontal resolution**. The number of layers is the amount of lasers, "stacked" on top of each other, to provide vertical information in addition to horizontal. The horizontal resolution is the number of points per layer. These properties can be found using:
+
+<CodeTabs file="properties" />
+
+There are 4 basic steps to using this sensor:
+
+1. Start by importing or including the appropriate class for the lidar
+2. Retrieve the sensor by name from the robot.
+3. Enable the sensor by passing in the update rate of the sensor. (Usually the timestep) 
+4. Finally, retrieve values from the sensor.
+
+:::note
+The lidar relies on OpenGL rendering information to retrieve distances. As such, make sure the lidar is outside the body of the robot, so that it is not blocked by the inside of the robot.
+:::
+
+<CodeTabs file="basic" />
+
+In addition to retrieving the distances, the lidar also has the option of constructing a **point cloud** from the distances. The point cloud is a collection of x, y, and z ray collision points relative to the position of the lidar. Each point is stored in a **LidarPoint** object, which also contains information on the layer where the point originated from and what time the point was taken.
+
+ **Note:** Enabling the point cloud is computationally expensive.
+
+<CodeTabs file="basic2" />

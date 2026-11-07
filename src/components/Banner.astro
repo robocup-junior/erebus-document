@@ -1,0 +1,29 @@
+---
+// Shows a notice on the sites of old versions. See src/data/versions.ts.
+import { archivedVersion, latestSite } from '@/data/versions';
+---
+
+{
+	archivedVersion && (
+		<div class="archived-notice">
+			This is the documentation for Erebus {archivedVersion}, which is no longer the latest version.
+			<a href={`${latestSite}/docs/`}>See the latest documentation</a>
+		</div>
+	)
+}
+
+<style>
+	.archived-notice {
+		padding: 0.5rem 1rem;
+		background: var(--sl-color-orange-low);
+		color: var(--sl-color-orange-high);
+		font-size: 0.875rem;
+		text-align: center;
+	}
+
+	a {
+		margin-inline-start: 0.25rem;
+		color: inherit;
+		font-weight: 700;
+	}
+</style>

@@ -1,0 +1,37 @@
+---
+title: Versions
+description: Documentation, rules and downloads for each version of Erebus.
+---
+
+import { archivedVersion, versions } from '@/data/versions';
+
+Use the documentation that matches the rules of your competition. We support the versions of the latest two years, and the menu next to the logo lists them on every page.
+
+<table>
+	<thead>
+		<tr>
+			<th>Version</th>
+			<th>Rules</th>
+			<th>Webots</th>
+			<th>Documentation</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			versions.map((version) => (
+				<tr>
+					<td>{version.name}{version.current && !archivedVersion && ' (latest)'}</td>
+					<td>{version.rules}</td>
+					<td>{version.webots}</td>
+					<td>
+						<a href={version.current ? '/docs/' : version.url}>{version.current ? 'You are here' : 'Open'}</a>
+					</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+All the releases of Erebus are on the [Releases page](https://github.com/robocup-junior/erebus/releases), and the changes in each one are in the [changelog](https://github.com/robocup-junior/erebus/blob/master/CHANGELOG.md).
+
+The rules of each year are published on the [RoboCupJunior website](https://junior.robocup.org/rescue/).

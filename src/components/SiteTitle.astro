@@ -1,0 +1,138 @@
+---
+// Adds the version menu next to the Starlight site title.
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+import { archivedVersion, latestSite, versions } from '@/data/versions';
+
+const current = versions.find((version) => version.current);
+---
+
+<div class="site-title-group">
+	<Default><slot /></Default>
+	<details class="version-menu">
+		<summary aria-label={`Documentation version: ${current?.name}. Change version`}>{current?.name}</summary>
+		<div class="menu">
+			<p>Documentation version</p>
+			<ul>
+				{
+					versions.map((version) => (
+						<li>
+							<a href={version.current ? '/docs/' : version.url} aria-current={version.current ? 'page' : undefined}>
+								<b>{version.name}</b>
+								<span>{version.current && !archivedVersion ? `Latest · ${version.rules} rules` : `${version.rules} rules`}</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<a class="all" href={`${archivedVersion ? latestSite : ''}/docs/reference/versions/`}>All versions</a>
+		</div>
+	</details>
+</div>
+
+<script>
+	// Close the menu when clicking elsewhere or pressing Escape.
+	const menu = document.querySelector<HTMLDetailsElement>('.version-menu');
+	document.addEventListener('click', (event) => {
+		if (menu && !menu.contains(event.target as Node)) menu.open = false;
+	});
+	document.addEventListener('keydown', (event) => {
+		if (menu && event.key === 'Escape') menu.open = false;
+	});
+</script>
+
+<style>
+	/* Starlight clips the title area, which would hide the menu. */
+	:global(.title-wrapper) {
+		overflow: visible;
+	}
+
+	.site-title-group {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		min-width: 0;
+	}
+
+	.version-menu {
+		position: relative;
+		flex-shrink: 0;
+	}
+
+	summary {
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		padding: 0.2rem 0.55rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 99rem;
+		color: var(--sl-color-text-accent);
+		cursor: pointer;
+		font-size: 0.8rem;
+		font-weight: 700;
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: '▾';
+		font-size: 0.7rem;
+	}
+
+	summary:hover {
+		border-color: var(--sl-color-text-accent);
+	}
+
+	.menu {
+		position: absolute;
+		z-index: 10;
+		top: calc(100% + 0.5rem);
+		left: 0;
+		width: 15rem;
+		padding: 0.75rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.75rem;
+		background: var(--sl-color-bg-nav);
+		box-shadow: var(--sl-shadow-md);
+		font-size: 0.875rem;
+	}
+
+	p {
+		margin: 0 0 0.4rem 0.5rem;
+		color: var(--sl-color-gray-3);
+		font-size: 0.75rem;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li a {
+		display: flex;
+		justify-content: space-between;
+		padding: 0.4rem 0.5rem;
+		border-radius: 0.4rem;
+		color: var(--sl-color-white);
+		text-decoration: none;
+	}
+
+	li a:hover,
+	li a[aria-current='page'] {
+		background: var(--sl-color-gray-6);
+	}
+
+	li span {
+		color: var(--sl-color-gray-3);
+	}
+
+	.all {
+		display: block;
+		margin: 0.4rem 0 0 0.5rem;
+		color: var(--sl-color-text-accent);
+		font-size: 0.8rem;
+	}
+</style>

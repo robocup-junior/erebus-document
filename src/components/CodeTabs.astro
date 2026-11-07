@@ -1,0 +1,30 @@
+---
+// Shows a code sample from the folder of the current page, for example
+// <CodeTabs file="setup" /> uses setup.py and setup.c as Python and C/C++ tabs.
+// The build fails if neither file exists.
+import { Code, TabItem, Tabs } from '@astrojs/starlight/components';
+
+interface Props {
+	file: string;
+}
+
+const snippets = import.meta.glob<string>('/src/content/docs/**/*.{py,c}', {
+	query: '?raw',
+	import: 'default',
+	eager: true,
+});
+
+const { file } = Astro.props;
+const pagePath = Astro.url.pathname.replace(/\/?$/, '/');
+const python = snippets[`/src/content/docs${pagePath}${file}.py`];
+const cpp = snippets[`/src/content/docs${pagePath}${file}.c`];
+
+if (python === undefined && cpp === undefined) {
+	throw new Error(`CodeTabs: no ${file}.py or ${file}.c next to ${pagePath}`);
+}
+---
+
+<Tabs syncKey="language">
+	{python !== undefined && <TabItem label="Python"><Code code={python} lang="python" /></TabItem>}
+	{cpp !== undefined && <TabItem label="C/C++"><Code code={cpp} lang="cpp" /></TabItem>}
+</Tabs>

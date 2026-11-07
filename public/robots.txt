@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://erebus.rcj.cloud/sitemap-index.xml

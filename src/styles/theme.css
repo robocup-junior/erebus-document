@@ -1,0 +1,30 @@
+/* Site theme. Keep this small: prefer Starlight's defaults and variables. */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+
+:root {
+	--sl-font: 'Inter Variable', system-ui, sans-serif;
+	--sl-font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+	/* Accent colours, taken from the walls of the Erebus maze. */
+	--sl-color-accent-low: #0d3640;
+	--sl-color-accent: #1f8ba3;
+	--sl-color-accent-high: #b4e6f0;
+}
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: #cdeef5;
+	--sl-color-accent: #0c7088;
+	--sl-color-accent-high: #0a3a46;
+}
+
+/* Screenshots and figures. */
+.sl-markdown-content img {
+	border: 1px solid var(--sl-color-hairline);
+	border-radius: 0.5rem;
+}
+
+.hero img {
+	border-radius: 0.75rem;
+	box-shadow: 0 1.5rem 3rem -1rem rgb(0 0 0 / 0.45);
+}

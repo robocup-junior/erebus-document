@@ -1,0 +1,650 @@
+---
+// The home page. Update the values below for each Erebus release.
+// Media is in public/home/: real footage and screenshots from Webots.
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+const version = '26.1';
+const rulesYear = '2026';
+const downloadUrl = `https://github.com/robocup-junior/erebus/archive/refs/tags/v${version}.zip`;
+
+// Hero clips, played in random order. Each is public/home/hero-<name>.mp4.
+const heroClips = ['follow', 'overview', 'topdown', 'slide'];
+
+const stats = [
+	{ value: '4', label: 'areas to explore' },
+	{ value: '8', label: 'minutes on the clock' },
+	{ value: '3000', label: 'budget to build your robot' },
+	{ value: '×2.2', label: 'for a perfect map' },
+];
+
+const missions = [
+	{
+		title: 'Explore',
+		text: 'An unknown maze, with no remote control. Your program has to read its sensors and find a way through swamps, holes, obstacles and curved walls, all before the clock runs out.',
+		image: '/home/explore.jpg',
+		alt: 'The robot driving through a blue passage in the maze',
+		link: '/docs/programming/navigate-the-maze/',
+		linkText: 'Write your first navigator',
+	},
+	{
+		title: 'Identify',
+		text: 'Victims and cognitive targets wait on the walls, and fakes are hiding among them. Read the symbols, add up the rings and report only what is real.',
+		image: '/home/identify.jpg',
+		alt: 'The robot passing a cognitive target on a wall',
+		link: '/docs/programming/wall-tokens/',
+		linkText: 'Learn to read wall tokens',
+	},
+];
+
+// The top of the real answer for world2.wbt.
+const mapRows = [
+	'1111111111111111111111P11111111',
+	'1404000000001000020210000000030',
+	'1000000010001000000010000000000',
+	'14040000C0000000020210000000030',
+	'1111100010000000111110001111100',
+	'10100000000000001b0b00000000100',
+	'1U10000000000011100000000000O00',
+	'10000000000000001b0b00000000100',
+	'1000000010000000100011111111100',
+	'100000001p0p0000000004041000000',
+];
+
+const cellClass = (cell: string) => {
+	if (cell === '0') return 'empty';
+	if (cell === '1') return 'wall';
+	return /[A-Z]/.test(cell) ? 'token' : 'floor';
+};
+
+const steps = [
+	{ title: 'Install', text: 'Webots R2023b, Python and Erebus.', link: '/docs/installation/' },
+	{ title: 'Run', text: 'Load a sample program and press start.', link: '/docs/getting-started/' },
+	{ title: 'Compete', text: `Take on the ${rulesYear} rules.`, link: '/docs/rules/' },
+];
+---
+
+<StarlightPage
+	hasSidebar={false}
+	frontmatter={{
+		title: 'Rescue simulation for RoboCupJunior',
+		description:
+			'Program a robot to explore a maze, identify wall tokens and map the environment. The simulation platform of RoboCupJunior Rescue.',
+		template: 'splash',
+		editUrl: false,
+		lastUpdated: false,
+	}}
+>
+	<div class="home not-content">
+		<section class="hero">
+			<div id="hero-clips" data-clips={JSON.stringify(heroClips)} aria-hidden="true">
+				<video class="active" muted playsinline poster="/home/hero-poster.jpg"></video>
+				<video muted playsinline></video>
+			</div>
+			<div class="hero-inner">
+				<div class="hero-copy">
+					<p class="kicker">RoboCupJunior Rescue Simulation</p>
+					<h1>Send your robot <span>into the maze.</span></h1>
+					<p class="lead">
+						No remote control. Just your code against an unknown world: explore it, find everyone in
+						it, and bring back the map.
+					</p>
+					<div class="actions">
+						<a class="button primary" href="/docs/installation/">Get started</a>
+						<a class="button ghost" href={downloadUrl}>Download v{version}</a>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<ul class="stats">
+			{stats.map((stat) => <li><b>{stat.value}</b><span>{stat.label}</span></li>)}
+		</ul>
+
+		<section class="section">
+			<p class="kicker">The mission</p>
+			<h2>Three jobs. Eight minutes.</h2>
+
+			{
+				missions.map((mission, index) => (
+					<article class="mission">
+						<img src={mission.image} alt={mission.alt} loading="lazy" />
+						<div>
+							<span class="number">0{index + 1}</span>
+							<h3>{mission.title}</h3>
+							<p>{mission.text}</p>
+							<a href={mission.link}>{mission.linkText} →</a>
+						</div>
+					</article>
+				))
+			}
+
+			<article class="mission">
+				<div class="map-demo">
+					<img src="/home/map.jpg" alt="The maze seen from above" loading="lazy" />
+					<div class="matrix" aria-hidden="true">
+						{
+							mapRows.map((row) => (
+								<div>{[...row].map((cell) => <span class={cellClass(cell)}>{cell}</span>)}</div>
+							))
+						}
+					</div>
+				</div>
+				<div>
+					<span class="number">03</span>
+					<h3>Map</h3>
+					<p>
+						Turn everything the robot saw into a matrix of walls, floors and tokens. A perfect map
+						multiplies your whole score by 2.2.
+					</p>
+					<a href="/docs/rules/mapping/">See how mapping works →</a>
+				</div>
+			</article>
+		</section>
+
+		<section class="tools">
+			<div class="section">
+				<p class="kicker">Your workshop</p>
+				<h2>Build the robot. Build the world.</h2>
+				<div class="tool-grid">
+					<a class="tool" href="https://robot.erebus.rcj.cloud/">
+						<h3>Robot Customizer</h3>
+						<p>Choose your sensors and wheels, place them, and stay within the budget.</p>
+					</a>
+					<a class="tool" href="https://world.erebus.rcj.cloud/">
+						<h3>World Editor</h3>
+						<p>Draw your own mazes, and export them to Erebus to train your robot.</p>
+					</a>
+					<a class="tool" href="https://discord.com/invite/6FJxZxk">
+						<h3>Community</h3>
+						<p>Ask questions and meet the teams from around the world on Discord.</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="start">
+			<div class="section">
+				<h2>Your robot is waiting.</h2>
+				<ol>
+					{
+						steps.map((step) => (
+							<li>
+								<a href={step.link}>
+									<b>{step.title}</b>
+									<span>{step.text}</span>
+								</a>
+							</li>
+						))
+					}
+				</ol>
+				<p class="release">
+					Erebus v{version} · {rulesYear} rules · Webots R2023b ·
+					<a href="https://github.com/robocup-junior/erebus">GitHub</a> ·
+					<a href="/docs/reference/versions/">Other versions</a> ·
+					<a href="/docs/privacy/">Privacy</a>
+				</p>
+			</div>
+		</section>
+	</div>
+</StarlightPage>
+
+<script>
+	const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	// Plays the clips in random order, crossfading between the two video layers.
+	const crossfadeSeconds = 1.2;
+	const clipBox = document.querySelector<HTMLElement>('#hero-clips');
+	const clips: string[] = JSON.parse(clipBox?.dataset.clips ?? '[]');
+	const layers = [...document.querySelectorAll<HTMLVideoElement>('#hero-clips video')];
+	let activeLayer = 0;
+	let currentClip = '';
+	let switching = false;
+
+	async function playNextClip(layer: number) {
+		const options = clips.filter((clip) => clip !== currentClip);
+		currentClip = options[Math.floor(Math.random() * options.length)];
+		layers[layer].src = `/home/hero-${currentClip}.mp4`;
+		try {
+			await layers[layer].play();
+		} catch {
+			return; // The poster stays if the browser blocks playback.
+		}
+		layers[activeLayer].classList.toggle('active', layer === activeLayer);
+		layers[layer].classList.add('active');
+		activeLayer = layer;
+		switching = false;
+	}
+
+	layers.forEach((video, index) => {
+		video.addEventListener('timeupdate', () => {
+			const nearEnd = video.duration - video.currentTime < crossfadeSeconds;
+			if (index === activeLayer && nearEnd && !switching) {
+				switching = true;
+				void playNextClip(1 - index);
+			}
+		});
+	});
+
+	if (!reducedMotion) void playNextClip(0);
+</script>
+
+<style is:global>
+	/* Let the home page use the full width below the Starlight header. */
+	body:has(.home) {
+		overflow-x: clip;
+	}
+
+	body:has(.home) .content-panel {
+		padding: 0;
+		border: 0;
+	}
+
+	body:has(.home) .sl-container {
+		max-width: none;
+		margin: 0;
+	}
+
+	body:has(.home) .content-panel:has(h1#_top) {
+		display: none;
+	}
+
+	body:has(.home) footer {
+		display: none;
+	}
+</style>
+
+<style>
+	.home {
+		--tile-blue: #2f4bff;
+		--tile-purple: #7a35d0;
+		--tile-red: #f03535;
+		--tile-swamp: #b08f50;
+	}
+
+	.kicker {
+		margin: 0 0 0.75rem;
+		color: var(--sl-color-text-accent);
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2,
+	h3 {
+		margin: 0;
+		color: var(--sl-color-white);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.05;
+	}
+
+	/* Hero */
+	.hero {
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		min-height: calc(100svh - var(--sl-nav-height));
+		overflow: hidden;
+		background: #0b1216;
+		color: #fff;
+	}
+
+	/* Wider than the page and aligned left, which puts the robot beside the text. */
+	.hero video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 130%;
+		max-width: none;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		transition: opacity 1.2s ease;
+	}
+
+	.hero video.active {
+		opacity: 1;
+	}
+
+	.hero::after {
+		content: '';
+		position: absolute;
+		z-index: 0;
+		inset: 0;
+		background:
+			linear-gradient(to top, rgb(5 12 16 / 0.92), transparent 62%),
+			linear-gradient(to right, rgb(5 12 16 / 0.72), transparent 58%);
+	}
+
+	.hero-inner {
+		z-index: 1;
+		width: min(100%, 76rem);
+		margin: 0 auto;
+		padding: 3rem 1.5rem 3.5rem;
+	}
+
+	.hero-copy {
+		position: relative;
+		z-index: 1;
+		max-width: 38rem;
+	}
+
+	.hero .kicker {
+		color: #7fdcef;
+	}
+
+	h1 {
+		color: #fff;
+		font-size: clamp(3rem, 7vw, 5.5rem);
+		line-height: 0.98;
+		text-shadow: 0 0.1em 1em rgb(0 0 0 / 0.5);
+	}
+
+	h1 span {
+		display: block;
+		background: linear-gradient(90deg, #7fdcef, #8ea2ff 55%, #c79bff);
+		background-clip: text;
+		color: transparent;
+	}
+
+	.lead {
+		max-width: 34rem;
+		margin: 1.5rem 0 2rem;
+		color: #dbe6ea;
+		font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+		line-height: 1.5;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.button {
+		padding: 0.8rem 1.6rem;
+		border-radius: 0.6rem;
+		font-weight: 700;
+		text-decoration: none;
+		transition: transform 0.15s ease;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+	}
+
+	.primary {
+		background: #7fdcef;
+		color: #06222b;
+	}
+
+	.ghost {
+		border: 1px solid rgb(255 255 255 / 0.45);
+		color: #fff;
+		backdrop-filter: blur(6px);
+	}
+
+	/* Numbers */
+	.stats {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		margin: 0;
+		padding: 0;
+		background: linear-gradient(90deg, var(--tile-blue), var(--tile-purple) 60%, var(--tile-red));
+		color: #fff;
+		list-style: none;
+	}
+
+	.stats li {
+		padding: 1.5rem 1rem;
+		text-align: center;
+	}
+
+	.stats b {
+		display: block;
+		font-size: clamp(1.8rem, 4vw, 2.75rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+
+	.stats span {
+		font-size: 0.85rem;
+		opacity: 0.9;
+	}
+
+	/* Sections */
+	.section {
+		width: min(100%, 76rem);
+		margin: 0 auto;
+		padding: 5.5rem 1.5rem;
+	}
+
+	h2 {
+		font-size: clamp(2.2rem, 5vw, 3.75rem);
+	}
+
+	.mission {
+		display: grid;
+		grid-template-columns: 1.35fr 1fr;
+		gap: 3.5rem;
+		align-items: center;
+		margin-top: 4.5rem;
+	}
+
+	.mission:nth-of-type(even) > :first-child {
+		order: 1;
+	}
+
+	.mission img {
+		display: block;
+		width: 100%;
+		border-radius: 1rem;
+		box-shadow: 0 1.5rem 3.5rem -1.5rem rgb(0 0 0 / 0.6);
+	}
+
+	.number {
+		color: var(--sl-color-text-accent);
+		font-family: var(--sl-font-mono);
+		font-weight: 700;
+	}
+
+	h3 {
+		font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+	}
+
+	.mission h3 {
+		margin: 0.25rem 0 0.75rem;
+	}
+
+	.mission p {
+		margin: 0 0 1rem;
+		font-size: 1.1rem;
+		line-height: 1.6;
+	}
+
+	.mission a {
+		color: var(--sl-color-text-accent);
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	/* The map, as the robot reports it */
+	.map-demo {
+		position: relative;
+	}
+
+	.matrix {
+		position: absolute;
+		right: -1rem;
+		bottom: -1.5rem;
+		padding: 0.75rem 0.9rem;
+		border: 1px solid rgb(255 255 255 / 0.16);
+		border-radius: 0.6rem;
+		background: rgb(8 20 26 / 0.92);
+		font-family: var(--sl-font-mono);
+		font-size: clamp(0.5rem, 0.95vw, 0.72rem);
+		line-height: 1.25;
+		white-space: pre;
+	}
+
+	.matrix .empty {
+		color: #40545c;
+	}
+
+	.matrix .wall {
+		color: #5cc4d8;
+	}
+
+	.matrix .floor {
+		color: #e9b95f;
+		font-weight: 700;
+	}
+
+	.matrix .token {
+		color: #ff7676;
+		font-weight: 700;
+	}
+
+	/* Tools */
+	.tools {
+		background: var(--sl-color-gray-6);
+	}
+
+	.tool-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+		margin-top: 2.5rem;
+	}
+
+	.tool {
+		padding: 1.75rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 1rem;
+		background: var(--sl-color-bg);
+		color: inherit;
+		text-decoration: none;
+		transition:
+			transform 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.tool:hover {
+		border-color: var(--sl-color-accent);
+		transform: translateY(-3px);
+	}
+
+	.tool h3 {
+		font-size: 1.35rem;
+		letter-spacing: -0.02em;
+	}
+
+	.tool p {
+		margin: 0.6rem 0 0;
+		color: var(--sl-color-gray-2);
+	}
+
+	/* Call to action */
+	.start {
+		background:
+			linear-gradient(rgb(5 12 16 / 0.82), rgb(5 12 16 / 0.92)),
+			url('/home/map.jpg') center / cover;
+		color: #fff;
+		text-align: center;
+	}
+
+	.start h2 {
+		color: #fff;
+	}
+
+	.start ol {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		margin: 2.5rem 0 2rem;
+		padding: 0;
+		counter-reset: step;
+		list-style: none;
+	}
+
+	.start li {
+		counter-increment: step;
+	}
+
+	.start ol a {
+		display: block;
+		height: 100%;
+		padding: 1.5rem;
+		border: 1px solid rgb(255 255 255 / 0.2);
+		border-radius: 1rem;
+		background: rgb(255 255 255 / 0.06);
+		color: #fff;
+		text-decoration: none;
+		transition: background 0.15s ease;
+	}
+
+	.start ol a:hover {
+		background: rgb(127 220 239 / 0.2);
+	}
+
+	.start b {
+		display: block;
+		font-size: 1.3rem;
+	}
+
+	.start b::before {
+		content: counter(step) '. ';
+		color: #7fdcef;
+	}
+
+	.release {
+		margin: 0;
+		color: #b8c9cf;
+		font-size: 0.9rem;
+	}
+
+	.release a {
+		color: #7fdcef;
+	}
+
+	@media (max-width: 60rem) {
+		/* On narrow screens the video sits above the text. */
+		.hero video {
+			width: 100%;
+			height: 60%;
+		}
+
+		.hero::after {
+			background: linear-gradient(to top, #0b1216 42%, transparent 62%);
+		}
+
+		.mission,
+		.mission:nth-of-type(even) {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.mission:nth-of-type(even) > :first-child {
+			order: 0;
+		}
+
+		.matrix {
+			right: 0.5rem;
+		}
+
+		.stats,
+		.tool-grid,
+		.start ol {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.tool-grid,
+		.start ol {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
