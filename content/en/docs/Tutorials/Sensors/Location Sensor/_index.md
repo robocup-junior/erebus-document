@@ -6,13 +6,11 @@ description: >
   Retrieves the robot's position in the field
 ---
 
-{{% pageinfo %}}
-This page is under construction.
-{{% /pageinfo %}}
-
 ## Basics
 
 The location sensor, also called the <b>GPS</b>, is used to retrieve the absolute x, y, and z position of the robot, useful for localizing the robot within the field. The units returned are in <b>meters.</b>
+
+<b>Note:</b> Since v26 the GPS has noise, with an accuracy of 0.0025 m. The values change slightly even when the robot is standing still, so avoid comparing positions for exact equality.
 
 There are 4 basic steps to using this sensor:
 

@@ -1,2 +1,2 @@
 horizontalResolution = lidar.getHorizontalResolution();
-numberOfLayers = lidar.getNumberofLayers();
+numberOfLayers = lidar.getNumberOfLayers();

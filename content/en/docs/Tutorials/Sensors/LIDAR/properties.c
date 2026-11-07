@@ -1,2 +1,2 @@
 int horizontalResolution = lidar->getHorizontalResolution();
-int numberOfLayers = lidar->getNumberofLayers();
+int numberOfLayers = lidar->getNumberOfLayers();

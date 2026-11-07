@@ -11,7 +11,7 @@ menu:
 {{< blocks/section color="orange">}}
 <div class="col-12 center">
 <h1>Contributor</h1>
-<p>Between 2020 and 2022, the following people have contributed to the project. Thank you!</p>
+<p>Since 2020, the following people have contributed to the project. Thank you!</p>
 <br>
 </div>
 
@@ -22,7 +22,9 @@ Victor Hu
 Jeffrey Cheng  
 Ryo Unemoto  
 Kai Junge  
-Alexander Jeddeloh
+Alexander Jeddeloh  
+Ricardo Morán  
+Alejandro de Ugarriza
 {{% /contributor %}}
 
 {{% contributor icon="fas fa-book" title="Document" %}}
@@ -33,7 +35,6 @@ Tom Linnemann
 Ryo Unemoto  
 Kai Junge  
 Alexander Jeddeloh  
-Tom Linnemann  
 Alfred Roberts
 {{% /contributor %}}
 

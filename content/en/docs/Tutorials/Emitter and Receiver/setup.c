@@ -3,6 +3,7 @@
 #include <webots/Robot.hpp>
 #include <webots/Receiver.hpp> // Include Receiver.hpp and Emitter.hpp
 #include <webots/Emitter.hpp>
+#include <webots/GPS.hpp> // Include GPS.hpp to read the robot's position
 
 using namespace webots;
 using namespace std;
@@ -17,6 +18,7 @@ int main(int argc, char **argv) {
 
   int timeStep = (int)robot->getBasicTimeStep();
   
+  gps->enable(timeStep); // Enable the gps
   receiver->enable(timeStep); // Enable the receiver. Note that the emitter does not need to be enabled.
   
   while (robot->step(timeStep) != -1) {

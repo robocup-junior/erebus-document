@@ -6,13 +6,9 @@ description: >
   Gets distances to objects in the environment in a wider field of view
 ---
 
-{{% pageinfo %}}
-This page is under construction.
-{{% /pageinfo %}}
-
 ## Basics
 
-The Lidar returns the distances to the objects in the environment in <b>meters</b>, similar to the Distance Sensor, but provides 360 degrees of full coverage. The two basic properties of a Lidar in Webots are the <b>number of layers</b> and the <b>horizontal resolution</b>. The number of layers is the amount of lasers, "stacked" on top of each other, to provide vertical information in addition to horizontal. The horizontal resolution is the number of points per layer. These properties can be found using:
+The Lidar returns the distances to the objects in the environment in <b>meters</b>, similar to the Distance Sensor, but provides 360 degrees of full coverage. The default robot does not have a Lidar: add one with the [Robot Customizer](https://robot.erebus.rcj.cloud/), which also lets you choose its name. The two basic properties of a Lidar in Webots are the <b>number of layers</b> and the <b>horizontal resolution</b>. The number of layers is the amount of lasers, "stacked" on top of each other, to provide vertical information in addition to horizontal. The horizontal resolution is the number of points per layer. These properties can be found using:
 
 {{< code-toggle file="properties">}}
 {{</code-toggle>}}

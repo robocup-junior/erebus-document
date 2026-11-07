@@ -6,6 +6,8 @@
 #include <webots/GPS.hpp>
 #include <opencv2/opencv.hpp>
 #include <vector>
+#include <array>
+#include <cmath>
 
 using namespace webots;
 using namespace cv;
@@ -24,8 +26,10 @@ DistanceSensor *leftDist, *frontDist, *rightDist; // Objects for left, front, an
 Camera *cam; // Create an object to control the camera
 Camera *colorSensor; // Color sensor is a 1 pixel camera
 
-Emitter *emitter; // Used to send messages to supervisor (report victims/hazards)
+Emitter *emitter; // Used to send messages to supervisor (report wall tokens)
 GPS *gps;
 
 // [left wheel speed, right wheel speed]
 float speeds[2] = { max_velocity, max_velocity };
+
+vector<array<int, 2>> reported; // Positions where the robot has already reported a token

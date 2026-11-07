@@ -6,16 +6,14 @@ description: >
   Explanation of the commands used to control the robot's movement
 ---
 
-{{% pageinfo %}}
-This page is under construction.
-{{% /pageinfo %}}
-
 ## Basics
 
 **Note:** The Webots API accepts and returns angles in radians, a unit of measure for angles (similar to degrees). If you 
 want to work in degrees, note:
 * number_of_radians = number_of_degrees * PI / 180
 * number_of_degrees = number_of_radians * 180 / PI
+
+The two motors of the default robot are named `wheel1 motor` and `wheel2 motor`. In a custom robot, the name is the wheel name you set in the Robot Customizer, followed by ` motor`.
 
 To use motors in Webots:
 1. Create a motor object for each motor you want to use. These motor objects will be used to call motor related methods 

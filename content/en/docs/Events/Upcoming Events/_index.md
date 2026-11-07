@@ -6,8 +6,8 @@ description: >
   List of related events that are scheduled to be held in the future
 ---
 
-## RoboCupJunior 2023 International Competition
+## RoboCupJunior 2027 International Competition
 
-The Erebus simulator will be used for participants competiting in the RoboCupJunior Rescue Simulation competition. 
+RoboCup 2027 will be held in Nuremberg, Germany, from June 17 to June 21, 2027. The Erebus simulator will be used by the teams competing in the RoboCupJunior Rescue Simulation competition.
 
-For more information, please visit the [community webpage](https://rescue.rcj.cloud/events/2023/RoboCup2023/simulation) for the 2023 RCJ Rescue competition. 
+The rules and the Erebus release for this competition are not final yet. This documentation describes Erebus v26 and the 2026 rules, so please check the [event page](https://rescue.rcj.cloud/events/2027/RoboCup2027/simulation/index.html) for the draft rules, the competition version of Erebus and the latest news.

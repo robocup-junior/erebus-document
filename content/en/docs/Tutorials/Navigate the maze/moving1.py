@@ -13,3 +13,5 @@ wheel_right = robot.getDevice("right wheel motor") # Create an object to control
 
 #[left wheel speed, right wheel speed]
 speeds = [max_velocity,max_velocity]
+
+reported = [] # Positions where the robot has already reported a token

@@ -6,13 +6,9 @@ description: >
   Gets the distance to objects in the environment
 ---
 
-{{% pageinfo %}}
-This page is under construction.
-{{% /pageinfo %}}
-
 ## Basics
 
-The distance sensors in Erebus are configured to have a range between <b>0 </b>to <b>0.8 </b>meters. They will return the distance to the first object blocking their line of sight.
+The distance sensors in Erebus return the distance, in <b>meters</b>, to the first object blocking their line of sight. Their range is <b>0</b> to <b>0.8</b> meters.
 
 There are 4 basic steps to using this sensor:
 

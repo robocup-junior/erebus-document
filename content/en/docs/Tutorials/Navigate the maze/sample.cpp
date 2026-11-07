@@ -6,6 +6,8 @@
 #include <webots/GPS.hpp>
 #include <opencv2/opencv.hpp>
 #include <vector>
+#include <array>
+#include <cmath>
 
 using namespace webots;
 using namespace cv;
@@ -24,11 +26,13 @@ DistanceSensor *leftDist, *frontDist, *rightDist; // Objects for left, front, an
 Camera *cam; // Create an object to control the camera
 Camera *colorSensor; // Color sensor is a 1 pixel camera
 
-Emitter *emitter; // Used to send messages to supervisor (report victims/hazards)
+Emitter *emitter; // Used to send messages to supervisor (report wall tokens)
 GPS *gps;
 
 // [left wheel speed, right wheel speed]
 float speeds[2] = { max_velocity, max_velocity };
+
+vector<array<int, 2>> reported; // Positions where the robot has already reported a token
 
 void turn_right() {
 	// set left wheel speed
@@ -66,32 +70,36 @@ int getColor() {
 }
 
 bool checkVic(void *img) {
-	Rect boundRect;
-	float contArea, ratio;
-	vector<vector<Point>> contours;
-	Mat frame(cam->getHeight(), cam->getWidth(), CV_8UC4, img); // Create frame using camera image
+    Rect boundRect;
+    float contArea, ratio;
+    vector<vector<Point>> contours;
+    Mat frame(cam->getHeight(), cam->getWidth(), CV_8UC4, img); // Create frame using camera image
 
-	cvtColor(frame, frame, COLOR_BGR2GRAY); // Grayscale image
-	threshold(frame, frame, 80, 255, THRESH_BINARY_INV); // Inverse threshold image (0-80 -> white; 80-255 -> black)
-	findContours(frame, contours, RETR_TREE, CHAIN_APPROX_SIMPLE); // Find all shapes within thresholded image
-	for (int i = 0; i < contours.size(); i++) {
-		boundRect = boundingRect(contours[i]); // Draw a rectnagle around shape for width to height ratio
-		contArea = fabs(contourArea(Mat(contours[i]))); // Area covered by the shape
-		ratio = (float)boundRect.width / boundRect.height; // Calculate width to height ratio
-														   //if the contour area and width to height ratio are within certain ranges
-		if (contArea > 300 && contArea < 1000 && ratio > 0.65 && ratio < 0.95)
-			return true;
-	}
-	return false;
+    cvtColor(frame, frame, COLOR_BGRA2GRAY); // Grayscale image
+    threshold(frame, frame, 200, 255, THRESH_BINARY); // Threshold image (200-255 -> white; 0-200 -> black)
+    findContours(frame, contours, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE); // Find all bright shapes
+    for (int i = 0; i < contours.size(); i++) {
+        boundRect = boundingRect(contours[i]); // Find position and size of shape
+        // Shapes touching the edge of the image are not tokens: they are usually the floor
+        if (boundRect.x == 0 || boundRect.y == 0 ||
+            boundRect.x + boundRect.width == frame.cols || boundRect.y + boundRect.height == frame.rows)
+            continue;
+        contArea = fabs(contourArea(Mat(contours[i]))); // Area covered by the shape
+        ratio = (float)boundRect.width / boundRect.height; // Calculate width to height ratio
+        //if the contour area and width to height ratio are within certain ranges
+        if (contArea > 40 && ratio > 0.65 && ratio < 1.5)
+            return true;
+    }
+    return false;
 }
 
 void report(char victimType) {
-	// Character array to be sent to the supervisor to report victim/hazard
+	// Character array to be sent to the supervisor to report a wall token
 	// First four bytes store robot's x coordinate
 	// Second four bytes store robot's z coordinate
 	// Last byte stores type of victim
-	//     Victims: H, S, U, T
-	//     Hazards: F, P, C, O
+	//     Letter victims: H, S, U
+	//     Cognitive targets: F, P, C, O
 	wheel_left->setVelocity(0);     // Stop for 1 second
 	wheel_right->setVelocity(0);
 	delay(1300);
@@ -102,6 +110,16 @@ void report(char victimType) {
 	message[8] = victimType;
 	emitter->send(message, 9);
 	robot->step(timeStep);
+	reported.push_back({posX, posZ});
+}
+
+bool alreadyReported() {
+	// A token can only be scored once, and reporting it again is a misidentification
+	double posX = gps->getValues()[0] * 100, posZ = gps->getValues()[2] * 100;
+	for (int i = 0; i < reported.size(); i++)
+		if (fabs(posX - reported[i][0]) < 12 && fabs(posZ - reported[i][1]) < 12) // Closer than 1 tile (12 cm)
+			return true;
+	return false;
 }
 
 int main() {
@@ -153,9 +171,9 @@ int main() {
 			delay(600);
 		}
 
-		// if sees victim, report it
-		if (checkVic((void*)cam->getImage()))
-			report('T'); // Cannot determine type of victim, so always try 'T' for now
+		// if close to a wall in front and sees a victim, report it
+		if (frontDist->getValue() < 0.07 && !alreadyReported() && checkVic((void*)cam->getImage()))
+			report('H'); // Cannot determine the type of the victim, so always guess 'H' for now
 
 		wheel_left->setVelocity(speeds[0]);              // Send the speed values we have choosen to the robot
 		wheel_right->setVelocity(speeds[1]);

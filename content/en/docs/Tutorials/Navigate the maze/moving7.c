@@ -23,9 +23,9 @@ int main() {
 			delay(600);
 		}
 
-		// if sees victim, report it
-		if (checkVic((void*)cam->getImage()))
-			report('T'); // Cannot determine type of victim, so always try 'T' for now
+		// if close to a wall in front and sees a victim, report it
+		if (frontDist->getValue() < 0.07 && !alreadyReported() && checkVic((void*)cam->getImage()))
+			report('H'); // Cannot determine the type of the victim, so always guess 'H' for now
 
 		wheel_left->setVelocity(speeds[0]);		// Send the speed values we have choosen to the robot
 		wheel_right->setVelocity(speeds[1]);

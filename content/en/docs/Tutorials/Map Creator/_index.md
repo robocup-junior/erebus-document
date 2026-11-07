@@ -1,79 +1,113 @@
 ---
-title: "Map Creator"
-linkTitle: "Map Creator"
+title: "World Editor"
+linkTitle: "World Editor"
 weight: 3
 description: >
-  Here is a detailed explanation on how to use the custom map creator
+  How to create your own worlds with the Erebus World Editor
 ---
 
 ## Background
 
-After you've conquered the test maps and your robot is able to run simple mazes, maybe you want something more challenging, or you want to test out some specific szenarios that our maps don't offer.  
-For this you have access to the online [Map Creator Tool](https://osaka.rcj.cloud/service/editor/simulation/2025).
+After you've conquered the test maps and your robot is able to run simple mazes, maybe you want something more challenging, or you want to test some specific scenarios that our maps don't offer.
+For this you have the online [Erebus World Editor](https://world.erebus.rcj.cloud/). You draw a map in your browser, and it exports a `.wbt` world file that you can run in Erebus.
 
-## Building the Maze
-If you're just building small maps for testing, then the correctness of the field is probably not of much importance to you. But if you're planning on building an actual competition field, then you should definitely read through the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2025/02/RCJRescueSimulation2025-final-1.pdf).
+{{< figure src="overview.png" class="center">}}
 
-### Setting the size
-The first step of creating your maze, is choosing the right size to start with.  
-Just enter your desired width and length in the input field.
-You can also resize your field later on, so just starting it bigger and downsizing it later can be smart.
-![Setting the size](setting-size.png)
+If you are just building small maps for testing, the correctness of the field is probably not of much importance to you. But if you are planning to build a competition field, you should read through the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). The editor checks your map against the rules while you work.
 
-### Placing walls
-The next step is to setup your walls. We suggest that u start with the outer border and work your way through the middle, to create a maze. 
-When placing the start tile, all floating tiles are marked with a green background and the tiles that are out of bounds are marked with a gray background.
-![](placing-walls.png)
+The editor has a built-in guide: press **Guide** at the bottom right for a hands-on lesson that makes a sample map (about 15 minutes), a tour of the screen, or a lesson on Room 4. The language of the editor can be changed next to it.
 
+## Starting a map
+When you open the editor, choose **which year's rules** you want to follow, and press **New map**. **Choose the 2026 rules for Erebus v26.** The 2027 rules are a draft for the next version of Erebus.
 
-### Marking the area
-After you've created the basic maze, you have to choose which section of the maze is supposed to be area 2 and 3, for this you can just tick the box for the respective area and start highlighting each tile.  
-![](marked-areas.png)
+{{< figure src="start.png" class="center">}}
 
-### Placing half-walls and curved walls
-For tiles of area 2 and 3 there a now some additional options for wall placement. To place a half-wall on the edge of a normal tile, click on an existing wall. It will cycle though all possible placements. To place quarter-tile walls and curved walls open the [Change items](#additional-options-for-area-2-and-3) window.
+Your work is kept in the browser, but it is lost in another browser or when the browsing data is cleared. Keep maps that matter by saving them as JSON with the save button in the top bar, and reopen them with the open button.
 
+A good order to work in is: size and outline, rooms, passages, walls, floors, obstacles and victims, Room 4, and finally the checks and the export. The tools are on the left, each with a keyboard shortcut. The settings of the selected tool appear in the panel beside them.
 
-### Change item 
+| Tool | Key | Use |
+|---|---|---|
+| Select | `S` | Select, move, copy and paste parts of the map |
+| Move | `H` | Move the view |
+| Outline | `X` | Set the size and shape of the map |
+| Rooms | `M` | Paint Rooms 1 to 4 (the areas of the rules) |
+| Passages | `P` | Join rooms with a passage |
+| Line | `L` | Draw walls |
+| Curve | `A` | Draw curved walls in Room 3 |
+| Eraser | `E` | Remove walls, floors, obstacles and victims |
+| Floor | `F` | Set checkpoints, holes, swamps and the start tile |
+| Obstacle | `O` | Place obstacles |
+| Victims | `V` | Place letter victims, cognitive targets and fakes |
 
-By clicking on a tile a pop-up will open:
-![](change-item.png)
+The mouse wheel zooms, a drag with Space held moves the view, and undo is `⌘Z` or `Ctrl+Z`.
 
-You have the following Options:
-| Setting| Desription |
-|--------|------------|
-Check point<br>Black hole<br>Swamp| Sets the tile property to the respective type. Only one of these options should be selected at a time.
-Obstacle | Places an Obstacle. The shape and placement will be decided by random and can't be changed in the editor itself, but you can edit and move the obstacle in Webots, after loading the .wbt file.
-Cell Color | Provides a drop-down to set the color for the connection tiles between areas. For information on how to position each connection correctly, please refer to the [Rules](#building-the-maze).
-Is the start tile? | Sets the current tile as the starting tile. Replaces the previous start tile, if it has been defined before. After placing the start tile, all floating walls and out-of-bounds areas will be calculated.
-Placement of victims| Provides a grid a to place the victims on the respective position. For area 1 only one victim per tile can be placed.
+## Size and outline
+With the **Outline** tool, set the size of the map in tiles. The outer walls follow by themselves. **Outline (uneven)** lets you click tiles to take them out of the map, and you can also insert and remove rows and columns where you click.
 
+{{< figure src="outline.png" class="center">}}
 
-#### Additional options for Area 2 and 3
-![](inner-tile-walls.png)
-|||
-|-|-|
-Empty 2x2 grid| Provides the possibility to place half-walls and curved walls. Clicking on one of the 4 inner  walls will add or remove it. Clicking on the quarter-tiles will place/ rotate the curved walls.<br>It also works as a preview for the selected victims.
-victim matrix| Provides a matrix with which victims can be placed in all 16 possible positions. The small map above serves as a guide to where the victims are placed.<br>To remove a victim from a position, you have to tick the box at the bottom (the crossed out stick figure). Be aware that multiple victims per tile can be placed
+## Rooms and passages
+With the **Rooms** tool, paint the tiles of each room. Walls go up by themselves on the borders between rooms. Then, with the **Passages** tool, join the rooms: the colour of each passage is chosen according to the rooms it connects.
 
-### Room 4
+{{< figure src="rooms.png" class="center">}}
 
-Currently, to insert a 4th room into their custom map, contestants can choose from a list of predefined room 4s to use, or create a custom layout.
+{{< figure src="passages.png" class="center">}}
 
-Below are the steps to add a predefined 4th room, or watch beginning of [this](https://youtu.be/AIDqrw8Zoqo) Youtube video for a visual demonstration and explanation.
+## Walls
+Use the **Line** tool to draw walls: on the tile edges in Room 1, and on quarter tiles in Rooms 2 and 3. Use the **Curve** tool in Room 3, pointing at a quarter of a tile to choose the curve. Clicking the same one again removes it.
 
-1. Go to your erebus folder that you downloaded. Navigate to erebus/game/protos, and look for the Area4_i.jpg files. Each file 
-is a picture of one of the room 4s you can choose from. Pick which room 4 you would like to use and write down the following values:
-    * The room 4 number (Area4_2.jpg -> room 4 #2)
-    * The tile distance between the green and red entrance tiles. This is fixed.
-2. Go to the world editor, find the "Select Room 4 Configuration Button," and select which room 4 you picked from step 1. The dropdown will tell you the size of that room 4.
-3. Create the outer border of room 4 manually
-4. Use the "Select Room 4 Tiles" button to select all tiles that belong to room 4.
-5. Use the "Cell Color" function to place your green and red tile. Note that the distance between them must be the same
-as from step 1.
-    * If desired, the selected room 4 has the ability to be rotated. If you place the red and green tile with the appropriate distance
-between them, but rotate them 90, 180, or 270 degrees relative to your room 4 tiles, the imported room 4 will automatically be rotated appropriately.
-6. After the world is exported, you may notice that the victims and hazards of room 4 are slightly off due to rounding error. You can
-manually adjust this and then save your world.
+{{< figure src="walls.png" class="center">}}
 
-Alternatively, contestants can draw custom room layouts. Watch [this](https://youtu.be/AIDqrw8Zoqo) YouTube video explanation for a full visual demonstration on how to achieve this.
+## Floors and obstacles
+With the **Floor** tool, pick a floor type and click a tile to set it. The start tile must be a Room 1 tile, and the world cannot be exported without it. A tile can only be one of hole, swamp, checkpoint, obstacle, start or passage.
+
+{{< figure src="floors.png" class="center">}}
+
+With the **Obstacle** tool, pick a shape and click a tile. In Rooms 1 to 3 there is one obstacle per tile, with its center on the tile. Click an obstacle to change its size, height, colour and rotation with its handles and the panel.
+
+{{< figure src="obstacles.png" class="center">}}
+
+## Victims and cognitive targets
+With the **Victims** tool, pick a kind and click near a wall. You can place:
+
+- Real letter victims: harmed, stable and unharmed
+- Fake letter victims with three-dimensional symbols
+- Cognitive targets: pick the hazmat, and choose the colours of the rings if you want. The sum is shown, and it decides the type
+- Fake targets, whose rings add up to something other than 0 to 3
+
+In Room 1 there can be one victim on each tile side. In Rooms 2 and 3, they go on the faces of the 6 cm walls, and curves have two places, inside and outside. Under **Turn**, choose a fixed rotation, or a random one for each new token. Click a placed token to change or remove it, or drag it along its wall.
+
+{{< figure src="victims.png" class="center">}}
+
+## Room 4
+Room 4 is not based on tiles, so it is drawn as a picture. With the **Rooms** tool, paint Room 4, and press **Draw room 4** (or double-click the room) to open the room 4 creator.
+
+{{< figure src="room4.png" class="center">}}
+
+What you draw in black becomes walls. The creator has tools to draw freehand and to draw lines, curves, arcs, rectangles, ellipses, polygons and shapes from icons, and tools for victims and obstacles. As many obstacles as you like can be placed in Room 4. Red stripes show where the robot cannot get to, and you must leave room for the robot, about a tile wide, to get through.
+
+When it is done, press **OK**: the picture appears as Room 4 on the map and goes into the exported world. The buttons at the top right of the creator save the picture as a PNG, so you can use the same Room 4 in another map, and open PNG or JPEG pictures.
+
+## Checking your map
+Every change is checked against the rules, in the **Checks** card at the top right. A red ✕ is a problem that stops the world from being exported, and a yellow ! is a warning worth a look. Click an item to go to it. **Fix** fixes one item, and **Fix all that can be fixed** fixes them all.
+
+{{< figure src="new_map.png" class="center">}}
+
+The **Linear** button in the top bar colours each tile as linear or floating, which sets what the tokens are worth.
+
+{{< figure src="linear.png" class="center">}}
+
+The trophy in the top bar shows the **maximum score** of the map, calculated with the scoring rules, with each room's share and the score with the exit and mapping bonuses.
+
+{{< figure src="max_score.png" class="center">}}
+
+## Exporting and running your world
+Set the name of the map in the top bar, and press the **.wbt** button at the top right. Then:
+
+1. Copy the `.wbt` file into the `game/worlds` folder of Erebus. It must be in that folder, since the world uses files from Erebus.
+1. Open it in Webots, or choose it with the **Worlds** button of the [control window](/docs/tutorials/getting-started/).
+
+{{< figure src="exported_world.png" class="center" caption="The sample map of the editor's guide, running in Erebus v26.1.">}}
+
+A `.wbt` file does not turn back into a map you can edit, so keep the JSON too.
