@@ -274,6 +274,15 @@ const steps = [
 		display: none;
 	}
 
+	/* The hero starts right under the header, and the last section ends the page */
+	body:has(.home) main {
+		padding-bottom: 0;
+	}
+
+	body:has(.home) .sl-markdown-content > .home {
+		margin-top: 0;
+	}
+
 	body:has(.home) footer,
 	body:has(.home) .footer-part-of {
 		display: none;
