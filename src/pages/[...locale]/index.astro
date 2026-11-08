@@ -4,7 +4,10 @@
 // Media is in public/home/: real footage and screenshots from Webots.
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
 import PartOfRoboCupJunior from '@/components/PartOfRoboCupJunior.astro';
+import customizerScreenshot from '@/content/docs/docs/robot/customizer/customizer.png';
+import worldEditorScreenshot from '@/content/docs/docs/tools/world-editor/overview.png';
 import { copyright } from '@/data/copyright';
 import { localeCodes } from '@/i18n/locales.mjs';
 
@@ -35,9 +38,8 @@ const missions = [
 ] as const;
 
 const tools = [
-	{ key: 'robot', link: 'https://robot.erebus.rcj.cloud/' },
-	{ key: 'world', link: 'https://world.erebus.rcj.cloud/' },
-	{ key: 'community', link: 'https://discord.com/invite/6FJxZxk' },
+	{ key: 'robot', link: 'https://robot.erebus.rcj.cloud/', screenshot: customizerScreenshot },
+	{ key: 'world', link: 'https://world.erebus.rcj.cloud/', screenshot: worldEditorScreenshot },
 ] as const;
 
 // The top of the real answer for world2.wbt.
@@ -170,11 +172,25 @@ const steps = [
 					{
 						tools.map((tool) => (
 							<a class="tool" href={tool.link}>
-								<h3>{t(`home.tools.${tool.key}.title`)}</h3>
-								<p>{t(`home.tools.${tool.key}.text`)}</p>
+								<Image
+									class="screenshot"
+									src={tool.screenshot}
+									alt=""
+									widths={[600, 900, 1300]}
+									sizes="(max-width: 60rem) 100vw, 36rem"
+									loading="lazy"
+								/>
+								<div class="tool-text">
+									<h3>{t(`home.tools.${tool.key}.title`)}</h3>
+									<p>{t(`home.tools.${tool.key}.text`)}</p>
+								</div>
 							</a>
 						))
 					}
+					<a class="tool community" href="https://discord.com/invite/6FJxZxk">
+						<h3>{t('home.tools.community.title')}</h3>
+						<p>{t('home.tools.community.text')}</p>
+					</a>
 				</div>
 			</div>
 		</section>
@@ -546,13 +562,15 @@ const steps = [
 
 	.tool-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1.25rem;
 		margin-top: 2.5rem;
 	}
 
 	.tool {
-		padding: 1.75rem;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
 		border: 1px solid var(--sl-color-hairline);
 		border-radius: 1rem;
 		background: var(--sl-color-bg);
@@ -566,6 +584,27 @@ const steps = [
 	.tool:hover {
 		border-color: var(--sl-color-accent);
 		transform: translateY(-3px);
+	}
+
+	/* A screenshot of the tool, cut to the same height for both cards */
+	.screenshot {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 10;
+		object-fit: cover;
+		object-position: top left;
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+
+	.tool-text,
+	.community {
+		padding: 1.5rem 1.75rem 1.75rem;
+	}
+
+	/* No screenshot for the community: a full-width row under the tools */
+	.community {
+		grid-column: 1 / -1;
 	}
 
 	.tool h3 {
