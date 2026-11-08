@@ -13,6 +13,7 @@ import kr from 'flag-icons/flags/4x3/kr.svg';
 import th from 'flag-icons/flags/4x3/th.svg';
 import tr from 'flag-icons/flags/4x3/tr.svg';
 import tw from 'flag-icons/flags/4x3/tw.svg';
+import { languageKey } from '@/i18n/language-redirect.mjs';
 import { locales } from '@/i18n/locales.mjs';
 import { localePath, stripLocale } from '@/i18n/utils';
 
@@ -23,7 +24,7 @@ const current = locales.find((locale) => locale.code === currentCode) ?? locales
 const path = stripLocale(Astro.url.pathname);
 ---
 
-<details class="lang-menu">
+<details class="lang-menu" data-key={languageKey}>
 	<summary aria-label={Astro.locals.t('languageSelect.accessibleLabel')}>
 		<img src={flags[current.flag].src} alt="" width="20" height="15" />
 		<span class="current">{current.label}</span>
@@ -35,6 +36,7 @@ const path = stripLocale(Astro.url.pathname);
 					<a
 						href={localePath(locale.code, path)}
 						hreflang={locale.lang}
+						data-language={locale.code === 'root' ? '' : locale.code}
 						lang={locale.lang}
 						aria-current={locale.code === currentCode ? 'true' : undefined}
 					>
@@ -57,6 +59,19 @@ const path = stripLocale(Astro.url.pathname);
 		if (event.key === 'Escape') for (const menu of menus) menu.open = false;
 	});
 
+	// Remember the language the reader chose, so that it is not replaced by the browser's
+	// language on the next visit. See src/i18n/language-redirect.mjs.
+	for (const menu of menus) {
+		for (const link of menu.querySelectorAll<HTMLAnchorElement>('a[data-language]')) {
+			link.addEventListener('click', () => {
+				try {
+					localStorage.setItem(menu.dataset.key!, link.dataset.language!);
+				} catch {
+					// Without storage, the browser's language is used again next time.
+				}
+			});
+		}
+	}
 </script>
 
 <style>

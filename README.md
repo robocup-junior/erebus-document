@@ -72,6 +72,8 @@ To show only part of a program, mark it with `# region name` and `# endregion` (
 
 The site is in English, Bahasa Indonesia, Deutsch, Español, Français, Português (Brasil), Türkçe, ไทย, 中文（简体）, 中文（繁體）, 日本語 and 한국어. English is at `/`, and the other languages at `/<code>/`, such as `/ja/docs/`. Pages and strings that are not translated yet are shown in English.
 
+On their first visit, readers get the language of their browser, if the site has it. Once they choose a language in the menu, the site keeps their choice. See `src/i18n/language-redirect.mjs`.
+
 **To translate a page:** run `npm run build`, then `node scripts/prepare-translation.mjs <code> [pages]`, such as `node scripts/prepare-translation.mjs ja docs/rules/index.md`. It copies the English page to the language folder, such as `src/content/docs/ja/docs/rules/index.md`, with paths that point to the English images and code samples. Translate the copy, and keep:
 
 - the `{#id}` at the end of each heading (`\{#id\}` in MDX). Headings keep the ids of the English ones, so links to `#anchors` work in every language.

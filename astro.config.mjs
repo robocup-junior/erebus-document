@@ -4,6 +4,7 @@ import { satteri } from '@astrojs/markdown-satteri';
 import { readFileSync } from 'node:fs';
 import starlightLinksValidator from 'starlight-links-validator';
 import { headingIds } from './src/i18n/heading-ids.mjs';
+import { languageRedirectScript } from './src/i18n/language-redirect.mjs';
 import { locales } from './src/i18n/locales.mjs';
 
 // The UI strings of each language, by BCP-47 tag. Starlight reads them too, from the i18n collection.
@@ -89,6 +90,8 @@ export default defineConfig({
 			logo: { src: './src/assets/logo.svg' },
 			favicon: '/favicon.svg',
 			head: [
+				// Opens the reader's language on their first visit. See src/i18n/language-redirect.mjs.
+				{ tag: 'script', content: languageRedirectScript() },
 				{ tag: 'link', attrs: { rel: 'icon', href: '/favicon.ico', sizes: '48x48' } },
 				{ tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' } },
 				{ tag: 'meta', attrs: { name: 'theme-color', content: '#0b1a22' } },
