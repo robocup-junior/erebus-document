@@ -50,10 +50,18 @@ This is probably due to the performance of your computer. Lowering the quality o
 
 These settings change what the cameras see, and the competition uses [its own settings](/docs/competition/#opengl-settings), so check your program with those too.
 
+## Your robot
+
+### `PROTO parameter 'camera_width' has no matching IS field`
+Erebus v26.1 shows this error in red when it loads a robot made with the current Robot Customizer. You can ignore it: the robot works, and its cameras have the resolution you chose.
+
+### My program says a device was not found
+See below. Also check that you loaded your robot with the **right** LOAD button before starting the game.
+
 ## Your program
 
 ### `Device "..." was not found`
-The device name in your program does not match your robot. The default names are in the [Reference](/docs/reference/parameters/#device-names-of-the-default-robot). For a custom robot, they are the names you set in the [Robot Customizer](/docs/tools/robot-customizer/). Check that your custom robot has been loaded.
+The device name in your program does not match your robot. The names of the starter robot are in the [Reference](/docs/reference/parameters/#device-names-of-the-starter-robot). For your own robot, they are the names you set in the [Robot Customizer](/docs/robot/customizer/). Check that your robot has been loaded.
 
 ### Nothing happens when I report a wall token
 Turn on **Enable debugging** in the Settings tab of the control window, and check the console. The most common causes are that the robot had not been stopped for at least 1 second, and that the coordinates were not converted to centimeters. See [Communication](/docs/programming/communication/#scoring-wall-tokens).

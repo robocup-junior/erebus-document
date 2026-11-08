@@ -79,6 +79,7 @@ int main(int argc, char **argv) {
     msg = 'E'; // Send an Exit message to end the game
     emitter->send(&msg, sizeof(msg));
 
+    robot->step(timeStep); // Step once, so that the messages are sent
     break;
   }
   

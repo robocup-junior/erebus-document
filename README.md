@@ -46,7 +46,7 @@ Pages are Markdown (`.md`), or MDX (`.mdx`) when they use a component. Put image
 
 **To move or rename a page:** add a redirect from the old URL in `astro.config.mjs`, since other sites and the Erebus client link to us.
 
-**To add a code sample:** put `example.py` and/or `example.c` next to the page, and write this in an `.mdx` page:
+**To add a code sample:** write a complete program that runs on the starter robot, and put `example.py` and/or `example.c` next to the page. Then write this in an `.mdx` page:
 
 ```mdx
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -54,7 +54,15 @@ import CodeTabs from '@/components/CodeTabs.astro';
 <CodeTabs file="example" />
 ```
 
+To show only part of a program, mark it with `# region name` and `# endregion` (`// region name` in C/C++), and use `<CodeTabs file="example" region="name" />`. The markers are hidden when the whole program is shown. The [Navigate the maze](src/content/docs/docs/programming/navigate-the-maze/index.mdx) tutorial works like this, so its steps always match the complete program.
+
 **For notes and warnings,** use Starlight [asides](https://starlight.astro.build/guides/authoring-content/#asides), and see its [guide](https://starlight.astro.build/guides/authoring-content/) for everything else.
+
+## The starter robot and the examples
+
+Every example runs on the starter robot, `public/downloads/starter-robot.json`, which is built step by step in [Build your robot](src/content/docs/docs/robot/build/index.mdx). If you change the robot, change that page and the examples too.
+
+Before a release, run each example on the starter robot in Erebus: load the robot, load the program, and check that it does what its page says. The C/C++ examples can be run with the Remote Controller after compiling them, as explained in [C++ controllers](src/content/docs/docs/programming/cpp/index.md).
 
 ## Updating for a new Erebus version
 

@@ -1,0 +1,20 @@
+---
+title: Distance Sensor
+description: Measure the distance to the wall in front of a sensor.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+A distance sensor measures the distance, in **meters**, to the first object in front of it, up to 0.8 m. The starter robot has three: `leftDist`, `frontDist` and `rightDist`, looking left, forward and right.
+
+## Reading a sensor
+
+<CodeTabs file="read" />
+
+## Finding walls
+
+A tile is 12 cm wide, so when the robot is in the middle of a tile, a wall on its side is about 5 cm away. This program checks the three sensors, and prints which ones see a wall:
+
+<CodeTabs file="walls" />
+
+Sensors measure from where they are on the robot, not from its center. Print the values next to a wall to choose your own limits.

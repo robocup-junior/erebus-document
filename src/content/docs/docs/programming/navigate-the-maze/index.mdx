@@ -1,72 +1,65 @@
 ---
 title: Navigate the maze
-description: In this seminar we cover how to generate a first robot controller to navigate around a maze like environment.
+description: Put movement and sensors together in a first complete program that explores a maze.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from './maze.py?url';
+import mazeC from './maze.c?url';
 
-## Introducing Your Robot
-In this challenge, the robot is a customizable e-puck. You can design your robot [here](https://robot.erebus.rcj.cloud/), adding the optimal sensors at the optimal positions. From there, you can export your robot as a JSON file, which you can then load into the robot window in Webots.
+In this tutorial you build a complete program, step by step. The robot drives around the maze avoiding walls and holes, and reports anything that looks like a wall token. It is the program you ran in [Your first run](/docs/getting-started/).
 
-![A real e-puck robot](./real_robot.thumbnail.jpg)
+It uses the [starter robot](/docs/robot/), and what you learned in [Movement](/docs/programming/movement/) and [Sensors](/docs/programming/sensors/).
 
-## Field
-For the sample program, we will be working in a field similar to the one shown below. If you are unfamiliar with how to load the various worlds, see [Your first run](/docs/getting-started/).
+The complete program: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## The field
+Run it on `world1.wbt`, which looks like this:
 
 ![The world world1 in Webots](./field1.png)
 
-## Tasks/Activities
-After working on this seminar, work through the following tasks (of increasing difficulty):
+## Step by step
 
-* Investigate different speeds/motions and sensor values - what is the most efficient values for navigating around the maze?
-* Alter the program to track around in the side walls of the maze. To do this think about how you could use the distance sensors from one side of the robot to track along a wall. You will still need to use the front distance sensors, so think carefully about what order to put your if statements for the different sensors!
-* To search quicker, could you vary the speed depending on how close you are to walls/objects? Look at using the sensor values to calculate the speed of the wheels.
+### 1. Setup
+First, the program creates the robot, gets the wheel motors and lets them turn without limit. `speeds` holds the speed of each wheel, which the rest of the program changes. `reported` remembers where the robot has already reported a token.
 
-Remember, for help/advice, or if you want to share ideas, head to [discord](https://discord.com/invite/6FJxZxk).
+<CodeTabs file="maze" region="setup" />
 
-## Exemplar Code
-Below we step through the example code developed step by step, explaining what is going on. Try and build this up by yourself first, referring back to this if you need. The full uninterrupted program can be found here: [C++](/docs/programming/navigate-the-maze/sample.cpp) | [Python](/docs/programming/navigate-the-maze/sample.py)
-
----
-
-## Step-by-Step Introduction of the Code
-First we initialize the robot and sensors. We import/include the necessary classes as we set the time step and also the maximum velocity of the robot. We also create a wheel_left and wheel_right object. (More details on the API can be found [here](https://cyberbotics.com/doc/reference/nodes-and-api-functions)). Lastly, we initialize an array to store the left and right motor speeds - we start by initializing these to the max speed.
-
-<CodeTabs file="moving1" />
-
-In the next step of the program, we initialize our distance sensors, camera, color sensor, emitter, and GPS. Remember that you can customize your own robot [here](https://robot.erebus.rcj.cloud/). Here is the layout for our sample robot:
-1. Three distance sensors facing left, forward, and right
-2. One forward facing camera for wall token detection
-3. One downward facing color sensor to detect black pits
-4. One GPS for the robot's position when reporting wall tokens
-5. An emitter for reporting wall tokens (not in diagram, on robot by default)
-
-Here is the JSON file for the sample robot: [Sample Robot JSON](/docs/programming/navigate-the-maze/SampleRobot.json)
+### 2. Sensors
+Next, it gets and enables the sensors of the starter robot:
 
 ![The sample robot with its sensors labeled](./robot.png)
 
-<CodeTabs file="moving2" />
+<CodeTabs file="maze" region="sensors" />
 
-Next, we set the 'position', we set this to be infinite, as this allows the wheels to turn infinitely, they are not limited by turning a certain amount.
+### 3. Moves
+These functions change the speeds to turn and spin. `delay` keeps the robot doing the same thing for some milliseconds, and `getBrightness` reads the colour sensor as a single value from 0 (black) to 255 (white).
 
-<CodeTabs file="moving3" />
+<CodeTabs file="maze" region="moves" />
 
-We setup some functions which we can then call to set the movement of the robot. In each of these we set the speed of the left and right wheel using the speeds list. We also define a delay function for prolonged movements and a getColor function to retrieve the brightness level seen by the color sensor (grayscaled value from 0 (black) to 255 (white)).
+### 4. Seeing a token
+This function looks for wall tokens in a camera image. Tokens are bright squares on dark walls, so it looks for bright shapes that are roughly square and do not touch the edge of the image, where the floor usually is.
 
-<CodeTabs file="moving4" />
+<CodeTabs file="maze" region="detect" />
 
-We also create a function to help detect wall tokens. It accepts a camera image and returns true if it detects something that may be a victim. It searches for contours (a contiguous shape within the image) whose area and width to height ratio fit within a certain range. Note that this function is by no means the optimal solution: it is prone to misdetections, can miss victims, and cannot tell apart different symbols, cognitive targets or fakes - it is meant as an introduction for you to improve upon, for example with the [Wall Tokens tutorial](/docs/programming/wall-tokens/). Remember that every misidentification costs 5 points.
+This is a simple start: it cannot tell the symbols apart, and it does not see cognitive targets well. The [Wall Tokens](/docs/programming/wall-tokens/) tutorial shows how to do better.
 
-After retrieving the image from the camera sensor, this function uses OpenCV to scan for victims. OpenCV for C++ can be difficult to install, and OpenCV in and of itself can be difficult to learn. Thus, if you feel a different method of victim detection will suffice, by all means comment out this function and implement your own solution. Do note, however, that the best solution essentially requires OpenCV or some other image processing library and that the internet has many useful resources for learning OpenCV.
+### 5. Reporting
+To score a token, the robot must stop for more than 1 second, and send its position and the type of the token. Each token can only be scored once, and reporting it again costs 5 points, so the program remembers where it has reported. [Communication](/docs/programming/communication/) explains these messages.
 
-<CodeTabs file="moving5" />
+<CodeTabs file="maze" region="report" />
 
-To receive points for a wall token, you must stop for at least 1 second and then report its location and type to the supervisor. The following function accepts a character for the type and reports it to the supervisor.
+### 6. The main loop
+Finally, the main loop puts everything together. Each step, it starts at full speed, turns away from walls, turns back from holes, and reports what the camera sees when it is close to a wall in front.
 
-<CodeTabs file="moving6" />
+<CodeTabs file="maze" region="loop" />
 
-Here we have the main body of the program. First we setup a while loop that runs whilst the game is running (i.e. for the 8 minutes of the game). It first checks for walls on the left, right, and front side, and turns away from any detected walls. It then uses the color sensor to check for a black pit, spinning away if detected. Lastly, it checks for a victim in view of the front camera and reports anything it sees. Since the sample detection function is unable to differentiate between symbols, it always reports 'H' (harmed) as a guess. If the guess is wrong you still score the identification, but not the correct type bonus.
+## How well does it do?
+This robot wanders: it does not know where it has been, and it guesses the type of every victim. It gets stuck sometimes, and the game moves it back to a checkpoint after 20 seconds. That is fine for a first program.
 
-<CodeTabs file="moving7" />
+## Try it
+- Find the best speeds and distances for your robot.
+- Follow the wall on one side: keep the side sensor at a constant distance, and turn when the front sensor sees a wall.
+- Change the speed depending on how close the walls are.
 
-That about concludes the sample program. Again, you can find the uninterrupted full programs here: [C++](/docs/programming/navigate-the-maze/sample.cpp) | [Python](/docs/programming/navigate-the-maze/sample.py). Note that this sample program is by no means an optimal solution, it is just meant to introduce you to working in the Webots environment in Rescue Simulation. Good luck programming!
+Then, learn to score points in [Communication](/docs/programming/communication/).

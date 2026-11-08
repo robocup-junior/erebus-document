@@ -75,4 +75,5 @@ while robot.step(timeStep) != -1:
     exit_mes = struct.pack('c', b'E')
     emitter.send(exit_mes)
 
+    robot.step(timeStep)  # Step once, so that the messages are sent
     break

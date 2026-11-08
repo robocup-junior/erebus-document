@@ -28,3 +28,11 @@
 	border-radius: 0.75rem;
 	box-shadow: 0 1.5rem 3rem -1rem rgb(0 0 0 / 0.45);
 }
+
+/* Show code exactly as typed: no ligatures that turn != into ≠. */
+code,
+pre,
+.expressive-code {
+	font-variant-ligatures: none;
+	font-feature-settings: 'liga' 0, 'calt' 0;
+}

@@ -15,17 +15,17 @@ const redirects = {
 	'/docs/tutorials/emitter-and-receiver/map-bonus': '/docs/programming/map-bonus/',
 	'/docs/tutorials/getting-started': '/docs/getting-started/',
 	'/docs/tutorials/map-creator': '/docs/tools/world-editor/',
-	'/docs/tutorials/movement': '/docs/robot/movement/',
+	'/docs/tutorials/movement': '/docs/programming/movement/',
 	'/docs/tutorials/navigate-the-maze': '/docs/programming/navigate-the-maze/',
 	'/docs/tutorials/remotecontroller': '/docs/competition/remote-controller/',
 	'/docs/tutorials/remotecontroller/linux': '/docs/competition/remote-controller/linux/',
 	'/docs/tutorials/remotecontroller/mac': '/docs/competition/remote-controller/mac/',
 	'/docs/tutorials/remotecontroller/windows': '/docs/competition/remote-controller/windows/',
-	'/docs/tutorials/sensors': '/docs/robot/sensors/',
-	'/docs/tutorials/sensors/distance-sensor': '/docs/robot/sensors/distance-sensor/',
-	'/docs/tutorials/sensors/lidar': '/docs/robot/sensors/lidar/',
-	'/docs/tutorials/sensors/location-sensor': '/docs/robot/sensors/location-sensor/',
-	'/docs/tutorials/sensors/rgb-camera': '/docs/robot/sensors/rgb-camera/',
+	'/docs/tutorials/sensors': '/docs/programming/sensors/',
+	'/docs/tutorials/sensors/distance-sensor': '/docs/programming/sensors/distance-sensor/',
+	'/docs/tutorials/sensors/lidar': '/docs/programming/sensors/lidar/',
+	'/docs/tutorials/sensors/location-sensor': '/docs/programming/sensors/location-sensor/',
+	'/docs/tutorials/sensors/rgb-camera': '/docs/programming/sensors/rgb-camera/',
 	'/docs/tutorials/the-robot': '/docs/robot/',
 	'/docs/tutorials/wall-tokens': '/docs/programming/wall-tokens/',
 };
@@ -35,6 +35,8 @@ export default defineConfig({
 	site: process.env.SITE_URL ?? 'https://erebus.rcj.cloud',
 	trailingSlash: 'ignore',
 	redirects,
+	// Keep downloadable files, like the example programs, as real files.
+	vite: { build: { assetsInlineLimit: 0 } },
 	integrations: [
 		starlight({
 			title: 'Erebus',
@@ -56,14 +58,13 @@ export default defineConfig({
 				baseUrl: 'https://github.com/robocup-junior/erebus-document/edit/master/',
 			},
 			lastUpdated: true,
-			// Every page must be listed here. The build fails if a slug does not exist.
+			// Every page must be listed here, in learning order. The build fails if a slug does not exist.
 			sidebar: [
 				{
-					label: 'Get started',
+					label: 'Start here',
 					items: [
 						{ label: 'Overview', slug: 'docs' },
 						{ label: 'What is Erebus?', slug: 'docs/introduction' },
-						{ label: "What's new in v26", slug: 'docs/whats-new' },
 						{
 							label: 'Installation',
 							collapsed: true,
@@ -74,16 +75,57 @@ export default defineConfig({
 								'docs/installation/linux',
 							],
 						},
-						{ label: 'Your first run', slug: 'docs/getting-started' },
-						'docs/troubleshooting',
-						'docs/faq',
 					],
 				},
 				{
-					label: 'Competition',
+					label: '1. The game',
+					items: [{ label: 'Rules summary', slug: 'docs/rules' }],
+				},
+				{
+					label: '2. Your robot',
 					items: [
-						{ label: 'Rules summary', slug: 'docs/rules' },
+						{ label: 'Get your robot', slug: 'docs/robot' },
+						{ label: 'Build your robot', slug: 'docs/robot/build' },
+					],
+				},
+				{
+					label: '3. First run',
+					items: [{ label: 'Your first run', slug: 'docs/getting-started' }],
+				},
+				{
+					label: '4. Programming basics',
+					items: [
+						{ label: 'Overview', slug: 'docs/programming' },
+						'docs/programming/first-program',
+						'docs/programming/movement',
+						{
+							label: 'Sensors',
+							items: [
+								{ label: 'Overview', slug: 'docs/programming/sensors' },
+								'docs/programming/sensors/distance-sensor',
+								'docs/programming/sensors/location-sensor',
+								'docs/programming/sensors/colour-sensor',
+								'docs/programming/sensors/rgb-camera',
+								'docs/programming/sensors/lidar',
+								'docs/programming/sensors/imu',
+							],
+						},
+					],
+				},
+				{
+					label: '5. Play the game',
+					items: [
+						'docs/programming/navigate-the-maze',
+						'docs/programming/communication',
+						'docs/programming/wall-tokens',
+						'docs/programming/exploring',
 						{ label: 'Mapping rules', slug: 'docs/rules/mapping' },
+						'docs/programming/map-bonus',
+					],
+				},
+				{
+					label: '6. Compete',
+					items: [
 						{ label: 'Preparing for a competition', slug: 'docs/competition' },
 						{
 							label: 'Remote Controller',
@@ -100,43 +142,17 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Build your robot',
+					label: 'Going further',
 					items: [
-						{ label: 'The robot', slug: 'docs/robot' },
-						'docs/robot/movement',
-						{
-							label: 'Sensors',
-							collapsed: true,
-							items: [
-								{ label: 'Overview', slug: 'docs/robot/sensors' },
-								'docs/robot/sensors/distance-sensor',
-								'docs/robot/sensors/location-sensor',
-								'docs/robot/sensors/colour-sensor',
-								'docs/robot/sensors/rgb-camera',
-								'docs/robot/sensors/lidar',
-								'docs/robot/sensors/imu',
-							],
-						},
-					],
-				},
-				{
-					label: 'Program your robot',
-					items: [
-						{ label: 'Overview', slug: 'docs/programming' },
-						'docs/programming/navigate-the-maze',
-						'docs/programming/communication',
-						'docs/programming/wall-tokens',
-						'docs/programming/exploring',
-						'docs/programming/map-bonus',
-						'docs/programming/cpp',
-					],
-				},
-				{
-					label: 'Tools',
-					items: [
+						{ label: 'Robot Customizer reference', slug: 'docs/robot/customizer' },
 						'docs/tools/world-editor',
-						'docs/tools/robot-customizer',
+						'docs/programming/cpp',
+						{ label: "What's new in v26", slug: 'docs/whats-new' },
 					],
+				},
+				{
+					label: 'Help',
+					items: ['docs/troubleshooting', 'docs/faq'],
 				},
 				{
 					label: 'Reference',

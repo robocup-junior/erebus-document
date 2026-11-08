@@ -1,0 +1,37 @@
+---
+title: Your first program
+description: Write a program that drives the robot to a wall, and run it.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Your first program drives the robot forward, and stops it in front of a wall. It is short, but it has everything every program needs.
+
+<CodeTabs file="hello" />
+
+## How it works
+
+1. **Create the robot.** `Robot()` connects your program to the robot in the simulator.
+2. **Get the time step.** The simulation advances in steps of a few milliseconds. `getBasicTimeStep()` gives the step of the world.
+3. **Get the devices.** Each motor and sensor is found by its name. These are the names you gave them when you [built your robot](/docs/robot/build/).
+4. **Enable the sensors.** A sensor gives no values until it is enabled. The time step tells it how often to update.
+5. **Loop.** `robot.step(timeStep)` advances the simulation by one step, and returns -1 when the simulation ends. Everything your robot does happens inside this loop.
+
+## Run it
+
+1. Save the program as `hello.py`.
+2. Open `game/worlds/mapping_example_1.wbt`, and load the [starter robot](/docs/robot/) with the right LOAD button.
+3. Load `hello.py` with the left LOAD button, and press start.
+
+The robot drives forward, and the Webots console shows the distance to the wall in front of it until the robot stops. If you see an error instead, check [Troubleshooting](/docs/troubleshooting/#your-program).
+
+:::tip
+Use `print` to understand what your robot is doing. It is the simplest and most useful tool to find problems.
+:::
+
+## Try it
+- Change the speed from `3.0` to `6.0`. What happens near the wall?
+- Make the robot stop at 10 cm instead of 5 cm.
+- Print the time with `robot.getTime()` as well.
+
+Next, learn to drive and turn in [Movement](/docs/programming/movement/).

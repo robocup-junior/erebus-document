@@ -1,19 +1,25 @@
 ---
 title: Programming your robot
-description: The path from a first program to a competitive robot.
+description: The path from your first program to a robot that plays the whole game.
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+A program, or **controller**, runs in a loop: read the sensors, decide, set the motors, and let the simulation advance one step. Everything your robot does comes from this loop.
 
-A controller is a program that runs in a loop: read the sensors, decide, set the motors, and let the simulation advance one step. Everything your robot does comes from this loop.
+All the examples here run on the [starter robot](/docs/robot/). Load it before running them, and they work as they are. Each example has a Python and a C/C++ version: choose your language in the tabs, and the whole site follows your choice.
 
-If you have not done so yet, start with [Your first run](/docs/getting-started/), and with [Movement](/docs/robot/movement/) and [Sensors](/docs/robot/sensors/).
+## The path
 
-<CardGrid>
-	<LinkCard title="Navigate the maze" description="A first complete program, step by step." href="/docs/programming/navigate-the-maze/" />
-	<LinkCard title="Communication" description="Score points by talking to the game." href="/docs/programming/communication/" />
-	<LinkCard title="Wall Tokens" description="Tell victims, targets and fakes apart." href="/docs/programming/wall-tokens/" />
-	<LinkCard title="Exploring and mapping" description="Know where you are and what you have seen." href="/docs/programming/exploring/" />
-	<LinkCard title="Submitting the map" description="Earn the mapping bonus." href="/docs/programming/map-bonus/" />
-	<LinkCard title="C++ controllers" description="Build and run programs in C or C++." href="/docs/programming/cpp/" />
-</CardGrid>
+| Step | You learn to... |
+|---|---|
+| 1. [Your first program](/docs/programming/first-program/) | Write, load and run a program |
+| 2. [Movement](/docs/programming/movement/) | Drive and turn |
+| 3. [Sensors](/docs/programming/sensors/) | Find walls, holes, tokens and your position |
+| 4. [Navigate the maze](/docs/programming/navigate-the-maze/) | Put it together in a complete program |
+| 5. [Communication](/docs/programming/communication/) | Report tokens and score points |
+| 6. [Wall Tokens](/docs/programming/wall-tokens/) | Tell victims, targets and fakes apart |
+| 7. [Exploring and mapping](/docs/programming/exploring/) | Explore systematically and remember the maze |
+| 8. [Mapping rules](/docs/rules/mapping/) and [Submitting the map](/docs/programming/map-bonus/) | Earn the mapping bonus |
+
+Each step builds on the ones before it. If you have not read it yet, read the [Rules summary](/docs/rules/) first: it explains what your robot has to do, and what scores points.
+
+If you write in C or C++, read [C++ controllers](/docs/programming/cpp/) first, to compile and run your programs.

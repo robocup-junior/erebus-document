@@ -9,6 +9,16 @@ This page is a summary to help you get started. The only official rules are the 
 Corrections and clarifications are posted on the [official RoboCupJunior Forum](https://junior.forum.robocup.org/). It is the responsibility of each team to check them.
 :::
 
+## The game in one minute
+Your robot is dropped into an unknown maze, alone. In 8 minutes, with no help from you, it must:
+
+1. **Explore** the maze without getting stuck or falling into holes.
+2. **Find the wall tokens**, victims and hazard signs on the walls, and report what each one is.
+3. **Map** the maze, and send the map at the end.
+4. **Return** to where it started.
+
+Everything below explains these four jobs in detail. You do not need to remember it all now: come back to it as you program each part.
+
 ## Mission and objective
 ![Top view of an Erebus field with four areas](./rules_environment.png)
 
@@ -159,3 +169,6 @@ For example, a run with these results scores 2680.15 points:
 
 ## The competition
 How to prepare, the documents you must submit, the competition setup and the final score are in [Preparing for a competition](/docs/competition/).
+
+## Next
+Now that you know what your robot has to do, [get your robot](/docs/robot/).

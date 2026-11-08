@@ -6,7 +6,7 @@ description: Frequently asked questions about Erebus and the competition.
 ## About Erebus
 
 ### Do I need a real robot?
-No. Everything happens in the simulator. The robot is a virtual e-puck that you can customize.
+No. Everything happens in the simulator. The robot is a virtual e-puck that you design.
 
 ### Which programming languages can I use?
 Python and C/C++ are covered in this documentation. Erebus can also load Java and MATLAB controllers, but this documentation has no examples for them.
@@ -23,7 +23,10 @@ Yes. External code is allowed, as long as you credit its creators and respect it
 ## The game
 
 ### What is the best order to learn things?
-[Your first run](/docs/getting-started/), then [Movement](/docs/robot/movement/) and [Sensors](/docs/robot/sensors/), then [Navigate the maze](/docs/programming/navigate-the-maze/). After that, [report your first token](/docs/programming/communication/#scoring-wall-tokens).
+Follow [the learning path](/docs/#the-learning-path): understand the game, get your robot, run it, learn the basics, then play the game.
+
+### Do I need to make a robot before programming?
+Yes. Every program runs on a robot you load, so start with [Get your robot](/docs/robot/). You can download the finished starter robot if you are in a hurry.
 
 ### Where does the robot start?
 On the starting tile, which is in Area 1. It always faces a direction without a wall.

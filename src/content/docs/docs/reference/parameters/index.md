@@ -36,22 +36,24 @@ description: Reference for important parameters.
 | Distance sensor range | 0 to 0.8 m |
 | GPS accuracy | 0.0025 m |
 | Maximum wheel velocity | 6.28 rad/s |
+| Lidar | 512 points per layer, 4 layers, 0.01 to 1 m |
 
-`timeStep` sets the number of milliseconds between sensor updates. Example programs use 32 ms, and `int(robot.getBasicTimeStep())` gets the basic time step of the world.
+`timeStep` sets the number of milliseconds between sensor updates. `int(robot.getBasicTimeStep())` gets the basic time step of the world, which is 16 ms in the worlds of Erebus v26.1.
 
-## Device names of the default robot
+## Device names of the starter robot
 
-These are the names to pass to `robot.getDevice()`. In a custom robot, you choose the names in the Robot Customizer. The emitter and the receiver are always available.
+These are the names to pass to `robot.getDevice()` with the [starter robot](/docs/robot/). In your own robots, you choose the names in the [Robot Customizer](/docs/robot/customizer/#components). The emitter and the receiver are always available.
 
 | Device | Name |
 |---|---|
-| Left and right motors | `wheel1 motor`, `wheel2 motor` |
-| Wheel encoders | `wheel1 sensor`, `wheel2 sensor` |
-| Distance sensors | `ps0` to `ps7` |
-| Cameras | `camera_centre`, `camera_left`, `camera_right` |
-| Colour sensor | `colour_sensor` |
+| Wheel motors | `left wheel motor`, `right wheel motor` |
+| Wheel encoders | `left wheel sensor`, `right wheel sensor` |
+| Distance sensors | `leftDist`, `frontDist`, `rightDist` |
+| Camera | `camera` |
+| Colour sensor | `color` |
 | GPS | `gps` |
 | Gyroscope | `gyro` |
 | Accelerometer | `accelerometer` |
+| Lidar | `lidar` |
 | Emitter | `emitter` |
 | Receiver | `receiver` |

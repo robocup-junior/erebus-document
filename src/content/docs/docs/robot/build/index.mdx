@@ -1,0 +1,77 @@
+---
+title: Build your robot
+description: Build the starter robot step by step with the Robot Customizer.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+In this tutorial you build the [starter robot](/docs/robot/#the-starter-robot) with the [Robot Customizer](https://robot.erebus.rcj.cloud/). It is the robot used in all the examples of this documentation, so by the end you will have everything ready to program it.
+
+It costs 2400 of the budget of 3000.
+
+:::tip
+Each component has a name, which your program uses to find it. Use exactly the names below, so that the examples work.
+:::
+
+## Design the robot
+
+Open the [Robot Customizer](https://robot.erebus.rcj.cloud/). It starts with the default parts: two wheels and four distance sensors. If you have used it before, press the reset button at the top to start again.
+
+The positions are in tenths of a millimetre, although the boxes say mm: the body of the robot has a radius of about 370.
+
+<Steps>
+
+1. **Set up the distance sensors.** Under **Distance sensors**, press `−` once to keep three. Then click each one to open it, and set its name, position and rotation:
+
+   | Sensor | Name | X | Y | Z | Rotation |
+   |---|---|---:|---:|---:|---|
+   | Distance Sensor 1 | `leftDist` | -370 | 335 | 0 | Left |
+   | Distance Sensor 2 | `frontDist` | 0 | 335 | -370 | Front |
+   | Distance Sensor 3 | `rightDist` | 370 | 335 | 0 | Right |
+
+   Type the values in the boxes next to the sliders, and press the rotation buttons. **Top** shows the robot from above, with the front up, so you can check that each sensor faces the right way:
+
+   ![Three distance sensors seen from above, facing left, forward and right](./distance-sensors.png)
+
+2. **Name the wheels.** Open **Wheel 1**, which is on the right side of the robot, and name it `right wheel`. Name **Wheel 2** `left wheel`. Your program will use them as `right wheel motor` and `left wheel motor`, as shown under **In your controller**.
+
+3. **Add the camera.** Turn on **Camera 1**, and set:
+
+   - Name: `camera`
+   - Resolution: width **64px**, height **40px**
+   - Position: X `0`, Y `90`, Z `-370`
+   - Rotation: **Front**
+
+   ![The settings of the camera](./camera.png)
+
+4. **Add the colour sensor.** Turn on **Colour sensor**, and set:
+
+   - Name: `color`
+   - Position: X `0`, Y `-41`, Z `-370`
+   - Rotation: **Down**
+
+   The colour sensor must look down to see the floor. Placing it at the front lets the robot see a hole before its wheels reach it.
+
+5. **Add the GPS, gyro and accelerometer.** Turn on **GPS**, **Gyro** and **Accelerometer**. Their default names, `gps`, `gyro` and `accelerometer`, and their positions are fine.
+
+6. **Add the lidar.** Turn on **Lidar**, and set:
+
+   - Position: X `0`, Y `370`, Z `0`
+   - Rotation: type X `90`, Y `0`, Z `0`
+
+   The lidar must be on top of the robot, or the body blocks it, and it must lie flat to scan all around. The rotation buttons do not lie it flat, so type the values.
+
+   ![The settings of the lidar](./lidar.png)
+
+7. **Check the robot.** The budget at the top right should show **2,400 / 3,000 used**. Turn on **Labels** to see every name, and **Camera view** to see what the camera will see.
+
+   ![The finished robot, with its labels and camera view](./finished.png)
+
+8. **Export it.** Type `starter-robot` as the file name at the top, and press **Export**. Keep the `starter-robot.json` file: you can **Import** it later to change the robot.
+
+</Steps>
+
+If something went wrong, compare with the finished robot: [download `starter-robot.json`](/downloads/starter-robot.json) and import it.
+
+## Next
+[Load your robot in Erebus](/docs/robot/#load-it-in-erebus), and [run your first program](/docs/getting-started/).

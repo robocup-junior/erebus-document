@@ -1,11 +1,18 @@
 ---
-// Shows a code sample from the folder of the current page, for example
-// <CodeTabs file="setup" /> uses setup.py and setup.c as Python and C/C++ tabs.
-// The build fails if neither file exists.
+// Shows a code sample from the folder of the current page as Python and C/C++ tabs.
+//
+//   <CodeTabs file="setup" />                 shows setup.py and setup.c
+//   <CodeTabs file="maze" region="loop" />    shows only the lines between
+//                                             "# region loop" and "# endregion"
+//                                             (or "// region loop" in C/C++)
+//
+// Region markers are hidden when the whole file is shown. The build fails if
+// the files or the region do not exist.
 import { Code, TabItem, Tabs } from '@astrojs/starlight/components';
 
 interface Props {
 	file: string;
+	region?: string;
 }
 
 const snippets = import.meta.glob<string>('/src/content/docs/**/*.{py,c}', {
@@ -14,10 +21,22 @@ const snippets = import.meta.glob<string>('/src/content/docs/**/*.{py,c}', {
 	eager: true,
 });
 
-const { file } = Astro.props;
+const { file, region } = Astro.props;
 const pagePath = Astro.url.pathname.replace(/\/?$/, '/');
-const python = snippets[`/src/content/docs${pagePath}${file}.py`];
-const cpp = snippets[`/src/content/docs${pagePath}${file}.c`];
+const marker = /^\s*(#|\/\/) (region \w+|endregion)\s*$/;
+
+function select(code: string | undefined, name: string) {
+	if (code === undefined) return undefined;
+	const lines = code.split('\n');
+	if (!region) return lines.filter((line) => !marker.test(line)).join('\n');
+	const start = lines.findIndex((line) => line.trim().endsWith(`region ${region}`));
+	const end = lines.findIndex((line, index) => index > start && line.trim().endsWith('endregion'));
+	if (start === -1 || end === -1) throw new Error(`CodeTabs: no region "${region}" in ${name}`);
+	return lines.slice(start + 1, end).join('\n');
+}
+
+const python = select(snippets[`/src/content/docs${pagePath}${file}.py`], `${file}.py`);
+const cpp = select(snippets[`/src/content/docs${pagePath}${file}.c`], `${file}.c`);
 
 if (python === undefined && cpp === undefined) {
 	throw new Error(`CodeTabs: no ${file}.py or ${file}.c next to ${pagePath}`);

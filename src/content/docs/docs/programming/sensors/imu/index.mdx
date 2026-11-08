@@ -1,0 +1,32 @@
+---
+title: Gyro and Accelerometer
+description: Measure the rotation and acceleration of the robot.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Gyroscope
+
+The gyroscope returns the rotation speed of the robot around each axis, in **radians per second**. On the starter robot it is named `gyro`.
+
+`getValues()` returns `[x, y, z]`. The **Y axis is vertical**, so `getValues()[1]` is the turning speed of the robot. It is positive when turning to the left.
+
+:::caution
+This is for the gyro of the starter robot. The axes follow the rotation of the gyro, so if you rotate it in your own robot, check which value changes when the robot turns.
+:::
+
+## Example: turning 90 degrees
+
+Add up the rotation speed multiplied by the time step to get the angle turned. This is more reliable than timing the turn, because it does not depend on the speed.
+
+<CodeTabs file="turn" />
+
+In a test on the starter robot, the angle calculated like this matched the real rotation to within 0.01 radians. Small errors add up over a game, so correct the heading when you can, for example by aligning with a wall.
+
+## Accelerometer
+
+The accelerometer returns the acceleration along each axis in m/s². On the starter robot it is named `accelerometer`. At rest, `getValues()[1]` reads about 9.8, which is gravity.
+
+## Inertial unit
+
+The inertial unit is not on the starter robot. With the [Robot Customizer](/docs/robot/customizer/) you can add one, named `inertial_unit` by default. It gives the orientation directly, with `getRollPitchYaw()`, instead of having to add up rotation speeds. See the [Webots reference](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b).

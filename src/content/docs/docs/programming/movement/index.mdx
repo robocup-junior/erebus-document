@@ -1,0 +1,42 @@
+---
+title: Movement
+description: Drive and turn the robot with its two wheel motors.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+The robot has two wheels, each with its own motor: `left wheel motor` and `right wheel motor` on the [starter robot](/docs/robot/). You drive it by setting the speed of each wheel:
+
+| Left wheel | Right wheel | The robot... |
+|---|---|---|
+| Forward | Forward | Drives forward |
+| Backward | Backward | Drives backward |
+| Backward | Forward | Spins to the left |
+| Forward | Backward | Spins to the right |
+| Fast | Slow | Curves to the right |
+
+Speeds are in **radians per second**, up to 6.28 (one turn of the wheel per second). Negative speeds turn the wheel backward.
+
+## Driving
+
+1. Get each motor by its name.
+2. Set its position to infinity, so that it turns without limit.
+3. Set its velocity.
+
+The motors keep the last speed you set, so the robot keeps moving while your program does other things. This program drives forward, backward, and spins to the left, for one second each:
+
+<CodeTabs file="drive" />
+
+:::note
+Angles in Webots are in radians. To convert: radians = degrees × π / 180.
+:::
+
+## Measuring how far a wheel turned
+
+Each motor has a position sensor, also called an encoder, which counts how far the wheel has turned, in radians. It is useful to drive a fixed distance. Turning backward makes the count go down.
+
+<CodeTabs file="encoders" />
+
+Timing a move is simple, but the result changes with the speed. Encoders measure the move itself, so they are more reliable. For precise turns, the [gyro](/docs/programming/sensors/imu/) is better still.
+
+Next, learn to read the [sensors](/docs/programming/sensors/).

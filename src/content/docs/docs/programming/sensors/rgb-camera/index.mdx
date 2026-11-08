@@ -1,0 +1,30 @@
+---
+title: RGB Camera
+description: See the walls, and find wall tokens.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+The camera gives an image of what is in front of it. You need it to find and read [wall tokens](/docs/programming/wall-tokens/). The starter robot has one camera, named `camera`, of 64 × 40 pixels.
+
+## Reading pixels
+
+An image is a grid of pixels. Each one has a red, green and blue value from 0 to 255, where (0, 0, 0) is black and (255, 255, 255) is white.
+
+<CodeTabs file="read" />
+
+## Using OpenCV
+
+[OpenCV](https://opencv.org/) is a library to process images: find shapes, compare colours and much more. Webots images have 4 values per pixel, in BGRA order, which OpenCV can use directly. This program shows the image, and its bright parts, in two windows:
+
+<CodeTabs file="opencv" />
+
+:::note
+For Python, OpenCV is installed with the other [Python libraries](/docs/installation/#python-libraries). For C++, you need to install OpenCV and [add it when compiling](/docs/programming/cpp/#compiling). The C++ example was tested with OpenCV 4.
+:::
+
+Windows like these are for testing at home: turn them off for the competition.
+
+## Resolution
+
+Higher resolutions see tokens from further away, but cost more and take longer to process. You choose the resolution of each camera in the [Robot Customizer](/docs/robot/customizer/#components).

@@ -1,73 +1,52 @@
 ---
-title: The robot
-description: Here is an overview of all the components of the used Robot.
+title: Get your robot
+description: Every program runs on a robot that you design. Download the starter robot, or build it yourself.
 ---
 
-## Introducing Your Robot
-
-By default the robot will be a standard e-puck robot, which is a representation of a real robot.
-Alternatively, teams may customize the robot to change the position, type or number of sensors and wheels.
+In Erebus, **you design your robot**: you choose its sensors and where they go, within a budget. Every program needs one, so the first step is to get a robot and load it in Erebus.
 
 ![A real e-puck robot](./real_robot.thumbnail.jpg)
 
-### Default Robot
->If no custom robot design is loaded this default e-puck will be used.
+The robot is based on the [e-puck](https://cyberbotics.com/doc/guide/epuck?version=R2023b), a small round educational robot with two wheels. You add sensors to it with the [Robot Customizer](https://robot.erebus.rcj.cloud/), and save the design as a `.json` file that Erebus loads.
 
-![The default robot with its components labeled](./robot-labeled.png)
+## The starter robot
+This documentation uses one robot everywhere, the **starter robot**, so that every example works as it is. It has all the sensors the tutorials need:
 
-By default the e-puck robot has the following components:
-* Wheels - One left and one right, with a motor each, controlled independently to control speed and turning.
-* Distance Sensors - Eight distance sensors around the robot to detect walls and objects.
-* Cameras - Three RGB cameras on the front of the robot (64 × 40 pixels) to provide visual recognition, and one 1 × 1 pixel camera pointing downwards to act as a colour sensor.
-* Gyroscope - Which can be used to measure the rotational speed of the robot.
-* Accelerometer - Which can be used to measure the acceleration (or change in speed) of the robot.
-* GPS - Which can be used to get an absolute position value of the robot.
+| Component | Name in your program | What it is for |
+|---|---|---|
+| Two wheels | `left wheel motor`, `right wheel motor` | Moving |
+| Wheel encoders | `left wheel sensor`, `right wheel sensor` | Measuring how far the wheels turned |
+| Three distance sensors | `leftDist`, `frontDist`, `rightDist` | Finding walls on the left, in front and on the right |
+| Camera, 64 × 40 pixels | `camera` | Finding wall tokens |
+| Colour sensor | `color` | Seeing the floor: holes, swamps and passages |
+| GPS | `gps` | Knowing its position, to report tokens |
+| Gyro | `gyro` | Measuring how much it has turned |
+| Accelerometer | `accelerometer` | Measuring acceleration |
+| Lidar | `lidar` | Measuring distances all around |
+| Emitter and receiver | `emitter`, `receiver` | Talking to the game. Every robot has them. |
 
-More information regarding this robot may be found here: https://cyberbotics.com/doc/guide/epuck?version=R2023b
+It costs 2400 of the budget of 3000.
 
-### Custom Robots
-Before the game begins, a custom robot may be loaded from a `.json` file, which you make with the [Robot Customizer](/docs/tools/robot-customizer/). The basic structure stays the same, but you decide which components to use and where to place them, within a budget of **3000**.
+## Choose your path
 
-## Components
+**Recommended: build it yourself.** It takes about 15 minutes, and you will understand every part of your robot. Follow [Build your robot](/docs/robot/build/).
 
-### Motors
-By default there are two motors, one connected to each wheel. Which are located on the left and right sides of the robot.
-The motors can be independently controlled in both speed and direction to allow for detailed movement control.
+**In a hurry:** download the finished robot and continue with the tutorials. You can always come back and build it later.
 
-> The number of motors and wheels and their placement can be changed in a custom robot.
+<a href="/downloads/starter-robot.json" download>Download starter-robot.json</a>
 
-They are simulations of stepper motors, with 20 steps per revolution with a 50:1 gear ratio. See [Movement](/docs/robot/movement/) for how to control them.
+## Load it in Erebus
+1. Open a world, such as `game/worlds/world1.wbt`.
+2. In the control window, press the **right LOAD button**, with the robot icon, and choose your `.json` file.
+3. Check the Webots console. Erebus lists each component with its cost, and ends with `Your custom robot has been successfully generated!`.
 
-### Sensors
-Here is a list of all the sensors available on the robot with a short description of their function.
+:::note
+Erebus v26.1 also prints `PROTO parameter 'camera_width' has no matching IS field` in red. You can ignore it: your camera still has the resolution you chose.
+:::
 
-### Distance sensor
-Infrared sensors capable of gathering information regarding the distance to nearby objects directly in front of them, up to 0.8 meters.
-There are eight total sensors, six are spaced evenly around the front of the robot and two are spaced apart on the rear of the robot.
+The robot stays loaded until you load another one or reset the game. Next, [run your first program](/docs/getting-started/).
 
-> The number of distance sensors and their placement can be different when using a custom robot.
+## Designing your own
+Once you know the basics, change the starter robot or design a new one: more cameras with higher resolution, more distance sensors, sensors in other places. The [Robot Customizer reference](/docs/robot/customizer/) lists all the components, their costs and limits.
 
-### Colour sensor
-The colour sensor is placed on the bottom side at the front of the robot. It allows the robot to gather information about the colour of the floor below it, for example to detect holes, swamps, checkpoints and passages. See [Colour Sensor](/docs/robot/sensors/colour-sensor/).
-
-> Using a custom robot the position of this sensor may be changed.
-
-### Cameras
-The three cameras are placed on the front of the robot, one straight ahead and the others angled to the left and right.
-These allow for visual recognition of wall tokens, floors and obstacles. Their device names are `camera_centre`, `camera_left` and `camera_right`.
-
-> A custom robot may have fewer cameras and they may be placed differently.
-
-### Accelerometer
-The accelerometer allows the robot to gather information about changes to its own velocity in the three axes.
-
-### LIDAR Sensor
-The lidar sensor measures the distance to surrounding walls and objects in all directions around the robot. See [LIDAR](/docs/robot/sensors/lidar/).
-
-> By default there is not a LIDAR sensor on the robot, one must be added with the customiser before it can be used.
-
-### Gyroscope
-The gyroscope allows the robot to gather information about changes to its own rotation, regardless of its position.
-
-### GPS
-The GPS sensor allows the robot to gather information about its current absolute position. It is needed to report wall tokens. Since v26 its readings have noise. See [Location Sensor](/docs/robot/sensors/location-sensor/).
+If you change the name of a component, change it in your program too.

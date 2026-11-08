@@ -1,34 +1,23 @@
 ---
 title: Communication
-description: Communicate with the Main Supervisor.
+description: Report wall tokens, call a lack of progress, ask for the score and end the game.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-## Basics
+Your program talks to the game through two devices that every robot has:
 
-The emitter and receiver are used to communicate with the Main Supervisor, Erebus' game manager. The emitter is used to **report wall tokens**, **submit the map**, ask for game information, call a **lack of progress** and signal the **end of play**. The receiver gets the replies, and tells the robot controller when a lack of progress has happened.
+- The **emitter** sends messages to the game. It does not need to be enabled.
+- The **receiver** gets messages from the game. Enable it like a sensor.
 
-The messages are listed in the [Reference](/docs/reference/messages/). They are explained below.
+Each section below is a complete program for the [starter robot](/docs/robot/). All the messages are listed in the [Message Reference](/docs/reference/messages/).
 
-First, set up the emitter and receiver:
+## Scoring wall tokens
 
-<CodeTabs file="setup" />
+To score a letter victim or a cognitive target, the robot must:
 
-:::note
-In contrast to other devices, the emitter does not have to be enabled.
-:::
-
-### Scoring Wall Tokens
-
-To earn points for a letter victim or a cognitive target, the robot must:
-
-1. Stop for **at least 1 second**, close to the wall token. Erebus ignores the report if the robot has moved in the last second.
-2. Send the position and type of the wall token.
-
-The message to the Main Supervisor should be formatted as follows:
-
-X Pos **(integer),** Z Pos **(integer),** Type **(character)**
+1. **Stop for more than 1 second** close to the token. Erebus ignores the report if the robot has moved in the last second.
+2. **Send the position and type** of the token: X and Z in **centimeters**, and the type as one letter.
 
 | Wall token | Type |
 |---|---|
@@ -40,50 +29,38 @@ X Pos **(integer),** Z Pos **(integer),** Type **(character)**
 | Cognitive target, sum 2 (Corrosive) | `C` |
 | Cognitive target, sum 3 (Organic Peroxide) | `O` |
 
-Note that the types are letters, even though victims show symbols since 2026.
+The types are letters, even though victims show symbols since 2026. The GPS gives meters, so multiply by 100.
 
-:::note
-The X position and Z position should be in **centimeters.** Thus, it is important to multiply the position given by the GPS by 100 to convert meters to centimeters.
+<CodeTabs file="report" />
+
+The robot must be on the same side of the wall as the token, and both the robot and the position you send must be close to it. The rules require at most half a tile, so aim for that. Erebus v26.1 checks a distance of 9 cm.
+
+Run this program at the start of `world1.wbt`: there is no token there, so the history of the control window shows `Misidentification of Victim -5`. A wrong report, including a report of a fake, costs 5 points, and each token can only be scored once.
+
+## Lack of progress
+
+When the robot is stuck, a lack of progress moves it back to the last checkpoint and costs 5 points. It happens automatically after 20 seconds without moving, and your program can also call it by sending `L`. Each time, the game sends `L` to the robot, so that your program knows its position has changed.
+
+<CodeTabs file="lop" />
+
+The receiver can get different messages, so check the length of each one before reading it, as in the example.
+
+## Game information
+
+Send `G` to get the score and the time left. The game replies with a 16 byte message: the letter `G`, the score, the game time left and the real time left, in seconds.
+
+<CodeTabs file="gameinfo" />
+
+The game time runs faster in swamps, and the game ends when either time runs out. Use both to know when to head back to the start.
+
+## Ending the game
+
+Send `E` to end the game. If the robot is on the starting tile and has identified at least one wall token, it gets the 10% exit bonus.
+
+<CodeTabs file="exit" />
+
+:::caution
+The game ends wherever the robot is when it sends `E`, and the robot cannot continue. Make sure it has returned to the starting tile first, and has [submitted its map](/docs/programming/map-bonus/).
 :::
 
-<CodeTabs file="scoring" />
-
-The robot has to be on the same side of the wall as the token, and both the robot and the position you send must be close to it. The rules require them to be at most half a tile away, so that is what you should aim for. Erebus v26.1 currently checks a distance of 9 cm.
-
-The position you send does not need to be exact, so the position of the robot is usually good enough. A report that does not match a token, including a report of a fake, is a misidentification and costs 5 points. Each token can only be scored once.
-
-### Signaling Lack of Progress
-
-To call a lack of progress autonomously (using your program), send the character **'L'** using the emitter. The letter **'L'** will be sent back to the robot's receiver as per the **Lack of Progress** section below.
-
-<CodeTabs file="sendLOP" />
-
-### Signaling End of Play
-
-To end the game, send the character **'E'** using the emitter. If the robot is on the starting tile and has identified at least one wall token, it receives the exit bonus.
-
-<CodeTabs file="endOfRun" />
-
-:::note
-The game ends wherever the robot is when it sends **'E'**, and the robot cannot continue afterwards. Make sure it has returned to the starting tile first.
-:::
-
-### Lack of Progress
-
-The receiver can be used to detect lack of progress messages sent by the Main Supervisor, so that the robot controller can respond accordingly. This is important for navigation: the robot has been moved to the last visited checkpoint, so anything it assumed about its position is no longer valid.
-
-<CodeTabs file="LOP" />
-
-Since the receiver can get different types of packets, check the length of the data before you unpack it, as in the example.
-
-### Game Information
-
-Your program can retrieve the robot's current game score and the time remaining in your run. Use the emitter to send the character **'G'** to the supervisor, and it will send back a 16 byte packet with the letter **'G'**, the score, the remaining game time and the remaining real-world time. The times are in seconds.
-
-<CodeTabs file="gameInfo" />
-
-Use both times to plan your return to the starting tile. The game time runs faster in swamps, and the game ends when either of them runs out.
-
-### Submitting the Map
-
-See [Map Bonus](/docs/programming/map-bonus/).
+Next, learn to tell the tokens apart in [Wall Tokens](/docs/programming/wall-tokens/).

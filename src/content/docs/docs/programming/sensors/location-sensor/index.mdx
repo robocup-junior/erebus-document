@@ -1,0 +1,22 @@
+---
+title: Location Sensor
+description: Know the position of the robot with the GPS.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+The location sensor, or **GPS**, gives the position of the robot in **meters**. On the starter robot it is named `gps`. You need it to [report wall tokens](/docs/programming/communication/#scoring-wall-tokens), and it helps a lot to [explore systematically](/docs/programming/exploring/).
+
+`getValues()` returns `[x, y, z]`. **X and Z are horizontal**, and Y is vertical, so use X and Z for the position in the maze:
+
+![The X and Z axes of the horizontal plane, with Y vertical](./coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+The GPS has noise of a few millimetres, so the values change slightly even when the robot stands still. Never compare positions for exact equality.
+
+## Example: distance from the start
+
+This program drives forward until the robot is half a tile from where it started:
+
+<CodeTabs file="travelled" />

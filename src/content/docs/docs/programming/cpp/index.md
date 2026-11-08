@@ -3,10 +3,10 @@ title: C++ controllers
 description: Build controllers written in C or C++ and run them in Erebus.
 ---
 
-Unlike Python, C and C++ controllers must be compiled before running them. The examples in this documentation have a C/C++ tab with the same code as the Python one.
+Unlike Python, C and C++ controllers must be compiled before running them. Every example in this documentation has a C/C++ tab with the same program as the Python one, and all of them were compiled and run on the starter robot.
 
 :::tip
-In C++, get devices with typed functions, like `robot->getMotor("wheel1 motor")` or `robot->getCamera("camera_centre")`, instead of `getDevice()`. Include the matching header, like `<webots/Motor.hpp>`.
+In C++, get devices with typed functions, like `robot->getMotor("left wheel motor")` or `robot->getCamera("camera")`, instead of `getDevice()`. Include the matching header, like `<webots/Motor.hpp>`.
 :::
 
 ## A first program
@@ -22,7 +22,7 @@ int main() {
   Robot *robot = new Robot();
   int timeStep = (int)robot->getBasicTimeStep();
 
-  Motor *left = robot->getMotor("wheel1 motor");
+  Motor *left = robot->getMotor("left wheel motor");
   Motor *right = robot->getMotor("wheel2 motor");
   left->setPosition(INFINITY);
   right->setPosition(INFINITY);
@@ -49,7 +49,7 @@ clang++ -std=c++17 -I$WEBOTS/include/controller/cpp -L$WEBOTS/lib/controller \
   my_controller.cpp -o my_controller
 ```
 
-On Linux, the same options work with `WEBOTS=/usr/local/webots`. If you use OpenCV, add its compiler options too.
+On Linux, the same options work with `WEBOTS=/usr/local/webots`. If you use OpenCV, add its options too. With OpenCV 4 installed, for example with Homebrew on macOS, `$(pkg-config --cflags --libs opencv4)` gives them. The examples were tested with OpenCV 4.13.
 
 ## Running
 

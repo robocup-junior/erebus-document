@@ -21,7 +21,7 @@ The platform is primarily designed for the [RoboCupJunior Rescue Simulation](htt
 
 ## What can you do with it?
 
-1. **Build a robot.** Use the default e-puck, or design your own within a budget.
+1. **Build a robot.** Choose its sensors and where they go, within a budget.
 2. **Program it.** Your controller reads the sensors and decides what to do, with no human help.
 3. **Run it.** Test it on the included worlds or on your own, and watch the score.
 4. **Compete.** Take part in local, regional and international RoboCupJunior competitions.
@@ -37,3 +37,6 @@ List of useful links for learning and working on the Erebus Simulator:
 - [OpenCV Tutorials](https://docs.opencv.org/4.x/d9/df8/tutorial_root.html)
 - [RCJ Rescue Community Website](https://rescue.rcj.cloud/): events, team documents, and TDP, Poster and Video rubrics
 - [RoboCupJunior Forum](https://junior.forum.robocup.org/): rule clarifications
+
+## Next
+[Install Erebus](/docs/installation/), then read the [Rules summary](/docs/rules/) to understand the game.
