@@ -2,9 +2,14 @@
 // Shows that Erebus is part of RoboCupJunior Rescue. Used in the footer and on the home page.
 import { Image } from 'astro:assets';
 import logo from '@/assets/robocupjunior-rescue.png';
+import { splitAroundLink } from '@/i18n/utils';
 
 const OFFICIAL_URL = 'https://junior.robocup.org/rescue/';
 const COMMUNITY_URL = 'https://rescue.rcj.cloud';
+
+const { t } = Astro.locals;
+const [partOfBefore, partOfAfter] = splitAroundLink(t, 'rcj.partOf');
+const [communityBefore, communityAfter] = splitAroundLink(t, 'rcj.community');
 ---
 
 <div class="rcj">
@@ -12,8 +17,8 @@ const COMMUNITY_URL = 'https://rescue.rcj.cloud';
 		<Image src={logo} alt="RoboCupJunior Rescue" width={200} />
 	</a>
 	<p>
-		Erebus is part of <a href={OFFICIAL_URL}>RoboCupJunior Rescue</a>.<br />
-		News, events and team documents: <a href={COMMUNITY_URL}>RCJ Rescue Community Website</a>
+		{partOfBefore}<a href={OFFICIAL_URL}>RoboCupJunior Rescue</a>{partOfAfter}<br />
+		{communityBefore}<a href={COMMUNITY_URL}>{t('rcj.communityLink')}</a>{communityAfter}
 	</p>
 </div>
 

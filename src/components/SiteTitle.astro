@@ -2,30 +2,35 @@
 // Adds the version menu next to the Starlight site title.
 import Default from '@astrojs/starlight/components/SiteTitle.astro';
 import { archivedVersion, latestSite, versions } from '@/data/versions';
+import { stripLocale } from '@/i18n/utils';
 
 const current = versions.find((version) => version.current);
+const { t } = Astro.locals;
 ---
 
 <div class="site-title-group">
 	<Default><slot /></Default>
-	<a class="docs-link" href="/docs/" aria-current={Astro.url.pathname.startsWith('/docs') ? 'page' : undefined}>Docs</a>
+	<a class="docs-link" href="/docs/" aria-current={stripLocale(Astro.url.pathname).startsWith('/docs') ? 'page' : undefined}>{t('header.docs')}</a>
 	<details class="version-menu">
-		<summary aria-label={`Documentation version: ${current?.name}. Change version`}>{current?.name}</summary>
+		<summary aria-label={t('versionMenu.accessibleLabel', { version: current?.name })}>{current?.name}</summary>
 		<div class="menu">
-			<p>Documentation version</p>
+			<p>{t('versionMenu.heading')}</p>
 			<ul>
 				{
 					versions.map((version) => (
 						<li>
 							<a href={version.current ? '/docs/' : version.url} aria-current={version.current ? 'page' : undefined}>
 								<b>{version.name}</b>
-								<span>{version.current && !archivedVersion ? `Latest · ${version.rules} rules` : `${version.rules} rules`}</span>
+								<span>
+									{version.current && !archivedVersion && `${t('versionMenu.latest')} · `}
+									{t('versionMenu.rules', { year: version.rules })}
+								</span>
 							</a>
 						</li>
 					))
 				}
 			</ul>
-			<a class="all" href={`${archivedVersion ? latestSite : ''}/docs/reference/versions/`}>All versions</a>
+			<a class="all" href={`${archivedVersion ? latestSite : ''}/docs/reference/versions/`}>{t('versionMenu.all')}</a>
 		</div>
 	</details>
 </div>

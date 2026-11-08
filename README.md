@@ -37,7 +37,9 @@ The build recognizes `release/vNN` branches by itself. For a new old version, po
 | Path | Contents |
 |---|---|
 | `src/content/docs/docs/` | The pages. The URL follows the folder: `tutorials/movement/index.mdx` is `/docs/tutorials/movement/`. |
-| `src/pages/index.astro` | The home page. Its media is in `public/home/`, and the hero clips are listed in `heroClips`. |
+| `src/pages/[...locale]/index.astro` | The home page, in every language. Its media is in `public/home/`, and the hero clips are listed in `heroClips`. |
+| `src/i18n/locales.mjs` | The languages, with their flags in the language menu |
+| `src/content/i18n/` | The UI strings of each language: menus, sidebar labels and the home page |
 | `astro.config.mjs` | The sidebar, the redirects from old URLs and the site settings |
 | `src/styles/theme.css` | Colours and fonts |
 | `src/data/versions.ts` | The versions in the header menu and on the Versions page |
@@ -64,6 +66,16 @@ To show only part of a program, mark it with `# region name` and `# endregion` (
 
 **For notes and warnings,** use Starlight [asides](https://starlight.astro.build/guides/authoring-content/#asides), and see its [guide](https://starlight.astro.build/guides/authoring-content/) for everything else.
 
+## Translations
+
+The site is in English, Bahasa Indonesia, Deutsch, Español, Français, Português (Brasil), Türkçe, ไทย, 中文（简体）, 中文（繁體）, 日本語 and 한국어. English is at `/`, and the other languages at `/<code>/`, such as `/ja/docs/`. Pages and strings that are not translated yet are shown in English.
+
+**To translate a page:** copy it from `src/content/docs/docs/` to the same path under the language folder, such as `src/content/docs/ja/docs/rules/index.md`, and translate it.
+
+**To translate the UI:** the strings are in `src/content/i18n/<lang>.json`, with the keys of `en.json`. Sidebar labels are the `sidebar.*` keys, and the home page the `home.*` keys. Starlight translates its own UI.
+
+**Links:** write links to `/docs/...` as usual. On a translated page they lead to the same language, because `src/middleware.ts` adds the language to them.
+
 ## The starter robot and the examples
 
 Every example runs on the starter robot, `public/downloads/starter-robot.json`, which is built step by step in [Build your robot](src/content/docs/docs/robot/build/index.mdx). If you change the robot, change that page and the examples too.
@@ -73,7 +85,7 @@ Before a release, run each example on the starter robot in Erebus: load the robo
 ## Updating for a new Erebus version
 
 1. Before changing anything, create `release/vNN` from `master` for the version that is about to be replaced, and push it. Then point `vNN.erebus.rcj.cloud` to that branch in the Cloudflare Pages project.
-1. Update `version` and `rulesYear` at the top of `src/pages/index.astro`.
+1. Update `version` and `rulesYear` at the top of `src/pages/[...locale]/index.astro`.
 1. In `src/data/versions.ts`, add the new version with `current: true`, and change the previous one to `current: false` with its `vNN.erebus.rcj.cloud` address.
 1. We support the latest two years, so remove older versions from `src/data/versions.ts`.
 1. Search `src/content/docs` for the old version numbers, and for the Webots version if it has changed.

@@ -1,9 +1,19 @@
 ---
-// The home page. Update the values below for each Erebus release.
+// The home page, built for each language: / and /ja/, for example. Update the values below for
+// each Erebus release. The text is in the "home.*" strings of src/content/i18n/.
 // Media is in public/home/: real footage and screenshots from Webots.
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import type { GetStaticPaths } from 'astro';
 import PartOfRoboCupJunior from '@/components/PartOfRoboCupJunior.astro';
 import { copyright } from '@/data/copyright';
+import { localeCodes } from '@/i18n/locales.mjs';
+
+export const getStaticPaths = (() => [
+	{ params: { locale: undefined } },
+	...localeCodes.map((locale) => ({ params: { locale } })),
+]) satisfies GetStaticPaths;
+
+const { t } = Astro.locals;
 
 const version = '26.1';
 const rulesYear = '2026';
@@ -13,30 +23,22 @@ const downloadUrl = `https://github.com/robocup-junior/erebus/archive/refs/tags/
 const heroClips = ['follow', 'overview', 'topdown', 'slide'];
 
 const stats = [
-	{ value: '4', label: 'areas to explore' },
-	{ value: '8', label: 'minutes on the clock' },
-	{ value: '3000', label: 'budget to build your robot' },
-	{ value: '×2.2', label: 'for a perfect map' },
+	{ value: '4', label: t('home.stats.areas') },
+	{ value: '8', label: t('home.stats.minutes') },
+	{ value: '3000', label: t('home.stats.budget') },
+	{ value: '×2.2', label: t('home.stats.map') },
 ];
 
 const missions = [
-	{
-		title: 'Explore',
-		text: 'An unknown maze, with no remote control. Your program has to read its sensors and find a way through swamps, holes, obstacles and curved walls, all before the clock runs out.',
-		image: '/home/explore.jpg',
-		alt: 'The robot driving through a blue passage in the maze',
-		link: '/docs/programming/navigate-the-maze/',
-		linkText: 'Write your first navigator',
-	},
-	{
-		title: 'Identify',
-		text: 'Victims and cognitive targets wait on the walls, and fakes are hiding among them. Read the symbols, add up the rings and report only what is real.',
-		image: '/home/identify.jpg',
-		alt: 'The robot passing a cognitive target on a wall',
-		link: '/docs/programming/wall-tokens/',
-		linkText: 'Learn to read wall tokens',
-	},
-];
+	{ key: 'explore', image: '/home/explore.jpg', link: '/docs/programming/navigate-the-maze/' },
+	{ key: 'identify', image: '/home/identify.jpg', link: '/docs/programming/wall-tokens/' },
+] as const;
+
+const tools = [
+	{ key: 'robot', link: 'https://robot.erebus.rcj.cloud/' },
+	{ key: 'world', link: 'https://world.erebus.rcj.cloud/' },
+	{ key: 'community', link: 'https://discord.com/invite/6FJxZxk' },
+] as const;
 
 // The top of the real answer for world2.wbt.
 const mapRows = [
@@ -80,19 +82,18 @@ const structuredData = {
 };
 
 const steps = [
-	{ title: 'Install', text: 'Webots R2023b, Python and Erebus.', link: '/docs/installation/' },
-	{ title: 'Learn the game', text: 'The mission, the field and the scoring.', link: '/docs/rules/' },
-	{ title: 'Get your robot', text: 'Build the starter robot, or download it.', link: '/docs/robot/' },
-	{ title: 'Program it', text: 'From your first program to the whole game.', link: '/docs/programming/' },
-];
+	{ key: 'install', link: '/docs/installation/' },
+	{ key: 'rules', link: '/docs/rules/' },
+	{ key: 'robot', link: '/docs/robot/' },
+	{ key: 'program', link: '/docs/programming/' },
+] as const;
 ---
 
 <StarlightPage
 	hasSidebar={false}
 	frontmatter={{
-		title: 'Rescue simulation for RoboCupJunior',
-		description:
-			'Program a robot to explore a maze, identify wall tokens and map the environment. The simulation platform of RoboCupJunior Rescue.',
+		title: t('home.title'),
+		description: t('home.description'),
 		template: 'splash',
 		editUrl: false,
 		lastUpdated: false,
@@ -108,14 +109,11 @@ const steps = [
 			<div class="hero-inner">
 				<div class="hero-copy">
 					<p class="kicker">RoboCupJunior Rescue Simulation</p>
-					<h1>Send your robot <span>into the maze.</span></h1>
-					<p class="lead">
-						No remote control. Just your code against an unknown world: explore it, find everyone in
-						it, and bring back the map.
-					</p>
+					<h1>{t('home.hero.title')} <span>{t('home.hero.titleAccent')}</span></h1>
+					<p class="lead">{t('home.hero.lead')}</p>
 					<div class="actions">
-						<a class="button primary" href="/docs/">Start learning →</a>
-						<a class="button ghost" href={downloadUrl}>Download v{version}</a>
+						<a class="button primary" href="/docs/">{t('home.hero.start')} →</a>
+						<a class="button ghost" href={downloadUrl}>{t('home.hero.download', { version })}</a>
 					</div>
 				</div>
 
@@ -127,18 +125,18 @@ const steps = [
 		</ul>
 
 		<section class="section">
-			<p class="kicker">The mission</p>
-			<h2>Three jobs. Eight minutes.</h2>
+			<p class="kicker">{t('home.mission.kicker')}</p>
+			<h2>{t('home.mission.title')}</h2>
 
 			{
 				missions.map((mission, index) => (
 					<article class="mission">
-						<img src={mission.image} alt={mission.alt} loading="lazy" />
+						<img src={mission.image} alt={t(`home.${mission.key}.alt`)} loading="lazy" />
 						<div>
 							<span class="number">0{index + 1}</span>
-							<h3>{mission.title}</h3>
-							<p>{mission.text}</p>
-							<a href={mission.link}>{mission.linkText} →</a>
+							<h3>{t(`home.${mission.key}.title`)}</h3>
+							<p>{t(`home.${mission.key}.text`)}</p>
+							<a href={mission.link}>{t(`home.${mission.key}.link`)} →</a>
 						</div>
 					</article>
 				))
@@ -146,7 +144,7 @@ const steps = [
 
 			<article class="mission">
 				<div class="map-demo">
-					<img src="/home/map.jpg" alt="The maze seen from above" loading="lazy" />
+					<img src="/home/map.jpg" alt={t('home.map.alt')} loading="lazy" />
 					<div class="matrix" aria-hidden="true">
 						{
 							mapRows.map((row) => (
@@ -157,47 +155,40 @@ const steps = [
 				</div>
 				<div>
 					<span class="number">03</span>
-					<h3>Map</h3>
-					<p>
-						Turn everything the robot saw into a matrix of walls, floors and tokens. A perfect map
-						multiplies your whole score by 2.2.
-					</p>
-					<a href="/docs/rules/mapping/">See how mapping works →</a>
+					<h3>{t('home.map.title')}</h3>
+					<p>{t('home.map.text')}</p>
+					<a href="/docs/rules/mapping/">{t('home.map.link')} →</a>
 				</div>
 			</article>
 		</section>
 
 		<section class="tools">
 			<div class="section">
-				<p class="kicker">Your workshop</p>
-				<h2>Build the robot. Build the world.</h2>
+				<p class="kicker">{t('home.tools.kicker')}</p>
+				<h2>{t('home.tools.title')}</h2>
 				<div class="tool-grid">
-					<a class="tool" href="https://robot.erebus.rcj.cloud/">
-						<h3>Robot Customizer</h3>
-						<p>Choose your sensors and wheels, place them, and stay within the budget.</p>
-					</a>
-					<a class="tool" href="https://world.erebus.rcj.cloud/">
-						<h3>World Editor</h3>
-						<p>Draw your own mazes, and export them to Erebus to train your robot.</p>
-					</a>
-					<a class="tool" href="https://discord.com/invite/6FJxZxk">
-						<h3>Community</h3>
-						<p>Ask questions and meet the teams from around the world on Discord.</p>
-					</a>
+					{
+						tools.map((tool) => (
+							<a class="tool" href={tool.link}>
+								<h3>{t(`home.tools.${tool.key}.title`)}</h3>
+								<p>{t(`home.tools.${tool.key}.text`)}</p>
+							</a>
+						))
+					}
 				</div>
 			</div>
 		</section>
 
 		<section class="start">
 			<div class="section">
-				<h2>Your robot is waiting.</h2>
+				<h2>{t('home.start.title')}</h2>
 				<ol>
 					{
 						steps.map((step) => (
 							<li>
 								<a href={step.link}>
-									<b>{step.title}</b>
-									<span>{step.text}</span>
+									<b>{t(`home.start.${step.key}.title`)}</b>
+									<span>{t(`home.start.${step.key}.text`)}</span>
 								</a>
 							</li>
 						))
@@ -205,10 +196,10 @@ const steps = [
 				</ol>
 				<div class="part-of"><PartOfRoboCupJunior /></div>
 				<p class="release">
-					Erebus v{version} · {rulesYear} rules · Webots R2023b ·{' '}
+					Erebus v{version} · {t('home.release.rules', { year: rulesYear })} · Webots R2023b ·{' '}
 					<a href="https://github.com/robocup-junior/erebus">GitHub</a> ·{' '}
-					<a href="/docs/reference/versions/">Other versions</a> ·{' '}
-					<a href="/docs/privacy/">Privacy</a>
+					<a href="/docs/reference/versions/">{t('home.release.otherVersions')}</a> ·{' '}
+					<a href="/docs/privacy/">{t('home.release.privacy')}</a>
 				</p>
 				<p class="copyright">{copyright}</p>
 			</div>
@@ -378,6 +369,8 @@ const steps = [
 		font-size: clamp(3rem, 7vw, 5.5rem);
 		line-height: 0.98;
 		text-shadow: 0 0.1em 1em rgb(0 0 0 / 0.5);
+		/* Breaks Japanese and other languages without spaces between phrases, not inside words. */
+		word-break: auto-phrase;
 	}
 
 	h1 span {

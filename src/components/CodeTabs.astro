@@ -7,8 +7,9 @@
 //                                             (or "// region loop" in C/C++)
 //
 // Region markers are hidden when the whole file is shown. The build fails if
-// the files or the region do not exist.
+// the files or the region do not exist. Every language uses the samples of the English page.
 import { Code, TabItem, Tabs } from '@astrojs/starlight/components';
+import { stripLocale } from '@/i18n/utils';
 
 interface Props {
 	file: string;
@@ -22,7 +23,7 @@ const snippets = import.meta.glob<string>('/src/content/docs/**/*.{py,c}', {
 });
 
 const { file, region } = Astro.props;
-const pagePath = Astro.url.pathname.replace(/\/?$/, '/');
+const pagePath = stripLocale(Astro.url.pathname).replace(/\/?$/, '/');
 const marker = /^\s*(#|\/\/) (region \w+|endregion)\s*$/;
 
 function select(code: string | undefined, name: string) {

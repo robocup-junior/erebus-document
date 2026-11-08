@@ -1,6 +1,22 @@
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
+import { readFileSync } from 'node:fs';
 import starlightLinksValidator from 'starlight-links-validator';
+import { locales } from './src/i18n/locales.mjs';
+
+// The UI strings of each language, by BCP-47 tag. Starlight reads them too, from the i18n collection.
+const strings = Object.fromEntries(
+	locales.map(({ lang }) => [lang, JSON.parse(readFileSync(new URL(`./src/content/i18n/${lang}.json`, import.meta.url), 'utf8'))]),
+);
+
+// A sidebar label in English, with its translations. Missing translations fall back to English.
+function label(key) {
+	if (!strings.en[key]) throw new Error(`No English string for "${key}" in src/content/i18n/en.json`);
+	const translations = Object.fromEntries(
+		locales.filter(({ lang }) => lang !== 'en' && strings[lang][key]).map(({ lang }) => [lang, strings[lang][key]]),
+	);
+	return { label: strings.en[key], translations };
+}
 
 // Old URLs. The Erebus client and older documents link to some of them.
 const redirects = {
@@ -63,6 +79,8 @@ export default defineConfig({
 		redirectsFile,
 		starlight({
 			title: 'Erebus',
+			// English is the root locale, at /. The other languages are at /<code>/, such as /ja/docs/.
+			locales: Object.fromEntries(locales.map(({ code, lang, label }) => [code, { label, lang }])),
 			description:
 				'A rescue simulation competition environment designed for intermediate to highly experienced programmers.',
 			logo: { src: './src/assets/logo.svg' },
@@ -83,6 +101,7 @@ export default defineConfig({
 			components: {
 				Banner: './src/components/Banner.astro',
 				Footer: './src/components/Footer.astro',
+				LanguageSelect: './src/components/LanguageSelect.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
 			},
 			plugins: [starlightLinksValidator({ errorOnLocalLinks: false })],
@@ -95,116 +114,120 @@ export default defineConfig({
 			},
 			lastUpdated: true,
 			// Every page must be listed here, in learning order. The build fails if a slug does not exist.
+			// The labels are "sidebar.*" strings in src/content/i18n/.
 			sidebar: [
 				{
-					label: 'Start here',
+					...label('sidebar.startHere'),
 					items: [
-						{ label: 'Overview', slug: 'docs' },
-						{ label: 'What is Erebus?', slug: 'docs/introduction' },
+						{ ...label('sidebar.overview'), slug: 'docs' },
+						{ ...label('sidebar.whatIsErebus'), slug: 'docs/introduction' },
 						{
-							label: 'Installation',
+							...label('sidebar.installation'),
 							collapsed: true,
 							items: [
-								{ label: 'Requirements', slug: 'docs/installation' },
+								{ ...label('sidebar.requirements'), slug: 'docs/installation' },
 								'docs/installation/windows',
 								'docs/installation/mac',
-								'docs/installation/linux',
+								{ ...label('sidebar.linux'), slug: 'docs/installation/linux' },
 							],
 						},
 					],
 				},
 				{
-					label: '1. The game',
-					items: [{ label: 'Rules summary', slug: 'docs/rules' }],
+					...label('sidebar.theGame'),
+					items: [{ ...label('sidebar.rulesSummary'), slug: 'docs/rules' }],
 				},
 				{
-					label: '2. Your robot',
+					...label('sidebar.yourRobot'),
 					items: [
-						{ label: 'Get your robot', slug: 'docs/robot' },
-						{ label: 'Build your robot', slug: 'docs/robot/build' },
+						{ ...label('sidebar.getYourRobot'), slug: 'docs/robot' },
+						{ ...label('sidebar.buildYourRobot'), slug: 'docs/robot/build' },
 					],
 				},
 				{
-					label: '3. First run',
-					items: [{ label: 'Your first run', slug: 'docs/getting-started' }],
+					...label('sidebar.firstRun'),
+					items: [{ ...label('sidebar.yourFirstRun'), slug: 'docs/getting-started' }],
 				},
 				{
-					label: '4. Programming basics',
+					...label('sidebar.programmingBasics'),
 					items: [
-						{ label: 'Overview', slug: 'docs/programming' },
-						'docs/programming/first-program',
-						'docs/programming/movement',
+						{ ...label('sidebar.overview'), slug: 'docs/programming' },
+						{ ...label('sidebar.yourFirstProgram'), slug: 'docs/programming/first-program' },
+						{ ...label('sidebar.movement'), slug: 'docs/programming/movement' },
 						{
-							label: 'Sensors',
+							...label('sidebar.sensors'),
 							items: [
-								{ label: 'Overview', slug: 'docs/programming/sensors' },
-								'docs/programming/sensors/distance-sensor',
-								'docs/programming/sensors/location-sensor',
-								'docs/programming/sensors/colour-sensor',
-								'docs/programming/sensors/rgb-camera',
-								'docs/programming/sensors/lidar',
-								'docs/programming/sensors/imu',
+								{ ...label('sidebar.overview'), slug: 'docs/programming/sensors' },
+								{ ...label('sidebar.distanceSensor'), slug: 'docs/programming/sensors/distance-sensor' },
+								{ ...label('sidebar.locationSensor'), slug: 'docs/programming/sensors/location-sensor' },
+								{ ...label('sidebar.colourSensor'), slug: 'docs/programming/sensors/colour-sensor' },
+								{ ...label('sidebar.rgbCamera'), slug: 'docs/programming/sensors/rgb-camera' },
+								{ ...label('sidebar.lidar'), slug: 'docs/programming/sensors/lidar' },
+								{ ...label('sidebar.imu'), slug: 'docs/programming/sensors/imu' },
 							],
 						},
 					],
 				},
 				{
-					label: '5. Play the game',
+					...label('sidebar.playTheGame'),
 					items: [
-						'docs/programming/navigate-the-maze',
-						'docs/programming/communication',
-						'docs/programming/wall-tokens',
-						'docs/programming/exploring',
-						{ label: 'Mapping rules', slug: 'docs/rules/mapping' },
-						'docs/programming/map-bonus',
+						{ ...label('sidebar.navigateTheMaze'), slug: 'docs/programming/navigate-the-maze' },
+						{ ...label('sidebar.communication'), slug: 'docs/programming/communication' },
+						{ ...label('sidebar.wallTokens'), slug: 'docs/programming/wall-tokens' },
+						{ ...label('sidebar.exploring'), slug: 'docs/programming/exploring' },
+						{ ...label('sidebar.mappingRules'), slug: 'docs/rules/mapping' },
+						{ ...label('sidebar.mapBonus'), slug: 'docs/programming/map-bonus' },
 					],
 				},
 				{
-					label: '6. Compete',
+					...label('sidebar.compete'),
 					items: [
-						{ label: 'Preparing for a competition', slug: 'docs/competition' },
+						{ ...label('sidebar.preparing'), slug: 'docs/competition' },
 						{
-							label: 'Remote Controller',
+							...label('sidebar.remoteController'),
 							collapsed: true,
 							items: [
-								{ label: 'Overview', slug: 'docs/competition/remote-controller' },
+								{ ...label('sidebar.overview'), slug: 'docs/competition/remote-controller' },
 								'docs/competition/remote-controller/windows',
 								'docs/competition/remote-controller/mac',
-								'docs/competition/remote-controller/linux',
+								{ ...label('sidebar.linux'), slug: 'docs/competition/remote-controller/linux' },
 							],
 						},
-						{ label: 'Upcoming events', slug: 'docs/events/upcoming-events' },
-						{ label: 'Past events', slug: 'docs/events/past-events' },
+						{ ...label('sidebar.upcomingEvents'), slug: 'docs/events/upcoming-events' },
+						{ ...label('sidebar.pastEvents'), slug: 'docs/events/past-events' },
 					],
 				},
 				{
-					label: 'Going further',
+					...label('sidebar.goingFurther'),
 					items: [
-						{ label: 'Robot Customizer reference', slug: 'docs/robot/customizer' },
-						'docs/tools/world-editor',
-						'docs/programming/cpp',
-						{ label: "What's new in v26", slug: 'docs/whats-new' },
+						{ ...label('sidebar.customizerReference'), slug: 'docs/robot/customizer' },
+						{ ...label('sidebar.worldEditor'), slug: 'docs/tools/world-editor' },
+						{ ...label('sidebar.cpp'), slug: 'docs/programming/cpp' },
+						{ ...label('sidebar.whatsNew'), slug: 'docs/whats-new' },
 					],
 				},
 				{
-					label: 'Help',
-					items: ['docs/troubleshooting', 'docs/faq'],
-				},
-				{
-					label: 'Reference',
+					...label('sidebar.help'),
 					items: [
-						'docs/reference/parameters',
-						'docs/reference/messages',
-						'docs/reference/glossary',
-						'docs/reference/versions',
+						{ ...label('sidebar.troubleshooting'), slug: 'docs/troubleshooting' },
+						{ ...label('sidebar.faq'), slug: 'docs/faq' },
 					],
 				},
 				{
-					label: 'About',
+					...label('sidebar.reference'),
 					items: [
-						'docs/contributing',
-						'community',
-						'docs/privacy',
+						{ ...label('sidebar.parameters'), slug: 'docs/reference/parameters' },
+						{ ...label('sidebar.messages'), slug: 'docs/reference/messages' },
+						{ ...label('sidebar.glossary'), slug: 'docs/reference/glossary' },
+						{ ...label('sidebar.versions'), slug: 'docs/reference/versions' },
+					],
+				},
+				{
+					...label('sidebar.about'),
+					items: [
+						{ ...label('sidebar.contributing'), slug: 'docs/contributing' },
+						{ ...label('sidebar.community'), slug: 'community' },
+						{ ...label('sidebar.privacy'), slug: 'docs/privacy' },
 						{ label: 'RoboCupJunior Rescue', link: 'https://junior.robocup.org/rescue/', attrs: { target: '_blank' } },
 						{ label: 'RCJ Rescue Community', link: 'https://rescue.rcj.cloud', attrs: { target: '_blank' } },
 					],

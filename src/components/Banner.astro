@@ -1,13 +1,16 @@
 ---
 // Shows a notice on the sites of old versions. See src/data/versions.ts.
 import { archivedVersion, latestSite } from '@/data/versions';
+import { localePath } from '@/i18n/utils';
+
+const { t, starlightRoute } = Astro.locals;
 ---
 
 {
 	archivedVersion && (
 		<div class="archived-notice">
-			This is the documentation for Erebus {archivedVersion}, which is no longer the latest version.
-			<a href={`${latestSite}/docs/`}>See the latest documentation</a>
+			{t('archived.notice', { version: archivedVersion })}
+			<a href={`${latestSite}${localePath(starlightRoute.locale, '/docs/')}`}>{t('archived.link')}</a>
 		</div>
 	)
 }
