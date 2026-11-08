@@ -73,6 +73,13 @@ const { t } = Astro.locals;
 		background: var(--sl-color-gray-6);
 	}
 
+	/* Phones have no room for it in the header, and the menu button opens the docs there. */
+	@media (max-width: 50rem) {
+		.docs-link {
+			display: none;
+		}
+	}
+
 	.version-menu {
 		position: relative;
 		flex-shrink: 0;
