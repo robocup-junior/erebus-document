@@ -24,7 +24,7 @@ description: Dimensions du terrain, durées de jeu, multiplicateurs de score, li
 | Multiplicateur de temps dans un marécage | x5 à la première entrée, +1 à chaque nouvelle entrée dans le même marécage, jusqu’à x10 |
 | Multiplicateurs de zone | 1, 1,25, 1,5 et 2 pour les zones 1, 2, 3 et 4 |
 | Bonus de sortie | +10 % |
-| Multiplicateur du bonus de carte | exactitude × 1,2 + 1 |
+| Multiplicateur du bonus de cartographie | exactitude × 1,2 + 1 |
 
 ## Robot {#robot}
 

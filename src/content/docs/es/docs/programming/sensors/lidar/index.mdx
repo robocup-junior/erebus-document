@@ -7,7 +7,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 El lidar mide distancias en **metros** alrededor de todo el robot, como muchos sensores de distancia a la vez. En el robot inicial se llama `lidar` y está encima del robot.
 
-Mide 512 puntos alrededor del robot, en 4 capas apiladas una encima de otra, hasta 1 m de distancia. Un punto que no choca con nada lee `inf`.
+Mide 512 puntos alrededor del robot, en 4 capas apiladas una encima de otra, hasta 1 m de distancia. Un punto que no alcanza nada devuelve `inf`.
 
 ## Leer distancias \{#reading-distances\}
 

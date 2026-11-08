@@ -5,9 +5,9 @@ description: Robot Customizer ile başlangıç robotunu adım adım yap.
 
 import { Steps } from '@astrojs/starlight/components';
 
-Bu eğitimde [Robot Customizer](https://robot.erebus.rcj.cloud/) ile [başlangıç robotunu](/docs/robot/#the-starter-robot) yaparsın. Bu, belgelerdeki tüm örneklerde kullanılan robottur. Sonunda onu programlamak için her şeyin hazır olur.
+Bu eğitimde [Robot Customizer](https://robot.erebus.rcj.cloud/) ile [başlangıç robotunu](/docs/robot/#the-starter-robot) yapacaksın. Bu robot, belgelerdeki tüm örneklerde kullanılır; eğitimin sonunda onu programlamak için her şeyin hazır olacak.
 
-3000'lik bütçenin 2400'ünü tutar.
+Robotun maliyeti, 3000'lik bütçenin 2400'üdür.
 
 :::tip
 Her bileşenin, programının onu bulmak için kullandığı bir adı vardır. Örneklerin çalışması için tam olarak aşağıdaki adları kullan.
@@ -21,7 +21,7 @@ Kutularda mm yazsa da konumlar milimetrenin onda biri cinsindendir: robotun göv
 
 <Steps>
 
-1. **Mesafe sensörlerini ayarla.** **Distance sensors** altında üç tane kalması için `−` düğmesine bir kez bas. Sonra her birine tıklayarak aç; adını, konumunu ve dönüşünü ayarla:
+1. **Mesafe sensörlerini ayarla.** **Distance sensors** altında üç sensör kalması için `−` düğmesine bir kez bas. Sonra her birini tıklayarak aç; adını, konumunu ve dönüşünü ayarla:
 
    | Sensör | Ad | X | Y | Z | Dönüş |
    |---|---|---:|---:|---:|---|
@@ -59,7 +59,7 @@ Kutularda mm yazsa da konumlar milimetrenin onda biri cinsindendir: robotun göv
    - Konum: X `0`, Y `370`, Z `0`
    - Dönüş: X `90`, Y `0`, Z `0` yaz
 
-   Lidar robotun üstünde olmalıdır, aksi halde gövde onu engeller; çevresini tamamen tarayabilmesi için de düz durmalıdır. Dönüş düğmeleri onu düz yatırmaz, bu yüzden değerleri yaz.
+   Lidar robotun üstünde olmalıdır, aksi halde gövde onu engeller; çevresini tamamen tarayabilmesi için de düz yatmalıdır. Dönüş düğmeleriyle lidar düz yatırılamaz, bu yüzden değerleri elle yaz.
 
    ![Lidarın ayarları](../../../../docs/robot/build/lidar.png)
 
@@ -73,5 +73,5 @@ Kutularda mm yazsa da konumlar milimetrenin onda biri cinsindendir: robotun göv
 
 Bir şeyler ters gittiyse bitmiş robotla karşılaştır: [`starter-robot.json` dosyasını indir](/downloads/starter-robot.json) ve içe aktar.
 
-## Sırada \{#next\}
+## Sonraki adım \{#next\}
 [Robotunu Erebus'a yükle](/docs/robot/#load-it-in-erebus) ve [ilk programını çalıştır](/docs/getting-started/).

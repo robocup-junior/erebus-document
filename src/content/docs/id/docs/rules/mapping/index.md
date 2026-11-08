@@ -4,14 +4,14 @@ description: Informasi lebih lanjut dan contoh-contoh tentang pemetaan.
 ---
 
 ## Gambaran umum {#general-idea}
-Pemetaan dinilai sebagai pengali untuk skor keseluruhan yang didapat selama permainan. Untuk mendapatkan pengali pemetaan, robot harus mengirimkan matriks ke Main Supervisor permainan. Matriks yang dikirim dibandingkan dengan "kunci jawaban" untuk menghasilkan nilai ketepatan (correctness), dan pengalinya adalah:
+Pemetaan dinilai sebagai pengali (multiplier) untuk skor permainan. Untuk mendapatkannya, robot harus mengirimkan matriks ke Main Supervisor permainan. Matriks yang dikirim dibandingkan dengan "kunci jawaban" untuk menghasilkan nilai ketepatan (correctness), dan pengalinya adalah:
 
-**pengali bonus peta = ketepatan × 1,2 + 1**
+**pengali bonus pemetaan = ketepatan × 1,2 + 1**
 
 Jadi peta yang sempurna mengalikan skormu dengan 2,2. Untuk mempelajari cara mengirim matriks, lihat [tutorial Mengirim peta](/docs/programming/map-bonus/).
 
 ## Aturan pemetaan {#rules-for-mapping}
-* Setiap seperempat ubin beserta tepi dan titik sudut di sekelilingnya direpresentasikan oleh sebuah sel (nilai). Jadi peta berukuran W × H ubin adalah matriks dengan (4 × H + 1) baris dan (4 × W + 1) kolom.
+* Setiap seperempat ubin, setiap tepi, dan setiap titik sudut direpresentasikan oleh satu sel (nilai). Jadi peta berukuran W × H ubin adalah matriks dengan (4 × H + 1) baris dan (4 × W + 1) kolom.
 * Setiap elemen di world direpresentasikan sebagai berikut:
 
 | Elemen | Nilai |
@@ -22,23 +22,23 @@ Jadi peta yang sempurna mengalikan skormu dengan 2,2. Untuk mempelajari cara men
 | Checkpoint | `4` |
 | Ubin awal | `5` |
 | Ubin dengan rintangan | `x` |
-| Lorong penghubung antara area 1 dan 2 (biru) | `b` |
-| Lorong penghubung antara area 1 dan 3 (kuning) | `y` |
-| Lorong penghubung antara area 1 dan 4 (hijau) | `g` |
-| Lorong penghubung antara area 2 dan 3 (ungu) | `p` |
-| Lorong penghubung antara area 2 dan 4 (oranye) | `o` |
-| Lorong penghubung antara area 3 dan 4 (merah) | `r` |
+| Lorong penghubung antara Area 1 dan 2 (biru) | `b` |
+| Lorong penghubung antara Area 1 dan 3 (kuning) | `y` |
+| Lorong penghubung antara Area 1 dan 4 (hijau) | `g` |
+| Lorong penghubung antara Area 2 dan 3 (ungu) | `p` |
+| Lorong penghubung antara Area 2 dan 4 (oranye) | `o` |
+| Lorong penghubung antara Area 3 dan 4 (merah) | `r` |
 | Penanda dinding | Kode yang sesuai (`H`, `S`, `U`, `F`, `P`, `C`, `O`) |
-| Semua ubin, tepi, dan titik sudut area 4, termasuk batasnya | `*` |
+| Semua ubin, tepi, dan titik sudut Area 4, termasuk batasnya | `*` |
 | Ubin, tepi, dan titik sudut lainnya | `0` |
 
-* Elemen lantai (`2`, `3`, `4`, `5`, `x`, dan lorong penghubung) ditulis di empat sel di tengah setiap seperempat ubin, seperti yang bisa kamu lihat di contoh-contoh di bawah.
-* Tidak ada ubin yang sekaligus menjadi lebih dari satu dari berikut ini: rawa, lubang, checkpoint, ubin awal, ubin dengan rintangan, atau lorong penghubung antar-area.
-* Untuk dinding melengkung di area 3, titik sudutnya direpresentasikan dengan `0`.
-* Keberadaan penanda dinding ditunjukkan di sel dinding tempat penanda itu berada. Jika ada beberapa penanda dinding di dinding yang sama, misalnya di kedua sisinya, gabungkan kode-kodenya dalam satu sel, berurutan sesuai posisi absolutnya di peta: pertama dari atas ke bawah, lalu dari kiri ke kanan.
+* Elemen lantai (`2`, `3`, `4`, `5`, `x`, dan lorong penghubung) ditulis di sel tengah masing-masing dari keempat seperempat ubin pada ubin tersebut, seperti yang bisa kamu lihat di contoh-contoh di bawah.
+* Satu ubin tidak pernah sekaligus menjadi lebih dari satu hal berikut: rawa, lubang, checkpoint, ubin awal, ubin dengan rintangan, atau lorong penghubung antar-area.
+* Untuk dinding melengkung di Area 3, titik sudutnya direpresentasikan dengan `0`.
+* Penanda dinding ditulis di sel dinding tempat penanda itu berada. Jika ada beberapa penanda dinding di dinding yang sama, misalnya di kedua sisinya, gabungkan kode-kodenya dalam satu sel, berurutan sesuai posisi absolutnya di peta: pertama dari atas ke bawah, lalu dari kiri ke kanan.
 * Penanda palsu tidak boleh dimasukkan ke peta: baik korban palsu maupun target kognitif dengan jumlah yang tidak valid.
-* Penanda dinding di ubin penuh (bukan seperempat ubin) bisa berada di mana saja di sepanjang dinding. Penanda itu ditempatkan di sel seperempat ubin yang paling dekat dengannya, atau di sel tengah jika berada di dekat tengah sisi ubin.
-* Peta boleh disimpan dalam rotasi apa pun asalkan kelipatan 90°. Erebus menyejajarkan matriksmu dengan jawaban menggunakan ubin awal, mencoba setiap orientasi, dan memakai hasil terbaik.
+* Penanda dinding di ubin penuh (bukan seperempat ubin) bisa berada di mana saja di sepanjang dinding. Penanda itu ditulis di sel seperempat ubin yang paling dekat dengannya, atau di sel tengah jika berada di dekat tengah sisi ubin.
+* Peta boleh dikirim dalam rotasi apa pun, asalkan kelipatan 90°. Erebus menyejajarkan matriksmu dengan jawaban menggunakan ubin awal, mencoba setiap orientasi, dan memakai hasil terbaik.
 
 ## Cara menghitung ketepatan {#how-correctness-is-calculated}
 1. Matriks-matriks disejajarkan berdasarkan ubin awal. Artinya, **petamu harus memuat ubin awal**.
@@ -48,10 +48,10 @@ Jadi peta yang sempurna mengalikan skormu dengan 2,2. Untuk mempelajari cara men
 Karena hanya posisi yang berisi sesuatu yang dihitung, menandai sesuatu yang tidak ada menurunkan ketepatanmu sama besarnya dengan melewatkan sesuatu yang ada.
 
 ## Kasus khusus yang ambigu {#ambiguous-edge-cases}
-Untuk kasus khusus yang ambigu dan tidak dijelaskan di bawah ini, silakan hubungi Komite Internasional RoboCupJunior Rescue dan/atau tim pengembang platform.
+Untuk kasus ambigu yang tidak dibahas di bawah ini, silakan hubungi Komite Internasional RoboCupJunior Rescue dan/atau tim pengembang platform.
 ### Satu dinding dengan dinding siku biasa di satu sisi dan dinding melengkung di sisi lainnya {#one-wall-with-a-normal-right-angled-wall-and-a-curved-wall-on-each-side}
 Aturan menyatakan bahwa titik sudut dinding melengkung direpresentasikan dengan nol.
-Pengecualiannya adalah kasus berikut, ketika satu sisi dinding berupa sudut siku biasa dan sisi lainnya melengkung, yang direpresentasikan sama seperti jika kedua sisinya adalah dinding biasa.
+Pengecualiannya adalah kasus berikut, ketika satu sisi dinding berupa sudut siku biasa dan sisi lainnya melengkung. Kasus ini direpresentasikan seolah-olah kedua sisinya adalah dinding biasa.
 ![Dinding dengan sudut siku di satu sisi dan lengkungan di sisi lainnya](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Contoh {#examples}
@@ -161,7 +161,7 @@ World ini punya tiga area, dengan lorong penghubung `b` dan `p`.
 ```
 
 ### world2.wbt {#world2wbt}
-World ini mencakup area 4, yang diisi dengan `*`, serta lorong penghubung `g` dan `r`.
+World ini mencakup Area 4, yang diisi dengan `*`, serta lorong penghubung `g` dan `r`.
 
 ![World world2 di Webots](../../../../docs/rules/mapping/world2.png)
 

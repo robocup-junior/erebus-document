@@ -22,7 +22,7 @@ description: Os termos usados no Erebus e nas regras.
 | **Bônus de mapa** (Mapping bonus, MB) | Um multiplicador de pontuação de acerto × 1,2 + 1 |
 | **Matriz do mapa** (Map matrix) | A matriz que representa o mapa |
 | **Passagem** (Passage) | Um ladrilho colorido que liga duas áreas |
-| **Quarto de ladrilho** (Quarter tile) | Um quarto de ladrilho, com 6 cm de largura, usado nas áreas 2 e 3 |
+| **Quarto de ladrilho** (Quarter tile) | A quarta parte de um ladrilho, com 6 cm de largura, usado nas áreas 2 e 3 |
 | **Configuração servidor-cliente** (Server-client setup) | A partida roda em um computador e o seu programa em outro. Veja Remote Controller. |
 | **Pântano** (Swamp) | Um ladrilho marrom que faz o tempo da partida correr mais rápido |
 | **TDP** | Technical Description Paper (artigo de descrição técnica) |

@@ -19,10 +19,10 @@ description: 为 RoboCupJunior Rescue Simulation（救援仿真）比赛做准�
 ## 需要提交的文档材料 {#documents-to-submit}
 模板和评分标准在 [RCJ Rescue 社区网站](https://rescue.rcj.cloud/)上。
 
-- [ ] **技术描述文档（Technical Description Paper，TDP）。** 请严格按照模板编写：否则该文档的得分为 0。
-- [ ] **海报（Poster），** 需要提交文件，并在会场展示实体海报，尺寸不超过 A1。
+- [ ] **技术描述文档（Technical Description Paper，TDP）**：请严格按照模板编写，否则该文档的得分为 0。
+- [ ] **海报（Poster）**：需要提交电子文件，并在会场展示实体海报，尺寸不超过 A1。
 - [ ] 展示你的项目的**视频（Video）**。
-- [ ] **服务器-客户端视频，** 2026 年新增：一段短视频，展示你如何在服务器-客户端模式下，在示例地图上运行你的控制器。
+- [ ] **服务器-客户端视频**（2026 年新增）：一段短视频，展示你如何在服务器-客户端模式下，在示例地图上运行你的控制器。
 - [ ] **源代码**以及用于面试的**网页表单**。
 
 ## 比赛设置 {#competition-setup}
@@ -47,7 +47,7 @@ description: 为 RoboCupJunior Rescue Simulation（救援仿真）比赛做准�
 | Anti-aliasing | Disabled |
 
 ## 测试你的机器人 {#testing-your-robot}
-- [ ] 在每个自带的世界上运行，特别是包含假目标的 `world3.wbt` 和 `world4.wbt`。
+- [ ] 在每个自带的世界上运行，特别是包含假标识的 `world3.wbt` 和 `world4.wbt`。
 - [ ] 用 [World Editor](/docs/tools/world-editor/) 制作你自己的地图，并包含全部四个区域。
 - [ ] 检查完整的比赛：它能否运行到最后，并及时提交地图、返回起点？
 - [ ] 测试发生缺乏进展之后会怎样。

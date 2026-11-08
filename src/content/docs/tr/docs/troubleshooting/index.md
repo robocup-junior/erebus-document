@@ -3,12 +3,12 @@ title: Sorun giderme
 description: Erebus'u kurarken ve çalıştırırken sık karşılaşılan sorunlara çözümler.
 ---
 
-Her şeyden önce Webots konsolunu kontrol et. Çoğu sorun orada bir hata mesajı gösterir.
+Her şeyden önce Webots konsolunu kontrol et. Çoğu sorunda orada bir hata mesajı görünür.
 
 ## Kurulum {#installation}
 
 ### `No module named 'cv2'` {#no-module-named-cv2}
-OpenCV, Webots'un kullandığı Python'da kurulu değil. [Gerekli kütüphaneleri](/docs/installation/#python-libraries) o Python'a kur. Birden fazla kurulumun varsa aşağıdaki **Python command** ayarı Webots'un hangisini kullandığını söyler.
+OpenCV, Webots'un kullandığı Python'da kurulu değil. [Gerekli kütüphaneleri](/docs/installation/#python-libraries) o Python'a kur. Birden fazla Python kurulumun varsa aşağıdaki **Python command** ayarı, Webots'un hangisini kullandığını gösterir.
 
 ### `WARNING: Python was not found` {#warning-python-was-not-found}
 Webots, Python'un nerede olduğunu bilmiyor.
@@ -23,7 +23,7 @@ Webots, Python'un nerede olduğunu bilmiyor.
    ![Webots tercihlerindeki Python command alanı](../../../docs/troubleshooting/preferences.png)
 
 ### Oyun süresi görünmüyor {#the-game-timer-does-not-appear}
-İlk başlatma, Erebus kütüphaneleri kurarken birkaç dakika sürebilir. Hiç bitmiyorsa konsolda hata olup olmadığına bak. Otomatik kurulum çalışmazsa [gerekli kütüphaneleri](/docs/installation/#python-libraries) kendin kur.
+İlk başlatma, Erebus kütüphaneleri kurarken birkaç dakika sürebilir. İşlem hiç bitmiyorsa konsolda hata olup olmadığına bak. Otomatik kurulum çalışmazsa [gerekli kütüphaneleri](/docs/installation/#python-libraries) kendin kur.
 
 ## Erebus'u çalıştırma {#running-erebus}
 
@@ -37,7 +37,7 @@ Kontrol penceresi, Webots'un açtığı bir web sayfasıdır.
 ![Scene Tree'deki Show Robot Window seçeneği](../../../docs/troubleshooting/showrobot.png)
 
 ### Webots ekranı boş ya da siyah {#the-webots-screen-is-blank-or-black}
-Dünyayı açmadan önce indirdiğin dosyayı kopyalayıp ayrı bir klasöre zip'ten çıkar.
+İndirdiğin dosyayı, dünyayı açmadan önce ayrı bir klasöre kopyalayıp zip'ten çıkar.
 
 ### Simülasyon çok yavaş çalışıyor {#the-simulation-runs-too-slowly}
 Bu muhtemelen bilgisayarının performansından kaynaklanıyor. Grafik kalitesini düşürmek yardımcı olabilir:
@@ -67,7 +67,7 @@ Programındaki cihaz adı robotunla eşleşmiyor. Başlangıç robotunun adları
 Kontrol penceresinin Settings sekmesinde **Enable debugging** seçeneğini aç ve konsolu kontrol et. En yaygın nedenler, robotun en az 1 saniye durmamış olması ve koordinatların santimetreye dönüştürülmemiş olmasıdır. [İletişim](/docs/programming/communication/#scoring-wall-tokens) sayfasına bak.
 
 ### Bildirimlerim yanlış tanımlama sayılıyor {#my-reports-are-misidentifications}
-Robot işarete en fazla yarım kare uzaklıkta ve duvarın aynı tarafında olmalıdır; her işaretle de yalnızca bir kez puan kazanılabilir. Bir sahteyi bildirmek de yanlış tanımlama sayılır.
+Robot işarete en fazla yarım kare uzaklıkta ve duvarın aynı tarafında olmalıdır; ayrıca her işaretten yalnızca bir kez puan alınabilir. Sahte bir işareti bildirmek de yanlış tanımlama sayılır.
 
 ### Harita %0 alıyor ya da puanlama hatası veriyor {#the-map-gets-0-or-a-scoring-error}
 Haritan başlangıç karesini (`5`) içermelidir ve yalnızca bir kez değerlendirilebilir. [Haritayı gönderme](/docs/programming/map-bonus/) sayfasına bak.

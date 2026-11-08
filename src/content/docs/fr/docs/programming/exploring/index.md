@@ -6,7 +6,7 @@ description: Des idées pour explorer le labyrinthe méthodiquement et construir
 Un robot qui erre au hasard ne marquera pas beaucoup de points. Cette page montre comment passer de l’errance à une exploration méthodique. Ce sont des idées sur lesquelles construire, pas une solution complète.
 
 ## Savoir où vous êtes {#know-where-you-are}
-Les cases font 12 cm de large : la position GPS vous donne donc la case. La position de départ est différente dans chaque monde : mesurez donc tout à partir de là :
+Les cases font 12 cm de large : la position GPS vous donne donc la case. Comme la position de départ change d’un monde à l’autre, mesurez tout à partir d’elle :
 
 ```python
 TILE = 0.12

@@ -21,7 +21,7 @@ def currentTile():
 Sem um GPS, você pode estimar a posição com os encoders das rodas e o giroscópio, mas os erros se acumulam.
 :::
 
-## Lembre do que você viu {#remember-what-you-have-seen}
+## Lembre-se do que você viu {#remember-what-you-have-seen}
 Mantenha um dicionário de ladrilhos com o que você sabe sobre cada um: quais lados têm paredes, como é o piso e se você já o visitou.
 
 ```python
@@ -29,7 +29,7 @@ tiles = {}
 tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor": "start", "visited": True}
 ```
 
-Os ladrilhos não contam toda a história nas áreas 2 e 3, onde as paredes podem ficar em quartos de ladrilho. Guardar o mapa na resolução de quartos de ladrilho, ou usar uma nuvem de pontos do Lidar, vai preparar você para elas.
+Os ladrilhos não contam toda a história nas áreas 2 e 3, onde as paredes podem ficar em quartos de ladrilho. Guardar o mapa na resolução de quartos de ladrilho, ou usar uma nuvem de pontos do lidar, vai preparar você para elas.
 
 ## Decida para onde ir {#decide-where-to-go}
 Não se limite a seguir uma parede: assim você nunca chega aos [ladrilhos flutuantes](/docs/rules/#linear-and-floating-tiles) (floating tiles), cujos marcadores valem mais. Uma abordagem comum é:

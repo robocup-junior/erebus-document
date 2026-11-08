@@ -7,7 +7,7 @@ Erebus is a robot simulation competition environment. You develop a controller f
 
 It is built on [Webots](https://cyberbotics.com/), a robotic simulation platform designed for professional use and widely used in industry, education and research. Cyberbotics has maintained Webots continuously since 1998.
 
-The platform is primarily designed for the [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) competition. It is intended for intermediate to highly experienced programmers.
+The platform is primarily designed for the [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) competition. It is intended for programmers with intermediate to advanced experience.
 
 ## How it fits together
 
@@ -29,7 +29,7 @@ The platform is primarily designed for the [RoboCupJunior Rescue Simulation](htt
 If you already know Erebus, see [What's new in v26](/docs/whats-new/).
 
 ## Useful references
-List of useful links for learning and working on the Erebus Simulator:
+Useful links for learning about and working with Erebus:
 - [Webots User Guide](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Webots Reference Manual](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Python Documentation](https://www.python.org/doc/)

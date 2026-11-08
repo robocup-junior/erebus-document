@@ -64,7 +64,7 @@ See below. Also check that you loaded your robot with the **right** LOAD button 
 The device name in your program does not match your robot. The names of the starter robot are in the [Reference](/docs/reference/parameters/#device-names-of-the-starter-robot). For your own robot, they are the names you set in the [Robot Customizer](/docs/robot/customizer/). Check that your robot has been loaded.
 
 ### Nothing happens when I report a wall token
-Turn on **Enable debugging** in the Settings tab of the control window, and check the console. The most common causes are that the robot had not been stopped for at least 1 second, and that the coordinates were not converted to centimeters. See [Communication](/docs/programming/communication/#scoring-wall-tokens).
+Turn on **Enable debugging** in the Settings tab of the control window, and check the console. The most common causes are that the robot had not been stopped for at least 1 second, and that the coordinates were not converted to centimetres. See [Communication](/docs/programming/communication/#scoring-wall-tokens).
 
 ### My reports are misidentifications
 The robot must be at most half a tile from the token and on the same side of the wall, and each token can only be scored once. Reporting a fake also counts as a misidentification.

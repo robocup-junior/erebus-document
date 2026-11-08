@@ -11,14 +11,14 @@ description: Erebus のインストールや実行でよくある問題の解決
 Webots が使っている Python に OpenCV がインストールされていません。その Python に[必要なライブラリ](/docs/installation/#python-libraries)をインストールしてください。複数の Python がインストールされている場合は、下で説明する **Python command** の設定で、Webots がどれを使っているかがわかります。
 
 ### `WARNING: Python was not found` {#warning-python-was-not-found}
-Webots が Python の場所を知りません。
+Webots が Python の場所を見つけられません。
 
 1. Python の場所を調べます。macOS と Linux では、ターミナルで `which python3` を実行します。Windows では、新しいコマンドプロンプトで `python` と入力して Python が起動するかを確認します。起動しない場合は、PATH に追加するオプションにチェックを入れて、Python をインストールし直してください。
 2. Webots の設定を開きます。macOS では **Webots > Preferences**、Windows と Linux では **Tools > Preferences** です。
 
    ![Webots のメニューにある Preferences の項目](../../../docs/troubleshooting/preferences_open.png)
 
-3. **Python command** の欄にパスを設定します。Windows では、ふつうは `python` で十分です。
+3. **Python command** の欄にパスを設定します。Windows では、通常は `python` で十分です。
 
    ![Webots の設定にある Python command の欄](../../../docs/troubleshooting/preferences.png)
 

@@ -13,7 +13,7 @@ Correções e esclarecimentos são publicados no [fórum oficial da RoboCupJunio
 O seu robô é colocado sozinho em um labirinto desconhecido. Em 8 minutos, sem nenhuma ajuda sua, ele precisa:
 
 1. **Explorar** o labirinto sem ficar preso nem cair em buracos.
-2. **Encontrar os marcadores nas paredes** (wall tokens), vítimas e sinais de perigo (hazard signs), e informar o que cada um é.
+2. **Encontrar os marcadores nas paredes** (wall tokens), ou seja, as vítimas e os alvos cognitivos, e informar o que cada um é.
 3. **Mapear** o labirinto e enviar o mapa no final.
 4. **Voltar** para onde começou.
 
@@ -74,7 +74,7 @@ Há dois tipos de marcadores nas paredes: vítimas de letra e alvos cognitivos. 
 ![Alvos cognitivos e vítimas de letra nas paredes de um campo](../../../docs/rules/rules_wall_tokens.png)
 
 ### Vítimas de letra {#letter-victims}
-As vítimas de letra (letter victims) são imagens de 2 cm × 2 cm. O símbolo representa o estado de saúde da vítima, e a letra entre parênteses é o código que você informa e escreve no mapa.
+As vítimas de letra (letter victims) são imagens de 2 cm × 2 cm. O símbolo representa o estado de saúde da vítima, e o código é a letra que você informa e escreve no mapa.
 
 | Estado | Símbolo | Código |
 |---|---|---|
@@ -151,7 +151,7 @@ Para identificar um marcador, o robô precisa parar por **pelo menos 1 segundo**
 | Identificação errada do marcador (TMI) | -5 |
 | Falta de progresso (LoP) | -5 |
 
-A pontuação total não pode ficar abaixo de zero. Uma identificação errada significa informar uma posição a mais de meio ladrilho do marcador, informar um marcador onde não há nenhum, ou informar uma vítima como material perigoso, ou vice-versa. Informar um marcador falso se encaixa na segunda categoria.
+A pontuação total não pode ficar abaixo de zero. Uma identificação errada significa informar uma posição a mais de meio ladrilho do marcador, informar um marcador onde não há nenhum, ou informar uma vítima de letra como alvo cognitivo, ou vice-versa. Informar um marcador falso se encaixa na segunda categoria.
 
 **Multiplicadores de área (AM)**: TI, TT e CN são multiplicados por 1, 1,25, 1,5 e 2 nas áreas 1, 2, 3 e 4, respectivamente. TMI e LoP não são multiplicados.
 

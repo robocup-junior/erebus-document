@@ -3,15 +3,15 @@ title: FAQ
 description: Questions fréquentes sur Erebus et la compétition.
 ---
 
-## À propos d’Erebus {#custom-md-id}
+## À propos d’Erebus {#about-erebus}
 
 ### Ai-je besoin d’un vrai robot ? {#do-i-need-a-real-robot}
 Non. Tout se passe dans le simulateur. Le robot est un e-puck virtuel que vous concevez.
 
 ### Quels langages de programmation puis-je utiliser ? {#which-programming-languages-can-i-use}
-Python et C/C++ sont traités dans cette documentation. Erebus peut aussi charger des contrôleurs Java et MATLAB, mais cette documentation ne propose pas d’exemples pour eux.
+Python et C/C++ sont traités dans cette documentation. Erebus peut aussi charger des contrôleurs Java et MATLAB, mais cette documentation ne contient pas d’exemples dans ces langages.
 
-### Faut-il un ordinateur puissant ? {#is-a-powerful-computer-needed}
+### Ai-je besoin d’un ordinateur puissant ? {#do-i-need-a-powerful-computer}
 Non, consultez la [configuration requise](/docs/installation/). Les ordinateurs plus lents peuvent avoir besoin de [réglages graphiques plus bas](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Puis-je utiliser une version plus récente de Webots ? {#can-i-use-a-newer-version-of-webots}
@@ -35,7 +35,7 @@ Sur la case de départ, qui se trouve dans la zone 1. Il est toujours orienté v
 Une absence de progression (Lack of Progress) se produit : le robot retourne au dernier point de contrôle (checkpoint) visité, et vous perdez 5 points.
 
 ### Le robot doit-il revenir au départ ? {#does-the-robot-have-to-return-to-the-start}
-Non, mais revenir sur la case de départ et envoyer `E` donne un bonus de sortie (exit bonus) de 10 %, à condition d’avoir identifié au moins un marqueur mural.
+Non, mais revenir sur la case de départ et envoyer `E` donne un bonus de sortie (exit bonus) de 10 %, à condition que le robot ait identifié au moins un marqueur mural.
 
 ### Comment mon robot peut-il savoir combien de temps il reste ? {#how-can-my-robot-tell-how-much-time-is-left}
 Avec le [message `G`](/docs/programming/communication/#game-information). Il y a deux chronomètres, et le temps de jeu s’écoule plus vite dans les marécages.

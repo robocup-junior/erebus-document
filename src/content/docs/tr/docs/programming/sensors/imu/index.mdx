@@ -12,21 +12,21 @@ Jiroskop, robotun her eksen etrafındaki dönüş hızını **radyan/saniye** ci
 `getValues()`, `[x, y, z]` döndürür. **Y ekseni dikeydir**, bu yüzden `getValues()[1]` robotun dönüş hızıdır. Robot sola dönerken pozitiftir.
 
 :::caution
-Bu, başlangıç robotunun jiroskobu içindir. Eksenler jiroskobun dönüşünü izler. Kendi robotunda onu döndürürsen robot dönerken hangi değerin değiştiğini kontrol et.
+Bu bilgi, başlangıç robotunun jiroskobu için geçerlidir. Eksenler jiroskobun dönüşüne göre belirlenir; bu yüzden kendi robotunda jiroskobu döndürürsen robot dönerken hangi değerin değiştiğini kontrol et.
 :::
 
 ## Örnek: 90 derece dönme \{#example-turning-90-degrees\}
 
-Dönülen açıyı bulmak için dönüş hızını zaman adımıyla çarpıp topla. Bu, dönüşü süreyle ölçmekten daha güvenilirdir, çünkü hıza bağlı değildir.
+Dönülen açıyı bulmak için dönüş hızını zaman adımıyla çarpıp topla. Bu yöntem, dönüşü süreyle ölçmekten daha güvenilirdir, çünkü hıza bağlı değildir.
 
 <CodeTabs file="turn" />
 
-Başlangıç robotunda yapılan bir testte, bu şekilde hesaplanan açı gerçek dönüşle 0,01 radyan içinde eşleşti. Küçük hatalar bir oyun boyunca birikir, bu yüzden fırsat buldukça yönünü düzelt; örneğin bir duvara hizalanarak.
+Başlangıç robotunda yapılan bir testte, bu şekilde hesaplanan açı gerçek dönüşten en fazla 0,01 radyan farklıydı. Küçük hatalar bir oyun boyunca birikir; bu yüzden fırsat buldukça robotun yönünü düzelt (örneğin bir duvara hizalayarak).
 
 ## İvmeölçer \{#accelerometer\}
 
-İvmeölçer, her eksen boyunca ivmeyi m/s² cinsinden verir. Başlangıç robotunda adı `accelerometer`'dır. Dururken `getValues()[1]` yaklaşık 9,8 okur, bu yerçekimidir.
+İvmeölçer, her eksen boyunca ivmeyi m/s² cinsinden verir. Başlangıç robotunda adı `accelerometer`'dır. Robot dururken `getValues()[1]` yaklaşık 9,8 değerini verir; bu, yerçekimi ivmesidir.
 
 ## Eylemsizlik birimi \{#inertial-unit\}
 
-Eylemsizlik birimi (inertial unit) başlangıç robotunda yoktur. [Robot Customizer](/docs/robot/customizer/) ile bir tane ekleyebilirsin; varsayılan adı `inertial_unit`'tir. Dönüş hızlarını toplamak yerine, yönelimi doğrudan `getRollPitchYaw()` ile verir. [Webots başvurusuna](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b) bak.
+Eylemsizlik birimi (inertial unit) başlangıç robotunda yoktur. [Robot Customizer](/docs/robot/customizer/) ile bir tane ekleyebilirsin; varsayılan adı `inertial_unit`'tir. Bu birim, dönüş hızlarını toplamana gerek kalmadan yönelimi doğrudan `getRollPitchYaw()` ile verir. [Webots başvurusuna](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b) bak.

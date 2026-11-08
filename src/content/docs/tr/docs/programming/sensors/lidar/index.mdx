@@ -7,20 +7,20 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 Lidar, aynı anda çalışan çok sayıda mesafe sensörü gibi, robotun çevresindeki mesafeleri **metre** cinsinden ölçer. Başlangıç robotunda robotun üstündedir ve adı `lidar`'dır.
 
-Robotun çevresinde, üst üste dizilmiş 4 katmanda, 1 m uzaklığa kadar 512 nokta ölçer. Hiçbir şeye çarpmayan bir nokta `inf` okur.
+Lidar, robotun çevresinde üst üste dizilmiş 4 katmanda, 1 m uzaklığa kadar 512 nokta ölçer. Hiçbir şeye çarpmayan bir noktanın değeri `inf` olur.
 
 ## Mesafeleri okuma \{#reading-distances\}
 
-`getLayerRangeImage(0)`, bir katmanın 512 mesafesini verir. İlki robotun önündedir ve **saat yönünde** ilerler: dörtte biri sağda, yarısı arkada, dörtte üçü solda.
+`getLayerRangeImage(0)`, bir katmanın 512 mesafesini verir. İlk değer robotun önüne aittir ve değerler **saat yönünde** ilerler: dizinin dörtte biri sağa, yarısı arkaya, dörtte üçü sola karşılık gelir.
 
 <CodeTabs file="read" />
 
 ## Nokta bulutu \{#point-cloud\}
 
-Lidar her noktayı lidara göre bir konum olarak da verebilir. Bu, robotun gördüklerinin haritasını çizmek için kullanışlıdır. Hesaplanması ek zaman aldığı için yalnızca kullanacaksan etkinleştir.
+Lidar her noktayı lidara göre bir konum olarak da verebilir; bu, robotun gördüklerinin haritasını çizmek için kullanışlıdır. Nokta bulutunu hesaplamak ek zaman aldığı için onu yalnızca kullanacaksan etkinleştir.
 
 <CodeTabs file="pointcloud" />
 
 :::caution[Lidarı yerleştirme]
-Kendi robotlarında lidarı, düz durması için [başlangıç robotundaki](/docs/robot/build/) dönüşle birlikte üste yerleştir. Gövdenin içinde ya da eğik olursa robotun kendisini ölçer.
+Kendi robotlarında lidarı, düz yatması için [başlangıç robotundaki](/docs/robot/build/) dönüş değerleriyle robotun üstüne yerleştir. Gövdenin içinde ya da eğik olursa robotun kendisini ölçer.
 :::

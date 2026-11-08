@@ -20,7 +20,7 @@ Esta documentação usa o mesmo robô em todo lugar, o **robô inicial**, para q
 | Câmera, 64 × 40 pixels | `camera` | Encontrar marcadores nas paredes |
 | Sensor de cor | `color` | Ver o piso: buracos, pântanos e passagens |
 | GPS | `gps` | Saber a sua posição, para informar marcadores |
-| Giroscópio | `gyro` | Medir quanto ele girou |
+| Giroscópio | `gyro` | Medir quanto o robô girou |
 | Acelerômetro | `accelerometer` | Medir a aceleração |
 | Lidar | `lidar` | Medir distâncias ao redor |
 | Emissor e receptor | `emitter`, `receiver` | Conversar com a partida. Todo robô tem os dois. |

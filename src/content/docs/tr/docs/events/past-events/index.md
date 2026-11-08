@@ -5,7 +5,7 @@ description: 2020'den 2026'ya kadar Erebus ile yapılan RoboCupJunior Rescue Sim
 
 ## RoboCupJunior Uluslararası Yarışmaları {#robocupjunior-international-competitions}
 
-Erebus simülatörü, aşağıdaki etkinliklerde RoboCupJunior Rescue Simulation yarışmasına katılan takımlar tarafından kullanıldı. Her etkinlik sayfasında kendi bilgileri vardır, yakın tarihli olanlarda ödüller ve sonuçlar da listelenir.
+Erebus simülatörü, aşağıdaki etkinliklerde RoboCupJunior Rescue Simulation yarışmasına katılan takımlar tarafından kullanıldı. Her etkinlik sayfasında o etkinliğe ait bilgiler bulunur; yakın tarihli olanlarda ödüller ve sonuçlar da listelenir.
 
 | Yıl | Yer | Etkinlik sayfası |
 |---|---|---|

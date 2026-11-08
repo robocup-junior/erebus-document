@@ -4,14 +4,14 @@ description: Weitere Informationen und Beispiele zum Kartieren.
 ---
 
 ## Grundidee {#general-idea}
-Das Kartieren wird als Multiplikator auf die Gesamtpunktzahl des Laufs gewertet. Um einen Kartenmultiplikator zu bekommen, muss der Roboter eine Matrix an den Main Supervisor des Spiels senden. Die gesendete Matrix wird mit der „Musterlösung“ verglichen, um einen Wert für die Korrektheit zu ermitteln, und der Multiplikator ist:
+Das Kartieren wird als Multiplikator auf die Punktzahl des Laufs gewertet. Um ihn zu bekommen, muss der Roboter eine Matrix an den Main Supervisor des Spiels senden. Die gesendete Matrix wird mit der „Musterlösung“ verglichen, um einen Wert für die Korrektheit zu ermitteln, und der Multiplikator ist:
 
 **Multiplikator des Kartenbonus (Mapping bonus) = Korrektheit × 1,2 + 1**
 
 Eine perfekte Karte multipliziert deine Punktzahl also mit 2,2. Wie du die Matrix sendest, erfährst du im [Tutorial zum Kartenbonus](/docs/programming/map-bonus/).
 
 ## Regeln für das Kartieren {#rules-for-mapping}
-* Jede Viertelkachel mit ihren umgebenden Kanten und Ecken wird durch eine Zelle (einen Wert) dargestellt. Eine Karte aus W × H Kacheln ist daher eine Matrix mit (4 × H + 1) Zeilen und (4 × W + 1) Spalten.
+* Jede Viertelkachel, jede Kante und jeder Eckpunkt wird durch eine Zelle (einen Wert) dargestellt. Eine Karte aus W × H Kacheln ist daher eine Matrix mit (4 × H + 1) Zeilen und (4 × W + 1) Spalten.
 * Jedes Element der Welt wird so dargestellt:
 
 | Element | Wert |
@@ -29,16 +29,16 @@ Eine perfekte Karte multipliziert deine Punktzahl also mit 2,2. Wie du die Matri
 | Durchgang zwischen Bereich 2 und 4 (orange) | `o` |
 | Durchgang zwischen Bereich 3 und 4 (rot) | `r` |
 | Wandmarkierungen | Der entsprechende Code (`H`, `S`, `U`, `F`, `P`, `C`, `O`) |
-| Alle Kacheln, Kanten und Ecken von Bereich 4, einschließlich seines Rands | `*` |
-| Alle anderen Kacheln, Kanten und Ecken | `0` |
+| Alle Kacheln, Kanten und Eckpunkte von Bereich 4, einschließlich seines Rands | `*` |
+| Alle anderen Kacheln, Kanten und Eckpunkte | `0` |
 
-* Bodenelemente (`2`, `3`, `4`, `5`, `x` und die Durchgänge) werden in die vier Zellen in der Mitte jeder Viertelkachel geschrieben, wie du in den Beispielen unten sehen kannst.
+* Bodenelemente (`2`, `3`, `4`, `5`, `x` und die Durchgänge) werden in die mittlere Zelle jeder der vier Viertelkacheln der Kachel geschrieben, wie du in den Beispielen unten sehen kannst.
 * Keine Kachel ist gleichzeitig mehr als eines davon: Sumpf, Loch, Checkpoint, Startkachel, Kachel mit Hindernis oder Durchgang zwischen Bereichen.
-* Bei gekrümmten Wänden in Bereich 3 wird die Ecke durch eine `0` dargestellt.
+* Bei gekrümmten Wänden in Bereich 3 wird der Eckpunkt durch eine `0` dargestellt.
 * Eine Wandmarkierung wird in der Zelle der Wand eingetragen, an der sie sich befindet. Wenn an derselben Wand mehrere Wandmarkierungen sind, zum Beispiel auf beiden Seiten, verkette ihre Codes in einer Zelle, in der Reihenfolge ihrer absoluten Position auf der Karte: zuerst von oben nach unten, dann von links nach rechts.
-* Gefälschte Markierungen dürfen nicht in die Karte aufgenommen werden: weder falsche Opfer (Fake victims) noch kognitive Ziele mit ungültiger Summe.
+* Gefälschte Markierungen dürfen nicht in die Karte aufgenommen werden: weder gefälschte Opfer (Fake victims) noch kognitive Ziele mit ungültiger Summe.
 * Wandmarkierungen an ganzen Kacheln (keine Viertelkacheln) können überall entlang der Wand sein. Sie werden in die Zelle der Viertelkachel eingetragen, der sie näher sind, oder in die mittlere Zelle, wenn sie nahe der Mitte der Kachelseite sind.
-* Karten können in jeder Drehung gespeichert werden, solange es ein Vielfaches von 90° ist. Erebus richtet deine Matrix anhand der Startkachel an der Lösung aus, probiert jede Ausrichtung und behält das beste Ergebnis.
+* Karten können in jeder Drehung abgegeben werden, solange es ein Vielfaches von 90° ist. Erebus richtet deine Matrix anhand der Startkachel an der Lösung aus, probiert jede Ausrichtung und behält das beste Ergebnis.
 
 ## So wird die Korrektheit berechnet {#how-correctness-is-calculated}
 1. Die Matrizen werden an der Startkachel ausgerichtet. Das heißt: **Deine Karte muss die Startkachel enthalten.**
@@ -48,9 +48,9 @@ Eine perfekte Karte multipliziert deine Punktzahl also mit 2,2. Wie du die Matri
 Da nur die Positionen zählen, an denen etwas ist, senkt es deine Korrektheit genauso, wenn du etwas einträgst, das es nicht gibt, wie wenn du etwas vergisst, das es gibt.
 
 ## Mehrdeutige Grenzfälle {#ambiguous-edge-cases}
-Bei mehrdeutigen Grenzfällen, die unten nicht definiert sind, wende dich bitte an das International RoboCupJunior Rescue Committee und/oder das Entwicklungsteam der Plattform.
+Bei mehrdeutigen Fällen, die unten nicht behandelt werden, wende dich bitte an das International RoboCupJunior Rescue Committee und/oder das Entwicklungsteam der Plattform.
 ### Eine Wand mit einer normalen rechtwinkligen Wand auf der einen und einer gekrümmten Wand auf der anderen Seite {#one-wall-with-a-normal-right-angled-wall-and-a-curved-wall-on-each-side}
-Laut den Regeln werden die Ecken einer gekrümmten Wand durch Nullen dargestellt.
+Laut den Regeln werden die Eckpunkte einer gekrümmten Wand durch Nullen dargestellt.
 Die Ausnahme ist der folgende Fall, bei dem eine Seite der Wand ein normaler rechter Winkel und die andere Seite gekrümmt ist. Er wird so dargestellt, als wären beide Seiten normale Wände.
 ![Eine Wand mit einem rechten Winkel auf der einen und einer Kurve auf der anderen Seite](../../../../docs/rules/mapping/ambiguous1.png)
 

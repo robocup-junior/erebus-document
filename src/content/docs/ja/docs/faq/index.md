@@ -3,7 +3,7 @@ title: よくある質問
 description: Erebus と競技についてよくある質問です。
 ---
 
-## Erebus について {#custom-md-id}
+## Erebus について {#about-erebus}
 
 ### 本物のロボットは必要ですか？ {#do-i-need-a-real-robot}
 いいえ。すべてシミュレーターの中で行います。ロボットは、あなたが設計する仮想の e-puck です。
@@ -11,7 +11,7 @@ description: Erebus と競技についてよくある質問です。
 ### どのプログラミング言語を使えますか？ {#which-programming-languages-can-i-use}
 このドキュメントでは Python と C/C++ を扱っています。Erebus は Java や MATLAB のコントローラーも読み込めますが、このドキュメントにはそれらの例はありません。
 
-### 高性能なコンピューターが必要ですか？ {#is-a-powerful-computer-needed}
+### 高性能なコンピューターが必要ですか？ {#do-i-need-a-powerful-computer}
 いいえ。[動作環境](/docs/installation/)を参照してください。遅いコンピューターでは、[グラフィックスの設定を下げる](/docs/troubleshooting/#the-simulation-runs-too-slowly)必要があるかもしれません。
 
 ### 新しいバージョンの Webots を使えますか？ {#can-i-use-a-newer-version-of-webots}
@@ -58,4 +58,4 @@ description: Erebus と競技についてよくある質問です。
 [競技の準備](/docs/competition/)を参照してください。
 
 ### ルールについてはどこで質問できますか？ {#where-can-i-ask-about-the-rules}
-[RoboCupJunior Forum](https://junior.forum.robocup.org/) で質問できます。ルールの明確化（Clarifications）もそこに投稿されるので、定期的に確認してください。
+[RoboCupJunior Forum](https://junior.forum.robocup.org/) で質問できます。ルールの補足（Clarifications）もそこに投稿されるので、定期的に確認してください。

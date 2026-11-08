@@ -7,7 +7,7 @@ Erebus เป็นสภาพแวดล้อมสำหรับการ�
 
 Erebus สร้างบน [Webots](https://cyberbotics.com/) ซึ่งเป็นแพลตฟอร์มจำลองหุ่นยนต์ที่ออกแบบมาสำหรับการใช้งานระดับมืออาชีพ และใช้กันอย่างแพร่หลายในอุตสาหกรรม การศึกษา และการวิจัย Cyberbotics ดูแล Webots อย่างต่อเนื่องมาตั้งแต่ปี 1998
 
-แพลตฟอร์มนี้ออกแบบมาสำหรับการแข่งขัน [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) เป็นหลัก และเหมาะสำหรับผู้เขียนโปรแกรมระดับกลางไปจนถึงผู้มีประสบการณ์สูง
+แพลตฟอร์มนี้ออกแบบมาสำหรับการแข่งขัน [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) เป็นหลัก และเหมาะสำหรับผู้ที่มีประสบการณ์เขียนโปรแกรมระดับกลางถึงระดับสูง
 
 ## ส่วนต่าง ๆ ทำงานร่วมกันอย่างไร {#how-it-fits-together}
 
@@ -26,10 +26,10 @@ Erebus สร้างบน [Webots](https://cyberbotics.com/) ซึ่งเ�
 3. **รัน** ทดสอบบนโลกที่มีมาให้หรือโลกของคุณเอง แล้วดูคะแนน
 4. **แข่งขัน** เข้าร่วมการแข่งขัน RoboCupJunior ระดับท้องถิ่น ระดับภูมิภาค และระดับนานาชาติ
 
-หากคุณรู้จัก Erebus อยู่แล้ว ดู[มีอะไรใหม่ใน v26](/docs/whats-new/)
+หากคุณรู้จัก Erebus อยู่แล้ว ดูได้ที่[มีอะไรใหม่ใน v26](/docs/whats-new/)
 
 ## แหล่งอ้างอิงที่มีประโยชน์ {#useful-references}
-รายการลิงก์ที่มีประโยชน์สำหรับการเรียนรู้และการทำงานกับ Erebus Simulator:
+ลิงก์ที่มีประโยชน์สำหรับการเรียนรู้และการทำงานกับ Erebus:
 - [คู่มือผู้ใช้ Webots](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [คู่มืออ้างอิง Webots](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [เอกสาร Python](https://www.python.org/doc/)

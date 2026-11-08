@@ -17,7 +17,7 @@ Each section below is a complete program for the [starter robot](/docs/robot/). 
 To score a letter victim or a cognitive target, the robot must:
 
 1. **Stop for more than 1 second** close to the token. Erebus ignores the report if the robot has moved in the last second.
-2. **Send the position and type** of the token: X and Z in **centimeters**, and the type as one letter.
+2. **Send the position and type** of the token: X and Z in **centimetres**, and the type as one letter.
 
 | Wall token | Type |
 |---|---|
@@ -29,7 +29,7 @@ To score a letter victim or a cognitive target, the robot must:
 | Cognitive target, sum 2 (Corrosive) | `C` |
 | Cognitive target, sum 3 (Organic Peroxide) | `O` |
 
-The types are letters, even though victims show symbols since 2026. The GPS gives meters, so multiply by 100.
+The types are letters, even though victims show symbols since 2026. The GPS gives metres, so multiply by 100.
 
 <CodeTabs file="report" />
 
@@ -47,7 +47,7 @@ The receiver can get different messages, so check the length of each one before 
 
 ## Game information
 
-Send `G` to get the score and the time left. The game replies with a 16 byte message: the letter `G`, the score, the game time left and the real time left, in seconds.
+Send `G` to get the score and the time left. The game replies with a 16-byte message: the letter `G`, the score, the game time left and the real time left, in seconds.
 
 <CodeTabs file="gameinfo" />
 

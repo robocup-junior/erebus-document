@@ -1,6 +1,6 @@
 ---
 title: Duvar işaretleri
-description: Harf kazazedeleri, bilişsel hedefleri ve sahteleri birbirinden nasıl ayırt edersin.
+description: Harf kazazedeleri, bilişsel hedefleri ve sahteleri birbirinden nasıl ayırt edeceğin.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -10,15 +10,15 @@ Duvar işaretleri (wall tokens) puanlarının çoğunu oluşturur ve her yanlı�
 
 | İşaret... | Ne yapmalı |
 |---|---|
-| Bir harf kazazede (Letter victim: Φ, Ψ, Ω) | `H`, `S` ya da `U` bildir |
-| Bir sahte kazazede (Fake victim: aynı semboller, üç boyutlu) | Bildirme ve haritaya ekleme |
-| Toplamı 0 ile 3 arasında olan bir bilişsel hedef (Cognitive target) | `F`, `P`, `C` ya da `O` bildir |
-| Başka bir toplamı olan bilişsel hedef | Sahtedir: bildirme ve haritaya ekleme |
+| Bir harf kazazede (Φ, Ψ, Ω) | `H`, `S` ya da `U` bildir |
+| Bir sahte kazazede (aynı semboller, ama üç boyutlu) | Bildirme ve haritaya ekleme |
+| Toplamı 0 ile 3 arasında olan bir bilişsel hedef | `F`, `P`, `C` ya da `O` bildir |
+| Toplamı başka bir değer olan bilişsel hedef | Sahtedir: bildirme ve haritaya ekleme |
 
 Kesin tanımlar için [Kurallar](/docs/rules/#wall-tokens) sayfasına, bildirimin nasıl gönderileceği için [İletişim](/docs/programming/communication/#scoring-wall-tokens) sayfasına bak.
 
 ## Kameranın gördükleri \{#what-the-camera-sees\}
-Başlangıç robotunun kamerası 64 × 40 pikseldir. Bu çözünürlükte bir işaret, robot yaklaşana kadar yalnızca birkaç pikseldir. Bu yüzden adayları uzaktan aramak, sonra okumak için yaklaşmak en iyisidir. Bir bildirim için robotun işarete yarım kare mesafede olması gerektiğini ve özel kameraların, bir maliyet karşılığında, daha yüksek çözünürlüğe sahip olabileceğini unutma.
+Başlangıç robotunun kamerası 64 × 40 pikseldir. Bu çözünürlükte bir işaret, robot yaklaşana kadar yalnızca birkaç pikselden ibarettir. Bu yüzden adayları uzaktan arayıp sonra okumak için yaklaşmak en iyisidir. Bildirim yapabilmek için robotun işarete en fazla yarım kare uzaklıkta olması gerektiğini ve özel kameraların daha yüksek çözünürlüğe sahip olabileceğini, ama bunun bir maliyeti olduğunu unutma.
 
 ![64'e 40 piksellik bir kameranın gördüğü bilişsel hedef](../../../../docs/programming/wall-tokens/camera_target.png)
 
@@ -35,25 +35,25 @@ Bu fonksiyon bunu Python'da OpenCV ile yapar. Merkezi ve yarıçapı bulmak içi
 
 <CodeTabs file="readRings" />
 
-Gerçek bir oyunda hedef bir açıdan görülebilir; bu durumda elips gibi görünür. Hedefin önüne geçmek, yanlış görünen renkleri bir uyarı olarak kullanmak ya da birkaç kareyi okumak sonucu daha güvenilir yapar.
+Gerçek bir oyunda hedef eğik bir açıdan görülebilir; bu durumda elips gibi görünür. Hedefin karşısına geçmek, yanlış görünen renkleri bir uyarı işareti olarak değerlendirmek ya da birkaç görüntü karesini okumak sonucu daha güvenilir hale getirir.
 
 ## Türü hesaplama \{#calculating-the-type\}
-Beş rengi elde ettikten sonra bildirilecek kod, renklerin toplamından gelir. Komşu renkler aynı olsa bile beş parçanın her biri her zaman sayılır.
+Beş rengi elde ettikten sonra bildireceğin kod, bu renklerin toplamından çıkar. Komşu renkler aynı olsa bile beş parçanın her biri her zaman ayrı sayılır.
 
 <CodeTabs file="targetCode" />
 
 Örneğin `['Y', 'B', 'R', 'K', 'G']` toplamı 0 eder, yani `F`'dir; `['B', 'Y', 'K', 'K', 'K']` ise toplamı -4 eder, yani sahtedir.
 
 ## Sahte kazazedeleri tespit etme \{#detecting-fake-victims\}
-Sahte kazazedeler gerçek olanlarla aynı sembolleri gösterir, ama harfler üç boyutludur. Önden bakıldığında yalnızca bir kamera onları ayırt edemeyebilir:
+Sahte kazazedeler gerçek olanlarla aynı sembolleri gösterir, ama harfleri üç boyutludur. Önden bakıldığında tek başına bir kamera onları ayırt edemeyebilir:
 
 ![Önden görülen sahte bir kazazede](../../../../docs/programming/wall-tokens/fake_victim_front.png)
 
 
 Kurallar, derinliğin Robot Customizer'daki sensörlerden biriyle tespit edilebileceğini belirtir. Keşfedebileceğin bazı fikirler:
 
-- Bir yükseklik farkı aramak için işaret boyunca Lidar ya da mesafe sensörleriyle alınan mesafe ölçümlerini karşılaştır.
-- İşarete bir açıdan bak; orada kabartma, sembolün şeklini değiştirir.
+- Bir yükseklik farkı aramak için işaretin üzerinden boydan boya Lidar ya da mesafe sensörleriyle aldığın mesafe ölçümlerini karşılaştır.
+- İşarete eğik bir açıdan bak; bu açıdan bakıldığında kabartma, sembolün şeklini değiştirir.
 
 `world3.wbt` ve `world4.wbt` dünyaları sahte kazazedeler içerir ve [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) onları kendi haritalarına ekleyebilir. Erebus ayrıca mevcut dünyalardaki kazazedeleri rastgele sahteye dönüştüren `scripts/update_maps_with_fakes.py` betiğini içerir.
 

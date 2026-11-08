@@ -4,14 +4,14 @@ description: Mais informações e exemplos sobre o mapeamento.
 ---
 
 ## Ideia geral {#general-idea}
-O mapeamento é pontuado como um multiplicador da pontuação total obtida durante a execução. Para obter um multiplicador de mapeamento, o robô precisa enviar uma matriz ao supervisor principal (main supervisor) da partida. A matriz enviada é comparada com o "gabarito" para gerar um valor de acerto (correctness), e o multiplicador é:
+O mapeamento é pontuado como um multiplicador sobre a pontuação da execução. Para obtê-lo, o robô precisa enviar uma matriz ao Main Supervisor da partida. A matriz enviada é comparada com o "gabarito" para gerar um valor de acerto (correctness), e o multiplicador é:
 
 **multiplicador do bônus de mapa = acerto × 1,2 + 1**
 
 Então um mapa perfeito multiplica a sua pontuação por 2,2. Para aprender a enviar a matriz, veja o [tutorial Enviar o mapa](/docs/programming/map-bonus/).
 
 ## Regras do mapeamento {#rules-for-mapping}
-* Cada quarto de ladrilho, com as bordas e os vértices ao redor, é representado por uma célula (valor). Um mapa de L × A ladrilhos é, portanto, uma matriz com (4 × A + 1) linhas e (4 × L + 1) colunas.
+* Cada quarto de ladrilho, cada borda e cada vértice é representado por uma célula (valor). Um mapa de L × A ladrilhos é, portanto, uma matriz com (4 × A + 1) linhas e (4 × L + 1) colunas.
 * Cada elemento do mundo é representado da seguinte forma:
 
 | Elemento | Valor |
@@ -32,13 +32,13 @@ Então um mapa perfeito multiplica a sua pontuação por 2,2. Para aprender a en
 | Todos os ladrilhos, bordas e vértices da área 4, incluindo a sua divisa | `*` |
 | Quaisquer outros ladrilhos, bordas e vértices | `0` |
 
-* Os elementos do piso (`2`, `3`, `4`, `5`, `x` e as passagens) são escritos nas quatro células do centro de cada quarto de ladrilho, como você pode ver nos exemplos abaixo.
+* Os elementos do piso (`2`, `3`, `4`, `5`, `x` e as passagens) são escritos na célula central de cada um dos quatro quartos de ladrilho do ladrilho, como você pode ver nos exemplos abaixo.
 * Nenhum ladrilho é mais de uma destas coisas ao mesmo tempo: pântano, buraco, ponto de controle, ladrilho inicial, ladrilho com obstáculo ou passagem entre áreas.
-* Nas paredes curvas da área 3, o vértice deve ser representado por um `0`.
-* A presença de um marcador de parede deve ser indicada na célula da parede em que ele está. Se houver vários marcadores na mesma parede, por exemplo nos dois lados dela, concatene os códigos em uma única célula, na ordem da posição absoluta no mapa: primeiro de cima para baixo, depois da esquerda para a direita.
+* Nas paredes curvas da área 3, o vértice é representado por um `0`.
+* Um marcador de parede é escrito na célula da parede em que ele está. Se houver vários marcadores na mesma parede, por exemplo nos dois lados dela, concatene os códigos em uma única célula, na ordem da posição absoluta no mapa: primeiro de cima para baixo, depois da esquerda para a direita.
 * Os marcadores falsos não devem ser incluídos no mapa: nem as vítimas falsas, nem os alvos cognitivos com soma inválida.
-* Os marcadores em ladrilhos inteiros (que não são quartos de ladrilho) podem estar em qualquer ponto ao longo da parede. Eles devem ser colocados na célula do quarto de ladrilho de que estiverem mais perto, ou na célula do meio se estiverem perto do centro do lado do ladrilho.
-* Os mapas podem ser guardados em qualquer rotação, desde que seja um múltiplo de 90°. O Erebus alinha a sua matriz com o gabarito usando o ladrilho inicial, testa cada orientação e fica com o melhor resultado.
+* Os marcadores em ladrilhos inteiros (que não são quartos de ladrilho) podem estar em qualquer ponto ao longo da parede. Eles são escritos na célula do quarto de ladrilho de que estiverem mais perto, ou na célula do meio se estiverem perto do centro do lado do ladrilho.
+* Os mapas podem ser enviados em qualquer rotação, desde que seja um múltiplo de 90°. O Erebus alinha a sua matriz com o gabarito usando o ladrilho inicial, testa cada orientação e fica com o melhor resultado.
 
 ## Como o acerto é calculado {#how-correctness-is-calculated}
 1. As matrizes são alinhadas pelo ladrilho inicial. Isso significa que **o seu mapa precisa conter o ladrilho inicial**.
@@ -48,10 +48,10 @@ Então um mapa perfeito multiplica a sua pontuação por 2,2. Para aprender a en
 Como só contam as posições que têm alguma coisa, marcar algo que não existe diminui o seu acerto tanto quanto deixar de marcar algo que existe.
 
 ## Casos ambíguos {#ambiguous-edge-cases}
-Para casos ambíguos que não estão definidos abaixo, entre em contato com o comitê internacional da RoboCupJunior Rescue e/ou com a equipe de desenvolvimento da plataforma.
+Para casos ambíguos que não são tratados abaixo, entre em contato com o Comitê Internacional da RoboCupJunior Rescue e/ou com a equipe de desenvolvimento da plataforma.
 ### Uma parede com uma parede normal em ângulo reto de um lado e uma parede curva do outro {#one-wall-with-a-normal-right-angled-wall-and-a-curved-wall-on-each-side}
-As regras dizem que os vértices de uma parede curva devem ser representados por zeros.
-A exceção é o caso a seguir, em que um lado da parede é um ângulo reto normal e o outro lado é curvo, que é representado da mesma forma que se os dois lados fossem paredes normais.
+As regras dizem que os vértices de uma parede curva são representados por zeros.
+A exceção é o caso a seguir, em que um lado da parede é um ângulo reto normal e o outro lado é curvo. Ele é representado como se os dois lados fossem paredes normais.
 ![Uma parede com um ângulo reto de um lado e uma curva do outro](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Exemplos {#examples}

@@ -42,7 +42,7 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 把坑洞當成牆壁。沼澤會花費時間，而且每次進入同一個沼澤都會花費更多，所以只有在值得時才進入。
 
 ## 應付意外狀況 {#handle-the-unexpected}
-- **缺乏進展（Lack of Progress）：** 機器人會被移到最後一個檢查點。[接收 `L` 訊息](/docs/programming/communication/#lack-of-progress)，並更新你的位置。
+- **缺乏進展：** 機器人會被移到最後一個檢查點。[接收 `L` 訊息](/docs/programming/communication/#lack-of-progress)，並更新你的位置。
 - **時間：** 用 [`G`](/docs/programming/communication/#game-information) 查詢剩餘時間。留下足夠的時間傳送地圖並返回起點。
 - **雜訊：** 感測器有雜訊，所以在相信偵測到牆壁或標記之前，請先比較多次讀數。
 

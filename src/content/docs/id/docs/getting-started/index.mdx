@@ -5,14 +5,14 @@ description: Muat robotmu dan program siap pakai, lalu lihat robotmu menjelajahi
 
 import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
 
-Di halaman ini kamu menjalankan program lengkap di robotmu, dan belajar menggunakan jendela kontrol Erebus. Kamu membutuhkan [Erebus yang sudah terinstal](/docs/installation/) dan [robotmu](/docs/robot/).
+Di halaman ini, kamu akan menjalankan program lengkap di robotmu, dan belajar menggunakan jendela kontrol Erebus. Kamu membutuhkan [Erebus yang sudah terinstal](/docs/installation/) dan [robotmu](/docs/robot/).
 
 ## Folder Erebus \{#the-erebus-folder\}
 Ini adalah folder-folder utama dari rilis yang kamu unduh:
 
 | Folder | Isi |
 |---|---|
-| `game/worlds` | World (file `.wbt`). Buka salah satunya untuk memulai. |
+| `game/worlds` | World (berkas `.wbt`). Buka salah satunya untuk memulai. |
 | `game/logs` | Log permainan yang ditulis di akhir setiap permainan |
 | `player_controllers` | Contoh controller |
 
@@ -25,8 +25,8 @@ Ini adalah folder-folder utama dari rilis yang kamu unduh:
 | Bagian | Kegunaan |
 |---|---|
 | **LOAD** kiri (ikon laptop) | Memuat program controller robotmu |
-| **LOAD** kanan (ikon robot) | Memuat robotmu (file `.json`) |
-| **TOGGLE REMOTE** | Membuat program yang berjalan di luar Webots bisa mengendalikan robot. Lihat [Remote Controller](/docs/competition/remote-controller/). |
+| **LOAD** kanan (ikon robot) | Memuat robotmu (berkas `.json`) |
+| **TOGGLE REMOTE** | Memungkinkan program yang berjalan di luar Webots mengendalikan robot. Lihat [Remote Controller](/docs/competition/remote-controller/). |
 | **Docker path** | Folder berisi `Dockerfile`, untuk menjalankan controller-mu di dalam container dengan tombol Docker di sebelah tombol play. Lihat repositori [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). Ini opsional. |
 | **Settings** | Tautan dan opsi, dijelaskan di bawah |
 | **Worlds** | Berpindah ke world lain |
@@ -45,11 +45,11 @@ Ini adalah folder-folder utama dari rilis yang kamu unduh:
 ![Tombol start](../../../docs/getting-started/start_button.png)
 1. Untuk menghentikan robot sementara, tekan tombol pause.
 ![Tombol pause](../../../docs/getting-started/pause_button.png)
-1. Jika robot terjebak, menekan tombol restart akan memicu kurangnya kemajuan (Lack of Progress), yang memindahkan robot ke checkpoint terakhir yang dicapainya dan mengurangi 5 poin.
-![Tombol kurangnya kemajuan](../../../docs/getting-started/lop_button.png)
+1. Jika robot terjebak, tekan tombol restart untuk memicu kurangnya kemajuan (lack of progress). Robot akan dipindahkan kembali ke checkpoint terakhir yang dicapainya, dan kamu kehilangan 5 poin.
+![Tombol lack of progress](../../../docs/getting-started/lop_button.png)
 1. Tekan tombol Reset untuk me-reset program yang dimuat dan permainan yang sedang berjalan. Muat ulang world jika kamu ingin menjalankannya lagi setelah permainan berakhir.
 
-Program ini membutuhkan OpenCV, yang sudah kamu instal bersama [library Python](/docs/installation/#python-libraries) lainnya. Pesan dari programmu, dan error, muncul di konsol Webots.
+Program ini membutuhkan OpenCV, yang sudah kamu instal bersama [library Python](/docs/installation/#python-libraries) lainnya. Pesan dan error dari programmu muncul di konsol Webots.
 
 Selama permainan berjalan, riwayat skor muncul di bagian bawah jendela. Riwayat ini memberitahumu dengan tepat mengapa kamu mendapat atau kehilangan poin, jadi ini adalah alat terbaik untuk memeriksa programmu.
 
@@ -58,7 +58,7 @@ Selama permainan berjalan, riwayat skor muncul di bagian bawah jendela. Riwayat 
 Di akhir permainan, informasi yang sama disimpan di folder `game/logs`.
 
 ## Menggunakan world lain \{#using-other-worlds\}
-Tekan **Worlds** untuk berpindah ke world lain. Setiap world punya gambar mini, dan kamu juga bisa menambahkan world buatanmu sendiri, yang dibuat dengan [World Editor](/docs/tools/world-editor/).
+Tekan **Worlds** untuk berpindah ke world lain. Setiap world punya gambar mini (thumbnail), dan kamu juga bisa menambahkan world buatanmu sendiri yang dibuat dengan [World Editor](/docs/tools/world-editor/).
 
 ![Tab Worlds di jendela kontrol](../../../docs/getting-started/worlds.png)
 
@@ -76,17 +76,17 @@ World yang disertakan di Erebus v26.1 adalah:
 
 | Pengaturan | Kegunaan |
 |---|---|
-| Keep controller/robot files | Mempertahankan program dan robotmu tetap dimuat saat world dimuat ulang |
+| Keep controller/robot files | Membuat program dan robotmu tetap termuat saat world dimuat ulang |
 | Disable automatic LoP | Menghentikan kurangnya kemajuan otomatis setelah 20 detik. Hanya untuk debugging. |
 | Automatic camera | Membuat tampilan mengikuti robot |
 | Recording | Merekam permainan sebagai video |
-| Keep remote controller on | Mempertahankan TOGGLE REMOTE tetap aktif saat world dimuat ulang |
+| Keep remote controller on | Membuat TOGGLE REMOTE tetap aktif saat world dimuat ulang |
 | Enable debugging | Mencetak informasi tambahan di konsol Webots, misalnya alasan laporan penanda dinding ditolak |
 
 Tautan di bagian atas mengarah ke changelog dan ke alat untuk membuat world dan robot. Untuk membuat world dengan aturan 2026, gunakan [World Editor](https://world.erebus.rcj.cloud/).
 
 ## Memindahkan robot secara manual ke tempat yang kamu inginkan \{#manually-move-the-robot-where-you-want-it-to-go\}
-Saat kamu mengklik robot di jendela simulasi, panah merah, biru, dan hijau akan muncul. Kamu bisa memindahkan robot ke posisi mana pun dengan menarik panah-panah ini menggunakan mouse. Perhatikan bahwa robot tidak akan ditampilkan sampai program dimulai.
+Saat kamu mengklik robot di jendela simulasi, panah merah, hijau, dan biru akan muncul. Seret panah-panah ini dengan mouse untuk memindahkan robot ke posisi mana pun. Perhatikan bahwa robot baru ditampilkan setelah program dimulai.
 ![Robot yang dipilih di Webots, dengan panah untuk memindahkannya](../../../docs/getting-started/manual.png)
 
 

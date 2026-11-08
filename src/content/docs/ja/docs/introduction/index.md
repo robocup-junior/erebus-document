@@ -19,7 +19,7 @@ Erebus は [Webots](https://cyberbotics.com/) 上に作られています。Webo
 | **Robot Customizer** | カスタムロボットを設計し、JSON ファイルとして書き出す Web ツール | [robot.erebus.rcj.cloud](https://robot.erebus.rcj.cloud/) |
 | **World Editor** | 練習用のマップを描き、`.wbt` ワールドとして書き出す Web ツール | [world.erebus.rcj.cloud](https://world.erebus.rcj.cloud/) |
 
-## 何ができるの？ {#what-can-you-do-with-it}
+## 何ができますか？ {#what-can-you-do-with-it}
 
 1. **ロボットを作る。** 予算の範囲内で、センサーとその配置を選びます。
 2. **プログラムする。** コントローラーがセンサーを読み取り、人の助けなしに何をするかを判断します。
@@ -29,14 +29,14 @@ Erebus は [Webots](https://cyberbotics.com/) 上に作られています。Webo
 すでに Erebus を知っている方は、[v26 の新機能](/docs/whats-new/)を参照してください。
 
 ## 役に立つ資料 {#useful-references}
-Erebus シミュレーターの学習と開発に役立つリンク集です。
+Erebus について学ぶときや、Erebus で開発するときに役立つリンクです。
 - [Webots ユーザーガイド](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Webots リファレンスマニュアル](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Python ドキュメント](https://www.python.org/doc/)
 - [C++ ドキュメント](https://www.cplusplus.com/doc/tutorial/)
 - [OpenCV チュートリアル](https://docs.opencv.org/4.x/d9/df8/tutorial_root.html)
 - [RCJ Rescue コミュニティサイト](https://rescue.rcj.cloud/): イベント、チーム資料、TDP・ポスター・ビデオの評価基準
-- [RoboCupJunior Forum](https://junior.forum.robocup.org/): ルールの確認
+- [RoboCupJunior Forum](https://junior.forum.robocup.org/): ルールの補足（Clarifications）
 
 ## 次へ {#next}
 [Erebus をインストール](/docs/installation/)したら、[ルールの概要](/docs/rules/)を読んでゲームを理解しましょう。

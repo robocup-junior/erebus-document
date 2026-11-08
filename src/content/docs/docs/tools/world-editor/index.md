@@ -5,12 +5,12 @@ description: How to create your own worlds with the Erebus World Editor.
 
 ## Background
 
-After you've conquered the test maps and your robot is able to run simple mazes, maybe you want something more challenging, or you want to test some specific scenarios that our maps don't offer.
-For this you have the online [Erebus World Editor](https://world.erebus.rcj.cloud/). You draw a map in your browser, and it exports a `.wbt` world file that you can run in Erebus.
+Once your robot can handle the included maps and simple mazes, you may want something more challenging, or to test specific scenarios that the included maps do not cover.
+For this, there is the online [Erebus World Editor](https://world.erebus.rcj.cloud/). You draw a map in your browser, and it exports a `.wbt` world file that you can run in Erebus.
 
 ![A finished map in the World Editor](./overview.png)
 
-If you are just building small maps for testing, the correctness of the field is probably not of much importance to you. But if you are planning to build a competition field, you should read through the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). The editor checks your map against the rules while you work.
+If you are only building small maps for testing, whether the field follows the rules probably does not matter much. But if you plan to build a competition field, read the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). The editor checks your map against the rules while you work.
 
 The editor has a built-in guide: press **Guide** at the bottom right for a hands-on lesson that makes a sample map (about 15 minutes), a tour of the screen, or a lesson on Room 4. The language of the editor can be changed next to it.
 
@@ -21,7 +21,7 @@ When you open the editor, choose **which year's rules** you want to follow, and 
 
 Your work is kept in the browser, but it is lost in another browser or when the browsing data is cleared. Keep maps that matter by saving them as JSON with the save button in the top bar, and reopen them with the open button.
 
-A good order to work in is: size and outline, rooms, passages, walls, floors, obstacles and victims, Room 4, and finally the checks and the export. The tools are on the left, each with a keyboard shortcut. The settings of the selected tool appear in the panel beside them.
+A good order to work in is size and outline, rooms, passages, walls, floors, obstacles and victims, Room 4, and finally the checks and the export. The tools are on the left, each with a keyboard shortcut. The settings of the selected tool appear in the panel beside them.
 
 | Tool | Key | Use |
 |---|---|---|
@@ -40,12 +40,12 @@ A good order to work in is: size and outline, rooms, passages, walls, floors, ob
 The mouse wheel zooms, a drag with Space held moves the view, and undo is `⌘Z` or `Ctrl+Z`.
 
 ## Size and outline
-With the **Outline** tool, set the size of the map in tiles. The outer walls follow by themselves. **Outline (uneven)** lets you click tiles to take them out of the map, and you can also insert and remove rows and columns where you click.
+With the **Outline** tool, set the size of the map in tiles. The outer walls are added automatically. **Outline (uneven)** lets you click tiles to take them out of the map, and you can also insert and remove rows and columns where you click.
 
 ![The Outline tool](./outline.png)
 
 ## Rooms and passages
-With the **Rooms** tool, paint the tiles of each room. Walls go up by themselves on the borders between rooms. Then, with the **Passages** tool, join the rooms: the colour of each passage is chosen according to the rooms it connects.
+With the **Rooms** tool, paint the tiles of each room. Walls are added automatically on the borders between rooms. Then, with the **Passages** tool, join the rooms: the colour of each passage is chosen according to the rooms it connects.
 
 ![The Rooms tool](./rooms.png)
 
@@ -61,7 +61,7 @@ With the **Floor** tool, pick a floor type and click a tile to set it. The start
 
 ![The Floor tool](./floors.png)
 
-With the **Obstacle** tool, pick a shape and click a tile. In Rooms 1 to 3 there is one obstacle per tile, with its center on the tile. Click an obstacle to change its size, height, colour and rotation with its handles and the panel.
+With the **Obstacle** tool, pick a shape and click a tile. In Rooms 1 to 3 there is one obstacle per tile, with its centre on the tile. Click an obstacle to change its size, height, colour and rotation with its handles and the panel.
 
 ![The Obstacle tool](./obstacles.png)
 
@@ -82,7 +82,7 @@ Room 4 is not based on tiles, so it is drawn as a picture. With the **Rooms** to
 
 ![The room 4 creator](./room4.png)
 
-What you draw in black becomes walls. The creator has tools to draw freehand and to draw lines, curves, arcs, rectangles, ellipses, polygons and shapes from icons, and tools for victims and obstacles. As many obstacles as you like can be placed in Room 4. Red stripes show where the robot cannot get to, and you must leave room for the robot, about a tile wide, to get through.
+What you draw in black becomes walls. The creator has tools to draw freehand and to draw lines, curves, arcs, rectangles, ellipses, polygons and shapes from icons, and tools for victims and obstacles. As many obstacles as you like can be placed in Room 4. Red stripes show where the robot cannot go, and you must leave a path about one tile wide for the robot to get through.
 
 When it is done, press **OK**: the picture appears as Room 4 on the map and goes into the exported world. The buttons at the top right of the creator save the picture as a PNG, so you can use the same Room 4 in another map, and open PNG or JPEG pictures.
 

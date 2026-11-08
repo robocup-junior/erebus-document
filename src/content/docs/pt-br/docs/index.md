@@ -31,4 +31,4 @@ Todos os exemplos usam o [robô inicial](/docs/robot/), então carregue-o antes 
 | Programar em C ou C++ | [Controladores em C++](/docs/programming/cpp/) |
 | Consultar uma mensagem ou um nome de dispositivo | [Referência](/docs/reference/parameters/) |
 | Resolver um problema | [Solução de problemas](/docs/troubleshooting/) e [Perguntas frequentes](/docs/faq/) |
-| Vir de uma versão anterior | [Novidades da v26](/docs/whats-new/) |
+| Migrar de uma versão anterior | [Novidades da v26](/docs/whats-new/) |

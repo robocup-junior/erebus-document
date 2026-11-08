@@ -7,13 +7,13 @@ Erebus v26, 2026 kurallarını uygular. Daha eski bir sürümden geliyorsan robo
 
 | Konu | 2025'e kadar | 2026'dan itibaren |
 |---|---|---|
-| Harf kazazedeler (Letter victims) | H, S, U harfleri | Φ (yaralı), Ψ (stabil), Ω (yarasız) sembolleri. Hâlâ `H`, `S`, `U` olarak bildirilirler. |
-| Tehlikeli madde işaretleri (Hazmat signs) | Dört tehlikeli madde etiketi | Yerini [bilişsel hedefler](/docs/rules/#cognitive-targets) (Cognitive targets) aldı: değerlerinin toplamı türü veren eş merkezli renkli halkalar. Hâlâ `F`, `P`, `C`, `O` olarak bildirilirler. |
-| Sahte işaretler | - | Yeni: üç boyutlu harfli [sahte kazazedeler](/docs/rules/#fake-victims) (Fake victims) ve toplamı 0 ile 3 arasında olmayan bilişsel hedefler. Bunları bildirme ve haritaya ekleme. |
-| Bataklıklar | Süre 5 kat hızlı tüketilir | Bir bataklığa ilk giriş x5'tir, aynı bataklığa her yeni giriş 1 ekler, en fazla x10. |
+| Harf kazazedeler | H, S, U harfleri | Φ (yaralı), Ψ (stabil), Ω (yarasız) sembolleri. Hâlâ `H`, `S`, `U` olarak bildirilirler. |
+| Tehlikeli madde işaretleri (hazmat signs) | Dört tehlikeli madde etiketi | Yerlerini [bilişsel hedefler](/docs/rules/#cognitive-targets) aldı: değerlerinin toplamı türü veren, eş merkezli renkli halkalar. Hâlâ `F`, `P`, `C`, `O` olarak bildirilirler. |
+| Sahte işaretler | - | Yeni: üç boyutlu harfli [sahte kazazedeler](/docs/rules/#fake-victims) ve toplamı 0 ile 3 arasında olmayan bilişsel hedefler. Bunları bildirme ve haritaya ekleme. |
+| Bataklıklar | Süre 5 kat hızlı akar | Bir bataklığa ilk girişte çarpan x5'tir; aynı bataklığa her yeni girişte 1 artar, en fazla x10 olur. |
 | Haritadaki engeller | Haritaya eklenmez | Engel bulunan kareler haritada `x` olarak işaretlenir. |
-| Harita bonusu | En fazla x2 | Çarpan artık doğruluk × 1,2 + 1. |
-| Sensör gürültüsü | - | GPS'in gürültüsü var. Organizatörler yarışma için gürültü seviyelerini değiştirmeyecek. |
+| Haritalama bonusu | En fazla x2 | Çarpan artık doğruluk × 1,2 + 1. |
+| Sensör gürültüsü | - | GPS'te gürültü var. Organizatörler yarışma için gürültü seviyelerini değiştirmez. |
 | Oyunların yürütülmesi | Her etkinlik için duyurulur | Sunucu-istemci kurulumu: denetleyicin kendi bilgisayarında çalışır ve oyun sunucusuna Ethernet ile bağlanır. [Remote Controller](/docs/competition/remote-controller/) sayfasına bak. |
 | Belgeler | TDP, poster, video | Bunlara ek olarak, denetleyicini sunucu-istemci kurulumunda nasıl çalıştırdığını gösteren kısa bir video. |
 | Kaçırılan oyunlar | -50 puan | 0 puan. |

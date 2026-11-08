@@ -17,7 +17,7 @@ description: 每个程序都运行在你设计的机器人上。下载入门机�
 | 两个车轮 | `left wheel motor`、`right wheel motor` | 移动 |
 | 车轮编码器 | `left wheel sensor`、`right wheel sensor` | 测量车轮转过了多少 |
 | 三个距离传感器 | `leftDist`、`frontDist`、`rightDist` | 找到左侧、前方和右侧的墙 |
-| 摄像头，64 × 40 像素 | `camera` | 寻找墙上的标识 |
+| 摄像头，64 × 40 像素 | `camera` | 寻找墙面标识 |
 | 颜色传感器 | `color` | 查看地面：坑洞、沼泽和通道 |
 | GPS | `gps` | 了解自己的位置，用于报告标识 |
 | 陀螺仪 | `gyro` | 测量转过了多少 |
@@ -31,7 +31,7 @@ description: 每个程序都运行在你设计的机器人上。下载入门机�
 
 **推荐：自己动手搭建。** 大约需要 15 分钟，你会了解机器人的每一个部分。请按照[搭建机器人](/docs/robot/build/)操作。
 
-**赶时间的话：** 下载搭建好的机器人，继续学习教程。你随时可以回来再自己搭建。
+**赶时间的话**：下载搭建好的机器人，继续学习教程。你随时可以回来再自己搭建。
 
 <a href="/downloads/starter-robot.json" download>下载 starter-robot.json</a>
 

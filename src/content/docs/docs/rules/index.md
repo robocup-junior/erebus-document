@@ -13,7 +13,7 @@ Corrections and clarifications are posted on the [official RoboCupJunior Forum](
 Your robot is dropped into an unknown maze, alone. In 8 minutes, with no help from you, it must:
 
 1. **Explore** the maze without getting stuck or falling into holes.
-2. **Find the wall tokens**, victims and hazard signs on the walls, and report what each one is.
+2. **Find the wall tokens**, the victims and cognitive targets on the walls, and report what each one is.
 3. **Map** the maze, and send the map at the end.
 4. **Return** to where it started.
 
@@ -57,13 +57,13 @@ Tiles that lead to the starting tile by consistently following the leftmost or r
 ![A field showing linear tiles in grey and floating tiles in pink](./rules_linear_floating.png)
 
 ### Checkpoints
-Silver tiles are checkpoints, and they can be placed anywhere on the field. Area 4 contains checkpoints immediately after its passages. After a lack of progress, the robot restarts from the last checkpoint it visited.
+Silver tiles are checkpoints, and they can be anywhere on the field. Area 4 contains checkpoints immediately after its passages. After a lack of progress, the robot restarts from the last checkpoint it visited.
 
 ## Swamps, obstacles and holes
 ![A field with a swamp, a hole and an obstacle](./rules_obstacles.png)
 
 * **Swamps** (brown tiles) make the game time run faster while the robot is on them. The first time the robot enters a swamp, time runs 5 times faster. Each new entry into the same swamp adds one more, until the limit of x10.
-* **Obstacles** may be fixed to the floor, may have any shape and colour, and affect the width of the pathway. In Areas 1 to 3, the center of an obstacle is always on a tile, never on the edge between tiles, and there is at most one obstacle per tile.
+* **Obstacles** may be fixed to the floor, may have any shape and colour, and affect the width of the pathway. In Areas 1 to 3, the centre of an obstacle is always on a tile, never on the edge between tiles, and there is at most one obstacle per tile.
 * **Holes** have black edges. If the robot falls into one, a lack of progress occurs.
 
 No tile is more than one of the following at the same time: swamp, hole, checkpoint, starting tile, tile with an obstacle, or area passage.
@@ -74,7 +74,7 @@ There are two kinds of wall tokens: letter victims and cognitive targets. Both c
 ![Cognitive targets and letter victims on the walls of a field](./rules_wall_tokens.png)
 
 ### Letter victims
-Letter victims are 2 cm × 2 cm images. The symbol represents the health status of the victim, and the letter in brackets is the code you report and write on the map.
+Letter victims are 2 cm × 2 cm images. The symbol represents the health status of the victim, and the code is the letter you report and write on the map.
 
 | Status | Symbol | Code |
 |---|---|---|
@@ -109,7 +109,7 @@ Adjacent rings of the same colour are **not** merged: always count all five, eve
 
 ![Two example cognitive targets, one valid and one fake](./rules_cognitive_example.png)
 
-The left target is Yellow, Blue, Red, Black, Green from the center outwards: 0 + 2 - 1 - 2 + 1 = 0, so it is Flammable Gas (`F`). The right target is Blue, Yellow, Black, Black, Black: 2 + 0 - 2 - 2 - 2 = -4, so it is fake.
+The left target is Yellow, Blue, Red, Black, Green from the centre outwards: 0 + 2 - 1 - 2 + 1 = 0, so it is Flammable Gas (`F`). The right target is Blue, Yellow, Black, Black, Black: 2 + 0 - 2 - 2 - 2 = -4, so it is fake.
 
 The [Wall Tokens tutorial](/docs/programming/wall-tokens/) shows how to read a target with a camera.
 
@@ -122,7 +122,7 @@ The [Wall Tokens tutorial](/docs/programming/wall-tokens/) shows how to read a t
 
 ## Playing a game
 - A game lasts **8 minutes of simulated time**. A second timer runs in real time with a limit of **10 minutes**. The game ends when either timer expires.
-- A tile counts as visited when the center of the robot is inside it. Erebus makes this judgment automatically.
+- A tile counts as visited when the centre of the robot is inside it. Erebus makes this judgment automatically.
 - The game also ends when the robot sends the exit command, or when the team captain calls the end of the game (depending on how the game is executed).
 - Competition worlds are revealed just before the games, and programs cannot be changed after each round's deadline.
 
@@ -140,7 +140,7 @@ The robot is then placed back on the last visited checkpoint, or on the starting
 ## Scoring
 Scoring is automated by Erebus. Rewards are not duplicated: for example, each checkpoint only scores the first time.
 
-To identify a wall token, the robot must stop for **at least 1 second**, then [send the type and position](/docs/programming/communication/#scoring-wall-tokens) to the game manager. The center of the robot must be at most half a tile from the token.
+To identify a wall token, the robot must stop for **at least 1 second**, then [send the type and position](/docs/programming/communication/#scoring-wall-tokens) to the game manager. The centre of the robot must be at most half a tile from the token.
 
 | Item | Points |
 |---|---|
@@ -151,7 +151,7 @@ To identify a wall token, the robot must stop for **at least 1 second**, then [s
 | Wall token misidentification (TMI) | -5 |
 | Lack of progress (LoP) | -5 |
 
-The total score cannot go below zero. A misidentification means reporting a position more than half a tile from the token, reporting a token where there is none, or reporting a victim as a hazard or vice versa. Reporting a fake token falls in the second category.
+The total score cannot go below zero. A misidentification means reporting a position more than half a tile from the token, reporting a token where there is none, or reporting a letter victim as a cognitive target or vice versa. Reporting a fake token falls in the second category.
 
 **Area multipliers (AM)**: TI, TT and CN are multiplied by 1, 1.25, 1.5 and 2 in Areas 1, 2, 3 and 4 respectively. TMI and LoP are not multiplied.
 

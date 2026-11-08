@@ -9,12 +9,12 @@ description: RoboCupJunior Rescue Simulation 대회를 준비하기 위한 체�
 
 | 시기 | 할 일 |
 |---|---|
-| 1년 내내 | 규칙 해석이 올라오는 [이벤트 페이지](/docs/events/upcoming-events/)와 [포럼](https://junior.forum.robocup.org/)을 확인하세요 |
+| 1년 내내 | [이벤트 페이지](/docs/events/upcoming-events/)와, 규칙 보충 설명이 올라오는 [포럼](https://junior.forum.robocup.org/)을 확인하세요 |
 | 최소 4주 전 | 주최 측이 인터뷰 준비용 웹 양식에 대한 안내를 줘요 |
 | 첫날 3주 전 | 문서 제출 마감 |
-| 설치일 | 등록, 인터뷰, 팀 미팅을 위해 일찍 대회장에 도착하세요 |
+| 준비일(Setup day) | 등록, 인터뷰, 팀 미팅을 위해 일찍 대회장에 도착하세요 |
 | 각 라운드 | 월드는 게임 직전에 공개돼요. 각 라운드의 마감 후에는 프로그램을 바꿀 수 없어요. |
-| 점수 경기 후 | 기술 챌린지(Technical Challenge) |
+| 채점 경기가 끝난 후 | 기술 챌린지(Technical Challenge) |
 
 ## 제출할 문서 {#documents-to-submit}
 템플릿과 평가 기준은 [RCJ Rescue 커뮤니티 웹사이트](https://rescue.rcj.cloud/)에 있어요.
@@ -47,7 +47,7 @@ description: RoboCupJunior Rescue Simulation 대회를 준비하기 위한 체�
 | Anti-aliasing | Disabled |
 
 ## 로봇 테스트하기 {#testing-your-robot}
-- [ ] 포함된 모든 월드에서 실행해 보세요. 특히 가짜가 포함된 `world3.wbt`와 `world4.wbt`에서요.
+- [ ] 포함된 모든 월드에서 실행해 보세요. 특히 가짜가 들어 있는 `world3.wbt`와 `world4.wbt`는 꼭 확인하세요.
 - [ ] [World Editor](/docs/tools/world-editor/)로 네 구역이 모두 들어간 나만의 맵을 만들어 보세요.
 - [ ] 게임 전체를 확인하세요. 끝까지 실행되고, 지도를 제출하고, 시간 안에 출발점으로 돌아오나요?
 - [ ] 진행 불능(Lack of Progress) 이후 어떻게 되는지 테스트하세요.

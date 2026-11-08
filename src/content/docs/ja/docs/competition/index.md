@@ -9,7 +9,7 @@ description: RoboCupJunior Rescue Simulation 競技に向けて準備するた�
 
 | 時期 | 内容 |
 |---|---|
-| 年間を通して | [イベントページ](/docs/events/upcoming-events/)と、ルールの明確化（Clarifications）が投稿される[フォーラム](https://junior.forum.robocup.org/)をチェックする |
+| 年間を通して | [イベントページ](/docs/events/upcoming-events/)と、ルールの補足（Clarifications）が投稿される[フォーラム](https://junior.forum.robocup.org/)をチェックする |
 | 4 週間以上前 | 運営者が、インタビュー準備のための Web フォームについて案内する |
 | 初日の 3 週間前 | 書類の提出期限 |
 | セットアップ日 | 受付、インタビュー、チームミーティングのため、早めに会場に到着する |

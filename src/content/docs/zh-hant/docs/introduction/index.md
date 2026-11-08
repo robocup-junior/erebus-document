@@ -7,7 +7,7 @@ Erebus 是一個機器人模擬比賽環境。你要為一台機器人開發控�
 
 它以 [Webots](https://cyberbotics.com/) 為基礎。Webots 是一個專為專業用途設計的機器人模擬平台，廣泛應用於產業、教育和研究。自 1998 年以來，Cyberbotics 一直持續維護 Webots。
 
-這個平台主要是為 [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) 比賽設計的，適合中階到經驗豐富的程式設計者。
+這個平台主要是為 [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) 比賽設計的，適合具有中階到進階經驗的程式設計者。
 
 ## 各部分如何組合在一起 {#how-it-fits-together}
 
@@ -29,7 +29,7 @@ Erebus 是一個機器人模擬比賽環境。你要為一台機器人開發控�
 如果你已經認識 Erebus，請參閱 [v26 新功能](/docs/whats-new/)。
 
 ## 實用參考資料 {#useful-references}
-學習和使用 Erebus 模擬器的實用連結：
+學習和使用 Erebus 的實用連結：
 - [Webots 使用者指南](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Webots 參考手冊](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Python 文件](https://www.python.org/doc/)

@@ -44,7 +44,7 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 ## 予想外のことに対処する {#handle-the-unexpected}
 - **競技進行停止:** ロボットは最後のチェックポイントに移動されます。[`L` メッセージを受け取ったら](/docs/programming/communication/#lack-of-progress)、自分の位置を更新しましょう。
 - **時間:** [`G`](/docs/programming/communication/#game-information) で残り時間を問い合わせましょう。地図を送ってスタートに戻るのに十分な時間を残してください。
-- **ノイズ:** センサーにはノイズがあるので、壁やトークンを信じる前に複数の読み取り値を比べましょう。
+- **ノイズ:** センサーにはノイズがあるので、壁やトークンがあると判断する前に、複数の読み取り値を比べましょう。
 
 ## タイルから地図行列へ {#from-tiles-to-the-map-matrix}
 [地図行列](/docs/rules/mapping/)は、タイルあたり 4 セルに 1 を足した大きさです。地図の `r` 行 `c` 列のタイルについて:

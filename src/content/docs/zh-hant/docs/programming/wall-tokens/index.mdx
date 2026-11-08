@@ -6,13 +6,13 @@ description: 如何分辨字母受害者、認知目標和假目標。
 import CodeTabs from '@/components/CodeTabs.astro';
 
 ## 機器人要做什麼 \{#what-the-robot-has-to-do\}
-牆上的標記（Wall tokens）佔了你大部分的分數，而每次錯誤的回報都會扣 5 分。所以對於找到的每個標記，你都必須判斷：
+牆上的標記（wall tokens）佔了你大部分的分數，而每次錯誤的回報都會扣 5 分。所以對於找到的每個標記，你都必須判斷：
 
 | 它是…… | 該怎麼做 |
 |---|---|
-| 字母受害者（Letter victim，Φ、Ψ、Ω） | 回報 `H`、`S` 或 `U` |
-| 假受害者（Fake victim，相同的符號，但是立體的） | 不要回報，也不要畫進地圖 |
-| 總和為 0 到 3 的認知目標（Cognitive target） | 回報 `F`、`P`、`C` 或 `O` |
+| 字母受害者（Φ、Ψ、Ω） | 回報 `H`、`S` 或 `U` |
+| 假受害者（相同的符號，但是立體的） | 不要回報，也不要畫進地圖 |
+| 總和為 0 到 3 的認知目標 | 回報 `F`、`P`、`C` 或 `O` |
 | 總和為其他數值的認知目標 | 它是假目標：不要回報，也不要畫進地圖 |
 
 確切的定義請參閱[規則](/docs/rules/#wall-tokens)，如何傳送回報請參閱[通訊](/docs/programming/communication/#scoring-wall-tokens)。

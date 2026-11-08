@@ -6,7 +6,7 @@ description: Ide-ide untuk menjelajahi labirin secara sistematis dan membuat pet
 Robot yang berkeliaran secara acak tidak akan mencetak banyak poin. Halaman ini menunjukkan cara beralih dari berkeliaran ke menjelajah secara sistematis. Ini adalah ide untuk dikembangkan, bukan solusi lengkap.
 
 ## Ketahui posisimu {#know-where-you-are}
-Lebar ubin adalah 12 cm, jadi posisi GPS memberitahumu ubin tempat robot berada. Posisi titik awal berbeda di setiap world, jadi ukur semuanya dari sana:
+Lebar ubin adalah 12 cm, jadi dari posisi GPS kamu bisa mengetahui ubin tempat robot berada. Posisi titik awal berbeda di setiap world, jadi ukur semuanya dari sana:
 
 ```python
 TILE = 0.12
@@ -29,20 +29,20 @@ tiles = {}
 tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor": "start", "visited": True}
 ```
 
-Ubin saja tidak menceritakan semuanya di Area 2 dan 3, tempat dinding bisa berada di seperempat ubin. Menyimpan peta dengan resolusi seperempat ubin, atau menggunakan awan titik Lidar, akan membuatmu siap menghadapinya.
+Data per ubin saja tidak cukup di Area 2 dan 3, tempat dinding bisa berada di seperempat ubin. Menyimpan peta dengan resolusi seperempat ubin, atau menggunakan awan titik Lidar, akan membuatmu siap menghadapinya.
 
 ## Tentukan ke mana harus pergi {#decide-where-to-go}
 Jangan hanya menyusuri dinding: cara itu tidak akan pernah mencapai [ubin mengambang](/docs/rules/#linear-and-floating-tiles), yang penandanya bernilai lebih tinggi. Pendekatan yang umum adalah:
 
-1. Dari ubin saat ini, daftar tetangga yang tidak dipisahkan dinding.
+1. Dari ubin saat ini, buat daftar ubin tetangga yang tidak dipisahkan oleh dinding.
 2. Pergi ke tetangga yang belum dikunjungi, jika ada.
 3. Jika tidak ada, cari ubin terdekat yang punya tetangga belum dikunjungi dengan breadth-first search, lalu pergi ke sana.
 4. Jika tidak ada lagi ubin seperti itu, atau waktunya hampir habis, kembali ke titik awal dengan cara yang sama.
 
-Anggap lubang sebagai dinding. Rawa menghabiskan waktu, dan makin banyak setiap kali kamu masuk ke rawa yang sama, jadi kunjungi hanya jika sepadan.
+Anggap lubang sebagai dinding. Rawa menghabiskan waktu, dan makin banyak setiap kali kamu masuk ke rawa yang sama, jadi masuki rawa hanya jika sepadan.
 
 ## Tangani hal yang tak terduga {#handle-the-unexpected}
-- **Kurangnya kemajuan (Lack of Progress):** robot dipindahkan ke checkpoint terakhir. [Dengarkan pesan `L`](/docs/programming/communication/#lack-of-progress), dan perbarui posisimu.
+- **Kurangnya kemajuan (lack of progress):** robot dipindahkan ke checkpoint terakhir. [Dengarkan pesan `L`](/docs/programming/communication/#lack-of-progress), dan perbarui posisimu.
 - **Waktu:** minta sisa waktu dengan [`G`](/docs/programming/communication/#game-information). Sisakan cukup waktu untuk mengirim peta dan kembali ke titik awal.
 - **Derau:** sensor punya derau, jadi bandingkan beberapa pembacaan sebelum memercayai adanya dinding atau penanda.
 

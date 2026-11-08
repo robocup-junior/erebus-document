@@ -6,22 +6,22 @@ description: "Erebus v26'yı çalıştırmak için gerekenler: Webots R2023b, Py
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Yazılım gereksinimleri \{#software-requirements\}
-Simülasyon sistemi birkaç temel bileşenden oluşur. Bunların her birinin kurulması gerekir. Kurulum kolay olsa da Webots'un indirilmesi ve kurulması biraz zaman alabilir! Üç bileşen şunlardır:
+Simülasyon sistemi üç bileşenden oluşur ve her birini kurman gerekir. Kurulum kolaydır, ama Webots'u indirip kurmak biraz zaman alabilir. Üç bileşen şunlardır:
 
-1. Webots Robot Simulator, **R2023b** sürümü: simülasyon ortamı. Erebus v26, Webots'un diğer sürümlerini desteklemez.
-1. Erebus: dünyalar ve kuralları ve puanlamayı uygulayan Competition Supervisor (yarışma denetçisi). En yeni sürüm **v26.1**'dir.
+1. Webots robot simülatörü, **R2023b** sürümü: simülasyon ortamı. Erebus v26, Webots'un diğer sürümlerini desteklemez.
+1. Erebus: dünyalar ve kuralları uygulayıp puanı hesaplayan Main Supervisor. En yeni sürüm **v26.1**'dir.
 1. Python, **3.9 ya da daha yeni** sürüm: Erebus'un kendisini çalıştırmak ve robotlar için denetleyici yazmak için gerekir. Denetleyicileri C/C++ ile de yazabilirsin.
 
 ## Minimum sistem gereksinimleri \{#minimum-system-requirements\}
-* İşletim sistemi - Linux: Ubuntu 20.04 LTS, 22.04 LTS
-* İşletim sistemi - Windows: Windows 11, Windows 10 64 bit
-* İşletim sistemi - Mac: macOS 11 "Big Sur" ve 12 "Monterey". Bunlar Webots R2023b'nin desteklediği sürümlerdir. macOS'un daha yeni sürümleri de çalışabilir: bu belgeler macOS 26'da kontrol edildi.
-* CPU: Çift çekirdekli 2 GHz
+* Linux: Ubuntu 20.04 LTS ya da 22.04 LTS
+* Windows: Windows 10 ya da 11, 64 bit
+* macOS: macOS 11 "Big Sur" ya da 12 "Monterey". Bunlar, Webots R2023b'nin desteklediği sürümlerdir. macOS'un daha yeni sürümleri de çalışabilir: bu belgeler macOS 26'da test edildi.
+* CPU: çift çekirdekli, 2 GHz
 * RAM: 2 GB
-* Nvidia 512 MB ya da AMD OpenGL 512 MB
+* Grafik: OpenGL destekli ve 512 MB belleğe sahip bir NVIDIA ya da AMD ekran kartı
 
 ## Python kütüphaneleri \{#python-libraries\}
-Erebus'un aşağıdaki Python kütüphanelerine ihtiyacı var. Çoğu Erebus başladığında otomatik olarak kurulur, ama **OpenCV kurulmaz**, bu yüzden onu kendin kurmalısın. Her işletim sisteminin kılavuzu bu adımı içerir.
+Erebus'un aşağıdaki Python kütüphanelerine ihtiyacı var. Çoğu, Erebus başladığında otomatik olarak kurulur, ama **OpenCV kurulmaz**; bu yüzden onu kendin kurmalısın. Her işletim sisteminin kurulum kılavuzunda bu adım yer alır.
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python

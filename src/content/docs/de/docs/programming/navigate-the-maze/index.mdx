@@ -14,7 +14,7 @@ Es verwendet den [Starter-Roboter](/docs/robot/) und das, was du unter [Bewegung
 Das vollständige Programm: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
 
 ## Das Spielfeld \{#the-field\}
-Führe es in `world1.wbt` aus, das so aussieht:
+Führe es in `world1.wbt` aus. Die Welt sieht so aus:
 
 ![Die Welt world1 in Webots](../../../../docs/programming/navigate-the-maze/field1.png)
 
@@ -33,7 +33,7 @@ Als Nächstes holt und aktiviert es die Sensoren des Starter-Roboters:
 <CodeTabs file="maze" region="sensors" />
 
 ### 3. Bewegungen \{#3-moves\}
-Diese Funktionen ändern die Geschwindigkeiten, um Kurven zu fahren und sich auf der Stelle zu drehen. `delay` lässt den Roboter einige Millisekunden lang dasselbe tun, und `getBrightness` liest den Farbsensor als einen einzigen Wert von 0 (Schwarz) bis 255 (Weiß) aus.
+Diese Funktionen ändern die Geschwindigkeiten, um Kurven zu fahren und sich auf der Stelle zu drehen. `delay` lässt den Roboter eine bestimmte Anzahl von Millisekunden lang dasselbe tun, und `getBrightness` liest den Farbsensor als einen einzigen Wert von 0 (Schwarz) bis 255 (Weiß) aus.
 
 <CodeTabs file="maze" region="moves" />
 

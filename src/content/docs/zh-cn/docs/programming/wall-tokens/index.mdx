@@ -1,19 +1,19 @@
 ---
-title: 墙上的标识
-description: 如何区分字母受害者、认知目标和假目标。
+title: 墙面标识
+description: 如何区分字母受害者、认知目标和假标识。
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
 ## 机器人需要做什么 \{#what-the-robot-has-to-do\}
-墙上的标识（Wall tokens）占了你得分的大部分，而每次错误的报告都会扣 5 分。所以对于你找到的每一个标识，都必须做出判断：
+墙面标识（Wall tokens）占了你得分的大部分，而每次错误的报告都会扣 5 分。所以对于你找到的每一个标识，都必须做出判断：
 
 | 它是…… | 怎么做 |
 |---|---|
 | 字母受害者（Letter victim：Φ、Ψ、Ω） | 报告 `H`、`S` 或 `U` |
 | 假受害者（Fake victim：同样的符号，但是立体的） | 不要报告，也不要把它画进地图 |
 | 数值之和为 0 到 3 的认知目标（Cognitive target） | 报告 `F`、`P`、`C` 或 `O` |
-| 数值之和为其他值的认知目标 | 它是假目标：不要报告，也不要把它画进地图 |
+| 数值之和为其他值的认知目标 | 它是假标识：不要报告，也不要把它画进地图 |
 
 确切的定义请参阅[规则](/docs/rules/#wall-tokens)，如何发送报告请参阅[通信](/docs/programming/communication/#scoring-wall-tokens)。
 
@@ -42,7 +42,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 <CodeTabs file="targetCode" />
 
-例如，`['Y', 'B', 'R', 'K', 'G']` 的和为 0，所以它是 `F`；而 `['B', 'Y', 'K', 'K', 'K']` 的和为 -4，所以它是假目标。
+例如，`['Y', 'B', 'R', 'K', 'G']` 的和为 0，所以它是 `F`；而 `['B', 'Y', 'K', 'K', 'K']` 的和为 -4，所以它是假标识。
 
 ## 识别假受害者 \{#detecting-fake-victims\}
 假受害者显示的符号与真受害者相同，但字母是立体的。从正面看，仅凭摄像头可能无法区分它们：
@@ -57,4 +57,4 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `world3.wbt` 和 `world4.wbt` 这两个世界中包含假受害者，[World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) 也可以把它们添加到你自己的地图中。Erebus 还附带了脚本 `scripts/update_maps_with_fakes.py`，它会把现有世界中的受害者随机变成假受害者。
 
-报告一个假目标会被算作误判，扣 5 分；而在区域 1 的线性地块上，一个真受害者连同正确类型可以得 15 分，在其他区域还会更多。在决定机器人需要多有把握才进行报告时，请记住这一点。
+报告一个假标识会被算作误判，扣 5 分；而在区域 1 的线性地块上，一个真受害者连同正确类型可以得 15 分，在其他区域还会更多。在决定机器人需要多有把握才进行报告时，请记住这一点。

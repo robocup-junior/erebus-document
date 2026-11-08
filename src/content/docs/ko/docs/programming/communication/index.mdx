@@ -35,11 +35,11 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 로봇은 토큰과 같은 쪽 벽에 있어야 하고, 로봇과 보내는 위치 모두 토큰 가까이에 있어야 해요. 규칙에서는 최대 반 타일까지로 정하고 있으니 그 안을 목표로 하세요. Erebus v26.1은 9 cm 거리로 확인해요.
 
-이 프로그램을 `world1.wbt`의 시작 지점에서 실행해 보세요. 그곳에는 토큰이 없으므로 제어 창의 기록에 `Misidentification of Victim -5`가 표시돼요. 가짜를 보고하는 것을 포함해 잘못된 보고는 5점을 잃고, 각 토큰은 한 번만 점수를 얻을 수 있어요.
+이 프로그램을 `world1.wbt`의 시작 지점에서 실행해 보세요. 그곳에는 토큰이 없으므로 제어 창의 기록에 `Misidentification of Victim -5`가 표시돼요. 가짜를 보고하는 것을 포함해 잘못 보고하면 5점이 깎이고, 각 토큰은 한 번만 점수를 얻을 수 있어요.
 
 ## 진행 불능 \{#lack-of-progress\}
 
-로봇이 갇혔을 때 진행 불능(Lack of Progress, LoP)이 되면 로봇은 마지막 체크포인트(Checkpoint)로 돌아가고 5점을 잃어요. 20초 동안 움직이지 않으면 자동으로 발생하고, 프로그램이 `L`을 보내서 선언할 수도 있어요. 그때마다 게임이 로봇에 `L`을 보내므로, 프로그램은 위치가 바뀌었다는 것을 알 수 있어요.
+로봇이 갇혔을 때 진행 불능(Lack of Progress, LoP)이 발생하면 로봇은 마지막 체크포인트(Checkpoint)로 돌아가고 5점을 잃어요. 20초 동안 움직이지 않으면 자동으로 발생하고, 프로그램이 `L`을 보내서 선언할 수도 있어요. 그때마다 게임이 로봇에 `L`을 보내므로, 프로그램은 위치가 바뀌었다는 것을 알 수 있어요.
 
 <CodeTabs file="lop" />
 
@@ -63,4 +63,4 @@ import CodeTabs from '@/components/CodeTabs.astro';
 `E`를 보낸 순간 로봇이 어디에 있든 게임이 끝나고, 로봇은 계속할 수 없어요. 먼저 시작 타일로 돌아왔는지, 그리고 [지도를 제출](/docs/programming/map-bonus/)했는지 확인하세요.
 :::
 
-다음으로 [벽 토큰](/docs/programming/wall-tokens/)에서 토큰을 구별하는 법을 배워요.
+다음으로 [벽 토큰](/docs/programming/wall-tokens/)에서 토큰을 구별하는 법을 배워 보세요.

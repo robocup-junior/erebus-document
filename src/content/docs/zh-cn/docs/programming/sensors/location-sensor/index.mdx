@@ -1,11 +1,11 @@
 ---
 title: 位置传感器
-description: 用 GPS 了解机器人在迷宫中的位置，并用它的位置来报告墙上的标识。
+description: 用 GPS 了解机器人在迷宫中的位置，并用它的位置来报告墙面标识。
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-位置传感器，也就是 **GPS**，会给出机器人的位置，单位为**米**。在入门机器人上，它的名字是 `gps`。你需要用它来[报告墙上的标识](/docs/programming/communication/#scoring-wall-tokens)，它对[有条理地探索](/docs/programming/exploring/)也很有帮助。
+位置传感器，也就是 **GPS**，会给出机器人的位置，单位为**米**。在入门机器人上，它的名字是 `gps`。你需要用它来[报告墙面标识](/docs/programming/communication/#scoring-wall-tokens)，它对[有条理地探索](/docs/programming/exploring/)也很有帮助。
 
 `getValues()` 返回 `[x, y, z]`。**X 和 Z 是水平方向**，Y 是竖直方向，所以要用 X 和 Z 表示机器人在迷宫中的位置：
 

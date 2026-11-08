@@ -23,7 +23,7 @@ int main() {
   int timeStep = (int)robot->getBasicTimeStep();
 
   Motor *left = robot->getMotor("left wheel motor");
-  Motor *right = robot->getMotor("wheel2 motor");
+  Motor *right = robot->getMotor("right wheel motor");
   left->setPosition(INFINITY);
   right->setPosition(INFINITY);
   left->setVelocity(3.0);
@@ -53,5 +53,5 @@ clang++ -std=c++17 -I$WEBOTS/include/controller/cpp -L$WEBOTS/lib/controller \
 
 ## 运行 {#running}
 
-- **在 Windows 上，** 用控制窗口左侧的 LOAD 按钮加载 `.exe` 文件。
-- **在 macOS 和 Linux 上，** 编译后的程序没有文件扩展名，LOAD 按钮无法选择它们。请改用 [Remote Controller](/docs/competition/remote-controller/) 来运行，就像在比赛中一样。
+- **在 Windows 上**，用控制窗口左侧的 LOAD 按钮加载 `.exe` 文件。
+- **在 macOS 和 Linux 上**，编译后的程序没有文件扩展名，LOAD 按钮无法选择它们。请改用 [Remote Controller](/docs/competition/remote-controller/) 来运行，就像在比赛中一样。

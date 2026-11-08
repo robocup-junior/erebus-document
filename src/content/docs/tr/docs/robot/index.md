@@ -10,7 +10,7 @@ Erebus'ta **robotunu sen tasarlarsın**: bir bütçe dahilinde sensörlerini ve 
 Robot, iki tekerlekli, küçük ve yuvarlak bir eğitim robotu olan [e-puck](https://cyberbotics.com/doc/guide/epuck?version=R2023b) temel alınarak yapılmıştır. [Robot Customizer](https://robot.erebus.rcj.cloud/) ile ona sensörler ekler ve tasarımı Erebus'un yüklediği bir `.json` dosyası olarak kaydedersin.
 
 ## Başlangıç robotu {#the-starter-robot}
-Bu belgeler, her örneğin olduğu gibi çalışması için her yerde tek bir robot kullanır: **başlangıç robotu** (starter robot). Eğitimlerin ihtiyaç duyduğu tüm sensörlere sahiptir:
+Bu belgeler, her örnek olduğu gibi çalışsın diye her yerde tek bir robot kullanır: **başlangıç robotu** (starter robot). Bu robotta eğitimlerin ihtiyaç duyduğu tüm sensörler vardır:
 
 | Bileşen | Programındaki adı | Ne işe yarar |
 |---|---|---|
@@ -25,7 +25,7 @@ Bu belgeler, her örneğin olduğu gibi çalışması için her yerde tek bir ro
 | Lidar | `lidar` | Çevresindeki mesafeleri ölçmek |
 | Verici ve alıcı | `emitter`, `receiver` | Oyunla konuşmak. Her robotta bulunur. |
 
-3000'lik bütçenin 2400'ünü tutar.
+Robotun maliyeti, 3000'lik bütçenin 2400'üdür.
 
 ## Yolunu seç {#choose-your-path}
 

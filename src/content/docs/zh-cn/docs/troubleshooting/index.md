@@ -63,11 +63,11 @@ Webots 不知道 Python 在哪里。
 ### `Device "..." was not found` {#device--was-not-found}
 程序中的设备名称与你的机器人不一致。入门机器人的设备名称在[参考](/docs/reference/parameters/#device-names-of-the-starter-robot)中。对于你自己的机器人，名称就是你在 [Robot Customizer](/docs/robot/customizer/) 中设置的名字。请检查机器人是否已经加载。
 
-### 报告墙上的标识时什么都没有发生 {#nothing-happens-when-i-report-a-wall-token}
+### 报告墙面标识时什么都没有发生 {#nothing-happens-when-i-report-a-wall-token}
 在控制窗口的 Settings 标签页中打开 **Enable debugging**，然后查看控制台。最常见的原因是机器人停止的时间不足 1 秒，或者坐标没有换算成厘米。请参阅[通信](/docs/programming/communication/#scoring-wall-tokens)。
 
 ### 我的报告都被判为误判 {#my-reports-are-misidentifications}
-机器人必须在距离标识半个地块以内，并且与标识位于墙的同一侧，而且每个标识只能得分一次。报告假目标也算作误判。
+机器人必须在距离标识半个地块以内，并且与标识位于墙的同一侧，而且每个标识只能得分一次。报告假标识也算作误判。
 
 ### 地图得到 0% 或出现计分错误 {#the-map-gets-0-or-a-scoring-error}
 你的地图必须包含起始地块（`5`），而且只能被评估一次。请参阅[提交地图](/docs/programming/map-bonus/)。

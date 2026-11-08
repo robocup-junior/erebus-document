@@ -5,7 +5,7 @@ description: Ideen, wie du das Labyrinth systematisch erkundest und die Karte er
 
 Ein Roboter, der zufällig umherfährt, holt nicht viele Punkte. Diese Seite zeigt, wie du vom Umherfahren zum systematischen Erkunden kommst. Es sind Ideen zum Weiterentwickeln, keine vollständige Lösung.
 
-## Wisse, wo du bist {#know-where-you-are}
+## Finde heraus, wo du bist {#know-where-you-are}
 Kacheln sind 12 cm breit, also verrät dir die GPS-Position die Kachel. Die Startposition ist in jeder Welt anders, also miss alles von dort aus:
 
 ```python
@@ -29,7 +29,7 @@ tiles = {}
 tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor": "start", "visited": True}
 ```
 
-In den Bereichen 2 und 3 erzählen die Kacheln nicht die ganze Geschichte, denn dort können Wände auf Viertelkacheln stehen. Wenn du die Karte in der Auflösung von Viertelkacheln speicherst oder eine LIDAR-Punktwolke verwendest, bist du darauf vorbereitet.
+In den Bereichen 2 und 3 erzählen die Kacheln nicht die ganze Geschichte, denn dort können Wände auf Viertelkacheln stehen. Wenn du die Karte in der Auflösung von Viertelkacheln speicherst oder eine Lidar-Punktwolke verwendest, bist du darauf vorbereitet.
 
 ## Entscheide, wohin du fährst {#decide-where-to-go}
 Folge nicht einfach einer Wand: So erreichst du nie die [schwebenden Kacheln](/docs/rules/#linear-and-floating-tiles) (Floating tiles), deren Markierungen mehr wert sind. Ein üblicher Ansatz:

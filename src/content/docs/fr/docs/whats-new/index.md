@@ -12,7 +12,7 @@ Erebus v26 met en œuvre les règles 2026. Si vous venez d’une version précé
 | Leurres | - | Nouveauté : des [fausses victimes](/docs/rules/#fake-victims) (fake victims) aux lettres en trois dimensions, et des cibles cognitives dont la somme n’est pas comprise entre 0 et 3. Ne les signalez pas et ne les mettez pas sur la carte. |
 | Marécages | Temps consommé 5 fois plus vite | La première entrée dans un marécage vaut x5, et chaque nouvelle entrée dans le même marécage ajoute 1, jusqu’à x10. |
 | Obstacles sur la carte | Non cartographiés | Les cases avec un obstacle sont cartographiées par `x`. |
-| Bonus de carte | Jusqu’à x2 | Le multiplicateur vaut désormais exactitude × 1,2 + 1. |
+| Bonus de cartographie | Jusqu’à x2 | Le multiplicateur vaut désormais exactitude × 1,2 + 1. |
 | Bruit des capteurs | - | Le GPS a du bruit. Les organisateurs ne modifieront pas les niveaux de bruit pour la compétition. |
 | Déroulement des parties | Annoncé pour chaque événement | Configuration serveur-client : votre contrôleur tourne sur votre propre ordinateur, relié au serveur de jeu par Ethernet. Consultez [Remote Controller](/docs/competition/remote-controller/). |
 | Documents | TDP, poster, vidéo | En plus, une courte vidéo montrant comment vous lancez votre contrôleur dans la configuration serveur-client. |

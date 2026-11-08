@@ -14,7 +14,7 @@ Die Formatstrings unten sind die des Python-Moduls [struct](https://docs.python.
 | Eine Wandmarkierung melden | `i i c`: x, z, Typ | 9 Bytes | Die Position ist in Zentimetern, und der Typ ist einer von `H`, `S`, `U`, `F`, `P`, `C`, `O`. Der Roboter muss mindestens 1 Sekunde gestanden haben. |
 | Kartendaten | `2i` gefolgt von UTF-8-Text: Zeilen, Spalten, durch Kommas getrennte Zellen | Jede andere Länge | Speichert die Karte, ohne sie zu bewerten |
 | `M` | `c` | 1 Byte | Bewertet die gespeicherte Karte. Das geht nur einmal. |
-| `L` | `c` | 1 Byte | Meldet einen fehlenden Fortschritt (Lack of Progress) |
+| `L` | `c` | 1 Byte | Löst einen fehlenden Fortschritt (Lack of Progress) aus |
 | `G` | `c` | 1 Byte | Fragt die Spielinformationen ab |
 | `E` | `c` | 1 Byte | Beendet das Spiel. Gibt den Ausgangsbonus, wenn der Roboter auf der Startkachel steht und eine Wandmarkierung erkannt hat. |
 

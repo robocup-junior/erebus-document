@@ -1,12 +1,12 @@
 ---
 title: Controller C++
-description: Bangun controller yang ditulis dalam C atau C++ dan jalankan di Erebus.
+description: Kompilasi controller yang ditulis dalam C atau C++ dan jalankan di Erebus.
 ---
 
 Berbeda dengan Python, controller C dan C++ harus dikompilasi sebelum dijalankan. Setiap contoh di dokumentasi ini punya tab C/C++ dengan program yang sama seperti versi Python-nya, dan semuanya sudah dikompilasi dan dijalankan di robot pemula.
 
 :::tip
-Di C++, ambil perangkat dengan fungsi bertipe, seperti `robot->getMotor("left wheel motor")` atau `robot->getCamera("camera")`, alih-alih `getDevice()`. Sertakan header yang sesuai, seperti `<webots/Motor.hpp>`.
+Di C++, ambil perangkat dengan fungsi khusus untuk tiap jenis perangkat, seperti `robot->getMotor("left wheel motor")` atau `robot->getCamera("camera")`, alih-alih `getDevice()`. Sertakan header yang sesuai, seperti `<webots/Motor.hpp>`.
 :::
 
 ## Program pertama {#a-first-program}
@@ -23,7 +23,7 @@ int main() {
   int timeStep = (int)robot->getBasicTimeStep();
 
   Motor *left = robot->getMotor("left wheel motor");
-  Motor *right = robot->getMotor("wheel2 motor");
+  Motor *right = robot->getMotor("right wheel motor");
   left->setPosition(INFINITY);
   right->setPosition(INFINITY);
   left->setVelocity(3.0);
@@ -53,5 +53,5 @@ Di Linux, opsi yang sama bisa dipakai dengan `WEBOTS=/usr/local/webots`. Jika ka
 
 ## Menjalankan {#running}
 
-- **Di Windows,** muat file `.exe` dengan tombol LOAD sebelah kiri di jendela kontrol.
-- **Di macOS dan Linux,** program hasil kompilasi tidak punya ekstensi file, dan tombol LOAD tidak bisa memilihnya. Jalankan dengan [Remote Controller](/docs/competition/remote-controller/) saja, seperti yang akan kamu lakukan di kompetisi.
+- **Di Windows,** muat berkas `.exe` dengan tombol LOAD sebelah kiri di jendela kontrol.
+- **Di macOS dan Linux,** program hasil kompilasi tidak punya ekstensi berkas, dan tombol LOAD tidak bisa memilihnya. Sebagai gantinya, jalankan dengan [Remote Controller](/docs/competition/remote-controller/), seperti yang akan kamu lakukan di kompetisi.

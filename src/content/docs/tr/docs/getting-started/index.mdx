@@ -5,7 +5,7 @@ description: Robotunu ve hazır bir programı yükle, robotun bir labirenti keş
 
 import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
 
-Bu sayfada robotunda eksiksiz bir program çalıştırır ve Erebus kontrol penceresini kullanmayı öğrenirsin. [Erebus'un kurulu olması](/docs/installation/) ve [robotuna](/docs/robot/) sahip olman gerekir.
+Bu sayfada robotunda eksiksiz bir program çalıştıracak ve Erebus kontrol penceresini kullanmayı öğreneceksin. Bunun için [Erebus'u kurmuş](/docs/installation/) ve [robotunu hazırlamış](/docs/robot/) olman gerekir.
 
 ## Erebus klasörü \{#the-erebus-folder\}
 İndirdiğin sürümün ana klasörleri şunlardır:
@@ -32,7 +32,7 @@ Bu sayfada robotunda eksiksiz bir program çalıştırır ve Erebus kontrol penc
 | **Worlds** | Başka bir dünyaya geçer |
 | **Reset** | Yüklenen programı ve oyunu sıfırlar |
 | **Give up!** | Oyunu bitirir |
-| Sayaçlar | Oyun süresi ve altında parantez içinde gerçek zaman. Herhangi biri 0'a ulaştığında oyun biter. |
+| Sayaçlar | Oyun süresi ve altında, parantez içinde gerçek zaman. Herhangi biri 0'a ulaştığında oyun biter. |
 | Hesap makinesi | Güncel puan |
 
 ## Bir program çalıştır \{#run-a-program\}
@@ -45,13 +45,13 @@ Robotu labirentte dolaştıran eksiksiz bir program olan <a href={mazeUrl} downl
 ![Başlat düğmesi](../../../docs/getting-started/start_button.png)
 1. Robotu geçici olarak durdurmak için duraklat düğmesine bas.
 ![Duraklat düğmesi](../../../docs/getting-started/pause_button.png)
-1. Robot sıkıştıysa yeniden başlatma düğmesine basmak bir ilerleme eksikliği (Lack of Progress, LoP) tetikler; bu, robotu ulaşılan son kontrol noktasına (Checkpoint) taşır ve 5 puana mal olur.
+1. Robot sıkışırsa yeniden başlatma düğmesine basarak bir ilerleme eksikliği (lack of progress, LoP) tetikle. Bu, robotu ulaştığı son kontrol noktasına geri taşır ve sana 5 puana mal olur.
 ![İlerleme eksikliği düğmesi](../../../docs/getting-started/lop_button.png)
 1. Yüklenen programı ve devam eden oyunu sıfırlamak için Reset düğmesine bas. Bir oyun bittikten sonra yeniden çalıştırmak istersen dünyayı yeniden yükle.
 
-Programın, diğer [Python kütüphaneleriyle](/docs/installation/#python-libraries) birlikte kurduğun OpenCV'ye ihtiyacı var. Programından gelen mesajlar ve hatalar Webots konsolunda görünür.
+Program, diğer [Python kütüphaneleriyle](/docs/installation/#python-libraries) birlikte kurduğun OpenCV'yi kullanır. Programından gelen mesajlar ve hatalar Webots konsolunda görünür.
 
-Oyun çalışırken pencerenin altında puan geçmişi görünür. Neden puan kazandığını ya da kaybettiğini tam olarak söyler, bu yüzden programını kontrol etmek için en iyi araçtır.
+Oyun sürerken pencerenin altında puan geçmişi görünür. Puan geçmişi, tam olarak neden puan kazandığını ya da kaybettiğini gösterdiği için programını kontrol etmenin en iyi yoludur.
 
 ![Oyun sırasında puan geçmişiyle birlikte kontrol penceresi](../../../docs/getting-started/control_window_running.png)
 
@@ -62,7 +62,7 @@ Başka bir dünyaya geçmek için **Worlds** düğmesine bas. Her dünyanın bir
 
 ![Kontrol penceresinin Worlds sekmesi](../../../docs/getting-started/worlds.png)
 
-Erebus v26.1'e dahil olan dünyalar şunlardır:
+Erebus v26.1 ile gelen dünyalar şunlardır:
 
 | Dünya | Amaç |
 |---|---|
@@ -83,12 +83,12 @@ Erebus v26.1'e dahil olan dünyalar şunlardır:
 | Keep remote controller on | Dünya yeniden yüklendiğinde TOGGLE REMOTE'u açık tutar |
 | Enable debugging | Webots konsoluna ek bilgiler yazdırır; örneğin bir duvar işareti bildiriminin neden reddedildiğini |
 
-Üstteki bağlantılar değişiklik günlüğüne ve dünya ile robot yapma araçlarına götürür. 2026 kurallarına uygun dünyalar yapmak için [World Editor](https://world.erebus.rcj.cloud/) aracını kullan.
+Üstteki bağlantılar değişiklik günlüğüne ve dünya ile robot yapma araçlarına götürür. 2026 kurallarına uygun dünyalar yapmak için [World Editor](https://world.erebus.rcj.cloud/)'ü kullan.
 
 ## Robotu elle istediğin yere taşı \{#manually-move-the-robot-where-you-want-it-to-go\}
-Simülasyon penceresinde bir robota tıkladığında kırmızı, mavi ve yeşil oklar görünür. Bu okları fareyle tutarak robotu istediğin konuma taşıyabilirsin. Robotun, program başlatılana kadar görüntülenmeyeceğini unutma.
+Simülasyon penceresinde bir robota tıkladığında kırmızı, yeşil ve mavi oklar görünür. Bu okları fareyle sürükleyerek robotu istediğin konuma taşı. Robotun, program başlayana kadar görüntülenmediğini unutma.
 ![Webots'ta seçilmiş, taşımak için okları görünen robot](../../../docs/getting-started/manual.png)
 
 
-## Sırada \{#next\}
+## Sonraki adım \{#next\}
 Bir robotun kendi başına keşif yaptığını gördün. Şimdi onu kendin programlamayı öğren: [İlk programın](/docs/programming/first-program/) ile başla.

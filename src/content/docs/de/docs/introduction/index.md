@@ -7,14 +7,14 @@ Erebus ist eine Wettbewerbsumgebung für Robotersimulation. Du entwickelst einen
 
 Erebus basiert auf [Webots](https://cyberbotics.com/), einer Plattform für Robotersimulation, die für den professionellen Einsatz entwickelt wurde und in Industrie, Bildung und Forschung weit verbreitet ist. Cyberbotics pflegt Webots seit 1998 ohne Unterbrechung.
 
-Die Plattform ist in erster Linie für den Wettbewerb [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) gedacht. Sie richtet sich an fortgeschrittene bis sehr erfahrene Programmiererinnen und Programmierer.
+Die Plattform ist in erster Linie für den Wettbewerb [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) gedacht. Sie richtet sich an Programmiererinnen und Programmierer mit mittleren bis fortgeschrittenen Kenntnissen.
 
 ## Wie alles zusammenspielt {#how-it-fits-together}
 
 | Komponente | Was sie tut | Wo du sie bekommst |
 |---|---|---|
-| **Webots R2023b** | Der 3D-Robotersimulator | [Webots R2023b](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
-| **Erebus** | Die Welten und die Spielleitung (Main Supervisor), die die Regeln anwendet und die Punktzahl berechnet | [Erebus-Versionen](https://github.com/robocup-junior/erebus/releases) |
+| **Webots R2023b** | Der 3D-Robotersimulator | [Webots R2023b-Release](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
+| **Erebus** | Die Welten und die Spielverwaltung (Main Supervisor), die die Regeln anwendet und die Punktzahl berechnet | [Erebus-Versionen](https://github.com/robocup-junior/erebus/releases) |
 | **Dein Controller** | Das Programm deines Roboters, in Python oder C/C++ | Den schreibst du! |
 | **Robot Customizer** | Web-Tool, um einen eigenen Roboter zu entwerfen und als JSON-Datei zu exportieren | [robot.erebus.rcj.cloud](https://robot.erebus.rcj.cloud/) |
 | **World Editor** | Web-Tool, um Übungskarten zu zeichnen und als `.wbt`-Welten zu exportieren | [world.erebus.rcj.cloud](https://world.erebus.rcj.cloud/) |
@@ -29,7 +29,7 @@ Die Plattform ist in erster Linie für den Wettbewerb [RoboCupJunior Rescue Simu
 Wenn du Erebus schon kennst, sieh dir [Neu in v26](/docs/whats-new/) an.
 
 ## Nützliche Quellen {#useful-references}
-Nützliche Links zum Lernen und Arbeiten mit dem Erebus-Simulator:
+Nützliche Links, um Erebus kennenzulernen und damit zu arbeiten:
 - [Webots-Benutzerhandbuch (User Guide)](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Webots-Referenzhandbuch (Reference Manual)](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Python-Dokumentation](https://www.python.org/doc/)

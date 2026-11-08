@@ -46,9 +46,9 @@ description: フィールドのサイズ、ゲームの時間、得点の倍率�
 
 | デバイス | 名前 |
 |---|---|
-| 車輪のモーター | `left wheel motor`, `right wheel motor` |
-| 車輪のエンコーダー | `left wheel sensor`, `right wheel sensor` |
-| 距離センサー | `leftDist`, `frontDist`, `rightDist` |
+| 車輪のモーター | `left wheel motor`、`right wheel motor` |
+| 車輪のエンコーダー | `left wheel sensor`、`right wheel sensor` |
+| 距離センサー | `leftDist`、`frontDist`、`rightDist` |
 | カメラ | `camera` |
 | カラーセンサー | `color` |
 | GPS | `gps` |

@@ -5,12 +5,12 @@ description: Sende die Karte des Labyrinths an Erebus und verdiene den Kartenbon
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-Der Kartenbonus (Map bonus) multipliziert deine Punktzahl mit bis zu 2,2, er ist also viel wert. So bekommst du ihn:
+Der Kartenbonus (Mapping bonus) multipliziert deine Punktzahl mit bis zu 2,2, er ist also viel wert. So bekommst du ihn:
 
-1. Lege die Karte in einem Array ab, wie in den [Regeln für die Karte](/docs/rules/mapping/) erklärt
-1. Sende die Größe des Arrays, gefolgt vom abgeflachten Array mit Kommas als Trennzeichen und in UTF-8 kodiert
-1. Sende die Anfrage zur Kartenbewertung `M`
-1. Beende das Spiel. Erebus wendet den Bonus auf deine Punktzahl an, wenn das Spiel endet
+1. Lege die Karte in einem Array ab, wie in den [Regeln für die Karte](/docs/rules/mapping/) erklärt.
+1. Sende die Größe des Arrays, gefolgt vom abgeflachten Array als kommagetrennter UTF-8-Text.
+1. Sende `M`, um die Bewertung der Karte anzufordern.
+1. Beende das Spiel. Erebus wendet den Bonus auf deine Punktzahl an, wenn das Spiel endet.
 
 ## Gut zu wissen \{#things-to-know\}
 
@@ -20,7 +20,7 @@ Der Kartenbonus (Map bonus) multipliziert deine Punktzahl mit bis zu 2,2, er ist
 - Die Karte muss die Startkachel (`5`) enthalten, mit der sie an der richtigen Lösung ausgerichtet wird. Ohne sie kann die Karte nicht bewertet werden.
 - Das Ergebnis wird als `Map Correctness` im Verlauf des Steuerfensters angezeigt. Wenn du in der Webots-Konsole einen `Map scoring error` bekommst, prüfe dein Format.
 
-Das Beispiel unten sendet die richtige Lösung für `world1.wbt`. Das ist nützlich, um deinen Kommunikationscode zu prüfen. Führst du es ab Spielbeginn aus, beendet es das Spiel sofort, und die Punktzahl bleibt bei 0, denn ein Multiplikator hat nichts zu multiplizieren.
+Das Beispiel unten sendet die richtige Lösung für `world1.wbt`. Das ist nützlich, um deinen Kommunikationscode zu prüfen. Führst du es zu Beginn des Spiels aus, beendet es das Spiel sofort, und die Punktzahl bleibt bei 0, denn ein Multiplikator hat nichts zu multiplizieren.
 
 <CodeTabs file="basics" />
 

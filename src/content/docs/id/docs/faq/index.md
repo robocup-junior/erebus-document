@@ -3,7 +3,7 @@ title: FAQ
 description: Pertanyaan yang sering diajukan tentang Erebus dan kompetisinya.
 ---
 
-## Tentang Erebus {#custom-md-id}
+## Tentang Erebus {#about-erebus}
 
 ### Apakah aku butuh robot sungguhan? {#do-i-need-a-real-robot}
 Tidak. Semuanya terjadi di simulator. Robotnya adalah e-puck virtual yang kamu rancang.
@@ -11,7 +11,7 @@ Tidak. Semuanya terjadi di simulator. Robotnya adalah e-puck virtual yang kamu r
 ### Bahasa pemrograman apa saja yang bisa kupakai? {#which-programming-languages-can-i-use}
 Python dan C/C++ dibahas di dokumentasi ini. Erebus juga bisa memuat controller Java dan MATLAB, tetapi dokumentasi ini tidak punya contoh untuk keduanya.
 
-### Apakah dibutuhkan komputer yang kuat? {#is-a-powerful-computer-needed}
+### Apakah aku butuh komputer yang kuat? {#do-i-need-a-powerful-computer}
 Tidak, lihat [persyaratan](/docs/installation/). Komputer yang lebih lambat mungkin perlu [pengaturan grafis yang lebih rendah](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Bisakah aku memakai versi Webots yang lebih baru? {#can-i-use-a-newer-version-of-webots}
@@ -22,7 +22,7 @@ Bisa. Kode eksternal diperbolehkan, asalkan kamu mencantumkan pembuatnya dan men
 
 ## Permainannya {#the-game}
 
-### Urutan terbaik untuk mempelajari semuanya? {#what-is-the-best-order-to-learn-things}
+### Apa urutan terbaik untuk mempelajari semuanya? {#what-is-the-best-order-to-learn-things}
 Ikuti [jalur belajar](/docs/#the-learning-path): pahami permainannya, dapatkan robotmu, jalankan, pelajari dasarnya, lalu mainkan permainannya.
 
 ### Apakah aku harus membuat robot sebelum memprogram? {#do-i-need-to-make-a-robot-before-programming}
@@ -32,7 +32,7 @@ Ya. Setiap program berjalan di robot yang kamu muat, jadi mulailah dengan [Dapat
 Di ubin awal, yang berada di Area 1. Robot selalu menghadap ke arah yang tidak ada dindingnya.
 
 ### Apa yang terjadi jika robot jatuh ke lubang? {#what-happens-if-the-robot-falls-into-a-hole}
-Terjadi kurangnya kemajuan (Lack of Progress): robot kembali ke checkpoint terakhir yang dikunjunginya, dan kamu kehilangan 5 poin.
+Terjadi kurangnya kemajuan (lack of progress): robot kembali ke checkpoint terakhir yang dikunjunginya, dan kamu kehilangan 5 poin.
 
 ### Apakah robot harus kembali ke titik awal? {#does-the-robot-have-to-return-to-the-start}
 Tidak, tetapi kembali ke ubin awal dan mengirim `E` memberikan bonus keluar 10%, asalkan robot sudah mengidentifikasi minimal satu penanda dinding.
@@ -52,10 +52,10 @@ Tidak. Memetakan arena atau lokasi penanda dinding terlebih dahulu dilarang.
 ## Kompetisi {#the-competition}
 
 ### Bagaimana cara ikut serta? {#how-do-i-take-part}
-Melalui kompetisi RoboCupJunior di wilayahmu. Perwakilan Regional (Regional Representative) di wilayahmu menentukan siapa yang mendapat tempat di kompetisi internasional. Lihat [situs web RoboCupJunior](https://junior.robocup.org/).
+Melalui kompetisi RoboCupJunior di wilayahmu. Perwakilan Regional (Regional Representative) di wilayahmu membagikan jatah tempat untuk kompetisi internasional. Lihat [situs web RoboCupJunior](https://junior.robocup.org/).
 
 ### Apa yang harus kusiapkan? {#what-should-i-prepare}
 Lihat [Persiapan kompetisi](/docs/competition/).
 
 ### Di mana aku bisa bertanya tentang aturan? {#where-can-i-ask-about-the-rules}
-Di [Forum RoboCupJunior](https://junior.forum.robocup.org/). Klarifikasi juga diumumkan di sana, jadi periksa secara rutin.
+Di [Forum RoboCupJunior](https://junior.forum.robocup.org/). Klarifikasi juga diumumkan di sana, jadi periksa forum itu secara rutin.

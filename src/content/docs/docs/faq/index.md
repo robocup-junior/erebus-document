@@ -11,7 +11,7 @@ No. Everything happens in the simulator. The robot is a virtual e-puck that you 
 ### Which programming languages can I use?
 Python and C/C++ are covered in this documentation. Erebus can also load Java and MATLAB controllers, but this documentation has no examples for them.
 
-### Is a powerful computer needed?
+### Do I need a powerful computer?
 No, see the [requirements](/docs/installation/). Slower computers may need [lower graphics settings](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Can I use a newer version of Webots?

@@ -23,7 +23,7 @@ int main() {
   int timeStep = (int)robot->getBasicTimeStep();
 
   Motor *left = robot->getMotor("left wheel motor");
-  Motor *right = robot->getMotor("wheel2 motor");
+  Motor *right = robot->getMotor("right wheel motor");
   left->setPosition(INFINITY);
   right->setPosition(INFINITY);
   left->setVelocity(3.0);

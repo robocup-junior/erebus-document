@@ -5,22 +5,22 @@ description: Envie o mapa do labirinto ao Erebus e ganhe o bônus de mapa, que m
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-O bônus de mapa (map bonus) multiplica a sua pontuação por até 2,2, então ele vale muito. Para ganhá-lo, siga estes passos:
+O bônus de mapa (mapping bonus) multiplica a sua pontuação por até 2,2, então ele vale muito. Para ganhá-lo:
 
-1. Coloque o mapa em uma matriz, como explicado nas [Regras do mapa](/docs/rules/mapping/)
-1. Envie o tamanho da matriz, seguido da matriz achatada com vírgulas como separadores e codificada em UTF-8
-1. Envie o pedido de avaliação do mapa `M`
-1. Termine a partida. O Erebus aplica o bônus à sua pontuação quando a partida termina
+1. Coloque o mapa em uma matriz, como explicado nas [Regras do mapa](/docs/rules/mapping/).
+1. Envie o tamanho da matriz, seguido da matriz achatada, como texto UTF-8 com os valores separados por vírgulas.
+1. Envie `M` para pedir a avaliação do mapa.
+1. Termine a partida. O Erebus aplica o bônus à sua pontuação quando a partida termina.
 
 ## O que você precisa saber \{#things-to-know\}
 
-- Você pode enviar o mapa a qualquer momento durante a partida, mas **ele só é avaliado uma vez**. Mensagens `M` posteriores são ignoradas, então envie-o quando o mapa estiver o mais completo possível.
+- Você pode enviar o mapa a qualquer momento durante a partida, mas **ele só é avaliado uma vez**. Mensagens `M` posteriores são ignoradas, então envie-o quando ele estiver o mais completo possível.
 - Garanta que ainda haja tempo. Se a partida terminar antes de você enviar `M`, não há mapa para avaliar.
 - Você não precisa enviar `E` para ganhar o bônus: ele também é aplicado se o tempo acabar. Mas `E` é a forma de ganhar o bônus de saída (exit bonus), e esse bônus é somado antes de o bônus de mapa ser aplicado.
 - O mapa precisa conter o ladrilho inicial (`5`), que é usado para alinhá-lo à resposta correta. Sem ele, o mapa não pode ser avaliado.
 - O resultado aparece como `Map Correctness` no histórico da janela de controle. Se você receber um `Map scoring error` no console do Webots, confira o seu formato.
 
-O exemplo abaixo envia a resposta correta para `world1.wbt`, o que é útil para conferir o seu código de comunicação. Se você executá-lo desde o início da partida, ele termina a partida na hora, e a pontuação fica em 0, já que um multiplicador não tem nada para multiplicar.
+O exemplo abaixo envia a resposta correta para `world1.wbt`, o que é útil para conferir o seu código de comunicação. Se você executá-lo no início da partida, ele termina a partida na hora, e a pontuação fica em 0, já que um multiplicador não tem nada para multiplicar.
 
 <CodeTabs file="basics" />
 

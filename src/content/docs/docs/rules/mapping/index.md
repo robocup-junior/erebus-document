@@ -4,14 +4,14 @@ description: More information and examples on mapping.
 ---
 
 ## General Idea
-Mapping is scored as a multiplier to the overall score obtained during the run. To obtain a mapping multiplier, the robot must submit a matrix to the game's main supervisor. The submitted matrix is compared against the "answer key" to produce a correctness value, and the multiplier is:
+Mapping is scored as a multiplier on the score of the run. To get it, the robot must submit a matrix to the Main Supervisor of the game. The submitted matrix is compared against the "answer key" to produce a correctness value, and the multiplier is:
 
 **mapping bonus multiplier = correctness × 1.2 + 1**
 
 So a perfect map multiplies your score by 2.2. To learn how to send the matrix, see the [Map Bonus tutorial](/docs/programming/map-bonus/).
 
 ## Rules for Mapping
-* Each quarter tile and its surrounding edges and vertices will be represented by a cell (value). A map of W × H tiles is therefore a matrix with (4 × H + 1) rows and (4 × W + 1) columns.
+* Each quarter tile, each edge and each vertex is represented by one cell (value). A map of W × H tiles is therefore a matrix with (4 × H + 1) rows and (4 × W + 1) columns.
 * Each element in the world is represented by the following:
 
 | Element | Value |
@@ -29,16 +29,16 @@ So a perfect map multiplies your score by 2.2. To learn how to send the matrix, 
 | Passage between areas 2 and 4 (orange) | `o` |
 | Passage between areas 3 and 4 (red) | `r` |
 | Wall tokens | The corresponding code (`H`, `S`, `U`, `F`, `P`, `C`, `O`) |
-| All area 4 tiles, edges and vertices, including its border | `*` |
+| All tiles, edges and vertices of Area 4, including its border | `*` |
 | Any other tiles, edges and vertices | `0` |
 
-* Floor elements (`2`, `3`, `4`, `5`, `x` and the passages) are written on the four cells at the center of each quarter tile, as you can see in the examples below.
+* Floor elements (`2`, `3`, `4`, `5`, `x` and the passages) are written in the centre cell of each of the four quarter tiles of the tile, as you can see in the examples below.
 * No tile is more than one of these at the same time: swamp, hole, checkpoint, starting tile, tile with an obstacle, or area passage.
-* For curved walls in area 3, the vertex should be represented by a `0`.
-* The presence of a wall token should be indicated in the cell of the wall it is on. If there are several wall tokens on the same wall, for example on both of its sides, concatenate their codes in one cell, in order of their absolute position on the map: first from top to bottom, then from left to right.
+* For curved walls in Area 3, the vertex is represented by a `0`.
+* A wall token is written in the cell of the wall it is on. If there are several wall tokens on the same wall, for example on both of its sides, concatenate their codes in one cell, in order of their absolute position on the map: first from top to bottom, then from left to right.
 * Fake tokens must not be included in the map: neither fake victims nor cognitive targets with an invalid sum.
-* Wall tokens in full tiles (non-quarter tiles) can be anywhere along the wall. They should be placed in the cell of whichever quarter tile they are closer to, or in the middle cell if they are near the center of the tile side.
-* Maps can be stored in any rotation as long as it is a multiple of 90°. Erebus aligns your matrix to the answer using the starting tile, tries each orientation, and keeps the best result.
+* Wall tokens in full tiles (non-quarter tiles) can be anywhere along the wall. They are written in the cell of whichever quarter tile they are closer to, or in the middle cell if they are near the centre of the tile side.
+* Maps can be submitted in any rotation, as long as it is a multiple of 90°. Erebus aligns your matrix to the answer using the starting tile, tries each orientation, and keeps the best result.
 
 ## How correctness is calculated
 1. The matrices are aligned by the starting tile. This means **your map must contain the starting tile**.
@@ -48,10 +48,10 @@ So a perfect map multiplies your score by 2.2. To learn how to send the matrix, 
 Since only the positions with something on them count, marking something that does not exist lowers your correctness as much as missing something that does.
 
 ## Ambiguous edge cases
-For ambiguous edge cases that are not defined below, please contact the International RoboCupJunior Rescue Committee and/or the platform development team.
+For ambiguous cases that are not covered below, please contact the International RoboCupJunior Rescue Committee and/or the platform development team.
 ### One wall with a normal right-angled wall and a curved wall on each side
-The rules say that the vertices of a curved wall should be represented by zeroes.
-The exception is the following case, where one side of the wall is a normal right angle and the other side is curved, which is represented in the same way as if both sides were normal walls.
+The rules say that the vertices of a curved wall are represented by zeros.
+The exception is the following case, where one side of the wall is a normal right angle and the other side is curved. It is represented as if both sides were normal walls.
 ![A wall with a right angle on one side and a curve on the other](./ambiguous1.png)
 
 ## Examples
@@ -161,7 +161,7 @@ This world has three areas, with passages `b` and `p`.
 ```
 
 ### world2.wbt
-This world includes area 4, which is filled with `*`, and passages `g` and `r`.
+This world includes Area 4, which is filled with `*`, and passages `g` and `r`.
 
 ![The world world2 in Webots](./world2.png)
 

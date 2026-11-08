@@ -8,12 +8,12 @@ Pertama-tama, periksa konsol Webots. Sebagian besar masalah menampilkan pesan er
 ## Instalasi {#installation}
 
 ### `No module named 'cv2'` {#no-module-named-cv2}
-OpenCV belum terinstal di Python yang dipakai Webots. Instal [library yang dibutuhkan](/docs/installation/#python-libraries) di Python tersebut. Jika kamu punya beberapa instalasi, pengaturan **Python command** di bawah ini memberitahumu mana yang dipakai Webots.
+OpenCV belum terinstal di Python yang dipakai Webots. Instal [library yang dibutuhkan](/docs/installation/#python-libraries) di Python tersebut. Jika kamu punya beberapa instalasi, pengaturan **Python command** di bawah ini menunjukkan instalasi mana yang dipakai Webots.
 
 ### `WARNING: Python was not found` {#warning-python-was-not-found}
 Webots tidak tahu di mana Python berada.
 
-1. Temukan Python. Di macOS dan Linux, jalankan `which python3` di terminal. Di Windows, pastikan mengetik `python` di Command Prompt baru akan membuka Python. Jika tidak, instal ulang Python, dan centang opsi untuk menambahkannya ke PATH.
+1. Temukan Python. Di macOS dan Linux, jalankan `which python3` di terminal. Di Windows, pastikan bahwa mengetik `python` di Command Prompt yang baru dibuka akan menjalankan Python. Jika tidak, instal ulang Python, dan centang opsi untuk menambahkannya ke PATH.
 2. Buka Preferences Webots: **Webots > Preferences** di macOS, **Tools > Preferences** di Windows dan Linux.
 
    ![Item Preferences di menu Webots](../../../docs/troubleshooting/preferences_open.png)
@@ -23,7 +23,7 @@ Webots tidak tahu di mana Python berada.
    ![Kolom Python command di Preferences Webots](../../../docs/troubleshooting/preferences.png)
 
 ### Pewaktu permainan tidak muncul {#the-game-timer-does-not-appear}
-Saat pertama kali dijalankan, prosesnya bisa memakan beberapa menit karena Erebus menginstal library. Jika tidak pernah selesai, periksa konsol untuk melihat error. Jika instalasi otomatis tidak berhasil, instal sendiri [library yang dibutuhkan](/docs/installation/#python-libraries).
+Saat pertama kali dijalankan, prosesnya bisa memakan beberapa menit karena Erebus menginstal library. Jika prosesnya tidak kunjung selesai, periksa konsol untuk melihat error. Jika instalasi otomatis tidak berhasil, instal sendiri [library yang dibutuhkan](/docs/installation/#python-libraries).
 
 ## Menjalankan Erebus {#running-erebus}
 
@@ -37,7 +37,7 @@ Jendela kontrol adalah halaman web yang dibuka oleh Webots.
 ![Opsi Show Robot Window di Scene Tree](../../../docs/troubleshooting/showrobot.png)
 
 ### Layar Webots kosong atau hitam {#the-webots-screen-is-blank-or-black}
-Salin file unduhan dan ekstrak ke folder terpisah sebelum membuka world.
+Salin berkas unduhan dan ekstrak ke folder terpisah sebelum membuka world.
 
 ### Simulasi berjalan terlalu lambat {#the-simulation-runs-too-slowly}
 Ini kemungkinan karena performa komputermu. Menurunkan kualitas grafis mungkin membantu:
@@ -55,7 +55,7 @@ Pengaturan ini mengubah apa yang dilihat kamera, dan kompetisi menggunakan [peng
 ### `PROTO parameter 'camera_width' has no matching IS field` {#proto-parameter-camera_width-has-no-matching-is-field}
 Erebus v26.1 menampilkan error ini dengan warna merah saat memuat robot yang dibuat dengan Robot Customizer versi saat ini. Kamu bisa mengabaikannya: robotnya tetap berfungsi, dan kameranya punya resolusi yang kamu pilih.
 
-### Programku bilang perangkat tidak ditemukan {#my-program-says-a-device-was-not-found}
+### Programku menyatakan perangkat (device) tidak ditemukan {#my-program-says-a-device-was-not-found}
 Lihat di bawah. Pastikan juga kamu sudah memuat robotmu dengan tombol LOAD sebelah **kanan** sebelum memulai permainan.
 
 ## Programmu {#your-program}

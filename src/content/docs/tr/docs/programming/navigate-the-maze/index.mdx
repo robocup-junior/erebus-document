@@ -7,9 +7,9 @@ import CodeTabs from '@/components/CodeTabs.astro';
 import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
 import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
 
-Bu eğitimde adım adım eksiksiz bir program oluşturursun. Robot, duvarlardan ve çukurlardan kaçınarak labirentte dolaşır ve duvar işaretine benzeyen her şeyi bildirir. Bu, [İlk çalıştırman](/docs/getting-started/) sayfasında çalıştırdığın programdır.
+Bu eğitimde adım adım eksiksiz bir program yazacaksın. Robot, duvarlardan ve çukurlardan kaçınarak labirentte dolaşır ve duvar işaretine benzeyen her şeyi bildirir. Bu, [İlk çalıştırman](/docs/getting-started/) sayfasında çalıştırdığın programdır.
 
-[Başlangıç robotunu](/docs/robot/) ve [Hareket](/docs/programming/movement/) ile [Sensörler](/docs/programming/sensors/) sayfalarında öğrendiklerini kullanır.
+Program, [başlangıç robotunu](/docs/robot/) ve [Hareket](/docs/programming/movement/) ile [Sensörler](/docs/programming/sensors/) sayfalarında öğrendiklerini kullanır.
 
 Programın tamamı: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
 
@@ -21,7 +21,7 @@ Programı şuna benzeyen `world1.wbt` üzerinde çalıştır:
 ## Adım adım \{#step-by-step\}
 
 ### 1. Hazırlık \{#1-setup\}
-Program önce robotu oluşturur, tekerlek motorlarını alır ve sınırsız dönmelerine izin verir. `speeds`, programın geri kalanının değiştirdiği her tekerleğin hızını tutar. `reported`, robotun daha önce nerede işaret bildirdiğini hatırlar.
+Program önce robotu oluşturur, tekerlek motorlarını alır ve motorların sınırsız dönmesine izin verir. `speeds` her tekerleğin hızını tutar; programın geri kalanı bu değerleri değiştirir. `reported`, robotun daha önce nerelerde işaret bildirdiğini hatırlar.
 
 <CodeTabs file="maze" region="setup" />
 
@@ -33,24 +33,24 @@ Sonra başlangıç robotunun sensörlerini alır ve etkinleştirir:
 <CodeTabs file="maze" region="sensors" />
 
 ### 3. Hareketler \{#3-moves\}
-Bu fonksiyonlar dönmek ve olduğu yerde dönmek için hızları değiştirir. `delay`, robotun birkaç milisaniye boyunca aynı şeyi yapmaya devam etmesini sağlar; `getBrightness` ise renk sensörünü 0 (siyah) ile 255 (beyaz) arasında tek bir değer olarak okur.
+Bu fonksiyonlar, robotun dönüş yapması ve olduğu yerde dönmesi için hızları değiştirir. `delay`, robotun belirli bir milisaniye boyunca aynı şeyi yapmaya devam etmesini sağlar; `getBrightness` ise renk sensörünü 0 (siyah) ile 255 (beyaz) arasında tek bir değer olarak okur.
 
 <CodeTabs file="maze" region="moves" />
 
 ### 4. Bir işareti görme \{#4-seeing-a-token\}
-Bu fonksiyon bir kamera görüntüsünde duvar işaretlerini arar. İşaretler koyu duvarlar üzerindeki parlak karelerdir. Bu yüzden fonksiyon, kabaca kare biçiminde olan ve genellikle zeminin bulunduğu görüntü kenarına değmeyen parlak şekiller arar.
+Bu fonksiyon, kamera görüntüsünde duvar işaretlerini arar. İşaretler, koyu duvarların üzerindeki parlak karelerdir. Bu yüzden fonksiyon, kabaca kare biçiminde olan ve görüntünün kenarına (genellikle zeminin göründüğü yere) değmeyen parlak şekiller arar.
 
 <CodeTabs file="maze" region="detect" />
 
-Bu basit bir başlangıç: sembolleri ayırt edemez ve bilişsel hedefleri iyi göremez. [Duvar işaretleri](/docs/programming/wall-tokens/) eğitimi daha iyisini nasıl yapacağını gösterir.
+Bu basit bir başlangıçtır: sembolleri ayırt edemez ve bilişsel hedefleri iyi göremez. [Duvar işaretleri](/docs/programming/wall-tokens/) eğitimi, nasıl daha iyisini yapabileceğini gösterir.
 
 ### 5. Bildirme \{#5-reporting\}
-Bir işaretle puan kazanmak için robot 1 saniyeden uzun süre durmalı ve işaretin konumunu ve türünü göndermelidir. Her işaretle yalnızca bir kez puan kazanılabilir ve onu tekrar bildirmek 5 puana mal olur, bu yüzden program nerede bildirim yaptığını hatırlar. [İletişim](/docs/programming/communication/) bu mesajları açıklar.
+Bir işaretten puan almak için robot 1 saniyeden uzun süre durmalı, sonra işaretin konumunu ve türünü göndermelidir. Her işaretten yalnızca bir kez puan alınabilir ve aynı işareti tekrar bildirmek 5 puana mal olur; bu yüzden program, nerelerde bildirim yaptığını hatırlar. Bu mesajlar [İletişim](/docs/programming/communication/) sayfasında açıklanır.
 
 <CodeTabs file="maze" region="report" />
 
 ### 6. Ana döngü \{#6-the-main-loop\}
-Son olarak ana döngü her şeyi bir araya getirir. Her adımda tam hızla başlar, duvarlardan uzağa döner, çukurlardan geri döner ve önünde yakın bir duvar olduğunda kameranın gördüğünü bildirir.
+Son olarak ana döngü her şeyi bir araya getirir. Her adımda tam hızla başlar, duvarlardan uzaklaşmak için döner, çukurlardan geri döner ve önünde yakın bir duvar olduğunda kameranın gördüğünü bildirir.
 
 <CodeTabs file="maze" region="loop" />
 

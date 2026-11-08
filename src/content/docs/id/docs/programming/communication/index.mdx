@@ -1,6 +1,6 @@
 ---
 title: Komunikasi
-description: Laporkan penanda dinding, panggil kurangnya kemajuan, minta skor, dan akhiri permainan.
+description: Laporkan penanda dinding, picu kurangnya kemajuan, minta skor, dan akhiri permainan.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -8,7 +8,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 Programmu berkomunikasi dengan permainan melalui dua perangkat yang dimiliki setiap robot:
 
 - **Emitter** mengirim pesan ke permainan. Perangkat ini tidak perlu diaktifkan.
-- **Receiver** menerima pesan dari permainan. Aktifkan seperti sensor.
+- **Receiver** menerima pesan dari permainan. Aktifkan receiver seperti mengaktifkan sensor.
 
 Setiap bagian di bawah ini adalah program lengkap untuk [robot pemula](/docs/robot/). Semua pesan tercantum di [Referensi pesan](/docs/reference/messages/).
 
@@ -33,13 +33,13 @@ Jenisnya berupa huruf, meskipun sejak 2026 korban menampilkan simbol. GPS member
 
 <CodeTabs file="report" />
 
-Robot harus berada di sisi dinding yang sama dengan penanda, dan baik robot maupun posisi yang kamu kirim harus dekat dengan penanda itu. Aturan mensyaratkan paling jauh setengah ubin, jadi usahakan sedekat itu. Erebus v26.1 memeriksa jarak 9 cm.
+Robot harus berada di sisi dinding yang sama dengan penanda, dan baik robot maupun posisi yang kamu kirim harus dekat dengan penanda itu. Aturan mensyaratkan jarak paling jauh setengah ubin, jadi usahakan agar tidak lebih dari itu. Erebus v26.1 memeriksa jarak 9 cm.
 
 Jalankan program ini di awal `world1.wbt`: tidak ada penanda di sana, jadi riwayat jendela kontrol menampilkan `Misidentification of Victim -5`. Laporan yang salah, termasuk laporan penanda palsu, mengurangi 5 poin, dan setiap penanda hanya bisa dihitung sekali.
 
 ## Kurangnya kemajuan \{#lack-of-progress\}
 
-Saat robot terjebak, kurangnya kemajuan (Lack of Progress, LoP) memindahkannya kembali ke checkpoint terakhir dan mengurangi 5 poin. Ini terjadi otomatis setelah 20 detik tanpa bergerak, dan programmu juga bisa memanggilnya dengan mengirim `L`. Setiap kali terjadi, permainan mengirim `L` ke robot, agar programmu tahu posisinya sudah berubah.
+Saat robot terjebak, kurangnya kemajuan (lack of progress) memindahkannya kembali ke checkpoint terakhir dan mengurangi 5 poin. Ini terjadi otomatis setelah robot tidak bergerak selama 20 detik, dan programmu juga bisa memicunya dengan mengirim `L`. Setiap kali terjadi, permainan mengirim `L` ke robot, agar programmu tahu posisinya sudah berubah.
 
 <CodeTabs file="lop" />
 
@@ -51,7 +51,7 @@ Kirim `G` untuk mendapatkan skor dan sisa waktu. Permainan membalas dengan pesan
 
 <CodeTabs file="gameinfo" />
 
-Waktu permainan berjalan lebih cepat di rawa, dan permainan berakhir saat salah satu waktu habis. Gunakan keduanya untuk tahu kapan harus kembali ke titik awal.
+Waktu permainan berjalan lebih cepat di rawa, dan permainan berakhir saat salah satu waktu habis. Gunakan keduanya untuk menentukan kapan robot harus kembali ke titik awal.
 
 ## Mengakhiri permainan \{#ending-the-game\}
 
@@ -63,4 +63,4 @@ Kirim `E` untuk mengakhiri permainan. Jika robot berada di ubin awal dan sudah m
 Permainan berakhir di mana pun robot berada saat mengirim `E`, dan robot tidak bisa melanjutkan. Pastikan robot sudah kembali ke ubin awal terlebih dahulu, dan sudah [mengirim petanya](/docs/programming/map-bonus/).
 :::
 
-Selanjutnya, pelajari cara membedakan penanda di [Penanda dinding](/docs/programming/wall-tokens/).
+Selanjutnya, pelajari cara membedakan jenis-jenis penanda di [Penanda dinding](/docs/programming/wall-tokens/).

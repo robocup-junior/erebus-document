@@ -58,7 +58,7 @@ The two wheels cost 600 together, so 2400 of the budget is left for everything e
 
 - **GPS:** you need a position to report tokens, and this is the simple way to get it.
 - **Cameras:** higher resolutions read tokens from further away, but they cost more and are slower to process.
-- **Lidar:** it sees all around the robot, which helps a lot for mapping. Place it on top, and lie it flat with rotation X `90`, as in the [starter robot](/docs/robot/build/), or the robot blocks it.
+- **Lidar:** it sees all around the robot, which helps a lot for mapping. Place it on top, and lay it flat with rotation X `90`, as in the [starter robot](/docs/robot/build/), or the robot blocks it.
 - **Colour sensor:** place it in front of the wheels, so that the robot sees a hole before falling into it.
 
 [Build your robot](/docs/robot/build/) shows a complete example.

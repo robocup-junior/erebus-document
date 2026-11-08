@@ -5,30 +5,30 @@ description: Denetleyicini kendi bilgisayarında çalıştır ve yarışmadaki g
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-Erebus'un uzaktan denetleyici (remote controller) özelliği, Webots simülasyonlarını bir ağ üzerinden çalıştırmanı sağlar. Bir bilgisayar Webots simülasyonunu (sunucu), diğer bilgisayar robot denetleyici programını (istemci) çalıştırır. Buna "sunucu-istemci kurulumu" (Server-Client Setup) diyoruz.
+Erebus'un uzaktan denetleyici (remote controller) özelliği, Webots simülasyonlarını bir ağ üzerinden çalıştırmanı sağlar. Bilgisayarlardan biri Webots simülasyonunu (sunucu), diğeri robotun denetleyici programını (istemci) çalıştırır. Buna "sunucu-istemci kurulumu" (server-client setup) diyoruz.
 
 **2026 kurallarına göre yarışmada oyunlar bu şekilde yürütülür.** Organizatörler oyun sunucusunu çalıştırır ve bir RJ-45 soketi sağlar. Yanında getirmen gerekenler:
 
-- Programın çalışmaya hazır olan ve Webots R2023b kurulu bir bilgisayar
-- Bir Ethernet kablosu. 100 Mbit/s desteklemesi için en az CAT5 kablo şiddetle önerilir.
+- Programının çalışmaya hazır olduğu ve Webots R2023b'nin kurulu olduğu bir bilgisayar
+- Bir Ethernet kablosu. 100 Mbit/sn hızı desteklemesi için en az CAT5 kablo kullanman şiddetle önerilir.
 - Bir Ethernet portu. Bilgisayarında yoksa bir adaptör getir ve önceden test et.
 
-Yarışma alanında sorunsuz bir başlangıç için kurulumu çok önceden dene. Tüm takımlar ayrıca TDP, poster ve video ile birlikte, denetleyicilerini bu kurulumda bir örnek harita üzerinde nasıl çalıştırdıklarını gösteren kısa bir video göndermelidir.
+Yarışma alanında her şeyin sorunsuz gitmesi için kurulumu çok önceden dene. Ayrıca tüm takımlar TDP, poster ve videoyla birlikte, denetleyicilerini bu kurulumda örnek bir harita üzerinde nasıl çalıştırdıklarını gösteren kısa bir video göndermelidir.
 
 ## Nasıl çalışır \{#how-it-works\}
 
 1. Dünyayı aç ve kontrol penceresinde uzaktan modu aç.
-1. Denetleyicini bir terminalden başlat. Webots'a bağlanır ve bekler.
+1. Denetleyicini bir terminalden başlat. Denetleyici Webots'a bağlanır ve bekler.
 1. Kontrol penceresinde başlat düğmesine bas.
 
-Denetleyicin, LOAD düğmesiyle yüklendiğindeki aynı Webots kütüphanelerini ve aynı kodu kullanır. Özel bir robotun varsa o, sunucunun kontrol penceresinde yüklü kalır.
+Denetleyicin, LOAD düğmesiyle yüklendiğinde kullandığı Webots kütüphanelerinin ve kodun aynısını kullanır. Özel bir robotun varsa o robot yine sunucudaki kontrol penceresinde yüklenir.
 
 ## Yarışmadan önce kontrol edilecekler \{#things-to-check-before-the-competition\}
 
-- Programının ihtiyaç duyduğu tüm kütüphaneler istemcide kurulu.
-- Programın bilgisayarın hızına bağlı değil: `robot.step()` ve simülasyon zamanını kullanmalı. Kameradan gelen bir görüntünün ağ üzerinden gitmesi gerektiğini unutma.
-- Gerekmedikçe tüm görüntü pencereleri (`cv2.imshow` gibi) kapalı.
-- Çalıştırılacak komutları ezbere biliyorsun. Bunları küçük bir betiğe yazmak iyi bir fikir.
+- Programının ihtiyaç duyduğu tüm kütüphaneler istemcide kurulu olmalı.
+- Programın bilgisayarın hızına bağlı olmamalı: `robot.step()` ve simülasyon zamanını kullanmalı. Kameradan gelen görüntülerin ağ üzerinden aktarılması gerektiğini unutma.
+- İhtiyacın yoksa tüm görüntü pencereleri (`cv2.imshow` gibi) kapalı olmalı.
+- Çalıştıracağın komutları ezbere bilmelisin. Bunları küçük bir betiğe yazmak iyi bir fikir.
 
 ## Kurulum kılavuzu \{#setup-guide\}
 

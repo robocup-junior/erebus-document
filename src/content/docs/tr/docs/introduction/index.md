@@ -7,7 +7,7 @@ Erebus bir robot simülasyonu yarışma ortamıdır. Bir labirenti kendi başın
 
 Erebus, profesyonel kullanım için tasarlanmış ve endüstride, eğitimde ve araştırmada yaygın olarak kullanılan bir robot simülasyonu platformu olan [Webots](https://cyberbotics.com/) üzerine kuruludur. Cyberbotics, Webots'u 1998'den beri kesintisiz olarak geliştiriyor.
 
-Platform öncelikle [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) yarışması için tasarlandı. Orta seviyeden çok deneyimliye kadar programcılara yöneliktir.
+Platform öncelikle [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) yarışması için tasarlandı. Orta ve ileri düzey deneyime sahip programcılara yöneliktir.
 
 ## Parçalar nasıl bir araya gelir {#how-it-fits-together}
 
@@ -29,7 +29,7 @@ Platform öncelikle [RoboCupJunior Rescue Simulation](https://junior.robocup.org
 Erebus'u zaten tanıyorsan [v26'daki yenilikler](/docs/whats-new/) sayfasına bak.
 
 ## Faydalı kaynaklar {#useful-references}
-Erebus simülatörünü öğrenmek ve onunla çalışmak için faydalı bağlantılar:
+Erebus'u öğrenmek ve onunla çalışmak için faydalı bağlantılar:
 - [Webots Kullanıcı Kılavuzu](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Webots Başvuru Kılavuzu](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Python Belgeleri](https://www.python.org/doc/)
@@ -38,5 +38,5 @@ Erebus simülatörünü öğrenmek ve onunla çalışmak için faydalı bağlant
 - [RCJ Rescue Topluluk Web Sitesi](https://rescue.rcj.cloud/): etkinlikler, takım belgeleri ve TDP, poster ve video değerlendirme ölçütleri
 - [RoboCupJunior Forumu](https://junior.forum.robocup.org/): kural açıklamaları
 
-## Sırada {#next}
+## Sonraki adım {#next}
 [Erebus'u kur](/docs/installation/), sonra oyunu anlamak için [Kural özeti](/docs/rules/) sayfasını oku.

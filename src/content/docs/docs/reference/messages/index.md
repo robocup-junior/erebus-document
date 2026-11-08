@@ -11,8 +11,8 @@ The format strings below are those of the Python [struct](https://docs.python.or
 
 | Message | Format | Length | Purpose |
 |---|---|---|---|
-| Report a wall token | `i i c`: x, z, type | 9 bytes | The position is in centimeters, and the type is one of `H`, `S`, `U`, `F`, `P`, `C`, `O`. The robot must have been stopped for at least 1 second. |
-| Map data | `2i` followed by UTF-8 text: rows, columns, comma separated cells | Any other length | Stores the map, without evaluating it |
+| Report a wall token | `i i c`: x, z, type | 9 bytes | The position is in centimetres, and the type is one of `H`, `S`, `U`, `F`, `P`, `C`, `O`. The robot must have been stopped for at least 1 second. |
+| Map data | `2i` followed by UTF-8 text: rows, columns, comma-separated cells | Any other length | Stores the map, without evaluating it |
 | `M` | `c` | 1 byte | Evaluates the stored map. This can only be done once. |
 | `L` | `c` | 1 byte | Calls a lack of progress |
 | `G` | `c` | 1 byte | Asks for the game information |

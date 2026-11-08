@@ -23,7 +23,7 @@ int main() {
   int timeStep = (int)robot->getBasicTimeStep();
 
   Motor *left = robot->getMotor("left wheel motor");
-  Motor *right = robot->getMotor("wheel2 motor");
+  Motor *right = robot->getMotor("right wheel motor");
   left->setPosition(INFINITY);
   right->setPosition(INFINITY);
   left->setVelocity(3.0);
@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## Derleme {#compiling}
-Her sistemde en kolay yol Webots düzenleyicisidir: `Makefile` dosyasıyla birlikte bir C++ denetleyicisi oluşturmak için **Wizards > New Robot Controller** seçeneğini kullan ve **Build** düğmesine bas. [Webots kılavuzuna](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b) bak.
+Her sistemde en kolay yol, Webots'un yerleşik düzenleyicisini kullanmaktır: `Makefile` dosyasıyla birlikte bir C++ denetleyicisi oluşturmak için **Wizards > New Robot Controller** seçeneğini kullan ve **Build** düğmesine bas. [Webots kılavuzuna](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b) bak.
 
 Terminalden de derleyebilirsin. Bu komut macOS'ta test edildi:
 
@@ -49,7 +49,7 @@ clang++ -std=c++17 -I$WEBOTS/include/controller/cpp -L$WEBOTS/lib/controller \
   my_controller.cpp -o my_controller
 ```
 
-Linux'ta aynı seçenekler `WEBOTS=/usr/local/webots` ile çalışır. OpenCV kullanıyorsan onun seçeneklerini de ekle. OpenCV 4 kuruluysa (örneğin macOS'ta Homebrew ile) `$(pkg-config --cflags --libs opencv4)` bunları verir. Örnekler OpenCV 4.13 ile test edildi.
+Linux'ta aynı seçenekler `WEBOTS=/usr/local/webots` ile çalışır. OpenCV kullanıyorsan onun seçeneklerini de ekle. OpenCV 4 kuruluysa (örneğin macOS'ta Homebrew ile) bu seçenekleri `$(pkg-config --cflags --libs opencv4)` verir. Örnekler OpenCV 4.13 ile test edildi.
 
 ## Çalıştırma {#running}
 

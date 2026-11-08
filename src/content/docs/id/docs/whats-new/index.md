@@ -3,16 +3,16 @@ title: Yang baru di v26
 description: Perubahan di Erebus v26 dan aturan 2026 yang memengaruhi robotmu.
 ---
 
-Erebus v26 menerapkan aturan 2026. Jika kamu berasal dari versi sebelumnya, inilah perubahan yang memengaruhi robotmu.
+Erebus v26 menerapkan aturan 2026. Jika sebelumnya kamu memakai versi lama, inilah perubahan yang memengaruhi robotmu.
 
 | Topik | Hingga 2025 | Mulai 2026 |
 |---|---|---|
-| Korban huruf (Letter victims) | Huruf H, S, U | Simbol Φ (terluka), Ψ (stabil), Ω (tidak terluka). Tetap dilaporkan sebagai `H`, `S`, `U`. |
-| Tanda hazmat (Hazmat signs) | Empat label hazmat | Digantikan oleh [target kognitif](/docs/rules/#cognitive-targets) (cognitive targets): cincin berwarna konsentris yang nilainya dijumlahkan menjadi jenisnya. Tetap dilaporkan sebagai `F`, `P`, `C`, `O`. |
-| Penanda palsu | - | Baru: [korban palsu](/docs/rules/#fake-victims) (fake victims) dengan huruf tiga dimensi, dan target kognitif yang jumlahnya bukan 0 sampai 3. Jangan laporkan atau petakan. |
-| Rawa (Swamps) | Waktu terpakai 5x lebih cepat | Masuk pertama ke rawa bernilai x5, dan setiap kali masuk lagi ke rawa yang sama menambah 1, hingga x10. |
+| Korban huruf (letter victim) | Huruf H, S, U | Simbol Φ (terluka), Ψ (stabil), Ω (tidak terluka). Tetap dilaporkan sebagai `H`, `S`, `U`. |
+| Tanda hazmat (hazmat sign) | Empat label hazmat | Digantikan oleh [target kognitif](/docs/rules/#cognitive-targets) (cognitive target): cincin berwarna konsentris yang nilainya dijumlahkan menjadi jenisnya. Tetap dilaporkan sebagai `F`, `P`, `C`, `O`. |
+| Penanda palsu | - | Baru: [korban palsu](/docs/rules/#fake-victims) (fake victim) dengan huruf tiga dimensi, dan target kognitif yang jumlahnya bukan 0 sampai 3. Jangan laporkan atau petakan. |
+| Rawa (swamp) | Waktu terpakai 5x lebih cepat | Masuk pertama ke rawa bernilai x5, dan setiap kali masuk lagi ke rawa yang sama menambah 1, hingga x10. |
 | Rintangan di peta | Tidak dipetakan | Ubin dengan rintangan dipetakan sebagai `x`. |
-| Bonus peta | Hingga x2 | Pengalinya sekarang ketepatan × 1,2 + 1. |
+| Bonus pemetaan | Hingga x2 | Pengalinya sekarang ketepatan × 1,2 + 1. |
 | Derau sensor | - | GPS memiliki derau. Panitia tidak akan mengubah tingkat derau untuk kompetisi. |
 | Pelaksanaan permainan | Diumumkan per acara | Pengaturan server-klien: controller-mu berjalan di komputermu sendiri, terhubung ke server permainan melalui Ethernet. Lihat [Remote Controller](/docs/competition/remote-controller/). |
 | Dokumen | TDP, Poster, Video | Ditambah video singkat yang menunjukkan cara kamu menjalankan controller dengan pengaturan server-klien. |

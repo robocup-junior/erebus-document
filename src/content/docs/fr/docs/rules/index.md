@@ -13,7 +13,7 @@ Les corrections et clarifications sont publiées sur le [Forum officiel de la Ro
 Votre robot est lâché seul dans un labyrinthe inconnu. En 8 minutes, sans aucune aide de votre part, il doit :
 
 1. **Explorer** le labyrinthe sans rester bloqué ni tomber dans les trous.
-2. **Trouver les marqueurs muraux** (wall tokens), victimes et panneaux de danger (hazard signs) sur les murs, et signaler ce qu’est chacun d’eux.
+2. **Trouver les marqueurs muraux** (wall tokens), c’est-à-dire les victimes et les cibles cognitives placées sur les murs, et signaler ce qu’est chacun d’eux.
 3. **Cartographier** le labyrinthe, et envoyer la carte à la fin.
 4. **Revenir** à son point de départ.
 
@@ -57,7 +57,7 @@ Les cases qui mènent à la case de départ en suivant toujours le mur le plus �
 ![Un terrain montrant les cases linéaires en gris et les cases flottantes en rose](../../../docs/rules/rules_linear_floating.png)
 
 ### Points de contrôle {#checkpoints}
-Les cases argentées sont des points de contrôle (checkpoints), et elles peuvent être placées n’importe où sur le terrain. La zone 4 contient des points de contrôle juste après ses passages. Après une absence de progression, le robot repart du dernier point de contrôle visité.
+Les cases argentées sont des points de contrôle (checkpoints), et elles peuvent se trouver n’importe où sur le terrain. La zone 4 contient des points de contrôle juste après ses passages. Après une absence de progression, le robot repart du dernier point de contrôle visité.
 
 ## Marécages, obstacles et trous {#swamps-obstacles-and-holes}
 ![Un terrain avec un marécage, un trou et un obstacle](../../../docs/rules/rules_obstacles.png)
@@ -74,18 +74,18 @@ Il existe deux sortes de marqueurs muraux : les victimes lettres et les cibles c
 ![Cibles cognitives et victimes lettres sur les murs d’un terrain](../../../docs/rules/rules_wall_tokens.png)
 
 ### Victimes lettres {#letter-victims}
-Les victimes lettres (letter victims) sont des images de 2 cm × 2 cm. Le symbole représente l’état de santé de la victime, et la lettre entre parenthèses est le code que vous signalez et inscrivez sur la carte.
+Les victimes lettres (letter victims) sont des images de 2 cm × 2 cm. Le symbole représente l’état de santé de la victime, et le code est la lettre que vous signalez et inscrivez sur la carte.
 
 | État | Symbole | Code |
 |---|---|---|
 | Blessée (Harmed) | Φ | `H` |
-| Stable (Stable) | Ψ | `S` |
+| Stable | Ψ | `S` |
 | Indemne (Unharmed) | Ω | `U` |
 
 ![Les symboles phi, psi et oméga](../../../docs/rules/rules_victims.png)
 
 ### Fausses victimes {#fake-victims}
-Certains marqueurs muraux affichent les mêmes symboles, mais avec des lettres **en trois dimensions**. Ce sont des fausses victimes (fake victims) : vous ne devez ni les signaler au superviseur, ni les inclure dans la carte. Les règles précisent que ce relief peut être détecté avec l’un des capteurs disponibles dans le Robot Customizer.
+Certains marqueurs muraux affichent les mêmes symboles, mais avec des lettres **en trois dimensions**. Ce sont des fausses victimes (fake victims) : vous ne devez ni les signaler au superviseur ni les inclure dans la carte. Les règles précisent que ce relief peut être détecté avec l’un des capteurs disponibles dans le Robot Customizer.
 
 ![Fausses victimes aux symboles en trois dimensions sur un mur](../../../docs/rules/rules_fake_victims.png)
 
@@ -122,7 +122,7 @@ Le [tutoriel Marqueurs muraux](/docs/programming/wall-tokens/) montre comment li
 
 ## Déroulement d’une partie {#playing-a-game}
 - Une partie dure **8 minutes de temps simulé**. Un second chronomètre tourne en temps réel, avec une limite de **10 minutes**. La partie se termine dès que l’un des deux chronomètres expire.
-- Une case compte comme visitée quand le centre du robot s’y trouve. Erebus en juge automatiquement.
+- Une case compte comme visitée quand le centre du robot s’y trouve. Erebus le détermine automatiquement.
 - La partie se termine aussi quand le robot envoie la commande de sortie, ou quand le capitaine de l’équipe demande la fin de la partie (selon la façon dont la partie est exécutée).
 - Les mondes de compétition sont dévoilés juste avant les parties, et les programmes ne peuvent plus être modifiés après la date limite de chaque manche.
 
@@ -151,13 +151,13 @@ Pour identifier un marqueur mural, le robot doit s’arrêter **au moins 1 secon
 | Erreur d’identification d’un marqueur mural (TMI) | -5 |
 | Absence de progression (LoP) | -5 |
 
-Le score total ne peut pas descendre en dessous de zéro. Une erreur d’identification consiste à signaler une position à plus d’une demi-case du marqueur, à signaler un marqueur là où il n’y en a pas, ou à signaler une victime comme un danger et inversement. Signaler un leurre entre dans la deuxième catégorie.
+Le score total ne peut pas descendre en dessous de zéro. Une erreur d’identification consiste à signaler une position à plus d’une demi-case du marqueur, à signaler un marqueur là où il n’y en a pas, ou à signaler une victime lettre comme une cible cognitive, ou inversement. Signaler un leurre entre dans la deuxième catégorie.
 
 **Multiplicateurs de zone (Area multipliers, AM)** : TI, TT et CN sont multipliés par 1, 1,25, 1,5 et 2 respectivement dans les zones 1, 2, 3 et 4. TMI et LoP ne sont pas multipliés.
 
 **Bonus de sortie (Exit bonus, EB)** : si le robot a identifié au moins un marqueur mural, revient sur la case de départ et envoie la commande de sortie, le score augmente de 10 %.
 
-**Bonus de carte (Mapping bonus, MB)** : le robot peut soumettre une carte du labyrinthe. Le multiplicateur vaut exactitude × 1,2 + 1 : une carte parfaite multiplie donc le score par 2,2. Consultez [Cartographie](/docs/rules/mapping/).
+**Bonus de cartographie (Mapping bonus, MB)** : le robot peut soumettre une carte du labyrinthe. Le multiplicateur vaut exactitude × 1,2 + 1 : une carte parfaite multiplie donc le score par 2,2. Consultez [Cartographie](/docs/rules/mapping/).
 
 Le score sur le terrain d’une partie se calcule ainsi :
 

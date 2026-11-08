@@ -22,9 +22,9 @@ description: Saha ölçüleri, oyun süreleri, puan çarpanları, robot sınırl
 | Otomatik ilerleme eksikliği | Sabit bir konumda 20 saniye kaldıktan sonra |
 | Duvar işareti bildirmek için durma süresi | En az 1 saniye |
 | Bataklıkta zaman çarpanı | İlk girişte x5, aynı bataklığa her yeni girişte +1, en fazla x10 |
-| Alan çarpanları | 1., 2., 3. ve 4. alanlar için 1, 1.25, 1.5 ve 2 |
+| Alan çarpanları | 1., 2., 3. ve 4. alanlar için sırasıyla 1, 1,25, 1,5 ve 2 |
 | Çıkış bonusu | +%10 |
-| Harita bonusu çarpanı | doğruluk × 1.2 + 1 |
+| Haritalama bonusu çarpanı | doğruluk × 1,2 + 1 |
 
 ## Robot {#robot}
 
@@ -33,16 +33,16 @@ description: Saha ölçüleri, oyun süreleri, puan çarpanları, robot sınırl
 | Bütçe | 3000 |
 | En fazla kamera sayısı | 3 |
 | En fazla mesafe sensörü sayısı | 8 |
-| Mesafe sensörü menzili | 0 - 0.8 m |
-| GPS doğruluğu | 0.0025 m |
-| En yüksek tekerlek hızı | 6.28 rad/s |
-| Lidar | Katman başına 512 nokta, 4 katman, 0.01 - 1 m |
+| Mesafe sensörü menzili | 0-0,8 m |
+| GPS doğruluğu | 0,0025 m |
+| En yüksek tekerlek hızı | 6,28 rad/s |
+| Lidar | Katman başına 512 nokta, 4 katman, 0,01-1 m |
 
 `timeStep`, sensör güncellemeleri arasındaki milisaniye sayısını belirler. `int(robot.getBasicTimeStep())` dünyanın temel zaman adımını verir; bu, Erebus v26.1 dünyalarında 16 ms'dir.
 
 ## Başlangıç robotunun cihaz adları {#device-names-of-the-starter-robot}
 
-Bunlar, [başlangıç robotuyla](/docs/robot/) `robot.getDevice()`'a verilecek adlardır. Kendi robotlarında adları [Robot Customizer](/docs/robot/customizer/#components) içinde sen seçersin. Verici (emitter) ve alıcı (receiver) her zaman vardır.
+Bunlar, [başlangıç robotunda](/docs/robot/) `robot.getDevice()` fonksiyonuna verilecek adlardır. Kendi robotlarında adları [Robot Customizer](/docs/robot/customizer/#components) içinde sen seçersin. Verici (emitter) ve alıcı (receiver) her zaman vardır.
 
 | Cihaz | Ad |
 |---|---|

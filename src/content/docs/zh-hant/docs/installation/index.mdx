@@ -6,19 +6,19 @@ description: 執行 Erebus v26 所需的項目：Webots R2023b、Python 3.9 或�
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## 軟體需求 \{#software-requirements\}
-模擬系統由幾個關鍵元件組成，每一個都必須安裝。雖然安裝很簡單，但下載和安裝 Webots 可能需要一點時間！這三個元件是：
+模擬系統由三個元件組成，每一個都需要安裝。安裝很簡單，但下載和安裝 Webots 可能需要一段時間。這三個元件是：
 
-1. Webots 機器人模擬器 **R2023b** 版：模擬環境。Erebus v26 不支援其他版本的 Webots。
-1. Erebus：包含各個世界和 Competition Supervisor（比賽監督程式），負責執行規則和計分。最新版本是 **v26.1**。
-1. Python **3.9 或更新版本**：執行 Erebus 本身，以及撰寫機器人控制器時都需要它。你也可以用 C/C++ 撰寫控制器。
+1. Webots 機器人模擬器，**R2023b** 版：模擬環境。Erebus v26 不支援其他版本的 Webots。
+1. Erebus：包含各個世界和 Main Supervisor（主監督程式），負責套用規則並計算分數。最新版本是 **v26.1**。
+1. Python，**3.9 或更新版本**：執行 Erebus 本身，以及撰寫機器人控制器時都需要它。你也可以用 C/C++ 撰寫控制器。
 
 ## 最低系統需求 \{#minimum-system-requirements\}
-* 作業系統 Linux：Ubuntu 20.04 LTS、22.04 LTS
-* 作業系統 Windows：Windows 11、Windows 10 64 位元
-* 作業系統 Mac：macOS 11「Big Sur」和 12「Monterey」。這些是 Webots R2023b 支援的版本。較新版本的 macOS 也可能可以運作：本文件已在 macOS 26 上確認過。
-* CPU：雙核心 2 GHz
+* Linux：Ubuntu 20.04 LTS 或 22.04 LTS
+* Windows：Windows 10 或 11，64 位元
+* macOS：macOS 11「Big Sur」或 12「Monterey」。這些是 Webots R2023b 支援的版本。較新版本的 macOS 也可能可以運作：本文件已在 macOS 26 上測試過。
+* CPU：雙核心，2 GHz
 * RAM：2 GB
-* Nvidia 512MB 或 AMD OpenGL 512MB
+* 顯示卡：支援 OpenGL、具備 512 MB 記憶體的 NVIDIA 或 AMD 顯示卡
 
 ## Python 函式庫 \{#python-libraries\}
 Erebus 需要以下的 Python 函式庫。其中大部分會在 Erebus 啟動時自動安裝，但 **OpenCV 不會**，所以你必須自己安裝。各作業系統的安裝指南都包含這個步驟。

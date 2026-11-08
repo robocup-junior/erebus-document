@@ -1,13 +1,13 @@
 ---
 title: macOS
-description: Einrichtungsanleitung für den Remote Controller unter macOS.
+description: So richtest du den Remote Controller unter macOS ein.
 ---
 
 # Spielserver und Controller-Programm auf demselben Computer ausführen
-Probieren wir zuerst, den Spielserver und das Controller-Programm auf demselben Computer auszuführen. Das entspricht nicht dem echten Wettbewerbs-Setup, hilft dir aber beim lokalen Debuggen.
+Führe zuerst den Spielserver und dein Controller-Programm auf demselben Computer aus. Das entspricht nicht dem Setup beim Wettbewerb, ist aber praktisch, um lokal zu debuggen.
 
 ## Remote-Modus einschalten {#toggle-remote-mode}
-Öffne die Welt und drücke im Steuerfenster auf „TOGGLE REMOTE“. Der Button sollte orange werden, um anzuzeigen, dass der Modus aktiviert ist.
+Öffne die Welt und drücke im Steuerfenster auf „TOGGLE REMOTE“. Der Button wird orange, sobald der Remote-Modus eingeschaltet ist.
 
 ![Der Button TOGGLE REMOTE, eingeschaltet](../../../../../docs/competition/remote-controller/mac/toggle_remote.png)
 
@@ -29,15 +29,15 @@ Der Controller verbindet sich mit Webots und wartet, bis das Spiel beginnt.
 Drücke den Start-Button im Steuerfenster. Der Roboter erscheint, und dein Programm beginnt zu laufen.
 
 ## Das Spiel beenden {#terminate-the-game}
-Um das Spiel abzubrechen, drücke Ctrl+C im Terminal.
+Um das Spiel zu stoppen, drücke Ctrl+C im Terminal.
 
-Sobald die Simulation beendet ist, wird gleichzeitig auch die Spielverwaltung von Erebus beendet. Wenn du das Spiel noch einmal ausführen möchtest, lade die Welt neu.
+Wenn die Simulation endet, wird auch die Spielverwaltung von Erebus beendet. Um das Spiel noch einmal zu starten, lade die Welt neu.
 
 # Den Spielserver auf einem anderen Computer ausführen
-Dieses Setup wird bei offiziellen Wettbewerben verwendet. Der Computer, auf dem dein Controller läuft (Client), und der Spielserver (Server) müssen mit demselben Netzwerk verbunden sein.
+Dieses Setup wird bei offiziellen Wettbewerben verwendet. Der Computer, auf dem dein Controller läuft (der Client), und der Computer, auf dem das Spiel läuft (der Server), müssen mit demselben Netzwerk verbunden sein.
 
 1. (Server) Starte Webots auf dem Server, öffne die Welt und schalte im Steuerfenster den Remote-Modus ein.
-1. (Server) Finde die IP-Adresse des Servers heraus. Du findest sie unter Systemeinstellungen --> Netzwerk.
+1. (Server) Finde die IP-Adresse des Servers heraus, unter „Systemeinstellungen > Netzwerk“.
 1. (Client) Führe die folgenden Befehle aus. Ersetze dabei `<Your controller path>` durch den Pfad zu deinem Controller-Programm und `<Server IP address>` durch die IP-Adresse aus dem vorherigen Schritt.
 
     ```bash
@@ -47,9 +47,9 @@ Dieses Setup wird bei offiziellen Wettbewerben verwendet. Der Computer, auf dem 
 1. (Server) Starte das Spiel mit dem Start-Button.
 
 ## Fehlerbehebung {#troubleshooting}
-- **Der Controller kann sich nicht verbinden:** Prüfe, ob sich beide Computer gegenseitig erreichen, zum Beispiel mit `ping`, ob die Firewall des Servers den TCP-Port 1234 zulässt und ob die Liste der erlaubten IPs im Tab „Network“ der Webots-„Preferences“ leer ist oder den Client enthält.
-- **`No robot name provided` wird angezeigt:** Diese Meldung ist während des Wartens normal. Wird sie dauerhaft angezeigt, ist der Remote-Modus nicht eingeschaltet. Prüfe also den Button TOGGLE REMOTE.
-- **Der Controller findet eine Python-Bibliothek nicht:** Das Programm läuft mit dem Python des Clients, also installiere sie dort.
+- **Der Controller kann sich nicht verbinden:** Prüfe, ob sich die beiden Computer gegenseitig erreichen, zum Beispiel mit `ping`, ob die Firewall des Servers den TCP-Port 1234 zulässt und ob die Liste der erlaubten IPs im Tab „Network“ der Webots-„Preferences“ leer ist oder den Client enthält.
+- **`No robot name provided` wird angezeigt:** Diese Meldung ist normal, solange der Controller wartet. Verschwindet sie nicht, ist der Remote-Modus nicht eingeschaltet: Prüfe den Button TOGGLE REMOTE.
+- **Der Controller findet eine Python-Bibliothek nicht:** Das Programm läuft mit der Python-Installation des Clients, also installiere die Bibliothek dort.
 
 # Offizielle Dokumentation
-Wenn du mehr Details über das Setup wissen möchtest, findest du sie in der [offiziellen Anleitung](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2023b).
+Mehr Details zu diesem Setup findest du im [Webots-Handbuch](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2023b).

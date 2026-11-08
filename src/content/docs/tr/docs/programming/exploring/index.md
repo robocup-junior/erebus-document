@@ -3,10 +3,10 @@ title: Keşif ve haritalama
 description: Labirenti sistemli bir şekilde keşfetmek ve haritayı oluşturmak için fikirler.
 ---
 
-Rastgele dolaşan bir robot pek puan kazanamaz. Bu sayfa, rastgele dolaşmaktan sistemli keşfe nasıl geçeceğini gösterir. Bunlar üzerine inşa edebileceğin fikirlerdir, eksiksiz bir çözüm değil.
+Rastgele dolaşan bir robot pek puan kazanamaz. Bu sayfa, rastgele dolaşmaktan sistemli keşfe nasıl geçeceğini gösterir. Buradakiler eksiksiz bir çözüm değil, üzerine geliştirebileceğin fikirlerdir.
 
 ## Nerede olduğunu bil {#know-where-you-are}
-Kareler 12 cm genişliğindedir, bu yüzden GPS konumu sana hangi karede olduğunu verir. Başlangıcın konumu her dünyada farklıdır, bu yüzden her şeyi oradan ölç:
+Kareler 12 cm genişliğinde olduğu için GPS konumundan hangi karede olduğunu bulabilirsin. Başlangıç noktasının konumu her dünyada farklıdır, bu yüzden her şeyi oradan ölç:
 
 ```python
 TILE = 0.12
@@ -22,24 +22,24 @@ GPS olmadan konumu tekerlek enkoderleri ve jiroskopla tahmin edebilirsin, ama ha
 :::
 
 ## Gördüklerini hatırla {#remember-what-you-have-seen}
-Her kare hakkında bildiklerini içeren bir kare sözlüğü tut: hangi yanlarında duvar var, zemin ne ve onu ziyaret ettin mi.
+Her kare hakkında bildiklerini içeren bir sözlük tut: hangi yanlarında duvar olduğu, zeminin ne olduğu ve kareyi ziyaret edip etmediğin.
 
 ```python
 tiles = {}
 tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor": "start", "visited": True}
 ```
 
-Duvarların çeyrek karelerde olabildiği 2. ve 3. alanlarda kareler her şeyi anlatmaz. Haritayı çeyrek kare çözünürlüğünde saklamak ya da bir Lidar nokta bulutu kullanmak seni bu alanlara hazırlar.
+Duvarların çeyrek karelerde de bulunabildiği 2. ve 3. alanlarda kareler tek başına yeterli bilgi vermez. Haritayı çeyrek kare çözünürlüğünde saklamak ya da bir Lidar nokta bulutu kullanmak seni bu alanlara hazırlar.
 
 ## Nereye gideceğine karar ver {#decide-where-to-go}
-Sadece bir duvarı izleme: bu yöntem, işaretleri daha değerli olan [yüzen karelere](/docs/rules/#linear-and-floating-tiles) asla ulaşmaz. Yaygın bir yaklaşım şudur:
+Yalnızca bir duvarı izleme: bu yöntemle, işaretleri daha değerli olan [yüzen karelere](/docs/rules/#linear-and-floating-tiles) asla ulaşamazsın. Yaygın bir yaklaşım şudur:
 
 1. Bulunduğun kareden, arada duvar olmayan komşuları listele.
 2. Ziyaret edilmemiş bir komşu varsa ona git.
 3. Yoksa, genişlik öncelikli arama (breadth-first search) ile ziyaret edilmemiş bir komşusu olan en yakın kareyi bul ve oraya git.
 4. Böyle bir kare kalmadığında ya da süre azaldığında aynı yoldan başlangıca dön.
 
-Çukurları duvar gibi düşün. Bataklıklar zaman kaybettirir ve aynı bataklığa her girişinde daha fazla kaybettirir, bu yüzden onlara yalnızca değdiğinde git.
+Çukurları duvar gibi ele al. Bataklıklar zaman kaybettirir ve aynı bataklığa her girişinde daha fazla zaman kaybedersin; bu yüzden bataklıklara yalnızca buna değecekse gir.
 
 ## Beklenmedik durumlarla başa çık {#handle-the-unexpected}
 - **İlerleme eksikliği:** robot son kontrol noktasına taşınır. [`L` mesajını dinle](/docs/programming/communication/#lack-of-progress) ve konumunu güncelle.
@@ -47,7 +47,7 @@ Sadece bir duvarı izleme: bu yöntem, işaretleri daha değerli olan [yüzen ka
 - **Gürültü:** sensörler gürültülüdür, bu yüzden bir duvara ya da işarete güvenmeden önce birkaç ölçümü karşılaştır.
 
 ## Karelerden harita matrisine {#from-tiles-to-the-map-matrix}
-[Harita matrisinde](/docs/rules/mapping/) kare başına 4 hücre, artı bir tane vardır. Haritandaki `r` satırı ve `c` sütunundaki bir kare için:
+[Harita matrisinde](/docs/rules/mapping/) her kare için 4 hücre ve fazladan bir hücre vardır. Haritandaki `r` satırı ve `c` sütunundaki bir kare için:
 
 | Öğe | Matristeki konum (satır, sütun) |
 |---|---|

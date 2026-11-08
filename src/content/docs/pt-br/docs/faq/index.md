@@ -3,7 +3,7 @@ title: Perguntas frequentes
 description: Perguntas frequentes sobre o Erebus e a competição.
 ---
 
-## Sobre o Erebus {#custom-md-id}
+## Sobre o Erebus {#about-erebus}
 
 ### Preciso de um robô real? {#do-i-need-a-real-robot}
 Não. Tudo acontece no simulador. O robô é um e-puck virtual que você projeta.
@@ -11,7 +11,7 @@ Não. Tudo acontece no simulador. O robô é um e-puck virtual que você projeta
 ### Quais linguagens de programação posso usar? {#which-programming-languages-can-i-use}
 Esta documentação cobre Python e C/C++. O Erebus também consegue carregar controladores em Java e MATLAB, mas esta documentação não tem exemplos para eles.
 
-### Preciso de um computador potente? {#is-a-powerful-computer-needed}
+### Preciso de um computador potente? {#do-i-need-a-powerful-computer}
 Não, veja os [requisitos](/docs/installation/). Computadores mais lentos podem precisar de [configurações gráficas mais baixas](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Posso usar uma versão mais nova do Webots? {#can-i-use-a-newer-version-of-webots}

@@ -5,23 +5,23 @@ description: Cara membuat world-mu sendiri dengan Erebus World Editor.
 
 ## Latar belakang {#background}
 
-Setelah kamu menaklukkan peta uji dan robotmu bisa menjelajahi labirin sederhana, mungkin kamu menginginkan sesuatu yang lebih menantang, atau ingin menguji skenario tertentu yang tidak ada di peta kami.
-Untuk itu, ada [Erebus World Editor](https://world.erebus.rcj.cloud/) daring. Kamu menggambar peta di browser-mu, dan alat ini mengekspor file world `.wbt` yang bisa kamu jalankan di Erebus.
+Setelah robotmu bisa menaklukkan peta bawaan dan labirin sederhana, mungkin kamu menginginkan sesuatu yang lebih menantang, atau ingin menguji skenario tertentu yang tidak tercakup oleh peta bawaan.
+Untuk itu, tersedia [Erebus World Editor](https://world.erebus.rcj.cloud/) daring. Kamu menggambar peta di browser-mu, dan alat ini mengekspor berkas world `.wbt` yang bisa kamu jalankan di Erebus.
 
 ![Peta yang sudah jadi di World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Jika kamu hanya membuat peta kecil untuk pengujian, ketepatan arena mungkin tidak terlalu penting bagimu. Tetapi jika kamu berencana membuat arena kompetisi, sebaiknya baca [Aturan Simulasi](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) resmi. Editor memeriksa petamu berdasarkan aturan selama kamu bekerja.
+Jika kamu hanya membuat peta kecil untuk pengujian, apakah arenanya sesuai aturan atau tidak mungkin tidak terlalu penting. Namun, jika kamu berencana membuat arena kompetisi, bacalah [Aturan Simulasi](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) resmi. Editor memeriksa petamu berdasarkan aturan selama kamu bekerja.
 
-Editor ini punya panduan bawaan: tekan **Guide** di kanan bawah untuk pelajaran praktik yang membuat peta contoh (sekitar 15 menit), tur tampilan layar, atau pelajaran tentang Room 4. Bahasa editor bisa diganti di sebelahnya.
+Editor ini punya panduan bawaan: tekan **Guide** di kanan bawah untuk pelajaran praktik yang membuat peta contoh (sekitar 15 menit), tur pengenalan layar, atau pelajaran tentang Room 4. Bahasa editor bisa diganti di sebelahnya.
 
 ## Memulai peta {#starting-a-map}
 Saat membuka editor, pilih **aturan tahun berapa** yang ingin kamu ikuti, lalu tekan **New map**. **Pilih aturan 2026 untuk Erebus v26.** Aturan 2027 adalah draf untuk versi Erebus berikutnya.
 
 ![Layar awal World Editor](../../../../docs/tools/world-editor/start.png)
 
-Pekerjaanmu disimpan di browser, tetapi akan hilang di browser lain atau saat data penjelajahan dihapus. Simpan peta yang penting sebagai JSON dengan tombol simpan di bilah atas, dan buka lagi dengan tombol buka.
+Pekerjaanmu disimpan di browser, tetapi akan hilang di browser lain atau saat data browsing dihapus. Simpan peta yang penting sebagai JSON dengan tombol simpan di bilah atas, dan buka lagi dengan tombol buka.
 
-Urutan kerja yang baik adalah: ukuran dan garis luar, ruangan (room), lorong penghubung, dinding, lantai, rintangan dan korban, Room 4, dan terakhir pemeriksaan dan ekspor. Alat-alatnya ada di sebelah kiri, masing-masing dengan pintasan keyboard. Pengaturan alat yang dipilih muncul di panel di sebelahnya.
+Urutan kerja yang baik adalah ukuran dan garis luar, ruangan (room), lorong penghubung, dinding, lantai, rintangan dan korban, Room 4, dan terakhir pemeriksaan dan ekspor. Alat-alatnya ada di sebelah kiri, masing-masing dengan pintasan keyboard. Pengaturan alat yang dipilih muncul di panel di sebelahnya.
 
 | Alat | Tombol | Kegunaan |
 |---|---|---|
@@ -37,15 +37,15 @@ Urutan kerja yang baik adalah: ukuran dan garis luar, ruangan (room), lorong pen
 | Obstacle | `O` | Menempatkan rintangan |
 | Victims | `V` | Menempatkan korban huruf, target kognitif, dan penanda palsu |
 
-Roda mouse untuk zoom, menyeret sambil menahan Spasi untuk menggeser tampilan, dan undo dengan `⌘Z` atau `Ctrl+Z`.
+Gunakan roda mouse untuk zoom, seret sambil menahan Spasi untuk menggeser tampilan, dan tekan `⌘Z` atau `Ctrl+Z` untuk undo.
 
 ## Ukuran dan garis luar {#size-and-outline}
-Dengan alat **Outline**, atur ukuran peta dalam ubin. Dinding luar akan mengikuti dengan sendirinya. **Outline (uneven)** memungkinkanmu mengklik ubin untuk mengeluarkannya dari peta, dan kamu juga bisa menyisipkan dan menghapus baris dan kolom di tempat yang kamu klik.
+Dengan alat **Outline**, atur ukuran peta dalam ubin. Dinding luar ditambahkan secara otomatis. **Outline (uneven)** memungkinkanmu mengklik ubin untuk mengeluarkannya dari peta, dan kamu juga bisa menyisipkan dan menghapus baris dan kolom di tempat yang kamu klik.
 
 ![Alat Outline](../../../../docs/tools/world-editor/outline.png)
 
 ## Ruangan dan lorong penghubung {#rooms-and-passages}
-Dengan alat **Rooms**, warnai ubin-ubin setiap ruangan. Dinding akan berdiri dengan sendirinya di perbatasan antar-ruangan. Lalu, dengan alat **Passages**, hubungkan ruangan-ruangannya: warna setiap lorong penghubung dipilih sesuai ruangan yang dihubungkannya.
+Dengan alat **Rooms**, warnai ubin-ubin setiap ruangan. Dinding ditambahkan secara otomatis di perbatasan antar-ruangan. Lalu, dengan alat **Passages**, hubungkan ruangan-ruangannya: warna setiap lorong penghubung dipilih sesuai ruangan yang dihubungkannya.
 
 ![Alat Rooms](../../../../docs/tools/world-editor/rooms.png)
 
@@ -78,11 +78,11 @@ Di Room 1 bisa ada satu korban di setiap sisi ubin. Di Room 2 dan 3, korban dite
 ![Alat Victims](../../../../docs/tools/world-editor/victims.png)
 
 ## Room 4 {#room-4}
-Room 4 tidak berbasis ubin, jadi digambar sebagai gambar. Dengan alat **Rooms**, warnai Room 4, lalu tekan **Draw room 4** (atau klik dua kali ruangannya) untuk membuka pembuat Room 4.
+Room 4 tidak berbasis ubin, jadi ruangan ini dibuat sebagai gambar. Dengan alat **Rooms**, warnai Room 4, lalu tekan **Draw room 4** (atau klik dua kali ruangannya) untuk membuka pembuat Room 4.
 
 ![Pembuat Room 4](../../../../docs/tools/world-editor/room4.png)
 
-Apa yang kamu gambar dengan warna hitam akan menjadi dinding. Pembuat ini punya alat untuk menggambar bebas dan menggambar garis, lengkungan, busur, persegi panjang, elips, poligon, dan bentuk dari ikon, serta alat untuk korban dan rintangan. Kamu bisa menempatkan rintangan sebanyak yang kamu mau di Room 4. Garis-garis merah menunjukkan tempat yang tidak bisa dicapai robot, dan kamu harus menyisakan ruang selebar sekitar satu ubin agar robot bisa lewat.
+Apa yang kamu gambar dengan warna hitam akan menjadi dinding. Pembuat ini punya alat untuk menggambar bebas dan menggambar garis, lengkungan, busur, persegi panjang, elips, poligon, dan bentuk dari ikon, serta alat untuk korban dan rintangan. Kamu bisa menempatkan rintangan sebanyak yang kamu mau di Room 4. Garis-garis merah menunjukkan tempat yang tidak bisa dilalui robot, dan kamu harus menyisakan jalur selebar sekitar satu ubin agar robot bisa lewat.
 
 Setelah selesai, tekan **OK**: gambarnya muncul sebagai Room 4 di peta dan masuk ke world yang diekspor. Tombol-tombol di kanan atas pembuat ini menyimpan gambar sebagai PNG, agar kamu bisa memakai Room 4 yang sama di peta lain, dan membuka gambar PNG atau JPEG.
 
@@ -95,18 +95,18 @@ Tombol **Linear** di bilah atas mewarnai setiap ubin sebagai linear atau mengamb
 
 ![Ubin linear dan mengambang ditampilkan di peta](../../../../docs/tools/world-editor/linear.png)
 
-Trofi di bilah atas menampilkan **skor maksimum** peta, yang dihitung dengan aturan penilaian, beserta bagian setiap ruangan dan skor dengan bonus keluar dan bonus peta.
+Trofi di bilah atas menampilkan **skor maksimum** peta, yang dihitung dengan aturan penilaian, beserta porsi setiap ruangan dan skor dengan bonus keluar dan bonus pemetaan.
 
 ![Skor maksimum peta](../../../../docs/tools/world-editor/max_score.png)
 
 ## Mengekspor dan menjalankan world-mu {#exporting-and-running-your-world}
 Atur nama peta di bilah atas, lalu tekan tombol **.wbt** di kanan atas. Lalu:
 
-1. Salin file `.wbt` ke folder `game/worlds` milik Erebus. File harus berada di folder itu, karena world tersebut memakai file dari Erebus.
+1. Salin berkas `.wbt` ke folder `game/worlds` milik Erebus. Berkas itu harus berada di folder tersebut, karena world-nya memakai berkas-berkas dari Erebus.
 1. Buka di Webots, atau pilih dengan tombol **Worlds** di [jendela kontrol](/docs/getting-started/).
 
 ![Peta contoh dari panduan editor, berjalan di Erebus v26.1.](../../../../docs/tools/world-editor/exported_world.png)
 
 *Peta contoh dari panduan editor, berjalan di Erebus v26.1.*
 
-File `.wbt` tidak bisa diubah kembali menjadi peta yang bisa kamu edit, jadi simpan juga file JSON-nya.
+Berkas `.wbt` tidak bisa diubah kembali menjadi peta yang bisa kamu edit, jadi simpan juga berkas JSON-nya.

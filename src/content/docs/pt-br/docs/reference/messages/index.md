@@ -11,8 +11,8 @@ As strings de formato abaixo são as do módulo [struct](https://docs.python.org
 
 | Mensagem | Formato | Tamanho | Finalidade |
 |---|---|---|---|
-| Informar um marcador | `i i c`: x, z, tipo | 9 bytes | A posição é em centímetros, e o tipo é um destes: `H`, `S`, `U`, `F`, `P`, `C`, `O`. O robô precisa ter ficado parado por pelo menos 1 segundo. |
-| Dados do mapa | `2i` seguido de texto UTF-8: linhas, colunas, células separadas por vírgula | Qualquer outro tamanho | Guarda o mapa, sem avaliá-lo |
+| Informar um marcador de parede | `i i c`: x, z, tipo | 9 bytes | A posição é em centímetros, e o tipo é um destes: `H`, `S`, `U`, `F`, `P`, `C`, `O`. O robô precisa ter ficado parado por pelo menos 1 segundo. |
+| Dados do mapa | `2i` seguido de texto UTF-8: linhas, colunas, células separadas por vírgulas | Qualquer outro tamanho | Guarda o mapa, sem avaliá-lo |
 | `M` | `c` | 1 byte | Avalia o mapa guardado. Isso só pode ser feito uma vez. |
 | `L` | `c` | 1 byte | Declara uma falta de progresso |
 | `G` | `c` | 1 byte | Pede as informações da partida |

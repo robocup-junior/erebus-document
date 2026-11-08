@@ -3,7 +3,7 @@ title: Fehlerbehebung
 description: Lösungen für häufige Probleme beim Installieren und Ausführen von Erebus.
 ---
 
-Sieh zuallererst in der Webots-Konsole nach. Bei den meisten Problemen steht dort eine Fehlermeldung.
+Sieh zuerst in der Webots-Konsole nach. Bei den meisten Problemen steht dort eine Fehlermeldung.
 
 ## Installation {#installation}
 

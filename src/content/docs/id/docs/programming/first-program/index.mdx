@@ -12,9 +12,9 @@ Program pertamamu membuat robot melaju maju, lalu menghentikannya di depan dindi
 ## Cara kerjanya \{#how-it-works\}
 
 1. **Buat robot.** `Robot()` menghubungkan programmu dengan robot di simulator.
-2. **Ambil time step.** Simulasi maju dalam langkah-langkah beberapa milidetik. `getBasicTimeStep()` memberikan langkah dari world.
+2. **Ambil time step.** Simulasi berjalan maju dalam langkah-langkah (step) berdurasi beberapa milidetik. `getBasicTimeStep()` memberikan time step world tersebut.
 3. **Ambil perangkat.** Setiap motor dan sensor dicari berdasarkan namanya. Ini adalah nama yang kamu berikan saat [merakit robotmu](/docs/robot/build/).
-4. **Aktifkan sensor.** Sensor tidak memberikan nilai sampai diaktifkan. Time step memberi tahu seberapa sering sensor diperbarui.
+4. **Aktifkan sensor.** Sensor tidak memberikan nilai sampai diaktifkan. Time step menentukan seberapa sering sensor diperbarui.
 5. **Loop.** `robot.step(timeStep)` memajukan simulasi satu langkah, dan mengembalikan -1 saat simulasi berakhir. Semua yang dilakukan robotmu terjadi di dalam loop ini.
 
 ## Jalankan \{#run-it\}

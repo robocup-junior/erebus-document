@@ -5,12 +5,12 @@ description: Cómo crear tus propios mundos con el World Editor de Erebus.
 
 ## Contexto {#background}
 
-Cuando hayas dominado los mapas de prueba y tu robot sea capaz de recorrer laberintos sencillos, puede que quieras algo más difícil, o probar situaciones concretas que nuestros mapas no ofrecen.
-Para eso tienes el [World Editor de Erebus](https://world.erebus.rcj.cloud/) en línea. Dibujas un mapa en tu navegador y exporta un archivo de mundo `.wbt` que puedes ejecutar en Erebus.
+Cuando tu robot ya se desenvuelva bien en los mapas incluidos y en laberintos sencillos, puede que quieras algo más difícil, o probar situaciones concretas que los mapas incluidos no cubren.
+Para eso existe el [World Editor de Erebus](https://world.erebus.rcj.cloud/), en línea. Dibujas un mapa en tu navegador y exporta un archivo de mundo `.wbt` que puedes ejecutar en Erebus.
 
 ![Un mapa terminado en el World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Si solo construyes mapas pequeños para hacer pruebas, probablemente no te importe mucho que el campo sea correcto. Pero si piensas construir un campo de competición, deberías leer las [reglas oficiales de Simulation](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). El editor comprueba tu mapa frente a las reglas mientras trabajas.
+Si solo construyes mapas pequeños para hacer pruebas, probablemente no te importe mucho que el campo cumpla las reglas. Pero si piensas construir un campo de competición, lee las [reglas oficiales de Simulation](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). El editor comprueba tu mapa frente a las reglas mientras trabajas.
 
 El editor tiene una guía integrada: pulsa **Guide** abajo a la derecha para una lección práctica que crea un mapa de ejemplo (unos 15 minutos), un recorrido por la pantalla o una lección sobre la habitación 4 (Room 4). El idioma del editor se puede cambiar justo al lado.
 
@@ -21,7 +21,7 @@ Cuando abras el editor, elige **las reglas de qué año** quieres seguir y pulsa
 
 Tu trabajo se guarda en el navegador, pero se pierde en otro navegador o cuando se borran los datos de navegación. Conserva los mapas importantes guardándolos como JSON con el botón de guardar de la barra superior, y vuelve a abrirlos con el botón de abrir.
 
-Un buen orden de trabajo es: tamaño y contorno, habitaciones, pasos, paredes, suelos, obstáculos y víctimas, habitación 4 y, por último, las comprobaciones y la exportación. Las herramientas están a la izquierda, cada una con un atajo de teclado. Los ajustes de la herramienta seleccionada aparecen en el panel de al lado.
+Un buen orden de trabajo es tamaño y contorno, habitaciones, pasos, paredes, suelos, obstáculos y víctimas, habitación 4 y, por último, las comprobaciones y la exportación. Las herramientas están a la izquierda, cada una con un atajo de teclado. Los ajustes de la herramienta seleccionada aparecen en el panel de al lado.
 
 | Herramienta | Tecla | Uso |
 |---|---|---|
@@ -40,12 +40,12 @@ Un buen orden de trabajo es: tamaño y contorno, habitaciones, pasos, paredes, s
 La rueda del ratón hace zoom, arrastrar manteniendo pulsado Espacio mueve la vista, y deshacer es `⌘Z` o `Ctrl+Z`.
 
 ## Tamaño y contorno {#size-and-outline}
-Con la herramienta **Outline**, fija el tamaño del mapa en baldosas. Las paredes exteriores se colocan solas. **Outline (uneven)** te permite hacer clic en baldosas para quitarlas del mapa, y también puedes insertar y eliminar filas y columnas donde hagas clic.
+Con la herramienta **Outline**, fija el tamaño del mapa en baldosas. Las paredes exteriores se añaden automáticamente. **Outline (uneven)** te permite hacer clic en baldosas para quitarlas del mapa, y también puedes insertar y eliminar filas y columnas donde hagas clic.
 
 ![La herramienta Outline](../../../../docs/tools/world-editor/outline.png)
 
 ## Habitaciones y pasos {#rooms-and-passages}
-Con la herramienta **Rooms**, pinta las baldosas de cada habitación. Las paredes se levantan solas en los bordes entre habitaciones. Después, con la herramienta **Passages**, une las habitaciones: el color de cada paso se elige según las habitaciones que conecta.
+Con la herramienta **Rooms**, pinta las baldosas de cada habitación. Las paredes se añaden automáticamente en los bordes entre habitaciones. Después, con la herramienta **Passages**, une las habitaciones: el color de cada paso se elige según las habitaciones que conecta.
 
 ![La herramienta Rooms](../../../../docs/tools/world-editor/rooms.png)
 
@@ -82,7 +82,7 @@ La habitación 4 no está basada en baldosas, así que se dibuja como una imagen
 
 ![El creador de la habitación 4](../../../../docs/tools/world-editor/room4.png)
 
-Lo que dibujes en negro se convierte en paredes. El creador tiene herramientas para dibujar a mano alzada y para dibujar líneas, curvas, arcos, rectángulos, elipses, polígonos y formas a partir de iconos, y herramientas para víctimas y obstáculos. En la habitación 4 se pueden colocar tantos obstáculos como quieras. Las franjas rojas muestran adónde no puede llegar el robot, y debes dejarle espacio para pasar, de aproximadamente una baldosa de ancho.
+Lo que dibujes en negro se convierte en paredes. El creador tiene herramientas para dibujar a mano alzada y para dibujar líneas, curvas, arcos, rectángulos, elipses, polígonos y formas a partir de iconos, y herramientas para víctimas y obstáculos. En la habitación 4 se pueden colocar tantos obstáculos como quieras. Las franjas rojas muestran adónde no puede ir el robot, y debes dejarle un camino de aproximadamente una baldosa de ancho para que pueda pasar.
 
 Cuando termines, pulsa **OK**: la imagen aparece como habitación 4 en el mapa y pasa al mundo exportado. Los botones de arriba a la derecha del creador guardan la imagen como PNG, para que puedas usar la misma habitación 4 en otro mapa, y abren imágenes PNG o JPEG.
 

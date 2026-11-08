@@ -5,7 +5,7 @@ description: Baca gambar kamera di Webots dan olah dengan OpenCV untuk menemukan
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-Kamera memberikan gambar dari apa yang ada di depannya. Kamu membutuhkannya untuk menemukan dan membaca [penanda dinding](/docs/programming/wall-tokens/). Robot pemula punya satu kamera, bernama `camera`, berukuran 64 × 40 piksel.
+Kamera memberikan gambar dari apa yang ada di depannya. Kamu membutuhkannya untuk menemukan dan membaca [penanda dinding](/docs/programming/wall-tokens/). Robot pemula punya satu kamera bernama `camera`, dengan resolusi 64 × 40 piksel.
 
 ## Membaca piksel \{#reading-pixels\}
 
@@ -23,8 +23,8 @@ Gambar adalah kisi piksel. Setiap piksel punya nilai merah, hijau, dan biru dari
 Untuk Python, OpenCV terinstal bersama [library Python](/docs/installation/#python-libraries) lainnya. Untuk C++, kamu perlu menginstal OpenCV dan [menambahkannya saat mengompilasi](/docs/programming/cpp/#compiling). Contoh C++ sudah diuji dengan OpenCV 4.
 :::
 
-Jendela seperti ini untuk pengujian di rumah: matikan saat kompetisi.
+Jendela seperti ini hanya untuk pengujian di rumah: matikan saat kompetisi.
 
 ## Resolusi \{#resolution\}
 
-Resolusi yang lebih tinggi bisa melihat penanda dari jarak yang lebih jauh, tetapi harganya lebih mahal dan waktu pengolahannya lebih lama. Kamu memilih resolusi setiap kamera di [Robot Customizer](/docs/robot/customizer/#components).
+Resolusi yang lebih tinggi bisa melihat penanda dari jarak yang lebih jauh, tetapi biayanya lebih besar dan waktu pengolahannya lebih lama. Kamu memilih resolusi setiap kamera di [Robot Customizer](/docs/robot/customizer/#components).

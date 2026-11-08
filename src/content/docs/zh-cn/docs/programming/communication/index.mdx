@@ -1,6 +1,6 @@
 ---
 title: 通信
-description: 报告墙上的标识、请求缺乏进展、查询得分并结束比赛。
+description: 报告墙面标识、请求缺乏进展、查询得分并结束比赛。
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -12,14 +12,14 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 下面每一节都是一个适用于[入门机器人](/docs/robot/)的完整程序。所有消息都列在[消息参考](/docs/reference/messages/)中。
 
-## 为墙上的标识得分 \{#scoring-wall-tokens\}
+## 为墙面标识得分 \{#scoring-wall-tokens\}
 
 要为一个字母受害者（Letter victim）或认知目标（Cognitive target）得分，机器人必须：
 
 1. 在标识附近**停止超过 1 秒**。如果机器人在最近一秒内移动过，Erebus 会忽略这次报告。
 2. **发送标识的位置和类型**：X 和 Z 以**厘米**为单位，类型用一个字母表示。
 
-| 墙上的标识 | 类型 |
+| 墙面标识 | 类型 |
 |---|---|
 | 字母受害者 Φ（受伤） | `H` |
 | 字母受害者 Ψ（稳定） | `S` |
@@ -35,11 +35,11 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 机器人必须和标识位于墙的同一侧，而且机器人和你发送的位置都必须离标识足够近。规则要求的距离最多为半个地块，所以请以此为目标。Erebus v26.1 检查的距离是 9 cm。
 
-在 `world1.wbt` 的起点运行这个程序：那里没有标识，所以控制窗口的历史记录会显示 `Misidentification of Victim -5`。错误的报告（包括报告假目标）会扣 5 分，而且每个标识只能得分一次。
+在 `world1.wbt` 的起点运行这个程序：那里没有标识，所以控制窗口的历史记录会显示 `Misidentification of Victim -5`。错误的报告（包括报告假标识）会扣 5 分，而且每个标识只能得分一次。
 
 ## 缺乏进展 \{#lack-of-progress\}
 
-当机器人被卡住时，缺乏进展（Lack of Progress，LoP）会把它移回最后一个检查点，并扣 5 分。机器人 20 秒不动时会自动触发，你的程序也可以通过发送 `L` 来主动请求。每次发生时，比赛都会向机器人发送 `L`，让你的程序知道它的位置已经改变。
+当机器人被卡住时，缺乏进展（Lack of progress，LoP）会把它移回最后一个检查点，并扣 5 分。机器人 20 秒不动时会自动触发，你的程序也可以通过发送 `L` 来主动请求。每次发生时，比赛都会向机器人发送 `L`，让你的程序知道它的位置已经改变。
 
 <CodeTabs file="lop" />
 
@@ -55,7 +55,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 ## 结束比赛 \{#ending-the-game\}
 
-发送 `E` 来结束比赛。如果机器人位于起始地块上，并且已经识别出至少一个墙上的标识，就能获得 10% 的离场奖励（Exit bonus）。
+发送 `E` 来结束比赛。如果机器人位于起始地块上，并且已经识别出至少一个墙面标识，就能获得 10% 的离场奖励（Exit bonus）。
 
 <CodeTabs file="exit" />
 
@@ -63,4 +63,4 @@ import CodeTabs from '@/components/CodeTabs.astro';
 发送 `E` 时，无论机器人在哪里，比赛都会结束，机器人也无法继续。请确保它已经先回到起始地块，并且已经[提交了地图](/docs/programming/map-bonus/)。
 :::
 
-接下来，在[墙上的标识](/docs/programming/wall-tokens/)中学习如何区分各种标识。
+接下来，在[墙面标识](/docs/programming/wall-tokens/)中学习如何区分各种标识。

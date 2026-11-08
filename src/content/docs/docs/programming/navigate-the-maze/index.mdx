@@ -28,12 +28,12 @@ First, the program creates the robot, gets the wheel motors and lets them turn w
 ### 2. Sensors
 Next, it gets and enables the sensors of the starter robot:
 
-![The sample robot with its sensors labeled](./robot.png)
+![The sample robot with its sensors labelled](./robot.png)
 
 <CodeTabs file="maze" region="sensors" />
 
 ### 3. Moves
-These functions change the speeds to turn and spin. `delay` keeps the robot doing the same thing for some milliseconds, and `getBrightness` reads the colour sensor as a single value from 0 (black) to 255 (white).
+These functions change the speeds to turn and spin. `delay` keeps the robot doing the same thing for a given number of milliseconds, and `getBrightness` reads the colour sensor as a single value from 0 (black) to 255 (white).
 
 <CodeTabs file="maze" region="moves" />
 

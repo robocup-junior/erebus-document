@@ -20,7 +20,7 @@ Halaman ini adalah panduan untuk kompetisi internasional dengan aturan 2026. Kom
 Templat dan rubrik ada di [Situs Web Komunitas RCJ Rescue](https://rescue.rcj.cloud/).
 
 - [ ] **Technical Description Paper (TDP).** Ikuti templatnya dengan ketat: jika tidak, skor untuk dokumen ini 0.
-- [ ] **Poster,** sebagai file dan sebagai poster fisik di lokasi, tidak lebih besar dari A1.
+- [ ] **Poster,** sebagai berkas digital dan sebagai poster fisik di lokasi, tidak lebih besar dari A1.
 - [ ] **Video** yang menampilkan proyekmu.
 - [ ] **Video server-klien,** baru di 2026: video singkat yang menunjukkan cara kamu menjalankan controller pada peta contoh dengan pengaturan server-klien.
 - [ ] **Kode sumber** dan **formulir web** untuk wawancara.
@@ -32,7 +32,7 @@ Bawalah:
 
 - [ ] Komputer dengan programmu dan semua library-nya terinstal, serta Webots R2023b
 - [ ] Kabel Ethernet, dan adaptor jika komputermu membutuhkannya
-- [ ] File `.json` robotmu, jika kamu punya robot kustom
+- [ ] Berkas `.json` robotmu, jika kamu punya robot kustom
 - [ ] Poster fisik
 
 ## Pengaturan OpenGL {#opengl-settings}
@@ -50,7 +50,7 @@ Kecuali panitia mengumumkan hal lain, pengaturan berikut yang digunakan. Pengatu
 - [ ] Jalankan di setiap world yang disertakan, terutama `world3.wbt` dan `world4.wbt`, yang berisi penanda palsu.
 - [ ] Buat petamu sendiri dengan [World Editor](/docs/tools/world-editor/), mencakup keempat area.
 - [ ] Periksa seluruh permainan: apakah robot berjalan sampai akhir, mengirim peta, dan kembali ke titik awal tepat waktu?
-- [ ] Uji apa yang terjadi setelah kurangnya kemajuan (Lack of Progress).
+- [ ] Uji apa yang terjadi setelah kurangnya kemajuan (lack of progress).
 - [ ] Uji di komputer yang akan kamu bawa, dan dengan pengaturan OpenGL di atas.
 
 ## Selama kompetisi {#during-the-competition}

@@ -4,14 +4,14 @@ description: Plus d’informations et d’exemples sur la cartographie.
 ---
 
 ## Principe général {#general-idea}
-La cartographie est notée sous la forme d’un multiplicateur appliqué au score total obtenu pendant la partie. Pour obtenir un multiplicateur de cartographie, le robot doit soumettre une matrice au superviseur principal (main supervisor) du jeu. La matrice soumise est comparée à la « grille de réponses » pour obtenir une valeur d’exactitude, et le multiplicateur vaut :
+La cartographie est notée sous la forme d’un multiplicateur appliqué au score de la partie. Pour l’obtenir, le robot doit soumettre une matrice au Main Supervisor (superviseur principal) du jeu. La matrice soumise est comparée à la « grille de réponses » pour obtenir une valeur d’exactitude, et le multiplicateur vaut :
 
-**multiplicateur du bonus de carte = exactitude × 1,2 + 1**
+**multiplicateur du bonus de cartographie = exactitude × 1,2 + 1**
 
 Une carte parfaite multiplie donc votre score par 2,2. Pour savoir comment envoyer la matrice, consultez le [tutoriel Soumettre la carte](/docs/programming/map-bonus/).
 
 ## Règles de cartographie {#rules-for-mapping}
-* Chaque quart de case, avec ses bords et ses sommets, est représenté par une cellule (une valeur). Une carte de L × H cases est donc une matrice de (4 × H + 1) lignes et (4 × L + 1) colonnes.
+* Chaque quart de case, chaque bord et chaque sommet est représenté par une cellule (une valeur). Une carte de L × H cases est donc une matrice de (4 × H + 1) lignes et (4 × L + 1) colonnes.
 * Chaque élément du monde est représenté comme suit :
 
 | Élément | Valeur |
@@ -32,13 +32,13 @@ Une carte parfaite multiplie donc votre score par 2,2. Pour savoir comment envoy
 | Toutes les cases, bords et sommets de la zone 4, y compris sa bordure | `*` |
 | Toutes les autres cases, bords et sommets | `0` |
 
-* Les éléments de sol (`2`, `3`, `4`, `5`, `x` et les passages) sont inscrits dans les quatre cellules au centre de chaque quart de case, comme le montrent les exemples ci-dessous.
+* Les éléments de sol (`2`, `3`, `4`, `5`, `x` et les passages) sont inscrits dans la cellule centrale de chacun des quatre quarts de case de la case, comme le montrent les exemples ci-dessous.
 * Aucune case n’est à la fois plus d’un de ces éléments : marécage, trou, point de contrôle, case de départ, case avec un obstacle, ou passage entre zones.
-* Pour les murs courbes de la zone 3, le sommet doit être représenté par un `0`.
-* La présence d’un marqueur mural doit être indiquée dans la cellule du mur sur lequel il se trouve. S’il y a plusieurs marqueurs muraux sur le même mur, par exemple sur ses deux faces, concaténez leurs codes dans une seule cellule, dans l’ordre de leur position absolue sur la carte : d’abord de haut en bas, puis de gauche à droite.
+* Pour les murs courbes de la zone 3, le sommet est représenté par un `0`.
+* Un marqueur mural est inscrit dans la cellule du mur sur lequel il se trouve. S’il y a plusieurs marqueurs muraux sur le même mur, par exemple sur ses deux faces, concaténez leurs codes dans une seule cellule, dans l’ordre de leur position absolue sur la carte : d’abord de haut en bas, puis de gauche à droite.
 * Les leurres ne doivent pas figurer sur la carte : ni les fausses victimes, ni les cibles cognitives dont la somme n’est pas valide.
-* Les marqueurs muraux sur des cases entières (qui ne sont pas des quarts de case) peuvent se trouver n’importe où le long du mur. Ils doivent être placés dans la cellule du quart de case dont ils sont le plus proches, ou dans la cellule du milieu s’ils sont près du centre du côté de la case.
-* Les cartes peuvent être enregistrées avec n’importe quelle rotation, du moment qu’elle est un multiple de 90°. Erebus aligne votre matrice sur la réponse à l’aide de la case de départ, essaie chaque orientation, et garde le meilleur résultat.
+* Les marqueurs muraux sur des cases entières (qui ne sont pas des quarts de case) peuvent se trouver n’importe où le long du mur. Ils sont inscrits dans la cellule du quart de case dont ils sont le plus proches, ou dans la cellule du milieu s’ils sont près du centre du côté de la case.
+* Les cartes peuvent être soumises avec n’importe quelle rotation, du moment qu’elle est un multiple de 90°. Erebus aligne votre matrice sur la réponse à l’aide de la case de départ, essaie chaque orientation, et garde le meilleur résultat.
 
 ## Comment l’exactitude est calculée {#how-correctness-is-calculated}
 1. Les matrices sont alignées sur la case de départ. Autrement dit, **votre carte doit contenir la case de départ**.
@@ -48,10 +48,10 @@ Une carte parfaite multiplie donc votre score par 2,2. Pour savoir comment envoy
 Comme seules les positions où se trouve quelque chose comptent, marquer un élément qui n’existe pas fait baisser votre exactitude autant qu’oublier un élément qui existe.
 
 ## Cas limites ambigus {#ambiguous-edge-cases}
-Pour les cas limites ambigus qui ne sont pas définis ci-dessous, contactez le comité international RoboCupJunior Rescue et/ou l’équipe de développement de la plateforme.
+Pour les cas ambigus qui ne sont pas traités ci-dessous, contactez le comité international RoboCupJunior Rescue et/ou l’équipe de développement de la plateforme.
 ### Un mur avec un angle droit normal d’un côté et un mur courbe de l’autre {#one-wall-with-a-normal-right-angled-wall-and-a-curved-wall-on-each-side}
-Les règles indiquent que les sommets d’un mur courbe doivent être représentés par des zéros.
-L’exception est le cas suivant, où un côté du mur forme un angle droit normal et l’autre côté est courbe : il est représenté de la même façon que si les deux côtés étaient des murs normaux.
+Les règles indiquent que les sommets d’un mur courbe sont représentés par des zéros.
+L’exception est le cas suivant, où un côté du mur forme un angle droit normal et l’autre côté est courbe. Il est représenté comme si les deux côtés étaient des murs normaux.
 ![Un mur avec un angle droit d’un côté et une courbe de l’autre](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Exemples {#examples}

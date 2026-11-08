@@ -5,12 +5,12 @@ description: Comment créer vos propres mondes avec le World Editor d’Erebus.
 
 ## Contexte {#background}
 
-Une fois les cartes de test maîtrisées et votre robot capable de parcourir des labyrinthes simples, vous voudrez peut-être quelque chose de plus difficile, ou tester des situations précises que nos cartes ne proposent pas.
-Pour cela, vous disposez du [World Editor d’Erebus](https://world.erebus.rcj.cloud/) en ligne. Vous dessinez une carte dans votre navigateur, et il exporte un fichier de monde `.wbt` que vous pouvez lancer dans Erebus.
+Une fois que votre robot s’en sort sur les cartes fournies et sur des labyrinthes simples, vous voudrez peut-être quelque chose de plus difficile, ou tester des situations précises que les cartes fournies ne couvrent pas.
+Pour cela, il existe le [World Editor d’Erebus](https://world.erebus.rcj.cloud/) en ligne. Vous dessinez une carte dans votre navigateur, et il exporte un fichier de monde `.wbt` que vous pouvez lancer dans Erebus.
 
 ![Une carte terminée dans le World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Si vous construisez simplement de petites cartes pour vos tests, la conformité du terrain n’a sans doute pas beaucoup d’importance pour vous. Mais si vous prévoyez de construire un terrain de compétition, lisez attentivement les [Règles de la simulation](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) officielles. L’éditeur vérifie votre carte par rapport aux règles pendant que vous travaillez.
+Si vous créez seulement de petites cartes pour vos tests, la conformité du terrain aux règles n’a sans doute pas beaucoup d’importance. Mais si vous prévoyez de construire un terrain de compétition, lisez les [Règles de la simulation](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) officielles. L’éditeur vérifie votre carte par rapport aux règles pendant que vous travaillez.
 
 L’éditeur dispose d’un guide intégré : appuyez sur **Guide** en bas à droite pour une leçon pratique qui crée une carte d’exemple (environ 15 minutes), une visite de l’écran, ou une leçon sur la salle 4 (Room 4). La langue de l’éditeur peut être changée juste à côté.
 
@@ -21,7 +21,7 @@ Quand vous ouvrez l’éditeur, choisissez **les règles de quelle année** vous
 
 Votre travail est conservé dans le navigateur, mais il est perdu dans un autre navigateur ou quand les données de navigation sont effacées. Conservez les cartes importantes en les enregistrant au format JSON avec le bouton d’enregistrement de la barre du haut, et rouvrez-les avec le bouton d’ouverture.
 
-Un bon ordre de travail : taille et contour, salles, passages, murs, sols, obstacles et victimes, salle 4, et enfin les vérifications et l’export. Les outils sont à gauche, chacun avec un raccourci clavier. Les réglages de l’outil sélectionné apparaissent dans le panneau à côté.
+Voici un bon ordre de travail : taille et contour, salles, passages, murs, sols, obstacles et victimes, salle 4, et enfin les vérifications et l’export. Les outils sont à gauche, chacun avec un raccourci clavier. Les réglages de l’outil sélectionné apparaissent dans le panneau à côté.
 
 | Outil | Touche | Utilité |
 |---|---|---|
@@ -40,12 +40,12 @@ Un bon ordre de travail : taille et contour, salles, passages, murs, sols, obsta
 La molette de la souris zoome, un glisser en maintenant Espace déplace la vue, et l’annulation se fait avec `⌘Z` ou `Ctrl+Z`.
 
 ## Taille et contour {#size-and-outline}
-Avec l’outil **Outline**, définissez la taille de la carte en cases. Les murs extérieurs suivent d’eux-mêmes. **Outline (uneven)** vous permet de cliquer sur des cases pour les retirer de la carte, et vous pouvez aussi insérer et supprimer des lignes et des colonnes là où vous cliquez.
+Avec l’outil **Outline**, définissez la taille de la carte en cases. Les murs extérieurs sont ajoutés automatiquement. **Outline (uneven)** vous permet de cliquer sur des cases pour les retirer de la carte, et vous pouvez aussi insérer et supprimer des lignes et des colonnes là où vous cliquez.
 
 ![L’outil Outline](../../../../docs/tools/world-editor/outline.png)
 
 ## Salles et passages {#rooms-and-passages}
-Avec l’outil **Rooms**, peignez les cases de chaque salle. Les murs se dressent d’eux-mêmes aux frontières entre les salles. Ensuite, avec l’outil **Passages**, reliez les salles : la couleur de chaque passage est choisie selon les salles qu’il relie.
+Avec l’outil **Rooms**, peignez les cases de chaque salle. Les murs sont ajoutés automatiquement aux frontières entre les salles. Ensuite, avec l’outil **Passages**, reliez les salles : la couleur de chaque passage est choisie selon les salles qu’il relie.
 
 ![L’outil Rooms](../../../../docs/tools/world-editor/rooms.png)
 
@@ -82,7 +82,7 @@ La salle 4 n’est pas basée sur des cases : elle se dessine donc comme une ima
 
 ![Le créateur de la salle 4](../../../../docs/tools/world-editor/room4.png)
 
-Ce que vous dessinez en noir devient des murs. Le créateur propose des outils pour dessiner à main levée et pour tracer des lignes, des courbes, des arcs, des rectangles, des ellipses, des polygones et des formes à partir d’icônes, ainsi que des outils pour les victimes et les obstacles. Vous pouvez placer autant d’obstacles que vous voulez dans la salle 4. Les rayures rouges indiquent les endroits que le robot ne peut pas atteindre, et vous devez laisser au robot assez de place pour passer, environ une case de large.
+Ce que vous dessinez en noir devient des murs. Le créateur propose des outils pour dessiner à main levée et pour tracer des lignes, des courbes, des arcs, des rectangles, des ellipses, des polygones et des formes à partir d’icônes, ainsi que des outils pour les victimes et les obstacles. Vous pouvez placer autant d’obstacles que vous voulez dans la salle 4. Les rayures rouges indiquent les endroits où le robot ne peut pas aller, et vous devez laisser un passage d’environ une case de large pour que le robot puisse passer.
 
 Quand c’est terminé, appuyez sur **OK** : l’image apparaît comme salle 4 sur la carte et est intégrée au monde exporté. Les boutons en haut à droite du créateur enregistrent l’image au format PNG, pour réutiliser la même salle 4 dans une autre carte, et ouvrent des images PNG ou JPEG.
 
@@ -95,7 +95,7 @@ Le bouton **Linear** de la barre du haut colore chaque case selon qu’elle est 
 
 ![Cases linéaires et flottantes affichées sur la carte](../../../../docs/tools/world-editor/linear.png)
 
-Le trophée de la barre du haut affiche le **score maximal** de la carte, calculé avec les règles de score, avec la part de chaque salle et le score avec les bonus de sortie et de carte.
+Le trophée de la barre du haut affiche le **score maximal** de la carte, calculé avec les règles de score, avec la part de chaque salle et le score avec les bonus de sortie et de cartographie.
 
 ![Le score maximal de la carte](../../../../docs/tools/world-editor/max_score.png)
 

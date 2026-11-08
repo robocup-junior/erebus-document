@@ -3,7 +3,7 @@ title: 자주 묻는 질문
 description: Erebus와 대회에 대해 자주 묻는 질문.
 ---
 
-## Erebus에 대해 {#custom-md-id}
+## Erebus에 대해 {#about-erebus}
 
 ### 실제 로봇이 필요한가요? {#do-i-need-a-real-robot}
 아니요. 모든 것이 시뮬레이터 안에서 일어나요. 로봇은 여러분이 설계하는 가상의 e-puck이에요.
@@ -11,7 +11,7 @@ description: Erebus와 대회에 대해 자주 묻는 질문.
 ### 어떤 프로그래밍 언어를 쓸 수 있나요? {#which-programming-languages-can-i-use}
 이 문서에서는 Python과 C/C++를 다뤄요. Erebus는 Java와 MATLAB 컨트롤러도 불러올 수 있지만, 이 문서에는 그 예제가 없어요.
 
-### 성능 좋은 컴퓨터가 필요한가요? {#is-a-powerful-computer-needed}
+### 성능 좋은 컴퓨터가 필요한가요? {#do-i-need-a-powerful-computer}
 아니요. [요구 사항](/docs/installation/)을 참고하세요. 느린 컴퓨터에서는 [그래픽 설정을 낮춰야](/docs/troubleshooting/#the-simulation-runs-too-slowly) 할 수도 있어요.
 
 ### 더 새로운 버전의 Webots를 써도 되나요? {#can-i-use-a-newer-version-of-webots}
@@ -41,7 +41,7 @@ description: Erebus와 대회에 대해 자주 묻는 질문.
 [`G` 메시지](/docs/programming/communication/#game-information)로 알 수 있어요. 타이머는 두 개이고, 늪에서는 게임 시간이 더 빨리 흘러요.
 
 ### 구역 4를 탐색해야 하나요? {#do-i-have-to-explore-area-4}
-아니요. 선택 사항이지만, 구역 4의 토큰이 가장 가치가 커요. 가장 높은 점수에 2를 곱해요.
+아니요. 선택 사항이지만, 구역 4의 토큰은 가치가 가장 커요. 가장 높은 점수를 받고, 거기에 2를 곱해요.
 
 ### 구역 4의 지도를 만들어야 하나요? {#do-i-have-to-map-area-4}
 아니요. 구역 4의 셀은 모두 `*`이므로 채워 넣기만 하면 돼요.
@@ -58,4 +58,4 @@ description: Erebus와 대회에 대해 자주 묻는 질문.
 [대회 준비](/docs/competition/)를 참고하세요.
 
 ### 규칙에 대해 어디서 물어볼 수 있나요? {#where-can-i-ask-about-the-rules}
-[RoboCupJunior 포럼](https://junior.forum.robocup.org/)에서 물어보세요. 규칙 해석도 그곳에 올라오므로 정기적으로 확인하세요.
+[RoboCupJunior 포럼](https://junior.forum.robocup.org/)에서 물어보세요. 규칙 보충 설명도 그곳에 올라오므로 정기적으로 확인하세요.

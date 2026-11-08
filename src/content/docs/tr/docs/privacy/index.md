@@ -11,7 +11,7 @@ Bu site, hangi sayfaların ziyaret edildiğini görüp onları geliştirebilmek 
 ## Tarayıcında neler saklanır {#what-is-stored-in-your-browser}
 Site, tarayıcına birkaç ayar kaydeder. Bu ayarlar hiçbir yere gönderilmez:
 
-- Temanın
+- Seçtiğin tema
 - Kod örneklerinde seçtiğin dil sekmesi
 
 Bu site çerez kullanmaz.

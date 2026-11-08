@@ -5,7 +5,7 @@ description: Webots'ta kamera görüntülerini oku ve duvar işaretlerini bulmak
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-Kamera, önündekinin görüntüsünü verir. [Duvar işaretlerini](/docs/programming/wall-tokens/) bulmak ve okumak için ona ihtiyacın var. Başlangıç robotunda `camera` adında, 64 × 40 piksellik bir kamera vardır.
+Kamera, önündekilerin görüntüsünü verir. [Duvar işaretlerini](/docs/programming/wall-tokens/) bulmak ve okumak için kameraya ihtiyacın var. Başlangıç robotunda `camera` adında, 64 × 40 piksellik bir kamera vardır.
 
 ## Pikselleri okuma \{#reading-pixels\}
 
@@ -23,8 +23,8 @@ Bir görüntü, piksellerden oluşan bir ızgaradır. Her pikselin 0 ile 255 ara
 Python için OpenCV, diğer [Python kütüphaneleriyle](/docs/installation/#python-libraries) birlikte kurulur. C++ için OpenCV'yi kurman ve [derlerken eklemen](/docs/programming/cpp/#compiling) gerekir. C++ örneği OpenCV 4 ile test edildi.
 :::
 
-Bunun gibi pencereler evde test etmek içindir: yarışmada onları kapat.
+Bunun gibi pencereler evde test yapmak içindir: yarışmada onları kapat.
 
 ## Çözünürlük \{#resolution\}
 
-Yüksek çözünürlükler işaretleri daha uzaktan görür, ama daha pahalıdır ve işlenmesi daha uzun sürer. Her kameranın çözünürlüğünü [Robot Customizer](/docs/robot/customizer/#components) içinde seçersin.
+Yüksek çözünürlüklü kameralar işaretleri daha uzaktan görür, ama bütçeden daha fazla harcar ve görüntülerinin işlenmesi daha uzun sürer. Her kameranın çözünürlüğünü [Robot Customizer](/docs/robot/customizer/#components) içinde seçersin.

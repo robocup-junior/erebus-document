@@ -18,7 +18,7 @@ description: Die Begriffe, die in Erebus und in den Regeln verwendet werden.
 | **Fehlender Fortschritt** (Lack of progress, LoP) | Wenn der Roboter feststeckt oder in ein Loch fällt. Er kehrt zum letzten Checkpoint zurück und verliert 5 Punkte. |
 | **Buchstabenopfer** (Letter victim) | Eine Wandmarkierung mit dem Symbol Φ, Ψ oder Ω |
 | **Lineare Kachel** (Linear tile) | Eine Kachel, die man erreicht, wenn man den mit dem Start verbundenen Wänden folgt |
-| **Main Supervisor** | Der Teil von Erebus, der das Spiel verwaltet. Wird auch Spielleitung (game manager) genannt. |
+| **Main Supervisor** | Der Teil von Erebus, der das Spiel verwaltet. Wird auch Spielverwaltung (game manager) genannt. |
 | **Kartenbonus** (Mapping bonus, MB) | Ein Multiplikator der Punktzahl von Korrektheit × 1,2 + 1 |
 | **Kartenmatrix** (Map matrix) | Das Array, das die Karte darstellt |
 | **Durchgang** (Passage) | Eine farbige Kachel, die zwei Bereiche verbindet |

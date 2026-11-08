@@ -7,7 +7,7 @@ O Erebus é um ambiente de competição de simulação de robôs. Você desenvol
 
 Ele é construído sobre o [Webots](https://cyberbotics.com/), uma plataforma de simulação robótica projetada para uso profissional e muito usada na indústria, na educação e na pesquisa. A Cyberbotics mantém o Webots continuamente desde 1998.
 
-A plataforma foi projetada principalmente para a competição [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/). Ela é voltada para programadores de nível intermediário a muito experiente.
+A plataforma foi projetada principalmente para a competição [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/). Ela é voltada para programadores com experiência de nível intermediário a avançado.
 
 ## Como as partes se encaixam {#how-it-fits-together}
 
@@ -15,7 +15,7 @@ A plataforma foi projetada principalmente para a competição [RoboCupJunior Res
 |---|---|---|
 | **Webots R2023b** | O simulador de robôs em 3D | [Versão R2023b do Webots](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
 | **Erebus** | Os mundos e o gerenciador da partida (Main Supervisor), que aplica as regras e calcula a pontuação | [Versões do Erebus](https://github.com/robocup-junior/erebus/releases) |
-| **Seu controlador** | O programa do seu robô, em Python ou C/C++ | Você que escreve! |
+| **Seu controlador** | O programa do seu robô, em Python ou C/C++ | Você mesmo escreve! |
 | **Robot Customizer** | Ferramenta web para projetar um robô personalizado e exportá-lo como um arquivo JSON | [robot.erebus.rcj.cloud](https://robot.erebus.rcj.cloud/) |
 | **World Editor** | Ferramenta web para desenhar mapas de treino e exportá-los como mundos `.wbt` | [world.erebus.rcj.cloud](https://world.erebus.rcj.cloud/) |
 
@@ -29,7 +29,7 @@ A plataforma foi projetada principalmente para a competição [RoboCupJunior Res
 Se você já conhece o Erebus, veja [Novidades da v26](/docs/whats-new/).
 
 ## Referências úteis {#useful-references}
-Lista de links úteis para aprender e trabalhar com o simulador Erebus:
+Links úteis para aprender sobre o Erebus e trabalhar com ele:
 - [Guia do usuário do Webots](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Manual de referência do Webots](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Documentação do Python](https://www.python.org/doc/)

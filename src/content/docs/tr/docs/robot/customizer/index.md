@@ -16,14 +16,14 @@ Yeni mi başlıyorsun? Başlangıç robotunu adım adım yapan [Robotunu yap](/d
 1. **Bileşen ekle.** İstediğin her sensörün ya da kameranın anahtarını aç ve mesafe sensörlerinin sayısını `−` ve `+` ile ayarla. Her bileşenin maliyeti yanında gösterilir.
 2. **Bütçenin içinde kal.** Sağ üst köşe, 3000'lik bütçenin ne kadarının kaldığını ve bunun tekerlekler, mesafe sensörleri, sensörler ve kameralar arasında nasıl bölündüğünü gösterir. Bütçeyi aşarsan ne kadar çıkarman gerektiğini söyler: robot bütçeye sığana kadar dışa aktarılamaz.
 3. **Yerleştir.** Ayarlarını açmak için listede ya da 3B görünümde bir bileşene tıkla. 3B görünümdeki okları **Move** (`W`) ya da **Rotate** (`R`) ile sürükle veya değerleri yaz. Kutularda mm yazsa da konumlar milimetrenin onda biri cinsindendir. Y konumu -100 ile 370 arasındadır. Dönüş düğmeleri bir sensörü tek tıkla öne, arkaya, sola, sağa, yukarı ya da aşağı çevirir. Yeşil ok robotun önünü gösterir.
-4. **Ad ver.** Ad, **In your controller** altında gösterildiği gibi programının `getDevice()` ile kullandığı şeydir. Tekerlekler iki cihaz alır: `<name> motor` ve `<name> sensor`. Wheel 1 robotun sağ tarafında, Wheel 2 sol tarafındadır.
+4. **Ad ver.** Programın, **In your controller** altında gösterildiği gibi bileşeni bu adla `getDevice()` üzerinden bulur. Her tekerlek için iki cihaz oluşturulur: `<name> motor` ve `<name> sensor`. Wheel 1 robotun sağ tarafında, Wheel 2 sol tarafındadır.
 5. **Kamera çözünürlüğünü ayarla.** Her kameranın, maliyetini değiştiren bir genişliği ve yüksekliği vardır.
-6. **Dışa aktar.** Üstte bir dosya adı gir ve **Export** düğmesine bas. Dosyayı sakla: **Import** ile ya da dosyayı sayfaya bırakarak onu geri getirip üzerinde çalışmaya devam edebilirsin.
+6. **Dışa aktar.** Üstte bir dosya adı gir ve **Export** düğmesine bas. Dosyayı sakla: daha sonra üzerinde çalışmaya devam etmek için onu **Import** ile ya da sayfaya sürükleyip bırakarak geri yükleyebilirsin.
 
 ![Bir kameranın ayarları](../../../../docs/robot/customizer/component.png)
 
 ### Kullanışlı görünümler {#useful-views}
-- **3D**, **Top**, **Front** ve **Side** robotu farklı açılardan gösterir. Top, sensörleri simetrik yerleştirmek için kullanışlıdır.
+- **3D**, **Top**, **Front** ve **Side** robotu farklı açılardan gösterir. **Top** görünümü, sensörleri simetrik yerleştirmek için kullanışlıdır.
 - **Labels** her bileşenin adını gösterir.
 - **Camera view**, kameraların Webots'ta ne göreceğine dair bir tahmin gösterir.
 - Geri alma, yineleme ve sıfırlama üsttedir.
@@ -57,8 +57,8 @@ Yeni kameralar 40 × 32 pikseldir. Başlangıç robotu 64 × 40 kullanır.
 ## Tasarım ipuçları {#design-tips}
 
 - **GPS:** işaretleri bildirmek için bir konuma ihtiyacın var ve bunu elde etmenin basit yolu budur.
-- **Kameralar:** daha yüksek çözünürlükler işaretleri daha uzaktan okur, ama daha pahalıdır ve işlenmeleri daha yavaştır.
+- **Kameralar:** yüksek çözünürlüklü kameralar işaretleri daha uzaktan okur, ama maliyetleri daha yüksektir ve görüntülerinin işlenmesi daha uzun sürer.
 - **Lidar:** robotun çevresindeki her şeyi görür, bu da haritalamaya çok yardımcı olur. Onu üste yerleştir ve [başlangıç robotundaki](/docs/robot/build/) gibi X `90` dönüşüyle düz yatır; aksi halde robot onu engeller.
-- **Renk sensörü:** robotun bir çukura düşmeden önce onu görmesi için tekerleklerin önüne yerleştir.
+- **Renk sensörü:** robotun bir çukura düşmeden önce çukuru görmesi için sensörü tekerleklerin önüne yerleştir.
 
 [Robotunu yap](/docs/robot/build/) eksiksiz bir örnek gösterir.

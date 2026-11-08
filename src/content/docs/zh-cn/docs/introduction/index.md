@@ -3,11 +3,11 @@ title: 什么是 Erebus？
 description: Erebus 是 RoboCupJunior 的救援仿真平台，基于 Webots 构建。了解它的各个部分如何协同工作。
 ---
 
-Erebus 是一个机器人仿真比赛环境。你需要为一个机器人开发控制器，让它自主探索迷宫，找到并识别墙上的标识（字母受害者和认知目标），避开障碍物和陷阱，并绘制出环境的地图。
+Erebus 是一个机器人仿真比赛环境。你需要为一个机器人开发控制器，让它自主探索迷宫，找到并识别墙面标识（字母受害者和认知目标），避开障碍物和陷阱，并绘制出环境的地图。
 
 它基于 [Webots](https://cyberbotics.com/) 构建。Webots 是一个为专业用途设计的机器人仿真平台，广泛应用于工业、教育和研究领域。自 1998 年以来，Cyberbotics 一直在持续维护 Webots。
 
-这个平台主要是为 [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/)（救援仿真）比赛设计的，面向具有中级到高级编程经验的人。
+这个平台主要是为 [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/)（救援仿真）比赛设计的，面向具有中级到高级经验的程序员。
 
 ## 各部分如何协同工作 {#how-it-fits-together}
 
@@ -29,7 +29,7 @@ Erebus 是一个机器人仿真比赛环境。你需要为一个机器人开发�
 如果你已经了解 Erebus，请查看 [v26 新功能](/docs/whats-new/)。
 
 ## 有用的参考资料 {#useful-references}
-学习和使用 Erebus 仿真器的有用链接：
+学习和使用 Erebus 时有用的链接：
 - [Webots 用户指南](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Webots 参考手册](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Python 文档](https://www.python.org/doc/)

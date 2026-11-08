@@ -23,7 +23,7 @@ La vista previa en 3D está a la izquierda, y los componentes y el presupuesto, 
 ![Los ajustes de una cámara](../../../../docs/robot/customizer/component.png)
 
 ### Vistas útiles {#useful-views}
-- **3D**, **Top**, **Front** y **Side** muestran el robot desde distintos ángulos. Top es práctica para colocar sensores de forma simétrica.
+- **3D**, **Top**, **Front** y **Side** muestran el robot desde distintos ángulos. La vista Top es práctica para colocar sensores de forma simétrica.
 - **Labels** muestra el nombre de cada componente.
 - **Camera view** muestra una estimación de lo que ven las cámaras en Webots.
 - Deshacer, rehacer y restablecer están arriba.

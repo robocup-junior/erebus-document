@@ -12,6 +12,6 @@ Ce site utilise [Cloudflare Web Analytics](https://www.cloudflare.com/web-analyt
 Le site enregistre quelques réglages dans votre navigateur, qui ne sont envoyés nulle part :
 
 - Votre thème
-- L’onglet de langage sélectionné dans les exemples de code
+- L’onglet de langage de programmation sélectionné dans les exemples de code
 
 Ce site n’utilise pas de cookies.

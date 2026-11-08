@@ -33,7 +33,7 @@ Después, obtiene y activa los sensores del robot inicial:
 <CodeTabs file="maze" region="sensors" />
 
 ### 3. Movimientos \{#3-moves\}
-Estas funciones cambian las velocidades para girar y girar sobre sí mismo. `delay` hace que el robot siga haciendo lo mismo durante unos milisegundos, y `getBrightness` lee el sensor de color como un único valor de 0 (negro) a 255 (blanco).
+Estas funciones cambian las velocidades para girar en curva o sobre sí mismo. `delay` hace que el robot siga haciendo lo mismo durante un número determinado de milisegundos, y `getBrightness` lee el sensor de color como un único valor de 0 (negro) a 255 (blanco).
 
 <CodeTabs file="maze" region="moves" />
 
@@ -50,7 +50,7 @@ Para puntuar una marca, el robot debe detenerse más de 1 segundo y enviar su po
 <CodeTabs file="maze" region="report" />
 
 ### 6. El bucle principal \{#6-the-main-loop\}
-Por último, el bucle principal lo junta todo. En cada paso, arranca a toda velocidad, se aparta de las paredes, se da la vuelta ante los agujeros e informa de lo que ve la cámara cuando está cerca de una pared de frente.
+Por último, el bucle principal lo junta todo. En cada paso, arranca a toda velocidad, se aparta de las paredes, se da la vuelta ante los agujeros e informa de lo que ve la cámara cuando tiene una pared cerca, delante.
 
 <CodeTabs file="maze" region="loop" />
 

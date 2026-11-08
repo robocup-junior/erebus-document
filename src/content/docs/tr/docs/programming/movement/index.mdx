@@ -17,13 +17,13 @@ Robotun iki tekerleği vardır ve her birinin kendi motoru bulunur: [başlangı�
 
 Hızlar **radyan/saniye** cinsindendir, en fazla 6,28'dir (saniyede tekerleğin bir tam turu). Negatif hızlar tekerleği geriye döndürür.
 
-## Sürme \{#custom-mdx-id\}
+## Sürme \{#driving\}
 
 1. Her motoru adıyla al.
 2. Sınırsız dönmesi için konumunu sonsuza ayarla.
 3. Hızını ayarla.
 
-Motorlar ayarladığın son hızı korur, bu yüzden programın başka işler yaparken robot hareket etmeye devam eder. Bu program her biri birer saniye olmak üzere ileri gider, geri gider ve sola döner:
+Motorlar ayarladığın son hızı korur; bu yüzden programın başka işler yaparken robot hareket etmeye devam eder. Bu program robotu ileri ve geri sürer, sonra olduğu yerde sola döndürür; her hareket bir saniye sürer:
 
 <CodeTabs file="drive" />
 
@@ -33,7 +33,7 @@ Webots'ta açılar radyan cinsindendir. Dönüştürmek için: radyan = derece �
 
 ## Tekerleğin ne kadar döndüğünü ölçme \{#measuring-how-far-a-wheel-turned\}
 
-Her motorun, enkoder (encoder) da denen bir konum sensörü vardır. Bu sensör tekerleğin ne kadar döndüğünü radyan cinsinden sayar. Belirli bir mesafe gitmek için kullanışlıdır. Geriye dönmek sayıyı azaltır.
+Her motorun, enkoder (encoder) da denen bir konum sensörü vardır. Bu sensör, tekerleğin ne kadar döndüğünü radyan cinsinden sayar ve belirli bir mesafe gitmek için kullanışlıdır. Tekerlek geriye dönünce sayı azalır.
 
 <CodeTabs file="encoders" />
 

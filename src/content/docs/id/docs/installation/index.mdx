@@ -6,19 +6,19 @@ description: "Yang kamu butuhkan untuk menjalankan Erebus v26: Webots R2023b, Py
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Persyaratan perangkat lunak \{#software-requirements\}
-Ada beberapa komponen utama yang membentuk sistem simulasi ini. Masing-masing harus diinstal. Meskipun instalasinya mudah, mengunduh dan menginstal Webots bisa memakan sedikit waktu! Ketiga komponennya adalah:
+Sistem simulasi ini terdiri atas tiga komponen, dan kamu perlu menginstal semuanya. Instalasinya mudah, tetapi mengunduh dan menginstal Webots bisa memakan waktu cukup lama. Ketiga komponen itu adalah:
 
-1. Webots Robot Simulator versi **R2023b** - lingkungan simulasinya. Erebus v26 tidak mendukung versi Webots lainnya.
-1. Erebus - world dan Competition Supervisor, yang menerapkan aturan dan penilaian. Versi terbarunya adalah **v26.1**.
-1. Python versi **3.9 atau yang lebih baru** - dibutuhkan untuk menjalankan Erebus itu sendiri, dan untuk menulis controller bagi robot. Kamu juga bisa menulis controller dalam C/C++.
+1. Simulator robot Webots, versi **R2023b**: lingkungan simulasinya. Erebus v26 tidak mendukung versi Webots lainnya.
+1. Erebus: world dan Main Supervisor, yang menerapkan aturan dan menghitung skor. Versi terbarunya adalah **v26.1**.
+1. Python, versi **3.9 atau yang lebih baru**: dibutuhkan untuk menjalankan Erebus itu sendiri, dan untuk menulis controller bagi robot. Kamu juga bisa menulis controller dalam C/C++.
 
 ## Persyaratan sistem minimum \{#minimum-system-requirements\}
-* OS Linux: Ubuntu 20.04 LTS, 22.04 LTS
-* OS Windows: Windows 11, Windows 10 64-bit
-* OS Mac: macOS 11 "Big Sur" dan 12 "Monterey". Ini adalah versi yang didukung oleh Webots R2023b. Versi macOS yang lebih baru mungkin juga bisa: dokumentasi ini sudah diperiksa di macOS 26.
-* CPU: Dual Core 2 GHz
+* Linux: Ubuntu 20.04 LTS atau 22.04 LTS
+* Windows: Windows 10 atau 11, 64-bit
+* macOS: macOS 11 "Big Sur" atau 12 "Monterey". Ini adalah versi yang didukung oleh Webots R2023b. Versi macOS yang lebih baru mungkin juga bisa dipakai: dokumentasi ini sudah diuji di macOS 26.
+* CPU: dual-core, 2 GHz
 * RAM: 2 GB
-* Nvidia 512MB atau AMD OpenGL 512MB
+* Grafis: kartu grafis NVIDIA atau AMD dengan dukungan OpenGL dan memori 512 MB
 
 ## Library Python \{#python-libraries\}
 Erebus membutuhkan library Python di bawah ini. Sebagian besar terinstal otomatis saat Erebus dijalankan, tetapi **OpenCV tidak**, jadi kamu harus menginstalnya sendiri. Panduan untuk setiap sistem operasi sudah mencakup langkah ini.

@@ -10,9 +10,9 @@ Las marcas en las paredes (wall tokens) suponen la mayor parte de tus puntos, y 
 
 | Es... | Qué hacer |
 |---|---|
-| Una víctima de letra (Letter victim: Φ, Ψ, Ω) | Informa de `H`, `S` o `U` |
+| Una víctima de letra (Letter victim: Φ, Ψ, Ω) | Envía `H`, `S` o `U` |
 | Una víctima falsa (Fake victim: los mismos símbolos, en tres dimensiones) | No informes de ella y déjala fuera del mapa |
-| Un objetivo cognitivo (Cognitive target) con una suma de 0 a 3 | Informa de `F`, `P`, `C` u `O` |
+| Un objetivo cognitivo (Cognitive target) con una suma de 0 a 3 | Envía `F`, `P`, `C` u `O` |
 | Un objetivo cognitivo con cualquier otra suma | Es falso: no informes de él y déjalo fuera del mapa |
 
 Consulta las [Reglas](/docs/rules/#wall-tokens) para ver las definiciones exactas, y [Comunicación](/docs/programming/communication/#scoring-wall-tokens) para saber cómo enviar el informe.
@@ -38,7 +38,7 @@ Esta función lo hace con OpenCV en Python. Para encontrar el centro y el radio,
 En una ejecución real, puede que el objetivo se vea en ángulo, y entonces parece una elipse. Ponerte delante de él, tomar como aviso los colores que parezcan incorrectos o leer varios fotogramas hará que el resultado sea más fiable.
 
 ## Calcular el tipo \{#calculating-the-type\}
-Cuando tengas los cinco colores, el código que hay que informar sale de su suma. Cada una de las cinco partes cuenta siempre, aunque los colores vecinos sean iguales.
+Cuando tengas los cinco colores, el código que debes enviar se obtiene de su suma. Cada una de las cinco partes cuenta siempre, aunque los colores vecinos sean iguales.
 
 <CodeTabs file="targetCode" />
 

@@ -5,7 +5,7 @@ description: Ideas para explorar el laberinto de forma sistemática y construir 
 
 Un robot que deambula al azar no sumará muchos puntos. Esta página muestra cómo pasar de deambular a explorar de forma sistemática. Son ideas sobre las que construir, no una solución completa.
 
-## Sabe dónde estás {#know-where-you-are}
+## Averigua dónde estás {#know-where-you-are}
 Las baldosas miden 12 cm de ancho, así que la posición del GPS te da la baldosa. La posición de la salida es distinta en cada mundo, así que mídelo todo desde ahí:
 
 ```python
@@ -37,12 +37,12 @@ No te limites a seguir una pared: así nunca llegarás a las [baldosas flotantes
 1. Desde la baldosa actual, enumera las vecinas que no tienen una pared en medio.
 2. Ve a una que no hayas visitado, si la hay.
 3. Si no, encuentra la baldosa más cercana con una vecina sin visitar mediante una búsqueda en anchura y ve allí.
-4. Cuando no quede ninguna baldosa así, o se acabe el tiempo, vuelve a la salida de la misma forma.
+4. Cuando no quede ninguna baldosa así, o quede poco tiempo, vuelve a la salida de la misma forma.
 
 Trata los agujeros como paredes. Los pantanos cuestan tiempo, y más cada vez que entras en el mismo, así que visítalos solo cuando merezca la pena.
 
 ## Gestiona lo inesperado {#handle-the-unexpected}
-- **Falta de progreso (Lack of Progress):** el robot se lleva al último punto de control. [Escucha el mensaje `L`](/docs/programming/communication/#lack-of-progress) y actualiza tu posición.
+- **Falta de progreso (Lack of Progress):** el robot se traslada al último punto de control. [Escucha el mensaje `L`](/docs/programming/communication/#lack-of-progress) y actualiza tu posición.
 - **Tiempo:** pide el tiempo restante con [`G`](/docs/programming/communication/#game-information). Deja suficiente para enviar el mapa y volver a la salida.
 - **Ruido:** los sensores tienen ruido, así que compara varias lecturas antes de fiarte de una pared o de una marca.
 

@@ -42,9 +42,9 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 把坑洞当作墙来处理。沼泽会消耗时间，而且每次进入同一片沼泽消耗得更多，所以只有在值得时才进入。
 
 ## 应对意外情况 {#handle-the-unexpected}
-- **缺乏进展：** 机器人会被移到最后一个检查点。[监听 `L` 消息](/docs/programming/communication/#lack-of-progress)，并更新你的位置。
-- **时间：** 用 [`G`](/docs/programming/communication/#game-information) 查询剩余时间。留出足够的时间来发送地图并返回起点。
-- **噪声：** 传感器有噪声，所以在相信某处有墙或标识之前，先比较多个读数。
+- **缺乏进展**：机器人会被移到最后一个检查点。[监听 `L` 消息](/docs/programming/communication/#lack-of-progress)，并更新你的位置。
+- **时间**：用 [`G`](/docs/programming/communication/#game-information) 查询剩余时间。留出足够的时间来发送地图并返回起点。
+- **噪声**：传感器有噪声，所以在相信某处有墙或标识之前，先比较多个读数。
 
 ## 从地块到地图矩阵 {#from-tiles-to-the-map-matrix}
 [地图矩阵](/docs/rules/mapping/)中每个地块对应 4 个单元格，再加上一个。对于你的地图中第 `r` 行、第 `c` 列的地块：

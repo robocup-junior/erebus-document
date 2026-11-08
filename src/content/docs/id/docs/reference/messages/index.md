@@ -5,7 +5,7 @@ description: Referensi untuk pesan-pesan yang dipertukarkan dengan Main Supervis
 
 Pesan dikirim dengan perangkat `emitter` dan diterima dengan perangkat `receiver`. Lihat [tutorial Komunikasi](/docs/programming/communication/) untuk contoh-contohnya.
 
-String format di bawah ini adalah format dari modul Python [struct](https://docs.python.org/3/library/struct.html).
+String format di bawah ini mengikuti format modul Python [struct](https://docs.python.org/3/library/struct.html).
 
 ## Dikirim oleh robot {#sent-by-the-robot}
 
@@ -14,7 +14,7 @@ String format di bawah ini adalah format dari modul Python [struct](https://docs
 | Melaporkan penanda dinding | `i i c`: x, z, jenis | 9 byte | Posisinya dalam sentimeter, dan jenisnya salah satu dari `H`, `S`, `U`, `F`, `P`, `C`, `O`. Robot harus sudah berhenti minimal 1 detik. |
 | Data peta | `2i` diikuti teks UTF-8: baris, kolom, sel yang dipisahkan koma | Panjang lainnya | Menyimpan peta, tanpa mengevaluasinya |
 | `M` | `c` | 1 byte | Mengevaluasi peta yang tersimpan. Ini hanya bisa dilakukan sekali. |
-| `L` | `c` | 1 byte | Memanggil kurangnya kemajuan (lack of progress) |
+| `L` | `c` | 1 byte | Memicu kurangnya kemajuan (lack of progress) |
 | `G` | `c` | 1 byte | Meminta informasi permainan |
 | `E` | `c` | 1 byte | Mengakhiri permainan. Memberikan bonus keluar jika robot berada di ubin awal dan sudah mengidentifikasi penanda dinding. |
 

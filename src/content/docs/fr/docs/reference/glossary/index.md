@@ -7,7 +7,7 @@ description: Les termes utilisés dans Erebus et dans les règles.
 |---|---|
 | **Zone (Area)** | L’une des quatre parties du terrain, chacune avec son propre type de murs. Le World Editor les appelle des salles (rooms). |
 | **Multiplicateur de zone (Area multiplier, AM)** | 1, 1,25, 1,5 ou 2, appliqué aux points de chaque zone |
-| **Point de contrôle (Checkpoint)** | Une case argentée. Le robot y retourne, au dernier visité, après une absence de progression. |
+| **Point de contrôle (Checkpoint)** | Une case argentée. Après une absence de progression, le robot retourne au dernier point de contrôle visité. |
 | **Cible cognitive (Cognitive target)** | Un marqueur mural composé de cinq couleurs concentriques, dont la somme donne un type de matière dangereuse. A remplacé les panneaux de matières dangereuses en 2026. |
 | **Fenêtre de contrôle (Control window)** | La page web où vous chargez les programmes et lancez la partie. Aussi appelée fenêtre robot (robot window). |
 | **Contrôleur (Controller)** | Votre programme |
@@ -19,7 +19,7 @@ description: Les termes utilisés dans Erebus et dans les règles.
 | **Victime lettre (Letter victim)** | Un marqueur mural portant le symbole Φ, Ψ ou Ω |
 | **Case linéaire (Linear tile)** | Une case que l’on atteint en suivant les murs reliés au départ |
 | **Main Supervisor** | La partie d’Erebus qui gère la partie. Aussi appelée gestionnaire de jeu. |
-| **Bonus de carte (Mapping bonus, MB)** | Un multiplicateur de score égal à exactitude × 1,2 + 1 |
+| **Bonus de cartographie (Mapping bonus, MB)** | Un multiplicateur de score égal à exactitude × 1,2 + 1 |
 | **Matrice de la carte (Map matrix)** | Le tableau qui représente la carte |
 | **Passage** | Une case colorée qui relie deux zones |
 | **Quart de case (Quarter tile)** | Un quart de case, de 6 cm de large, utilisé dans les zones 2 et 3 |

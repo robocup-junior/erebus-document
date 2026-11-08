@@ -5,7 +5,7 @@ description: "Renk sensörüyle robotun altındaki zemini gör: çukurlar, batak
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-Renk sensörü zemine bakar, böylece robota çukurları, bataklıkları ve geçitleri bildirir. Aşağıya bakan tek piksellik bir kameradır. Başlangıç robotunda adı `color`'dır ve tekerlekler bir çukura ulaşmadan önce onu görebilmesi için robotun önündedir.
+Renk sensörü zemine bakar; böylece robota çukurlar, bataklıklar ve geçitler hakkında bilgi verir. Aşağıya bakan, tek piksellik bir kameradır. Başlangıç robotunda adı `color`'dır ve tekerlekler bir çukura ulaşmadan önce çukuru görebilmesi için robotun önündedir.
 
 <CodeTabs file="read" />
 
@@ -23,7 +23,7 @@ Bu değerler başlangıç robotuyla `world2.wbt` üzerinde ölçüldü:
 | 3. ve 4. alanlar arasındaki geçit (kırmızı) | 255 | 91 | 91 |
 
 :::caution
-Değerler dünyaya göre değişir: `world1.wbt` içinde normal zemin yaklaşık 240 okur. Tam değerler yerine aralıklar kullan ve bunları Erebus'un `player_controllers` klasöründeki `calibrateColourSensor.py` ile kontrol et.
+Değerler dünyaya göre değişir: `world1.wbt` içinde normal zeminin değeri yaklaşık 240'tır. Tam değerler yerine aralıklar kullan ve bunları Erebus'un `player_controllers` klasöründeki `calibrateColourSensor.py` ile kontrol et.
 :::
 
 Çukurların siyah bir kenarı vardır, bu yüzden zemin bir çukurun hemen önünde kararır. Kontrol noktaları bu sensöre neredeyse normal zemin gibi görünür, bu yüzden kalibrasyonu kendi dünyandaki bir kontrol noktası üzerinde yap.

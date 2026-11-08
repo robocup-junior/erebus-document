@@ -22,9 +22,9 @@ description: Ukuran arena, waktu permainan, pengali skor, batasan robot, dan nam
 | Kurangnya kemajuan otomatis | Setelah 20 detik di lokasi yang sama |
 | Waktu berhenti untuk melaporkan penanda dinding | Minimal 1 detik |
 | Pengali waktu di rawa | x5 pada masuk pertama, +1 setiap kali masuk lagi ke rawa yang sama, hingga x10 |
-| Pengali area | 1, 1,25, 1,5, dan 2 untuk Area 1, 2, 3, dan 4 |
+| Pengali area | 1; 1,25; 1,5; dan 2 untuk Area 1, 2, 3, dan 4 |
 | Bonus keluar | +10% |
-| Pengali bonus peta | ketepatan × 1,2 + 1 |
+| Pengali bonus pemetaan | ketepatan × 1,2 + 1 |
 
 ## Robot {#robot}
 
@@ -42,7 +42,7 @@ description: Ukuran arena, waktu permainan, pengali skor, batasan robot, dan nam
 
 ## Nama perangkat pada robot pemula {#device-names-of-the-starter-robot}
 
-Ini adalah nama yang diberikan ke `robot.getDevice()` dengan [robot pemula](/docs/robot/). Pada robot buatanmu sendiri, kamu memilih namanya di [Robot Customizer](/docs/robot/customizer/#components). Emitter dan receiver selalu tersedia.
+Berikut adalah nama-nama yang diberikan ke `robot.getDevice()` untuk [robot pemula](/docs/robot/). Pada robot buatanmu sendiri, kamu memilih namanya di [Robot Customizer](/docs/robot/customizer/#components). Emitter dan receiver selalu tersedia.
 
 | Perangkat | Nama |
 |---|---|

@@ -7,7 +7,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 ## Giroskop \{#gyroscope\}
 
-Giroskop mengembalikan kecepatan rotasi robot di sekitar setiap sumbu, dalam **radian per detik**. Pada robot pemula, namanya `gyro`.
+Giroskop mengembalikan kecepatan rotasi robot terhadap setiap sumbu, dalam **radian per detik**. Pada robot pemula, namanya `gyro`.
 
 `getValues()` mengembalikan `[x, y, z]`. **Sumbu Y adalah sumbu vertikal**, jadi `getValues()[1]` adalah kecepatan belok robot. Nilainya positif saat berbelok ke kiri.
 
@@ -17,11 +17,11 @@ Ini berlaku untuk giroskop robot pemula. Sumbunya mengikuti rotasi giroskop, jad
 
 ## Contoh: berbelok 90 derajat \{#example-turning-90-degrees\}
 
-Jumlahkan kecepatan rotasi dikalikan dengan time step untuk mendapatkan sudut yang sudah ditempuh. Cara ini lebih andal daripada mengatur waktu belokan, karena tidak bergantung pada kecepatan.
+Jumlahkan kecepatan rotasi dikalikan dengan time step untuk mendapatkan besar sudut putarnya. Cara ini lebih andal daripada mengatur waktu belokan, karena tidak bergantung pada kecepatan.
 
 <CodeTabs file="turn" />
 
-Dalam pengujian dengan robot pemula, sudut yang dihitung dengan cara ini cocok dengan rotasi sebenarnya hingga selisih 0,01 radian. Kesalahan kecil akan menumpuk selama permainan, jadi koreksi arah robot saat kamu bisa, misalnya dengan menyejajarkannya dengan dinding.
+Dalam pengujian dengan robot pemula, sudut yang dihitung dengan cara ini cocok dengan rotasi sebenarnya hingga selisih 0,01 radian. Kesalahan kecil akan menumpuk selama permainan, jadi koreksi arah robot bila memungkinkan, misalnya dengan menyejajarkannya dengan dinding.
 
 ## Akselerometer \{#accelerometer\}
 

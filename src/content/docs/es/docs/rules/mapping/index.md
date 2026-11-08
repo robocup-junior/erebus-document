@@ -4,14 +4,14 @@ description: Más información y ejemplos sobre el mapeo.
 ---
 
 ## Idea general {#general-idea}
-El mapeo puntúa como un multiplicador de la puntuación total obtenida durante la ejecución. Para conseguir un multiplicador de mapeo, el robot debe enviar una matriz al supervisor principal (main supervisor) de la partida. La matriz enviada se compara con la "solución" para obtener un valor de exactitud, y el multiplicador es:
+El mapeo puntúa como un multiplicador de la puntuación de la ejecución. Para conseguirlo, el robot debe enviar una matriz al Main Supervisor de la partida. La matriz enviada se compara con la "solución" para obtener un valor de exactitud, y el multiplicador es:
 
 **multiplicador de la bonificación por mapa = exactitud × 1,2 + 1**
 
-Así que un mapa perfecto multiplica tu puntuación por 2,2. Para aprender a enviar la matriz, consulta el [tutorial de la bonificación por mapa (Map bonus)](/docs/programming/map-bonus/).
+Así que un mapa perfecto multiplica tu puntuación por 2,2. Para aprender a enviar la matriz, consulta el [tutorial Enviar el mapa](/docs/programming/map-bonus/).
 
 ## Reglas del mapeo {#rules-for-mapping}
-* Cada cuarto de baldosa, con sus bordes y vértices, se representa con una celda (valor). Un mapa de W × H baldosas es, por tanto, una matriz de (4 × H + 1) filas y (4 × W + 1) columnas.
+* Cada cuarto de baldosa, cada borde y cada vértice se representa con una celda (valor). Un mapa de W × H baldosas es, por tanto, una matriz de (4 × H + 1) filas y (4 × W + 1) columnas.
 * Cada elemento del mundo se representa así:
 
 | Elemento | Valor |
@@ -32,13 +32,13 @@ Así que un mapa perfecto multiplica tu puntuación por 2,2. Para aprender a env
 | Todas las baldosas, bordes y vértices del área 4, incluido su borde exterior | `*` |
 | Cualquier otra baldosa, borde y vértice | `0` |
 
-* Los elementos del suelo (`2`, `3`, `4`, `5`, `x` y los pasos) se escriben en las cuatro celdas del centro de cada cuarto de baldosa, como puedes ver en los ejemplos de abajo.
+* Los elementos del suelo (`2`, `3`, `4`, `5`, `x` y los pasos) se escriben en la celda central de cada uno de los cuatro cuartos de baldosa de la baldosa, como puedes ver en los ejemplos de abajo.
 * Ninguna baldosa es a la vez más de una de estas cosas: pantano, agujero, punto de control, baldosa de salida, baldosa con un obstáculo o paso entre áreas.
-* En las paredes curvas del área 3, el vértice debe representarse con un `0`.
-* La presencia de una marca en la pared se indica en la celda de la pared en la que está. Si hay varias marcas en la misma pared, por ejemplo en sus dos caras, concatena sus códigos en una sola celda, en el orden de su posición absoluta en el mapa: primero de arriba abajo, después de izquierda a derecha.
+* En las paredes curvas del área 3, el vértice se representa con un `0`.
+* Una marca en la pared se escribe en la celda de la pared en la que está. Si hay varias marcas en la misma pared, por ejemplo en sus dos caras, concatena sus códigos en una sola celda, en el orden de su posición absoluta en el mapa: primero de arriba abajo, después de izquierda a derecha.
 * Las marcas falsas no deben incluirse en el mapa: ni las víctimas falsas ni los objetivos cognitivos con una suma no válida.
-* Las marcas en baldosas completas (no cuartos de baldosa) pueden estar en cualquier punto de la pared. Deben ponerse en la celda del cuarto de baldosa al que estén más cerca, o en la celda central si están cerca del centro del lado de la baldosa.
-* Los mapas se pueden guardar con cualquier rotación, siempre que sea un múltiplo de 90°. Erebus alinea tu matriz con la solución usando la baldosa de salida, prueba cada orientación y se queda con el mejor resultado.
+* Las marcas en baldosas completas (no cuartos de baldosa) pueden estar en cualquier punto de la pared. Se escriben en la celda del cuarto de baldosa al que estén más cerca, o en la celda central si están cerca del centro del lado de la baldosa.
+* Los mapas se pueden enviar con cualquier rotación, siempre que sea un múltiplo de 90°. Erebus alinea tu matriz con la solución usando la baldosa de salida, prueba cada orientación y se queda con el mejor resultado.
 
 ## Cómo se calcula la exactitud {#how-correctness-is-calculated}
 1. Las matrices se alinean por la baldosa de salida. Esto significa que **tu mapa debe contener la baldosa de salida**.
@@ -48,10 +48,10 @@ Así que un mapa perfecto multiplica tu puntuación por 2,2. Para aprender a env
 Como solo cuentan las posiciones en las que hay algo, marcar algo que no existe baja tu exactitud tanto como no marcar algo que sí existe.
 
 ## Casos límite ambiguos {#ambiguous-edge-cases}
-Para los casos límite ambiguos que no se definen abajo, ponte en contacto con el comité internacional de RoboCupJunior Rescue y/o con el equipo de desarrollo de la plataforma.
+Para los casos ambiguos que no se tratan abajo, ponte en contacto con el comité internacional de RoboCupJunior Rescue y/o con el equipo de desarrollo de la plataforma.
 ### Una pared con una pared normal en ángulo recto a un lado y una pared curva al otro {#one-wall-with-a-normal-right-angled-wall-and-a-curved-wall-on-each-side}
-Las reglas dicen que los vértices de una pared curva deben representarse con ceros.
-La excepción es el caso siguiente, en el que un lado de la pared es un ángulo recto normal y el otro es curvo, que se representa igual que si ambos lados fueran paredes normales.
+Las reglas dicen que los vértices de una pared curva se representan con ceros.
+La excepción es el caso siguiente, en el que un lado de la pared es un ángulo recto normal y el otro es curvo. Se representa como si ambos lados fueran paredes normales.
 ![Una pared con un ángulo recto a un lado y una curva al otro](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Ejemplos {#examples}

@@ -5,12 +5,12 @@ description: Wie du mit dem Erebus World Editor deine eigenen Welten erstellst.
 
 ## Hintergrund {#background}
 
-Wenn du die Testkarten gemeistert hast und dein Roboter einfache Labyrinthe schafft, möchtest du vielleicht etwas Anspruchsvolleres oder bestimmte Situationen testen, die unsere Karten nicht bieten.
+Wenn dein Roboter die mitgelieferten Karten und einfache Labyrinthe schafft, möchtest du vielleicht etwas Anspruchsvolleres ausprobieren oder bestimmte Situationen testen, die in den mitgelieferten Karten nicht vorkommen.
 Dafür gibt es den Online-[Erebus World Editor](https://world.erebus.rcj.cloud/). Du zeichnest eine Karte in deinem Browser, und er exportiert eine `.wbt`-Weltdatei, die du in Erebus ausführen kannst.
 
 ![Eine fertige Karte im World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Wenn du nur kleine Karten zum Testen baust, ist die Regelkonformität des Spielfelds für dich wahrscheinlich nicht so wichtig. Wenn du aber ein Wettbewerbsfeld bauen möchtest, solltest du die offiziellen [Simulationsregeln](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) durchlesen. Der Editor prüft deine Karte während der Arbeit anhand der Regeln.
+Wenn du nur kleine Karten zum Testen baust, spielt es wahrscheinlich keine große Rolle, ob das Spielfeld den Regeln entspricht. Wenn du aber ein Wettbewerbsfeld bauen möchtest, lies die offiziellen [Simulationsregeln](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). Der Editor prüft deine Karte während der Arbeit anhand der Regeln.
 
 Der Editor hat eine eingebaute Anleitung: Drücke unten rechts auf **Guide**, um eine praktische Lektion zu starten, in der du eine Beispielkarte erstellst (etwa 15 Minuten), eine Tour durch die Oberfläche oder eine Lektion zu Raum 4. Daneben kannst du die Sprache des Editors ändern.
 
@@ -21,7 +21,7 @@ Wenn du den Editor öffnest, wähle, **nach den Regeln welchen Jahres** du dich 
 
 Deine Arbeit wird im Browser gespeichert, geht aber in einem anderen Browser oder beim Löschen der Browserdaten verloren. Sichere wichtige Karten als JSON mit dem Speichern-Button in der oberen Leiste und öffne sie wieder mit dem Öffnen-Button.
 
-Eine gute Arbeitsreihenfolge ist: Größe und Umriss, Räume, Durchgänge, Wände, Böden, Hindernisse und Opfer, Raum 4 und zum Schluss die Prüfungen und der Export. Die Werkzeuge sind links, jedes mit einem Tastenkürzel. Die Einstellungen des ausgewählten Werkzeugs erscheinen im Bereich daneben.
+Eine gute Arbeitsreihenfolge ist Größe und Umriss, Räume, Durchgänge, Wände, Böden, Hindernisse und Opfer, Raum 4 und zum Schluss die Prüfungen und der Export. Die Werkzeuge sind links, jedes mit einem Tastenkürzel. Die Einstellungen des ausgewählten Werkzeugs erscheinen im Bereich daneben.
 
 | Werkzeug | Taste | Verwendung |
 |---|---|---|
@@ -40,12 +40,12 @@ Eine gute Arbeitsreihenfolge ist: Größe und Umriss, Räume, Durchgänge, Wänd
 Mit dem Mausrad zoomst du, Ziehen bei gedrückter Leertaste verschiebt die Ansicht, und Rückgängig ist `⌘Z` oder `Ctrl+Z`.
 
 ## Größe und Umriss {#size-and-outline}
-Lege mit dem Werkzeug **Outline** die Größe der Karte in Kacheln fest. Die Außenwände ergeben sich von selbst. Mit **Outline (uneven)** kannst du Kacheln anklicken, um sie aus der Karte zu entfernen, und du kannst dort, wo du klickst, auch Zeilen und Spalten einfügen und entfernen.
+Lege mit dem Werkzeug **Outline** die Größe der Karte in Kacheln fest. Die Außenwände werden automatisch hinzugefügt. Mit **Outline (uneven)** kannst du Kacheln anklicken, um sie aus der Karte zu entfernen, und du kannst dort, wo du klickst, auch Zeilen und Spalten einfügen und entfernen.
 
 ![Das Werkzeug Outline](../../../../docs/tools/world-editor/outline.png)
 
 ## Räume und Durchgänge {#rooms-and-passages}
-Male mit dem Werkzeug **Rooms** die Kacheln jedes Raums. An den Grenzen zwischen den Räumen entstehen von selbst Wände. Verbinde die Räume dann mit dem Werkzeug **Passages**: Die Farbe jedes Durchgangs wird danach gewählt, welche Räume er verbindet.
+Male mit dem Werkzeug **Rooms** die Kacheln jedes Raums. An den Grenzen zwischen den Räumen werden automatisch Wände hinzugefügt. Verbinde die Räume dann mit dem Werkzeug **Passages**: Die Farbe jedes Durchgangs wird danach gewählt, welche Räume er verbindet.
 
 ![Das Werkzeug Rooms](../../../../docs/tools/world-editor/rooms.png)
 
@@ -69,9 +69,9 @@ Wähle mit dem Werkzeug **Obstacle** eine Form und klicke auf eine Kachel. In de
 Wähle mit dem Werkzeug **Victims** eine Art und klicke in die Nähe einer Wand. Du kannst platzieren:
 
 - Echte Buchstabenopfer: verletzt (harmed), stabil (stable) und unverletzt (unharmed)
-- Falsche Buchstabenopfer (Fake victims) mit dreidimensionalen Symbolen
+- Gefälschte Buchstabenopfer (Fake victims) mit dreidimensionalen Symbolen
 - Kognitive Ziele (Cognitive targets): Wähle das Gefahrgut und, wenn du möchtest, die Farben der Ringe. Die Summe wird angezeigt und bestimmt den Typ
-- Falsche Ziele, deren Ringe zusammen etwas anderes als 0 bis 3 ergeben
+- Gefälschte Ziele, deren Ringe zusammen etwas anderes als 0 bis 3 ergeben
 
 In Raum 1 kann auf jeder Kachelseite ein Opfer sein. In den Räumen 2 und 3 kommen sie auf die Flächen der 6-cm-Wände, und Kurven haben zwei Plätze, innen und außen. Wähle unter **Turn** eine feste Drehung oder eine zufällige für jede neue Markierung. Klicke eine platzierte Markierung an, um sie zu ändern oder zu entfernen, oder zieh sie an ihrer Wand entlang.
 
@@ -82,14 +82,14 @@ Raum 4 basiert nicht auf Kacheln und wird deshalb als Bild gezeichnet. Male mit 
 
 ![Der Raum-4-Editor](../../../../docs/tools/world-editor/room4.png)
 
-Was du schwarz zeichnest, wird zu Wänden. Der Editor hat Werkzeuge zum Freihandzeichnen und zum Zeichnen von Linien, Kurven, Bögen, Rechtecken, Ellipsen, Polygonen und Formen aus Symbolen sowie Werkzeuge für Opfer und Hindernisse. In Raum 4 kannst du beliebig viele Hindernisse platzieren. Rote Streifen zeigen, wohin der Roboter nicht gelangen kann, und du musst dem Roboter Platz lassen, etwa eine Kachel breit, damit er durchkommt.
+Was du schwarz zeichnest, wird zu Wänden. Der Editor hat Werkzeuge zum Freihandzeichnen und zum Zeichnen von Linien, Kurven, Bögen, Rechtecken, Ellipsen, Polygonen und Formen aus Symbolen sowie Werkzeuge für Opfer und Hindernisse. In Raum 4 kannst du beliebig viele Hindernisse platzieren. Rote Streifen zeigen, wohin der Roboter nicht gelangen kann, und du musst einen etwa eine Kachel breiten Weg frei lassen, damit der Roboter durchkommt.
 
 Wenn du fertig bist, drücke **OK**: Das Bild erscheint als Raum 4 auf der Karte und kommt in die exportierte Welt. Mit den Buttons oben rechts im Editor speicherst du das Bild als PNG, damit du denselben Raum 4 in einer anderen Karte verwenden kannst, und öffnest PNG- oder JPEG-Bilder.
 
 ## Deine Karte prüfen {#checking-your-map}
-Jede Änderung wird in der Karte **Checks** oben rechts anhand der Regeln geprüft. Ein rotes ✕ ist ein Problem, das den Export der Welt verhindert, und ein gelbes ! ist eine Warnung, die du dir ansehen solltest. Klicke auf einen Eintrag, um dorthin zu springen. **Fix** behebt einen Eintrag, und **Fix all that can be fixed** behebt alle.
+Jede Änderung wird im Bereich **Checks** oben rechts anhand der Regeln geprüft. Ein rotes ✕ ist ein Problem, das den Export der Welt verhindert, und ein gelbes ! ist eine Warnung, die du dir ansehen solltest. Klicke auf einen Eintrag, um dorthin zu springen. **Fix** behebt einen Eintrag, und **Fix all that can be fixed** behebt alle.
 
-![Eine neue Karte im World Editor mit der Karte Checks](../../../../docs/tools/world-editor/new_map.png)
+![Eine neue Karte im World Editor mit dem Bereich Checks](../../../../docs/tools/world-editor/new_map.png)
 
 Der Button **Linear** in der oberen Leiste färbt jede Kachel als lineare oder schwebende Kachel ein. Das bestimmt, wie viel die Markierungen wert sind.
 

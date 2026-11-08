@@ -33,7 +33,7 @@ Ensuite, il obtient et active les capteurs du robot de départ :
 <CodeTabs file="maze" region="sensors" />
 
 ### 3. Mouvements \{#3-moves\}
-Ces fonctions modifient les vitesses pour tourner et pivoter. `delay` fait continuer le robot à faire la même chose pendant quelques millisecondes, et `getBrightness` lit le capteur de couleur sous la forme d’une seule valeur, de 0 (noir) à 255 (blanc).
+Ces fonctions modifient les vitesses pour tourner et pivoter. `delay` fait continuer le robot à faire la même chose pendant un nombre donné de millisecondes, et `getBrightness` lit le capteur de couleur sous la forme d’une seule valeur, de 0 (noir) à 255 (blanc).
 
 <CodeTabs file="maze" region="moves" />
 
@@ -45,7 +45,7 @@ Cette fonction cherche des marqueurs muraux dans une image de la caméra. Les ma
 C’est un début simple : elle ne sait pas distinguer les symboles, et elle voit mal les cibles cognitives. Le tutoriel [Marqueurs muraux](/docs/programming/wall-tokens/) montre comment faire mieux.
 
 ### 5. Signaler \{#5-reporting\}
-Pour marquer les points d’un marqueur, le robot doit s’arrêter plus d’une seconde, puis envoyer sa position et le type du marqueur. Chaque marqueur ne rapporte des points qu’une seule fois, et le signaler à nouveau coûte 5 points : le programme mémorise donc les endroits où il a signalé. [Communication](/docs/programming/communication/) explique ces messages.
+Pour marquer les points d’un marqueur, le robot doit s’arrêter plus d’une seconde et envoyer sa position et le type du marqueur. Chaque marqueur ne rapporte des points qu’une seule fois, et le signaler à nouveau coûte 5 points : le programme mémorise donc les endroits où il a signalé. [Communication](/docs/programming/communication/) explique ces messages.
 
 <CodeTabs file="maze" region="report" />
 

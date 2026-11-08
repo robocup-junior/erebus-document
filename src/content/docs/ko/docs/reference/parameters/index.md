@@ -36,7 +36,7 @@ description: 경기장 크기, 게임 시간, 점수 배율, 로봇 제한, 스�
 | 거리 센서 범위 | 0 ~ 0.8 m |
 | GPS 정확도 | 0.0025 m |
 | 최대 바퀴 속도 | 6.28 rad/s |
-| LIDAR | 레이어당 512개 점, 4개 레이어, 0.01 ~ 1 m |
+| 라이다 | 레이어당 512개 점, 4개 레이어, 0.01 ~ 1 m |
 
 `timeStep`은 센서 업데이트 사이의 밀리초 수를 정해요. `int(robot.getBasicTimeStep())`은 월드의 기본 타임 스텝을 가져오며, Erebus v26.1의 월드에서는 16 ms예요.
 
@@ -54,6 +54,6 @@ description: 경기장 크기, 게임 시간, 점수 배율, 로봇 제한, 스�
 | GPS | `gps` |
 | 자이로스코프 | `gyro` |
 | 가속도계 | `accelerometer` |
-| LIDAR | `lidar` |
+| 라이다 | `lidar` |
 | 이미터 | `emitter` |
 | 리시버 | `receiver` |

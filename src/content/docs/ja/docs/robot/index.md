@@ -14,16 +14,16 @@ Erebus では、**ロボットを自分で設計します**。予算の範囲内
 
 | 構成要素 | プログラムでの名前 | 用途 |
 |---|---|---|
-| 2 つの車輪 | `left wheel motor`, `right wheel motor` | 移動 |
-| 車輪のエンコーダー | `left wheel sensor`, `right wheel sensor` | 車輪が回った量を測る |
-| 3 つの距離センサー | `leftDist`, `frontDist`, `rightDist` | 左、前、右の壁を見つける |
+| 2 つの車輪 | `left wheel motor`、`right wheel motor` | 移動 |
+| 車輪のエンコーダー | `left wheel sensor`、`right wheel sensor` | 車輪が回った量を測る |
+| 3 つの距離センサー | `leftDist`、`frontDist`、`rightDist` | 左、前、右の壁を見つける |
 | カメラ（64 × 40 ピクセル） | `camera` | 壁のトークンを見つける |
 | カラーセンサー | `color` | 床（穴、沼地、通路）を見る |
 | GPS | `gps` | トークンを報告するために自分の位置を知る |
 | ジャイロ | `gyro` | 回転した量を測る |
 | 加速度センサー | `accelerometer` | 加速度を測る |
 | LiDAR | `lidar` | 周囲全体の距離を測る |
-| エミッターとレシーバー | `emitter`, `receiver` | ゲームとやり取りする。すべてのロボットに付いています。 |
+| エミッターとレシーバー | `emitter`、`receiver` | ゲームとやり取りする。すべてのロボットに付いています。 |
 
 コストは、予算 3000 のうち 2400 です。
 

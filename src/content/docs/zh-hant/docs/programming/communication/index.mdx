@@ -14,7 +14,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 ## 回報牆上的標記得分 \{#scoring-wall-tokens\}
 
-要靠字母受害者（Letter victim）或認知目標（Cognitive target）得分，機器人必須：
+要靠字母受害者或認知目標得分，機器人必須：
 
 1. 在標記附近**停止超過 1 秒**。如果機器人在最後一秒內移動過，Erebus 會忽略這次回報。
 2. **傳送標記的位置和類型**：X 和 Z 以**公分**為單位，類型則是一個字母。
@@ -39,7 +39,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 ## 缺乏進展 \{#lack-of-progress\}
 
-當機器人卡住時，缺乏進展（Lack of Progress，LoP）會把它移回最後一個檢查點，並扣 5 分。機器人 20 秒沒有移動就會自動發生，你的程式也可以傳送 `L` 主動宣告。每次發生時，比賽都會傳送 `L` 給機器人，讓你的程式知道它的位置改變了。
+當機器人卡住時，缺乏進展（lack of progress）會把它移回最後一個檢查點，並扣 5 分。機器人 20 秒沒有移動就會自動發生，你的程式也可以傳送 `L` 主動宣告。每次發生時，比賽都會傳送 `L` 給機器人，讓你的程式知道它的位置改變了。
 
 <CodeTabs file="lop" />
 
@@ -55,7 +55,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 ## 結束比賽 \{#ending-the-game\}
 
-傳送 `E` 可以結束比賽。如果機器人在起始地塊上，且已辨識出至少一個牆上的標記，就會獲得 10% 的出口加成（Exit bonus）。
+傳送 `E` 可以結束比賽。如果機器人在起始地塊上，且已辨識出至少一個牆上的標記，就會獲得 10% 的出口加成。
 
 <CodeTabs file="exit" />
 

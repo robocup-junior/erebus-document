@@ -8,7 +8,7 @@ description: Erebus 和規則中使用的術語。
 | **區域（Area）** | 場地的四個部分之一，每個區域都有自己的牆壁類型。World Editor 稱它們為房間（rooms）。 |
 | **區域倍數（Area multiplier，AM）** | 1、1.25、1.5 或 2，套用在各區域的得分上 |
 | **檢查點（Checkpoint）** | 銀色的地塊。發生缺乏進展後，機器人會回到最後造訪的檢查點。 |
-| **認知目標（Cognitive target）** | 由五個同心圓顏色組成的牆上標記，顏色的總和代表一種危險物品類型。2026 年取代了危險物品標誌（hazmat signs）。 |
+| **認知目標（Cognitive target）** | 由五個同心彩色部分組成的牆上標記，各顏色數值的總和代表一種危險物品類型。2026 年取代了危險物品標誌（hazmat signs）。 |
 | **控制視窗（Control window）** | 載入程式並執行比賽的網頁。也稱為機器人視窗（robot window）。 |
 | **控制器（Controller）** | 你的程式 |
 | **自訂機器人（Custom robot）** | 用 Robot Customizer 設計，並從 `.json` 檔案載入的機器人 |

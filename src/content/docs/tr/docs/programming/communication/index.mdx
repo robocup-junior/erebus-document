@@ -14,10 +14,10 @@ Aşağıdaki her bölüm, [başlangıç robotu](/docs/robot/) için eksiksiz bir
 
 ## Duvar işaretleriyle puan kazanma \{#scoring-wall-tokens\}
 
-Bir harf kazazede (Letter victim) ya da bilişsel hedef (Cognitive target) ile puan kazanmak için robot şunları yapmalıdır:
+Bir harf kazazede ya da bilişsel hedeften puan almak için robot şunları yapmalıdır:
 
-1. İşaretin yakınında **1 saniyeden uzun süre durmak**. Robot son bir saniye içinde hareket ettiyse Erebus bildirimi yok sayar.
-2. İşaretin **konumunu ve türünü göndermek**: **santimetre** cinsinden X ve Z, tek bir harf olarak da tür.
+1. İşaretin yakınında **1 saniyeden uzun süre durmak**. Robot son bir saniye içinde hareket ettiyse Erebus bildirimi dikkate almaz.
+2. İşaretin **konumunu ve türünü göndermek**: X ve Z **santimetre** cinsinden, tür ise tek bir harf olarak gönderilir.
 
 | Duvar işareti | Tür |
 |---|---|
@@ -33,13 +33,13 @@ Kazazedeler 2026'dan beri sembol gösterse de türler harftir. GPS metre verdiğ
 
 <CodeTabs file="report" />
 
-Robot, işaretle duvarın aynı tarafında olmalı; hem robot hem de gönderdiğin konum işarete yakın olmalıdır. Kurallar en fazla yarım kare ister, bunu hedefle. Erebus v26.1, 9 cm'lik bir mesafeyi kontrol eder.
+Robot, işaretle duvarın aynı tarafında olmalı; hem robot hem de gönderdiğin konum işarete yakın olmalıdır. Kurallar en fazla yarım kare mesafe ister, bunu hedefle. Erebus v26.1, 9 cm'lik bir mesafeyi kontrol eder.
 
-Bu programı `world1.wbt`'nin başında çalıştır: orada hiç işaret yoktur, bu yüzden kontrol penceresinin geçmişinde `Misidentification of Victim -5` görünür. Bir sahtenin bildirimi dahil yanlış bir bildirim 5 puana mal olur ve her işaretle yalnızca bir kez puan kazanılabilir.
+Bu programı `world1.wbt`'nin başında çalıştır: orada hiç işaret yoktur, bu yüzden kontrol penceresinin geçmişinde `Misidentification of Victim -5` görünür. Sahte bir işareti bildirmek de dahil olmak üzere her yanlış bildirim 5 puana mal olur ve her işaretten yalnızca bir kez puan alınabilir.
 
 ## İlerleme eksikliği \{#lack-of-progress\}
 
-Robot sıkıştığında, bir ilerleme eksikliği (Lack of Progress, LoP) onu son kontrol noktasına geri götürür ve 5 puana mal olur. 20 saniye hareketsiz kaldıktan sonra otomatik olarak gerçekleşir; programın da `L` göndererek onu çağırabilir. Her seferinde oyun robota `L` gönderir, böylece programın konumunun değiştiğini bilir.
+Robot sıkıştığında bir ilerleme eksikliği (lack of progress, LoP), robotu son kontrol noktasına geri götürür ve 5 puana mal olur. Robot 20 saniye hareketsiz kalınca bu otomatik olarak gerçekleşir; programın da `L` göndererek ilerleme eksikliği çağırabilir. Her seferinde oyun robota `L` gönderir; böylece programın, robotun konumunun değiştiğini anlar.
 
 <CodeTabs file="lop" />
 
@@ -47,7 +47,7 @@ Alıcı farklı mesajlar alabilir, bu yüzden örnekteki gibi her mesajı okumad
 
 ## Oyun bilgileri \{#game-information\}
 
-Puanı ve kalan süreyi almak için `G` gönder. Oyun 16 baytlık bir mesajla yanıt verir: `G` harfi, puan, kalan oyun süresi ve kalan gerçek zaman, saniye cinsinden.
+Puanı ve kalan süreyi öğrenmek için `G` gönder. Oyun 16 baytlık bir mesajla yanıt verir: `G` harfi, puan, kalan oyun süresi ve kalan gerçek zaman (saniye cinsinden).
 
 <CodeTabs file="gameinfo" />
 
@@ -55,7 +55,7 @@ Oyun süresi bataklıklarda daha hızlı akar ve iki süreden biri dolduğunda o
 
 ## Oyunu bitirme \{#ending-the-game\}
 
-Oyunu bitirmek için `E` gönder. Robot başlangıç karesindeyse ve en az bir duvar işaretini tanımladıysa %10'luk çıkış bonusunu (Exit bonus) alır.
+Oyunu bitirmek için `E` gönder. Robot başlangıç karesindeyse ve en az bir duvar işaretini tanımladıysa %10'luk çıkış bonusunu alır.
 
 <CodeTabs file="exit" />
 
@@ -63,4 +63,4 @@ Oyunu bitirmek için `E` gönder. Robot başlangıç karesindeyse ve en az bir d
 Oyun, robot `E` gönderdiğinde nerede olursa olsun biter ve robot devam edemez. Önce başlangıç karesine döndüğünden ve [haritasını gönderdiğinden](/docs/programming/map-bonus/) emin ol.
 :::
 
-Sırada [Duvar işaretleri](/docs/programming/wall-tokens/) sayfasında işaretleri ayırt etmeyi öğrenmek var.
+Sırada, [Duvar işaretleri](/docs/programming/wall-tokens/) sayfasında işaretleri birbirinden ayırt etmeyi öğrenmek var.

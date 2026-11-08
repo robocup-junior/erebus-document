@@ -13,7 +13,7 @@ Ikuti langkah-langkahnya secara berurutan. Setiap langkah dibangun di atas langk
 | Langkah | Halaman | Kamu akan... |
 |---|---|---|
 | **Mulai** | [Apa itu Erebus?](/docs/introduction/), [Instalasi](/docs/installation/) | Tahu apa yang kamu kerjakan, dan sudah menginstal semuanya |
-| **1. Permainan** | [Ringkasan aturan](/docs/rules/) | Memahami misi, arena, dan cara mencetak skor |
+| **1. Permainan** | [Ringkasan aturan](/docs/rules/) | Memahami misi, arena, dan cara mencetak poin |
 | **2. Robotmu** | [Dapatkan robotmu](/docs/robot/), [Rakit robotmu](/docs/robot/build/) | Memuat robot pemula di Erebus |
 | **3. Percobaan pertama** | [Percobaan pertamamu](/docs/getting-started/) | Melihat robotmu menjelajah, dan mengenal jendela kontrol |
 | **4. Dasar pemrograman** | [Program pertamamu](/docs/programming/first-program/), [Gerakan](/docs/programming/movement/), [Sensor](/docs/programming/sensors/) | Membuat robotmu bergerak dan mengindra |
@@ -31,4 +31,4 @@ Setiap contoh menggunakan [robot pemula](/docs/robot/), jadi muat robot itu sebe
 | Memprogram dalam C atau C++ | [Controller C++](/docs/programming/cpp/) |
 | Mencari pesan atau nama perangkat | [Referensi](/docs/reference/parameters/) |
 | Memperbaiki masalah | [Pemecahan masalah](/docs/troubleshooting/) dan [FAQ](/docs/faq/) |
-| Datang dari versi sebelumnya | [Yang baru di v26](/docs/whats-new/) |
+| Beralih dari versi sebelumnya | [Yang baru di v26](/docs/whats-new/) |

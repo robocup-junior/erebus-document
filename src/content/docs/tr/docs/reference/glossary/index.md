@@ -5,7 +5,7 @@ description: Erebus'ta ve kurallarda kullanılan terimler.
 
 | Terim | Anlamı |
 |---|---|
-| **Alan** (Area) | Sahanın, her biri kendine özgü duvarlara sahip dört bölümünden biri. World Editor bunlara oda (room) der. |
+| **Alan çarpanı** (Area multiplier, AM) | Her alanın puanlarına uygulanan 1, 1,25, 1,5 ya da 2 değerindeki çarpan |
 | **Alan çarpanı** (Area multiplier, AM) | Her alanın puanlarına uygulanan 1, 1.25, 1.5 ya da 2 |
 | **Kontrol noktası** (Checkpoint) | Gümüş renkli bir kare. Robot bir ilerleme eksikliğinden sonra ziyaret ettiği son kontrol noktasına döner. |
 | **Bilişsel hedef** (Cognitive target) | Beş eş merkezli renkten oluşan bir duvar işareti; renklerin toplamı bir tehlikeli madde türünü verir. 2026'da tehlikeli madde işaretlerinin (hazmat signs) yerini aldı. |
@@ -19,7 +19,7 @@ description: Erebus'ta ve kurallarda kullanılan terimler.
 | **Harf kazazede** (Letter victim) | Φ, Ψ ya da Ω sembolü taşıyan bir duvar işareti |
 | **Doğrusal kare** (Linear tile) | Başlangıca bağlı duvarlar izlenerek ulaşılan kare |
 | **Main Supervisor** | Erebus'un oyunu yöneten kısmı. Oyun yöneticisi (game manager) olarak da adlandırılır. |
-| **Harita bonusu** (Mapping bonus, MB) | doğruluk × 1.2 + 1 değerinde bir puan çarpanı |
+| **Haritalama bonusu** (Mapping bonus, MB) | doğruluk × 1,2 + 1 değerinde bir puan çarpanı |
 | **Harita matrisi** (Map matrix) | Haritayı temsil eden dizi |
 | **Geçit** (Passage) | İki alanı birbirine bağlayan renkli bir kare |
 | **Çeyrek kare** (Quarter tile) | Bir karenin dörtte biri, 6 cm genişliğinde; 2. ve 3. alanlarda kullanılır |

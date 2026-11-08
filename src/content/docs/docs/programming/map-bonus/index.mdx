@@ -5,12 +5,12 @@ description: Send the map of the maze to Erebus and earn the mapping bonus, whic
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-The map bonus multiplies your score by up to 2.2, so it is worth a lot. It can be earned by following these steps:
+The mapping bonus multiplies your score by up to 2.2, so it is worth a lot. To earn it:
 
-1. Put the map into an array, as explained in the [Mapping rules](/docs/rules/mapping/)
-1. Send the size of the array, followed by the array flattened with comma separators and encoded with UTF-8
-1. Send the map evaluate request `M`
-1. End the game. Erebus applies the bonus to your score when the game ends
+1. Put the map into an array, as explained in the [Mapping rules](/docs/rules/mapping/).
+1. Send the size of the array, followed by the flattened array as comma-separated UTF-8 text.
+1. Send `M` to request the evaluation of the map.
+1. End the game. Erebus applies the bonus to your score when the game ends.
 
 ## Things to know
 
@@ -20,7 +20,7 @@ The map bonus multiplies your score by up to 2.2, so it is worth a lot. It can b
 - The map must contain the starting tile (`5`), which is used to align it to the correct answer. Without it, the map cannot be evaluated.
 - The result is shown as `Map Correctness` in the history of the control window. If you get a `Map scoring error` in the Webots console, check your format.
 
-The example below sends the correct answer for `world1.wbt`, which is useful to check your communication code. If you run it from the start of the game it ends the game immediately, and the score stays at 0 since a multiplier has nothing to multiply.
+The example below sends the correct answer for `world1.wbt`, which is useful to check your communication code. If you run it at the start of the game, it ends the game immediately, and the score stays at 0, since a multiplier has nothing to multiply.
 
 <CodeTabs file="basics" />
 

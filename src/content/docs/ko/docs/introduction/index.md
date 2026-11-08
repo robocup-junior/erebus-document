@@ -7,7 +7,7 @@ Erebus는 로봇 시뮬레이션 대회 환경이에요. 자율적으로 미로�
 
 Erebus는 [Webots](https://cyberbotics.com/) 위에 만들어졌어요. Webots는 전문가용으로 설계되어 산업, 교육, 연구에서 널리 쓰이는 로봇 시뮬레이션 플랫폼이에요. Cyberbotics가 1998년부터 꾸준히 관리하고 있어요.
 
-이 플랫폼은 주로 [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) 대회를 위해 설계되었어요. 중급부터 숙련된 프로그래머를 대상으로 해요.
+이 플랫폼은 주로 [RoboCupJunior Rescue Simulation](https://junior.robocup.org/rescue/) 대회를 위해 설계되었어요. 중급 이상의 경험을 가진 프로그래머를 대상으로 해요.
 
 ## 구성 요소의 관계 {#how-it-fits-together}
 
@@ -29,14 +29,14 @@ Erebus는 [Webots](https://cyberbotics.com/) 위에 만들어졌어요. Webots�
 이미 Erebus를 알고 있다면 [v26의 새로운 기능](/docs/whats-new/)을 참고하세요.
 
 ## 유용한 자료 {#useful-references}
-Erebus 시뮬레이터를 배우고 작업하는 데 유용한 링크 목록이에요.
+Erebus를 배우고 활용하는 데 유용한 링크예요.
 - [Webots 사용자 가이드](https://cyberbotics.com/doc/guide/index?version=R2023b)
 - [Webots 레퍼런스 매뉴얼](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
 - [Python 문서](https://www.python.org/doc/)
 - [C++ 문서](https://www.cplusplus.com/doc/tutorial/)
 - [OpenCV 튜토리얼](https://docs.opencv.org/4.x/d9/df8/tutorial_root.html)
 - [RCJ Rescue 커뮤니티 웹사이트](https://rescue.rcj.cloud/): 이벤트, 팀 문서, TDP·포스터·동영상 평가 기준
-- [RoboCupJunior 포럼](https://junior.forum.robocup.org/): 규칙 해석
+- [RoboCupJunior 포럼](https://junior.forum.robocup.org/): 규칙 보충 설명
 
 ## 다음 단계 {#next}
 [Erebus를 설치](/docs/installation/)한 다음, [규칙 요약](/docs/rules/)을 읽고 게임을 이해하세요.

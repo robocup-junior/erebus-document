@@ -6,22 +6,22 @@ description: "What you need to run Erebus v26: Webots R2023b, Python 3.9 or late
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Software Requirements
-There are key components which make up the simulation system. These must each be installed. Although installation is easy, the download and install of Webots can take a little bit of time! The three components are:
+The simulation system is made up of three components, and you need to install each of them. Installation is easy, but downloading and installing Webots can take a while. The three components are:
 
-1. Webots Robot Simulator Version **R2023b** - the simulation environment. Erebus v26 does not support other versions of Webots.
-1. Erebus - the worlds and the Competition Supervisor, which implements the rules and scoring. The latest version is **v26.1**.
-1. Python Version **3.9 or later** - needed to run Erebus itself, and to write controllers for the robots. You can also write controllers in C/C++.
+1. Webots robot simulator, version **R2023b**: the simulation environment. Erebus v26 does not support other versions of Webots.
+1. Erebus: the worlds and the Main Supervisor, which applies the rules and calculates the score. The latest version is **v26.1**.
+1. Python, version **3.9 or later**: needed to run Erebus itself, and to write controllers for the robots. You can also write controllers in C/C++.
 
 ## Minimum System Requirements
-* OS-Linux: Ubuntu 20.04 LTS, 22.04 LTS
-* OS-Windows: Windows 11, Windows 10 64-bit
-* OS-Mac: macOS 11 "Big Sur" and 12 "Monterey". These are the versions supported by Webots R2023b. Newer versions of macOS may work too: this documentation was checked on macOS 26.
-* CPU: Dual Core 2 GHz
+* Linux: Ubuntu 20.04 LTS or 22.04 LTS
+* Windows: Windows 10 or 11, 64-bit
+* macOS: macOS 11 "Big Sur" or 12 "Monterey". These are the versions supported by Webots R2023b. Newer versions of macOS may also work: this documentation was tested on macOS 26.
+* CPU: dual-core, 2 GHz
 * RAM: 2 GB
-* Nvidia 512MB or AMD OpenGL 512MB
+* Graphics: NVIDIA or AMD graphics card with OpenGL support and 512 MB of memory
 
 ## Python libraries
-Erebus needs the Python libraries below. Most of them are installed automatically when it starts, but **OpenCV is not**, so you must install it yourself. The guide of each operating system includes this step.
+Erebus needs the Python libraries below. Most of them are installed automatically when it starts, but **OpenCV is not**, so you must install it yourself. The guide for each operating system includes this step.
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python

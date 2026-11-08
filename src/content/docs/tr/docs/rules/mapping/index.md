@@ -1,17 +1,17 @@
 ---
-title: Haritalama kuralları
+title: Haritalama
 description: Haritalama hakkında daha fazla bilgi ve örnekler.
 ---
 
 ## Genel fikir {#general-idea}
-Haritalama, oyun sırasında elde edilen toplam puana bir çarpan olarak puanlanır. Harita çarpanını almak için robot, oyunun ana denetçisine (Main Supervisor) bir matris göndermelidir. Gönderilen matris bir doğruluk değeri elde etmek için "cevap anahtarıyla" karşılaştırılır ve çarpan şudur:
+Haritalama, oyunun puanına uygulanan bir çarpanla puanlanır. Bu çarpanı almak için robot, oyunun Main Supervisor'ına bir matris göndermelidir. Gönderilen matris, bir doğruluk değeri elde etmek için "cevap anahtarıyla" karşılaştırılır ve çarpan şöyle hesaplanır:
 
-**harita bonusu çarpanı = doğruluk × 1,2 + 1**
+**haritalama bonusu çarpanı = doğruluk × 1,2 + 1**
 
-Yani kusursuz bir harita (harita bonusu, Map bonus) puanını 2,2 ile çarpar. Matrisin nasıl gönderileceğini öğrenmek için [Haritayı gönderme eğitimine](/docs/programming/map-bonus/) bak.
+Yani kusursuz bir harita puanını 2,2 ile çarpar. Matrisin nasıl gönderileceğini öğrenmek için [Haritayı gönderme eğitimine](/docs/programming/map-bonus/) bak.
 
 ## Haritalama için kurallar {#rules-for-mapping}
-* Her çeyrek kare ve onu çevreleyen kenarlar ve köşeler bir hücreyle (değerle) temsil edilir. Bu yüzden W × H karelik bir harita, (4 × H + 1) satır ve (4 × W + 1) sütunlu bir matristir.
+* Her çeyrek kare, her kenar ve her köşe bir hücreyle (değerle) temsil edilir. Bu yüzden W × H karelik bir harita, (4 × H + 1) satır ve (4 × W + 1) sütunlu bir matristir.
 * Dünyadaki her öğe şu şekilde temsil edilir:
 
 | Öğe | Değer |
@@ -32,13 +32,13 @@ Yani kusursuz bir harita (harita bonusu, Map bonus) puanını 2,2 ile çarpar. M
 | Sınırı dahil, 4. alanın tüm kareleri, kenarları ve köşeleri | `*` |
 | Diğer tüm kareler, kenarlar ve köşeler | `0` |
 
-* Zemin öğeleri (`2`, `3`, `4`, `5`, `x` ve geçitler), aşağıdaki örneklerde görebileceğin gibi her çeyrek karenin merkezindeki dört hücreye yazılır.
+* Zemin öğeleri (`2`, `3`, `4`, `5`, `x` ve geçitler), aşağıdaki örneklerde görebileceğin gibi, karenin dört çeyrek karesinin her birinin merkez hücresine yazılır.
 * Hiçbir kare aynı anda şunlardan birden fazlası olamaz: bataklık, çukur, kontrol noktası, başlangıç karesi, engelli kare ya da alan geçidi.
-* 3. alandaki kavisli duvarlar için köşe `0` ile temsil edilmelidir.
-* Bir duvar işaretinin varlığı, üzerinde bulunduğu duvarın hücresinde belirtilmelidir. Aynı duvarda, örneğin iki yüzünde, birden fazla duvar işareti varsa kodlarını haritadaki mutlak konumlarına göre sırayla tek bir hücrede birleştir: önce yukarıdan aşağıya, sonra soldan sağa.
-* Sahte işaretler haritaya eklenmemelidir: ne sahte kazazedeler (Fake victims) ne de toplamı geçersiz olan bilişsel hedefler.
-* Tam karelerdeki (çeyrek olmayan karelerdeki) duvar işaretleri duvar boyunca herhangi bir yerde olabilir. Hangi çeyrek kareye daha yakınsa o çeyrek karenin hücresine, kare kenarının ortasına yakınsa ortadaki hücreye yerleştirilmelidir.
-* Haritalar, 90°'nin katı olduğu sürece herhangi bir dönüşle saklanabilir. Erebus başlangıç karesini kullanarak matrisini cevapla hizalar, her yönelimi dener ve en iyi sonucu tutar.
+* 3. alandaki kavisli duvarlar için köşe `0` ile temsil edilir.
+* Bir duvar işareti, üzerinde bulunduğu duvarın hücresine yazılır. Aynı duvarda, örneğin iki yüzünde, birden fazla duvar işareti varsa kodlarını haritadaki mutlak konumlarına göre sırayla tek bir hücrede birleştir: önce yukarıdan aşağıya, sonra soldan sağa.
+* Sahte işaretler haritaya eklenmemelidir: ne sahte kazazedeler ne de toplamı geçersiz olan bilişsel hedefler.
+* Tam karelerdeki (çeyrek olmayan karelerdeki) duvar işaretleri duvar boyunca herhangi bir yerde olabilir. Hangi çeyrek kareye daha yakınsa o çeyrek karenin hücresine, kare kenarının ortasına yakınsa ortadaki hücreye yazılır.
+* Haritalar, dönüş açısı 90°'nin katı olduğu sürece herhangi bir yönde gönderilebilir. Erebus, başlangıç karesini kullanarak matrisini cevapla hizalar, her yönelimi dener ve en iyi sonucu tutar.
 
 ## Doğruluk nasıl hesaplanır {#how-correctness-is-calculated}
 1. Matrisler başlangıç karesine göre hizalanır. Yani **haritan başlangıç karesini içermelidir**.
@@ -48,14 +48,14 @@ Yani kusursuz bir harita (harita bonusu, Map bonus) puanını 2,2 ile çarpar. M
 Yalnızca üzerinde bir şey olan konumlar sayıldığı için, var olmayan bir şeyi işaretlemek de var olan bir şeyi kaçırmak kadar doğruluğunu düşürür.
 
 ## Belirsiz uç durumlar {#ambiguous-edge-cases}
-Aşağıda tanımlanmamış belirsiz uç durumlar için Uluslararası RoboCupJunior Rescue Komitesi ve/veya platform geliştirme ekibiyle iletişime geç.
+Aşağıda ele alınmayan belirsiz durumlar için Uluslararası RoboCupJunior Rescue Komitesi ve/veya platform geliştirme ekibiyle iletişime geç.
 ### Bir yanında normal dik açılı duvar, diğer yanında kavisli duvar bulunan bir duvar {#one-wall-with-a-normal-right-angled-wall-and-a-curved-wall-on-each-side}
-Kurallar, kavisli bir duvarın köşelerinin sıfırla temsil edilmesi gerektiğini söyler.
-İstisna, duvarın bir yanının normal dik açı, diğer yanının kavisli olduğu aşağıdaki durumdur; bu durum, iki yan da normal duvarmış gibi aynı şekilde temsil edilir.
+Kurallara göre kavisli bir duvarın köşeleri sıfırla temsil edilir.
+İstisnası, duvarın bir yanının normal dik açı, diğer yanının kavisli olduğu aşağıdaki durumdur. Bu durum, iki yan da normal duvarmış gibi temsil edilir.
 ![Bir yanında dik açı, diğer yanında kavis olan bir duvar](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Örnekler {#examples}
-Bunlar, Erebus v26'ya dahil olan bazı dünyaların Erebus'un kendisi tarafından üretilmiş doğru cevaplarıdır.
+Aşağıda, Erebus v26 ile gelen bazı dünyaların Erebus'un kendisinin ürettiği doğru cevapları var.
 
 `game/worlds` klasöründeki dünyalar sürümden sürüme değişir, bu yüzden Erebus sürümün farklıysa cevabın da farklı olabilir. `player_controllers` klasöründeki `MapScorerExample.py` dosyasında da örnek matrisler var.
 
@@ -118,7 +118,7 @@ Bu dünyada `x` ile işaretlenen engeller var.
 ```
 
 ### world1.wbt {#world1wbt}
-Bu dünyada `b` ve `p` geçitleriyle üç alan var.
+Bu dünyada üç alan ve `b` ile `p` geçitleri var.
 
 ![Webots'ta world1 dünyası](../../../../docs/rules/mapping/world1.png)
 

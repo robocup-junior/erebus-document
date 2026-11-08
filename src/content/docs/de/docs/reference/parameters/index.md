@@ -36,7 +36,7 @@ description: Maße des Spielfelds, Spielzeiten, Multiplikatoren für die Wertung
 | Reichweite des Abstandssensors | 0 bis 0,8 m |
 | Genauigkeit des GPS | 0,0025 m |
 | Maximale Radgeschwindigkeit | 6,28 rad/s |
-| LIDAR | 512 Punkte pro Schicht, 4 Schichten, 0,01 bis 1 m |
+| Lidar | 512 Punkte pro Schicht, 4 Schichten, 0,01 bis 1 m |
 
 `timeStep` legt die Anzahl der Millisekunden zwischen Sensor-Aktualisierungen fest. `int(robot.getBasicTimeStep())` liefert den Basis-Zeitschritt der Welt, der in den Welten von Erebus v26.1 16 ms beträgt.
 
@@ -54,6 +54,6 @@ Das sind die Namen, die du beim [Starter-Roboter](/docs/robot/) an `robot.getDev
 | GPS | `gps` |
 | Gyroskop | `gyro` |
 | Beschleunigungssensor | `accelerometer` |
-| LIDAR | `lidar` |
+| Lidar | `lidar` |
 | Sender | `emitter` |
 | Empfänger | `receiver` |

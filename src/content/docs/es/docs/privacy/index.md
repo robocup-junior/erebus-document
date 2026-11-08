@@ -12,6 +12,6 @@ Este sitio usa [Cloudflare Web Analytics](https://www.cloudflare.com/web-analyti
 El sitio guarda algunos ajustes en tu navegador, que no se envían a ningún sitio:
 
 - Tu tema
-- La pestaña de lenguaje seleccionada en los ejemplos de código
+- El lenguaje de programación que hayas elegido en las pestañas de los ejemplos de código
 
 Este sitio no usa cookies.

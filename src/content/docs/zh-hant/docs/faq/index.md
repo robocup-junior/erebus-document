@@ -3,7 +3,7 @@ title: 常見問題
 description: 關於 Erebus 和比賽的常見問題。
 ---
 
-## 關於 Erebus {#custom-md-id}
+## 關於 Erebus {#about-erebus}
 
 ### 我需要一台真正的機器人嗎？ {#do-i-need-a-real-robot}
 不需要。一切都在模擬器中進行。機器人是由你設計的虛擬 e-puck。
@@ -11,7 +11,7 @@ description: 關於 Erebus 和比賽的常見問題。
 ### 我可以使用哪些程式語言？ {#which-programming-languages-can-i-use}
 本文件涵蓋 Python 和 C/C++。Erebus 也可以載入 Java 和 MATLAB 控制器，但本文件沒有這些語言的範例。
 
-### 需要效能強大的電腦嗎？ {#is-a-powerful-computer-needed}
+### 我需要效能強大的電腦嗎？ {#do-i-need-a-powerful-computer}
 不需要，請參閱[系統需求](/docs/installation/)。速度較慢的電腦可能需要[降低圖形設定](/docs/troubleshooting/#the-simulation-runs-too-slowly)。
 
 ### 我可以使用較新版本的 Webots 嗎？ {#can-i-use-a-newer-version-of-webots}
@@ -32,10 +32,10 @@ description: 關於 Erebus 和比賽的常見問題。
 從位於區域 1 的起始地塊出發。它一定會朝向沒有牆壁的方向。
 
 ### 如果機器人掉進坑洞會怎樣？ {#what-happens-if-the-robot-falls-into-a-hole}
-會發生缺乏進展（Lack of Progress）：機器人會回到最後造訪的檢查點，而且你會被扣 5 分。
+會發生缺乏進展（lack of progress）：機器人會回到最後造訪的檢查點，而且你會被扣 5 分。
 
 ### 機器人一定要回到起點嗎？ {#does-the-robot-have-to-return-to-the-start}
-不一定，但只要已辨識出至少一個牆上的標記，回到起始地塊並傳送 `E` 就能獲得 10% 的出口加成（Exit bonus）。
+不一定，但只要已辨識出至少一個牆上的標記，回到起始地塊並傳送 `E` 就能獲得 10% 的出口加成（exit bonus）。
 
 ### 我的機器人要怎麼知道還剩多少時間？ {#how-can-my-robot-tell-how-much-time-is-left}
 用 [`G` 訊息](/docs/programming/communication/#game-information)。比賽有兩個計時器，而比賽時間在沼澤中會流逝得更快。

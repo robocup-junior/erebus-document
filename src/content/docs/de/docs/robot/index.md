@@ -22,10 +22,10 @@ Diese Dokumentation verwendet überall denselben Roboter, den **Starter-Roboter*
 | GPS | `gps` | Die eigene Position kennen, um Markierungen zu melden |
 | Gyroskop | `gyro` | Messen, wie weit er sich gedreht hat |
 | Beschleunigungssensor | `accelerometer` | Beschleunigung messen |
-| LIDAR | `lidar` | Entfernungen rundherum messen |
+| Lidar | `lidar` | Entfernungen rundherum messen |
 | Sender und Empfänger | `emitter`, `receiver` | Mit dem Spiel kommunizieren. Jeder Roboter hat sie. |
 
-Er kostet 2400 des Budgets von 3000.
+Er kostet 2400 vom Budget von 3000.
 
 ## Wähle deinen Weg {#choose-your-path}
 

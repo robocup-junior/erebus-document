@@ -14,16 +14,16 @@ import CodeTabs from '@/components/CodeTabs.astro';
 1. **Robotu oluştur.** `Robot()`, programını simülatördeki robota bağlar.
 2. **Zaman adımını al.** Simülasyon birkaç milisaniyelik adımlarla ilerler. `getBasicTimeStep()` dünyanın adımını verir.
 3. **Cihazları al.** Her motor ve sensör adıyla bulunur. Bunlar, [robotunu yaparken](/docs/robot/build/) onlara verdiğin adlardır.
-4. **Sensörleri etkinleştir.** Bir sensör etkinleştirilene kadar hiçbir değer vermez. Zaman adımı ona ne sıklıkla güncelleneceğini söyler.
+4. **Sensörleri etkinleştir.** Bir sensör etkinleştirilene kadar hiçbir değer vermez. Zaman adımı, sensörün ne sıklıkla güncelleneceğini belirler.
 5. **Döngü.** `robot.step(timeStep)` simülasyonu bir adım ilerletir ve simülasyon bittiğinde -1 döndürür. Robotunun yaptığı her şey bu döngünün içinde olur.
 
 ## Çalıştır \{#run-it\}
 
 1. Programı `hello.py` olarak kaydet.
 2. `game/worlds/mapping_example_1.wbt` dünyasını aç ve sağdaki LOAD düğmesiyle [başlangıç robotunu](/docs/robot/) yükle.
-3. `hello.py`'yi soldaki LOAD düğmesiyle yükle ve başlat düğmesine bas.
+3. `hello.py` dosyasını soldaki LOAD düğmesiyle yükle ve başlat düğmesine bas.
 
-Robot ileri gider ve robot durana kadar Webots konsolu önündeki duvara olan uzaklığı gösterir. Bunun yerine bir hata görürsen [Sorun giderme](/docs/troubleshooting/#your-program) sayfasına bak.
+Robot ileri gider ve durana kadar Webots konsolunda önündeki duvara olan uzaklık görüntülenir. Bunun yerine bir hata görürsen [Sorun giderme](/docs/troubleshooting/#your-program) sayfasına bak.
 
 :::tip
 Robotunun ne yaptığını anlamak için `print` kullan. Sorunları bulmak için en basit ve en kullanışlı araçtır.

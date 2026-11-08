@@ -6,14 +6,14 @@ description: "RoboCupJunior Rescue Simulation 2026 규칙 요약: 경기장, 벽
 :::note
 이 페이지는 시작하는 데 도움을 주기 위한 요약이에요. 유일한 공식 규칙은 [RoboCupJunior Rescue Simulation Rules 2026](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf)(최종 업데이트 2026-02-11)이에요. 이 페이지와 공식 규칙이 다르면 공식 규칙이 적용돼요.
 
-수정 사항과 규칙 해석은 [공식 RoboCupJunior 포럼](https://junior.forum.robocup.org/)에 올라와요. 확인하는 것은 각 팀의 책임이에요.
+규칙의 수정 사항과 보충 설명은 [공식 RoboCupJunior 포럼](https://junior.forum.robocup.org/)에 올라와요. 확인하는 것은 각 팀의 책임이에요.
 :::
 
 ## 1분 만에 보는 게임 {#the-game-in-one-minute}
 로봇은 혼자서 알 수 없는 미로에 놓여요. 8분 동안 여러분의 도움 없이 다음을 해야 해요.
 
 1. 갇히거나 구멍에 빠지지 않고 미로를 **탐색해요**.
-2. 벽에 있는 피해자와 위험 표지(Hazard signs), 즉 **벽 토큰을 찾고**, 각각이 무엇인지 보고해요.
+2. 벽에 있는 피해자와 인지 표적, 즉 **벽 토큰을 찾아** 각각이 무엇인지 보고해요.
 3. 미로의 **지도를 만들고**, 마지막에 지도를 보내요.
 4. 출발한 곳으로 **돌아와요**.
 
@@ -57,7 +57,7 @@ description: "RoboCupJunior Rescue Simulation 2026 규칙 요약: 경기장, 벽
 ![선형 타일은 회색, 떠 있는 타일은 분홍색으로 표시한 경기장](../../../docs/rules/rules_linear_floating.png)
 
 ### 체크포인트 {#checkpoints}
-은색 타일은 체크포인트(Checkpoint)이며, 경기장 어디에나 놓일 수 있어요. 구역 4에는 통로 바로 다음에 체크포인트가 있어요. 진행 불능 후 로봇은 마지막으로 방문한 체크포인트에서 다시 시작해요.
+은색 타일은 체크포인트(Checkpoint)이며, 경기장 어디에나 있을 수 있어요. 구역 4에는 통로 바로 다음에 체크포인트가 있어요. 진행 불능 후 로봇은 마지막으로 방문한 체크포인트에서 다시 시작해요.
 
 ## 늪, 장애물, 구멍 {#swamps-obstacles-and-holes}
 ![늪, 구멍, 장애물이 있는 경기장](../../../docs/rules/rules_obstacles.png)
@@ -74,7 +74,7 @@ description: "RoboCupJunior Rescue Simulation 2026 규칙 요약: 경기장, 벽
 ![경기장 벽에 있는 인지 표적과 문자 피해자](../../../docs/rules/rules_wall_tokens.png)
 
 ### 문자 피해자 {#letter-victims}
-문자 피해자(Letter victims)는 2 cm × 2 cm 이미지예요. 기호는 피해자의 건강 상태를 나타내며, 괄호 안의 문자는 보고하고 지도에 쓰는 코드예요.
+문자 피해자(Letter victims)는 2 cm × 2 cm 이미지예요. 기호는 피해자의 건강 상태를 나타내고, 코드는 보고할 때와 지도에 쓸 때 사용하는 문자예요.
 
 | 상태 | 기호 | 코드 |
 |---|---|---|
@@ -115,7 +115,7 @@ description: "RoboCupJunior Rescue Simulation 2026 규칙 요약: 경기장, 벽
 
 ## 로봇 {#the-robot}
 - 팀은 주최 측이 제공하는 로봇 모델을 사용하며, **3000**의 예산 안에서 [Robot Customizer](https://robot.erebus.rcj.cloud/)로 커스터마이즈할 수 있어요. [로봇](/docs/robot/)을 참고하세요.
-- 로봇은 GPS, 컬러 센서, 거리 센서, RGB 카메라, LiDAR, 자이로스코프, 가속도계를 사용할 수 있어요.
+- 로봇은 GPS, 컬러 센서, 거리 센서, RGB 카메라, 라이다, 자이로스코프, 가속도계를 사용할 수 있어요.
 - 시뮬레이션 센서에는 현실적인 노이즈가 있어요. 프로그램은 노이즈에 강해야 하며, 대회에서 주최 측은 노이즈 수준을 바꾸지 않아요.
 - 로봇은 자율적이어야 해요. 각 팀은 경기장에 로봇 한 대를 둬요.
 - 사전 매핑은 금지예요. 경기장과 벽 토큰의 위치 모두 해당하며, 알려진 위치를 바탕으로 미리 정해 둔 움직임도 포함돼요. 위반하면 그 라운드에서 즉시 실격돼요.
@@ -151,7 +151,7 @@ description: "RoboCupJunior Rescue Simulation 2026 규칙 요약: 경기장, 벽
 | 벽 토큰 오식별 (TMI) | -5 |
 | 진행 불능 (LoP) | -5 |
 
-총점은 0 아래로 내려가지 않아요. 오식별이란 토큰에서 반 타일보다 먼 위치를 보고하거나, 토큰이 없는 곳에 토큰을 보고하거나, 피해자를 위험물로(또는 그 반대로) 보고하는 것을 말해요. 가짜 토큰을 보고하는 것은 두 번째 경우에 해당해요.
+총점은 0 아래로 내려가지 않아요. 오식별이란 토큰에서 반 타일보다 먼 위치를 보고하거나, 토큰이 없는 곳에 토큰을 보고하거나, 문자 피해자를 인지 표적으로(또는 그 반대로) 보고하는 것을 말해요. 가짜 토큰을 보고하는 것은 두 번째 경우에 해당해요.
 
 **구역 배율(Area multipliers, AM)**: TI, TT, CN에 구역 1, 2, 3, 4에서 각각 1, 1.25, 1.5, 2를 곱해요. TMI와 LoP에는 곱하지 않아요.
 

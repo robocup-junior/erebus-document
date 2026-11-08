@@ -5,12 +5,12 @@ description: Como criar os seus próprios mundos com o World Editor do Erebus.
 
 ## Contexto {#background}
 
-Depois de dominar os mapas de teste e de o seu robô conseguir percorrer labirintos simples, talvez você queira algo mais desafiador, ou testar alguns cenários específicos que os nossos mapas não oferecem.
+Quando o seu robô já se sair bem nos mapas incluídos e em labirintos simples, talvez você queira algo mais desafiador, ou testar cenários específicos que os mapas incluídos não cobrem.
 Para isso, existe o [Erebus World Editor](https://world.erebus.rcj.cloud/) online. Você desenha um mapa no navegador, e ele exporta um arquivo de mundo `.wbt` que você pode executar no Erebus.
 
 ![Um mapa pronto no World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Se você está só criando mapas pequenos para testes, a correção do campo provavelmente não importa muito. Mas, se pretende montar um campo de competição, leia as [Regras de simulação](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) oficiais. O editor confere o seu mapa com as regras enquanto você trabalha.
+Se você está só criando mapas pequenos para testes, provavelmente não importa muito se o campo segue as regras. Mas, se pretende montar um campo de competição, leia as [Regras de simulação](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) oficiais. O editor confere o seu mapa com as regras enquanto você trabalha.
 
 O editor tem um guia embutido: pressione **Guide** no canto inferior direito para uma aula prática que monta um mapa de exemplo (cerca de 15 minutos), um tour pela tela ou uma aula sobre a Room 4. O idioma do editor pode ser alterado ao lado.
 
@@ -21,7 +21,7 @@ Quando abrir o editor, escolha **as regras de qual ano** você quer seguir e pre
 
 O seu trabalho fica guardado no navegador, mas se perde em outro navegador ou quando os dados de navegação são apagados. Guarde os mapas importantes salvando-os como JSON com o botão de salvar na barra superior e abra-os de novo com o botão de abrir.
 
-Uma boa ordem de trabalho é: tamanho e contorno, salas, passagens, paredes, pisos, obstáculos e vítimas, Room 4 e, por fim, as verificações e a exportação. As ferramentas ficam à esquerda, cada uma com um atalho de teclado. As configurações da ferramenta selecionada aparecem no painel ao lado.
+Uma boa ordem de trabalho é a seguinte: tamanho e contorno, salas, passagens, paredes, pisos, obstáculos e vítimas, Room 4 e, por fim, as verificações e a exportação. As ferramentas ficam à esquerda, cada uma com um atalho de teclado. As configurações da ferramenta selecionada aparecem no painel ao lado.
 
 | Ferramenta | Tecla | Uso |
 |---|---|---|
@@ -40,12 +40,12 @@ Uma boa ordem de trabalho é: tamanho e contorno, salas, passagens, paredes, pis
 A roda do mouse dá zoom, arrastar segurando Espaço move a visão, e desfazer é `⌘Z` ou `Ctrl+Z`.
 
 ## Tamanho e contorno {#size-and-outline}
-Com a ferramenta **Outline**, defina o tamanho do mapa em ladrilhos. As paredes externas acompanham sozinhas. **Outline (uneven)** permite clicar em ladrilhos para tirá-los do mapa, e você também pode inserir e remover linhas e colunas onde clicar.
+Com a ferramenta **Outline**, defina o tamanho do mapa em ladrilhos. As paredes externas são adicionadas automaticamente. **Outline (uneven)** permite clicar em ladrilhos para tirá-los do mapa, e você também pode inserir e remover linhas e colunas onde clicar.
 
 ![A ferramenta Outline](../../../../docs/tools/world-editor/outline.png)
 
 ## Salas e passagens {#rooms-and-passages}
-Com a ferramenta **Rooms**, pinte os ladrilhos de cada sala. As paredes sobem sozinhas nas divisas entre as salas. Depois, com a ferramenta **Passages**, ligue as salas: a cor de cada passagem é escolhida de acordo com as salas que ela conecta.
+Com a ferramenta **Rooms**, pinte os ladrilhos de cada sala. As paredes são adicionadas automaticamente nas divisas entre as salas. Depois, com a ferramenta **Passages**, ligue as salas: a cor de cada passagem é escolhida de acordo com as salas que ela conecta.
 
 ![A ferramenta Rooms](../../../../docs/tools/world-editor/rooms.png)
 
@@ -82,7 +82,7 @@ A Room 4 não é baseada em ladrilhos, então ela é desenhada como uma imagem. 
 
 ![O criador da Room 4](../../../../docs/tools/world-editor/room4.png)
 
-O que você desenha em preto vira parede. O criador tem ferramentas para desenhar à mão livre e para desenhar linhas, curvas, arcos, retângulos, elipses, polígonos e formas a partir de ícones, além de ferramentas para vítimas e obstáculos. Na Room 4, você pode colocar quantos obstáculos quiser. Listras vermelhas mostram onde o robô não consegue chegar, e você precisa deixar espaço para o robô passar, com cerca de um ladrilho de largura.
+O que você desenha em preto vira parede. O criador tem ferramentas para desenhar à mão livre e para desenhar linhas, curvas, arcos, retângulos, elipses, polígonos e formas a partir de ícones, além de ferramentas para vítimas e obstáculos. Na Room 4, você pode colocar quantos obstáculos quiser. Listras vermelhas mostram onde o robô não consegue chegar, e você precisa deixar um caminho com cerca de um ladrilho de largura para o robô passar.
 
 Quando terminar, pressione **OK**: a imagem aparece como Room 4 no mapa e vai para o mundo exportado. Os botões no canto superior direito do criador salvam a imagem como PNG, para você usar a mesma Room 4 em outro mapa, e abrem imagens PNG ou JPEG.
 

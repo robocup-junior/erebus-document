@@ -33,7 +33,7 @@ Das sind die wichtigsten Ordner der heruntergeladenen Version:
 | **Reset** | Setzt das geladene Programm und das Spiel zurück |
 | **Give up!** | Beendet das Spiel |
 | Timer | Die Spielzeit und darunter in Klammern die Echtzeit. Das Spiel endet, wenn einer der beiden 0 erreicht. |
-| Rechnersymbol | Die aktuelle Punktzahl |
+| Taschenrechnersymbol | Die aktuelle Punktzahl |
 
 ## Ein Programm ausführen \{#run-a-program\}
 <a href={mazeUrl} download="maze.py">Lade maze.py herunter</a>, ein vollständiges Programm, das den Roboter durch das Labyrinth fahren lässt. Es ist das Programm, das du in [Durch das Labyrinth navigieren](/docs/programming/navigate-the-maze/) selbst schreiben wirst.
@@ -45,11 +45,11 @@ Das sind die wichtigsten Ordner der heruntergeladenen Version:
 ![Start-Button](../../../docs/getting-started/start_button.png)
 1. Um den Roboter vorübergehend anzuhalten, drücke den Pause-Button.
 ![Pause-Button](../../../docs/getting-started/pause_button.png)
-1. Wenn der Roboter feststeckt, löst der Neustart-Button einen fehlenden Fortschritt (Lack of Progress) aus. Dabei wird der Roboter zum zuletzt erreichten Checkpoint versetzt, und es kostet 5 Punkte.
+1. Wenn der Roboter feststeckt, drücke den Neustart-Button, um einen fehlenden Fortschritt (Lack of Progress) auszulösen. Der Roboter wird dann zum zuletzt erreichten Checkpoint zurückgesetzt, und das kostet 5 Punkte.
 ![Button für fehlenden Fortschritt](../../../docs/getting-started/lop_button.png)
 1. Drücke den Reset-Button, um das geladene Programm und das laufende Spiel zurückzusetzen. Lade die Welt neu, wenn du nach dem Ende eines Spiels noch einmal spielen möchtest.
 
-Das Programm braucht OpenCV, das du mit den anderen [Python-Bibliotheken](/docs/installation/#python-libraries) installiert hast. Ausgaben deines Programms und Fehler erscheinen in der Webots-Konsole.
+Das Programm braucht OpenCV, das du mit den anderen [Python-Bibliotheken](/docs/installation/#python-libraries) installiert hast. Ausgaben deines Programms und Fehlermeldungen erscheinen in der Webots-Konsole.
 
 Während das Spiel läuft, erscheint unten im Fenster der Punkteverlauf. Er zeigt dir genau, warum du Punkte bekommen oder verloren hast, und ist damit das beste Werkzeug, um dein Programm zu prüfen.
 
@@ -67,7 +67,7 @@ Erebus v26.1 enthält diese Welten:
 | Welt | Zweck |
 |---|---|
 | `world1.wbt`, `world2.wbt` | Beispielwelten. `world2.wbt` enthält Bereich 4. |
-| `world3.wbt`, `world4.wbt` | Größere Beispielwelten, die auch **falsche Opfer** enthalten |
+| `world3.wbt`, `world4.wbt` | Größere Beispielwelten, die auch **gefälschte Opfer** enthalten |
 | `mapping_example_1.wbt` bis `mapping_example_3.wbt` | Welten, um dein Kartieren zu testen. Siehe [Regeln für die Karte](/docs/rules/mapping/). |
 | `NewPassages.wbt` | Beispiel für die Durchgänge zwischen den Bereichen |
 
@@ -86,7 +86,7 @@ Erebus v26.1 enthält diese Welten:
 Die Links oben führen zum Changelog und zu Tools zum Erstellen von Welten und Robotern. Um Welten nach den Regeln von 2026 zu erstellen, verwende den [World Editor](https://world.erebus.rcj.cloud/).
 
 ## Den Roboter von Hand dorthin bewegen, wo du ihn haben willst \{#manually-move-the-robot-where-you-want-it-to-go\}
-Wenn du im Simulationsfenster auf einen Roboter klickst, erscheinen rote, blaue und grüne Pfeile. Wenn du diese Pfeile mit der Maus greifst, kannst du den Roboter an jede beliebige Position bewegen. Beachte, dass der Roboter erst angezeigt wird, wenn das Programm gestartet ist.
+Wenn du im Simulationsfenster auf einen Roboter klickst, erscheinen rote, grüne und blaue Pfeile. Zieh diese Pfeile mit der Maus, um den Roboter an eine beliebige Position zu bewegen. Beachte, dass der Roboter erst angezeigt wird, wenn das Programm gestartet ist.
 ![Der in Webots ausgewählte Roboter mit Pfeilen zum Bewegen](../../../docs/getting-started/manual.png)
 
 

@@ -6,19 +6,19 @@ description: "Was du für Erebus v26 brauchst: Webots R2023b, Python 3.9 oder ne
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Software-Voraussetzungen \{#software-requirements\}
-Das Simulationssystem besteht aus einigen wichtigen Komponenten, die du jeweils installieren musst. Die Installation ist zwar einfach, aber das Herunterladen und Installieren von Webots kann etwas dauern! Die drei Komponenten sind:
+Das Simulationssystem besteht aus drei Komponenten, die du alle installieren musst. Die Installation ist einfach, aber das Herunterladen und Installieren von Webots kann eine Weile dauern. Die drei Komponenten sind:
 
-1. Webots Robot Simulator Version **R2023b** – die Simulationsumgebung. Erebus v26 unterstützt keine anderen Versionen von Webots.
-1. Erebus – die Welten und der Competition Supervisor, der die Regeln und die Wertung umsetzt. Die neueste Version ist **v26.1**.
-1. Python Version **3.9 oder neuer** – nötig, um Erebus selbst auszuführen und Controller für die Roboter zu schreiben. Du kannst Controller auch in C/C++ schreiben.
+1. Der Robotersimulator Webots, Version **R2023b**: die Simulationsumgebung. Erebus v26 unterstützt keine anderen Versionen von Webots.
+1. Erebus: die Welten und der Main Supervisor, der die Regeln anwendet und die Punktzahl berechnet. Die neueste Version ist **v26.1**.
+1. Python, Version **3.9 oder neuer**: nötig, um Erebus selbst auszuführen und Controller für die Roboter zu schreiben. Du kannst Controller auch in C/C++ schreiben.
 
 ## Minimale Systemvoraussetzungen \{#minimum-system-requirements\}
-* Betriebssystem Linux: Ubuntu 20.04 LTS, 22.04 LTS
-* Betriebssystem Windows: Windows 11, Windows 10 64 Bit
-* Betriebssystem Mac: macOS 11 „Big Sur“ und 12 „Monterey“. Das sind die Versionen, die Webots R2023b unterstützt. Neuere Versionen von macOS funktionieren eventuell auch: Diese Dokumentation wurde unter macOS 26 geprüft.
-* CPU: Dual Core 2 GHz
+* Linux: Ubuntu 20.04 LTS oder 22.04 LTS
+* Windows: Windows 10 oder 11, 64 Bit
+* macOS: macOS 11 „Big Sur“ oder 12 „Monterey“. Das sind die Versionen, die Webots R2023b unterstützt. Neuere Versionen von macOS funktionieren eventuell auch: Diese Dokumentation wurde unter macOS 26 getestet.
+* CPU: Dual-Core, 2 GHz
 * RAM: 2 GB
-* Nvidia 512 MB oder AMD OpenGL 512 MB
+* Grafik: NVIDIA- oder AMD-Grafikkarte mit OpenGL-Unterstützung und 512 MB Speicher
 
 ## Python-Bibliotheken \{#python-libraries\}
 Erebus braucht die folgenden Python-Bibliotheken. Die meisten werden beim Start automatisch installiert, aber **OpenCV nicht**, also musst du es selbst installieren. Die Anleitung für jedes Betriebssystem enthält diesen Schritt.

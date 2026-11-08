@@ -13,7 +13,7 @@ Las correcciones y aclaraciones se publican en el [foro oficial de RoboCupJunior
 Tu robot aparece solo en un laberinto desconocido. En 8 minutos, sin tu ayuda, debe:
 
 1. **Explorar** el laberinto sin quedarse atascado ni caer en agujeros.
-2. **Encontrar las marcas en las paredes** (wall tokens), víctimas y señales de peligro (hazard signs), e informar de qué es cada una.
+2. **Encontrar las marcas en las paredes** (wall tokens), es decir, las víctimas y los objetivos cognitivos de las paredes, e informar de qué es cada una.
 3. **Mapear** el laberinto y enviar el mapa al final.
 4. **Volver** al punto de partida.
 
@@ -74,7 +74,7 @@ Hay dos tipos de marcas en las paredes: víctimas de letra y objetivos cognitivo
 ![Objetivos cognitivos y víctimas de letra en las paredes de un campo](../../../docs/rules/rules_wall_tokens.png)
 
 ### Víctimas de letra {#letter-victims}
-Las víctimas de letra (Letter victims) son imágenes de 2 cm × 2 cm. El símbolo representa el estado de salud de la víctima, y la letra es el código que informas y escribes en el mapa.
+Las víctimas de letra (Letter victims) son imágenes de 2 cm × 2 cm. El símbolo representa el estado de salud de la víctima, y el código es la letra que debes enviar y escribir en el mapa.
 
 | Estado | Símbolo | Código |
 |---|---|---|
@@ -151,7 +151,7 @@ Para identificar una marca en la pared, el robot debe detenerse **al menos 1 seg
 | Marca mal identificada (TMI) | -5 |
 | Falta de progreso (LoP) | -5 |
 
-La puntuación total no puede bajar de cero. Una identificación errónea consiste en informar de una posición a más de media baldosa de la marca, informar de una marca donde no la hay, o informar de una víctima como peligro o viceversa. Informar de una marca falsa entra en la segunda categoría.
+La puntuación total no puede bajar de cero. Una identificación errónea consiste en informar de una posición a más de media baldosa de la marca, informar de una marca donde no la hay, o informar de una víctima de letra como objetivo cognitivo o viceversa. Informar de una marca falsa entra en la segunda categoría.
 
 **Multiplicadores de área (Area multipliers, AM)**: TI, TT y CN se multiplican por 1, 1,25, 1,5 y 2 en las áreas 1, 2, 3 y 4 respectivamente. TMI y LoP no se multiplican.
 

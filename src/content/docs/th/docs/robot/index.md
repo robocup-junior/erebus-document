@@ -41,7 +41,7 @@ description: ทุกโปรแกรมทำงานบนหุ่นย�
 3. ตรวจสอบคอนโซลของ Webots Erebus จะแสดงรายการองค์ประกอบแต่ละชิ้นพร้อมราคา และจบด้วย `Your custom robot has been successfully generated!`
 
 :::note
-Erebus v26.1 ยังพิมพ์ `PROTO parameter 'camera_width' has no matching IS field` เป็นสีแดงด้วย คุณละเลยข้อความนี้ได้: กล้องของคุณยังคงมีความละเอียดตามที่คุณเลือก
+Erebus v26.1 ยังพิมพ์ `PROTO parameter 'camera_width' has no matching IS field` เป็นสีแดงด้วย ไม่ต้องสนใจข้อความนี้ เพราะกล้องของคุณยังคงมีความละเอียดตามที่เลือกไว้
 :::
 
 หุ่นยนต์จะยังโหลดอยู่จนกว่าคุณจะโหลดตัวอื่นหรือรีเซ็ตเกม ขั้นต่อไป [รันโปรแกรมแรกของคุณ](/docs/getting-started/)

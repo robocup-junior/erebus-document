@@ -10,27 +10,27 @@ Bu sayfa, 2026 kurallarına göre uluslararası yarışma için bir kılavuzdur.
 | Ne zaman | Ne |
 |---|---|
 | Yıl boyunca | Açıklamaların yayımlandığı [etkinlik sayfasını](/docs/events/upcoming-events/) ve [forumu](https://junior.forum.robocup.org/) takip et |
-| En az 4 hafta önce | Organizatörler mülakatlara hazırlık için web formuna ilişkin talimatları verir |
+| En az 4 hafta önce | Organizatörler, mülakatlara hazırlık için doldurulacak web formuyla ilgili talimatları verir |
 | İlk günden 3 hafta önce | Belgeler için son tarih |
 | Kurulum günü | Kayıt, mülakatlar ve takım toplantıları için mekâna erken git |
 | Her tur | Dünyalar oyunlardan hemen önce açıklanır. Her turun son tarihinden sonra programlar değiştirilemez. |
 | Puanlama turlarından sonra | Technical Challenge (Teknik Görev) |
 
 ## Gönderilecek belgeler {#documents-to-submit}
-Şablonlar ve değerlendirme ölçütleri [RCJ Rescue Topluluk Web Sitesi](https://rescue.rcj.cloud/)'nde bulunur.
+Şablonlar ve değerlendirme ölçütleri [RCJ Rescue Topluluk Web Sitesinde](https://rescue.rcj.cloud/) bulunur.
 
 - [ ] **Technical Description Paper (TDP).** Şablona harfiyen uy: aksi halde belgenin puanı 0 olur.
-- [ ] **Poster:** bir dosya olarak ve mekânda en fazla A1 boyutunda basılı bir poster olarak.
+- [ ] **Poster:** hem dosya olarak hem de mekânda en fazla A1 boyutunda basılı poster olarak.
 - [ ] Projeni tanıtan bir **video**.
-- [ ] **Sunucu-istemci videosu,** 2026'da yeni: denetleyicini sunucu-istemci kurulumunda bir örnek harita üzerinde nasıl çalıştırdığını gösteren kısa bir video.
+- [ ] **Sunucu-istemci videosu** (2026'da yeni): denetleyicini sunucu-istemci kurulumunda örnek bir harita üzerinde nasıl çalıştırdığını gösteren kısa bir video.
 - [ ] Mülakatlar için **kaynak kod** ve **web formu**.
 
 ## Yarışma kurulumu {#competition-setup}
-Oyunlar sunucu-istemci kurulumunda yürütülür: organizatörler oyun sunucusunu çalıştırır ve bir RJ-45 soketi sağlar, programın ise senin bilgisayarında çalışır. [Remote Controller](/docs/competition/remote-controller/) sayfasına bak.
+Oyunlar sunucu-istemci kurulumuyla yürütülür: organizatörler oyun sunucusunu çalıştırır ve bir RJ-45 soketi sağlar; programın ise kendi bilgisayarında çalışır. [Remote Controller](/docs/competition/remote-controller/) sayfasına bak.
 
-Yanında getir:
+Yanında getirmen gerekenler:
 
-- [ ] Programın ve tüm kütüphaneleri ile Webots R2023b kurulu bir bilgisayar
+- [ ] Programının, programının ihtiyaç duyduğu tüm kütüphanelerin ve Webots R2023b'nin kurulu olduğu bir bilgisayar
 - [ ] Bir Ethernet kablosu ve bilgisayarın gerektiriyorsa bir adaptör
 - [ ] Özel bir robotun varsa robotunun `.json` dosyası
 - [ ] Basılı poster
@@ -47,7 +47,7 @@ Organizatörler aksini duyurmadıkça aşağıdaki ayarlar kullanılır. Kameral
 | Anti-aliasing | Disabled |
 
 ## Robotunu test etme {#testing-your-robot}
-- [ ] Hazır gelen her dünyada, özellikle sahteler içeren `world3.wbt` ve `world4.wbt` üzerinde çalıştır.
+- [ ] Programını Erebus'la gelen her dünyada, özellikle sahte işaretler içeren `world3.wbt` ve `world4.wbt` üzerinde çalıştır.
 - [ ] [World Editor](/docs/tools/world-editor/) ile dört alanın tamamını içeren kendi haritalarını yap.
 - [ ] Oyunun tamamını kontrol et: sonuna kadar çalışıyor, haritayı gönderiyor ve zamanında başlangıca dönüyor mu?
 - [ ] Bir ilerleme eksikliğinden sonra ne olduğunu test et.
@@ -57,15 +57,15 @@ Organizatörler aksini duyurmadıkça aşağıdaki ayarlar kullanılır. Kameral
 - Bir hakem aksini söylemedikçe yarışma alanına yalnızca kaptan ve yardımcı kaptan girebilir.
 - Simülasyonu hakem çalıştırır. Oyun başladıktan sonra oyun ekipmanına dokunamazsın.
 - Mentorlar yarışma sırasında yardım edemez.
-- Çalışmanı açıklamaya hazır ol: her takım üyesinin teknik bir rolü olmalı ve onun nasıl çalıştığını bilmelidir.
+- Çalışmanı açıklamaya hazır ol: her takım üyesinin teknik bir rolü olmalı ve üstlendiği kısmın nasıl çalıştığını bilmelidir.
 
 ## Final puanı {#final-score}
 Uluslararası yarışmalarda final puanı şunları birleştirir:
 
 | Bölüm | Ağırlık | İçerik |
 |---|---|---|
-| Saha puanı | 0.6 | Normalleştirilmiş saha puanlarının ortalaması. En kötü tur ya da turlar hesaba katılmaz. |
-| Değerlendirme ölçütleri | 0.2 | TDP (0.6), video (0.2), poster (0.2) |
-| Technical Challenge | 0.2 | Yarışmada duyurulan ve robotunu sınırlı sürede yeniden programlayarak çözdüğün mini görevler |
+| Saha puanı | 0,6 | Normalleştirilmiş saha puanlarının ortalaması. En kötü tur ya da turlar hesaba katılmaz. |
+| Değerlendirme ölçütleri | 0,2 | TDP (0,6), video (0,2), poster (0,2) |
+| Technical Challenge | 0,2 | Yarışmada duyurulan ve robotunu sınırlı sürede yeniden programlayarak çözdüğün mini görevler |
 
 Eşitlikler normalleştirilmiş saha puanlarının ortalamasına göre çözülür. SuperTeam Challenge, kendi ödülü olan ayrı bir etkinliktir.

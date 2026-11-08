@@ -7,11 +7,11 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 Sensörler robotuna dünyayı anlatır. Her sensör aynı şekilde kullanılır:
 
-1. `robot.getDevice()` ile adını kullanarak onu al.
-2. `enable(timeStep)` ile etkinleştir. O zamana kadar hiçbir değer vermez.
+1. Sensörü adıyla, `robot.getDevice()` kullanarak al.
+2. `enable(timeStep)` ile etkinleştir. Etkinleştirilene kadar hiçbir değer vermez.
 3. Ana döngünün içinde oku. Değerler her `robot.step()` sonrasında güncellenir.
 
-Gerçek sensörler gibi bunların da gürültüsü vardır: aynı ölçüm bir adımdan diğerine biraz değişebilir. Organizatörler yarışma için gürültüyü değiştirmez, bu yüzden programını buna karşı dayanıklı yap; örneğin birkaç ölçümü karşılaştırarak.
+Gerçek sensörler gibi bunların da gürültüsü vardır: aynı ölçüm bir adımdan diğerine biraz değişebilir. Organizatörler yarışma için gürültüyü değiştirmez; bu yüzden programını gürültüye karşı dayanıklı hale getir (örneğin birkaç ölçümü karşılaştırarak).
 
 Aşağıdaki sayfalar [başlangıç robotunun](/docs/robot/) sensörlerini kullanır.
 

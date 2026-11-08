@@ -1,17 +1,17 @@
 ---
 title: macOS
-description: macOS için Remote Controller kurulum kılavuzu.
+description: Remote Controller'ın macOS'ta nasıl kurulacağı.
 ---
 
-# Oyun sunucusunu ve denetleyici programlarını aynı bilgisayarda çalıştırma
-Önce oyun sunucusunu ve denetleyici programlarını aynı bilgisayarda çalıştırmayı deneyelim. Bu, gerçek bir yarışma kurulumuyla aynı değildir, ama yerelde hata ayıklarken sana yardımcı olur.
+# Oyun sunucusunu ve denetleyici programını aynı bilgisayarda çalıştırma
+Önce oyun sunucusunu ve denetleyici programını aynı bilgisayarda çalıştırmayı dene. Bu, yarışmadaki kurulumla aynı değildir, ama kendi bilgisayarında hata ayıklarken işine yarar.
 
 ## Uzaktan modu aç {#toggle-remote-mode}
-Dünyayı aç ve kontrol penceresinde "TOGGLE REMOTE" düğmesine bas. Etkinleştirildiğini göstermek için düğmenin rengi turuncuya dönmelidir.
+Dünyayı aç ve kontrol penceresinde "TOGGLE REMOTE" düğmesine bas. Düğme turuncuya döner; bu, uzaktan modun açık olduğunu gösterir.
 
 ![Açık durumdaki TOGGLE REMOTE düğmesi](../../../../../docs/competition/remote-controller/mac/toggle_remote.png)
 
-Kontrol penceresi görünmüyorsa Scene Tree içinde "DEF MAINSUPERVISOR Robot" öğesine sağ tıkla ve "Show Robot Window" seçeneğine bas.
+Kontrol penceresi görünmüyorsa Scene Tree'de "DEF MAINSUPERVISOR Robot" öğesine sağ tıkla ve "Show Robot Window" seçeneğini seç.
 
 ## Programını çalıştır {#execute-your-program}
 Bir terminal aç ve `<Your controller path>` yerine denetleyici programının yolunu yazarak aşağıdaki komutları çalıştır.
@@ -29,15 +29,15 @@ Denetleyici Webots'a bağlanır ve oyun başlayana kadar bekler.
 Kontrol penceresinde başlat düğmesine bas. Robot görünür ve programın çalışmaya başlar.
 
 ## Oyunu sonlandır {#terminate-the-game}
-Oyunu yarıda kesmek için terminalde Ctrl+C tuşlarına bas.
+Oyunu durdurmak için terminalde Ctrl+C tuşlarına bas.
 
-Simülasyon sonlandırıldığında Erebus oyun yönetim sistemi de aynı anda sonlandırılır. Oyunu yeniden çalıştırmak istersen dünyayı yeniden yükle.
+Simülasyon sona erdiğinde Erebus oyun yöneticisi de durur. Oyunu yeniden çalıştırmak için dünyayı yeniden yükle.
 
 # Oyun sunucusunu farklı bir bilgisayarda çalıştırma
-Resmî yarışmalarda kullanılan kurulum budur. Denetleyicini çalıştıran bilgisayar (istemci) ile oyun sunucusu (sunucu) aynı ağa bağlı olmalıdır.
+Resmî yarışmalarda kullanılan kurulum budur. Denetleyicini çalıştıran bilgisayar (istemci) ile oyunu çalıştıran bilgisayar (sunucu) aynı ağa bağlı olmalıdır.
 
 1. (Sunucu) Sunucuda Webots'u başlat, dünyayı aç ve kontrol penceresinde uzaktan modu aç.
-1. (Sunucu) Sunucunun IP adresini öğren. Bunu System Settings --> Network (Sistem Ayarları --> Ağ) bölümünde bulabilirsin.
+1. (Sunucu) Sunucunun IP adresini System Settings > Network (Sistem Ayarları > Ağ) bölümünden öğren.
 1. (İstemci) `<Your controller path>` yerine denetleyici programının yolunu, `<Server IP address>` yerine önceki adımda bulduğun IP adresini yazarak aşağıdaki komutları çalıştır.
 
     ```bash
@@ -47,9 +47,9 @@ Resmî yarışmalarda kullanılan kurulum budur. Denetleyicini çalıştıran bi
 1. (Sunucu) Başlat düğmesine basarak oyunu başlat.
 
 ## Sorun giderme {#troubleshooting}
-- **Denetleyici bağlanamıyor:** iki bilgisayarın birbirine ulaşabildiğini (örneğin `ping` ile), sunucunun güvenlik duvarının 1234 numaralı TCP portuna izin verdiğini ve Webots tercihlerinin (Preferences) Network sekmesindeki izin verilen IP listesinin boş olduğunu ya da istemciyi içerdiğini kontrol et.
-- **`No robot name provided` görüntüleniyor:** bu mesaj beklerken normaldir. Görüntülenmeye devam ederse uzaktan mod açık değildir, TOGGLE REMOTE düğmesini kontrol et.
-- **Denetleyici bir Python kütüphanesini bulamıyor:** program istemcinin Python'uyla çalışır, bu yüzden kütüphaneyi orada kur.
+- **Denetleyici bağlanamıyor:** iki bilgisayarın birbirine ulaşabildiğini (örneğin `ping` ile), sunucunun güvenlik duvarının 1234 numaralı TCP portuna izin verdiğini ve Webots tercihlerinin Network sekmesindeki izin verilen IP'ler listesinin boş olduğunu ya da istemciyi içerdiğini kontrol et.
+- **`No robot name provided` mesajı görüntüleniyor:** denetleyici beklerken bu mesaj normaldir. Mesaj kaybolmuyorsa uzaktan mod açık değildir: TOGGLE REMOTE düğmesini kontrol et.
+- **Denetleyici bir Python kütüphanesini bulamıyor:** program istemcideki Python kurulumuyla çalışır, bu yüzden kütüphaneyi istemciye kur.
 
-# Resmî belge
-Kurulum hakkında daha ayrıntılı bilgi istersen [Resmî Kılavuz](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2023b) sayfasında bulabilirsin.
+# Resmî belgeler
+Bu kurulum hakkında daha fazla ayrıntı için [Webots kılavuzuna](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2023b) bak.

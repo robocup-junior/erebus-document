@@ -18,7 +18,7 @@ A pré-visualização em 3D fica à esquerda, e os componentes e o orçamento fi
 3. **Posicione-os.** Clique em um componente na lista ou na visão 3D para abrir as configurações dele. Arraste as setas na visão 3D, com **Move** (`W`) ou **Rotate** (`R`), ou digite os valores. As posições são em décimos de milímetro, embora as caixas digam mm. A posição Y vai de -100 a 370. Os botões de rotação apontam um sensor para a frente, para trás, para a esquerda, para a direita, para cima ou para baixo com um clique. A seta verde marca a frente do robô.
 4. **Dê nome a eles.** O nome é o que o seu programa usa com `getDevice()`, como aparece em **In your controller**. As rodas geram dois dispositivos: `<name> motor` e `<name> sensor`. A Wheel 1 fica do lado direito do robô, e a Wheel 2 do lado esquerdo.
 5. **Defina a resolução da câmera.** Cada câmera tem uma largura e uma altura, que mudam o seu custo.
-6. **Exporte.** Digite um nome de arquivo no topo e pressione **Export**. Guarde o arquivo: **Import**, ou soltar o arquivo na página, o traz de volta para você continuar trabalhando nele.
+6. **Exporte.** Digite um nome de arquivo no topo e pressione **Export**. Guarde o arquivo: com **Import**, ou soltando o arquivo na página, você o abre de novo para continuar trabalhando nele.
 
 ![As configurações de uma câmera](../../../../docs/robot/customizer/component.png)
 

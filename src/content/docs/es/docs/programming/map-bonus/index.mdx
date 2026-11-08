@@ -5,12 +5,12 @@ description: Envía el mapa del laberinto a Erebus y consigue la bonificación p
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-La bonificación por mapa (Map bonus) multiplica tu puntuación hasta por 2,2, así que vale mucho. Puedes conseguirla siguiendo estos pasos:
+La bonificación por mapa (mapping bonus) multiplica tu puntuación hasta por 2,2, así que vale mucho. Para conseguirla:
 
-1. Pon el mapa en una matriz, como se explica en las [Reglas del mapa](/docs/rules/mapping/)
-1. Envía el tamaño de la matriz, seguido de la matriz aplanada con comas como separadores y codificada en UTF-8
-1. Envía la petición de evaluación del mapa `M`
-1. Termina la partida. Erebus aplica la bonificación a tu puntuación cuando termina la partida
+1. Pon el mapa en una matriz, como se explica en las [Reglas del mapa](/docs/rules/mapping/).
+1. Envía el tamaño de la matriz, seguido de la matriz aplanada como texto UTF-8 separado por comas.
+1. Envía `M` para pedir la evaluación del mapa.
+1. Termina la partida. Erebus aplica la bonificación a tu puntuación cuando termina la partida.
 
 ## Lo que debes saber \{#things-to-know\}
 
@@ -20,7 +20,7 @@ La bonificación por mapa (Map bonus) multiplica tu puntuación hasta por 2,2, a
 - El mapa debe contener la baldosa de salida (`5`), que se usa para alinearlo con la respuesta correcta. Sin ella, el mapa no se puede evaluar.
 - El resultado aparece como `Map Correctness` en el historial de la ventana de control. Si recibes un `Map scoring error` en la consola de Webots, revisa tu formato.
 
-El ejemplo siguiente envía la respuesta correcta para `world1.wbt`, lo que es útil para comprobar tu código de comunicación. Si lo ejecutas desde el inicio de la partida, la termina inmediatamente y la puntuación se queda en 0, ya que un multiplicador no tiene nada que multiplicar.
+El ejemplo siguiente envía la respuesta correcta para `world1.wbt`, lo que es útil para comprobar tu código de comunicación. Si lo ejecutas al inicio de la partida, la termina inmediatamente y la puntuación se queda en 0, ya que un multiplicador no tiene nada que multiplicar.
 
 <CodeTabs file="basics" />
 

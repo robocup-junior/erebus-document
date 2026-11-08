@@ -13,7 +13,7 @@ Korrekturen und Klarstellungen werden im [offiziellen RoboCupJunior-Forum](https
 Dein Roboter wird allein in ein unbekanntes Labyrinth gesetzt. In 8 Minuten muss er ohne deine Hilfe:
 
 1. Das Labyrinth **erkunden**, ohne steckenzubleiben oder in Löcher zu fallen.
-2. **Die Wandmarkierungen finden**, also Opfer und Gefahrenschilder (Hazard signs) an den Wänden, und melden, was jede davon ist.
+2. **Die Wandmarkierungen finden**, also die Opfer und kognitiven Ziele an den Wänden, und melden, was jede davon ist.
 3. Das Labyrinth **kartieren** und die Karte am Ende senden.
 4. Dorthin **zurückkehren**, wo er gestartet ist.
 
@@ -22,7 +22,7 @@ Alles Weitere erklärt diese vier Aufgaben im Detail. Du musst dir jetzt nicht a
 ## Mission und Ziel {#mission-and-objective}
 ![Draufsicht auf ein Erebus-Spielfeld mit vier Bereichen](../../../docs/rules/rules_environment.png)
 
-Der Roboter muss selbstständig eine unbekannte Umgebung erkunden und sich dabei aus Schwierigkeiten heraushalten. Es gibt drei Hauptaufgaben:
+Der Roboter muss selbstständig eine unbekannte Umgebung erkunden und dabei Schwierigkeiten vermeiden. Es gibt drei Hauptaufgaben:
 
 - Durch ein komplexes Labyrinth navigieren, ohne steckenzubleiben
 - Die Umgebung genau kartieren
@@ -62,7 +62,7 @@ Silberne Kacheln sind Checkpoints, und sie können überall auf dem Spielfeld li
 ## Sümpfe, Hindernisse und Löcher {#swamps-obstacles-and-holes}
 ![Ein Spielfeld mit einem Sumpf, einem Loch und einem Hindernis](../../../docs/rules/rules_obstacles.png)
 
-* **Sümpfe** (Swamps, braune Kacheln) lassen die Spielzeit schneller ablaufen, solange der Roboter darauf ist. Beim ersten Betreten eines Sumpfs läuft die Zeit 5-mal so schnell. Jedes erneute Betreten desselben Sumpfs erhöht den Faktor um eins, bis zur Grenze von x10.
+* **Sümpfe** (Swamps, braune Kacheln) lassen die Spielzeit schneller ablaufen, solange der Roboter darauf ist. Beim ersten Betreten eines Sumpfs läuft die Zeit 5-mal so schnell. Jedes erneute Betreten desselben Sumpfs erhöht den Faktor um eins, bis zum Höchstwert x10.
 * **Hindernisse** können am Boden befestigt sein, jede Form und Farbe haben und beeinflussen die Breite des Wegs. In den Bereichen 1 bis 3 liegt der Mittelpunkt eines Hindernisses immer auf einer Kachel, nie auf der Kante zwischen Kacheln, und es gibt höchstens ein Hindernis pro Kachel.
 * **Löcher** haben schwarze Ränder. Fällt der Roboter in eines, tritt ein fehlender Fortschritt ein.
 
@@ -84,10 +84,10 @@ Buchstabenopfer (Letter victims) sind Bilder von 2 cm × 2 cm. Das Symbol steht 
 
 ![Die Symbole Phi, Psi und Omega](../../../docs/rules/rules_victims.png)
 
-### Falsche Opfer {#fake-victims}
-Manche Wandmarkierungen zeigen dieselben Symbole, aber mit **dreidimensionalen** Buchstaben. Das sind falsche Opfer (Fake victims): Du darfst sie weder dem Supervisor melden noch in die Karte eintragen. Laut den Regeln kann diese Tiefe mit einem der Sensoren erkannt werden, die im Robot Customizer verfügbar sind.
+### Gefälschte Opfer {#fake-victims}
+Manche Wandmarkierungen zeigen dieselben Symbole, aber mit **dreidimensionalen** Buchstaben. Das sind gefälschte Opfer (Fake victims): Du darfst sie weder dem Supervisor melden noch in die Karte eintragen. Laut den Regeln kann diese Tiefe mit einem der Sensoren erkannt werden, die im Robot Customizer verfügbar sind.
 
-![Falsche Opfer mit dreidimensionalen Symbolen an einer Wand](../../../docs/rules/rules_fake_victims.png)
+![Gefälschte Opfer mit dreidimensionalen Symbolen an einer Wand](../../../docs/rules/rules_fake_victims.png)
 
 ### Kognitive Ziele {#cognitive-targets}
 Kognitive Ziele (Cognitive targets) stehen für Gefahrgüter (Hazmats). Es sind Kreise mit 5 cm Durchmesser aus fünf konzentrischen Teilen mit Durchmessern von 1, 2, 3, 4 und 5 cm. Jede Farbe hat einen Wert:
@@ -115,7 +115,7 @@ Das [Tutorial zu Wandmarkierungen](/docs/programming/wall-tokens/) zeigt, wie du
 
 ## Der Roboter {#the-robot}
 - Die Teams verwenden das von den Organisatoren bereitgestellte Robotermodell und können es mit dem [Robot Customizer](https://robot.erebus.rcj.cloud/) im Rahmen eines Budgets von **3000** anpassen. Siehe [Roboter besorgen](/docs/robot/).
-- Der Roboter kann ein GPS, einen Farbsensor, Abstandssensoren, RGB-Kameras, ein LiDAR, ein Gyroskop und einen Beschleunigungssensor verwenden.
+- Der Roboter kann ein GPS, einen Farbsensor, Abstandssensoren, RGB-Kameras, ein Lidar, ein Gyroskop und einen Beschleunigungssensor verwenden.
 - Die simulierten Sensoren haben realistisches Rauschen. Dein Programm muss damit zurechtkommen, und die Organisatoren ändern die Rauschpegel für den Wettbewerb nicht.
 - Roboter müssen autonom sein. Jedes Team hat einen Roboter auf dem Spielfeld.
 - Vorab-Kartierung ist verboten: Das gilt sowohl für das Spielfeld als auch für die Position der Wandmarkierungen, einschließlich vordefinierter Bewegungen von bekannten Positionen aus. Sie führt zur sofortigen Disqualifikation für die Runde.
@@ -140,7 +140,7 @@ Der Roboter wird dann auf den zuletzt besuchten Checkpoint zurückgesetzt oder a
 ## Wertung {#scoring}
 Die Wertung übernimmt Erebus automatisch. Punkte werden nicht doppelt vergeben: Jeder Checkpoint bringt zum Beispiel nur beim ersten Mal Punkte.
 
-Um eine Wandmarkierung zu erkennen, muss der Roboter **mindestens 1 Sekunde** anhalten und dann [Typ und Position](/docs/programming/communication/#scoring-wall-tokens) an die Spielleitung senden. Der Mittelpunkt des Roboters darf höchstens eine halbe Kachel von der Markierung entfernt sein.
+Um eine Wandmarkierung zu erkennen, muss der Roboter **mindestens 1 Sekunde** anhalten und dann [Typ und Position](/docs/programming/communication/#scoring-wall-tokens) an die Spielverwaltung senden. Der Mittelpunkt des Roboters darf höchstens eine halbe Kachel von der Markierung entfernt sein.
 
 | Posten | Punkte |
 |---|---|
@@ -151,7 +151,7 @@ Um eine Wandmarkierung zu erkennen, muss der Roboter **mindestens 1 Sekunde** an
 | Fehlerkennung einer Wandmarkierung (TMI) | -5 |
 | Fehlender Fortschritt (LoP) | -5 |
 
-Die Gesamtpunktzahl kann nicht unter null fallen. Eine Fehlerkennung bedeutet, eine Position zu melden, die mehr als eine halbe Kachel von der Markierung entfernt ist, eine Markierung zu melden, wo keine ist, oder ein Opfer als Gefahrgut zu melden oder umgekehrt. Das Melden einer gefälschten Markierung fällt in die zweite Kategorie.
+Die Gesamtpunktzahl kann nicht unter null fallen. Eine Fehlerkennung bedeutet, eine Position zu melden, die mehr als eine halbe Kachel von der Markierung entfernt ist, eine Markierung zu melden, wo keine ist, oder ein Buchstabenopfer als kognitives Ziel zu melden oder umgekehrt. Das Melden einer gefälschten Markierung fällt in die zweite Kategorie.
 
 **Bereichsmultiplikatoren (AM)**: TI, TT und CN werden in den Bereichen 1, 2, 3 und 4 mit 1, 1,25, 1,5 bzw. 2 multipliziert. TMI und LoP werden nicht multipliziert.
 

@@ -45,7 +45,7 @@ Lade zuerst deinen Roboter und dann dein Programm.
 | Beschleunigungssensor | 100 | `accelerometer` |
 | Farbsensor | 100 | `colour_sensor` |
 | GPS | 250 | `gps` |
-| LIDAR | 500 | `lidar` |
+| Lidar | 500 | `lidar` |
 | Kamera (bis zu 3) | 500, plus die Kosten der Auflösung | `camera1`, `camera2`, `camera3` |
 
 Die Kosten der Auflösung einer Kamera werden für Breite und Höhe addiert: 32 oder 40 Pixel kosten 0, 64 Pixel kosten 100, 128 Pixel kosten 200 und 256 Pixel kosten 300. Eine Kamera mit 256 × 128 kostet zum Beispiel 500 + 300 + 200 = 1000.
@@ -58,7 +58,7 @@ Die beiden Räder kosten zusammen 600, also bleiben 2400 des Budgets für alles 
 
 - **GPS:** Du brauchst eine Position, um Markierungen zu melden, und so bekommst du sie am einfachsten.
 - **Kameras:** Höhere Auflösungen lesen Markierungen aus größerer Entfernung, kosten aber mehr und sind langsamer zu verarbeiten.
-- **LIDAR:** Es sieht rund um den Roboter, was beim Kartieren sehr hilft. Platziere es oben und leg es mit der Drehung X `90` flach, wie beim [Starter-Roboter](/docs/robot/build/), sonst verdeckt es der Roboter.
+- **Lidar:** Es sieht rund um den Roboter, was beim Kartieren sehr hilft. Platziere es oben und leg es mit der Drehung X `90` flach, wie beim [Starter-Roboter](/docs/robot/build/), sonst verdeckt es der Roboter.
 - **Farbsensor:** Platziere ihn vor den Rädern, damit der Roboter ein Loch sieht, bevor er hineinfällt.
 
 [Roboter bauen](/docs/robot/build/) zeigt ein vollständiges Beispiel.
