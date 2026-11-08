@@ -1,0 +1,64 @@
+---
+// A link to the source code zip of the latest Erebus release of this documentation's version.
+//
+//   <DownloadErebus />                              Erebus v26.1 (zip)
+//   <DownloadErebus class="button">...</DownloadErebus>   your own text
+//
+// Any <span data-erebus-version> on the page shows the version, and is updated with the links.
+//
+// The version is read from GitHub when the site is built (src/data/release.ts), and checked again
+// in the browser, so that the link follows a release published after the build.
+import { downloadUrl, latestVersion, repository, series } from '@/data/release';
+
+interface Props {
+	class?: string;
+}
+---
+
+<a class={Astro.props.class} href={downloadUrl(latestVersion)} data-erebus-download>
+	{
+		Astro.slots.has('default') ? (
+			<slot />
+		) : (
+			<>
+				Erebus v<span data-erebus-version>{latestVersion}</span> (zip)
+			</>
+		)
+	}
+</a>
+
+<script is:inline define:vars={{ repository, series }}>
+	// Runs once per page: updates every download link if GitHub has a newer release.
+	(async () => {
+		if (window.erebusRelease) return;
+		window.erebusRelease = true;
+		if (document.readyState === 'loading') {
+			await new Promise((resolve) => document.addEventListener('DOMContentLoaded', resolve));
+		}
+		const key = `erebus-latest-${series}`;
+		let version;
+		try {
+			version = sessionStorage.getItem(key);
+		} catch {}
+		if (!version) {
+			try {
+				const response = await fetch(`https://api.github.com/repos/${repository}/releases?per_page=30`);
+				if (!response.ok) return;
+				const release = (await response.json()).find(
+					(release) => !release.draft && !release.prerelease && release.tag_name.startsWith(`${series}.`),
+				);
+				if (!release) return;
+				version = release.tag_name.replace(/^v/, '');
+				try {
+					sessionStorage.setItem(key, version);
+				} catch {}
+			} catch {
+				return; // Keep the version of the build.
+			}
+		}
+		for (const link of document.querySelectorAll('[data-erebus-download]')) {
+			link.href = `https://github.com/${repository}/archive/refs/tags/v${version}.zip`;
+		}
+		for (const span of document.querySelectorAll('[data-erebus-version]')) span.textContent = version;
+	})();
+</script>

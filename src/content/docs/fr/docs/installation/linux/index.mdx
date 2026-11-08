@@ -4,6 +4,7 @@ description: Installer Erebus et Webots R2023b sur Ubuntu 20.04 ou 22.04.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
@@ -21,7 +22,7 @@ import { Steps } from '@astrojs/starlight/components';
    sudo apt install ./webots_2023b_amd64.deb
    ```
 
-3. Téléchargez la dernière [version d’Erebus](https://github.com/robocup-junior/erebus/releases) : ouvrez **Assets** et choisissez **Source code (zip)**. Décompressez-la.
+3. Téléchargez <DownloadErebus /> et décompressez-le.
 
 </Steps>
 

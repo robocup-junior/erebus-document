@@ -94,7 +94,7 @@ Before a release, run each example on the starter robot in Erebus: load the robo
 ## Updating for a new Erebus version
 
 1. Before changing anything, create `release/vNN` from `master` for the version that is about to be replaced, and push it. Then point `vNN.erebus.rcj.cloud` to that branch in the Cloudflare Pages project.
-1. Update `version` and `rulesYear` at the top of `src/pages/[...locale]/index.astro`.
+1. Update `rulesYear` at the top of `src/pages/[...locale]/index.astro`, and `knownVersion` in `src/data/release.ts`. Download links follow the latest release of the documented version by themselves (`v26.x` for v26): the site reads it from GitHub when it is built, and again in the browser.
 1. In `src/data/versions.ts`, add the new version with `current: true`, and change the previous one to `current: false` with its `vNN.erebus.rcj.cloud` address.
 1. We support the latest two years, so remove older versions from `src/data/versions.ts`.
 1. Search `src/content/docs` for the old version numbers, and for the Webots version if it has changed.

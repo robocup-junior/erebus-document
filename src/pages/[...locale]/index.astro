@@ -1,15 +1,19 @@
 ---
-// The home page, built for each language: / and /ja/, for example. Update the values below for
-// each Erebus release. The text is in the "home.*" strings of src/content/i18n/.
+// The home page, built for each language: / and /ja/, for example. Update rulesYear below for
+// each year of rules; the Erebus version follows the latest release (src/data/release.ts).
+// The text is in the "home.*" strings of src/content/i18n/.
 // Media is in public/home/: real footage and screenshots from Webots.
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import type { GetStaticPaths } from 'astro';
 import { Image } from 'astro:assets';
+import DownloadErebus from '@/components/DownloadErebus.astro';
 import PartOfRoboCupJunior from '@/components/PartOfRoboCupJunior.astro';
 import customizerScreenshot from '@/content/docs/docs/robot/customizer/customizer.png';
 import worldEditorScreenshot from '@/content/docs/docs/tools/world-editor/overview.png';
 import { copyright } from '@/data/copyright';
+import { downloadUrl as releaseZip, latestVersion } from '@/data/release';
 import { localeCodes } from '@/i18n/locales.mjs';
+import { splitAround } from '@/i18n/utils';
 
 export const getStaticPaths = (() => [
 	{ params: { locale: undefined } },
@@ -18,9 +22,10 @@ export const getStaticPaths = (() => [
 
 const { t } = Astro.locals;
 
-const version = '26.1';
+const version = latestVersion;
 const rulesYear = '2026';
-const downloadUrl = `https://github.com/robocup-junior/erebus/archive/refs/tags/v${version}.zip`;
+const downloadUrl = releaseZip(version);
+const [downloadBefore, downloadAfter] = splitAround(t, 'home.hero.download', 'version');
 
 // Hero clips, played in random order. Each is public/home/hero-<name>.mp4.
 const heroClips = ['follow', 'overview', 'topdown', 'slide'];
@@ -115,7 +120,9 @@ const steps = [
 					<p class="lead">{t('home.hero.lead')}</p>
 					<div class="actions">
 						<a class="button primary" href="/docs/">{t('home.hero.start')} →</a>
-						<a class="button ghost" href={downloadUrl}>{t('home.hero.download', { version })}</a>
+						<DownloadErebus class="button ghost">
+							{downloadBefore}<span data-erebus-version>{version}</span>{downloadAfter}
+						</DownloadErebus>
 					</div>
 				</div>
 
@@ -212,7 +219,7 @@ const steps = [
 				</ol>
 				<div class="part-of"><PartOfRoboCupJunior /></div>
 				<p class="release">
-					Erebus v{version} · {t('home.release.rules', { year: rulesYear })} · Webots R2023b ·{' '}
+					Erebus v<span data-erebus-version>{version}</span> · {t('home.release.rules', { year: rulesYear })} · Webots R2023b ·{' '}
 					<a href="https://github.com/robocup-junior/erebus">GitHub</a> ·{' '}
 					<a href="/docs/reference/versions/">{t('home.release.otherVersions')}</a> ·{' '}
 					<a href="/docs/privacy/">{t('home.release.privacy')}</a>

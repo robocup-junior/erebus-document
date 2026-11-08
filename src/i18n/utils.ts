@@ -14,11 +14,18 @@ export function localePath(locale: string | undefined, pathname: string): string
 }
 
 /**
- * Splits a string around its {{link}} placeholder, so that a link can be put between the parts
- * in the word order of each language.
+ * Splits a string around one of its placeholders, so that an element can be put between the parts
+ * in the word order of each language: splitAround(t, 'rcj.partOf', 'link') for "... {{link}} ...".
  */
-export function splitAroundLink(t: Translate, key: 'rcj.partOf' | 'rcj.community'): [string, string] {
+export function splitAround(
+	t: Translate,
+	key: 'rcj.partOf' | 'rcj.community' | 'home.hero.download',
+	name: string,
+): [string, string] {
 	const mark = '\u0000';
-	const [before = '', after = ''] = t(key, { link: mark, interpolation: { escapeValue: false } }).split(mark);
+	const [before = '', after = ''] = t(key, { [name]: mark, interpolation: { escapeValue: false } }).split(mark);
 	return [before, after];
 }
+
+/** Splits a string around its {{link}} placeholder. */
+export const splitAroundLink = (t: Translate, key: 'rcj.partOf' | 'rcj.community') => splitAround(t, key, 'link');
