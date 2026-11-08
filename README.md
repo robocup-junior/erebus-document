@@ -40,6 +40,8 @@ The build recognizes `release/vNN` branches by itself. For a new old version, po
 | `src/pages/[...locale]/index.astro` | The home page, in every language. Its media is in `public/home/`, and the hero clips are listed in `heroClips`. |
 | `src/i18n/locales.mjs` | The languages, with their flags in the language menu |
 | `src/content/i18n/` | The UI strings of each language: menus, sidebar labels and the home page |
+| `src/content/docs/<code>/` | The translated pages, such as `src/content/docs/ja/docs/` |
+| `scripts/` | Tools to prepare and check translations |
 | `astro.config.mjs` | The sidebar, the redirects from old URLs and the site settings |
 | `src/styles/theme.css` | Colours and fonts |
 | `src/data/versions.ts` | The versions in the header menu and on the Versions page |
@@ -70,7 +72,12 @@ To show only part of a program, mark it with `# region name` and `# endregion` (
 
 The site is in English, Bahasa Indonesia, Deutsch, Español, Français, Português (Brasil), Türkçe, ไทย, 中文（简体）, 中文（繁體）, 日本語 and 한국어. English is at `/`, and the other languages at `/<code>/`, such as `/ja/docs/`. Pages and strings that are not translated yet are shown in English.
 
-**To translate a page:** copy it from `src/content/docs/docs/` to the same path under the language folder, such as `src/content/docs/ja/docs/rules/index.md`, and translate it.
+**To translate a page:** run `npm run build`, then `node scripts/prepare-translation.mjs <code> [pages]`, such as `node scripts/prepare-translation.mjs ja docs/rules/index.md`. It copies the English page to the language folder, such as `src/content/docs/ja/docs/rules/index.md`, with paths that point to the English images and code samples. Translate the copy, and keep:
+
+- the `{#id}` at the end of each heading (`\{#id\}` in MDX). Headings keep the ids of the English ones, so links to `#anchors` work in every language.
+- link targets, image paths, imports, components and code blocks.
+
+**When an English page changes,** change its translations too, or prepare them again. `node scripts/check-translations.mjs` lists the translations whose structure no longer matches their English page, the ones older than their English page, and the pages that are not translated yet.
 
 **To translate the UI:** the strings are in `src/content/i18n/<lang>.json`, with the keys of `en.json`. Sidebar labels are the `sidebar.*` keys, and the home page the `home.*` keys. Starlight translates its own UI.
 

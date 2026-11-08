@@ -1,7 +1,9 @@
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
+import { satteri } from '@astrojs/markdown-satteri';
 import { readFileSync } from 'node:fs';
 import starlightLinksValidator from 'starlight-links-validator';
+import { headingIds } from './src/i18n/heading-ids.mjs';
 import { locales } from './src/i18n/locales.mjs';
 
 // The UI strings of each language, by BCP-47 tag. Starlight reads them too, from the i18n collection.
@@ -69,6 +71,7 @@ export default defineConfig({
 	site,
 	trailingSlash: 'ignore',
 	redirects,
+	markdown: { processor: satteri({ mdastPlugins: [headingIds()] }) },
 	vite: {
 		// Keep downloadable files, like the example programs, as real files.
 		build: { assetsInlineLimit: 0 },
