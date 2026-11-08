@@ -1,6 +1,6 @@
 ---
 title: Past Events
-description: List of related events that were held in the past.
+description: RoboCupJunior Rescue Simulation competitions held with Erebus, from 2020 to 2026.
 ---
 
 ## RoboCupJunior International Competitions

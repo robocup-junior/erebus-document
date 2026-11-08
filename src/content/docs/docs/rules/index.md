@@ -1,6 +1,6 @@
 ---
 title: Rules summary
-description: A summary of the RoboCupJunior Rescue Simulation 2026 rules.
+description: "A summary of the RoboCupJunior Rescue Simulation 2026 rules: the field, wall tokens, scoring and the competition."
 ---
 
 :::note

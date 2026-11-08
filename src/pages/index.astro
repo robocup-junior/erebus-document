@@ -57,6 +57,27 @@ const cellClass = (cell: string) => {
 	return /[A-Z]/.test(cell) ? 'token' : 'floor';
 };
 
+// Structured data, so that search engines know what Erebus is.
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{ '@type': 'WebSite', name: 'Erebus', url: 'https://erebus.rcj.cloud/' },
+		{
+			'@type': 'SoftwareApplication',
+			name: 'Erebus',
+			applicationCategory: 'EducationalApplication',
+			operatingSystem: 'Windows, macOS, Linux',
+			softwareVersion: version,
+			description:
+				'Rescue simulation platform of RoboCupJunior, built on Webots. Program a robot to explore a maze, identify wall tokens and map the environment.',
+			url: 'https://erebus.rcj.cloud/',
+			downloadUrl,
+			offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+			isPartOf: { '@type': 'Organization', name: 'RoboCupJunior', url: 'https://junior.robocup.org/' },
+		},
+	],
+};
+
 const steps = [
 	{ title: 'Install', text: 'Webots R2023b, Python and Erebus.', link: '/docs/installation/' },
 	{ title: 'Learn the game', text: 'The mission, the field and the scoring.', link: '/docs/rules/' },
@@ -76,6 +97,7 @@ const steps = [
 		lastUpdated: false,
 	}}
 >
+	<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	<div class="home not-content">
 		<section class="hero">
 			<div id="hero-clips" data-clips={JSON.stringify(heroClips)} aria-hidden="true">

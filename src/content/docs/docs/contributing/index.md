@@ -1,6 +1,6 @@
 ---
 title: Contribution Guidelines
-description: How to contribute to Erebus.
+description: How to report bugs, suggest features and improve Erebus and its documentation.
 ---
 
 ## Contributions to the Erebus platform 

@@ -1,6 +1,6 @@
 ---
 title: Parameter Reference
-description: Reference for important parameters.
+description: Sizes of the field, game times, scoring multipliers, robot limits and the device names of the starter robot.
 ---
 
 ## Field

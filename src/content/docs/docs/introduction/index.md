@@ -1,6 +1,6 @@
 ---
 title: What is Erebus?
-description: Introduction to the Erebus platform.
+description: Erebus is the rescue simulation platform of RoboCupJunior, built on Webots. Learn how its parts fit together.
 ---
 
 Erebus is a robot simulation competition environment. You develop a controller for a robot that autonomously explores a maze, finds and identifies wall tokens (letter victims and cognitive targets), avoids obstacles and traps, and builds a map of the environment.

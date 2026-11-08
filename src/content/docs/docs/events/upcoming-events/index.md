@@ -1,6 +1,6 @@
 ---
 title: Upcoming Events
-description: List of related events that are scheduled to be held in the future.
+description: Upcoming RoboCupJunior competitions that use Erebus, including RoboCup 2027.
 ---
 
 ## RoboCupJunior 2027 International Competition

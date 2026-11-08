@@ -30,14 +30,30 @@ const redirects = {
 	'/docs/tutorials/wall-tokens': '/docs/programming/wall-tokens/',
 };
 
+// The deployment sets SITE_URL and PUBLIC_ARCHIVED_VERSION for the sites of old versions.
+const site = process.env.SITE_URL ?? 'https://erebus.rcj.cloud';
+const archived = Boolean(process.env.PUBLIC_ARCHIVED_VERSION);
+
+// Writes the redirects as a _redirects file too, so that Cloudflare answers with a real 301.
+const redirectsFile = {
+	name: 'redirects-file',
+	hooks: {
+		'astro:build:done': async ({ dir }) => {
+			const { writeFile } = await import('node:fs/promises');
+			const lines = Object.entries(redirects).flatMap(([from, to]) => [`${from} ${to} 301`, `${from}/ ${to} 301`]);
+			await writeFile(new URL('_redirects', dir), lines.join('\n') + '\n');
+		},
+	},
+};
+
 export default defineConfig({
-	// The deployment sets SITE_URL for the sites of old versions.
-	site: process.env.SITE_URL ?? 'https://erebus.rcj.cloud',
+	site,
 	trailingSlash: 'ignore',
 	redirects,
 	// Keep downloadable files, like the example programs, as real files.
 	vite: { build: { assetsInlineLimit: 0 } },
 	integrations: [
+		redirectsFile,
 		starlight({
 			title: 'Erebus',
 			description:
@@ -48,6 +64,13 @@ export default defineConfig({
 				{ tag: 'link', attrs: { rel: 'icon', href: '/favicon.ico', sizes: '48x48' } },
 				{ tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' } },
 				{ tag: 'meta', attrs: { name: 'theme-color', content: '#0b1a22' } },
+				{ tag: 'meta', attrs: { property: 'og:image', content: `${site}/og.png` } },
+				{ tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+				{ tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+				{ tag: 'meta', attrs: { property: 'og:image:alt', content: 'Erebus: send your robot into the maze' } },
+				{ tag: 'meta', attrs: { name: 'twitter:image', content: `${site}/og.png` } },
+				// Old versions should not compete with the latest one in search results.
+				...(archived ? [{ tag: 'meta', attrs: { name: 'robots', content: 'noindex' } }] : []),
 			],
 			customCss: ['./src/styles/theme.css'],
 			components: {
