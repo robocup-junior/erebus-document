@@ -97,7 +97,7 @@ const steps = [
 ---
 
 <StarlightPage
-	hasSidebar={false}
+	hasSidebar={true}
 	frontmatter={{
 		title: t('home.title'),
 		description: t('home.description'),
@@ -271,6 +271,19 @@ const steps = [
 </script>
 
 <style is:global>
+	/* The sidebar is only for the mobile menu, which holds the navigation and the settings like on
+	   the other pages. On larger screens the home page uses the full width. */
+	@media (min-width: 50rem) {
+		html:has(.home) {
+			--sl-content-inline-start: 0rem;
+			--__sidebar-pad: 0rem;
+		}
+
+		body:has(.home) .sidebar-pane {
+			display: none;
+		}
+	}
+
 	/* Let the home page use the full width below the Starlight header. */
 	body:has(.home) {
 		overflow-x: clip;

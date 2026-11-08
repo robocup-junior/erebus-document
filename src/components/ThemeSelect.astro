@@ -2,9 +2,17 @@
 // Replaces Starlight's theme select with a menu of icons, like the language menu: light (sun),
 // dark (moon) and the system's theme (laptop). The choice is kept where Starlight keeps it, in
 // localStorage under "starlight-theme", which Starlight reads before the page is drawn.
+//
+//   <ThemeSelect />                   a dropdown, for the header
+//   <ThemeSelect variant="inline" />  the three icons side by side, for the mobile menu
 import { Icon } from '@astrojs/starlight/components';
 import '@/styles/header-menu.css';
 
+interface Props {
+	variant?: 'menu' | 'inline';
+}
+
+const { variant = 'menu' } = Astro.props;
 const { t } = Astro.locals;
 const themes = [
 	{ value: 'light', icon: 'sun', label: t('themeSelect.light') },
@@ -13,17 +21,35 @@ const themes = [
 ] as const;
 ---
 
-<details class="header-menu theme-menu" data-choice="auto">
-	<summary aria-label={t('themeSelect.accessibleLabel')} title={t('themeSelect.accessibleLabel')}>
-		{themes.map((theme) => <Icon name={theme.icon} class={`current ${theme.value}`} size="1.1rem" />)}
-	</summary>
-	<div class="header-menu-list" role="menu" aria-label={t('themeSelect.accessibleLabel')}>
-		{
-			themes.map((theme) => (
+{
+	variant === 'menu' ? (
+		<details class="header-menu theme-menu" data-choice="auto">
+			<summary aria-label={t('themeSelect.accessibleLabel')} title={t('themeSelect.accessibleLabel')}>
+				{themes.map((theme) => <Icon name={theme.icon} class={`current ${theme.value}`} size="1.1rem" />)}
+			</summary>
+			<div class="header-menu-list" role="menu" aria-label={t('themeSelect.accessibleLabel')}>
+				{themes.map((theme) => (
+					<button
+						class="header-menu-item"
+						type="button"
+						role="menuitemradio"
+						aria-checked="false"
+						aria-label={theme.label}
+						title={theme.label}
+						data-theme-choice={theme.value}
+					>
+						<Icon name={theme.icon} size="1.1rem" />
+					</button>
+				))}
+			</div>
+		</details>
+	) : (
+		<div class="theme-menu theme-inline" data-choice="auto" role="radiogroup" aria-label={t('themeSelect.accessibleLabel')}>
+			{themes.map((theme) => (
 				<button
 					class="header-menu-item"
 					type="button"
-					role="menuitemradio"
+					role="radio"
 					aria-checked="false"
 					aria-label={theme.label}
 					title={theme.label}
@@ -31,10 +57,10 @@ const themes = [
 				>
 					<Icon name={theme.icon} size="1.1rem" />
 				</button>
-			))
-		}
-	</div>
-</details>
+			))}
+		</div>
+	)
+}
 
 {/* Shows the saved choice before the page is drawn, without a flash of the default icon. */}
 <script is:inline>
@@ -83,11 +109,11 @@ const themes = [
 		}
 	}
 
-	for (const menu of document.querySelectorAll<HTMLDetailsElement>('.theme-menu')) {
+	for (const menu of document.querySelectorAll<HTMLDetailsElement | HTMLElement>('.theme-menu')) {
 		for (const button of menu.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')) {
 			button.addEventListener('click', () => {
 				applyTheme(parseTheme(button.dataset.themeChoice));
-				menu.open = false;
+				if (menu instanceof HTMLDetailsElement) menu.open = false;
 			});
 		}
 	}
@@ -124,5 +150,14 @@ const themes = [
 
 	.header-menu-item[aria-checked='true'] {
 		color: var(--sl-color-text-accent);
+	}
+
+	/* In the mobile menu: a row of three buttons in a frame. */
+	.theme-inline {
+		display: flex;
+		gap: 0.2rem;
+		padding: 0.2rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.6rem;
 	}
 </style>

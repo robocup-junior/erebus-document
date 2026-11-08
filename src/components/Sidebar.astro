@@ -1,0 +1,31 @@
+---
+// Starlight's sidebar, with the theme and language settings at the top of the mobile menu, where
+// readers see them as soon as they open it. On larger screens they are in the header instead.
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import LanguageSelect from './LanguageSelect.astro';
+import ThemeSelect from './ThemeSelect.astro';
+---
+
+<div class="menu-settings md:sl-hidden">
+	<ThemeSelect variant="inline" />
+	<LanguageSelect />
+</div>
+
+<Default />
+
+<style>
+	.menu-settings {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+
+	@media (min-width: 50rem) {
+		.menu-settings {
+			display: none;
+		}
+	}
+</style>

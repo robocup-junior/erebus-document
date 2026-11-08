@@ -108,6 +108,8 @@ export default defineConfig({
 				Banner: './src/components/Banner.astro',
 				Footer: './src/components/Footer.astro',
 				LanguageSelect: './src/components/LanguageSelect.astro',
+				MobileMenuFooter: './src/components/MobileMenuFooter.astro',
+				Sidebar: './src/components/Sidebar.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeSelect: './src/components/ThemeSelect.astro',
 			},
