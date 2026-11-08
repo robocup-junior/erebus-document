@@ -8,6 +8,7 @@ const current = versions.find((version) => version.current);
 
 <div class="site-title-group">
 	<Default><slot /></Default>
+	<a class="docs-link" href="/docs/" aria-current={Astro.url.pathname.startsWith('/docs') ? 'page' : undefined}>Docs</a>
 	<details class="version-menu">
 		<summary aria-label={`Documentation version: ${current?.name}. Change version`}>{current?.name}</summary>
 		<div class="menu">
@@ -51,6 +52,20 @@ const current = versions.find((version) => version.current);
 		align-items: center;
 		gap: 0.6rem;
 		min-width: 0;
+	}
+
+	.docs-link {
+		padding: 0.25rem 0.6rem;
+		border-radius: 0.4rem;
+		color: var(--sl-color-white);
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.docs-link:hover,
+	.docs-link[aria-current='page'] {
+		background: var(--sl-color-gray-6);
 	}
 
 	.version-menu {
