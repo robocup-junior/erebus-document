@@ -28,7 +28,6 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "starlight-links-validator": "^0.27.0",
-    "typescript": "^6.0.3",
-    "wrangler": "^4.158.0"
+    "typescript": "^6.0.3"
   }
 }

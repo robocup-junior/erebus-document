@@ -15,16 +15,22 @@ The site is served at <http://localhost:4321>. `npm run build` makes a productio
 
 ## Deployment
 
-Each version of the site is a separate [Cloudflare Worker](https://developers.cloudflare.com/workers/static-assets/) with static assets, deployed by GitHub Actions with Wrangler (`.github/workflows/deploy.yml`). Cloudflare's own automatic builds are not used, because of the restrictions of the GitHub organization:
+The site is on [Cloudflare Pages](https://pages.cloudflare.com/), which builds every push with these settings:
 
-| Branch | Worker | Address |
-|---|---|---|
-| `master` | `erebus-document` | `erebus.rcj.cloud` |
-| `release/vNN` | `erebus-docs-vNN` | `vNN.erebus.rcj.cloud` |
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Environment variable | `NODE_VERSION` = `24` |
 
-The repository needs the secrets `CLOUDFLARE_API_TOKEN`, with the Edit Cloudflare Workers permission, and `CLOUDFLARE_ACCOUNT_ID`. Until the repository variable `BIND_DOMAINS` is `true`, sites are only published at their `workers.dev` address and the custom domains are left alone.
+Each version of the site is a branch:
 
-v25 and earlier use Hugo. Their sites are frozen: they are not deployed from this workflow, and pushing to their branches does nothing.
+| Branch | Address |
+|---|---|
+| `master` | `erebus.rcj.cloud` |
+| `release/vNN` | `vNN.erebus.rcj.cloud`, with a notice that links to the latest version |
+
+The build recognizes `release/vNN` branches by itself. For a new old version, point `vNN.erebus.rcj.cloud` to the branch in the Pages project. v25 and earlier are Hugo sites, and are not built from this repository.
 
 ## Where things are
 
@@ -66,7 +72,7 @@ Before a release, run each example on the starter robot in Erebus: load the robo
 
 ## Updating for a new Erebus version
 
-1. Before changing anything, create `release/vNN` from `master` for the version that is about to be replaced. Pushing it publishes the old version at `vNN.erebus.rcj.cloud`, with a notice that links to the latest version.
+1. Before changing anything, create `release/vNN` from `master` for the version that is about to be replaced, and push it. Then point `vNN.erebus.rcj.cloud` to that branch in the Cloudflare Pages project.
 1. Update `version` and `rulesYear` at the top of `src/pages/index.astro`.
 1. In `src/data/versions.ts`, add the new version with `current: true`, and change the previous one to `current: false` with its `vNN.erebus.rcj.cloud` address.
 1. We support the latest two years, so remove older versions from `src/data/versions.ts`.

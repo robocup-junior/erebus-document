@@ -30,11 +30,14 @@ const redirects = {
 	'/docs/tutorials/wall-tokens': '/docs/programming/wall-tokens/',
 };
 
-// The deployment sets SITE_URL and PUBLIC_ARCHIVED_VERSION for the sites of old versions.
-const site = process.env.SITE_URL ?? 'https://erebus.rcj.cloud';
-const archived = Boolean(process.env.PUBLIC_ARCHIVED_VERSION);
+// Cloudflare Pages builds every branch, and tells the build its name. A release/vNN
+// branch is the site of an old version, published at vNN.erebus.rcj.cloud.
+const branch = process.env.CF_PAGES_BRANCH ?? '';
+const archivedVersion = process.env.PUBLIC_ARCHIVED_VERSION ?? branch.match(/^release\/(v\d+)$/)?.[1] ?? '';
+const archived = Boolean(archivedVersion);
+const site = archived ? `https://${archivedVersion}.erebus.rcj.cloud` : 'https://erebus.rcj.cloud';
 
-// Writes the redirects as a _redirects file too, so that Cloudflare answers with a real 301.
+// Writes the redirects as a _redirects file too, so that Cloudflare Pages answers with a real 301.
 const redirectsFile = {
 	name: 'redirects-file',
 	hooks: {
@@ -50,8 +53,12 @@ export default defineConfig({
 	site,
 	trailingSlash: 'ignore',
 	redirects,
-	// Keep downloadable files, like the example programs, as real files.
-	vite: { build: { assetsInlineLimit: 0 } },
+	vite: {
+		// Keep downloadable files, like the example programs, as real files.
+		build: { assetsInlineLimit: 0 },
+		// Lets the pages know if this is the site of an old version.
+		define: { 'import.meta.env.PUBLIC_ARCHIVED_VERSION': JSON.stringify(archivedVersion) },
+	},
 	integrations: [
 		redirectsFile,
 		starlight({
