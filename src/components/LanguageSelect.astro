@@ -16,6 +16,7 @@ import tw from 'flag-icons/flags/4x3/tw.svg';
 import { languageKey } from '@/i18n/language-redirect.mjs';
 import { locales } from '@/i18n/locales.mjs';
 import { localePath, stripLocale } from '@/i18n/utils';
+import '@/styles/header-menu.css';
 
 const flags: Record<string, ImageMetadata> = { br, cn, de, es, fr, gb, id, jp, kr, th, tr, tw };
 
@@ -24,16 +25,17 @@ const current = locales.find((locale) => locale.code === currentCode) ?? locales
 const path = stripLocale(Astro.url.pathname);
 ---
 
-<details class="lang-menu" data-key={languageKey}>
+<details class="header-menu lang-menu" data-key={languageKey}>
 	<summary aria-label={Astro.locals.t('languageSelect.accessibleLabel')}>
 		<img src={flags[current.flag].src} alt="" width="20" height="15" />
 		<span class="current">{current.label}</span>
 	</summary>
-	<ul class="menu">
+	<ul class="header-menu-list">
 		{
 			locales.map((locale) => (
 				<li>
 					<a
+						class="header-menu-item"
 						href={localePath(locale.code, path)}
 						hreflang={locale.lang}
 						data-language={locale.code === 'root' ? '' : locale.code}
@@ -50,14 +52,9 @@ const path = stripLocale(Astro.url.pathname);
 </details>
 
 <script>
-	// Close the menus when clicking elsewhere or pressing Escape.
-	const menus = [...document.querySelectorAll<HTMLDetailsElement>('.lang-menu')];
-	document.addEventListener('click', (event) => {
-		for (const menu of menus) if (!menu.contains(event.target as Node)) menu.open = false;
-	});
-	document.addEventListener('keydown', (event) => {
-		if (event.key === 'Escape') for (const menu of menus) menu.open = false;
-	});
+	import '@/scripts/header-menus';
+
+	const menus = document.querySelectorAll<HTMLDetailsElement>('.lang-menu');
 
 	// Remember the language the reader chose, so that it is not replaced by the browser's
 	// language on the next visit. See src/i18n/language-redirect.mjs.
@@ -75,84 +72,10 @@ const path = stripLocale(Astro.url.pathname);
 </script>
 
 <style>
-	.lang-menu {
-		position: relative;
-	}
-
-	summary {
-		display: flex;
-		align-items: center;
-		gap: 0.45rem;
-		padding: 0.35rem 0.5rem;
-		border-radius: 0.4rem;
-		color: var(--sl-color-gray-2);
-		cursor: pointer;
-		font-size: var(--sl-text-sm);
-		list-style: none;
-		white-space: nowrap;
-	}
-
-	summary::-webkit-details-marker {
-		display: none;
-	}
-
-	summary::after {
-		content: '▾';
-		font-size: 0.7rem;
-	}
-
-	summary:hover {
-		color: var(--sl-color-white);
-		background: var(--sl-color-gray-6);
-	}
-
 	img {
 		flex-shrink: 0;
 		border-radius: 2px;
 		box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
-	}
-
-	.menu {
-		position: absolute;
-		z-index: 20;
-		top: calc(100% + 0.4rem);
-		right: 0;
-		max-height: min(70vh, 32rem);
-		margin: 0;
-		padding: 0.4rem;
-		overflow-y: auto;
-		border: 1px solid var(--sl-color-gray-5);
-		border-radius: 0.75rem;
-		background: var(--sl-color-bg-nav);
-		box-shadow: var(--sl-shadow-md);
-		list-style: none;
-	}
-
-	.menu a {
-		display: flex;
-		align-items: center;
-		gap: 0.6rem;
-		padding: 0.4rem 0.6rem;
-		border-radius: 0.4rem;
-		color: var(--sl-color-white);
-		font-size: var(--sl-text-sm);
-		text-decoration: none;
-		white-space: nowrap;
-	}
-
-	.menu a:hover,
-	.menu a[aria-current='true'] {
-		background: var(--sl-color-gray-6);
-	}
-
-	.menu a[aria-current='true'] {
-		font-weight: 700;
-	}
-
-	/* In the mobile menu, the selector sits at the bottom of the screen: open upwards. */
-	:global(.mobile-preferences) .menu {
-		top: auto;
-		bottom: calc(100% + 0.4rem);
 	}
 
 	/* The header is narrow on medium screens: show only the flag there. */

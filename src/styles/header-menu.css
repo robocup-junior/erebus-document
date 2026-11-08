@@ -1,0 +1,82 @@
+/* The dropdown menus in the header: languages (LanguageSelect.astro) and themes (ThemeSelect.astro). */
+.header-menu {
+	position: relative;
+}
+
+.header-menu > summary {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 0.35rem 0.5rem;
+	border-radius: 0.4rem;
+	color: var(--sl-color-gray-2);
+	cursor: pointer;
+	font-size: var(--sl-text-sm);
+	list-style: none;
+	white-space: nowrap;
+}
+
+.header-menu > summary::-webkit-details-marker {
+	display: none;
+}
+
+.header-menu > summary::after {
+	content: '▾';
+	font-size: 0.7rem;
+}
+
+.header-menu > summary:hover,
+.header-menu[open] > summary {
+	color: var(--sl-color-white);
+	background: var(--sl-color-gray-6);
+}
+
+.header-menu-list {
+	position: absolute;
+	z-index: 20;
+	top: calc(100% + 0.4rem);
+	right: 0;
+	max-height: min(70vh, 32rem);
+	margin: 0;
+	padding: 0.4rem;
+	overflow-y: auto;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.75rem;
+	background: var(--sl-color-bg-nav);
+	box-shadow: var(--sl-shadow-md);
+	list-style: none;
+}
+
+.header-menu-item {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	width: 100%;
+	padding: 0.4rem 0.6rem;
+	border: 0;
+	border-radius: 0.4rem;
+	background: none;
+	color: var(--sl-color-white);
+	cursor: pointer;
+	font: inherit;
+	font-size: var(--sl-text-sm);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.header-menu-item:hover,
+.header-menu-item[aria-current='true'],
+.header-menu-item[aria-checked='true'] {
+	background: var(--sl-color-gray-6);
+}
+
+.header-menu-item[aria-current='true'],
+.header-menu-item[aria-checked='true'] {
+	font-weight: 700;
+}
+
+/* In the mobile menu, the menus sit at the bottom of the screen: open upwards. */
+.mobile-preferences .header-menu-list {
+	top: auto;
+	bottom: calc(100% + 0.4rem);
+}

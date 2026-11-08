@@ -1,0 +1,128 @@
+---
+// Replaces Starlight's theme select with a menu of icons, like the language menu: light (sun),
+// dark (moon) and the system's theme (laptop). The choice is kept where Starlight keeps it, in
+// localStorage under "starlight-theme", which Starlight reads before the page is drawn.
+import { Icon } from '@astrojs/starlight/components';
+import '@/styles/header-menu.css';
+
+const { t } = Astro.locals;
+const themes = [
+	{ value: 'light', icon: 'sun', label: t('themeSelect.light') },
+	{ value: 'dark', icon: 'moon', label: t('themeSelect.dark') },
+	{ value: 'auto', icon: 'laptop', label: t('themeSelect.auto') },
+] as const;
+---
+
+<details class="header-menu theme-menu" data-choice="auto">
+	<summary aria-label={t('themeSelect.accessibleLabel')} title={t('themeSelect.accessibleLabel')}>
+		{themes.map((theme) => <Icon name={theme.icon} class={`current ${theme.value}`} size="1.1rem" />)}
+	</summary>
+	<div class="header-menu-list" role="menu" aria-label={t('themeSelect.accessibleLabel')}>
+		{
+			themes.map((theme) => (
+				<button
+					class="header-menu-item"
+					type="button"
+					role="menuitemradio"
+					aria-checked="false"
+					aria-label={theme.label}
+					title={theme.label}
+					data-theme-choice={theme.value}
+				>
+					<Icon name={theme.icon} size="1.1rem" />
+				</button>
+			))
+		}
+	</div>
+</details>
+
+{/* Shows the saved choice before the page is drawn, without a flash of the default icon. */}
+<script is:inline>
+	(function (menu) {
+		var choice = 'auto';
+		try {
+			choice = localStorage.getItem('starlight-theme') || 'auto';
+		} catch (error) {}
+		menu.dataset.choice = choice;
+		menu.querySelectorAll('[data-theme-choice]').forEach(function (button) {
+			button.setAttribute('aria-checked', String(button.dataset.themeChoice === choice));
+		});
+	})(document.currentScript.previousElementSibling);
+</script>
+
+<script>
+	import '@/scripts/header-menus';
+
+	type Theme = 'auto' | 'dark' | 'light';
+	const storageKey = 'starlight-theme';
+
+	const parseTheme = (value: unknown): Theme => (value === 'dark' || value === 'light' ? value : 'auto');
+
+	function loadTheme(): Theme {
+		try {
+			return parseTheme(localStorage.getItem(storageKey));
+		} catch {
+			return 'auto';
+		}
+	}
+
+	/** Applies a choice to the page and to every theme menu, and saves it. */
+	function applyTheme(theme: Theme) {
+		const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+		document.documentElement.dataset.theme = theme === 'auto' ? system : theme;
+		for (const menu of document.querySelectorAll<HTMLElement>('.theme-menu')) {
+			menu.dataset.choice = theme;
+			for (const button of menu.querySelectorAll<HTMLElement>('[data-theme-choice]')) {
+				button.setAttribute('aria-checked', String(button.dataset.themeChoice === theme));
+			}
+		}
+		try {
+			localStorage.setItem(storageKey, theme === 'auto' ? '' : theme);
+		} catch {
+			// Without storage, the choice lasts until the next page.
+		}
+	}
+
+	for (const menu of document.querySelectorAll<HTMLDetailsElement>('.theme-menu')) {
+		for (const button of menu.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')) {
+			button.addEventListener('click', () => {
+				applyTheme(parseTheme(button.dataset.themeChoice));
+				menu.open = false;
+			});
+		}
+	}
+
+	// Follow the system's theme when the reader has not chosen one.
+	matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+		if (loadTheme() === 'auto') applyTheme('auto');
+	});
+</script>
+
+<style>
+	/* The button shows the icon of the current choice. */
+	summary :global(.current) {
+		display: none;
+	}
+
+	.theme-menu[data-choice='light'] summary :global(.current.light),
+	.theme-menu[data-choice='dark'] summary :global(.current.dark),
+	.theme-menu[data-choice='auto'] summary :global(.current.auto) {
+		display: block;
+	}
+
+	/* Icons only: the three choices sit side by side. */
+	.header-menu-list {
+		display: flex;
+		gap: 0.2rem;
+	}
+
+	.header-menu-item {
+		justify-content: center;
+		width: auto;
+		padding: 0.5rem;
+	}
+
+	.header-menu-item[aria-checked='true'] {
+		color: var(--sl-color-text-accent);
+	}
+</style>

@@ -109,6 +109,7 @@ export default defineConfig({
 				Footer: './src/components/Footer.astro',
 				LanguageSelect: './src/components/LanguageSelect.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
+				ThemeSelect: './src/components/ThemeSelect.astro',
 			},
 			plugins: [starlightLinksValidator({ errorOnLocalLinks: false })],
 			social: [
