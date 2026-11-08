@@ -43,7 +43,12 @@ export default defineConfig({
 			description:
 				'A rescue simulation competition environment designed for intermediate to highly experienced programmers.',
 			logo: { src: './src/assets/logo.svg' },
-			favicon: '/favicon.ico',
+			favicon: '/favicon.svg',
+			head: [
+				{ tag: 'link', attrs: { rel: 'icon', href: '/favicon.ico', sizes: '48x48' } },
+				{ tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' } },
+				{ tag: 'meta', attrs: { name: 'theme-color', content: '#0b1a22' } },
+			],
 			customCss: ['./src/styles/theme.css'],
 			components: {
 				Banner: './src/components/Banner.astro',
