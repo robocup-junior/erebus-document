@@ -1,0 +1,22 @@
+---
+title: 위치 센서
+description: GPS로 로봇이 미로의 어디에 있는지 알고, 그 위치를 사용해 벽 토큰을 보고해요.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+위치 센서, 즉 **GPS**는 로봇의 위치를 **미터** 단위로 알려 줘요. 스타터 로봇에서는 이름이 `gps`예요. [벽 토큰을 보고](/docs/programming/communication/#scoring-wall-tokens)하려면 GPS가 필요하고, [체계적으로 탐색](/docs/programming/exploring/)하는 데에도 큰 도움이 돼요.
+
+`getValues()`는 `[x, y, z]`를 반환해요. **X와 Z가 수평**이고 Y가 수직이므로, 미로 안의 위치에는 X와 Z를 사용하세요.
+
+![수평면의 X축과 Z축, 그리고 수직인 Y축](../../../../../docs/programming/sensors/location-sensor/coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+GPS에는 몇 밀리미터의 노이즈가 있어서, 로봇이 멈춰 있어도 값이 조금씩 바뀌어요. 위치가 정확히 같은지 비교하지 마세요.
+
+## 예제: 출발점으로부터의 거리 \{#example-distance-from-the-start\}
+
+이 프로그램은 로봇이 출발한 곳에서 반 타일만큼 떨어질 때까지 앞으로 이동해요.
+
+<CodeTabs file="travelled" />

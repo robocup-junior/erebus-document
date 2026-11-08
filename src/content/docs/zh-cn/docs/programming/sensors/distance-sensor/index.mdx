@@ -1,0 +1,20 @@
+---
+title: 距离传感器
+description: 用距离传感器测量到墙壁的距离，并找出机器人的哪几侧有墙。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+距离传感器测量它前方第一个物体的距离，单位为**米**，最远 0.8 m。入门机器人有三个距离传感器：`leftDist`、`frontDist` 和 `rightDist`，分别朝向左方、前方和右方。
+
+## 读取传感器 \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## 寻找墙壁 \{#finding-walls\}
+
+一个地块宽 12 cm，所以当机器人位于地块中央时，它侧面的墙大约在 5 cm 之外。下面的程序会检查三个传感器，并打印出哪些传感器看到了墙：
+
+<CodeTabs file="walls" />
+
+传感器是从它们在机器人上的位置开始测量的，而不是从机器人的中心。把机器人放在墙边打印这些数值，然后选出你自己的阈值。

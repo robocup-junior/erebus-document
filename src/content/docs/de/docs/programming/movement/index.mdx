@@ -1,0 +1,42 @@
+---
+title: Bewegung
+description: Lass den Roboter fahren und drehen, indem du die Geschwindigkeit seiner zwei Räder einstellst, und miss, wie weit sie sich drehen.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Der Roboter hat zwei Räder, jedes mit eigenem Motor: `left wheel motor` und `right wheel motor` beim [Starter-Roboter](/docs/robot/). Du steuerst ihn, indem du die Geschwindigkeit jedes Rads einstellst:
+
+| Linkes Rad | Rechtes Rad | Der Roboter ... |
+|---|---|---|
+| Vorwärts | Vorwärts | fährt vorwärts |
+| Rückwärts | Rückwärts | fährt rückwärts |
+| Rückwärts | Vorwärts | dreht sich auf der Stelle nach links |
+| Vorwärts | Rückwärts | dreht sich auf der Stelle nach rechts |
+| Schnell | Langsam | fährt eine Rechtskurve |
+
+Geschwindigkeiten werden in **Radiant pro Sekunde** angegeben, bis zu 6,28 (eine Radumdrehung pro Sekunde). Negative Geschwindigkeiten drehen das Rad rückwärts.
+
+## Fahren \{#custom-mdx-id\}
+
+1. Hol jeden Motor über seinen Namen.
+2. Setze seine Position auf unendlich, damit er sich ohne Begrenzung dreht.
+3. Stelle seine Geschwindigkeit ein.
+
+Die Motoren behalten die zuletzt eingestellte Geschwindigkeit, also fährt der Roboter weiter, während dein Programm andere Dinge erledigt. Dieses Programm fährt jeweils eine Sekunde lang vorwärts, rückwärts und dreht sich nach links:
+
+<CodeTabs file="drive" />
+
+:::note
+Winkel werden in Webots in Radiant angegeben. Zur Umrechnung: Radiant = Grad × π / 180.
+:::
+
+## Messen, wie weit sich ein Rad gedreht hat \{#measuring-how-far-a-wheel-turned\}
+
+Jeder Motor hat einen Positionssensor, auch Encoder genannt, der zählt, wie weit sich das Rad gedreht hat, in Radiant. Das ist nützlich, um eine feste Strecke zu fahren. Dreht sich das Rad rückwärts, wird der Wert kleiner.
+
+<CodeTabs file="encoders" />
+
+Eine Bewegung nach Zeit zu steuern ist einfach, aber das Ergebnis ändert sich mit der Geschwindigkeit. Encoder messen die Bewegung selbst und sind daher zuverlässiger. Für präzise Drehungen ist das [Gyroskop](/docs/programming/sensors/imu/) noch besser.
+
+Als Nächstes lernst du, die [Sensoren](/docs/programming/sensors/) auszulesen.

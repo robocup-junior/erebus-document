@@ -1,0 +1,36 @@
+---
+title: 요구 사항
+description: "Erebus v26을 실행하는 데 필요한 것: Webots R2023b, Python 3.9 이상, 필요한 라이브러리."
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## 소프트웨어 요구 사항 \{#software-requirements\}
+시뮬레이션 시스템은 몇 가지 핵심 구성 요소로 이루어져 있고, 각각 설치해야 해요. 설치는 쉽지만, Webots를 다운로드하고 설치하는 데 시간이 조금 걸릴 수 있어요! 세 가지 구성 요소는 다음과 같아요.
+
+1. Webots 로봇 시뮬레이터 버전 **R2023b** - 시뮬레이션 환경이에요. Erebus v26은 다른 버전의 Webots를 지원하지 않아요.
+1. Erebus - 월드와, 규칙과 점수 계산을 구현하는 Competition Supervisor예요. 최신 버전은 **v26.1**이에요.
+1. Python 버전 **3.9 이상** - Erebus 자체를 실행하고 로봇의 컨트롤러를 작성하는 데 필요해요. 컨트롤러는 C/C++로도 작성할 수 있어요.
+
+## 최소 시스템 요구 사항 \{#minimum-system-requirements\}
+* OS-Linux: Ubuntu 20.04 LTS, 22.04 LTS
+* OS-Windows: Windows 11, Windows 10 64비트
+* OS-Mac: macOS 11 "Big Sur"와 12 "Monterey". Webots R2023b가 지원하는 버전이에요. 더 새로운 macOS에서도 작동할 수 있어요. 이 문서는 macOS 26에서 확인했어요.
+* CPU: 듀얼 코어 2 GHz
+* RAM: 2 GB
+* Nvidia 512MB 또는 AMD OpenGL 512MB
+
+## Python 라이브러리 \{#python-libraries\}
+Erebus에는 아래의 Python 라이브러리가 필요해요. 대부분은 Erebus가 시작될 때 자동으로 설치되지만, **OpenCV는 그렇지 않으므로** 직접 설치해야 해요. 각 운영 체제의 가이드에 이 단계가 포함되어 있어요.
+
+```bash
+python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+```
+
+## 운영 체제 선택하기 \{#choose-your-operating-system\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Windows 10 및 11" href="/docs/installation/windows/" />
+	<LinkCard title="macOS" description="Intel 및 Apple silicon의 macOS" href="/docs/installation/mac/" />
+	<LinkCard title="Linux" description="Ubuntu 20.04 및 22.04" href="/docs/installation/linux/" />
+</CardGrid>

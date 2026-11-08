@@ -1,0 +1,65 @@
+---
+title: Recorre el laberinto
+description: Junta el movimiento y los sensores en un primer programa completo que explora un laberinto.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+En este tutorial construyes un programa completo, paso a paso. El robot recorre el laberinto evitando paredes y agujeros, e informa de todo lo que parece una marca en la pared. Es el programa que ejecutaste en [Tu primera ejecución](/docs/getting-started/).
+
+Usa el [robot inicial](/docs/robot/) y lo que aprendiste en [Movimiento](/docs/programming/movement/) y [Sensores](/docs/programming/sensors/).
+
+El programa completo: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## El campo \{#the-field\}
+Ejecútalo en `world1.wbt`, que tiene este aspecto:
+
+![El mundo world1 en Webots](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## Paso a paso \{#step-by-step\}
+
+### 1. Preparación \{#1-setup\}
+Primero, el programa crea el robot, obtiene los motores de las ruedas y les permite girar sin límite. `speeds` guarda la velocidad de cada rueda, que el resto del programa va cambiando. `reported` recuerda dónde ha informado ya el robot de una marca.
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. Sensores \{#2-sensors\}
+Después, obtiene y activa los sensores del robot inicial:
+
+![El robot de ejemplo con sus sensores señalados](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. Movimientos \{#3-moves\}
+Estas funciones cambian las velocidades para girar y girar sobre sí mismo. `delay` hace que el robot siga haciendo lo mismo durante unos milisegundos, y `getBrightness` lee el sensor de color como un único valor de 0 (negro) a 255 (blanco).
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. Ver una marca \{#4-seeing-a-token\}
+Esta función busca marcas en las paredes en una imagen de la cámara. Las marcas son cuadrados brillantes sobre paredes oscuras, así que busca formas brillantes que sean más o menos cuadradas y que no toquen el borde de la imagen, donde suele estar el suelo.
+
+<CodeTabs file="maze" region="detect" />
+
+Es un comienzo sencillo: no distingue los símbolos y no ve bien los objetivos cognitivos. El tutorial de [Marcas en las paredes](/docs/programming/wall-tokens/) muestra cómo hacerlo mejor.
+
+### 5. Informar \{#5-reporting\}
+Para puntuar una marca, el robot debe detenerse más de 1 segundo y enviar su posición y el tipo de la marca. Cada marca solo se puede puntuar una vez, y volver a informar de ella cuesta 5 puntos, así que el programa recuerda dónde ha informado. [Comunicación](/docs/programming/communication/) explica estos mensajes.
+
+<CodeTabs file="maze" region="report" />
+
+### 6. El bucle principal \{#6-the-main-loop\}
+Por último, el bucle principal lo junta todo. En cada paso, arranca a toda velocidad, se aparta de las paredes, se da la vuelta ante los agujeros e informa de lo que ve la cámara cuando está cerca de una pared de frente.
+
+<CodeTabs file="maze" region="loop" />
+
+## ¿Qué tal lo hace? \{#how-well-does-it-do\}
+Este robot deambula: no sabe por dónde ha pasado y adivina el tipo de cada víctima. A veces se atasca, y la partida lo devuelve a un punto de control (checkpoint) tras 20 segundos. Para un primer programa está bien.
+
+## Pruébalo \{#try-it\}
+- Encuentra las mejores velocidades y distancias para tu robot.
+- Sigue la pared de un lado: mantén el sensor lateral a una distancia constante y gira cuando el sensor frontal vea una pared.
+- Cambia la velocidad según lo cerca que estén las paredes.
+
+Después, aprende a sumar puntos en [Comunicación](/docs/programming/communication/).

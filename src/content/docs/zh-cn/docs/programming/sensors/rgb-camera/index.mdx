@@ -1,0 +1,30 @@
+---
+title: RGB 摄像头
+description: 在 Webots 中读取摄像头图像，并用 OpenCV 处理它们来寻找墙上的标识。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+摄像头会给出它前方景物的图像。你需要用它来寻找和识别[墙上的标识](/docs/programming/wall-tokens/)。入门机器人有一个摄像头，名字是 `camera`，分辨率为 64 × 40 像素。
+
+## 读取像素 \{#reading-pixels\}
+
+图像是由像素组成的网格。每个像素都有红、绿、蓝三个值，范围是 0 到 255，其中 (0, 0, 0) 是黑色，(255, 255, 255) 是白色。
+
+<CodeTabs file="read" />
+
+## 使用 OpenCV \{#using-opencv\}
+
+[OpenCV](https://opencv.org/) 是一个图像处理库：可以寻找形状、比较颜色，还能做很多其他事情。Webots 图像的每个像素有 4 个值，顺序为 BGRA，OpenCV 可以直接使用。下面的程序会在两个窗口中分别显示图像和图像中较亮的部分：
+
+<CodeTabs file="opencv" />
+
+:::note
+对于 Python，OpenCV 会和其他 [Python 库](/docs/installation/#python-libraries)一起安装。对于 C++，你需要自行安装 OpenCV，并[在编译时添加它](/docs/programming/cpp/#compiling)。C++ 示例已在 OpenCV 4 上测试过。
+:::
+
+这类窗口只用于在家测试：比赛时请把它们关掉。
+
+## 分辨率 \{#resolution\}
+
+分辨率越高，能在越远的地方看到标识，但成本更高，处理时间也更长。你可以在 [Robot Customizer](/docs/robot/customizer/#components) 中为每个摄像头选择分辨率。

@@ -1,0 +1,65 @@
+---
+title: Menavigasi labirin
+description: Gabungkan gerakan dan sensor dalam program lengkap pertama yang menjelajahi labirin.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+Di tutorial ini kamu membuat program lengkap, langkah demi langkah. Robot berkeliling labirin sambil menghindari dinding dan lubang, lalu melaporkan apa pun yang tampak seperti penanda dinding. Ini adalah program yang kamu jalankan di [Percobaan pertamamu](/docs/getting-started/).
+
+Program ini menggunakan [robot pemula](/docs/robot/), serta apa yang sudah kamu pelajari di [Gerakan](/docs/programming/movement/) dan [Sensor](/docs/programming/sensors/).
+
+Program lengkapnya: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## Arenanya \{#the-field\}
+Jalankan di `world1.wbt`, yang tampilannya seperti ini:
+
+![World world1 di Webots](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## Langkah demi langkah \{#step-by-step\}
+
+### 1. Persiapan \{#1-setup\}
+Pertama, program membuat robot, mengambil motor roda, dan membiarkannya berputar tanpa batas. `speeds` menyimpan kecepatan setiap roda, yang diubah oleh bagian program lainnya. `reported` mengingat tempat-tempat robot sudah melaporkan penanda.
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. Sensor \{#2-sensors\}
+Selanjutnya, program mengambil dan mengaktifkan sensor-sensor robot pemula:
+
+![Robot contoh dengan label pada sensor-sensornya](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. Gerakan \{#3-moves\}
+Fungsi-fungsi ini mengubah kecepatan untuk berbelok dan berputar. `delay` membuat robot terus melakukan hal yang sama selama beberapa milidetik, dan `getBrightness` membaca sensor warna sebagai satu nilai dari 0 (hitam) sampai 255 (putih).
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. Melihat penanda \{#4-seeing-a-token\}
+Fungsi ini mencari penanda dinding di gambar kamera. Penanda adalah kotak terang di dinding yang gelap, jadi fungsi ini mencari bentuk terang yang kurang lebih persegi dan tidak menyentuh tepi gambar, tempat lantai biasanya terlihat.
+
+<CodeTabs file="maze" region="detect" />
+
+Ini awal yang sederhana: fungsi ini tidak bisa membedakan simbol, dan tidak bisa melihat target kognitif dengan baik. Tutorial [Penanda dinding](/docs/programming/wall-tokens/) menunjukkan cara melakukannya dengan lebih baik.
+
+### 5. Melaporkan \{#5-reporting\}
+Untuk mencetak poin dari penanda, robot harus berhenti lebih dari 1 detik, lalu mengirim posisinya dan jenis penandanya. Setiap penanda hanya bisa dihitung sekali, dan melaporkannya lagi mengurangi 5 poin, jadi program mengingat tempat-tempat yang sudah dilaporkannya. [Komunikasi](/docs/programming/communication/) menjelaskan pesan-pesan ini.
+
+<CodeTabs file="maze" region="report" />
+
+### 6. Loop utama \{#6-the-main-loop\}
+Terakhir, loop utama menggabungkan semuanya. Di setiap langkah, robot mulai dengan kecepatan penuh, berbelok menjauhi dinding, berbalik dari lubang, dan melaporkan apa yang dilihat kamera saat robot dekat dengan dinding di depannya.
+
+<CodeTabs file="maze" region="loop" />
+
+## Seberapa bagus hasilnya? \{#how-well-does-it-do\}
+Robot ini berkeliaran: robot tidak tahu ke mana saja sudah pergi, dan menebak jenis setiap korban. Kadang robot terjebak, dan permainan memindahkannya kembali ke checkpoint setelah 20 detik. Itu tidak masalah untuk program pertama.
+
+## Coba sendiri \{#try-it\}
+- Cari kecepatan dan jarak terbaik untuk robotmu.
+- Susuri dinding di satu sisi: jaga sensor samping pada jarak yang tetap, dan berbelok saat sensor depan melihat dinding.
+- Ubah kecepatan tergantung seberapa dekat dindingnya.
+
+Lalu, pelajari cara mencetak poin di [Komunikasi](/docs/programming/communication/).

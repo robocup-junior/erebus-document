@@ -1,0 +1,77 @@
+---
+title: Robotunu yap
+description: Robot Customizer ile başlangıç robotunu adım adım yap.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Bu eğitimde [Robot Customizer](https://robot.erebus.rcj.cloud/) ile [başlangıç robotunu](/docs/robot/#the-starter-robot) yaparsın. Bu, belgelerdeki tüm örneklerde kullanılan robottur. Sonunda onu programlamak için her şeyin hazır olur.
+
+3000'lik bütçenin 2400'ünü tutar.
+
+:::tip
+Her bileşenin, programının onu bulmak için kullandığı bir adı vardır. Örneklerin çalışması için tam olarak aşağıdaki adları kullan.
+:::
+
+## Robotu tasarla \{#design-the-robot\}
+
+[Robot Customizer](https://robot.erebus.rcj.cloud/) aracını aç. Varsayılan parçalarla başlar: iki tekerlek ve dört mesafe sensörü. Daha önce kullandıysan baştan başlamak için üstteki sıfırlama düğmesine bas.
+
+Kutularda mm yazsa da konumlar milimetrenin onda biri cinsindendir: robotun gövdesinin yarıçapı yaklaşık 370'tir.
+
+<Steps>
+
+1. **Mesafe sensörlerini ayarla.** **Distance sensors** altında üç tane kalması için `−` düğmesine bir kez bas. Sonra her birine tıklayarak aç; adını, konumunu ve dönüşünü ayarla:
+
+   | Sensör | Ad | X | Y | Z | Dönüş |
+   |---|---|---:|---:|---:|---|
+   | Distance Sensor 1 | `leftDist` | -370 | 335 | 0 | Left |
+   | Distance Sensor 2 | `frontDist` | 0 | 335 | -370 | Front |
+   | Distance Sensor 3 | `rightDist` | 370 | 335 | 0 | Right |
+
+   Değerleri kaydırıcıların yanındaki kutulara yaz ve dönüş düğmelerine bas. **Top**, robotu önü yukarıda olacak şekilde yukarıdan gösterir; böylece her sensörün doğru yöne baktığını kontrol edebilirsin:
+
+   ![Yukarıdan görülen, sola, öne ve sağa bakan üç mesafe sensörü](../../../../docs/robot/build/distance-sensors.png)
+
+2. **Tekerleklere ad ver.** Robotun sağ tarafındaki **Wheel 1**'i aç ve adını `right wheel` yap. **Wheel 2**'nin adını `left wheel` yap. Programın bunları, **In your controller** altında gösterildiği gibi `right wheel motor` ve `left wheel motor` olarak kullanır.
+
+3. **Kamerayı ekle.** **Camera 1**'i aç ve şunları ayarla:
+
+   - Ad: `camera`
+   - Çözünürlük: genişlik **64px**, yükseklik **40px**
+   - Konum: X `0`, Y `90`, Z `-370`
+   - Dönüş: **Front**
+
+   ![Kameranın ayarları](../../../../docs/robot/build/camera.png)
+
+4. **Renk sensörünü ekle.** **Colour sensor**'ü aç ve şunları ayarla:
+
+   - Ad: `color`
+   - Konum: X `0`, Y `-41`, Z `-370`
+   - Dönüş: **Down**
+
+   Renk sensörü zemini görmek için aşağıya bakmalıdır. Onu öne yerleştirmek, robotun tekerlekleri bir çukura ulaşmadan önce çukuru görmesini sağlar.
+
+5. **GPS'i, jiroskobu ve ivmeölçeri ekle.** **GPS**, **Gyro** ve **Accelerometer**'ı aç. Varsayılan adları (`gps`, `gyro` ve `accelerometer`) ve konumları uygundur.
+
+6. **Lidarı ekle.** **Lidar**'ı aç ve şunları ayarla:
+
+   - Konum: X `0`, Y `370`, Z `0`
+   - Dönüş: X `90`, Y `0`, Z `0` yaz
+
+   Lidar robotun üstünde olmalıdır, aksi halde gövde onu engeller; çevresini tamamen tarayabilmesi için de düz durmalıdır. Dönüş düğmeleri onu düz yatırmaz, bu yüzden değerleri yaz.
+
+   ![Lidarın ayarları](../../../../docs/robot/build/lidar.png)
+
+7. **Robotu kontrol et.** Sağ üstteki bütçe **2,400 / 3,000 used** göstermelidir. Tüm adları görmek için **Labels**'ı, kameranın ne göreceğini görmek için **Camera view**'u aç.
+
+   ![Etiketleri ve kamera görünümüyle bitmiş robot](../../../../docs/robot/build/finished.png)
+
+8. **Dışa aktar.** Üstteki dosya adı alanına `starter-robot` yaz ve **Export** düğmesine bas. `starter-robot.json` dosyasını sakla: robotu değiştirmek için onu daha sonra **Import** ile içe aktarabilirsin.
+
+</Steps>
+
+Bir şeyler ters gittiyse bitmiş robotla karşılaştır: [`starter-robot.json` dosyasını indir](/downloads/starter-robot.json) ve içe aktar.
+
+## Sırada \{#next\}
+[Robotunu Erebus'a yükle](/docs/robot/#load-it-in-erebus) ve [ilk programını çalıştır](/docs/getting-started/).

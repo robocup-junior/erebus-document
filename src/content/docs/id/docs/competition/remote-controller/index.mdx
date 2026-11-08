@@ -1,0 +1,39 @@
+---
+title: Remote Controller
+description: Jalankan controller-mu di komputermu sendiri dan hubungkan ke server permainan, seperti di kompetisi.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Fitur remote controller pada Erebus memungkinkanmu menjalankan simulasi Webots melalui jaringan. Satu komputer menjalankan simulasi Webots (server), dan komputer lainnya menjalankan program controller robot (klien). Kami menyebutnya "pengaturan server-klien" (Server-Client Setup).
+
+**Menurut aturan 2026, beginilah cara permainan dijalankan di kompetisi.** Panitia menjalankan server permainan dan menyediakan satu soket RJ-45. Kamu perlu membawa:
+
+- Komputer dengan programmu, siap dijalankan, dan dengan Webots R2023b terinstal
+- Kabel Ethernet. Minimal CAT5 sangat disarankan, untuk mendukung 100 Mbit/s.
+- Port Ethernet. Jika komputermu tidak punya, bawa adaptor dan uji terlebih dahulu.
+
+Agar persiapan di lokasi kompetisi berjalan lancar, cobalah pengaturan ini jauh-jauh hari. Semua tim juga harus mengirimkan video singkat yang menunjukkan cara mereka menjalankan controller pada peta contoh dengan pengaturan ini, bersama dengan TDP, Poster, dan Video.
+
+## Cara kerjanya \{#how-it-works\}
+
+1. Buka world dan aktifkan mode remote di jendela kontrol.
+1. Jalankan controller-mu dari terminal. Controller akan terhubung ke Webots dan menunggu.
+1. Tekan tombol start di jendela kontrol.
+
+Controller-mu menggunakan library Webots yang sama dan kode yang sama seperti saat dimuat dengan tombol LOAD. Robot kustom, jika kamu punya, tetap dimuat di jendela kontrol pada server.
+
+## Yang perlu diperiksa sebelum kompetisi \{#things-to-check-before-the-competition\}
+
+- Semua library yang dibutuhkan programmu sudah terinstal di klien.
+- Programmu tidak bergantung pada kecepatan komputer: program harus menggunakan `robot.step()` dan waktu simulasi. Perhatikan bahwa gambar dari kamera harus melewati jaringan.
+- Semua jendela gambar (seperti `cv2.imshow`) sudah dimatikan, kecuali kamu membutuhkannya.
+- Kamu hafal perintah yang harus dijalankan. Menuliskannya dalam skrip kecil adalah ide yang bagus.
+
+## Panduan pengaturan \{#setup-guide\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Pengaturan dengan PowerShell" href="/docs/competition/remote-controller/windows/" />
+	<LinkCard title="macOS" description="Pengaturan dengan terminal" href="/docs/competition/remote-controller/mac/" />
+	<LinkCard title="Linux" description="Pengaturan dengan terminal" href="/docs/competition/remote-controller/linux/" />
+</CardGrid>

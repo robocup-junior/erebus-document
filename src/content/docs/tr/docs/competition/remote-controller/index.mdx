@@ -1,0 +1,39 @@
+---
+title: Remote Controller
+description: Denetleyicini kendi bilgisayarında çalıştır ve yarışmadaki gibi oyun sunucusuna bağla.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Erebus'un uzaktan denetleyici (remote controller) özelliği, Webots simülasyonlarını bir ağ üzerinden çalıştırmanı sağlar. Bir bilgisayar Webots simülasyonunu (sunucu), diğer bilgisayar robot denetleyici programını (istemci) çalıştırır. Buna "sunucu-istemci kurulumu" (Server-Client Setup) diyoruz.
+
+**2026 kurallarına göre yarışmada oyunlar bu şekilde yürütülür.** Organizatörler oyun sunucusunu çalıştırır ve bir RJ-45 soketi sağlar. Yanında getirmen gerekenler:
+
+- Programın çalışmaya hazır olan ve Webots R2023b kurulu bir bilgisayar
+- Bir Ethernet kablosu. 100 Mbit/s desteklemesi için en az CAT5 kablo şiddetle önerilir.
+- Bir Ethernet portu. Bilgisayarında yoksa bir adaptör getir ve önceden test et.
+
+Yarışma alanında sorunsuz bir başlangıç için kurulumu çok önceden dene. Tüm takımlar ayrıca TDP, poster ve video ile birlikte, denetleyicilerini bu kurulumda bir örnek harita üzerinde nasıl çalıştırdıklarını gösteren kısa bir video göndermelidir.
+
+## Nasıl çalışır \{#how-it-works\}
+
+1. Dünyayı aç ve kontrol penceresinde uzaktan modu aç.
+1. Denetleyicini bir terminalden başlat. Webots'a bağlanır ve bekler.
+1. Kontrol penceresinde başlat düğmesine bas.
+
+Denetleyicin, LOAD düğmesiyle yüklendiğindeki aynı Webots kütüphanelerini ve aynı kodu kullanır. Özel bir robotun varsa o, sunucunun kontrol penceresinde yüklü kalır.
+
+## Yarışmadan önce kontrol edilecekler \{#things-to-check-before-the-competition\}
+
+- Programının ihtiyaç duyduğu tüm kütüphaneler istemcide kurulu.
+- Programın bilgisayarın hızına bağlı değil: `robot.step()` ve simülasyon zamanını kullanmalı. Kameradan gelen bir görüntünün ağ üzerinden gitmesi gerektiğini unutma.
+- Gerekmedikçe tüm görüntü pencereleri (`cv2.imshow` gibi) kapalı.
+- Çalıştırılacak komutları ezbere biliyorsun. Bunları küçük bir betiğe yazmak iyi bir fikir.
+
+## Kurulum kılavuzu \{#setup-guide\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="PowerShell ile kurulum" href="/docs/competition/remote-controller/windows/" />
+	<LinkCard title="macOS" description="Terminal ile kurulum" href="/docs/competition/remote-controller/mac/" />
+	<LinkCard title="Linux" description="Terminal ile kurulum" href="/docs/competition/remote-controller/linux/" />
+</CardGrid>

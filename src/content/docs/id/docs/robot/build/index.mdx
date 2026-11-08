@@ -1,0 +1,77 @@
+---
+title: Rakit robotmu
+description: Rakit robot pemula langkah demi langkah dengan Robot Customizer.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Di tutorial ini kamu merakit [robot pemula](/docs/robot/#the-starter-robot) dengan [Robot Customizer](https://robot.erebus.rcj.cloud/). Ini adalah robot yang digunakan di semua contoh dokumentasi ini, jadi di akhir tutorial kamu akan punya semua yang dibutuhkan untuk memprogramnya.
+
+Robot ini memakai 2400 dari anggaran 3000.
+
+:::tip
+Setiap komponen punya nama, yang dipakai programmu untuk menemukannya. Gunakan nama-nama di bawah ini dengan persis, agar contoh-contohnya bisa berjalan.
+:::
+
+## Rancang robotnya \{#design-the-robot\}
+
+Buka [Robot Customizer](https://robot.erebus.rcj.cloud/). Alat ini dimulai dengan bagian bawaan: dua roda dan empat sensor jarak. Jika kamu pernah memakainya, tekan tombol reset di bagian atas untuk memulai dari awal.
+
+Posisinya dalam satuan sepersepuluh milimeter, meskipun kotaknya bertuliskan mm: badan robot punya jari-jari sekitar 370.
+
+<Steps>
+
+1. **Atur sensor jarak.** Di bawah **Distance sensors**, tekan `−` sekali agar tersisa tiga. Lalu klik masing-masing untuk membukanya, dan atur nama, posisi, dan rotasinya:
+
+   | Sensor | Nama | X | Y | Z | Rotasi |
+   |---|---|---:|---:|---:|---|
+   | Distance Sensor 1 | `leftDist` | -370 | 335 | 0 | Left |
+   | Distance Sensor 2 | `frontDist` | 0 | 335 | -370 | Front |
+   | Distance Sensor 3 | `rightDist` | 370 | 335 | 0 | Right |
+
+   Ketik nilainya di kotak di sebelah slider, lalu tekan tombol rotasi. **Top** menampilkan robot dari atas, dengan bagian depan menghadap ke atas, jadi kamu bisa memastikan setiap sensor menghadap ke arah yang benar:
+
+   ![Tiga sensor jarak dilihat dari atas, menghadap ke kiri, depan, dan kanan](../../../../docs/robot/build/distance-sensors.png)
+
+2. **Beri nama roda.** Buka **Wheel 1**, yang berada di sisi kanan robot, dan beri nama `right wheel`. Beri nama **Wheel 2** `left wheel`. Programmu akan memakainya sebagai `right wheel motor` dan `left wheel motor`, seperti yang ditunjukkan di bawah **In your controller**.
+
+3. **Tambahkan kamera.** Aktifkan **Camera 1**, lalu atur:
+
+   - Nama: `camera`
+   - Resolusi: lebar **64px**, tinggi **40px**
+   - Posisi: X `0`, Y `90`, Z `-370`
+   - Rotasi: **Front**
+
+   ![Pengaturan kamera](../../../../docs/robot/build/camera.png)
+
+4. **Tambahkan sensor warna.** Aktifkan **Colour sensor**, lalu atur:
+
+   - Nama: `color`
+   - Posisi: X `0`, Y `-41`, Z `-370`
+   - Rotasi: **Down**
+
+   Sensor warna harus menghadap ke bawah untuk melihat lantai. Menempatkannya di depan membuat robot bisa melihat lubang sebelum rodanya mencapai lubang itu.
+
+5. **Tambahkan GPS, giroskop, dan akselerometer.** Aktifkan **GPS**, **Gyro**, dan **Accelerometer**. Nama bawaannya, `gps`, `gyro`, dan `accelerometer`, serta posisinya sudah sesuai.
+
+6. **Tambahkan lidar.** Aktifkan **Lidar**, lalu atur:
+
+   - Posisi: X `0`, Y `370`, Z `0`
+   - Rotasi: ketik X `90`, Y `0`, Z `0`
+
+   Lidar harus berada di atas robot, kalau tidak badan robot akan menghalanginya, dan posisinya harus datar agar bisa memindai ke segala arah. Tombol rotasi tidak membuatnya datar, jadi ketik nilainya.
+
+   ![Pengaturan lidar](../../../../docs/robot/build/lidar.png)
+
+7. **Periksa robotnya.** Anggaran di kanan atas seharusnya menunjukkan **2,400 / 3,000 used**. Aktifkan **Labels** untuk melihat semua nama, dan **Camera view** untuk melihat apa yang akan dilihat kamera.
+
+   ![Robot yang sudah jadi, dengan label dan tampilan kameranya](../../../../docs/robot/build/finished.png)
+
+8. **Ekspor.** Ketik `starter-robot` sebagai nama file di bagian atas, lalu tekan **Export**. Simpan file `starter-robot.json`: kamu bisa melakukan **Import** nanti untuk mengubah robotnya.
+
+</Steps>
+
+Jika ada yang salah, bandingkan dengan robot yang sudah jadi: [unduh `starter-robot.json`](/downloads/starter-robot.json) lalu impor.
+
+## Selanjutnya \{#next\}
+[Muat robotmu di Erebus](/docs/robot/#load-it-in-erebus), lalu [jalankan program pertamamu](/docs/getting-started/).

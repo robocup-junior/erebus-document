@@ -1,0 +1,30 @@
+---
+title: RGB 카메라
+description: Webots에서 카메라 이미지를 읽고 OpenCV로 처리하여 벽 토큰을 찾아요.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+카메라는 앞에 있는 것의 이미지를 줘요. [벽 토큰](/docs/programming/wall-tokens/)을 찾고 읽으려면 카메라가 필요해요. 스타터 로봇에는 `camera`라는 이름의 64 × 40 픽셀 카메라가 하나 있어요.
+
+## 픽셀 읽기 \{#reading-pixels\}
+
+이미지는 픽셀의 격자예요. 각 픽셀에는 0부터 255까지의 빨강, 초록, 파랑 값이 있고, (0, 0, 0)은 검정, (255, 255, 255)는 흰색이에요.
+
+<CodeTabs file="read" />
+
+## OpenCV 사용하기 \{#using-opencv\}
+
+[OpenCV](https://opencv.org/)는 이미지를 처리하는 라이브러리예요. 모양을 찾거나 색을 비교하는 등 많은 일을 할 수 있어요. Webots 이미지는 픽셀마다 BGRA 순서로 4개의 값을 가지며, OpenCV에서 바로 사용할 수 있어요. 이 프로그램은 이미지와 그 밝은 부분을 두 개의 창에 보여 줘요.
+
+<CodeTabs file="opencv" />
+
+:::note
+Python의 경우 OpenCV는 다른 [Python 라이브러리](/docs/installation/#python-libraries)와 함께 설치돼요. C++의 경우 OpenCV를 설치하고 [컴파일할 때 추가](/docs/programming/cpp/#compiling)해야 해요. C++ 예제는 OpenCV 4로 테스트했어요.
+:::
+
+이런 창은 집에서 테스트할 때 쓰는 것이니, 대회에서는 꺼 두세요.
+
+## 해상도 \{#resolution\}
+
+해상도가 높을수록 더 먼 곳의 토큰을 볼 수 있지만, 비용이 더 들고 처리하는 데 시간이 더 걸려요. 각 카메라의 해상도는 [Robot Customizer](/docs/robot/customizer/#components)에서 정해요.

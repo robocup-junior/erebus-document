@@ -1,0 +1,35 @@
+---
+title: Capteur de couleur
+description: "Utilisez le capteur de couleur pour voir le sol sous le robot : trous, marécages, points de contrôle et passages."
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Le capteur de couleur regarde le sol : il renseigne donc le robot sur les trous, les marécages et les passages. C’est une caméra d’un seul pixel, orientée vers le bas. Sur le robot de départ, il s’appelle `color` et se trouve à l’avant du robot, pour voir un trou avant que les roues ne l’atteignent.
+
+<CodeTabs file="read" />
+
+## Couleurs du sol \{#floor-colours\}
+
+Ces valeurs ont été mesurées avec le robot de départ sur `world2.wbt` :
+
+| Sol | Rouge | Vert | Bleu |
+|---|---:|---:|---:|
+| Normal | 252 | 252 | 252 |
+| Marécage | 245 | 222 | 142 |
+| Passage entre les zones 1 et 2 (bleu) | 91 | 91 | 255 |
+| Passage entre les zones 2 et 3 (violet) | 193 | 91 | 251 |
+| Passage entre les zones 1 et 4 (vert) | 48 | 255 | 48 |
+| Passage entre les zones 3 et 4 (rouge) | 255 | 91 | 91 |
+
+:::caution
+Les valeurs changent d’un monde à l’autre : le sol normal donne environ 240 dans `world1.wbt`. Utilisez des plages plutôt que des valeurs exactes, et vérifiez-les avec `calibrateColourSensor.py` dans le dossier `player_controllers` d’Erebus.
+:::
+
+Les trous ont un bord noir : le sol devient donc sombre juste avant un trou. Pour ce capteur, les points de contrôle (checkpoints) ressemblent presque à un sol normal : faites donc l’étalonnage sur l’un d’eux dans votre monde.
+
+## Exemple : surveiller le sol \{#example-watching-the-floor\}
+
+Ce programme avance, affiche le sol à chaque fois qu’il change, et s’arrête s’il voit un trou :
+
+<CodeTabs file="floor" />

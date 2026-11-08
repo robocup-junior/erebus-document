@@ -1,0 +1,36 @@
+---
+title: Gereksinimler
+description: "Erebus v26'yı çalıştırmak için gerekenler: Webots R2023b, Python 3.9 ya da daha yenisi ve gerekli kütüphaneler."
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Yazılım gereksinimleri \{#software-requirements\}
+Simülasyon sistemi birkaç temel bileşenden oluşur. Bunların her birinin kurulması gerekir. Kurulum kolay olsa da Webots'un indirilmesi ve kurulması biraz zaman alabilir! Üç bileşen şunlardır:
+
+1. Webots Robot Simulator, **R2023b** sürümü: simülasyon ortamı. Erebus v26, Webots'un diğer sürümlerini desteklemez.
+1. Erebus: dünyalar ve kuralları ve puanlamayı uygulayan Competition Supervisor (yarışma denetçisi). En yeni sürüm **v26.1**'dir.
+1. Python, **3.9 ya da daha yeni** sürüm: Erebus'un kendisini çalıştırmak ve robotlar için denetleyici yazmak için gerekir. Denetleyicileri C/C++ ile de yazabilirsin.
+
+## Minimum sistem gereksinimleri \{#minimum-system-requirements\}
+* İşletim sistemi - Linux: Ubuntu 20.04 LTS, 22.04 LTS
+* İşletim sistemi - Windows: Windows 11, Windows 10 64 bit
+* İşletim sistemi - Mac: macOS 11 "Big Sur" ve 12 "Monterey". Bunlar Webots R2023b'nin desteklediği sürümlerdir. macOS'un daha yeni sürümleri de çalışabilir: bu belgeler macOS 26'da kontrol edildi.
+* CPU: Çift çekirdekli 2 GHz
+* RAM: 2 GB
+* Nvidia 512 MB ya da AMD OpenGL 512 MB
+
+## Python kütüphaneleri \{#python-libraries\}
+Erebus'un aşağıdaki Python kütüphanelerine ihtiyacı var. Çoğu Erebus başladığında otomatik olarak kurulur, ama **OpenCV kurulmaz**, bu yüzden onu kendin kurmalısın. Her işletim sisteminin kılavuzu bu adımı içerir.
+
+```bash
+python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+```
+
+## İşletim sistemini seç \{#choose-your-operating-system\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Windows 10 ve 11" href="/docs/installation/windows/" />
+	<LinkCard title="macOS" description="Intel ve Apple silicon üzerinde macOS" href="/docs/installation/mac/" />
+	<LinkCard title="Linux" description="Ubuntu 20.04 ve 22.04" href="/docs/installation/linux/" />
+</CardGrid>

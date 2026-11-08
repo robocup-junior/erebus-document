@@ -1,0 +1,35 @@
+---
+title: Sensor de cor
+description: "Use o sensor de cor para ver o piso embaixo do robô: buracos, pântanos, pontos de controle e passagens."
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+O sensor de cor olha para o piso, então ele informa o robô sobre buracos, pântanos e passagens. Ele é uma câmera de um único pixel, apontada para baixo. No robô inicial, ele se chama `color` e fica na frente do robô, para que veja um buraco antes que as rodas cheguem até ele.
+
+<CodeTabs file="read" />
+
+## Cores do piso \{#floor-colours\}
+
+Estes valores foram medidos com o robô inicial em `world2.wbt`:
+
+| Piso | Vermelho | Verde | Azul |
+|---|---:|---:|---:|
+| Normal | 252 | 252 | 252 |
+| Pântano | 245 | 222 | 142 |
+| Passagem entre as áreas 1 e 2 (azul) | 91 | 91 | 255 |
+| Passagem entre as áreas 2 e 3 (roxa) | 193 | 91 | 251 |
+| Passagem entre as áreas 1 e 4 (verde) | 48 | 255 | 48 |
+| Passagem entre as áreas 3 e 4 (vermelha) | 255 | 91 | 91 |
+
+:::caution
+Os valores mudam de um mundo para outro: o piso normal fica em cerca de 240 em `world1.wbt`. Use faixas em vez de valores exatos e confira-as com `calibrateColourSensor.py`, na pasta `player_controllers` do Erebus.
+:::
+
+Os buracos têm uma borda preta, então o piso escurece logo antes de um buraco. Os pontos de controle parecem quase um piso normal para este sensor, então faça a calibração em um deles no seu mundo.
+
+## Exemplo: observando o piso \{#example-watching-the-floor\}
+
+Este programa anda para a frente, mostra o piso toda vez que ele muda e para se vir um buraco:
+
+<CodeTabs file="floor" />

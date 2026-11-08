@@ -1,0 +1,22 @@
+---
+title: 位置感測器
+description: 用 GPS 知道機器人在迷宮中的位置，並用它的位置回報牆上的標記。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+位置感測器（**GPS**）會提供機器人的位置，單位是**公尺**。在入門機器人上，它的名稱是 `gps`。你需要它來[回報牆上的標記](/docs/programming/communication/#scoring-wall-tokens)，它也對[有系統地探索](/docs/programming/exploring/)很有幫助。
+
+`getValues()` 會回傳 `[x, y, z]`。**X 和 Z 是水平方向**，Y 是垂直方向，所以請用 X 和 Z 表示機器人在迷宮中的位置：
+
+![水平面的 X 軸和 Z 軸，Y 軸為垂直方向](../../../../../docs/programming/sensors/location-sensor/coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+GPS 有幾毫米的雜訊，所以即使機器人靜止不動，數值也會稍微變動。絕對不要用完全相等來比較位置。
+
+## 範例：與起點的距離 \{#example-distance-from-the-start\}
+
+這個程式會讓機器人一直往前走，直到它離起點半個地塊為止：
+
+<CodeTabs file="travelled" />

@@ -1,0 +1,22 @@
+---
+title: Sensor de posición
+description: Sabe dónde está el robot en el laberinto con el GPS y usa su posición para informar de las marcas en las paredes.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+El sensor de posición, o **GPS**, da la posición del robot en **metros**. En el robot inicial se llama `gps`. Lo necesitas para [informar de las marcas en las paredes](/docs/programming/communication/#scoring-wall-tokens), y ayuda mucho a [explorar de forma sistemática](/docs/programming/exploring/).
+
+`getValues()` devuelve `[x, y, z]`. **X y Z son horizontales** e Y es vertical, así que usa X y Z para la posición en el laberinto:
+
+![Los ejes X y Z del plano horizontal, con Y vertical](../../../../../docs/programming/sensors/location-sensor/coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+El GPS tiene un ruido de unos pocos milímetros, así que los valores cambian ligeramente incluso cuando el robot está quieto. Nunca compares posiciones buscando una igualdad exacta.
+
+## Ejemplo: distancia desde la salida \{#example-distance-from-the-start\}
+
+Este programa avanza hasta que el robot está a media baldosa de donde empezó:
+
+<CodeTabs file="travelled" />

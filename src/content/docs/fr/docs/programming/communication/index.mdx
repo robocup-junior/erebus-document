@@ -1,0 +1,66 @@
+---
+title: Communication
+description: Signalez les marqueurs muraux, déclenchez une absence de progression, demandez le score et terminez la partie.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Votre programme communique avec le jeu grâce à deux composants que tous les robots possèdent :
+
+- L’**émetteur** (emitter) envoie des messages au jeu. Il n’a pas besoin d’être activé.
+- Le **récepteur** (receiver) reçoit les messages du jeu. Activez-le comme un capteur.
+
+Chaque section ci-dessous est un programme complet pour le [robot de départ](/docs/robot/). Tous les messages sont listés dans la [Référence des messages](/docs/reference/messages/).
+
+## Marquer des points avec les marqueurs muraux \{#scoring-wall-tokens\}
+
+Pour marquer les points d’une victime lettre (letter victim) ou d’une cible cognitive (cognitive target), le robot doit :
+
+1. **S’arrêter plus d’une seconde** près du marqueur. Erebus ignore le signalement si le robot a bougé au cours de la dernière seconde.
+2. **Envoyer la position et le type** du marqueur : X et Z en **centimètres**, et le type sous forme d’une lettre.
+
+| Marqueur mural | Type |
+|---|---|
+| Victime lettre Φ (blessée, harmed) | `H` |
+| Victime lettre Ψ (stable) | `S` |
+| Victime lettre Ω (indemne, unharmed) | `U` |
+| Cible cognitive, somme 0 (Gaz inflammable, Flammable Gas) | `F` |
+| Cible cognitive, somme 1 (Toxique, Poison) | `P` |
+| Cible cognitive, somme 2 (Corrosif, Corrosive) | `C` |
+| Cible cognitive, somme 3 (Peroxyde organique, Organic Peroxide) | `O` |
+
+Les types sont des lettres, même si les victimes affichent des symboles depuis 2026. Le GPS donne des mètres : multipliez donc par 100.
+
+<CodeTabs file="report" />
+
+Le robot doit être du même côté du mur que le marqueur, et le robot comme la position envoyée doivent en être proches. Les règles exigent au plus une demi-case : visez cela. Erebus v26.1 vérifie une distance de 9 cm.
+
+Exécutez ce programme au départ de `world1.wbt` : il n’y a pas de marqueur à cet endroit, donc l’historique de la fenêtre de contrôle affiche `Misidentification of Victim -5`. Un mauvais signalement, y compris le signalement d’un leurre, coûte 5 points, et chaque marqueur ne rapporte des points qu’une seule fois.
+
+## Absence de progression \{#lack-of-progress\}
+
+Quand le robot est bloqué, une absence de progression (Lack of Progress) le ramène au dernier point de contrôle et coûte 5 points. Elle se produit automatiquement au bout de 20 secondes sans mouvement, et votre programme peut aussi la déclencher en envoyant `L`. À chaque fois, le jeu envoie `L` au robot, pour que votre programme sache que sa position a changé.
+
+<CodeTabs file="lop" />
+
+Le récepteur peut recevoir différents messages : vérifiez donc la longueur de chacun avant de le lire, comme dans l’exemple.
+
+## Informations de jeu \{#game-information\}
+
+Envoyez `G` pour obtenir le score et le temps restant. Le jeu répond par un message de 16 octets : la lettre `G`, le score, le temps de jeu restant et le temps réel restant, en secondes.
+
+<CodeTabs file="gameinfo" />
+
+Le temps de jeu s’écoule plus vite dans les marécages, et la partie se termine dès que l’un des deux temps est écoulé. Utilisez les deux pour savoir quand revenir au départ.
+
+## Terminer la partie \{#ending-the-game\}
+
+Envoyez `E` pour terminer la partie. Si le robot est sur la case de départ et a identifié au moins un marqueur mural, il obtient le bonus de sortie (exit bonus) de 10 %.
+
+<CodeTabs file="exit" />
+
+:::caution
+La partie se termine là où se trouve le robot quand il envoie `E`, et le robot ne peut plus continuer. Assurez-vous d’abord qu’il est revenu sur la case de départ, et qu’il a [soumis sa carte](/docs/programming/map-bonus/).
+:::
+
+Ensuite, apprenez à distinguer les marqueurs dans [Marqueurs muraux](/docs/programming/wall-tokens/).

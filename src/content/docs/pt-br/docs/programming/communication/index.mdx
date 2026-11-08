@@ -1,0 +1,66 @@
+---
+title: Comunicação
+description: Informe marcadores nas paredes, declare uma falta de progresso, peça a pontuação e termine a partida.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+O seu programa conversa com a partida por meio de dois dispositivos que todo robô tem:
+
+- O **emissor** (emitter) envia mensagens para a partida. Ele não precisa ser ativado.
+- O **receptor** (receiver) recebe mensagens da partida. Ative-o como um sensor.
+
+Cada seção abaixo é um programa completo para o [robô inicial](/docs/robot/). Todas as mensagens estão listadas na [Referência de mensagens](/docs/reference/messages/).
+
+## Pontuando com marcadores nas paredes \{#scoring-wall-tokens\}
+
+Para pontuar com uma vítima de letra (letter victim) ou um alvo cognitivo (cognitive target), o robô precisa:
+
+1. **Ficar parado por mais de 1 segundo** perto do marcador. O Erebus ignora o informe se o robô se moveu no último segundo.
+2. **Enviar a posição e o tipo** do marcador: X e Z em **centímetros**, e o tipo como uma letra.
+
+| Marcador de parede | Tipo |
+|---|---|
+| Vítima de letra Φ (ferida) | `H` |
+| Vítima de letra Ψ (estável) | `S` |
+| Vítima de letra Ω (ilesa) | `U` |
+| Alvo cognitivo, soma 0 (gás inflamável) | `F` |
+| Alvo cognitivo, soma 1 (veneno) | `P` |
+| Alvo cognitivo, soma 2 (corrosivo) | `C` |
+| Alvo cognitivo, soma 3 (peróxido orgânico) | `O` |
+
+Os tipos são letras, mesmo que as vítimas mostrem símbolos desde 2026. O GPS fornece metros, então multiplique por 100.
+
+<CodeTabs file="report" />
+
+O robô precisa estar do mesmo lado da parede que o marcador, e tanto o robô quanto a posição que você envia precisam estar perto dele. As regras exigem no máximo meio ladrilho, então mire nisso. O Erebus v26.1 verifica uma distância de 9 cm.
+
+Execute este programa no início de `world1.wbt`: não há nenhum marcador ali, então o histórico da janela de controle mostra `Misidentification of Victim -5`. Um informe errado, incluindo o informe de um falso, custa 5 pontos, e cada marcador só pode ser pontuado uma vez.
+
+## Falta de progresso \{#lack-of-progress\}
+
+Quando o robô fica preso, uma falta de progresso (Lack of Progress, LoP) o leva de volta ao último ponto de controle (checkpoint) e custa 5 pontos. Ela acontece automaticamente após 20 segundos sem se mover, e o seu programa também pode declará-la enviando `L`. A cada vez, a partida envia `L` ao robô, para que o seu programa saiba que a posição dele mudou.
+
+<CodeTabs file="lop" />
+
+O receptor pode receber mensagens diferentes, então confira o tamanho de cada uma antes de lê-la, como no exemplo.
+
+## Informações da partida \{#game-information\}
+
+Envie `G` para obter a pontuação e o tempo restante. A partida responde com uma mensagem de 16 bytes: a letra `G`, a pontuação, o tempo de partida restante e o tempo real restante, em segundos.
+
+<CodeTabs file="gameinfo" />
+
+O tempo de partida corre mais rápido nos pântanos, e a partida termina quando qualquer um dos dois tempos acaba. Use os dois para saber quando voltar para o início.
+
+## Terminando a partida \{#ending-the-game\}
+
+Envie `E` para terminar a partida. Se o robô estiver no ladrilho inicial e tiver identificado pelo menos um marcador, ele ganha o bônus de saída (exit bonus) de 10%.
+
+<CodeTabs file="exit" />
+
+:::caution
+A partida termina onde quer que o robô esteja quando envia `E`, e o robô não pode continuar. Garanta antes que ele voltou ao ladrilho inicial e já [enviou o seu mapa](/docs/programming/map-bonus/).
+:::
+
+Em seguida, aprenda a diferenciar os marcadores em [Marcadores nas paredes](/docs/programming/wall-tokens/).

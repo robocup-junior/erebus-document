@@ -1,0 +1,35 @@
+---
+title: Sensor de color
+description: "Usa el sensor de color para ver el suelo bajo el robot: agujeros, pantanos, puntos de control y pasos."
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+El sensor de color mira al suelo, así que informa al robot de agujeros, pantanos y pasos. Es una cámara de un solo píxel que apunta hacia abajo. En el robot inicial se llama `color` y está en la parte delantera del robot, para que vea un agujero antes de que las ruedas lleguen a él.
+
+<CodeTabs file="read" />
+
+## Colores del suelo \{#floor-colours\}
+
+Estos valores se midieron con el robot inicial en `world2.wbt`:
+
+| Suelo | Rojo | Verde | Azul |
+|---|---:|---:|---:|
+| Normal | 252 | 252 | 252 |
+| Pantano | 245 | 222 | 142 |
+| Paso entre las áreas 1 y 2 (azul) | 91 | 91 | 255 |
+| Paso entre las áreas 2 y 3 (morado) | 193 | 91 | 251 |
+| Paso entre las áreas 1 y 4 (verde) | 48 | 255 | 48 |
+| Paso entre las áreas 3 y 4 (rojo) | 255 | 91 | 91 |
+
+:::caution
+Los valores cambian según el mundo: el suelo normal lee unos 240 en `world1.wbt`. Usa rangos en lugar de valores exactos, y compruébalos con `calibrateColourSensor.py` en la carpeta `player_controllers` de Erebus.
+:::
+
+Los agujeros tienen un borde negro, así que el suelo se oscurece justo antes de un agujero. Para este sensor, los puntos de control (checkpoints) parecen casi suelo normal, así que calíbralo sobre uno en tu mundo.
+
+## Ejemplo: vigilar el suelo \{#example-watching-the-floor\}
+
+Este programa avanza, imprime el suelo cada vez que cambia y se detiene si ve un agujero:
+
+<CodeTabs file="floor" />

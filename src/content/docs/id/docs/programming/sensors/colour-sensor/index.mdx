@@ -1,0 +1,35 @@
+---
+title: Sensor warna
+description: "Gunakan sensor warna untuk melihat lantai di bawah robot: lubang, rawa, checkpoint, dan lorong penghubung."
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Sensor warna melihat ke lantai, jadi sensor ini memberi tahu robot tentang lubang, rawa, dan lorong penghubung. Sensor ini adalah kamera satu piksel yang menghadap ke bawah. Pada robot pemula, namanya `color`, dan letaknya di bagian depan robot, agar bisa melihat lubang sebelum roda mencapainya.
+
+<CodeTabs file="read" />
+
+## Warna lantai \{#floor-colours\}
+
+Nilai-nilai ini diukur dengan robot pemula di `world2.wbt`:
+
+| Lantai | Merah | Hijau | Biru |
+|---|---:|---:|---:|
+| Normal | 252 | 252 | 252 |
+| Rawa | 245 | 222 | 142 |
+| Lorong antara area 1 dan 2 (biru) | 91 | 91 | 255 |
+| Lorong antara area 2 dan 3 (ungu) | 193 | 91 | 251 |
+| Lorong antara area 1 dan 4 (hijau) | 48 | 255 | 48 |
+| Lorong antara area 3 dan 4 (merah) | 255 | 91 | 91 |
+
+:::caution
+Nilainya berubah tergantung world: lantai normal terbaca sekitar 240 di `world1.wbt`. Gunakan rentang nilai, bukan nilai yang persis, dan periksa dengan `calibrateColourSensor.py` di folder `player_controllers` milik Erebus.
+:::
+
+Lubang punya tepi hitam, jadi lantai menjadi gelap tepat sebelum lubang. Bagi sensor ini, checkpoint terlihat hampir sama dengan lantai normal, jadi lakukan kalibrasi pada salah satu checkpoint di world-mu.
+
+## Contoh: mengamati lantai \{#example-watching-the-floor\}
+
+Program ini membuat robot maju, mencetak jenis lantai setiap kali berubah, dan berhenti jika melihat lubang:
+
+<CodeTabs file="floor" />

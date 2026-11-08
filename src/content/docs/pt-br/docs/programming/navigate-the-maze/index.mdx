@@ -1,0 +1,65 @@
+---
+title: Navegue pelo labirinto
+description: Junte movimento e sensores em um primeiro programa completo que explora um labirinto.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+Neste tutorial, você constrói um programa completo, passo a passo. O robô anda pelo labirinto evitando paredes e buracos e informa tudo o que parece ser um marcador de parede. É o programa que você executou em [Sua primeira execução](/docs/getting-started/).
+
+Ele usa o [robô inicial](/docs/robot/) e o que você aprendeu em [Movimento](/docs/programming/movement/) e [Sensores](/docs/programming/sensors/).
+
+O programa completo: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## O campo \{#the-field\}
+Execute-o em `world1.wbt`, que é assim:
+
+![O mundo world1 no Webots](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## Passo a passo \{#step-by-step\}
+
+### 1. Preparação \{#1-setup\}
+Primeiro, o programa cria o robô, obtém os motores das rodas e deixa que eles girem sem limite. `speeds` guarda a velocidade de cada roda, que o resto do programa altera. `reported` lembra onde o robô já informou um marcador.
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. Sensores \{#2-sensors\}
+Em seguida, ele obtém e ativa os sensores do robô inicial:
+
+![O robô de exemplo com os sensores identificados](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. Movimentos \{#3-moves\}
+Estas funções mudam as velocidades para fazer curvas e girar no lugar. `delay` mantém o robô fazendo a mesma coisa por alguns milissegundos, e `getBrightness` lê o sensor de cor como um único valor de 0 (preto) a 255 (branco).
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. Vendo um marcador \{#4-seeing-a-token\}
+Esta função procura marcadores de parede em uma imagem da câmera. Os marcadores são quadrados claros em paredes escuras, então ela procura formas claras que sejam mais ou menos quadradas e não encostem na borda da imagem, onde normalmente fica o piso.
+
+<CodeTabs file="maze" region="detect" />
+
+Este é um começo simples: ele não consegue diferenciar os símbolos e não enxerga bem os alvos cognitivos. O tutorial [Marcadores nas paredes](/docs/programming/wall-tokens/) mostra como fazer melhor.
+
+### 5. Informando \{#5-reporting\}
+Para pontuar com um marcador, o robô precisa parar por mais de 1 segundo e enviar a sua posição e o tipo do marcador. Cada marcador só pode ser pontuado uma vez, e informá-lo de novo custa 5 pontos, então o programa lembra onde já informou. [Comunicação](/docs/programming/communication/) explica essas mensagens.
+
+<CodeTabs file="maze" region="report" />
+
+### 6. O laço principal \{#6-the-main-loop\}
+Por fim, o laço principal junta tudo. A cada passo, ele começa em velocidade máxima, desvia das paredes, recua dos buracos e informa o que a câmera vê quando está perto de uma parede à frente.
+
+<CodeTabs file="maze" region="loop" />
+
+## Como ele se sai? \{#how-well-does-it-do\}
+Este robô vagueia: ele não sabe por onde já passou e chuta o tipo de cada vítima. Às vezes ele fica preso, e a partida o leva de volta a um ponto de controle após 20 segundos. Para um primeiro programa, tudo bem.
+
+## Experimente \{#try-it\}
+- Encontre as melhores velocidades e distâncias para o seu robô.
+- Siga a parede de um lado: mantenha o sensor lateral a uma distância constante e vire quando o sensor da frente vir uma parede.
+- Mude a velocidade de acordo com a proximidade das paredes.
+
+Depois, aprenda a marcar pontos em [Comunicação](/docs/programming/communication/).

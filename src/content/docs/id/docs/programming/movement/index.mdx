@@ -1,0 +1,42 @@
+---
+title: Gerakan
+description: Gerakkan dan belokkan robot dengan mengatur kecepatan kedua rodanya, dan ukur seberapa jauh roda berputar.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Robot punya dua roda, masing-masing dengan motornya sendiri: `left wheel motor` dan `right wheel motor` pada [robot pemula](/docs/robot/). Kamu menggerakkannya dengan mengatur kecepatan setiap roda:
+
+| Roda kiri | Roda kanan | Robotnya... |
+|---|---|---|
+| Maju | Maju | Melaju maju |
+| Mundur | Mundur | Melaju mundur |
+| Mundur | Maju | Berputar ke kiri |
+| Maju | Mundur | Berputar ke kanan |
+| Cepat | Lambat | Berbelok melengkung ke kanan |
+
+Kecepatan dinyatakan dalam **radian per detik**, hingga 6,28 (satu putaran roda per detik). Kecepatan negatif memutar roda ke belakang.
+
+## Melaju \{#custom-mdx-id\}
+
+1. Ambil setiap motor berdasarkan namanya.
+2. Atur posisinya ke tak hingga, agar motor berputar tanpa batas.
+3. Atur kecepatannya.
+
+Motor mempertahankan kecepatan terakhir yang kamu atur, jadi robot tetap bergerak sementara programmu melakukan hal lain. Program ini membuat robot maju, mundur, dan berputar ke kiri, masing-masing selama satu detik:
+
+<CodeTabs file="drive" />
+
+:::note
+Sudut di Webots dinyatakan dalam radian. Untuk mengonversi: radian = derajat × π / 180.
+:::
+
+## Mengukur seberapa jauh roda berputar \{#measuring-how-far-a-wheel-turned\}
+
+Setiap motor punya sensor posisi, yang juga disebut encoder, yang menghitung seberapa jauh roda sudah berputar, dalam radian. Sensor ini berguna untuk melaju sejauh jarak tertentu. Berputar mundur membuat hitungannya berkurang.
+
+<CodeTabs file="encoders" />
+
+Mengatur waktu gerakan itu mudah, tetapi hasilnya berubah tergantung kecepatan. Encoder mengukur gerakannya secara langsung, jadi lebih andal. Untuk belokan yang presisi, [giroskop](/docs/programming/sensors/imu/) lebih baik lagi.
+
+Selanjutnya, pelajari cara membaca [sensor](/docs/programming/sensors/).

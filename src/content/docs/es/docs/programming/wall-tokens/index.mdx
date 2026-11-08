@@ -1,0 +1,60 @@
+---
+title: Marcas en las paredes
+description: Cómo distinguir víctimas de letra, objetivos cognitivos y falsos.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Qué tiene que hacer el robot \{#what-the-robot-has-to-do\}
+Las marcas en las paredes (wall tokens) suponen la mayor parte de tus puntos, y cada informe erróneo cuesta 5 puntos. Así que, por cada marca que encuentres, tienes que decidir entre:
+
+| Es... | Qué hacer |
+|---|---|
+| Una víctima de letra (Letter victim: Φ, Ψ, Ω) | Informa de `H`, `S` o `U` |
+| Una víctima falsa (Fake victim: los mismos símbolos, en tres dimensiones) | No informes de ella y déjala fuera del mapa |
+| Un objetivo cognitivo (Cognitive target) con una suma de 0 a 3 | Informa de `F`, `P`, `C` u `O` |
+| Un objetivo cognitivo con cualquier otra suma | Es falso: no informes de él y déjalo fuera del mapa |
+
+Consulta las [Reglas](/docs/rules/#wall-tokens) para ver las definiciones exactas, y [Comunicación](/docs/programming/communication/#scoring-wall-tokens) para saber cómo enviar el informe.
+
+## Lo que ve la cámara \{#what-the-camera-sees\}
+La cámara del robot inicial tiene 64 × 40 píxeles. Con esa resolución, una marca ocupa solo unos pocos píxeles hasta que el robot está cerca, así que lo mejor es buscar candidatas desde lejos y luego acercarse para leerlas. Recuerda que un informe exige que el robot esté a menos de media baldosa de la marca, y que las cámaras personalizadas pueden tener más resolución, a cambio de un coste.
+
+![Un objetivo cognitivo visto por una cámara de 64 por 40](../../../../docs/programming/wall-tokens/camera_target.png)
+
+
+Las víctimas de letra son símbolos negros sobre un cuadrado blanco, y pueden estar giradas en cualquier ángulo, así que tu método no debe depender de la orientación.
+
+![Una víctima de letra en una pared del simulador](../../../../docs/programming/wall-tokens/letter_victim.png)
+
+
+## Leer un objetivo cognitivo \{#reading-a-cognitive-target\}
+Un objetivo cognitivo está formado por cinco partes concéntricas, así que no hace falta reconocer su forma: cuando hayas encontrado su centro y su radio exterior, puedes tomar una muestra del color en el centro de cada parte. Las partes tienen radios de 0,5, 1, 1,5, 2 y 2,5 cm, así que sus puntos medios están a 0, 0,3, 0,5, 0,7 y 0,9 del radio exterior.
+
+Esta función lo hace con OpenCV en Python. Para encontrar el centro y el radio, puedes usar por ejemplo el contorno del objetivo, como en [Recorre el laberinto](/docs/programming/navigate-the-maze/).
+
+<CodeTabs file="readRings" />
+
+En una ejecución real, puede que el objetivo se vea en ángulo, y entonces parece una elipse. Ponerte delante de él, tomar como aviso los colores que parezcan incorrectos o leer varios fotogramas hará que el resultado sea más fiable.
+
+## Calcular el tipo \{#calculating-the-type\}
+Cuando tengas los cinco colores, el código que hay que informar sale de su suma. Cada una de las cinco partes cuenta siempre, aunque los colores vecinos sean iguales.
+
+<CodeTabs file="targetCode" />
+
+Por ejemplo, `['Y', 'B', 'R', 'K', 'G']` suma 0, así que es `F`, y `['B', 'Y', 'K', 'K', 'K']` suma -4, así que es falso.
+
+## Detectar víctimas falsas \{#detecting-fake-victims\}
+Las víctimas falsas muestran los mismos símbolos que las reales, pero las letras son tridimensionales. Desde el frente, puede que una cámara sola no consiga distinguirlas:
+
+![Una víctima falsa vista de frente](../../../../docs/programming/wall-tokens/fake_victim_front.png)
+
+
+Las reglas indican que la profundidad se puede detectar con uno de los sensores disponibles en el Robot Customizer. Algunas ideas para explorar:
+
+- Compara medidas de distancia tomadas a lo largo de la marca, con un lidar o con sensores de distancia, para buscar una diferencia de altura.
+- Mira la marca desde un ángulo, donde un relieve cambia la forma del símbolo.
+
+Los mundos `world3.wbt` y `world4.wbt` incluyen víctimas falsas, y el [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) puede añadirlas a tus propios mapas. Erebus también incluye el script `scripts/update_maps_with_fakes.py`, que convierte al azar en falsas las víctimas de mundos existentes.
+
+Informar de una falsa cuesta 5 puntos como identificación errónea, mientras que una víctima real en una baldosa lineal vale 15 puntos con su tipo en el área 1, y más en otras áreas. Tenlo en cuenta cuando decidas lo seguro que debe estar tu robot antes de informar.

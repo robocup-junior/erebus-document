@@ -1,0 +1,20 @@
+---
+title: 거리 센서
+description: 거리 센서로 벽까지의 거리를 측정하고, 로봇의 어느 쪽에 벽이 있는지 알아내요.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+거리 센서는 앞에 있는 첫 번째 물체까지의 거리를 최대 0.8 m까지 **미터** 단위로 측정해요. 스타터 로봇에는 왼쪽, 앞쪽, 오른쪽을 향하는 `leftDist`, `frontDist`, `rightDist` 세 개가 있어요.
+
+## 센서 읽기 \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## 벽 찾기 \{#finding-walls\}
+
+타일의 너비는 12 cm이므로, 로봇이 타일 한가운데에 있을 때 옆의 벽은 약 5 cm 떨어져 있어요. 이 프로그램은 세 센서를 확인하고, 어느 센서가 벽을 보는지 출력해요.
+
+<CodeTabs file="walls" />
+
+센서는 로봇의 중심이 아니라 센서가 달린 위치에서 측정해요. 벽 옆에서 값을 출력해 보고 직접 기준값을 정하세요.

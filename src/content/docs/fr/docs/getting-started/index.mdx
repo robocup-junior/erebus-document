@@ -1,0 +1,95 @@
+---
+title: Votre premier essai
+description: Chargez votre robot et un programme prêt à l’emploi, et regardez-le explorer un labyrinthe.
+---
+
+import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
+
+Sur cette page, vous exécutez un programme complet sur votre robot, et vous apprenez à utiliser la fenêtre de contrôle d’Erebus. Il vous faut [Erebus installé](/docs/installation/) et [votre robot](/docs/robot/).
+
+## Le dossier Erebus \{#the-erebus-folder\}
+Voici les principaux dossiers de la version que vous avez téléchargée :
+
+| Dossier | Contenu |
+|---|---|
+| `game/worlds` | Les mondes (fichiers `.wbt`). Ouvrez-en un pour commencer. |
+| `game/logs` | Les journaux de jeu écrits à la fin de chaque partie |
+| `player_controllers` | Des contrôleurs d’exemple |
+
+## La fenêtre de contrôle \{#the-control-window\}
+1. Ouvrez `game/worlds/world1.wbt` dans Webots.
+1. Webots ouvre la fenêtre de contrôle d’Erebus (la fenêtre robot du Main Supervisor) dans votre navigateur web. C’est là que vous chargez votre programme et lancez la partie.
+
+![La fenêtre de contrôle d’Erebus](../../../docs/getting-started/control_window.png)
+
+| Élément | Utilité |
+|---|---|
+| **LOAD** de gauche (icône d’ordinateur portable) | Charge le programme contrôleur de votre robot |
+| **LOAD** de droite (icône de robot) | Charge votre robot (fichier `.json`) |
+| **TOGGLE REMOTE** | Permet à un programme exécuté en dehors de Webots de contrôler le robot. Consultez [Remote Controller](/docs/competition/remote-controller/). |
+| **Docker path** | Dossier contenant un `Dockerfile`, pour exécuter votre contrôleur dans un conteneur avec le bouton Docker situé à côté du bouton de lecture. Consultez le dépôt [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). C’est facultatif. |
+| **Settings** | Liens et options, expliqués plus bas |
+| **Worlds** | Passe à un autre monde |
+| **Reset** | Réinitialise le programme chargé et la partie |
+| **Give up!** | Termine la partie |
+| Chronomètres | Le temps de jeu, et en dessous, entre crochets, le temps réel. La partie se termine dès que l’un des deux atteint 0. |
+| Calculatrice | Le score actuel |
+
+## Exécuter un programme \{#run-a-program\}
+<a href={mazeUrl} download="maze.py">Télécharger maze.py</a>, un programme complet qui fait parcourir le labyrinthe au robot. C’est le programme que vous écrirez vous-même dans [Parcourir le labyrinthe](/docs/programming/navigate-the-maze/).
+
+1. Ouvrez `game/worlds/world1.wbt`.
+1. Chargez votre robot avec le **bouton LOAD de droite**, si ce n’est pas déjà fait. Le monde se recharge avec lui.
+1. Chargez `maze.py` avec le **bouton LOAD de gauche**. Une fois le programme chargé, le bouton devient un bouton REMOVE orange.
+1. Appuyez sur le bouton de démarrage. Le robot apparaît dans le monde et commence à se déplacer.
+![Bouton de démarrage](../../../docs/getting-started/start_button.png)
+1. Pour arrêter temporairement le robot, appuyez sur le bouton pause.
+![Bouton pause](../../../docs/getting-started/pause_button.png)
+1. Si le robot est bloqué, le bouton de redémarrage déclenche une absence de progression (Lack of Progress) : le robot est replacé au dernier point de contrôle (checkpoint) atteint, et cela coûte 5 points.
+![Bouton d’absence de progression](../../../docs/getting-started/lop_button.png)
+1. Appuyez sur le bouton Reset pour réinitialiser le programme chargé et la partie en cours. Rechargez le monde si vous voulez rejouer après la fin d’une partie.
+
+Le programme a besoin d’OpenCV, que vous avez installé avec les autres [bibliothèques Python](/docs/installation/#python-libraries). Les messages de votre programme, ainsi que les erreurs, apparaissent dans la console de Webots.
+
+Pendant la partie, l’historique du score s’affiche en bas de la fenêtre. Il vous indique précisément pourquoi vous avez gagné ou perdu des points : c’est le meilleur outil pour vérifier votre programme.
+
+![La fenêtre de contrôle pendant une partie, avec l’historique du score](../../../docs/getting-started/control_window_running.png)
+
+À la fin de la partie, les mêmes informations sont enregistrées dans le dossier `game/logs`.
+
+## Utiliser d’autres mondes \{#using-other-worlds\}
+Appuyez sur **Worlds** pour passer à un autre monde. Chaque monde a une miniature, et vous pouvez aussi ajouter les vôtres, créés avec le [World Editor](/docs/tools/world-editor/).
+
+![L’onglet Worlds de la fenêtre de contrôle](../../../docs/getting-started/worlds.png)
+
+Les mondes inclus dans Erebus v26.1 sont :
+
+| Monde | Rôle |
+|---|---|
+| `world1.wbt`, `world2.wbt` | Mondes d’exemple. `world2.wbt` contient la zone 4. |
+| `world3.wbt`, `world4.wbt` | Mondes d’exemple plus grands, qui contiennent aussi des **fausses victimes** (fake victims) |
+| `mapping_example_1.wbt` à `mapping_example_3.wbt` | Mondes pour tester votre cartographie. Consultez [Cartographie](/docs/rules/mapping/). |
+| `NewPassages.wbt` | Exemple des passages entre les zones |
+
+## Réglages \{#settings\}
+![L’onglet Settings de la fenêtre de contrôle](../../../docs/getting-started/settings.png)
+
+| Réglage | Utilité |
+|---|---|
+| Keep controller/robot files | Garde votre programme et votre robot chargés quand le monde est rechargé |
+| Disable automatic LoP | Désactive l’absence de progression automatique au bout de 20 secondes. Uniquement pour le débogage. |
+| Automatic camera | La vue suit le robot |
+| Recording | Enregistre la partie en vidéo |
+| Keep remote controller on | Garde TOGGLE REMOTE activé quand le monde est rechargé |
+| Enable debugging | Affiche des informations supplémentaires dans la console de Webots, par exemple la raison pour laquelle le signalement d’un marqueur mural a été refusé |
+
+Les liens en haut mènent au journal des modifications et aux outils pour créer des mondes et des robots. Pour créer des mondes conformes aux règles 2026, utilisez le [World Editor](https://world.erebus.rcj.cloud/).
+
+## Déplacer le robot à la main \{#manually-move-the-robot-where-you-want-it-to-go\}
+Quand vous cliquez sur un robot dans la fenêtre de simulation, des flèches rouge, bleue et verte apparaissent. Vous pouvez déplacer le robot à n’importe quelle position en saisissant ces flèches avec la souris. Notez que le robot ne s’affiche qu’une fois le programme démarré.
+![Le robot sélectionné dans Webots, avec les flèches pour le déplacer](../../../docs/getting-started/manual.png)
+
+
+## Et ensuite \{#next\}
+Vous avez vu un robot explorer tout seul. Apprenez maintenant à le programmer vous-même : commencez par [Votre premier programme](/docs/programming/first-program/).
+

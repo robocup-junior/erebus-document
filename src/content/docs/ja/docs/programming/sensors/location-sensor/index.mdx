@@ -1,0 +1,22 @@
+---
+title: 位置センサー
+description: GPS でロボットが迷路のどこにいるかを知り、その位置を使って壁のトークンを報告します。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+位置センサー（**GPS**）は、ロボットの位置を **メートル** 単位で返します。スターターロボットでは `gps` という名前です。[壁のトークンを報告する](/docs/programming/communication/#scoring-wall-tokens)には位置センサーが必要で、[計画的に探索する](/docs/programming/exploring/)ときにもとても役立ちます。
+
+`getValues()` は `[x, y, z]` を返します。**X と Z が水平方向**で、Y が垂直方向なので、迷路内の位置には X と Z を使います。
+
+![水平面の X 軸と Z 軸、垂直方向の Y 軸](../../../../../docs/programming/sensors/location-sensor/coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+GPS には数ミリメートルのノイズがあるので、ロボットが止まっていても値は少しずつ変わります。位置が完全に一致するかどうかで比較してはいけません。
+
+## 例: スタートからの距離 \{#example-distance-from-the-start\}
+
+このプログラムは、ロボットがスタート地点からタイル半分の距離に達するまで前進します。
+
+<CodeTabs file="travelled" />

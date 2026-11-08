@@ -1,0 +1,34 @@
+---
+title: macOS
+description: Installer Erebus et Webots R2023b sur macOS.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. Installez **Python 3.9 ou plus récent** depuis le [site officiel](https://www.python.org/downloads/macos/).
+
+   Même si vous avez déjà Python via Homebrew, Anaconda ou un outil similaire, nous vous recommandons de l’installer de cette façon. Sinon, la simulation risque de ne pas fonctionner correctement.
+
+2. Ouvrez le terminal et installez les bibliothèques nécessaires :
+
+   ```bash
+   python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+   ```
+
+3. Installez **Webots R2023b** depuis le [dépôt officiel](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b.dmg).
+
+4. Téléchargez la dernière [version d’Erebus](https://github.com/robocup-junior/erebus/releases) : ouvrez **Assets** et choisissez **Source code (zip)**. Décompressez-la.
+
+</Steps>
+
+## Lancer l’environnement \{#run-the-environment\}
+
+Double-cliquez sur le fichier de monde `game/worlds/world1.wbt` pour l’ouvrir dans Webots.
+
+Webots ouvre la fenêtre de contrôle d’Erebus dans votre navigateur web. La première fois, Erebus installe quelques bibliothèques Python, ce qui peut prendre un moment. Il est prêt quand la fenêtre affiche le chronomètre de jeu à 08:00 :
+
+![La fenêtre de contrôle d’Erebus, prête à démarrer](../../../../docs/installation/mac/../control-window-ready.png)
+
+Ensuite, lisez le [Résumé des règles](/docs/rules/) pour comprendre le jeu. En cas de problème, consultez [Dépannage](/docs/troubleshooting/).

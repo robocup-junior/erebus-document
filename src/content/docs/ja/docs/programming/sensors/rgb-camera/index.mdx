@@ -1,0 +1,30 @@
+---
+title: RGB カメラ
+description: Webots でカメラ画像を読み取り、OpenCV で処理して壁のトークンを見つけます。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+カメラは、正面にあるものの画像を返します。[壁のトークン](/docs/programming/wall-tokens/)を見つけて読み取るにはカメラが必要です。スターターロボットには、`camera` という名前の 64 × 40 ピクセルのカメラが 1 台あります。
+
+## ピクセルを読み取る \{#reading-pixels\}
+
+画像はピクセルの格子です。各ピクセルは 0 から 255 までの赤・緑・青の値を持ち、(0, 0, 0) が黒、(255, 255, 255) が白です。
+
+<CodeTabs file="read" />
+
+## OpenCV を使う \{#using-opencv\}
+
+[OpenCV](https://opencv.org/) は画像を処理するライブラリで、形を見つけたり、色を比べたり、ほかにもいろいろなことができます。Webots の画像はピクセルごとに BGRA の順で 4 つの値を持ち、OpenCV でそのまま使えます。このプログラムは、画像とその明るい部分を 2 つのウィンドウに表示します。
+
+<CodeTabs file="opencv" />
+
+:::note
+Python の場合、OpenCV はほかの [Python ライブラリ](/docs/installation/#python-libraries)と一緒にインストールされます。C++ の場合は、OpenCV をインストールし、[コンパイル時に追加する](/docs/programming/cpp/#compiling)必要があります。C++ の例は OpenCV 4 でテストしています。
+:::
+
+このようなウィンドウは自宅でのテスト用です。競技では表示しないようにしましょう。
+
+## 解像度 \{#resolution\}
+
+解像度が高いほど遠くのトークンまで見えますが、コストが高くなり、処理にも時間がかかります。各カメラの解像度は [Robot Customizer](/docs/robot/customizer/#components) で選びます。

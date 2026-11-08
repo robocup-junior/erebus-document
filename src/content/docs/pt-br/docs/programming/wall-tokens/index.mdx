@@ -1,0 +1,60 @@
+---
+title: Marcadores nas paredes
+description: Como diferenciar vítimas de letra, alvos cognitivos e falsos.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## O que o robô precisa fazer \{#what-the-robot-has-to-do\}
+Os marcadores nas paredes (wall tokens) valem a maior parte dos seus pontos, e cada informe errado custa 5 pontos. Então, para cada marcador que encontrar, você precisa decidir entre:
+
+| É... | O que fazer |
+|---|---|
+| Uma vítima de letra (Φ, Ψ, Ω) | Informe `H`, `S` ou `U` |
+| Uma vítima falsa (os mesmos símbolos, tridimensionais) | Não a informe e deixe-a fora do mapa |
+| Um alvo cognitivo com soma de 0 a 3 | Informe `F`, `P`, `C` ou `O` |
+| Um alvo cognitivo com qualquer outra soma | É falso: não o informe e deixe-o fora do mapa |
+
+Veja as [Regras](/docs/rules/#wall-tokens) para as definições exatas e [Comunicação](/docs/programming/communication/#scoring-wall-tokens) para saber como enviar o informe.
+
+## O que a câmera vê \{#what-the-camera-sees\}
+A câmera do robô inicial tem 64 × 40 pixels. Nessa resolução, um marcador ocupa só alguns pixels até o robô chegar perto, então o melhor é procurar candidatos de longe e depois se aproximar para lê-los. Lembre que, para informar, o robô precisa estar a no máximo meio ladrilho do marcador, e que câmeras personalizadas podem ter uma resolução maior, com um custo.
+
+![Um alvo cognitivo visto por uma câmera de 64 por 40](../../../../docs/programming/wall-tokens/camera_target.png)
+
+
+As vítimas de letra (letter victims) são símbolos pretos em um quadrado branco, e podem estar giradas em qualquer ângulo, então o seu método não pode depender da orientação.
+
+![Uma vítima de letra em uma parede no simulador](../../../../docs/programming/wall-tokens/letter_victim.png)
+
+
+## Lendo um alvo cognitivo \{#reading-a-cognitive-target\}
+Um alvo cognitivo (cognitive target) é formado por cinco partes concêntricas, então não é preciso reconhecer a sua forma: depois de encontrar o centro e o raio externo, você pode amostrar a cor no meio de cada parte. As partes têm raios de 0,5, 1, 1,5, 2 e 2,5 cm, então os pontos do meio delas ficam em 0, 0,3, 0,5, 0,7 e 0,9 do raio externo.
+
+Esta função faz isso com o OpenCV em Python. Para encontrar o centro e o raio, você pode, por exemplo, usar o contorno do alvo, como em [Navegue pelo labirinto](/docs/programming/navigate-the-maze/).
+
+<CodeTabs file="readRings" />
+
+Em uma execução real, o alvo pode ser visto de lado e, nesse caso, parece uma elipse. Posicionar-se de frente para ele, usar as cores que parecem erradas como alerta ou ler vários quadros vai deixar o resultado mais confiável.
+
+## Calculando o tipo \{#calculating-the-type\}
+Depois de obter as cinco cores, o código a informar vem da soma delas. Cada uma das cinco partes sempre conta, mesmo quando cores vizinhas são iguais.
+
+<CodeTabs file="targetCode" />
+
+Por exemplo, `['Y', 'B', 'R', 'K', 'G']` soma 0, então é `F`, e `['B', 'Y', 'K', 'K', 'K']` soma -4, então é falso.
+
+## Detectando vítimas falsas \{#detecting-fake-victims\}
+As vítimas falsas (fake victims) mostram os mesmos símbolos que as reais, mas as letras são tridimensionais. De frente, só uma câmera pode não conseguir diferenciá-las:
+
+![Uma vítima falsa vista de frente](../../../../docs/programming/wall-tokens/fake_victim_front.png)
+
+
+As regras dizem que a profundidade pode ser detectada com um dos sensores disponíveis no Robot Customizer. Algumas ideias para explorar:
+
+- Compare medidas de distância tomadas ao longo do marcador, com um Lidar ou com sensores de distância, para procurar uma diferença de altura.
+- Olhe para o marcador de lado, onde um relevo muda a forma do símbolo.
+
+Os mundos `world3.wbt` e `world4.wbt` têm vítimas falsas, e o [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) pode adicioná-las aos seus próprios mapas. O Erebus também inclui o script `scripts/update_maps_with_fakes.py`, que transforma aleatoriamente vítimas de mundos existentes em falsas.
+
+Informar um falso custa 5 pontos como identificação errada, enquanto uma vítima real em um ladrilho linear vale 15 pontos com o seu tipo na área 1, e mais nas outras áreas. Leve isso em conta ao decidir o quanto o seu robô precisa ter certeza antes de informar.

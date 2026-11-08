@@ -1,0 +1,32 @@
+---
+title: Gyroscope et accéléromètre
+description: Mesurez la rotation et l’accélération du robot.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Gyroscope \{#gyroscope\}
+
+Le gyroscope renvoie la vitesse de rotation du robot autour de chaque axe, en **radians par seconde**. Sur le robot de départ, il s’appelle `gyro`.
+
+`getValues()` renvoie `[x, y, z]`. L’**axe Y est vertical** : `getValues()[1]` est donc la vitesse de rotation du robot. Elle est positive quand il tourne vers la gauche.
+
+:::caution
+Ceci concerne le gyroscope du robot de départ. Les axes suivent la rotation du gyroscope : si vous le faites pivoter sur votre propre robot, vérifiez quelle valeur change quand le robot tourne.
+:::
+
+## Exemple : tourner de 90 degrés \{#example-turning-90-degrees\}
+
+Additionnez la vitesse de rotation multipliée par le pas de temps pour obtenir l’angle parcouru. C’est plus fiable que de chronométrer le virage, car cela ne dépend pas de la vitesse.
+
+<CodeTabs file="turn" />
+
+Lors d’un test sur le robot de départ, l’angle calculé de cette façon correspondait à la rotation réelle à 0,01 radian près. Les petites erreurs s’accumulent au cours d’une partie : corrigez donc l’orientation quand vous le pouvez, par exemple en vous alignant sur un mur.
+
+## Accéléromètre \{#accelerometer\}
+
+L’accéléromètre renvoie l’accélération le long de chaque axe en m/s². Sur le robot de départ, il s’appelle `accelerometer`. Au repos, `getValues()[1]` vaut environ 9,8 : c’est la gravité.
+
+## Centrale inertielle \{#inertial-unit\}
+
+La centrale inertielle (inertial unit) n’est pas présente sur le robot de départ. Avec le [Robot Customizer](/docs/robot/customizer/), vous pouvez en ajouter une, nommée `inertial_unit` par défaut. Elle donne directement l’orientation, avec `getRollPitchYaw()`, sans avoir à additionner les vitesses de rotation. Consultez la [référence Webots](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b).

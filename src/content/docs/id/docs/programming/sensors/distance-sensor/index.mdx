@@ -1,0 +1,20 @@
+---
+title: Sensor jarak
+description: Ukur jarak ke dinding dengan sensor jarak, dan cari tahu sisi robot mana yang memiliki dinding.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Sensor jarak mengukur jarak, dalam **meter**, ke benda pertama di depannya, hingga 0,8 m. Robot pemula punya tiga sensor: `leftDist`, `frontDist`, dan `rightDist`, yang menghadap ke kiri, depan, dan kanan.
+
+## Membaca sensor \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## Menemukan dinding \{#finding-walls\}
+
+Lebar satu ubin adalah 12 cm, jadi saat robot berada di tengah ubin, dinding di sampingnya berjarak sekitar 5 cm. Program ini memeriksa ketiga sensor, lalu mencetak sensor mana yang melihat dinding:
+
+<CodeTabs file="walls" />
+
+Sensor mengukur dari posisinya di robot, bukan dari tengah robot. Cetak nilainya saat robot berada di dekat dinding untuk menentukan batasmu sendiri.

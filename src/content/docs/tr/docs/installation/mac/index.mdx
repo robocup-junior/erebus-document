@@ -1,0 +1,34 @@
+---
+title: macOS
+description: Erebus'u ve Webots R2023b'yi macOS'a kur.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. [Resmî web sitesinden](https://www.python.org/downloads/macos/) **Python 3.9 ya da daha yenisini** kur.
+
+   Homebrew, Anaconda ya da benzeri bir yolla Python zaten kuruluysa bile bu şekilde kurmanı öneririz. Aksi halde simülasyon düzgün çalışmayabilir.
+
+2. Terminali aç ve gerekli kütüphaneleri kur:
+
+   ```bash
+   python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+   ```
+
+3. **Webots R2023b**'yi [resmî depodan](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b.dmg) kur.
+
+4. En son [Erebus sürümünü](https://github.com/robocup-junior/erebus/releases) indir: **Assets** bölümünü aç ve **Source code (zip)** seçeneğini seç. Dosyayı zip'ten çıkar.
+
+</Steps>
+
+## Ortamı çalıştır \{#run-the-environment\}
+
+Webots'ta açmak için `game/worlds/world1.wbt` dünya dosyasına çift tıkla.
+
+Webots, Erebus kontrol penceresini web tarayıcında açar. İlk seferde Erebus bazı Python kütüphanelerini kurar, bu biraz zaman alabilir. Pencerede 08:00 oyun süresi göründüğünde hazırdır:
+
+![Erebus kontrol penceresi, başlamaya hazır](../../../../docs/installation/mac/../control-window-ready.png)
+
+Sonra oyunu anlamak için [Kural özeti](/docs/rules/) sayfasını oku. Bir şeyler ters giderse [Sorun giderme](/docs/troubleshooting/) sayfasına bak.

@@ -1,0 +1,26 @@
+---
+title: LIDAR
+description: Ukur jarak di sekeliling robot dengan lidar, sebagai gambar jarak (range image) atau awan titik (point cloud).
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Lidar mengukur jarak dalam **meter** di sekeliling robot, seperti banyak sensor jarak sekaligus. Pada robot pemula, namanya `lidar`, dan letaknya di atas robot.
+
+Lidar mengukur 512 titik di sekeliling robot, dalam 4 lapisan yang bertumpuk, hingga sejauh 1 m. Titik yang tidak mengenai apa pun bernilai `inf`.
+
+## Membaca jarak \{#reading-distances\}
+
+`getLayerRangeImage(0)` memberikan 512 jarak dari satu lapisan. Yang pertama berada di depan robot, dan urutannya **searah jarum jam**: seperempat jalan ada di kanan, setengah ada di belakang, dan tiga perempat ada di kiri.
+
+<CodeTabs file="read" />
+
+## Awan titik \{#point-cloud\}
+
+Lidar juga bisa memberikan setiap titik sebagai posisi relatif terhadap lidar, yang berguna untuk menggambar peta dari apa yang dilihat robot. Perhitungannya butuh waktu tambahan, jadi aktifkan hanya jika kamu menggunakannya.
+
+<CodeTabs file="pointcloud" />
+
+:::caution[Menempatkan lidar]
+Pada robot buatanmu sendiri, tempatkan lidar di atas, dengan rotasi yang sama seperti [robot pemula](/docs/robot/build/), agar posisinya datar. Jika berada di dalam badan robot, atau miring, lidar akan mengukur robot itu sendiri.
+:::

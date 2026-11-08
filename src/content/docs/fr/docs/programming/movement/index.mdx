@@ -1,0 +1,42 @@
+---
+title: Déplacement
+description: Faites avancer et tourner le robot en réglant la vitesse de ses deux roues, et mesurez de combien elles tournent.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Le robot a deux roues, chacune avec son propre moteur : `left wheel motor` et `right wheel motor` sur le [robot de départ](/docs/robot/). Vous le pilotez en réglant la vitesse de chaque roue :
+
+| Roue gauche | Roue droite | Le robot… |
+|---|---|---|
+| En avant | En avant | Avance |
+| En arrière | En arrière | Recule |
+| En arrière | En avant | Pivote vers la gauche |
+| En avant | En arrière | Pivote vers la droite |
+| Rapide | Lente | Tourne en courbe vers la droite |
+
+Les vitesses sont en **radians par seconde**, jusqu’à 6,28 (un tour de roue par seconde). Les vitesses négatives font tourner la roue en arrière.
+
+## Avancer \{#custom-mdx-id\}
+
+1. Obtenez chaque moteur grâce à son nom.
+2. Réglez sa position sur l’infini, pour qu’il tourne sans limite.
+3. Réglez sa vitesse.
+
+Les moteurs gardent la dernière vitesse réglée : le robot continue donc de bouger pendant que votre programme fait autre chose. Ce programme avance, recule, puis pivote vers la gauche, pendant une seconde chacun :
+
+<CodeTabs file="drive" />
+
+:::note
+Dans Webots, les angles sont en radians. Pour convertir : radians = degrés × π / 180.
+:::
+
+## Mesurer de combien une roue a tourné \{#measuring-how-far-a-wheel-turned\}
+
+Chaque moteur a un capteur de position, aussi appelé encodeur, qui compte de combien la roue a tourné, en radians. C’est utile pour parcourir une distance précise. Tourner en arrière fait diminuer le compteur.
+
+<CodeTabs file="encoders" />
+
+Chronométrer un mouvement est simple, mais le résultat varie avec la vitesse. Les encodeurs mesurent le mouvement lui-même : ils sont donc plus fiables. Pour des virages précis, le [gyroscope](/docs/programming/sensors/imu/) est encore meilleur.
+
+Ensuite, apprenez à lire les [capteurs](/docs/programming/sensors/).

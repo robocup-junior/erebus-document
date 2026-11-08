@@ -1,0 +1,26 @@
+---
+title: LIDAR
+description: Meça distâncias ao redor de todo o robô com o lidar, como uma imagem de distâncias ou uma nuvem de pontos.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+O lidar mede distâncias em **metros** ao redor de todo o robô, como se fossem muitos sensores de distância ao mesmo tempo. No robô inicial, ele se chama `lidar` e fica em cima do robô.
+
+Ele mede 512 pontos ao redor do robô, em 4 camadas empilhadas umas sobre as outras, até 1 m de distância. Um ponto que não atinge nada vale `inf`.
+
+## Lendo distâncias \{#reading-distances\}
+
+`getLayerRangeImage(0)` fornece as 512 distâncias de uma camada. A primeira fica na frente do robô, e elas seguem no **sentido horário**: um quarto do caminho fica à direita, a metade fica atrás e três quartos ficam à esquerda.
+
+<CodeTabs file="read" />
+
+## Nuvem de pontos \{#point-cloud\}
+
+O lidar também pode fornecer cada ponto como uma posição relativa ao lidar, o que é útil para desenhar um mapa do que o robô vê. Calcular isso leva mais tempo, então ative apenas se for usar.
+
+<CodeTabs file="pointcloud" />
+
+:::caution[Posicionando um lidar]
+Nos seus próprios robôs, coloque o lidar em cima, com a rotação do [robô inicial](/docs/robot/build/), para que ele fique na horizontal. Dentro do corpo, ou inclinado, ele mede o próprio robô.
+:::

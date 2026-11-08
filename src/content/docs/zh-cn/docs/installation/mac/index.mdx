@@ -1,0 +1,34 @@
+---
+title: macOS
+description: 在 macOS 上安装 Erebus 和 Webots R2023b。
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. 从[官方网站](https://www.python.org/downloads/macos/)安装 **Python 3.9 或更高版本**。
+
+   即使你已经通过 Homebrew、Anaconda 或类似工具安装了 Python，我们也建议用这种方式安装。否则，仿真可能无法正常运行。
+
+2. 打开终端，安装所需的库：
+
+   ```bash
+   python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+   ```
+
+3. 从[官方仓库](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b.dmg)安装 **Webots R2023b**。
+
+4. 下载最新的 [Erebus 版本](https://github.com/robocup-junior/erebus/releases)：展开 **Assets**，选择 **Source code (zip)**，然后解压。
+
+</Steps>
+
+## 运行环境 \{#run-the-environment\}
+
+双击世界文件 `game/worlds/world1.wbt`，在 Webots 中打开它。
+
+Webots 会在你的网页浏览器中打开 Erebus 控制窗口。第一次运行时，Erebus 会安装一些 Python 库，这可能需要一段时间。当窗口显示 08:00 的比赛计时器时，就准备好了：
+
+![准备开始的 Erebus 控制窗口](../../../../docs/installation/mac/../control-window-ready.png)
+
+接下来，阅读[规则概要](/docs/rules/)来了解比赛。如果遇到问题，请查看[故障排除](/docs/troubleshooting/)。

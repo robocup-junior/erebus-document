@@ -1,0 +1,60 @@
+---
+title: Penanda dinding
+description: Cara membedakan korban huruf, target kognitif, dan penanda palsu.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Yang harus dilakukan robot \{#what-the-robot-has-to-do\}
+Penanda dinding (wall tokens) menyumbang sebagian besar poinmu, dan setiap laporan yang salah mengurangi 5 poin. Jadi untuk setiap penanda yang kamu temukan, kamu harus memutuskan:
+
+| Penanda itu... | Yang harus dilakukan |
+|---|---|
+| Korban huruf (letter victim) (Φ, Ψ, Ω) | Laporkan `H`, `S`, atau `U` |
+| Korban palsu (fake victim) (simbol yang sama, tiga dimensi) | Jangan laporkan, dan jangan masukkan ke peta |
+| Target kognitif (cognitive target) dengan jumlah 0 sampai 3 | Laporkan `F`, `P`, `C`, atau `O` |
+| Target kognitif dengan jumlah lainnya | Penanda palsu: jangan laporkan, dan jangan masukkan ke peta |
+
+Lihat [Aturan](/docs/rules/#wall-tokens) untuk definisi yang tepat, dan [Komunikasi](/docs/programming/communication/#scoring-wall-tokens) untuk cara mengirim laporan.
+
+## Apa yang dilihat kamera \{#what-the-camera-sees\}
+Kamera robot pemula berukuran 64 × 40 piksel. Pada resolusi itu, penanda hanya terlihat beberapa piksel sampai robot cukup dekat, jadi sebaiknya cari kandidat dari kejauhan, lalu mendekat untuk membacanya. Ingat bahwa laporan mensyaratkan robot berada dalam jarak setengah ubin dari penanda, dan bahwa kamera kustom bisa punya resolusi lebih tinggi, dengan biaya tambahan.
+
+![Target kognitif dilihat oleh kamera 64 kali 40](../../../../docs/programming/wall-tokens/camera_target.png)
+
+
+Korban huruf adalah simbol hitam di atas kotak putih, dan bisa diputar ke sudut mana pun, jadi metodemu tidak boleh bergantung pada orientasinya.
+
+![Korban huruf di dinding dalam simulator](../../../../docs/programming/wall-tokens/letter_victim.png)
+
+
+## Membaca target kognitif \{#reading-a-cognitive-target\}
+Target kognitif terdiri dari lima bagian konsentris, jadi kamu tidak perlu mengenali bentuknya: setelah kamu menemukan titik tengah dan jari-jari luarnya, kamu bisa mengambil sampel warna di tengah setiap bagian. Bagian-bagiannya punya jari-jari 0,5, 1, 1,5, 2, dan 2,5 cm, jadi titik tengahnya berada di 0, 0,3, 0,5, 0,7, dan 0,9 dari jari-jari luar.
+
+Fungsi ini melakukannya dengan OpenCV di Python. Untuk menemukan titik tengah dan jari-jarinya, kamu bisa misalnya menggunakan kontur target, seperti di [Menavigasi labirin](/docs/programming/navigate-the-maze/).
+
+<CodeTabs file="readRings" />
+
+Dalam permainan sungguhan, target mungkin terlihat dari sudut miring, sehingga tampak seperti elips. Memposisikan robot di depannya, menganggap warna yang tampak salah sebagai peringatan, atau membaca beberapa frame akan membuat hasilnya lebih andal.
+
+## Menghitung jenisnya \{#calculating-the-type\}
+Setelah kamu mendapatkan kelima warna, kode yang dilaporkan berasal dari jumlahnya. Setiap bagian dari kelima bagian itu selalu dihitung, bahkan saat warna yang bersebelahan sama.
+
+<CodeTabs file="targetCode" />
+
+Misalnya, `['Y', 'B', 'R', 'K', 'G']` berjumlah 0, jadi jenisnya `F`, dan `['B', 'Y', 'K', 'K', 'K']` berjumlah -4, jadi penanda itu palsu.
+
+## Mendeteksi korban palsu \{#detecting-fake-victims\}
+Korban palsu menampilkan simbol yang sama dengan korban asli, tetapi hurufnya tiga dimensi. Dari depan, kamera saja mungkin tidak bisa membedakannya:
+
+![Korban palsu dilihat dari depan](../../../../docs/programming/wall-tokens/fake_victim_front.png)
+
+
+Aturan menyatakan bahwa kedalamannya bisa dideteksi dengan salah satu sensor yang tersedia di Robot Customizer. Beberapa ide untuk dijelajahi:
+
+- Bandingkan pengukuran jarak di sepanjang penanda, dengan Lidar atau sensor jarak, untuk mencari perbedaan ketinggian.
+- Lihat penanda dari sudut miring, karena relief mengubah bentuk simbolnya.
+
+World `world3.wbt` dan `world4.wbt` berisi korban palsu, dan [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) bisa menambahkannya ke petamu sendiri. Erebus juga menyertakan skrip `scripts/update_maps_with_fakes.py`, yang secara acak mengubah korban di world yang sudah ada menjadi palsu.
+
+Melaporkan penanda palsu mengurangi 5 poin sebagai salah identifikasi, sedangkan korban asli di ubin linear bernilai 15 poin beserta jenisnya di Area 1, dan lebih tinggi di area lain. Ingat hal itu saat kamu menentukan seberapa yakin robotmu harus sebelum melapor.

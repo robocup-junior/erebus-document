@@ -1,0 +1,22 @@
+---
+title: Konum sensörü
+description: GPS ile robotun labirentte nerede olduğunu öğren ve duvar işaretlerini bildirmek için konumunu kullan.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Konum sensörü ya da **GPS**, robotun konumunu **metre** cinsinden verir. Başlangıç robotunda adı `gps`'tir. [Duvar işaretlerini bildirmek](/docs/programming/communication/#scoring-wall-tokens) için ona ihtiyacın var ve [sistemli keşif](/docs/programming/exploring/) yapmana da çok yardımcı olur.
+
+`getValues()`, `[x, y, z]` döndürür. **X ve Z yataydır**, Y ise dikeydir. Bu yüzden labirentteki konum için X ve Z'yi kullan:
+
+![Yatay düzlemin X ve Z eksenleri, Y dikey](../../../../../docs/programming/sensors/location-sensor/coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+GPS'in birkaç milimetrelik gürültüsü vardır, bu yüzden robot dururken bile değerler biraz değişir. Konumları asla tam eşitlik için karşılaştırma.
+
+## Örnek: başlangıçtan uzaklık \{#example-distance-from-the-start\}
+
+Bu program, robot başladığı yerden yarım kare uzaklaşana kadar ileri gider:
+
+<CodeTabs file="travelled" />

@@ -1,0 +1,32 @@
+---
+title: Giroscópio e acelerômetro
+description: Meça a rotação e a aceleração do robô.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Giroscópio \{#gyroscope\}
+
+O giroscópio retorna a velocidade de rotação do robô em torno de cada eixo, em **radianos por segundo**. No robô inicial, ele se chama `gyro`.
+
+`getValues()` retorna `[x, y, z]`. O **eixo Y é vertical**, então `getValues()[1]` é a velocidade com que o robô gira. Ela é positiva quando ele gira para a esquerda.
+
+:::caution
+Isto vale para o giroscópio do robô inicial. Os eixos acompanham a rotação do giroscópio, então, se você girá-lo no seu próprio robô, confira qual valor muda quando o robô gira.
+:::
+
+## Exemplo: girando 90 graus \{#example-turning-90-degrees\}
+
+Some a velocidade de rotação multiplicada pelo passo de tempo para obter o ângulo girado. Isso é mais confiável do que cronometrar o giro, porque não depende da velocidade.
+
+<CodeTabs file="turn" />
+
+Em um teste com o robô inicial, o ângulo calculado dessa forma bateu com a rotação real com uma diferença de menos de 0,01 radiano. Pequenos erros se acumulam ao longo de uma partida, então corrija a direção quando puder, por exemplo alinhando o robô com uma parede.
+
+## Acelerômetro \{#accelerometer\}
+
+O acelerômetro retorna a aceleração ao longo de cada eixo em m/s². No robô inicial, ele se chama `accelerometer`. Em repouso, `getValues()[1]` vale cerca de 9,8, que é a gravidade.
+
+## Unidade inercial \{#inertial-unit\}
+
+A unidade inercial não faz parte do robô inicial. Com o [Robot Customizer](/docs/robot/customizer/), você pode adicionar uma, chamada `inertial_unit` por padrão. Ela fornece a orientação diretamente, com `getRollPitchYaw()`, sem precisar somar velocidades de rotação. Veja a [referência do Webots](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b).

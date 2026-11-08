@@ -1,0 +1,36 @@
+---
+title: Voraussetzungen
+description: "Was du für Erebus v26 brauchst: Webots R2023b, Python 3.9 oder neuer und die benötigten Bibliotheken."
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Software-Voraussetzungen \{#software-requirements\}
+Das Simulationssystem besteht aus einigen wichtigen Komponenten, die du jeweils installieren musst. Die Installation ist zwar einfach, aber das Herunterladen und Installieren von Webots kann etwas dauern! Die drei Komponenten sind:
+
+1. Webots Robot Simulator Version **R2023b** – die Simulationsumgebung. Erebus v26 unterstützt keine anderen Versionen von Webots.
+1. Erebus – die Welten und der Competition Supervisor, der die Regeln und die Wertung umsetzt. Die neueste Version ist **v26.1**.
+1. Python Version **3.9 oder neuer** – nötig, um Erebus selbst auszuführen und Controller für die Roboter zu schreiben. Du kannst Controller auch in C/C++ schreiben.
+
+## Minimale Systemvoraussetzungen \{#minimum-system-requirements\}
+* Betriebssystem Linux: Ubuntu 20.04 LTS, 22.04 LTS
+* Betriebssystem Windows: Windows 11, Windows 10 64 Bit
+* Betriebssystem Mac: macOS 11 „Big Sur“ und 12 „Monterey“. Das sind die Versionen, die Webots R2023b unterstützt. Neuere Versionen von macOS funktionieren eventuell auch: Diese Dokumentation wurde unter macOS 26 geprüft.
+* CPU: Dual Core 2 GHz
+* RAM: 2 GB
+* Nvidia 512 MB oder AMD OpenGL 512 MB
+
+## Python-Bibliotheken \{#python-libraries\}
+Erebus braucht die folgenden Python-Bibliotheken. Die meisten werden beim Start automatisch installiert, aber **OpenCV nicht**, also musst du es selbst installieren. Die Anleitung für jedes Betriebssystem enthält diesen Schritt.
+
+```bash
+python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+```
+
+## Wähle dein Betriebssystem \{#choose-your-operating-system\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Windows 10 und 11" href="/docs/installation/windows/" />
+	<LinkCard title="macOS" description="macOS auf Intel und Apple Silicon" href="/docs/installation/mac/" />
+	<LinkCard title="Linux" description="Ubuntu 20.04 und 22.04" href="/docs/installation/linux/" />
+</CardGrid>

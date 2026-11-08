@@ -1,0 +1,22 @@
+---
+title: Capteur de position
+description: Sachez où se trouve le robot dans le labyrinthe grâce au GPS, et utilisez sa position pour signaler les marqueurs muraux.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Le capteur de position, ou **GPS**, donne la position du robot en **mètres**. Sur le robot de départ, il s’appelle `gps`. Vous en avez besoin pour [signaler les marqueurs muraux](/docs/programming/communication/#scoring-wall-tokens), et il aide beaucoup à [explorer méthodiquement](/docs/programming/exploring/).
+
+`getValues()` renvoie `[x, y, z]`. **X et Z sont horizontaux**, et Y est vertical : utilisez donc X et Z pour la position dans le labyrinthe :
+
+![Les axes X et Z du plan horizontal, avec Y vertical](../../../../../docs/programming/sensors/location-sensor/coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+Le GPS a un bruit de quelques millimètres : les valeurs varient donc légèrement même quand le robot est immobile. Ne testez jamais l’égalité exacte de deux positions.
+
+## Exemple : distance depuis le départ \{#example-distance-from-the-start\}
+
+Ce programme avance jusqu’à ce que le robot soit à une demi-case de son point de départ :
+
+<CodeTabs file="travelled" />

@@ -1,0 +1,25 @@
+---
+title: Capteurs
+description: Comment fonctionnent les capteurs, et lequel utiliser pour quoi.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Les capteurs renseignent votre robot sur le monde. Tous les capteurs s’utilisent de la même façon :
+
+1. Obtenez-le grâce à son nom avec `robot.getDevice()`.
+2. Activez-le avec `enable(timeStep)`. Avant cela, il ne donne aucune valeur.
+3. Lisez-le dans la boucle principale. Les valeurs sont mises à jour après chaque `robot.step()`.
+
+Comme les vrais capteurs, ils ont du bruit : une même mesure peut varier un peu d’un pas à l’autre. Les organisateurs ne modifient pas le bruit pour la compétition : rendez donc votre programme robuste face à lui, par exemple en comparant plusieurs mesures.
+
+Les pages ci-dessous utilisent les capteurs du [robot de départ](/docs/robot/).
+
+<CardGrid>
+	<LinkCard title="Capteur de distance" description="Trouver les murs à côté du robot." href="/docs/programming/sensors/distance-sensor/" />
+	<LinkCard title="Capteur de position" description="Savoir où se trouve le robot, avec le GPS." href="/docs/programming/sensors/location-sensor/" />
+	<LinkCard title="Capteur de couleur" description="Voir le sol : trous, marécages et passages." href="/docs/programming/sensors/colour-sensor/" />
+	<LinkCard title="Caméra RVB" description="Voir les murs, et trouver les marqueurs muraux." href="/docs/programming/sensors/rgb-camera/" />
+	<LinkCard title="LIDAR" description="Mesurer les distances tout autour du robot." href="/docs/programming/sensors/lidar/" />
+	<LinkCard title="Gyroscope et accéléromètre" description="Mesurer les rotations et l’accélération." href="/docs/programming/sensors/imu/" />
+</CardGrid>

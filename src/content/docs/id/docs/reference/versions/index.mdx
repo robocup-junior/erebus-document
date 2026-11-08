@@ -1,0 +1,37 @@
+---
+title: Versi
+description: Dokumentasi, aturan, dan unduhan untuk setiap versi Erebus.
+---
+
+import { archivedVersion, versions } from '@/data/versions';
+
+Gunakan dokumentasi yang sesuai dengan aturan kompetisimu. Kami mendukung versi dari dua tahun terakhir, dan menu di sebelah logo menampilkan daftarnya di setiap halaman.
+
+<table>
+	<thead>
+		<tr>
+			<th>Versi</th>
+			<th>Aturan</th>
+			<th>Webots</th>
+			<th>Dokumentasi</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			versions.map((version) => (
+				<tr>
+					<td>{version.name}{version.current && !archivedVersion && ' (terbaru)'}</td>
+					<td>{version.rules}</td>
+					<td>{version.webots}</td>
+					<td>
+						<a href={version.current ? '/docs/' : version.url}>{version.current ? 'Kamu di sini' : 'Buka'}</a>
+					</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+Semua rilis Erebus ada di [halaman Releases](https://github.com/robocup-junior/erebus/releases), dan perubahan di setiap rilis ada di [changelog](https://github.com/robocup-junior/erebus/blob/master/CHANGELOG.md).
+
+Aturan setiap tahun dipublikasikan di [situs web RoboCupJunior](https://junior.robocup.org/rescue/).

@@ -1,0 +1,94 @@
+---
+title: Sua primeira execução
+description: Carregue o seu robô e um programa pronto e veja-o explorar um labirinto.
+---
+
+import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
+
+Nesta página, você executa um programa completo no seu robô e aprende a usar a janela de controle do Erebus. Você precisa do [Erebus instalado](/docs/installation/) e do [seu robô](/docs/robot/).
+
+## A pasta do Erebus \{#the-erebus-folder\}
+Estas são as principais pastas da versão que você baixou:
+
+| Pasta | Conteúdo |
+|---|---|
+| `game/worlds` | Os mundos (arquivos `.wbt`). Abra um deles para começar. |
+| `game/logs` | Os registros escritos no fim de cada partida |
+| `player_controllers` | Controladores de exemplo |
+
+## A janela de controle \{#the-control-window\}
+1. Abra `game/worlds/world1.wbt` no Webots.
+1. O Webots abre a janela de controle do Erebus (a janela do robô do Main Supervisor) no seu navegador. É aqui que você carrega o seu programa e executa a partida.
+
+![A janela de controle do Erebus](../../../docs/getting-started/control_window.png)
+
+| Parte | Uso |
+|---|---|
+| **LOAD** da esquerda (ícone de notebook) | Carrega o programa controlador do seu robô |
+| **LOAD** da direita (ícone de robô) | Carrega o seu robô (arquivo `.json`) |
+| **TOGGLE REMOTE** | Permite que um programa rodando fora do Webots controle o robô. Veja [Remote Controller](/docs/competition/remote-controller/). |
+| **Docker path** | Pasta com um `Dockerfile`, para executar o seu controlador em um contêiner com o botão Docker ao lado do botão play. Veja o repositório [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). Isso é opcional. |
+| **Settings** | Links e opções, explicados abaixo |
+| **Worlds** | Muda para outro mundo |
+| **Reset** | Reinicia o programa carregado e a partida |
+| **Give up!** | Termina a partida |
+| Cronômetros | O tempo de partida e, abaixo dele, o tempo real entre parênteses. A partida termina quando qualquer um deles chega a 0. |
+| Calculadora | A pontuação atual |
+
+## Execute um programa \{#run-a-program\}
+<a href={mazeUrl} download="maze.py">Baixe o maze.py</a>, um programa completo que faz o robô andar pelo labirinto. É o programa que você mesmo vai escrever em [Navegue pelo labirinto](/docs/programming/navigate-the-maze/).
+
+1. Abra `game/worlds/world1.wbt`.
+1. Carregue o seu robô com o **botão LOAD da direita**, se ainda não fez isso. O mundo é recarregado com ele.
+1. Carregue `maze.py` com o **botão LOAD da esquerda**. Quando o programa é carregado, o botão vira um botão REMOVE laranja.
+1. Pressione o botão de início. O robô aparece no mundo e começa a se mover.
+![Botão de início](../../../docs/getting-started/start_button.png)
+1. Para parar o robô temporariamente, pressione o botão de pausa.
+![Botão de pausa](../../../docs/getting-started/pause_button.png)
+1. Se o robô ficar preso, pressionar o botão de reinício provoca uma falta de progresso (Lack of Progress, LoP), que leva o robô ao último ponto de controle (checkpoint) alcançado e custa 5 pontos.
+![Botão de falta de progresso](../../../docs/getting-started/lop_button.png)
+1. Pressione o botão Reset para reiniciar o programa carregado e a partida em andamento. Recarregue o mundo se quiser executá-lo de novo depois que uma partida terminar.
+
+O programa precisa do OpenCV, que você instalou junto com as outras [bibliotecas Python](/docs/installation/#python-libraries). As mensagens do seu programa, e os erros, aparecem no console do Webots.
+
+Enquanto a partida está rodando, o histórico de pontuação aparece na parte de baixo da janela. Ele mostra exatamente por que você ganhou ou perdeu pontos, então é a melhor ferramenta para conferir o seu programa.
+
+![A janela de controle durante uma partida, com o histórico de pontuação](../../../docs/getting-started/control_window_running.png)
+
+No fim da partida, as mesmas informações são salvas na pasta `game/logs`.
+
+## Usando outros mundos \{#using-other-worlds\}
+Pressione **Worlds** para mudar para outro mundo. Cada mundo tem uma miniatura, e você também pode adicionar os seus, feitos com o [World Editor](/docs/tools/world-editor/).
+
+![A aba Worlds da janela de controle](../../../docs/getting-started/worlds.png)
+
+Os mundos incluídos no Erebus v26.1 são:
+
+| Mundo | Finalidade |
+|---|---|
+| `world1.wbt`, `world2.wbt` | Mundos de exemplo. `world2.wbt` inclui a área 4. |
+| `world3.wbt`, `world4.wbt` | Mundos de exemplo maiores, que também incluem **vítimas falsas** |
+| `mapping_example_1.wbt` a `mapping_example_3.wbt` | Mundos para testar o seu mapeamento. Veja [Regras do mapa](/docs/rules/mapping/). |
+| `NewPassages.wbt` | Exemplo das passagens entre áreas |
+
+## Configurações \{#settings\}
+![A aba Settings da janela de controle](../../../docs/getting-started/settings.png)
+
+| Configuração | Uso |
+|---|---|
+| Keep controller/robot files | Mantém o seu programa e o seu robô carregados quando o mundo é recarregado |
+| Disable automatic LoP | Desativa a falta de progresso automática após 20 segundos. Só para depuração. |
+| Automatic camera | Faz a visão acompanhar o robô |
+| Recording | Grava a partida como vídeo |
+| Keep remote controller on | Mantém o TOGGLE REMOTE ativado quando o mundo é recarregado |
+| Enable debugging | Mostra informações extras no console do Webots, por exemplo por que o informe de um marcador foi rejeitado |
+
+Os links no topo levam ao changelog e às ferramentas para criar mundos e robôs. Para criar mundos com as regras de 2026, use o [World Editor](https://world.erebus.rcj.cloud/).
+
+## Mova o robô manualmente para onde você quiser \{#manually-move-the-robot-where-you-want-it-to-go\}
+Quando você clica em um robô na janela da simulação, aparecem setas vermelha, azul e verde. Você pode mover o robô para qualquer posição arrastando essas setas com o mouse. Observe que o robô só aparece depois que o programa é iniciado.
+![O robô selecionado no Webots, com setas para movê-lo](../../../docs/getting-started/manual.png)
+
+
+## Próximo passo \{#next\}
+Você viu um robô explorar sozinho. Agora aprenda a programá-lo você mesmo: comece por [Seu primeiro programa](/docs/programming/first-program/).

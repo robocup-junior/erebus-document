@@ -1,0 +1,30 @@
+---
+title: Câmera RGB
+description: Leia as imagens da câmera no Webots e processe-as com o OpenCV para encontrar marcadores nas paredes.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+A câmera fornece uma imagem do que está à sua frente. Você precisa dela para encontrar e ler os [marcadores nas paredes](/docs/programming/wall-tokens/). O robô inicial tem uma câmera, chamada `camera`, de 64 × 40 pixels.
+
+## Lendo pixels \{#reading-pixels\}
+
+Uma imagem é uma grade de pixels. Cada um tem um valor de vermelho, verde e azul de 0 a 255, em que (0, 0, 0) é preto e (255, 255, 255) é branco.
+
+<CodeTabs file="read" />
+
+## Usando o OpenCV \{#using-opencv\}
+
+O [OpenCV](https://opencv.org/) é uma biblioteca para processar imagens: encontrar formas, comparar cores e muito mais. As imagens do Webots têm 4 valores por pixel, na ordem BGRA, que o OpenCV consegue usar diretamente. Este programa mostra a imagem e as partes claras dela em duas janelas:
+
+<CodeTabs file="opencv" />
+
+:::note
+Para Python, o OpenCV é instalado junto com as outras [bibliotecas Python](/docs/installation/#python-libraries). Para C++, você precisa instalar o OpenCV e [adicioná-lo na compilação](/docs/programming/cpp/#compiling). O exemplo em C++ foi testado com o OpenCV 4.
+:::
+
+Janelas como essas servem para testar em casa: desative-as na competição.
+
+## Resolução \{#resolution\}
+
+Resoluções maiores enxergam os marcadores de mais longe, mas custam mais e demoram mais para processar. Você escolhe a resolução de cada câmera no [Robot Customizer](/docs/robot/customizer/#components).

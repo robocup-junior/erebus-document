@@ -1,0 +1,30 @@
+---
+title: Caméra RVB
+description: Lisez les images de la caméra dans Webots et traitez-les avec OpenCV pour trouver les marqueurs muraux.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+La caméra donne une image de ce qui se trouve devant elle. Vous en avez besoin pour trouver et lire les [marqueurs muraux](/docs/programming/wall-tokens/). Le robot de départ a une caméra, nommée `camera`, de 64 × 40 pixels.
+
+## Lire les pixels \{#reading-pixels\}
+
+Une image est une grille de pixels. Chacun a une valeur de rouge, de vert et de bleu (RGB) de 0 à 255, où (0, 0, 0) est le noir et (255, 255, 255) le blanc.
+
+<CodeTabs file="read" />
+
+## Utiliser OpenCV \{#using-opencv\}
+
+[OpenCV](https://opencv.org/) est une bibliothèque de traitement d’images : trouver des formes, comparer des couleurs et bien plus encore. Les images de Webots ont 4 valeurs par pixel, dans l’ordre BGRA, qu’OpenCV peut utiliser directement. Ce programme affiche l’image, et ses parties claires, dans deux fenêtres :
+
+<CodeTabs file="opencv" />
+
+:::note
+Pour Python, OpenCV est installé avec les autres [bibliothèques Python](/docs/installation/#python-libraries). Pour le C++, vous devez installer OpenCV et [l’ajouter à la compilation](/docs/programming/cpp/#compiling). L’exemple C++ a été testé avec OpenCV 4.
+:::
+
+Les fenêtres comme celles-ci servent aux tests à la maison : désactivez-les pour la compétition.
+
+## Résolution \{#resolution\}
+
+Une résolution plus élevée permet de voir les marqueurs de plus loin, mais coûte plus cher et demande plus de temps de traitement. Vous choisissez la résolution de chaque caméra dans le [Robot Customizer](/docs/robot/customizer/#components).

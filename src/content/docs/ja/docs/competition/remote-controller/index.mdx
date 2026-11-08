@@ -1,0 +1,39 @@
+---
+title: Remote Controller
+description: 競技と同じように、自分のコンピューターでコントローラーを実行し、ゲームサーバーに接続します。
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Erebus の Remote Controller 機能を使うと、ネットワーク越しに Webots のシミュレーションを実行できます。1 台のコンピューターが Webots のシミュレーションを実行し（サーバー）、もう 1 台のコンピューターがロボットのコントローラープログラムを実行します（クライアント）。これを「サーバー・クライアント構成（Server-Client Setup）」と呼びます。
+
+**2026 年ルールでは、競技のゲームはこの方法で実行されます。** 運営者がゲームサーバーを用意し、RJ-45 ソケットを 1 つ提供します。次のものを持参してください。
+
+- プログラムをすぐに実行できる状態で入れ、Webots R2023b をインストールしたコンピューター
+- イーサネットケーブル。100 Mbit/s に対応するため、CAT5 以上を強くおすすめします。
+- イーサネットポート。コンピューターにない場合は、アダプターを持参し、事前にテストしておいてください。
+
+競技会場でスムーズに準備できるよう、十分前もってこの構成を試しておきましょう。また、すべてのチームは、TDP、ポスター、ビデオと一緒に、この構成でサンプルマップに対してコントローラーを実行する様子を示した短いビデオを提出する必要があります。
+
+## しくみ \{#how-it-works\}
+
+1. ワールドを開き、コントロールウィンドウでリモートモードをオンにします。
+1. ターミナルからコントローラーを起動します。コントローラーは Webots に接続して待機します。
+1. コントロールウィンドウのスタートボタンを押します。
+
+コントローラーは、LOAD ボタンで読み込んだときと同じ Webots ライブラリと同じコードを使います。カスタムロボットがある場合は、引き続きサーバーのコントロールウィンドウで読み込みます。
+
+## 競技の前に確認すること \{#things-to-check-before-the-competition\}
+
+- プログラムに必要なライブラリがすべてクライアントにインストールされている。
+- プログラムがコンピューターの速度に依存していない。`robot.step()` とシミュレーション時間を使う必要があります。カメラの画像はネットワークを通って届くことに注意してください。
+- 必要な場合を除き、画像ウィンドウ（`cv2.imshow` など）をオフにしている。
+- 実行するコマンドを覚えている。小さなスクリプトにまとめておくのがおすすめです。
+
+## セットアップガイド \{#setup-guide\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="PowerShell でのセットアップ" href="/docs/competition/remote-controller/windows/" />
+	<LinkCard title="macOS" description="ターミナルでのセットアップ" href="/docs/competition/remote-controller/mac/" />
+	<LinkCard title="Linux" description="ターミナルでのセットアップ" href="/docs/competition/remote-controller/linux/" />
+</CardGrid>

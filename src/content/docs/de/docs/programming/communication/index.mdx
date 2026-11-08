@@ -1,0 +1,66 @@
+---
+title: Kommunikation
+description: Melde Wandmarkierungen, löse einen fehlenden Fortschritt aus, frag die Punktzahl ab und beende das Spiel.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Dein Programm kommuniziert mit dem Spiel über zwei Geräte, die jeder Roboter hat:
+
+- Der **Sender** (Emitter) schickt Nachrichten an das Spiel. Er muss nicht aktiviert werden.
+- Der **Empfänger** (Receiver) erhält Nachrichten vom Spiel. Aktiviere ihn wie einen Sensor.
+
+Jeder Abschnitt unten ist ein vollständiges Programm für den [Starter-Roboter](/docs/robot/). Alle Nachrichten sind in der [Nachrichten-Referenz](/docs/reference/messages/) aufgelistet.
+
+## Punkte für Wandmarkierungen \{#scoring-wall-tokens\}
+
+Um für ein Buchstabenopfer (Letter victim) oder ein kognitives Ziel (Cognitive target) Punkte zu bekommen, muss der Roboter:
+
+1. **Länger als 1 Sekunde** in der Nähe der Markierung **stehen bleiben**. Erebus ignoriert die Meldung, wenn sich der Roboter in der letzten Sekunde bewegt hat.
+2. **Position und Typ** der Markierung **senden**: X und Z in **Zentimetern** und den Typ als einen Buchstaben.
+
+| Wandmarkierung | Typ |
+|---|---|
+| Buchstabenopfer Φ (verletzt) | `H` |
+| Buchstabenopfer Ψ (stabil) | `S` |
+| Buchstabenopfer Ω (unverletzt) | `U` |
+| Kognitives Ziel, Summe 0 (entzündbares Gas) | `F` |
+| Kognitives Ziel, Summe 1 (Gift) | `P` |
+| Kognitives Ziel, Summe 2 (ätzend) | `C` |
+| Kognitives Ziel, Summe 3 (organisches Peroxid) | `O` |
+
+Die Typen sind Buchstaben, obwohl die Opfer seit 2026 Symbole zeigen. Das GPS liefert Meter, also multipliziere mit 100.
+
+<CodeTabs file="report" />
+
+Der Roboter muss auf derselben Seite der Wand sein wie die Markierung, und sowohl der Roboter als auch die gesendete Position müssen nah an ihr liegen. Die Regeln verlangen höchstens eine halbe Kachel, also ziele darauf. Erebus v26.1 prüft eine Entfernung von 9 cm.
+
+Führe dieses Programm am Start von `world1.wbt` aus: Dort gibt es keine Markierung, also zeigt der Verlauf des Steuerfensters `Misidentification of Victim -5`. Eine falsche Meldung, auch die Meldung einer Fälschung, kostet 5 Punkte, und jede Markierung bringt nur einmal Punkte.
+
+## Fehlender Fortschritt \{#lack-of-progress\}
+
+Wenn der Roboter feststeckt, setzt ihn ein fehlender Fortschritt (Lack of Progress, LoP) zum letzten Checkpoint zurück und kostet 5 Punkte. Das passiert automatisch nach 20 Sekunden ohne Bewegung, und dein Programm kann ihn auch selbst auslösen, indem es `L` sendet. Jedes Mal sendet das Spiel `L` an den Roboter, damit dein Programm weiß, dass sich seine Position geändert hat.
+
+<CodeTabs file="lop" />
+
+Der Empfänger kann verschiedene Nachrichten erhalten. Prüfe also die Länge jeder Nachricht, bevor du sie liest, wie im Beispiel.
+
+## Spielinformationen \{#game-information\}
+
+Sende `G`, um die Punktzahl und die verbleibende Zeit zu erhalten. Das Spiel antwortet mit einer 16 Byte langen Nachricht: dem Buchstaben `G`, der Punktzahl, der verbleibenden Spielzeit und der verbleibenden Echtzeit, in Sekunden.
+
+<CodeTabs file="gameinfo" />
+
+Die Spielzeit läuft in Sümpfen schneller ab, und das Spiel endet, wenn eine der beiden Zeiten abgelaufen ist. Nutze beide, um zu wissen, wann du zum Start zurückkehren solltest.
+
+## Das Spiel beenden \{#ending-the-game\}
+
+Sende `E`, um das Spiel zu beenden. Steht der Roboter auf der Startkachel und hat mindestens eine Wandmarkierung erkannt, bekommt er den Ausgangsbonus (Exit bonus) von 10 %.
+
+<CodeTabs file="exit" />
+
+:::caution
+Das Spiel endet dort, wo der Roboter gerade ist, wenn er `E` sendet, und der Roboter kann nicht weitermachen. Stelle sicher, dass er vorher zur Startkachel zurückgekehrt ist und [seine Karte abgegeben hat](/docs/programming/map-bonus/).
+:::
+
+Als Nächstes lernst du unter [Wandmarkierungen](/docs/programming/wall-tokens/), die Markierungen zu unterscheiden.

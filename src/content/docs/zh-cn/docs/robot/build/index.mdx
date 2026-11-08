@@ -1,0 +1,77 @@
+---
+title: 搭建机器人
+description: 用 Robot Customizer 一步一步地搭建入门机器人。
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+在本教程中，你将用 [Robot Customizer](https://robot.erebus.rcj.cloud/) 搭建[入门机器人](/docs/robot/#the-starter-robot)。本文档的所有示例都使用这个机器人，所以完成之后，你就可以开始为它编程了。
+
+它在 3000 的预算中花费 2400。
+
+:::tip
+每个部件都有一个名字，你的程序用这个名字来找到它。请完全按照下面的名字填写，这样示例才能正常运行。
+:::
+
+## 设计机器人 \{#design-the-robot\}
+
+打开 [Robot Customizer](https://robot.erebus.rcj.cloud/)。它一开始带有默认部件：两个车轮和四个距离传感器。如果你以前用过它，请按顶部的重置按钮重新开始。
+
+虽然输入框上写的是 mm，但位置的单位其实是十分之一毫米：机器人车身的半径大约是 370。
+
+<Steps>
+
+1. **设置距离传感器。** 在 **Distance sensors** 下，按一次 `−`，保留三个。然后依次点击每个传感器将其展开，设置它的名称、位置和旋转方向：
+
+   | 传感器 | 名称 | X | Y | Z | 旋转方向 |
+   |---|---|---:|---:|---:|---|
+   | Distance Sensor 1 | `leftDist` | -370 | 335 | 0 | Left |
+   | Distance Sensor 2 | `frontDist` | 0 | 335 | -370 | Front |
+   | Distance Sensor 3 | `rightDist` | 370 | 335 | 0 | Right |
+
+   在滑块旁边的输入框中输入数值，然后按下旋转方向按钮。**Top** 从上方显示机器人，前方朝上，这样你可以检查每个传感器是否朝向正确的方向：
+
+   ![从上方看到的三个距离传感器，分别朝向左方、前方和右方](../../../../docs/robot/build/distance-sensors.png)
+
+2. **为车轮命名。** 展开位于机器人右侧的 **Wheel 1**，把它命名为 `right wheel`。把 **Wheel 2** 命名为 `left wheel`。你的程序会以 `right wheel motor` 和 `left wheel motor` 的名字使用它们，如 **In your controller** 下所示。
+
+3. **添加摄像头。** 打开 **Camera 1**，并设置：
+
+   - 名称：`camera`
+   - 分辨率：宽 **64px**，高 **40px**
+   - 位置：X `0`，Y `90`，Z `-370`
+   - 旋转方向：**Front**
+
+   ![摄像头的设置](../../../../docs/robot/build/camera.png)
+
+4. **添加颜色传感器。** 打开 **Colour sensor**，并设置：
+
+   - 名称：`color`
+   - 位置：X `0`，Y `-41`，Z `-370`
+   - 旋转方向：**Down**
+
+   颜色传感器必须朝下才能看到地面。把它放在前部，机器人就能在车轮到达坑洞之前看到坑洞。
+
+5. **添加 GPS、陀螺仪和加速度计。** 打开 **GPS**、**Gyro** 和 **Accelerometer**。它们的默认名称 `gps`、`gyro` 和 `accelerometer` 以及默认位置都可以直接使用。
+
+6. **添加激光雷达。** 打开 **Lidar**，并设置：
+
+   - 位置：X `0`，Y `370`，Z `0`
+   - 旋转：输入 X `90`，Y `0`，Z `0`
+
+   激光雷达必须位于机器人顶部，否则会被车身挡住；而且它必须保持水平，才能扫描四周。旋转方向按钮无法让它保持水平，所以请直接输入数值。
+
+   ![激光雷达的设置](../../../../docs/robot/build/lidar.png)
+
+7. **检查机器人。** 右上角的预算应该显示 **2,400 / 3,000 used**。打开 **Labels** 可以看到每个名称，打开 **Camera view** 可以看到摄像头将会看到的画面。
+
+   ![搭建完成的机器人，显示了标签和摄像头视图](../../../../docs/robot/build/finished.png)
+
+8. **导出。** 在顶部输入文件名 `starter-robot`，然后按 **Export**。保留 `starter-robot.json` 文件：以后可以用 **Import** 导入它来修改机器人。
+
+</Steps>
+
+如果哪里出了问题，可以和搭建好的机器人比较一下：[下载 `starter-robot.json`](/downloads/starter-robot.json) 并导入它。
+
+## 下一步 \{#next\}
+[在 Erebus 中加载你的机器人](/docs/robot/#load-it-in-erebus)，然后[运行你的第一个程序](/docs/getting-started/)。

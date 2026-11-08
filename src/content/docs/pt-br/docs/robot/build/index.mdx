@@ -1,0 +1,77 @@
+---
+title: Monte seu robô
+description: Monte o robô inicial passo a passo com o Robot Customizer.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Neste tutorial, você monta o [robô inicial](/docs/robot/#the-starter-robot) com o [Robot Customizer](https://robot.erebus.rcj.cloud/). Ele é o robô usado em todos os exemplos desta documentação, então, no final, você terá tudo pronto para programá-lo.
+
+Ele custa 2400 do orçamento de 3000.
+
+:::tip
+Cada componente tem um nome, que o seu programa usa para encontrá-lo. Use exatamente os nomes abaixo, para que os exemplos funcionem.
+:::
+
+## Projete o robô \{#design-the-robot\}
+
+Abra o [Robot Customizer](https://robot.erebus.rcj.cloud/). Ele começa com as peças padrão: duas rodas e quatro sensores de distância. Se você já o usou antes, pressione o botão de reiniciar no topo para começar de novo.
+
+As posições são em décimos de milímetro, embora as caixas digam mm: o corpo do robô tem um raio de cerca de 370.
+
+<Steps>
+
+1. **Configure os sensores de distância.** Em **Distance sensors**, pressione `−` uma vez para ficar com três. Depois clique em cada um para abri-lo e defina o nome, a posição e a rotação:
+
+   | Sensor | Nome | X | Y | Z | Rotação |
+   |---|---|---:|---:|---:|---|
+   | Distance Sensor 1 | `leftDist` | -370 | 335 | 0 | Left |
+   | Distance Sensor 2 | `frontDist` | 0 | 335 | -370 | Front |
+   | Distance Sensor 3 | `rightDist` | 370 | 335 | 0 | Right |
+
+   Digite os valores nas caixas ao lado dos controles deslizantes e pressione os botões de rotação. **Top** mostra o robô visto de cima, com a frente para cima, para você conferir se cada sensor está virado para o lado certo:
+
+   ![Três sensores de distância vistos de cima, virados para a esquerda, para a frente e para a direita](../../../../docs/robot/build/distance-sensors.png)
+
+2. **Dê nome às rodas.** Abra **Wheel 1**, que fica do lado direito do robô, e dê a ela o nome `right wheel`. Dê à **Wheel 2** o nome `left wheel`. O seu programa vai usá-las como `right wheel motor` e `left wheel motor`, como aparece em **In your controller**.
+
+3. **Adicione a câmera.** Ative **Camera 1** e defina:
+
+   - Nome: `camera`
+   - Resolução: largura **64px**, altura **40px**
+   - Posição: X `0`, Y `90`, Z `-370`
+   - Rotação: **Front**
+
+   ![As configurações da câmera](../../../../docs/robot/build/camera.png)
+
+4. **Adicione o sensor de cor.** Ative **Colour sensor** e defina:
+
+   - Nome: `color`
+   - Posição: X `0`, Y `-41`, Z `-370`
+   - Rotação: **Down**
+
+   O sensor de cor precisa olhar para baixo para ver o piso. Colocá-lo na frente permite que o robô veja um buraco antes que as rodas cheguem até ele.
+
+5. **Adicione o GPS, o giroscópio e o acelerômetro.** Ative **GPS**, **Gyro** e **Accelerometer**. Os nomes padrão, `gps`, `gyro` e `accelerometer`, e as posições deles estão bons.
+
+6. **Adicione o lidar.** Ative **Lidar** e defina:
+
+   - Posição: X `0`, Y `370`, Z `0`
+   - Rotação: digite X `90`, Y `0`, Z `0`
+
+   O lidar precisa ficar em cima do robô, senão o corpo o bloqueia, e precisa ficar na horizontal para escanear tudo ao redor. Os botões de rotação não o deixam na horizontal, então digite os valores.
+
+   ![As configurações do lidar](../../../../docs/robot/build/lidar.png)
+
+7. **Confira o robô.** O orçamento no canto superior direito deve mostrar **2,400 / 3,000 used**. Ative **Labels** para ver todos os nomes e **Camera view** para ver o que a câmera vai enxergar.
+
+   ![O robô pronto, com os rótulos e a visão da câmera](../../../../docs/robot/build/finished.png)
+
+8. **Exporte-o.** Digite `starter-robot` como nome do arquivo no topo e pressione **Export**. Guarde o arquivo `starter-robot.json`: você pode usar **Import** depois para alterar o robô.
+
+</Steps>
+
+Se algo deu errado, compare com o robô pronto: [baixe `starter-robot.json`](/downloads/starter-robot.json) e importe-o.
+
+## Próximo passo \{#next\}
+[Carregue o seu robô no Erebus](/docs/robot/#load-it-in-erebus) e [execute o seu primeiro programa](/docs/getting-started/).

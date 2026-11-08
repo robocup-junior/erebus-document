@@ -1,0 +1,37 @@
+---
+title: Sürümler
+description: Erebus'un her sürümü için belgeler, kurallar ve indirmeler.
+---
+
+import { archivedVersion, versions } from '@/data/versions';
+
+Yarışmanın kurallarına uyan belgeleri kullan. Son iki yılın sürümlerini destekliyoruz ve her sayfada logonun yanındaki menü bu sürümleri listeler.
+
+<table>
+	<thead>
+		<tr>
+			<th>Sürüm</th>
+			<th>Kurallar</th>
+			<th>Webots</th>
+			<th>Belgeler</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			versions.map((version) => (
+				<tr>
+					<td>{version.name}{version.current && !archivedVersion && ' (en yeni)'}</td>
+					<td>{version.rules}</td>
+					<td>{version.webots}</td>
+					<td>
+						<a href={version.current ? '/docs/' : version.url}>{version.current ? 'Buradasın' : 'Aç'}</a>
+					</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+Erebus'un tüm sürümleri [Releases sayfasında](https://github.com/robocup-junior/erebus/releases), her sürümdeki değişiklikler de [değişiklik günlüğünde](https://github.com/robocup-junior/erebus/blob/master/CHANGELOG.md) bulunur.
+
+Her yılın kuralları [RoboCupJunior web sitesinde](https://junior.robocup.org/rescue/) yayımlanır.

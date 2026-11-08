@@ -1,0 +1,94 @@
+---
+title: 첫 실행
+description: 로봇과 미리 만들어진 프로그램을 불러와서, 로봇이 미로를 탐색하는 모습을 지켜봐요.
+---
+
+import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
+
+이 페이지에서는 로봇으로 완성된 프로그램을 실행하고, Erebus 제어 창 사용법을 배워요. [Erebus 설치](/docs/installation/)와 [로봇](/docs/robot/)이 필요해요.
+
+## Erebus 폴더 \{#the-erebus-folder\}
+다운로드한 릴리스의 주요 폴더는 다음과 같아요.
+
+| 폴더 | 내용 |
+|---|---|
+| `game/worlds` | 월드(`.wbt` 파일). 시작하려면 이 중 하나를 여세요. |
+| `game/logs` | 각 게임이 끝날 때 기록되는 게임 로그 |
+| `player_controllers` | 예제 컨트롤러 |
+
+## 제어 창 \{#the-control-window\}
+1. Webots에서 `game/worlds/world1.wbt`를 여세요.
+1. Webots가 웹 브라우저에서 Erebus 제어 창(Main Supervisor의 로봇 창)을 열어요. 여기서 프로그램을 불러오고 게임을 실행해요.
+
+![Erebus 제어 창](../../../docs/getting-started/control_window.png)
+
+| 부분 | 용도 |
+|---|---|
+| 왼쪽 **LOAD** (노트북 아이콘) | 로봇의 컨트롤러 프로그램을 불러와요 |
+| 오른쪽 **LOAD** (로봇 아이콘) | 로봇(`.json` 파일)을 불러와요 |
+| **TOGGLE REMOTE** | Webots 밖에서 실행되는 프로그램이 로봇을 제어할 수 있게 해요. [Remote Controller](/docs/competition/remote-controller/)를 참고하세요. |
+| **Docker path** | `Dockerfile`이 있는 폴더로, 재생 버튼 옆의 Docker 버튼으로 컨테이너 안에서 컨트롤러를 실행할 때 사용해요. [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) 저장소를 참고하세요. 선택 사항이에요. |
+| **Settings** | 링크와 옵션. 아래에서 설명해요 |
+| **Worlds** | 다른 월드로 바꿔요 |
+| **Reset** | 불러온 프로그램과 게임을 리셋해요 |
+| **Give up!** | 게임을 끝내요 |
+| 타이머 | 게임 시간과, 그 아래 괄호 안에 실제 시간이 있어요. 둘 중 하나가 0이 되면 게임이 끝나요. |
+| 계산기 | 현재 점수 |
+
+## 프로그램 실행하기 \{#run-a-program\}
+로봇이 미로를 돌아다니게 하는 완성된 프로그램 <a href={mazeUrl} download="maze.py">maze.py를 다운로드</a>하세요. [미로 탐색](/docs/programming/navigate-the-maze/)에서 직접 작성하게 될 프로그램이에요.
+
+1. `game/worlds/world1.wbt`를 여세요.
+1. 아직 하지 않았다면 **오른쪽 LOAD 버튼**으로 로봇을 불러오세요. 월드가 그 로봇으로 다시 불러와져요.
+1. **왼쪽 LOAD 버튼**으로 `maze.py`를 불러오세요. 프로그램을 불러오면 버튼이 주황색 REMOVE 버튼으로 바뀌어요.
+1. 시작 버튼을 누르세요. 로봇이 월드에 나타나서 움직이기 시작해요.
+![시작 버튼](../../../docs/getting-started/start_button.png)
+1. 로봇을 잠시 멈추려면 일시 정지 버튼을 누르세요.
+![일시 정지 버튼](../../../docs/getting-started/pause_button.png)
+1. 로봇이 갇혔다면 재시작 버튼을 눌러 진행 불능(Lack of Progress)을 발생시킬 수 있어요. 로봇은 마지막으로 도달한 체크포인트로 옮겨지고 5점을 잃어요.
+![진행 불능 버튼](../../../docs/getting-started/lop_button.png)
+1. Reset 버튼을 누르면 불러온 프로그램과 진행 중인 게임이 리셋돼요. 게임이 끝난 뒤 다시 실행하려면 월드를 다시 불러오세요.
+
+이 프로그램에는 다른 [Python 라이브러리](/docs/installation/#python-libraries)와 함께 설치한 OpenCV가 필요해요. 프로그램의 메시지와 오류는 Webots 콘솔에 표시돼요.
+
+게임이 진행되는 동안 창 아래쪽에 점수 기록이 나타나요. 왜 점수를 얻거나 잃었는지 정확히 알려 주므로, 프로그램을 확인하는 가장 좋은 도구예요.
+
+![게임 중 점수 기록이 표시된 제어 창](../../../docs/getting-started/control_window_running.png)
+
+게임이 끝나면 같은 정보가 `game/logs` 폴더에 저장돼요.
+
+## 다른 월드 사용하기 \{#using-other-worlds\}
+**Worlds**를 눌러 다른 월드로 바꾸세요. 각 월드에는 썸네일이 있고, [World Editor](/docs/tools/world-editor/)로 만든 나만의 월드를 추가할 수도 있어요.
+
+![제어 창의 Worlds 탭](../../../docs/getting-started/worlds.png)
+
+Erebus v26.1에 포함된 월드는 다음과 같아요.
+
+| 월드 | 용도 |
+|---|---|
+| `world1.wbt`, `world2.wbt` | 예제 월드. `world2.wbt`에는 구역 4가 있어요. |
+| `world3.wbt`, `world4.wbt` | 더 큰 예제 월드로, **가짜 피해자**도 들어 있어요 |
+| `mapping_example_1.wbt` ~ `mapping_example_3.wbt` | 지도 작성을 테스트하는 월드. [지도 작성 규칙](/docs/rules/mapping/)을 참고하세요. |
+| `NewPassages.wbt` | 구역 사이 통로의 예제 |
+
+## 설정 \{#settings\}
+![제어 창의 Settings 탭](../../../docs/getting-started/settings.png)
+
+| 설정 | 용도 |
+|---|---|
+| Keep controller/robot files | 월드를 다시 불러올 때 프로그램과 로봇을 불러온 상태로 유지해요 |
+| Disable automatic LoP | 20초 후의 자동 진행 불능을 멈춰요. 디버깅용으로만 사용하세요. |
+| Automatic camera | 시점이 로봇을 따라가게 해요 |
+| Recording | 게임을 동영상으로 녹화해요 |
+| Keep remote controller on | 월드를 다시 불러올 때 TOGGLE REMOTE를 켠 상태로 유지해요 |
+| Enable debugging | Webots 콘솔에 추가 정보를 출력해요. 예를 들어 벽 토큰 보고가 왜 거부되었는지 알려 줘요 |
+
+위쪽의 링크는 변경 로그와, 월드와 로봇을 만드는 도구로 연결돼요. 2026년 규칙으로 월드를 만들려면 [World Editor](https://world.erebus.rcj.cloud/)를 사용하세요.
+
+## 로봇을 원하는 곳으로 직접 옮기기 \{#manually-move-the-robot-where-you-want-it-to-go\}
+시뮬레이션 창에서 로봇을 클릭하면 빨강, 파랑, 초록 화살표가 나타나요. 마우스로 이 화살표를 잡아서 로봇을 원하는 위치로 옮길 수 있어요. 프로그램을 시작하기 전까지는 로봇이 표시되지 않는다는 점에 주의하세요.
+![화살표로 옮길 수 있도록 Webots에서 선택된 로봇](../../../docs/getting-started/manual.png)
+
+
+## 다음 단계 \{#next\}
+로봇이 스스로 탐색하는 모습을 봤어요. 이제 직접 프로그래밍하는 법을 배워요. [첫 번째 프로그램](/docs/programming/first-program/)부터 시작하세요.

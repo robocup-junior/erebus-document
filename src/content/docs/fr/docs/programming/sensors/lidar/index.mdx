@@ -1,0 +1,26 @@
+---
+title: LIDAR
+description: Mesurez les distances tout autour du robot avec le LIDAR, sous forme d’image de distances ou de nuage de points.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Le LIDAR mesure les distances en **mètres** tout autour du robot, comme de nombreux capteurs de distance à la fois. Sur le robot de départ, il s’appelle `lidar` et se trouve sur le dessus du robot.
+
+Il mesure 512 points autour du robot, sur 4 couches superposées, jusqu’à 1 m de distance. Un point qui ne touche rien vaut `inf`.
+
+## Lire les distances \{#reading-distances\}
+
+`getLayerRangeImage(0)` donne les 512 distances d’une couche. La première est devant le robot, et elles tournent dans le **sens des aiguilles d’une montre** : au quart, c’est à droite, à la moitié, c’est derrière, et aux trois quarts, c’est à gauche.
+
+<CodeTabs file="read" />
+
+## Nuage de points \{#point-cloud\}
+
+Le LIDAR peut aussi donner chaque point sous forme de position relative au LIDAR, ce qui est utile pour dessiner une carte de ce que voit le robot. Le calcul prend du temps supplémentaire : ne l’activez donc que si vous l’utilisez.
+
+<CodeTabs file="pointcloud" />
+
+:::caution[Placer un LIDAR]
+Sur vos propres robots, placez le LIDAR sur le dessus, avec la rotation du [robot de départ](/docs/robot/build/), pour qu’il soit à plat. À l’intérieur du corps, ou incliné, il mesure le robot lui-même.
+:::

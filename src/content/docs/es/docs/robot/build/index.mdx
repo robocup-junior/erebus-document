@@ -1,0 +1,77 @@
+---
+title: Construye tu robot
+description: Construye el robot inicial paso a paso con el Robot Customizer.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+En este tutorial construyes el [robot inicial](/docs/robot/#the-starter-robot) con el [Robot Customizer](https://robot.erebus.rcj.cloud/). Es el robot que se usa en todos los ejemplos de esta documentación, así que al final lo tendrás todo listo para programarlo.
+
+Cuesta 2400 del presupuesto de 3000.
+
+:::tip
+Cada componente tiene un nombre, que tu programa usa para encontrarlo. Usa exactamente los nombres de abajo, para que los ejemplos funcionen.
+:::
+
+## Diseña el robot \{#design-the-robot\}
+
+Abre el [Robot Customizer](https://robot.erebus.rcj.cloud/). Empieza con las piezas por defecto: dos ruedas y cuatro sensores de distancia. Si ya lo has usado antes, pulsa el botón de restablecer de arriba para empezar de nuevo.
+
+Las posiciones están en décimas de milímetro, aunque las casillas digan mm: el cuerpo del robot tiene un radio de unos 370.
+
+<Steps>
+
+1. **Configura los sensores de distancia.** En **Distance sensors**, pulsa `−` una vez para quedarte con tres. Después haz clic en cada uno para abrirlo y ajusta su nombre, posición y rotación:
+
+   | Sensor | Nombre | X | Y | Z | Rotación |
+   |---|---|---:|---:|---:|---|
+   | Distance Sensor 1 | `leftDist` | -370 | 335 | 0 | Left |
+   | Distance Sensor 2 | `frontDist` | 0 | 335 | -370 | Front |
+   | Distance Sensor 3 | `rightDist` | 370 | 335 | 0 | Right |
+
+   Escribe los valores en las casillas junto a los deslizadores y pulsa los botones de rotación. **Top** muestra el robot desde arriba, con la parte delantera hacia arriba, para que compruebes que cada sensor mira hacia el lado correcto:
+
+   ![Tres sensores de distancia vistos desde arriba, mirando a la izquierda, al frente y a la derecha](../../../../docs/robot/build/distance-sensors.png)
+
+2. **Ponles nombre a las ruedas.** Abre **Wheel 1**, que está en el lado derecho del robot, y llámala `right wheel`. Llama a **Wheel 2** `left wheel`. Tu programa las usará como `right wheel motor` y `left wheel motor`, como se muestra en **In your controller**.
+
+3. **Añade la cámara.** Activa **Camera 1** y ajusta:
+
+   - Nombre: `camera`
+   - Resolución: ancho **64px**, alto **40px**
+   - Posición: X `0`, Y `90`, Z `-370`
+   - Rotación: **Front**
+
+   ![Los ajustes de la cámara](../../../../docs/robot/build/camera.png)
+
+4. **Añade el sensor de color.** Activa **Colour sensor** y ajusta:
+
+   - Nombre: `color`
+   - Posición: X `0`, Y `-41`, Z `-370`
+   - Rotación: **Down**
+
+   El sensor de color debe mirar hacia abajo para ver el suelo. Colocarlo delante permite que el robot vea un agujero antes de que sus ruedas lleguen a él.
+
+5. **Añade el GPS, el giroscopio y el acelerómetro.** Activa **GPS**, **Gyro** y **Accelerometer**. Sus nombres por defecto, `gps`, `gyro` y `accelerometer`, y sus posiciones están bien.
+
+6. **Añade el lidar.** Activa **Lidar** y ajusta:
+
+   - Posición: X `0`, Y `370`, Z `0`
+   - Rotación: escribe X `90`, Y `0`, Z `0`
+
+   El lidar debe estar encima del robot, o el cuerpo lo tapará, y debe quedar plano para escanear todo alrededor. Los botones de rotación no lo dejan plano, así que escribe los valores.
+
+   ![Los ajustes del lidar](../../../../docs/robot/build/lidar.png)
+
+7. **Comprueba el robot.** El presupuesto de arriba a la derecha debería mostrar **2,400 / 3,000 used**. Activa **Labels** para ver todos los nombres, y **Camera view** para ver lo que verá la cámara.
+
+   ![El robot terminado, con sus etiquetas y la vista de la cámara](../../../../docs/robot/build/finished.png)
+
+8. **Expórtalo.** Escribe `starter-robot` como nombre de archivo arriba y pulsa **Export**. Guarda el archivo `starter-robot.json`: puedes importarlo más tarde con **Import** para cambiar el robot.
+
+</Steps>
+
+Si algo ha salido mal, compáralo con el robot terminado: [descarga `starter-robot.json`](/downloads/starter-robot.json) e impórtalo.
+
+## Siguiente paso \{#next\}
+[Carga tu robot en Erebus](/docs/robot/#load-it-in-erebus) y [ejecuta tu primer programa](/docs/getting-started/).

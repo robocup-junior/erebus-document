@@ -1,0 +1,42 @@
+---
+title: Movimento
+description: Faça o robô andar e girar ajustando a velocidade das suas duas rodas, e meça quanto elas giraram.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+O robô tem duas rodas, cada uma com seu próprio motor: `left wheel motor` e `right wheel motor` no [robô inicial](/docs/robot/). Você o controla ajustando a velocidade de cada roda:
+
+| Roda esquerda | Roda direita | O robô... |
+|---|---|---|
+| Para a frente | Para a frente | Anda para a frente |
+| Para trás | Para trás | Anda para trás |
+| Para trás | Para a frente | Gira no lugar para a esquerda |
+| Para a frente | Para trás | Gira no lugar para a direita |
+| Rápida | Lenta | Faz uma curva para a direita |
+
+As velocidades são em **radianos por segundo**, até 6,28 (uma volta da roda por segundo). Velocidades negativas giram a roda para trás.
+
+## Andando \{#custom-mdx-id\}
+
+1. Obtenha cada motor pelo nome.
+2. Defina a posição dele como infinito, para que ele gire sem limite.
+3. Defina a velocidade dele.
+
+Os motores mantêm a última velocidade que você definiu, então o robô continua se movendo enquanto o seu programa faz outras coisas. Este programa anda para a frente, para trás e gira no lugar para a esquerda, por um segundo cada:
+
+<CodeTabs file="drive" />
+
+:::note
+Os ângulos no Webots são em radianos. Para converter: radianos = graus × π / 180.
+:::
+
+## Medindo quanto uma roda girou \{#measuring-how-far-a-wheel-turned\}
+
+Cada motor tem um sensor de posição, também chamado de encoder, que conta quanto a roda girou, em radianos. Ele é útil para andar uma distância fixa. Girar para trás faz a contagem diminuir.
+
+<CodeTabs file="encoders" />
+
+Cronometrar um movimento é simples, mas o resultado muda com a velocidade. Os encoders medem o próprio movimento, então são mais confiáveis. Para giros precisos, o [giroscópio](/docs/programming/sensors/imu/) é ainda melhor.
+
+Em seguida, aprenda a ler os [sensores](/docs/programming/sensors/).

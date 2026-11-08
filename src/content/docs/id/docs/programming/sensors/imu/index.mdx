@@ -1,0 +1,32 @@
+---
+title: Giroskop dan akselerometer
+description: Ukur rotasi dan percepatan robot.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Giroskop \{#gyroscope\}
+
+Giroskop mengembalikan kecepatan rotasi robot di sekitar setiap sumbu, dalam **radian per detik**. Pada robot pemula, namanya `gyro`.
+
+`getValues()` mengembalikan `[x, y, z]`. **Sumbu Y adalah sumbu vertikal**, jadi `getValues()[1]` adalah kecepatan belok robot. Nilainya positif saat berbelok ke kiri.
+
+:::caution
+Ini berlaku untuk giroskop robot pemula. Sumbunya mengikuti rotasi giroskop, jadi jika kamu memutarnya di robot buatanmu sendiri, periksa nilai mana yang berubah saat robot berbelok.
+:::
+
+## Contoh: berbelok 90 derajat \{#example-turning-90-degrees\}
+
+Jumlahkan kecepatan rotasi dikalikan dengan time step untuk mendapatkan sudut yang sudah ditempuh. Cara ini lebih andal daripada mengatur waktu belokan, karena tidak bergantung pada kecepatan.
+
+<CodeTabs file="turn" />
+
+Dalam pengujian dengan robot pemula, sudut yang dihitung dengan cara ini cocok dengan rotasi sebenarnya hingga selisih 0,01 radian. Kesalahan kecil akan menumpuk selama permainan, jadi koreksi arah robot saat kamu bisa, misalnya dengan menyejajarkannya dengan dinding.
+
+## Akselerometer \{#accelerometer\}
+
+Akselerometer mengembalikan percepatan di sepanjang setiap sumbu dalam m/s². Pada robot pemula, namanya `accelerometer`. Saat diam, `getValues()[1]` terbaca sekitar 9,8, yaitu gravitasi.
+
+## Unit inersia \{#inertial-unit\}
+
+Unit inersia (inertial unit) tidak ada di robot pemula. Dengan [Robot Customizer](/docs/robot/customizer/) kamu bisa menambahkannya, dengan nama bawaan `inertial_unit`. Unit ini memberikan orientasi secara langsung, dengan `getRollPitchYaw()`, jadi kamu tidak perlu menjumlahkan kecepatan rotasi. Lihat [referensi Webots](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b).

@@ -1,0 +1,94 @@
+---
+title: Percobaan pertamamu
+description: Muat robotmu dan program siap pakai, lalu lihat robotmu menjelajahi labirin.
+---
+
+import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
+
+Di halaman ini kamu menjalankan program lengkap di robotmu, dan belajar menggunakan jendela kontrol Erebus. Kamu membutuhkan [Erebus yang sudah terinstal](/docs/installation/) dan [robotmu](/docs/robot/).
+
+## Folder Erebus \{#the-erebus-folder\}
+Ini adalah folder-folder utama dari rilis yang kamu unduh:
+
+| Folder | Isi |
+|---|---|
+| `game/worlds` | World (file `.wbt`). Buka salah satunya untuk memulai. |
+| `game/logs` | Log permainan yang ditulis di akhir setiap permainan |
+| `player_controllers` | Contoh controller |
+
+## Jendela kontrol \{#the-control-window\}
+1. Buka `game/worlds/world1.wbt` di Webots.
+1. Webots membuka jendela kontrol Erebus (jendela robot milik Main Supervisor) di browser web-mu. Di sinilah kamu memuat programmu dan menjalankan permainan.
+
+![Jendela kontrol Erebus](../../../docs/getting-started/control_window.png)
+
+| Bagian | Kegunaan |
+|---|---|
+| **LOAD** kiri (ikon laptop) | Memuat program controller robotmu |
+| **LOAD** kanan (ikon robot) | Memuat robotmu (file `.json`) |
+| **TOGGLE REMOTE** | Membuat program yang berjalan di luar Webots bisa mengendalikan robot. Lihat [Remote Controller](/docs/competition/remote-controller/). |
+| **Docker path** | Folder berisi `Dockerfile`, untuk menjalankan controller-mu di dalam container dengan tombol Docker di sebelah tombol play. Lihat repositori [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). Ini opsional. |
+| **Settings** | Tautan dan opsi, dijelaskan di bawah |
+| **Worlds** | Berpindah ke world lain |
+| **Reset** | Me-reset program yang dimuat dan permainannya |
+| **Give up!** | Mengakhiri permainan |
+| Pewaktu | Waktu permainan, dan di bawahnya waktu dunia nyata dalam tanda kurung. Permainan berakhir saat salah satunya mencapai 0. |
+| Kalkulator | Skor saat ini |
+
+## Jalankan program \{#run-a-program\}
+<a href={mazeUrl} download="maze.py">Unduh maze.py</a>, program lengkap yang membuat robot berkeliling labirin. Ini adalah program yang nanti akan kamu tulis sendiri di [Menavigasi labirin](/docs/programming/navigate-the-maze/).
+
+1. Buka `game/worlds/world1.wbt`.
+1. Muat robotmu dengan **tombol LOAD sebelah kanan**, jika belum. World akan dimuat ulang bersama robotmu.
+1. Muat `maze.py` dengan **tombol LOAD sebelah kiri**. Saat program sudah dimuat, tombolnya berubah menjadi tombol REMOVE berwarna oranye.
+1. Tekan tombol start. Robot muncul di world dan mulai bergerak.
+![Tombol start](../../../docs/getting-started/start_button.png)
+1. Untuk menghentikan robot sementara, tekan tombol pause.
+![Tombol pause](../../../docs/getting-started/pause_button.png)
+1. Jika robot terjebak, menekan tombol restart akan memicu kurangnya kemajuan (Lack of Progress), yang memindahkan robot ke checkpoint terakhir yang dicapainya dan mengurangi 5 poin.
+![Tombol kurangnya kemajuan](../../../docs/getting-started/lop_button.png)
+1. Tekan tombol Reset untuk me-reset program yang dimuat dan permainan yang sedang berjalan. Muat ulang world jika kamu ingin menjalankannya lagi setelah permainan berakhir.
+
+Program ini membutuhkan OpenCV, yang sudah kamu instal bersama [library Python](/docs/installation/#python-libraries) lainnya. Pesan dari programmu, dan error, muncul di konsol Webots.
+
+Selama permainan berjalan, riwayat skor muncul di bagian bawah jendela. Riwayat ini memberitahumu dengan tepat mengapa kamu mendapat atau kehilangan poin, jadi ini adalah alat terbaik untuk memeriksa programmu.
+
+![Jendela kontrol selama permainan, dengan riwayat skor](../../../docs/getting-started/control_window_running.png)
+
+Di akhir permainan, informasi yang sama disimpan di folder `game/logs`.
+
+## Menggunakan world lain \{#using-other-worlds\}
+Tekan **Worlds** untuk berpindah ke world lain. Setiap world punya gambar mini, dan kamu juga bisa menambahkan world buatanmu sendiri, yang dibuat dengan [World Editor](/docs/tools/world-editor/).
+
+![Tab Worlds di jendela kontrol](../../../docs/getting-started/worlds.png)
+
+World yang disertakan di Erebus v26.1 adalah:
+
+| World | Kegunaan |
+|---|---|
+| `world1.wbt`, `world2.wbt` | World contoh. `world2.wbt` mencakup Area 4. |
+| `world3.wbt`, `world4.wbt` | World contoh yang lebih besar, yang juga berisi **korban palsu** |
+| `mapping_example_1.wbt` hingga `mapping_example_3.wbt` | World untuk menguji pemetaanmu. Lihat [Aturan pemetaan](/docs/rules/mapping/). |
+| `NewPassages.wbt` | Contoh lorong penghubung antar-area |
+
+## Pengaturan \{#settings\}
+![Tab Settings di jendela kontrol](../../../docs/getting-started/settings.png)
+
+| Pengaturan | Kegunaan |
+|---|---|
+| Keep controller/robot files | Mempertahankan program dan robotmu tetap dimuat saat world dimuat ulang |
+| Disable automatic LoP | Menghentikan kurangnya kemajuan otomatis setelah 20 detik. Hanya untuk debugging. |
+| Automatic camera | Membuat tampilan mengikuti robot |
+| Recording | Merekam permainan sebagai video |
+| Keep remote controller on | Mempertahankan TOGGLE REMOTE tetap aktif saat world dimuat ulang |
+| Enable debugging | Mencetak informasi tambahan di konsol Webots, misalnya alasan laporan penanda dinding ditolak |
+
+Tautan di bagian atas mengarah ke changelog dan ke alat untuk membuat world dan robot. Untuk membuat world dengan aturan 2026, gunakan [World Editor](https://world.erebus.rcj.cloud/).
+
+## Memindahkan robot secara manual ke tempat yang kamu inginkan \{#manually-move-the-robot-where-you-want-it-to-go\}
+Saat kamu mengklik robot di jendela simulasi, panah merah, biru, dan hijau akan muncul. Kamu bisa memindahkan robot ke posisi mana pun dengan menarik panah-panah ini menggunakan mouse. Perhatikan bahwa robot tidak akan ditampilkan sampai program dimulai.
+![Robot yang dipilih di Webots, dengan panah untuk memindahkannya](../../../docs/getting-started/manual.png)
+
+
+## Selanjutnya \{#next\}
+Kamu sudah melihat robot menjelajah sendiri. Sekarang belajarlah memprogramnya sendiri: mulai dengan [Program pertamamu](/docs/programming/first-program/).

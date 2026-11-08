@@ -1,0 +1,60 @@
+---
+title: Duvar işaretleri
+description: Harf kazazedeleri, bilişsel hedefleri ve sahteleri birbirinden nasıl ayırt edersin.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Robotun yapması gerekenler \{#what-the-robot-has-to-do\}
+Duvar işaretleri (wall tokens) puanlarının çoğunu oluşturur ve her yanlış bildirim 5 puana mal olur. Bu yüzden bulduğun her işaret için şunlar arasında karar vermelisin:
+
+| İşaret... | Ne yapmalı |
+|---|---|
+| Bir harf kazazede (Letter victim: Φ, Ψ, Ω) | `H`, `S` ya da `U` bildir |
+| Bir sahte kazazede (Fake victim: aynı semboller, üç boyutlu) | Bildirme ve haritaya ekleme |
+| Toplamı 0 ile 3 arasında olan bir bilişsel hedef (Cognitive target) | `F`, `P`, `C` ya da `O` bildir |
+| Başka bir toplamı olan bilişsel hedef | Sahtedir: bildirme ve haritaya ekleme |
+
+Kesin tanımlar için [Kurallar](/docs/rules/#wall-tokens) sayfasına, bildirimin nasıl gönderileceği için [İletişim](/docs/programming/communication/#scoring-wall-tokens) sayfasına bak.
+
+## Kameranın gördükleri \{#what-the-camera-sees\}
+Başlangıç robotunun kamerası 64 × 40 pikseldir. Bu çözünürlükte bir işaret, robot yaklaşana kadar yalnızca birkaç pikseldir. Bu yüzden adayları uzaktan aramak, sonra okumak için yaklaşmak en iyisidir. Bir bildirim için robotun işarete yarım kare mesafede olması gerektiğini ve özel kameraların, bir maliyet karşılığında, daha yüksek çözünürlüğe sahip olabileceğini unutma.
+
+![64'e 40 piksellik bir kameranın gördüğü bilişsel hedef](../../../../docs/programming/wall-tokens/camera_target.png)
+
+
+Harf kazazedeler beyaz bir kare üzerindeki siyah sembollerdir ve herhangi bir açıyla döndürülmüş olabilirler, bu yüzden yöntemin yönelime bağlı olmamalıdır.
+
+![Simülatörde bir duvar üzerindeki harf kazazede](../../../../docs/programming/wall-tokens/letter_victim.png)
+
+
+## Bilişsel hedefi okuma \{#reading-a-cognitive-target\}
+Bilişsel hedef beş eş merkezli parçadan oluşur, bu yüzden şeklini tanımana gerek yoktur: merkezini ve dış yarıçapını bulduktan sonra her parçanın ortasındaki rengi örnekleyebilirsin. Parçaların yarıçapları 0,5, 1, 1,5, 2 ve 2,5 cm'dir; bu yüzden orta noktaları dış yarıçapın 0, 0,3, 0,5, 0,7 ve 0,9'undadır.
+
+Bu fonksiyon bunu Python'da OpenCV ile yapar. Merkezi ve yarıçapı bulmak için örneğin [Labirentte yol bul](/docs/programming/navigate-the-maze/) sayfasındaki gibi hedefin konturunu kullanabilirsin.
+
+<CodeTabs file="readRings" />
+
+Gerçek bir oyunda hedef bir açıdan görülebilir; bu durumda elips gibi görünür. Hedefin önüne geçmek, yanlış görünen renkleri bir uyarı olarak kullanmak ya da birkaç kareyi okumak sonucu daha güvenilir yapar.
+
+## Türü hesaplama \{#calculating-the-type\}
+Beş rengi elde ettikten sonra bildirilecek kod, renklerin toplamından gelir. Komşu renkler aynı olsa bile beş parçanın her biri her zaman sayılır.
+
+<CodeTabs file="targetCode" />
+
+Örneğin `['Y', 'B', 'R', 'K', 'G']` toplamı 0 eder, yani `F`'dir; `['B', 'Y', 'K', 'K', 'K']` ise toplamı -4 eder, yani sahtedir.
+
+## Sahte kazazedeleri tespit etme \{#detecting-fake-victims\}
+Sahte kazazedeler gerçek olanlarla aynı sembolleri gösterir, ama harfler üç boyutludur. Önden bakıldığında yalnızca bir kamera onları ayırt edemeyebilir:
+
+![Önden görülen sahte bir kazazede](../../../../docs/programming/wall-tokens/fake_victim_front.png)
+
+
+Kurallar, derinliğin Robot Customizer'daki sensörlerden biriyle tespit edilebileceğini belirtir. Keşfedebileceğin bazı fikirler:
+
+- Bir yükseklik farkı aramak için işaret boyunca Lidar ya da mesafe sensörleriyle alınan mesafe ölçümlerini karşılaştır.
+- İşarete bir açıdan bak; orada kabartma, sembolün şeklini değiştirir.
+
+`world3.wbt` ve `world4.wbt` dünyaları sahte kazazedeler içerir ve [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) onları kendi haritalarına ekleyebilir. Erebus ayrıca mevcut dünyalardaki kazazedeleri rastgele sahteye dönüştüren `scripts/update_maps_with_fakes.py` betiğini içerir.
+
+Bir sahteyi bildirmek yanlış tanımlama olarak 5 puana mal olur; buna karşılık doğrusal bir karedeki gerçek bir kazazede, türüyle birlikte 1. alanda 15 puan, diğer alanlarda daha fazla değerindedir. Robotunun bildirimden önce ne kadar emin olması gerektiğine karar verirken bunu aklında tut.

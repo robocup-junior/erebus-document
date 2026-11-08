@@ -1,0 +1,22 @@
+---
+title: Sensor de posição
+description: Saiba onde o robô está no labirinto com o GPS e use a posição dele para informar os marcadores nas paredes.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+O sensor de posição, ou **GPS**, informa a posição do robô em **metros**. No robô inicial, ele se chama `gps`. Você precisa dele para [informar os marcadores nas paredes](/docs/programming/communication/#scoring-wall-tokens), e ele ajuda muito a [explorar de forma sistemática](/docs/programming/exploring/).
+
+`getValues()` retorna `[x, y, z]`. **X e Z são horizontais**, e Y é vertical, então use X e Z para a posição no labirinto:
+
+![Os eixos X e Z do plano horizontal, com Y na vertical](../../../../../docs/programming/sensors/location-sensor/coordinate_systems_right_handed.png)
+
+<CodeTabs file="read" />
+
+O GPS tem um ruído de alguns milímetros, então os valores mudam um pouco mesmo quando o robô está parado. Nunca compare posições exigindo igualdade exata.
+
+## Exemplo: distância desde o início \{#example-distance-from-the-start\}
+
+Este programa anda para a frente até o robô estar a meio ladrilho de onde começou:
+
+<CodeTabs file="travelled" />

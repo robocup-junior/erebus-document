@@ -1,0 +1,65 @@
+---
+title: 迷宫导航
+description: 把移动和传感器组合起来，编写第一个能探索迷宫的完整程序。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+在本教程中，你将一步一步地编写一个完整的程序。机器人会在迷宫中四处行驶，避开墙壁和坑洞，并报告任何看起来像墙上的标识的东西。它就是你在[首次运行](/docs/getting-started/)中运行过的程序。
+
+它使用[入门机器人](/docs/robot/)，以及你在[移动](/docs/programming/movement/)和[传感器](/docs/programming/sensors/)中学到的知识。
+
+完整的程序：<a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## 场地 \{#the-field\}
+在 `world1.wbt` 上运行它，这个世界是这样的：
+
+![Webots 中的 world1 世界](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## 逐步讲解 \{#step-by-step\}
+
+### 1. 初始化 \{#1-setup\}
+首先，程序创建机器人，获取车轮电机，并让它们可以无限制地转动。`speeds` 保存每个车轮的速度，程序的其余部分会修改它。`reported` 记住机器人已经在哪些位置报告过标识。
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. 传感器 \{#2-sensors\}
+接下来，程序获取并启用入门机器人的传感器：
+
+![标注了各个传感器的示例机器人](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. 动作 \{#3-moves\}
+这些函数通过修改速度来转弯和原地旋转。`delay` 让机器人在若干毫秒内保持同一个动作，`getBrightness` 把颜色传感器的读数转换成一个从 0（黑色）到 255（白色）的值。
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. 看到标识 \{#4-seeing-a-token\}
+这个函数在摄像头图像中寻找墙上的标识。标识是深色墙壁上的明亮方块，所以它会寻找大致呈方形、并且不接触图像边缘（那里通常是地面）的明亮形状。
+
+<CodeTabs file="maze" region="detect" />
+
+这只是一个简单的开始：它无法区分各种符号，也不太能看清认知目标。[墙上的标识](/docs/programming/wall-tokens/)教程会介绍如何做得更好。
+
+### 5. 报告 \{#5-reporting\}
+要为一个标识得分，机器人必须停止超过 1 秒，然后发送它的位置和标识的类型。每个标识只能得分一次，再次报告会扣 5 分，所以程序会记住它已经在哪里报告过。[通信](/docs/programming/communication/)解释了这些消息。
+
+<CodeTabs file="maze" region="report" />
+
+### 6. 主循环 \{#6-the-main-loop\}
+最后，主循环把所有部分组合在一起。每一步，机器人都先全速前进，遇到墙壁时转开，遇到坑洞时掉头，并在前方靠近墙壁时报告摄像头看到的东西。
+
+<CodeTabs file="maze" region="loop" />
+
+## 效果如何？ \{#how-well-does-it-do\}
+这个机器人只是四处乱逛：它不知道自己去过哪里，并且会猜测每个受害者的类型。它有时会被卡住，20 秒后比赛会把它移回检查点。作为第一个程序，这样就很不错了。
+
+## 动手试试 \{#try-it\}
+- 为你的机器人找到最合适的速度和距离。
+- 沿着一侧的墙走：让侧面的传感器保持固定的距离，前方的传感器看到墙时就转弯。
+- 根据墙的远近改变速度。
+
+然后，在[通信](/docs/programming/communication/)中学习如何得分。

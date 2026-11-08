@@ -1,0 +1,32 @@
+---
+title: Jiroskop ve ivmeölçer
+description: Robotun dönüşünü ve ivmesini ölç.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Jiroskop \{#gyroscope\}
+
+Jiroskop, robotun her eksen etrafındaki dönüş hızını **radyan/saniye** cinsinden verir. Başlangıç robotunda adı `gyro`'dur.
+
+`getValues()`, `[x, y, z]` döndürür. **Y ekseni dikeydir**, bu yüzden `getValues()[1]` robotun dönüş hızıdır. Robot sola dönerken pozitiftir.
+
+:::caution
+Bu, başlangıç robotunun jiroskobu içindir. Eksenler jiroskobun dönüşünü izler. Kendi robotunda onu döndürürsen robot dönerken hangi değerin değiştiğini kontrol et.
+:::
+
+## Örnek: 90 derece dönme \{#example-turning-90-degrees\}
+
+Dönülen açıyı bulmak için dönüş hızını zaman adımıyla çarpıp topla. Bu, dönüşü süreyle ölçmekten daha güvenilirdir, çünkü hıza bağlı değildir.
+
+<CodeTabs file="turn" />
+
+Başlangıç robotunda yapılan bir testte, bu şekilde hesaplanan açı gerçek dönüşle 0,01 radyan içinde eşleşti. Küçük hatalar bir oyun boyunca birikir, bu yüzden fırsat buldukça yönünü düzelt; örneğin bir duvara hizalanarak.
+
+## İvmeölçer \{#accelerometer\}
+
+İvmeölçer, her eksen boyunca ivmeyi m/s² cinsinden verir. Başlangıç robotunda adı `accelerometer`'dır. Dururken `getValues()[1]` yaklaşık 9,8 okur, bu yerçekimidir.
+
+## Eylemsizlik birimi \{#inertial-unit\}
+
+Eylemsizlik birimi (inertial unit) başlangıç robotunda yoktur. [Robot Customizer](/docs/robot/customizer/) ile bir tane ekleyebilirsin; varsayılan adı `inertial_unit`'tir. Dönüş hızlarını toplamak yerine, yönelimi doğrudan `getRollPitchYaw()` ile verir. [Webots başvurusuna](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b) bak.

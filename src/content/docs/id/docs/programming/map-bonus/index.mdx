@@ -1,0 +1,27 @@
+---
+title: Mengirim peta
+description: Kirim peta labirin ke Erebus dan dapatkan bonus peta, yang mengalikan skor hingga 2,2.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Bonus peta (map bonus) mengalikan skormu hingga 2,2, jadi nilainya sangat besar. Kamu bisa mendapatkannya dengan mengikuti langkah-langkah berikut:
+
+1. Masukkan peta ke dalam array, seperti dijelaskan di [Aturan pemetaan](/docs/rules/mapping/)
+1. Kirim ukuran array, diikuti array yang sudah diratakan dengan pemisah koma dan dienkode dengan UTF-8
+1. Kirim permintaan evaluasi peta `M`
+1. Akhiri permainan. Erebus menerapkan bonus ke skormu saat permainan berakhir
+
+## Yang perlu diketahui \{#things-to-know\}
+
+- Kamu bisa mengirim peta kapan saja selama permainan, tetapi **peta hanya dievaluasi sekali**. Pesan `M` berikutnya diabaikan, jadi kirimlah saat peta sudah selengkap mungkin.
+- Pastikan masih ada waktu tersisa. Jika permainan berakhir sebelum kamu mengirim `M`, tidak ada peta yang bisa dievaluasi.
+- Kamu tidak harus mengirim `E` untuk mendapatkan bonus: bonus juga diterapkan jika waktu habis. Tetapi `E` adalah cara untuk mendapatkan bonus keluar (exit bonus), dan bonus itu ditambahkan sebelum bonus peta diterapkan.
+- Peta harus memuat ubin awal (`5`), yang digunakan untuk menyejajarkannya dengan jawaban yang benar. Tanpa ubin awal, peta tidak bisa dievaluasi.
+- Hasilnya ditampilkan sebagai `Map Correctness` di riwayat jendela kontrol. Jika kamu mendapat `Map scoring error` di konsol Webots, periksa formatmu.
+
+Contoh di bawah ini mengirim jawaban yang benar untuk `world1.wbt`, yang berguna untuk memeriksa kode komunikasimu. Jika kamu menjalankannya sejak awal permainan, permainan langsung berakhir, dan skornya tetap 0 karena pengali tidak punya apa pun untuk dikalikan.
+
+<CodeTabs file="basics" />
+
+Contoh `MapScorerExample.py` di folder `player_controllers` pada rilis Erebus bekerja dengan cara yang sama.

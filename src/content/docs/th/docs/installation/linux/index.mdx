@@ -1,0 +1,40 @@
+---
+title: Linux (Ubuntu)
+description: ติดตั้ง Erebus และ Webots R2023b บน Ubuntu 20.04 หรือ 22.04
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. เปิดเทอร์มินัล แล้วติดตั้ง pip และไลบรารีที่จำเป็น:
+
+   ```bash
+   sudo apt install python3-pip
+   python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+   ```
+
+2. ดาวน์โหลดและติดตั้ง **Webots R2023b**:
+
+   ```bash
+   wget https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb
+   sudo apt install ./webots_2023b_amd64.deb
+   ```
+
+3. ดาวน์โหลด [Erebus รุ่นล่าสุด](https://github.com/robocup-junior/erebus/releases): เปิด **Assets** แล้วเลือก **Source code (zip)** จากนั้นแตกไฟล์
+
+</Steps>
+
+## รันสภาพแวดล้อม \{#run-the-environment\}
+
+เปิดโลก (world) จากเทอร์มินัล โดยเปลี่ยนพาธเป็นโฟลเดอร์ Erebus ของคุณ:
+
+```bash
+webots ~/EREBUS_FOLDER/game/worlds/world1.wbt
+```
+
+Webots จะเปิดหน้าต่างควบคุมของ Erebus ในเว็บเบราว์เซอร์ของคุณ ในครั้งแรก Erebus จะติดตั้งไลบรารี Python บางตัว ซึ่งอาจใช้เวลาสักพัก เมื่อหน้าต่างแสดงตัวจับเวลาเกม 08:00 ก็แสดงว่าพร้อมแล้ว:
+
+![หน้าต่างควบคุมของ Erebus ที่พร้อมเริ่มต้น](../../../../docs/installation/linux/../control-window-ready.png)
+
+ขั้นต่อไป อ่าน[สรุปกติกา](/docs/rules/) เพื่อทำความเข้าใจเกม หากเกิดปัญหา ดูที่[การแก้ไขปัญหา](/docs/troubleshooting/)

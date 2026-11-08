@@ -1,0 +1,65 @@
+---
+title: 迷宮導航
+description: 把移動和感測器整合成第一個能探索迷宮的完整程式。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+在這個教學中，你會一步一步建立一個完整的程式。機器人會在迷宮中四處行駛，避開牆壁和坑洞，並回報任何看起來像牆上標記的東西。這就是你在[首次執行](/docs/getting-started/)中執行過的程式。
+
+它使用[入門機器人](/docs/robot/)，以及你在[移動](/docs/programming/movement/)和[感測器](/docs/programming/sensors/)中學到的內容。
+
+完整的程式：<a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## 場地 \{#the-field\}
+在 `world1.wbt` 上執行它，這個世界看起來像這樣：
+
+![Webots 中的 world1 世界](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## 一步一步來 \{#step-by-step\}
+
+### 1. 設定 \{#1-setup\}
+首先，程式會建立機器人、取得輪子馬達，並讓它們不受限制地轉動。`speeds` 儲存每個輪子的速度，程式的其他部分會改變它。`reported` 會記住機器人已經在哪些位置回報過標記。
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. 感測器 \{#2-sensors\}
+接著，程式會取得並啟用入門機器人的感測器：
+
+![標示了各感測器的範例機器人](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. 動作 \{#3-moves\}
+這些函式會改變速度來轉彎和原地旋轉。`delay` 讓機器人持續做同一件事幾毫秒，`getBrightness` 則把顏色感測器的讀數轉成一個從 0（黑色）到 255（白色）的值。
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. 看到標記 \{#4-seeing-a-token\}
+這個函式會在攝影機影像中尋找牆上的標記。標記是深色牆壁上的明亮方塊，所以它會尋找大致呈方形、而且沒有碰到影像邊緣（通常是地板所在的位置）的明亮形狀。
+
+<CodeTabs file="maze" region="detect" />
+
+這只是一個簡單的開始：它無法分辨符號，也不太能看清認知目標。[牆上的標記](/docs/programming/wall-tokens/)教學會說明如何做得更好。
+
+### 5. 回報 \{#5-reporting\}
+要靠標記得分，機器人必須停止超過 1 秒，並傳送它的位置和標記的類型。每個標記只能得分一次，重複回報會扣 5 分，所以程式會記住它已經在哪裡回報過。[通訊](/docs/programming/communication/)會說明這些訊息。
+
+<CodeTabs file="maze" region="report" />
+
+### 6. 主迴圈 \{#6-the-main-loop\}
+最後，主迴圈把所有東西整合在一起。每一步，它都會以全速開始、避開牆壁轉向、遇到坑洞時掉頭，並在前方接近牆壁時回報攝影機看到的東西。
+
+<CodeTabs file="maze" region="loop" />
+
+## 它的表現如何？ \{#how-well-does-it-do\}
+這台機器人只是四處亂走：它不知道自己去過哪裡，而且會猜測每個受害者的類型。它有時會卡住，比賽會在 20 秒後把它移回檢查點。作為第一個程式，這樣就很好了。
+
+## 試試看 \{#try-it\}
+- 找出最適合你的機器人的速度和距離。
+- 沿著一側的牆走：讓側面感測器保持固定的距離，並在前方感測器偵測到牆壁時轉彎。
+- 依照與牆壁的距離改變速度。
+
+接下來，在[通訊](/docs/programming/communication/)中學習如何得分。

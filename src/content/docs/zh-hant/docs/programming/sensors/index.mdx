@@ -1,0 +1,25 @@
+---
+title: 感測器
+description: 感測器如何運作，以及各種用途該使用哪一種感測器。
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+感測器讓你的機器人了解周圍的世界。每種感測器的使用方式都一樣：
+
+1. 用 `robot.getDevice()` 依名稱取得感測器。
+2. 用 `enable(timeStep)` 啟用它。在啟用之前，它不會提供任何數值。
+3. 在主迴圈中讀取它。每次執行 `robot.step()` 之後，數值都會更新。
+
+和真實的感測器一樣，它們也有雜訊：同一個讀數在不同步之間可能會稍有變化。主辦單位不會在比賽時改變雜訊，所以請讓你的程式能夠應付雜訊，例如比較多次讀數。
+
+以下頁面使用的是[入門機器人](/docs/robot/)的感測器。
+
+<CardGrid>
+	<LinkCard title="距離感測器" description="找出機器人旁邊的牆壁。" href="/docs/programming/sensors/distance-sensor/" />
+	<LinkCard title="位置感測器" description="用 GPS 知道機器人的位置。" href="/docs/programming/sensors/location-sensor/" />
+	<LinkCard title="顏色感測器" description="查看地板：坑洞、沼澤和通道。" href="/docs/programming/sensors/colour-sensor/" />
+	<LinkCard title="RGB 攝影機" description="查看牆壁，找出牆上的標記。" href="/docs/programming/sensors/rgb-camera/" />
+	<LinkCard title="光達" description="測量機器人周圍的距離。" href="/docs/programming/sensors/lidar/" />
+	<LinkCard title="陀螺儀與加速度計" description="測量轉動與加速度。" href="/docs/programming/sensors/imu/" />
+</CardGrid>

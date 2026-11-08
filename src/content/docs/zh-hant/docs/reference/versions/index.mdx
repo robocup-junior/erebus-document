@@ -1,0 +1,37 @@
+---
+title: 版本
+description: Erebus 各版本的文件、規則與下載。
+---
+
+import { archivedVersion, versions } from '@/data/versions';
+
+請使用與你的比賽規則相符的文件。我們支援最近兩年的版本，每一頁標誌旁邊的選單都會列出這些版本。
+
+<table>
+	<thead>
+		<tr>
+			<th>版本</th>
+			<th>規則</th>
+			<th>Webots</th>
+			<th>文件</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			versions.map((version) => (
+				<tr>
+					<td>{version.name}{version.current && !archivedVersion && '（最新）'}</td>
+					<td>{version.rules}</td>
+					<td>{version.webots}</td>
+					<td>
+						<a href={version.current ? '/docs/' : version.url}>{version.current ? '目前所在版本' : '開啟'}</a>
+					</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+Erebus 的所有版本都在 [Releases 頁面](https://github.com/robocup-junior/erebus/releases)上，各版本的變更則記錄在[變更紀錄](https://github.com/robocup-junior/erebus/blob/master/CHANGELOG.md)中。
+
+每年的規則都會公布在 [RoboCupJunior 網站](https://junior.robocup.org/rescue/)上。

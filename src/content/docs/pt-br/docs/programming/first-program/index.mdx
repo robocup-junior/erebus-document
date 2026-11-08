@@ -1,0 +1,37 @@
+---
+title: Seu primeiro programa
+description: Escreva um programa que leva o robô até uma parede e execute-o.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Seu primeiro programa faz o robô andar para a frente e o para diante de uma parede. Ele é curto, mas tem tudo o que todo programa precisa.
+
+<CodeTabs file="hello" />
+
+## Como funciona \{#how-it-works\}
+
+1. **Crie o robô.** `Robot()` conecta o seu programa ao robô no simulador.
+2. **Obtenha o passo de tempo.** A simulação avança em passos de alguns milissegundos. `getBasicTimeStep()` fornece o passo do mundo.
+3. **Obtenha os dispositivos.** Cada motor e sensor é encontrado pelo nome. Esses são os nomes que você deu a eles quando [montou seu robô](/docs/robot/build/).
+4. **Ative os sensores.** Um sensor não fornece valores até ser ativado. O passo de tempo diz a ele com que frequência atualizar.
+5. **Laço.** `robot.step(timeStep)` avança a simulação em um passo e retorna -1 quando a simulação termina. Tudo o que o seu robô faz acontece dentro desse laço.
+
+## Execute \{#run-it\}
+
+1. Salve o programa como `hello.py`.
+2. Abra `game/worlds/mapping_example_1.wbt` e carregue o [robô inicial](/docs/robot/) com o botão LOAD da direita.
+3. Carregue `hello.py` com o botão LOAD da esquerda e pressione start.
+
+O robô anda para a frente, e o console do Webots mostra a distância até a parede à sua frente até o robô parar. Se em vez disso aparecer um erro, veja [Solução de problemas](/docs/troubleshooting/#your-program).
+
+:::tip
+Use `print` para entender o que o seu robô está fazendo. É a ferramenta mais simples e mais útil para encontrar problemas.
+:::
+
+## Experimente \{#try-it\}
+- Mude a velocidade de `3.0` para `6.0`. O que acontece perto da parede?
+- Faça o robô parar a 10 cm em vez de 5 cm.
+- Mostre também o tempo com `robot.getTime()`.
+
+Em seguida, aprenda a andar e girar em [Movimento](/docs/programming/movement/).

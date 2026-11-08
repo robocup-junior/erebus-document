@@ -1,0 +1,66 @@
+---
+title: İletişim
+description: Duvar işaretlerini bildir, ilerleme eksikliği çağır, puanı sor ve oyunu bitir.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Programın, her robotta bulunan iki cihaz aracılığıyla oyunla konuşur:
+
+- **Verici** (emitter) oyuna mesaj gönderir. Etkinleştirilmesi gerekmez.
+- **Alıcı** (receiver) oyundan mesaj alır. Onu bir sensör gibi etkinleştir.
+
+Aşağıdaki her bölüm, [başlangıç robotu](/docs/robot/) için eksiksiz bir programdır. Tüm mesajlar [Mesaj başvurusu](/docs/reference/messages/) sayfasında listelenmiştir.
+
+## Duvar işaretleriyle puan kazanma \{#scoring-wall-tokens\}
+
+Bir harf kazazede (Letter victim) ya da bilişsel hedef (Cognitive target) ile puan kazanmak için robot şunları yapmalıdır:
+
+1. İşaretin yakınında **1 saniyeden uzun süre durmak**. Robot son bir saniye içinde hareket ettiyse Erebus bildirimi yok sayar.
+2. İşaretin **konumunu ve türünü göndermek**: **santimetre** cinsinden X ve Z, tek bir harf olarak da tür.
+
+| Duvar işareti | Tür |
+|---|---|
+| Harf kazazede Φ (yaralı) | `H` |
+| Harf kazazede Ψ (stabil) | `S` |
+| Harf kazazede Ω (yarasız) | `U` |
+| Bilişsel hedef, toplam 0 (Yanıcı Gaz) | `F` |
+| Bilişsel hedef, toplam 1 (Zehir) | `P` |
+| Bilişsel hedef, toplam 2 (Aşındırıcı) | `C` |
+| Bilişsel hedef, toplam 3 (Organik Peroksit) | `O` |
+
+Kazazedeler 2026'dan beri sembol gösterse de türler harftir. GPS metre verdiği için 100 ile çarp.
+
+<CodeTabs file="report" />
+
+Robot, işaretle duvarın aynı tarafında olmalı; hem robot hem de gönderdiğin konum işarete yakın olmalıdır. Kurallar en fazla yarım kare ister, bunu hedefle. Erebus v26.1, 9 cm'lik bir mesafeyi kontrol eder.
+
+Bu programı `world1.wbt`'nin başında çalıştır: orada hiç işaret yoktur, bu yüzden kontrol penceresinin geçmişinde `Misidentification of Victim -5` görünür. Bir sahtenin bildirimi dahil yanlış bir bildirim 5 puana mal olur ve her işaretle yalnızca bir kez puan kazanılabilir.
+
+## İlerleme eksikliği \{#lack-of-progress\}
+
+Robot sıkıştığında, bir ilerleme eksikliği (Lack of Progress, LoP) onu son kontrol noktasına geri götürür ve 5 puana mal olur. 20 saniye hareketsiz kaldıktan sonra otomatik olarak gerçekleşir; programın da `L` göndererek onu çağırabilir. Her seferinde oyun robota `L` gönderir, böylece programın konumunun değiştiğini bilir.
+
+<CodeTabs file="lop" />
+
+Alıcı farklı mesajlar alabilir, bu yüzden örnekteki gibi her mesajı okumadan önce uzunluğunu kontrol et.
+
+## Oyun bilgileri \{#game-information\}
+
+Puanı ve kalan süreyi almak için `G` gönder. Oyun 16 baytlık bir mesajla yanıt verir: `G` harfi, puan, kalan oyun süresi ve kalan gerçek zaman, saniye cinsinden.
+
+<CodeTabs file="gameinfo" />
+
+Oyun süresi bataklıklarda daha hızlı akar ve iki süreden biri dolduğunda oyun biter. Başlangıca ne zaman döneceğini bilmek için ikisini de kullan.
+
+## Oyunu bitirme \{#ending-the-game\}
+
+Oyunu bitirmek için `E` gönder. Robot başlangıç karesindeyse ve en az bir duvar işaretini tanımladıysa %10'luk çıkış bonusunu (Exit bonus) alır.
+
+<CodeTabs file="exit" />
+
+:::caution
+Oyun, robot `E` gönderdiğinde nerede olursa olsun biter ve robot devam edemez. Önce başlangıç karesine döndüğünden ve [haritasını gönderdiğinden](/docs/programming/map-bonus/) emin ol.
+:::
+
+Sırada [Duvar işaretleri](/docs/programming/wall-tokens/) sayfasında işaretleri ayırt etmeyi öğrenmek var.

@@ -1,0 +1,39 @@
+---
+title: Remote Controller
+description: Execute o seu controlador no seu próprio computador e conecte-o ao servidor da partida, como na competição.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+O recurso de controle remoto do Erebus permite executar simulações do Webots por uma rede. Um computador executa a simulação do Webots (o servidor), e o outro computador executa o programa controlador do robô (o cliente). Chamamos isso de "configuração servidor-cliente" (Server-Client Setup).
+
+**De acordo com as regras de 2026, é assim que as partidas são executadas na competição.** Os organizadores rodam o servidor da partida e fornecem uma tomada RJ-45. Você precisa levar:
+
+- Um computador com o seu programa, pronto para rodar, e com o Webots R2023b instalado
+- Um cabo Ethernet. Recomendamos fortemente pelo menos CAT5, para suportar 100 Mbit/s.
+- Uma porta Ethernet. Se o seu computador não tiver uma, leve um adaptador e teste-o com antecedência.
+
+Para que tudo corra bem quando você chegar ao local da competição, experimente a configuração com bastante antecedência. Todas as equipes também precisam enviar um vídeo curto mostrando como executam o seu controlador em um mapa de exemplo nessa configuração, junto com o TDP, o pôster e o vídeo.
+
+## Como funciona \{#how-it-works\}
+
+1. Abra o mundo e ative o modo remoto na janela de controle.
+1. Inicie o seu controlador pelo terminal. Ele se conecta ao Webots e fica esperando.
+1. Pressione o botão de início na janela de controle.
+
+O seu controlador usa as mesmas bibliotecas do Webots e o mesmo código de quando é carregado com o botão LOAD. O robô personalizado, se você tiver um, continua sendo carregado na janela de controle do servidor.
+
+## O que conferir antes da competição \{#things-to-check-before-the-competition\}
+
+- Todas as bibliotecas de que o seu programa precisa estão instaladas no cliente.
+- O seu programa não depende da velocidade do computador: ele precisa usar `robot.step()` e o tempo da simulação. Lembre que uma imagem da câmera precisa passar pela rede.
+- Todas as janelas de imagem (como `cv2.imshow`) estão desativadas, a menos que você precise delas.
+- Você sabe de cor os comandos que precisa executar. Escrevê-los em um pequeno script é uma boa ideia.
+
+## Guia de configuração \{#setup-guide\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Configuração com o PowerShell" href="/docs/competition/remote-controller/windows/" />
+	<LinkCard title="macOS" description="Configuração com o terminal" href="/docs/competition/remote-controller/mac/" />
+	<LinkCard title="Linux" description="Configuração com o terminal" href="/docs/competition/remote-controller/linux/" />
+</CardGrid>

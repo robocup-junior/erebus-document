@@ -1,0 +1,65 @@
+---
+title: 미로 탐색
+description: 이동과 센서를 합쳐서 미로를 탐색하는 첫 번째 완성된 프로그램을 만들어요.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+이 튜토리얼에서는 완성된 프로그램을 한 단계씩 만들어요. 로봇은 벽과 구멍을 피하며 미로를 돌아다니고, 벽 토큰처럼 보이는 것을 보고해요. [첫 실행](/docs/getting-started/)에서 실행했던 바로 그 프로그램이에요.
+
+[스타터 로봇](/docs/robot/)과, [이동](/docs/programming/movement/)과 [센서](/docs/programming/sensors/)에서 배운 내용을 사용해요.
+
+완성된 프로그램: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## 경기장 \{#the-field\}
+다음과 같이 생긴 `world1.wbt`에서 실행하세요.
+
+![Webots에서 본 world1 월드](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## 한 단계씩 \{#step-by-step\}
+
+### 1. 준비 \{#1-setup\}
+먼저 프로그램은 로봇을 만들고, 바퀴 모터를 가져와 제한 없이 돌 수 있게 해요. `speeds`는 각 바퀴의 속도를 담고 있으며, 프로그램의 나머지 부분에서 이 값을 바꿔요. `reported`는 로봇이 이미 토큰을 보고한 위치를 기억해요.
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. 센서 \{#2-sensors\}
+다음으로 스타터 로봇의 센서를 가져와 활성화해요.
+
+![센서 이름이 표시된 샘플 로봇](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. 동작 \{#3-moves\}
+이 함수들은 속도를 바꿔서 회전하거나 제자리에서 돌게 해요. `delay`는 로봇이 몇 밀리초 동안 같은 동작을 계속하게 하고, `getBrightness`는 컬러 센서를 0(검정)부터 255(흰색)까지의 값 하나로 읽어요.
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. 토큰 보기 \{#4-seeing-a-token\}
+이 함수는 카메라 이미지에서 벽 토큰을 찾아요. 토큰은 어두운 벽 위의 밝은 사각형이므로, 대략 정사각형이고 이미지 가장자리(보통 바닥이 있는 곳)에 닿지 않는 밝은 모양을 찾아요.
+
+<CodeTabs file="maze" region="detect" />
+
+이것은 간단한 출발점이에요. 기호를 구별하지 못하고, 인지 표적도 잘 보지 못해요. [벽 토큰](/docs/programming/wall-tokens/) 튜토리얼에서 더 잘하는 방법을 보여 줘요.
+
+### 5. 보고하기 \{#5-reporting\}
+토큰으로 점수를 얻으려면 로봇이 1초 이상 정지하고, 위치와 토큰의 종류를 보내야 해요. 각 토큰은 한 번만 점수를 얻을 수 있고 다시 보고하면 5점을 잃으므로, 프로그램은 보고한 위치를 기억해요. 이 메시지들은 [통신](/docs/programming/communication/)에서 설명해요.
+
+<CodeTabs file="maze" region="report" />
+
+### 6. 메인 루프 \{#6-the-main-loop\}
+마지막으로 메인 루프가 모든 것을 합쳐요. 매 스텝마다 최고 속도로 시작하고, 벽을 피해 돌고, 구멍에서 되돌아오고, 앞쪽 벽에 가까워지면 카메라가 보는 것을 보고해요.
+
+<CodeTabs file="maze" region="loop" />
+
+## 얼마나 잘하나요? \{#how-well-does-it-do\}
+이 로봇은 그냥 돌아다녀요. 어디에 가 봤는지 모르고, 모든 피해자의 종류를 추측해요. 가끔 갇히기도 하는데, 그러면 20초 후 게임이 로봇을 체크포인트로 되돌려요. 첫 번째 프로그램으로는 충분해요.
+
+## 해 보기 \{#try-it\}
+- 로봇에 가장 좋은 속도와 거리를 찾아보세요.
+- 한쪽 벽을 따라가 보세요. 옆 센서를 일정한 거리로 유지하고, 앞 센서가 벽을 보면 회전하세요.
+- 벽이 얼마나 가까운지에 따라 속도를 바꿔 보세요.
+
+그다음 [통신](/docs/programming/communication/)에서 점수 얻는 법을 배워요.

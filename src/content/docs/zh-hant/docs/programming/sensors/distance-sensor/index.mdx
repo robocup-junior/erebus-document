@@ -1,0 +1,20 @@
+---
+title: 距離感測器
+description: 用距離感測器測量與牆壁的距離，找出機器人的哪幾側有牆。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+距離感測器會測量它正前方第一個物體的距離，單位是**公尺**，最遠 0.8 m。入門機器人有三個距離感測器：`leftDist`、`frontDist` 和 `rightDist`，分別朝向左方、前方和右方。
+
+## 讀取感測器 \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## 找出牆壁 \{#finding-walls\}
+
+一個地塊寬 12 cm，所以當機器人位於地塊中央時，旁邊的牆大約在 5 cm 外。這個程式會檢查三個感測器，並印出哪些感測器偵測到牆：
+
+<CodeTabs file="walls" />
+
+感測器是從它在機器人上的位置開始測量，而不是從機器人的中心。把機器人放在牆邊印出數值，再決定你自己的門檻值。

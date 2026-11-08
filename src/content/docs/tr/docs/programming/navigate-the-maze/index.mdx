@@ -1,0 +1,65 @@
+---
+title: Labirentte yol bul
+description: Hareketi ve sensörleri, bir labirenti keşfeden ilk eksiksiz programda birleştir.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+Bu eğitimde adım adım eksiksiz bir program oluşturursun. Robot, duvarlardan ve çukurlardan kaçınarak labirentte dolaşır ve duvar işaretine benzeyen her şeyi bildirir. Bu, [İlk çalıştırman](/docs/getting-started/) sayfasında çalıştırdığın programdır.
+
+[Başlangıç robotunu](/docs/robot/) ve [Hareket](/docs/programming/movement/) ile [Sensörler](/docs/programming/sensors/) sayfalarında öğrendiklerini kullanır.
+
+Programın tamamı: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## Saha \{#the-field\}
+Programı şuna benzeyen `world1.wbt` üzerinde çalıştır:
+
+![Webots'ta world1 dünyası](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## Adım adım \{#step-by-step\}
+
+### 1. Hazırlık \{#1-setup\}
+Program önce robotu oluşturur, tekerlek motorlarını alır ve sınırsız dönmelerine izin verir. `speeds`, programın geri kalanının değiştirdiği her tekerleğin hızını tutar. `reported`, robotun daha önce nerede işaret bildirdiğini hatırlar.
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. Sensörler \{#2-sensors\}
+Sonra başlangıç robotunun sensörlerini alır ve etkinleştirir:
+
+![Sensörleri etiketlenmiş örnek robot](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. Hareketler \{#3-moves\}
+Bu fonksiyonlar dönmek ve olduğu yerde dönmek için hızları değiştirir. `delay`, robotun birkaç milisaniye boyunca aynı şeyi yapmaya devam etmesini sağlar; `getBrightness` ise renk sensörünü 0 (siyah) ile 255 (beyaz) arasında tek bir değer olarak okur.
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. Bir işareti görme \{#4-seeing-a-token\}
+Bu fonksiyon bir kamera görüntüsünde duvar işaretlerini arar. İşaretler koyu duvarlar üzerindeki parlak karelerdir. Bu yüzden fonksiyon, kabaca kare biçiminde olan ve genellikle zeminin bulunduğu görüntü kenarına değmeyen parlak şekiller arar.
+
+<CodeTabs file="maze" region="detect" />
+
+Bu basit bir başlangıç: sembolleri ayırt edemez ve bilişsel hedefleri iyi göremez. [Duvar işaretleri](/docs/programming/wall-tokens/) eğitimi daha iyisini nasıl yapacağını gösterir.
+
+### 5. Bildirme \{#5-reporting\}
+Bir işaretle puan kazanmak için robot 1 saniyeden uzun süre durmalı ve işaretin konumunu ve türünü göndermelidir. Her işaretle yalnızca bir kez puan kazanılabilir ve onu tekrar bildirmek 5 puana mal olur, bu yüzden program nerede bildirim yaptığını hatırlar. [İletişim](/docs/programming/communication/) bu mesajları açıklar.
+
+<CodeTabs file="maze" region="report" />
+
+### 6. Ana döngü \{#6-the-main-loop\}
+Son olarak ana döngü her şeyi bir araya getirir. Her adımda tam hızla başlar, duvarlardan uzağa döner, çukurlardan geri döner ve önünde yakın bir duvar olduğunda kameranın gördüğünü bildirir.
+
+<CodeTabs file="maze" region="loop" />
+
+## Ne kadar başarılı? \{#how-well-does-it-do\}
+Bu robot rastgele dolaşır: nerelerde bulunduğunu bilmez ve her kazazedenin türünü tahmin eder. Bazen sıkışır ve oyun onu 20 saniye sonra bir kontrol noktasına geri taşır. İlk program için bu gayet iyi.
+
+## Dene \{#try-it\}
+- Robotun için en iyi hızları ve mesafeleri bul.
+- Bir taraftaki duvarı izle: yan sensörü sabit bir mesafede tut ve ön sensör bir duvar gördüğünde dön.
+- Hızı duvarların ne kadar yakın olduğuna göre değiştir.
+
+Sonra [İletişim](/docs/programming/communication/) sayfasında puan kazanmayı öğren.

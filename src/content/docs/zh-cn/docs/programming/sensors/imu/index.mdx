@@ -1,0 +1,32 @@
+---
+title: 陀螺仪和加速度计
+description: 测量机器人的转动和加速度。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## 陀螺仪 \{#gyroscope\}
+
+陀螺仪返回机器人绕每个轴的转动速度，单位为**弧度每秒**。在入门机器人上，它的名字是 `gyro`。
+
+`getValues()` 返回 `[x, y, z]`。**Y 轴是竖直方向**，所以 `getValues()[1]` 就是机器人的转向速度。向左转时它为正值。
+
+:::caution
+这里说的是入门机器人的陀螺仪。坐标轴会跟着陀螺仪一起旋转，所以如果你在自己的机器人上旋转了陀螺仪，请检查机器人转向时是哪个数值在变化。
+:::
+
+## 示例：转 90 度 \{#example-turning-90-degrees\}
+
+把转动速度乘以时间步长，再累加起来，就能得到转过的角度。这比按时间控制转向更可靠，因为它不依赖于速度。
+
+<CodeTabs file="turn" />
+
+在入门机器人上的测试中，用这种方法算出的角度与实际转动的误差在 0.01 弧度以内。在一场比赛中，小误差会不断累积，所以有机会时要校正朝向，例如让机器人对齐墙壁。
+
+## 加速度计 \{#accelerometer\}
+
+加速度计返回沿每个轴的加速度，单位为 m/s²。在入门机器人上，它的名字是 `accelerometer`。静止时，`getValues()[1]` 的读数约为 9.8，也就是重力加速度。
+
+## 惯性单元 \{#inertial-unit\}
+
+入门机器人上没有惯性单元。你可以用 [Robot Customizer](/docs/robot/customizer/) 添加一个，它的默认名字是 `inertial_unit`。它可以通过 `getRollPitchYaw()` 直接给出朝向，而不需要累加转动速度。请参阅 [Webots 参考文档](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b)。

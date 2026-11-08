@@ -1,0 +1,25 @@
+---
+title: Sensörler
+description: Sensörler nasıl çalışır ve hangisi ne için kullanılır.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Sensörler robotuna dünyayı anlatır. Her sensör aynı şekilde kullanılır:
+
+1. `robot.getDevice()` ile adını kullanarak onu al.
+2. `enable(timeStep)` ile etkinleştir. O zamana kadar hiçbir değer vermez.
+3. Ana döngünün içinde oku. Değerler her `robot.step()` sonrasında güncellenir.
+
+Gerçek sensörler gibi bunların da gürültüsü vardır: aynı ölçüm bir adımdan diğerine biraz değişebilir. Organizatörler yarışma için gürültüyü değiştirmez, bu yüzden programını buna karşı dayanıklı yap; örneğin birkaç ölçümü karşılaştırarak.
+
+Aşağıdaki sayfalar [başlangıç robotunun](/docs/robot/) sensörlerini kullanır.
+
+<CardGrid>
+	<LinkCard title="Mesafe sensörü" description="Robotun yanındaki duvarları bul." href="/docs/programming/sensors/distance-sensor/" />
+	<LinkCard title="Konum sensörü" description="GPS ile robotun nerede olduğunu öğren." href="/docs/programming/sensors/location-sensor/" />
+	<LinkCard title="Renk sensörü" description="Zemini gör: çukurlar, bataklıklar ve geçitler." href="/docs/programming/sensors/colour-sensor/" />
+	<LinkCard title="RGB kamera" description="Duvarları gör ve duvar işaretlerini bul." href="/docs/programming/sensors/rgb-camera/" />
+	<LinkCard title="LIDAR" description="Robotun çevresindeki mesafeleri ölç." href="/docs/programming/sensors/lidar/" />
+	<LinkCard title="Jiroskop ve ivmeölçer" description="Dönüşleri ve ivmeyi ölç." href="/docs/programming/sensors/imu/" />
+</CardGrid>

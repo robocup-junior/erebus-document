@@ -1,0 +1,27 @@
+---
+title: Haritayı gönderme
+description: Labirentin haritasını Erebus'a gönder ve puanını 2,2'ye kadar çarpan harita bonusunu kazan.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Harita bonusu (Map bonus) puanını 2,2'ye kadar çarpar, yani çok değerlidir. Şu adımları izleyerek kazanılabilir:
+
+1. Haritayı, [Haritalama kuralları](/docs/rules/mapping/) sayfasında anlatıldığı gibi bir diziye koy
+1. Dizinin boyutunu, ardından virgüllerle ayrılmış, düzleştirilmiş ve UTF-8 ile kodlanmış diziyi gönder
+1. Harita değerlendirme isteği `M`'yi gönder
+1. Oyunu bitir. Erebus, oyun bittiğinde bonusu puanına uygular
+
+## Bilmen gerekenler \{#things-to-know\}
+
+- Haritayı oyun sırasında istediğin zaman gönderebilirsin, ama **yalnızca bir kez değerlendirilir**. Sonraki `M` mesajları yok sayılır, bu yüzden haritayı olabileceği kadar eksiksiz olduğunda gönder.
+- Süre kaldığından emin ol. Oyun sen `M`'yi göndermeden biterse değerlendirilecek bir harita olmaz.
+- Bonusu almak için `E` göndermen gerekmez: süre dolarsa da uygulanır. Ama çıkış bonusunu (Exit bonus) almanın yolu `E`'dir ve bu bonus, harita bonusu uygulanmadan önce eklenir.
+- Harita, başlangıç karesini (`5`) içermelidir; bu kare haritayı doğru cevapla hizalamak için kullanılır. O olmadan harita değerlendirilemez.
+- Sonuç, kontrol penceresinin geçmişinde `Map Correctness` olarak gösterilir. Webots konsolunda `Map scoring error` alırsan biçimini kontrol et.
+
+Aşağıdaki örnek `world1.wbt` için doğru cevabı gönderir; bu, iletişim kodunu kontrol etmek için kullanışlıdır. Oyunun başından çalıştırırsan oyunu hemen bitirir ve bir çarpanın çarpacağı bir şey olmadığı için puan 0'da kalır.
+
+<CodeTabs file="basics" />
+
+Erebus sürümündeki `player_controllers` klasöründe bulunan `MapScorerExample.py` örneği de aynı şekilde çalışır.

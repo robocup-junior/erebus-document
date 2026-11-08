@@ -1,0 +1,77 @@
+---
+title: 組裝機器人
+description: 用 Robot Customizer 一步一步組裝入門機器人。
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+在這個教學中，你會用 [Robot Customizer](https://robot.erebus.rcj.cloud/) 組裝[入門機器人](/docs/robot/#the-starter-robot)。本文件所有的範例都使用這台機器人，所以完成之後，你就準備好為它撰寫程式了。
+
+它花費 3000 預算中的 2400。
+
+:::tip
+每個元件都有一個名稱，你的程式會用這個名稱找到它。請完全照著下面的名稱設定，範例才能正常運作。
+:::
+
+## 設計機器人 \{#design-the-robot\}
+
+開啟 [Robot Customizer](https://robot.erebus.rcj.cloud/)。它一開始有預設的零件：兩個輪子和四個距離感測器。如果你之前用過它，請按下頂端的重設按鈕重新開始。
+
+雖然輸入框上寫的是 mm，但位置的單位其實是十分之一毫米：機器人機身的半徑大約是 370。
+
+<Steps>
+
+1. **設定距離感測器。** 在 **Distance sensors** 下方按一次 `−`，保留三個。然後點選每個感測器展開它，並設定它的名稱、位置和旋轉：
+
+   | 感測器 | 名稱 | X | Y | Z | 旋轉 |
+   |---|---|---:|---:|---:|---|
+   | Distance Sensor 1 | `leftDist` | -370 | 335 | 0 | Left |
+   | Distance Sensor 2 | `frontDist` | 0 | 335 | -370 | Front |
+   | Distance Sensor 3 | `rightDist` | 370 | 335 | 0 | Right |
+
+   在滑桿旁邊的輸入框中輸入數值，並按下旋轉按鈕。**Top** 會從上方顯示機器人，前方朝上，讓你可以確認每個感測器都朝向正確的方向：
+
+   ![從上方看到的三個距離感測器，分別朝向左方、前方和右方](../../../../docs/robot/build/distance-sensors.png)
+
+2. **為輪子命名。** 展開位於機器人右側的 **Wheel 1**，將它命名為 `right wheel`。將 **Wheel 2** 命名為 `left wheel`。你的程式會以 `right wheel motor` 和 `left wheel motor` 使用它們，如 **In your controller** 下方所示。
+
+3. **加入攝影機。** 開啟 **Camera 1**，並設定：
+
+   - 名稱：`camera`
+   - 解析度：寬度 **64px**，高度 **40px**
+   - 位置：X `0`、Y `90`、Z `-370`
+   - 旋轉：**Front**
+
+   ![攝影機的設定](../../../../docs/robot/build/camera.png)
+
+4. **加入顏色感測器。** 開啟 **Colour sensor**，並設定：
+
+   - 名稱：`color`
+   - 位置：X `0`、Y `-41`、Z `-370`
+   - 旋轉：**Down**
+
+   顏色感測器必須朝下才能看到地板。把它放在前端，機器人就能在輪子到達坑洞之前先看到它。
+
+5. **加入 GPS、陀螺儀和加速度計。** 開啟 **GPS**、**Gyro** 和 **Accelerometer**。它們的預設名稱 `gps`、`gyro` 和 `accelerometer`，以及預設位置都可以直接使用。
+
+6. **加入光達。** 開啟 **Lidar**，並設定：
+
+   - 位置：X `0`、Y `370`、Z `0`
+   - 旋轉：輸入 X `90`、Y `0`、Z `0`
+
+   光達必須放在機器人頂部，否則會被機身擋住；它也必須保持水平，才能掃描周圍一整圈。旋轉按鈕無法讓它保持水平，所以請直接輸入數值。
+
+   ![光達的設定](../../../../docs/robot/build/lidar.png)
+
+7. **檢查機器人。** 右上角的預算應該顯示 **2,400 / 3,000 used**。開啟 **Labels** 可以看到每個名稱，開啟 **Camera view** 可以看到攝影機將會看到的畫面。
+
+   ![完成的機器人，顯示標籤和攝影機畫面](../../../../docs/robot/build/finished.png)
+
+8. **匯出。** 在頂端輸入 `starter-robot` 作為檔案名稱，然後按下 **Export**。請保留 `starter-robot.json` 檔案：之後你可以用 **Import** 匯入它來修改機器人。
+
+</Steps>
+
+如果過程中出了問題，請和完成的機器人比較：[下載 `starter-robot.json`](/downloads/starter-robot.json) 並匯入它。
+
+## 下一步 \{#next\}
+[在 Erebus 中載入你的機器人](/docs/robot/#load-it-in-erebus)，然後[執行你的第一個程式](/docs/getting-started/)。

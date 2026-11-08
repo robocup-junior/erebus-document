@@ -1,0 +1,32 @@
+---
+title: Gyroskop und Beschleunigungssensor
+description: Miss die Drehung und die Beschleunigung des Roboters.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+## Gyroskop \{#gyroscope\}
+
+Das Gyroskop liefert die Drehgeschwindigkeit des Roboters um jede Achse in **Radiant pro Sekunde**. Beim Starter-Roboter heißt es `gyro`.
+
+`getValues()` gibt `[x, y, z]` zurück. Die **Y-Achse ist vertikal**, also ist `getValues()[1]` die Drehgeschwindigkeit des Roboters. Sie ist positiv, wenn er sich nach links dreht.
+
+:::caution
+Das gilt für das Gyroskop des Starter-Roboters. Die Achsen folgen der Drehung des Gyroskops. Wenn du es in deinem eigenen Roboter drehst, prüfe also, welcher Wert sich ändert, wenn sich der Roboter dreht.
+:::
+
+## Beispiel: um 90 Grad drehen \{#example-turning-90-degrees\}
+
+Addiere die Drehgeschwindigkeit multipliziert mit dem Zeitschritt auf, um den gedrehten Winkel zu erhalten. Das ist zuverlässiger, als die Drehung nach Zeit zu steuern, weil es nicht von der Geschwindigkeit abhängt.
+
+<CodeTabs file="turn" />
+
+In einem Test mit dem Starter-Roboter stimmte der so berechnete Winkel bis auf 0,01 Radiant mit der echten Drehung überein. Kleine Fehler summieren sich im Lauf eines Spiels, also korrigiere die Ausrichtung, wann immer du kannst, zum Beispiel indem du dich an einer Wand ausrichtest.
+
+## Beschleunigungssensor \{#accelerometer\}
+
+Der Beschleunigungssensor liefert die Beschleunigung entlang jeder Achse in m/s². Beim Starter-Roboter heißt er `accelerometer`. In Ruhe liefert `getValues()[1]` etwa 9,8, also die Schwerkraft.
+
+## Inertialsensor \{#inertial-unit\}
+
+Der Inertialsensor (Inertial Unit) ist nicht am Starter-Roboter. Mit dem [Robot Customizer](/docs/robot/customizer/) kannst du einen hinzufügen, der standardmäßig `inertial_unit` heißt. Er liefert die Ausrichtung direkt mit `getRollPitchYaw()`, statt dass du Drehgeschwindigkeiten aufaddieren musst. Siehe die [Webots-Referenz](https://cyberbotics.com/doc/reference/inertialunit?version=R2023b).

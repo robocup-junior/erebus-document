@@ -1,0 +1,27 @@
+---
+title: Enviar el mapa
+description: Envía el mapa del laberinto a Erebus y consigue la bonificación por mapa, que multiplica la puntuación hasta por 2,2.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+La bonificación por mapa (Map bonus) multiplica tu puntuación hasta por 2,2, así que vale mucho. Puedes conseguirla siguiendo estos pasos:
+
+1. Pon el mapa en una matriz, como se explica en las [Reglas del mapa](/docs/rules/mapping/)
+1. Envía el tamaño de la matriz, seguido de la matriz aplanada con comas como separadores y codificada en UTF-8
+1. Envía la petición de evaluación del mapa `M`
+1. Termina la partida. Erebus aplica la bonificación a tu puntuación cuando termina la partida
+
+## Lo que debes saber \{#things-to-know\}
+
+- Puedes enviar el mapa en cualquier momento de la partida, pero **solo se evalúa una vez**. Los mensajes `M` posteriores se ignoran, así que envíalo cuando el mapa esté todo lo completo que vaya a estar.
+- Asegúrate de que queda tiempo. Si la partida termina antes de que envíes `M`, no hay mapa que evaluar.
+- No tienes que enviar `E` para conseguir la bonificación: también se aplica si se acaba el tiempo. Pero `E` es la forma de conseguir la bonificación de salida (Exit bonus), y esa bonificación se suma antes de aplicar la bonificación por mapa.
+- El mapa debe contener la baldosa de salida (`5`), que se usa para alinearlo con la respuesta correcta. Sin ella, el mapa no se puede evaluar.
+- El resultado aparece como `Map Correctness` en el historial de la ventana de control. Si recibes un `Map scoring error` en la consola de Webots, revisa tu formato.
+
+El ejemplo siguiente envía la respuesta correcta para `world1.wbt`, lo que es útil para comprobar tu código de comunicación. Si lo ejecutas desde el inicio de la partida, la termina inmediatamente y la puntuación se queda en 0, ya que un multiplicador no tiene nada que multiplicar.
+
+<CodeTabs file="basics" />
+
+El ejemplo `MapScorerExample.py` de la carpeta `player_controllers` de la versión de Erebus funciona de la misma forma.

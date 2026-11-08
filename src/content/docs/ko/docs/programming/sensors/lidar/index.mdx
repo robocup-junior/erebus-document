@@ -1,0 +1,26 @@
+---
+title: LIDAR
+description: LIDAR로 로봇 주위의 거리를 거리 이미지나 포인트 클라우드로 측정해요.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+LIDAR는 여러 개의 거리 센서를 한꺼번에 쓰는 것처럼 로봇 주위 전체의 거리를 **미터** 단위로 측정해요. 스타터 로봇에서는 로봇 위에 달려 있고, 이름은 `lidar`예요.
+
+로봇 주위 512개의 점을, 위아래로 쌓인 4개의 레이어에서, 최대 1 m까지 측정해요. 아무것에도 닿지 않은 점은 `inf`가 돼요.
+
+## 거리 읽기 \{#reading-distances\}
+
+`getLayerRangeImage(0)`은 한 레이어의 512개 거리를 줘요. 첫 번째 값은 로봇의 정면이고, **시계 방향**으로 이어져요. 4분의 1 지점은 오른쪽, 절반은 뒤쪽, 4분의 3 지점은 왼쪽이에요.
+
+<CodeTabs file="read" />
+
+## 포인트 클라우드 \{#point-cloud\}
+
+LIDAR는 각 점을 LIDAR 기준의 상대 위치로 줄 수도 있어서, 로봇이 보는 것을 지도로 그릴 때 유용해요. 계산에 시간이 더 걸리므로 사용할 때만 활성화하세요.
+
+<CodeTabs file="pointcloud" />
+
+:::caution[LIDAR 배치하기]
+직접 만든 로봇에서는 LIDAR가 평평하게 놓이도록 [스타터 로봇](/docs/robot/build/)과 같은 회전으로 로봇 위에 배치하세요. 몸체 안에 있거나 기울어져 있으면 로봇 자신을 측정해 버려요.
+:::

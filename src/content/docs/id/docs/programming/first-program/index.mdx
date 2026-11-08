@@ -1,0 +1,37 @@
+---
+title: Program pertamamu
+description: Tulis program yang membuat robot melaju ke dinding, lalu jalankan.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Program pertamamu membuat robot melaju maju, lalu menghentikannya di depan dinding. Programnya pendek, tetapi berisi semua yang dibutuhkan setiap program.
+
+<CodeTabs file="hello" />
+
+## Cara kerjanya \{#how-it-works\}
+
+1. **Buat robot.** `Robot()` menghubungkan programmu dengan robot di simulator.
+2. **Ambil time step.** Simulasi maju dalam langkah-langkah beberapa milidetik. `getBasicTimeStep()` memberikan langkah dari world.
+3. **Ambil perangkat.** Setiap motor dan sensor dicari berdasarkan namanya. Ini adalah nama yang kamu berikan saat [merakit robotmu](/docs/robot/build/).
+4. **Aktifkan sensor.** Sensor tidak memberikan nilai sampai diaktifkan. Time step memberi tahu seberapa sering sensor diperbarui.
+5. **Loop.** `robot.step(timeStep)` memajukan simulasi satu langkah, dan mengembalikan -1 saat simulasi berakhir. Semua yang dilakukan robotmu terjadi di dalam loop ini.
+
+## Jalankan \{#run-it\}
+
+1. Simpan program sebagai `hello.py`.
+2. Buka `game/worlds/mapping_example_1.wbt`, lalu muat [robot pemula](/docs/robot/) dengan tombol LOAD sebelah kanan.
+3. Muat `hello.py` dengan tombol LOAD sebelah kiri, lalu tekan start.
+
+Robot melaju maju, dan konsol Webots menampilkan jarak ke dinding di depannya sampai robot berhenti. Jika kamu malah melihat error, periksa [Pemecahan masalah](/docs/troubleshooting/#your-program).
+
+:::tip
+Gunakan `print` untuk memahami apa yang sedang dilakukan robotmu. Ini adalah alat paling sederhana dan paling berguna untuk menemukan masalah.
+:::
+
+## Coba sendiri \{#try-it\}
+- Ubah kecepatan dari `3.0` menjadi `6.0`. Apa yang terjadi di dekat dinding?
+- Buat robot berhenti di 10 cm, bukan 5 cm.
+- Cetak juga waktunya dengan `robot.getTime()`.
+
+Selanjutnya, pelajari cara melaju dan berbelok di [Gerakan](/docs/programming/movement/).

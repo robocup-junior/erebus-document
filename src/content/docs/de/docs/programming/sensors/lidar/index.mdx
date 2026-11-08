@@ -1,0 +1,26 @@
+---
+title: LIDAR
+description: Miss mit dem LIDAR Entfernungen rund um den Roboter, als Entfernungsbild oder als Punktwolke.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Das LIDAR misst Entfernungen in **Metern** rund um den Roboter, wie viele Abstandssensoren auf einmal. Beim Starter-Roboter heißt es `lidar` und sitzt oben auf dem Roboter.
+
+Es misst 512 Punkte rund um den Roboter, in 4 übereinanderliegenden Schichten, bis zu 1 m weit. Ein Punkt, der nichts trifft, liefert `inf`.
+
+## Entfernungen auslesen \{#reading-distances\}
+
+`getLayerRangeImage(0)` liefert die 512 Entfernungen einer Schicht. Die erste liegt vor dem Roboter, und sie verlaufen **im Uhrzeigersinn**: Nach einem Viertel kommt die rechte Seite, nach der Hälfte die Rückseite und nach drei Vierteln die linke Seite.
+
+<CodeTabs file="read" />
+
+## Punktwolke \{#point-cloud\}
+
+Das LIDAR kann jeden Punkt auch als Position relativ zum LIDAR liefern. Das ist nützlich, um eine Karte von dem zu zeichnen, was der Roboter sieht. Die Berechnung kostet zusätzliche Zeit, also aktiviere sie nur, wenn du sie brauchst.
+
+<CodeTabs file="pointcloud" />
+
+:::caution[Ein LIDAR platzieren]
+Platziere das LIDAR bei deinen eigenen Robotern oben, mit der Drehung des [Starter-Roboters](/docs/robot/build/), damit es flach liegt. Im Inneren des Körpers oder gekippt misst es den Roboter selbst.
+:::

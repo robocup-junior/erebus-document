@@ -1,0 +1,65 @@
+---
+title: Parcourir le labyrinthe
+description: Réunissez déplacement et capteurs dans un premier programme complet qui explore un labyrinthe.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+Dans ce tutoriel, vous construisez un programme complet, étape par étape. Le robot parcourt le labyrinthe en évitant les murs et les trous, et signale tout ce qui ressemble à un marqueur mural. C’est le programme que vous avez exécuté dans [Votre premier essai](/docs/getting-started/).
+
+Il utilise le [robot de départ](/docs/robot/), et ce que vous avez appris dans [Déplacement](/docs/programming/movement/) et [Capteurs](/docs/programming/sensors/).
+
+Le programme complet : <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## Le terrain \{#the-field\}
+Exécutez-le sur `world1.wbt`, qui ressemble à ceci :
+
+![Le monde world1 dans Webots](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## Étape par étape \{#step-by-step\}
+
+### 1. Initialisation \{#1-setup\}
+Le programme commence par créer le robot, obtenir les moteurs des roues et les laisser tourner sans limite. `speeds` contient la vitesse de chaque roue, que le reste du programme modifie. `reported` mémorise les endroits où le robot a déjà signalé un marqueur.
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. Capteurs \{#2-sensors\}
+Ensuite, il obtient et active les capteurs du robot de départ :
+
+![Le robot d’exemple avec ses capteurs annotés](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. Mouvements \{#3-moves\}
+Ces fonctions modifient les vitesses pour tourner et pivoter. `delay` fait continuer le robot à faire la même chose pendant quelques millisecondes, et `getBrightness` lit le capteur de couleur sous la forme d’une seule valeur, de 0 (noir) à 255 (blanc).
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. Voir un marqueur \{#4-seeing-a-token\}
+Cette fonction cherche des marqueurs muraux dans une image de la caméra. Les marqueurs sont des carrés clairs sur des murs sombres : elle cherche donc des formes claires, à peu près carrées, qui ne touchent pas le bord de l’image, là où se trouve généralement le sol.
+
+<CodeTabs file="maze" region="detect" />
+
+C’est un début simple : elle ne sait pas distinguer les symboles, et elle voit mal les cibles cognitives. Le tutoriel [Marqueurs muraux](/docs/programming/wall-tokens/) montre comment faire mieux.
+
+### 5. Signaler \{#5-reporting\}
+Pour marquer les points d’un marqueur, le robot doit s’arrêter plus d’une seconde, puis envoyer sa position et le type du marqueur. Chaque marqueur ne rapporte des points qu’une seule fois, et le signaler à nouveau coûte 5 points : le programme mémorise donc les endroits où il a signalé. [Communication](/docs/programming/communication/) explique ces messages.
+
+<CodeTabs file="maze" region="report" />
+
+### 6. La boucle principale \{#6-the-main-loop\}
+Enfin, la boucle principale réunit le tout. À chaque pas, elle repart à pleine vitesse, s’écarte des murs, fait demi-tour devant les trous, et signale ce que voit la caméra lorsqu’un mur est proche devant.
+
+<CodeTabs file="maze" region="loop" />
+
+## Quels résultats ? \{#how-well-does-it-do\}
+Ce robot erre : il ne sait pas où il est déjà passé, et il devine le type de chaque victime. Il se retrouve parfois bloqué, et le jeu le ramène à un point de contrôle (checkpoint) au bout de 20 secondes. Pour un premier programme, c’est très bien.
+
+## À vous de jouer \{#try-it\}
+- Trouvez les meilleures vitesses et distances pour votre robot.
+- Suivez le mur d’un côté : gardez le capteur latéral à distance constante, et tournez quand le capteur avant voit un mur.
+- Modifiez la vitesse selon la proximité des murs.
+
+Ensuite, apprenez à marquer des points dans [Communication](/docs/programming/communication/).

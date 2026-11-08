@@ -1,0 +1,30 @@
+---
+title: Kamera RGB
+description: Baca gambar kamera di Webots dan olah dengan OpenCV untuk menemukan penanda dinding.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Kamera memberikan gambar dari apa yang ada di depannya. Kamu membutuhkannya untuk menemukan dan membaca [penanda dinding](/docs/programming/wall-tokens/). Robot pemula punya satu kamera, bernama `camera`, berukuran 64 × 40 piksel.
+
+## Membaca piksel \{#reading-pixels\}
+
+Gambar adalah kisi piksel. Setiap piksel punya nilai merah, hijau, dan biru dari 0 sampai 255, dengan (0, 0, 0) adalah hitam dan (255, 255, 255) adalah putih.
+
+<CodeTabs file="read" />
+
+## Menggunakan OpenCV \{#using-opencv\}
+
+[OpenCV](https://opencv.org/) adalah library untuk mengolah gambar: mencari bentuk, membandingkan warna, dan banyak lagi. Gambar Webots punya 4 nilai per piksel, dengan urutan BGRA, yang bisa langsung dipakai oleh OpenCV. Program ini menampilkan gambar, beserta bagian-bagiannya yang terang, di dua jendela:
+
+<CodeTabs file="opencv" />
+
+:::note
+Untuk Python, OpenCV terinstal bersama [library Python](/docs/installation/#python-libraries) lainnya. Untuk C++, kamu perlu menginstal OpenCV dan [menambahkannya saat mengompilasi](/docs/programming/cpp/#compiling). Contoh C++ sudah diuji dengan OpenCV 4.
+:::
+
+Jendela seperti ini untuk pengujian di rumah: matikan saat kompetisi.
+
+## Resolusi \{#resolution\}
+
+Resolusi yang lebih tinggi bisa melihat penanda dari jarak yang lebih jauh, tetapi harganya lebih mahal dan waktu pengolahannya lebih lama. Kamu memilih resolusi setiap kamera di [Robot Customizer](/docs/robot/customizer/#components).

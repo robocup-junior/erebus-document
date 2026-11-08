@@ -1,0 +1,39 @@
+---
+title: Remote Controller
+description: Führe deinen Controller auf deinem eigenen Computer aus und verbinde ihn mit dem Spielserver, wie beim Wettbewerb.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Mit der Remote-Controller-Funktion von Erebus kannst du Webots-Simulationen über ein Netzwerk ausführen. Ein Computer führt die Webots-Simulation aus (der Server), und der andere Computer führt das Controller-Programm des Roboters aus (der Client). Wir nennen das das „Server-Client-Setup“.
+
+**Nach den Regeln von 2026 werden die Spiele beim Wettbewerb so ausgetragen.** Die Organisatoren betreiben den Spielserver und stellen eine RJ-45-Buchse bereit. Du musst mitbringen:
+
+- Einen Computer mit deinem Programm, startbereit und mit installiertem Webots R2023b
+- Ein Ethernet-Kabel. Mindestens CAT5 wird dringend empfohlen, um 100 Mbit/s zu unterstützen.
+- Einen Ethernet-Anschluss. Wenn dein Computer keinen hat, bring einen Adapter mit und teste ihn vorher.
+
+Damit vor Ort alles reibungslos klappt, probiere das Setup rechtzeitig vorher aus. Alle Teams müssen außerdem zusammen mit TDP, Poster und Video ein kurzes Video einreichen, das zeigt, wie sie ihren Controller in diesem Setup auf einer Beispielkarte ausführen.
+
+## So funktioniert es \{#how-it-works\}
+
+1. Öffne die Welt und schalte im Steuerfenster den Remote-Modus ein.
+1. Starte deinen Controller in einem Terminal. Er verbindet sich mit Webots und wartet.
+1. Drücke den Start-Button im Steuerfenster.
+
+Dein Controller verwendet dieselben Webots-Bibliotheken und denselben Code wie beim Laden mit dem LOAD-Button. Der eigene Roboter, falls du einen hast, wird weiterhin im Steuerfenster des Servers geladen.
+
+## Vor dem Wettbewerb prüfen \{#things-to-check-before-the-competition\}
+
+- Alle Bibliotheken, die dein Programm braucht, sind auf dem Client installiert.
+- Dein Programm hängt nicht von der Geschwindigkeit des Computers ab: Es muss `robot.step()` und die Simulationszeit verwenden. Beachte, dass ein Kamerabild durch das Netzwerk übertragen werden muss.
+- Alle Bildfenster (wie `cv2.imshow`) sind ausgeschaltet, sofern du sie nicht brauchst.
+- Du kennst die auszuführenden Befehle auswendig. Es ist eine gute Idee, sie in ein kleines Skript zu schreiben.
+
+## Einrichtungsanleitung \{#setup-guide\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Einrichtung mit PowerShell" href="/docs/competition/remote-controller/windows/" />
+	<LinkCard title="macOS" description="Einrichtung mit dem Terminal" href="/docs/competition/remote-controller/mac/" />
+	<LinkCard title="Linux" description="Einrichtung mit dem Terminal" href="/docs/competition/remote-controller/linux/" />
+</CardGrid>

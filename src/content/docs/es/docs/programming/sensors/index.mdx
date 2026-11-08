@@ -1,0 +1,25 @@
+---
+title: Sensores
+description: Cómo funcionan los sensores y cuál usar para cada cosa.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Los sensores informan a tu robot sobre el mundo. Todos los sensores se usan de la misma forma:
+
+1. Obtenlo por su nombre con `robot.getDevice()`.
+2. Actívalo con `enable(timeStep)`. Hasta entonces, no da ningún valor.
+3. Léelo dentro del bucle principal. Los valores se actualizan después de cada `robot.step()`.
+
+Como los sensores reales, tienen ruido: la misma lectura puede cambiar un poco de un paso al siguiente. Los organizadores no cambian el ruido para la competición, así que haz que tu programa lo tolere, por ejemplo comparando varias lecturas.
+
+Las páginas siguientes usan los sensores del [robot inicial](/docs/robot/).
+
+<CardGrid>
+	<LinkCard title="Sensor de distancia" description="Encuentra paredes junto al robot." href="/docs/programming/sensors/distance-sensor/" />
+	<LinkCard title="Sensor de posición" description="Sabe dónde está el robot, con el GPS." href="/docs/programming/sensors/location-sensor/" />
+	<LinkCard title="Sensor de color" description="Mira el suelo: agujeros, pantanos y pasos." href="/docs/programming/sensors/colour-sensor/" />
+	<LinkCard title="Cámara RGB" description="Mira las paredes y encuentra las marcas." href="/docs/programming/sensors/rgb-camera/" />
+	<LinkCard title="LIDAR" description="Mide distancias alrededor de todo el robot." href="/docs/programming/sensors/lidar/" />
+	<LinkCard title="Giroscopio y acelerómetro" description="Mide los giros y la aceleración." href="/docs/programming/sensors/imu/" />
+</CardGrid>

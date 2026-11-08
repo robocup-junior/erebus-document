@@ -1,0 +1,20 @@
+---
+title: Mesafe sensörü
+description: Mesafe sensörleriyle duvarlara olan uzaklığı ölç ve robotun hangi yanlarında duvar olduğunu bul.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Mesafe sensörü, önündeki ilk nesneye olan uzaklığı **metre** cinsinden, en fazla 0,8 m'ye kadar ölçer. Başlangıç robotunda üç tane vardır: sola, öne ve sağa bakan `leftDist`, `frontDist` ve `rightDist`.
+
+## Sensörü okuma \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## Duvarları bulma \{#finding-walls\}
+
+Bir kare 12 cm genişliğindedir. Bu yüzden robot bir karenin ortasındayken yanındaki bir duvar yaklaşık 5 cm uzaktadır. Bu program üç sensörü kontrol eder ve hangilerinin duvar gördüğünü yazdırır:
+
+<CodeTabs file="walls" />
+
+Sensörler, robotun merkezinden değil, robot üzerinde bulundukları yerden ölçer. Kendi sınırlarını belirlemek için bir duvarın yanında değerleri yazdır.

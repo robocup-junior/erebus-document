@@ -1,0 +1,37 @@
+---
+title: 第一个程序
+description: 编写一个让机器人开到墙前的程序，并运行它。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+你的第一个程序会让机器人向前行驶，并在墙前停下。它很短，但包含了每个程序都需要的所有内容。
+
+<CodeTabs file="hello" />
+
+## 工作原理 \{#how-it-works\}
+
+1. **创建机器人。** `Robot()` 把你的程序连接到仿真器中的机器人。
+2. **获取时间步长。** 仿真以几毫秒为一步向前推进。`getBasicTimeStep()` 给出这个世界的步长。
+3. **获取设备。** 每个电机和传感器都按名字查找。这些名字就是你在[搭建机器人](/docs/robot/build/)时给它们起的名字。
+4. **启用传感器。** 传感器在启用之前不会给出任何数值。时间步长告诉它多久更新一次。
+5. **循环。** `robot.step(timeStep)` 让仿真前进一步，仿真结束时返回 -1。机器人做的每一件事都发生在这个循环里。
+
+## 运行程序 \{#run-it\}
+
+1. 把程序保存为 `hello.py`。
+2. 打开 `game/worlds/mapping_example_1.wbt`，用右侧的 LOAD 按钮加载[入门机器人](/docs/robot/)。
+3. 用左侧的 LOAD 按钮加载 `hello.py`，然后按下开始按钮。
+
+机器人会向前行驶，Webots 控制台会显示它到前方墙壁的距离，直到机器人停下。如果你看到的是错误信息，请查看[故障排除](/docs/troubleshooting/#your-program)。
+
+:::tip
+用 `print` 来了解你的机器人正在做什么。它是查找问题最简单、也最有用的工具。
+:::
+
+## 动手试试 \{#try-it\}
+- 把速度从 `3.0` 改成 `6.0`。靠近墙壁时会发生什么？
+- 让机器人在 10 cm 而不是 5 cm 处停下。
+- 再用 `robot.getTime()` 打印时间。
+
+接下来，在[移动](/docs/programming/movement/)中学习如何行驶和转向。

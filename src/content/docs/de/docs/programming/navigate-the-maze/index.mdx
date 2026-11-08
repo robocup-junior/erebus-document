@@ -1,0 +1,65 @@
+---
+title: Durch das Labyrinth navigieren
+description: Setze Bewegung und Sensoren zu einem ersten vollständigen Programm zusammen, das ein Labyrinth erkundet.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+import mazePy from '../../../../docs/programming/navigate-the-maze/maze.py?url';
+import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
+
+In diesem Tutorial baust du Schritt für Schritt ein vollständiges Programm. Der Roboter fährt durch das Labyrinth, weicht Wänden und Löchern aus und meldet alles, was wie eine Wandmarkierung aussieht. Es ist das Programm, das du in [Dein erster Lauf](/docs/getting-started/) ausgeführt hast.
+
+Es verwendet den [Starter-Roboter](/docs/robot/) und das, was du unter [Bewegung](/docs/programming/movement/) und [Sensoren](/docs/programming/sensors/) gelernt hast.
+
+Das vollständige Programm: <a href={mazePy} download="maze.py">maze.py</a> · <a href={mazeC} download="maze.cpp">maze.cpp</a>
+
+## Das Spielfeld \{#the-field\}
+Führe es in `world1.wbt` aus, das so aussieht:
+
+![Die Welt world1 in Webots](../../../../docs/programming/navigate-the-maze/field1.png)
+
+## Schritt für Schritt \{#step-by-step\}
+
+### 1. Einrichtung \{#1-setup\}
+Zuerst erzeugt das Programm den Roboter, holt die Radmotoren und lässt sie sich ohne Begrenzung drehen. `speeds` enthält die Geschwindigkeit jedes Rads, die der Rest des Programms ändert. `reported` merkt sich, wo der Roboter schon eine Markierung gemeldet hat.
+
+<CodeTabs file="maze" region="setup" />
+
+### 2. Sensoren \{#2-sensors\}
+Als Nächstes holt und aktiviert es die Sensoren des Starter-Roboters:
+
+![Der Beispielroboter mit beschrifteten Sensoren](../../../../docs/programming/navigate-the-maze/robot.png)
+
+<CodeTabs file="maze" region="sensors" />
+
+### 3. Bewegungen \{#3-moves\}
+Diese Funktionen ändern die Geschwindigkeiten, um Kurven zu fahren und sich auf der Stelle zu drehen. `delay` lässt den Roboter einige Millisekunden lang dasselbe tun, und `getBrightness` liest den Farbsensor als einen einzigen Wert von 0 (Schwarz) bis 255 (Weiß) aus.
+
+<CodeTabs file="maze" region="moves" />
+
+### 4. Eine Markierung sehen \{#4-seeing-a-token\}
+Diese Funktion sucht in einem Kamerabild nach Wandmarkierungen. Markierungen sind helle Quadrate auf dunklen Wänden, also sucht sie nach hellen, ungefähr quadratischen Formen, die nicht den Bildrand berühren, wo normalerweise der Boden ist.
+
+<CodeTabs file="maze" region="detect" />
+
+Das ist ein einfacher Anfang: Die Funktion kann die Symbole nicht unterscheiden und erkennt kognitive Ziele nicht gut. Das Tutorial [Wandmarkierungen](/docs/programming/wall-tokens/) zeigt, wie es besser geht.
+
+### 5. Melden \{#5-reporting\}
+Um für eine Markierung Punkte zu bekommen, muss der Roboter länger als 1 Sekunde anhalten und ihre Position und ihren Typ senden. Jede Markierung bringt nur einmal Punkte, und eine erneute Meldung kostet 5 Punkte. Deshalb merkt sich das Programm, wo es schon gemeldet hat. [Kommunikation](/docs/programming/communication/) erklärt diese Nachrichten.
+
+<CodeTabs file="maze" region="report" />
+
+### 6. Die Hauptschleife \{#6-the-main-loop\}
+Schließlich setzt die Hauptschleife alles zusammen. In jedem Schritt beginnt sie mit voller Geschwindigkeit, dreht von Wänden weg, dreht vor Löchern um und meldet, was die Kamera sieht, wenn vorne eine Wand nah ist.
+
+<CodeTabs file="maze" region="loop" />
+
+## Wie gut funktioniert es? \{#how-well-does-it-do\}
+Dieser Roboter fährt ziellos umher: Er weiß nicht, wo er schon war, und rät den Typ jedes Opfers. Manchmal bleibt er stecken, und das Spiel setzt ihn nach 20 Sekunden zu einem Checkpoint zurück. Für ein erstes Programm ist das in Ordnung.
+
+## Probier es aus \{#try-it\}
+- Finde die besten Geschwindigkeiten und Abstände für deinen Roboter.
+- Folge der Wand auf einer Seite: Halte den seitlichen Sensor auf konstantem Abstand und dreh dich, wenn der vordere Sensor eine Wand sieht.
+- Ändere die Geschwindigkeit je nachdem, wie nah die Wände sind.
+
+Danach lernst du unter [Kommunikation](/docs/programming/communication/), Punkte zu sammeln.

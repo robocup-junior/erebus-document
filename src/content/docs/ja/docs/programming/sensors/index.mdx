@@ -1,0 +1,25 @@
+---
+title: センサー
+description: センサーのしくみと、どの用途にどのセンサーを使うかを説明します。
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+センサーは、ロボットに周りの世界のことを教えてくれます。どのセンサーも同じ方法で使います。
+
+1. `robot.getDevice()` で名前を指定して取得します。
+2. `enable(timeStep)` で有効にします。有効にするまでは値を返しません。
+3. メインループの中で読み取ります。値は `robot.step()` のたびに更新されます。
+
+本物のセンサーと同じようにノイズがあり、同じ読み取り値でもステップごとに少し変わることがあります。競技でも運営者はノイズを変更しないので、たとえば複数の読み取り値を比べるなどして、ノイズに強いプログラムにしましょう。
+
+以下のページでは、[スターターロボット](/docs/robot/)のセンサーを使います。
+
+<CardGrid>
+	<LinkCard title="距離センサー" description="ロボットの横にある壁を見つけます。" href="/docs/programming/sensors/distance-sensor/" />
+	<LinkCard title="位置センサー" description="GPS でロボットの位置を知ります。" href="/docs/programming/sensors/location-sensor/" />
+	<LinkCard title="カラーセンサー" description="床（穴、沼地、通路）を見ます。" href="/docs/programming/sensors/colour-sensor/" />
+	<LinkCard title="RGB カメラ" description="壁を見て、壁のトークンを見つけます。" href="/docs/programming/sensors/rgb-camera/" />
+	<LinkCard title="LiDAR" description="ロボットの周囲全体の距離を測ります。" href="/docs/programming/sensors/lidar/" />
+	<LinkCard title="ジャイロと加速度センサー" description="回転と加速度を測ります。" href="/docs/programming/sensors/imu/" />
+</CardGrid>

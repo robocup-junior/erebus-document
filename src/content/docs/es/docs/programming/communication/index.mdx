@@ -1,0 +1,66 @@
+---
+title: Comunicación
+description: Informa de las marcas en las paredes, declara una falta de progreso, pide la puntuación y termina la partida.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Tu programa habla con la partida a través de dos dispositivos que tienen todos los robots:
+
+- El **emisor** (`emitter`) envía mensajes a la partida. No hace falta activarlo.
+- El **receptor** (`receiver`) recibe mensajes de la partida. Actívalo como un sensor.
+
+Cada sección siguiente es un programa completo para el [robot inicial](/docs/robot/). Todos los mensajes están en la [Referencia de mensajes](/docs/reference/messages/).
+
+## Puntuar las marcas en las paredes \{#scoring-wall-tokens\}
+
+Para puntuar una víctima de letra (Letter victim) o un objetivo cognitivo (Cognitive target), el robot debe:
+
+1. **Detenerse más de 1 segundo** cerca de la marca. Erebus ignora el informe si el robot se ha movido en el último segundo.
+2. **Enviar la posición y el tipo** de la marca: X y Z en **centímetros**, y el tipo como una letra.
+
+| Marca en la pared | Tipo |
+|---|---|
+| Víctima de letra Φ (herida) | `H` |
+| Víctima de letra Ψ (estable) | `S` |
+| Víctima de letra Ω (ilesa) | `U` |
+| Objetivo cognitivo, suma 0 (gas inflamable) | `F` |
+| Objetivo cognitivo, suma 1 (veneno) | `P` |
+| Objetivo cognitivo, suma 2 (corrosivo) | `C` |
+| Objetivo cognitivo, suma 3 (peróxido orgánico) | `O` |
+
+Los tipos son letras, aunque desde 2026 las víctimas muestran símbolos. El GPS da metros, así que multiplica por 100.
+
+<CodeTabs file="report" />
+
+El robot debe estar en el mismo lado de la pared que la marca, y tanto el robot como la posición que envías deben estar cerca de ella. Las reglas exigen como máximo media baldosa, así que apunta a eso. Erebus v26.1 comprueba una distancia de 9 cm.
+
+Ejecuta este programa al inicio de `world1.wbt`: ahí no hay ninguna marca, así que el historial de la ventana de control muestra `Misidentification of Victim -5`. Un informe erróneo, incluido el informe de una marca falsa, cuesta 5 puntos, y cada marca solo se puede puntuar una vez.
+
+## Falta de progreso \{#lack-of-progress\}
+
+Cuando el robot está atascado, una falta de progreso (Lack of Progress, LoP) lo devuelve al último punto de control (checkpoint) y cuesta 5 puntos. Ocurre automáticamente tras 20 segundos sin moverse, y tu programa también puede declararla enviando `L`. Cada vez, la partida envía `L` al robot, para que tu programa sepa que su posición ha cambiado.
+
+<CodeTabs file="lop" />
+
+El receptor puede recibir mensajes distintos, así que comprueba la longitud de cada uno antes de leerlo, como en el ejemplo.
+
+## Información de la partida \{#game-information\}
+
+Envía `G` para obtener la puntuación y el tiempo restante. La partida responde con un mensaje de 16 bytes: la letra `G`, la puntuación, el tiempo de partida restante y el tiempo real restante, en segundos.
+
+<CodeTabs file="gameinfo" />
+
+El tiempo de partida corre más rápido en los pantanos, y la partida termina cuando se acaba cualquiera de los dos tiempos. Usa ambos para saber cuándo volver a la salida.
+
+## Terminar la partida \{#ending-the-game\}
+
+Envía `E` para terminar la partida. Si el robot está en la baldosa de salida y ha identificado al menos una marca en la pared, consigue la bonificación de salida (Exit bonus) del 10 %.
+
+<CodeTabs file="exit" />
+
+:::caution
+La partida termina allí donde esté el robot cuando envía `E`, y el robot no puede continuar. Asegúrate antes de que ha vuelto a la baldosa de salida y de que ha [enviado su mapa](/docs/programming/map-bonus/).
+:::
+
+A continuación, aprende a distinguir las marcas en [Marcas en las paredes](/docs/programming/wall-tokens/).

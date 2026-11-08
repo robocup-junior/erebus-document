@@ -1,0 +1,25 @@
+---
+title: 传感器
+description: 传感器如何工作，以及什么情况下该用哪一个。
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+传感器让你的机器人了解周围的世界。所有传感器的用法都一样：
+
+1. 用 `robot.getDevice()` 按名字获取它。
+2. 用 `enable(timeStep)` 启用它。在启用之前，它不会给出任何数值。
+3. 在主循环中读取它。每次 `robot.step()` 之后，数值都会更新。
+
+和真实的传感器一样，它们也有噪声：同一个读数在相邻两步之间可能会略有变化。组织者在比赛中不会改变噪声，所以要让你的程序能够应对噪声，例如比较多个读数。
+
+下面的页面使用的是[入门机器人](/docs/robot/)的传感器。
+
+<CardGrid>
+	<LinkCard title="距离传感器" description="找到机器人旁边的墙。" href="/docs/programming/sensors/distance-sensor/" />
+	<LinkCard title="位置传感器" description="用 GPS 了解机器人所在的位置。" href="/docs/programming/sensors/location-sensor/" />
+	<LinkCard title="颜色传感器" description="查看地面：坑洞、沼泽和通道。" href="/docs/programming/sensors/colour-sensor/" />
+	<LinkCard title="RGB 摄像头" description="看到墙壁，找到墙上的标识。" href="/docs/programming/sensors/rgb-camera/" />
+	<LinkCard title="激光雷达" description="测量机器人四周的距离。" href="/docs/programming/sensors/lidar/" />
+	<LinkCard title="陀螺仪和加速度计" description="测量转动和加速度。" href="/docs/programming/sensors/imu/" />
+</CardGrid>

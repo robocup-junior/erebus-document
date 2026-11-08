@@ -1,0 +1,94 @@
+---
+title: 首次运行
+description: 加载你的机器人和一个现成的程序，看着它探索迷宫。
+---
+
+import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
+
+在本页中，你将在机器人上运行一个完整的程序，并学会使用 Erebus 控制窗口。你需要先[安装好 Erebus](/docs/installation/)，并准备好[你的机器人](/docs/robot/)。
+
+## Erebus 文件夹 \{#the-erebus-folder\}
+下面是你下载的发布包中的主要文件夹：
+
+| 文件夹 | 内容 |
+|---|---|
+| `game/worlds` | 各个世界（`.wbt` 文件）。打开其中一个就可以开始。 |
+| `game/logs` | 每场比赛结束时写入的比赛日志 |
+| `player_controllers` | 示例控制器 |
+
+## 控制窗口 \{#the-control-window\}
+1. 在 Webots 中打开 `game/worlds/world1.wbt`。
+1. Webots 会在你的网页浏览器中打开 Erebus 控制窗口（Main Supervisor 的机器人窗口）。你在这里加载程序并运行比赛。
+
+![Erebus 控制窗口](../../../docs/getting-started/control_window.png)
+
+| 部分 | 用途 |
+|---|---|
+| 左侧 **LOAD**（笔记本电脑图标） | 加载机器人的控制器程序 |
+| 右侧 **LOAD**（机器人图标） | 加载你的机器人（`.json` 文件） |
+| **TOGGLE REMOTE** | 让在 Webots 外部运行的程序控制机器人。请参阅 [Remote Controller](/docs/competition/remote-controller/)。 |
+| **Docker path** | 包含 `Dockerfile` 的文件夹，可以用播放按钮旁边的 Docker 按钮在容器中运行你的控制器。请参阅 [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) 仓库。这是可选的。 |
+| **Settings** | 链接和选项，见下文 |
+| **Worlds** | 切换到另一个世界 |
+| **Reset** | 重置已加载的程序和比赛 |
+| **Give up!** | 结束比赛 |
+| 计时器 | 比赛时间，下方括号中是真实时间。任意一个到达 0 时比赛结束。 |
+| 计算器 | 当前得分 |
+
+## 运行程序 \{#run-a-program\}
+<a href={mazeUrl} download="maze.py">下载 maze.py</a>，这是一个让机器人在迷宫中四处行驶的完整程序。你将在[迷宫导航](/docs/programming/navigate-the-maze/)中亲手编写这个程序。
+
+1. 打开 `game/worlds/world1.wbt`。
+1. 如果还没有加载机器人，请用**右侧 LOAD 按钮**加载它。世界会连同机器人一起重新加载。
+1. 用**左侧 LOAD 按钮**加载 `maze.py`。程序加载后，这个按钮会变成橙色的 REMOVE 按钮。
+1. 按下开始按钮。机器人会出现在世界中并开始移动。
+![开始按钮](../../../docs/getting-started/start_button.png)
+1. 要暂时让机器人停下，请按暂停按钮。
+![暂停按钮](../../../docs/getting-started/pause_button.png)
+1. 如果机器人被卡住了，按下重新开始按钮会触发缺乏进展（Lack of Progress），把机器人移到它最后到达的检查点，并扣 5 分。
+![缺乏进展按钮](../../../docs/getting-started/lop_button.png)
+1. 按 Reset 按钮可以重置已加载的程序和正在进行的比赛。如果比赛结束后想再运行一次，请重新加载世界。
+
+这个程序需要 OpenCV，你已经和其他 [Python 库](/docs/installation/#python-libraries)一起安装了它。程序输出的消息和错误会显示在 Webots 控制台中。
+
+比赛进行时，得分历史记录会显示在窗口底部。它会准确地告诉你为什么得分或扣分，所以它是检查程序的最佳工具。
+
+![比赛期间的控制窗口，显示了得分历史记录](../../../docs/getting-started/control_window_running.png)
+
+比赛结束时，同样的信息会保存在 `game/logs` 文件夹中。
+
+## 使用其他世界 \{#using-other-worlds\}
+按 **Worlds** 切换到另一个世界。每个世界都有一张缩略图，你也可以添加用 [World Editor](/docs/tools/world-editor/) 制作的自己的世界。
+
+![控制窗口的 Worlds 标签页](../../../docs/getting-started/worlds.png)
+
+Erebus v26.1 自带的世界有：
+
+| 世界 | 用途 |
+|---|---|
+| `world1.wbt`、`world2.wbt` | 示例世界。`world2.wbt` 包含区域 4。 |
+| `world3.wbt`、`world4.wbt` | 更大的示例世界，还包含**假受害者** |
+| `mapping_example_1.wbt` 至 `mapping_example_3.wbt` | 用来测试建图的世界。请参阅[地图规则](/docs/rules/mapping/)。 |
+| `NewPassages.wbt` | 区域之间通道的示例 |
+
+## 设置 \{#settings\}
+![控制窗口的 Settings 标签页](../../../docs/getting-started/settings.png)
+
+| 设置 | 用途 |
+|---|---|
+| Keep controller/robot files | 重新加载世界时，保持程序和机器人处于加载状态 |
+| Disable automatic LoP | 停用 20 秒后自动触发的缺乏进展。仅用于调试。 |
+| Automatic camera | 让视角跟随机器人 |
+| Recording | 把比赛录制成视频 |
+| Keep remote controller on | 重新加载世界时，保持 TOGGLE REMOTE 开启 |
+| Enable debugging | 在 Webots 控制台中打印额外的信息，例如某次墙上的标识的报告为什么被拒绝 |
+
+顶部的链接通向更新日志，以及制作世界和机器人的工具。要制作符合 2026 年规则的世界，请使用 [World Editor](https://world.erebus.rcj.cloud/)。
+
+## 手动把机器人移到你想要的位置 \{#manually-move-the-robot-where-you-want-it-to-go\}
+在仿真窗口中点击机器人时，会出现红、蓝、绿三色箭头。用鼠标拖动这些箭头，就可以把机器人移到任意位置。注意，在程序启动之前，机器人不会显示出来。
+![在 Webots 中选中的机器人，带有用于移动它的箭头](../../../docs/getting-started/manual.png)
+
+
+## 下一步 \{#next\}
+你已经看到机器人自己进行探索了。现在来学习如何亲手为它编程：从[第一个程序](/docs/programming/first-program/)开始。

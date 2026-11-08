@@ -1,0 +1,37 @@
+---
+title: Votre premier programme
+description: Écrivez un programme qui conduit le robot jusqu’à un mur, et exécutez-le.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Votre premier programme fait avancer le robot, et l’arrête devant un mur. Il est court, mais il contient tout ce dont chaque programme a besoin.
+
+<CodeTabs file="hello" />
+
+## Comment ça marche \{#how-it-works\}
+
+1. **Créer le robot.** `Robot()` connecte votre programme au robot dans le simulateur.
+2. **Obtenir le pas de temps.** La simulation avance par pas de quelques millisecondes. `getBasicTimeStep()` donne le pas du monde.
+3. **Obtenir les composants.** Chaque moteur et chaque capteur est retrouvé grâce à son nom. Ce sont les noms que vous leur avez donnés en [construisant votre robot](/docs/robot/build/).
+4. **Activer les capteurs.** Un capteur ne donne aucune valeur tant qu’il n’est pas activé. Le pas de temps lui indique à quelle fréquence se mettre à jour.
+5. **Boucler.** `robot.step(timeStep)` fait avancer la simulation d’un pas, et renvoie -1 quand la simulation se termine. Tout ce que fait votre robot se passe dans cette boucle.
+
+## L’exécuter \{#run-it\}
+
+1. Enregistrez le programme sous le nom `hello.py`.
+2. Ouvrez `game/worlds/mapping_example_1.wbt`, et chargez le [robot de départ](/docs/robot/) avec le bouton LOAD de droite.
+3. Chargez `hello.py` avec le bouton LOAD de gauche, et appuyez sur démarrer.
+
+Le robot avance, et la console de Webots affiche la distance jusqu’au mur devant lui jusqu’à ce que le robot s’arrête. Si une erreur s’affiche à la place, consultez [Dépannage](/docs/troubleshooting/#your-program).
+
+:::tip
+Utilisez `print` pour comprendre ce que fait votre robot. C’est l’outil le plus simple et le plus utile pour trouver les problèmes.
+:::
+
+## À vous de jouer \{#try-it\}
+- Changez la vitesse de `3.0` à `6.0`. Que se passe-t-il près du mur ?
+- Faites s’arrêter le robot à 10 cm au lieu de 5 cm.
+- Affichez aussi le temps avec `robot.getTime()`.
+
+Ensuite, apprenez à avancer et à tourner dans [Déplacement](/docs/programming/movement/).

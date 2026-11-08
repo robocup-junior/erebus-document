@@ -1,0 +1,37 @@
+---
+title: 第一個程式
+description: 撰寫一個讓機器人開到牆邊的程式，並執行它。
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+你的第一個程式會讓機器人往前走，並在牆前停下來。它很短，但具備了每個程式都需要的一切。
+
+<CodeTabs file="hello" />
+
+## 運作方式 \{#how-it-works\}
+
+1. **建立機器人。** `Robot()` 會把你的程式連接到模擬器中的機器人。
+2. **取得時間步長。** 模擬以每步幾毫秒的方式前進。`getBasicTimeStep()` 會提供這個世界的步長。
+3. **取得裝置。** 每個馬達和感測器都依名稱取得。這些名稱就是你在[組裝機器人](/docs/robot/build/)時為它們取的名字。
+4. **啟用感測器。** 感測器在啟用之前不會提供任何數值。時間步長會告訴它多久更新一次。
+5. **迴圈。** `robot.step(timeStep)` 會讓模擬前進一步，並在模擬結束時回傳 -1。機器人做的每一件事都在這個迴圈中發生。
+
+## 執行程式 \{#run-it\}
+
+1. 把程式儲存為 `hello.py`。
+2. 開啟 `game/worlds/mapping_example_1.wbt`，用右邊的 LOAD 按鈕載入[入門機器人](/docs/robot/)。
+3. 用左邊的 LOAD 按鈕載入 `hello.py`，然後按下開始。
+
+機器人會往前走，Webots 主控台會顯示它與前方牆壁的距離，直到機器人停下來。如果你看到的是錯誤訊息，請查看[疑難排解](/docs/troubleshooting/#your-program)。
+
+:::tip
+用 `print` 來了解你的機器人正在做什麼。這是找出問題最簡單、也最有用的工具。
+:::
+
+## 試試看 \{#try-it\}
+- 把速度從 `3.0` 改成 `6.0`。接近牆壁時會發生什麼事？
+- 讓機器人在 10 cm 而不是 5 cm 處停下來。
+- 也用 `robot.getTime()` 印出時間。
+
+接下來，在[移動](/docs/programming/movement/)中學習如何前進和轉彎。

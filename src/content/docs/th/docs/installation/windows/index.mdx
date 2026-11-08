@@ -1,0 +1,34 @@
+---
+title: Windows
+description: ติดตั้ง Erebus และ Webots R2023b บน Windows
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. ติดตั้ง **Python 3.9 ขึ้นไป** แบบ 64 บิต จาก[เว็บไซต์ทางการ](https://www.python.org/downloads/windows/) ระหว่างการติดตั้ง ตรวจสอบให้แน่ใจว่าได้เพิ่ม Python ลงใน PATH แล้ว:
+
+   ![ตัวเลือก Add Python to PATH ของตัวติดตั้ง Python](../../../../docs/installation/windows/python-path.png)
+
+2. เปิด PowerShell แล้วติดตั้งไลบรารีที่จำเป็น:
+
+   ```powershell
+   python -m pip install numpy termcolor requests overrides pillow opencv-python
+   ```
+
+3. ติดตั้ง **Webots R2023b** จาก[คลังทางการ](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe)
+
+4. ดาวน์โหลด [Erebus รุ่นล่าสุด](https://github.com/robocup-junior/erebus/releases): เปิด **Assets** แล้วเลือก **Source code (zip)** จากนั้นแตกไฟล์
+
+</Steps>
+
+## รันสภาพแวดล้อม \{#run-the-environment\}
+
+ดับเบิลคลิกไฟล์โลก `game/worlds/world1.wbt` เพื่อเปิดใน Webots
+
+Webots จะเปิดหน้าต่างควบคุมของ Erebus ในเว็บเบราว์เซอร์ของคุณ ในครั้งแรก Erebus จะติดตั้งไลบรารี Python บางตัว ซึ่งอาจใช้เวลาสักพัก เมื่อหน้าต่างแสดงตัวจับเวลาเกม 08:00 ก็แสดงว่าพร้อมแล้ว:
+
+![หน้าต่างควบคุมของ Erebus ที่พร้อมเริ่มต้น](../../../../docs/installation/windows/../control-window-ready.png)
+
+ขั้นต่อไป อ่าน[สรุปกติกา](/docs/rules/) เพื่อทำความเข้าใจเกม หากเกิดปัญหา ดูที่[การแก้ไขปัญหา](/docs/troubleshooting/)

@@ -1,0 +1,39 @@
+---
+title: Remote Controller
+description: 在你自己的電腦上執行控制器，並連接到比賽伺服器，就像在比賽中一樣。
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Erebus 的遠端控制器（Remote Controller）功能讓你可以透過網路執行 Webots 模擬。一台電腦執行 Webots 模擬（伺服器），另一台電腦執行機器人的控制器程式（用戶端）。我們稱之為「伺服器－用戶端架構」（Server-Client Setup）。
+
+**依照 2026 年規則，比賽就是以這種方式進行。** 主辦單位會執行比賽伺服器，並提供一個 RJ-45 插座。你需要攜帶：
+
+- 一台電腦，裝有可以隨時執行的程式，並已安裝 Webots R2023b
+- 一條乙太網路線。強烈建議至少使用 CAT5，以支援 100 Mbit/s。
+- 一個乙太網路埠。如果你的電腦沒有，請攜帶轉接器，並事先測試。
+
+為了在比賽現場順利上手，請提早試用這個架構。所有隊伍除了 TDP、海報和影片之外，還必須提交一段短片，展示他們如何在這個架構中於範例地圖上執行控制器。
+
+## 運作方式 \{#how-it-works\}
+
+1. 開啟世界，並在控制視窗中開啟遠端模式。
+1. 從終端機啟動你的控制器。它會連接到 Webots 並等待。
+1. 按下控制視窗中的開始按鈕。
+
+你的控制器使用的 Webots 函式庫和程式碼，與用 LOAD 按鈕載入時完全相同。如果你有自訂機器人，它仍然是在伺服器的控制視窗中載入。
+
+## 比賽前要檢查的事項 \{#things-to-check-before-the-competition\}
+
+- 你的程式需要的所有函式庫都已安裝在用戶端上。
+- 你的程式不依賴電腦的速度：它必須使用 `robot.step()` 和模擬時間。請注意，攝影機的影像必須透過網路傳送。
+- 除非你需要，否則所有影像視窗（例如 `cv2.imshow`）都已關閉。
+- 你已經熟記要執行的指令。把它們寫成一個小腳本是個好主意。
+
+## 設定指南 \{#setup-guide\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="使用 PowerShell 設定" href="/docs/competition/remote-controller/windows/" />
+	<LinkCard title="macOS" description="使用終端機設定" href="/docs/competition/remote-controller/mac/" />
+	<LinkCard title="Linux" description="使用終端機設定" href="/docs/competition/remote-controller/linux/" />
+</CardGrid>

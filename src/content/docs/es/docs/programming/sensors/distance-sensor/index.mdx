@@ -1,0 +1,20 @@
+---
+title: Sensor de distancia
+description: Mide la distancia a las paredes con los sensores de distancia y averigua qué lados del robot tienen una pared.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Un sensor de distancia mide la distancia, en **metros**, al primer objeto que tiene delante, hasta 0,8 m. El robot inicial tiene tres: `leftDist`, `frontDist` y `rightDist`, que miran a la izquierda, al frente y a la derecha.
+
+## Leer un sensor \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## Encontrar paredes \{#finding-walls\}
+
+Una baldosa mide 12 cm de ancho, así que cuando el robot está en el centro de una baldosa, una pared a su lado está a unos 5 cm. Este programa comprueba los tres sensores e imprime cuáles ven una pared:
+
+<CodeTabs file="walls" />
+
+Los sensores miden desde donde están colocados en el robot, no desde su centro. Imprime los valores junto a una pared para elegir tus propios límites.

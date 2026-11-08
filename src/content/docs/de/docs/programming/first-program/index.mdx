@@ -1,0 +1,37 @@
+---
+title: Dein erstes Programm
+description: Schreibe ein Programm, das den Roboter bis zu einer Wand fahren lässt, und führe es aus.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Dein erstes Programm lässt den Roboter vorwärtsfahren und hält ihn vor einer Wand an. Es ist kurz, enthält aber alles, was jedes Programm braucht.
+
+<CodeTabs file="hello" />
+
+## So funktioniert es \{#how-it-works\}
+
+1. **Den Roboter erzeugen.** `Robot()` verbindet dein Programm mit dem Roboter im Simulator.
+2. **Den Zeitschritt holen.** Die Simulation läuft in Schritten von wenigen Millisekunden. `getBasicTimeStep()` liefert den Schritt der Welt.
+3. **Die Geräte holen.** Jeder Motor und jeder Sensor wird über seinen Namen gefunden. Das sind die Namen, die du ihnen gegeben hast, als du [deinen Roboter gebaut hast](/docs/robot/build/).
+4. **Die Sensoren aktivieren.** Ein Sensor liefert keine Werte, bis er aktiviert ist. Der Zeitschritt sagt ihm, wie oft er sich aktualisieren soll.
+5. **Schleife.** `robot.step(timeStep)` lässt die Simulation einen Schritt weiterlaufen und gibt -1 zurück, wenn die Simulation endet. Alles, was dein Roboter tut, passiert in dieser Schleife.
+
+## Ausführen \{#run-it\}
+
+1. Speichere das Programm als `hello.py`.
+2. Öffne `game/worlds/mapping_example_1.wbt` und lade den [Starter-Roboter](/docs/robot/) mit dem rechten LOAD-Button.
+3. Lade `hello.py` mit dem linken LOAD-Button und drücke auf Start.
+
+Der Roboter fährt vorwärts, und die Webots-Konsole zeigt die Entfernung zur Wand vor ihm an, bis der Roboter anhält. Wenn du stattdessen einen Fehler siehst, sieh unter [Fehlerbehebung](/docs/troubleshooting/#your-program) nach.
+
+:::tip
+Verwende `print`, um zu verstehen, was dein Roboter tut. Es ist das einfachste und nützlichste Werkzeug, um Probleme zu finden.
+:::
+
+## Probier es aus \{#try-it\}
+- Ändere die Geschwindigkeit von `3.0` auf `6.0`. Was passiert in der Nähe der Wand?
+- Lass den Roboter bei 10 cm statt bei 5 cm anhalten.
+- Gib zusätzlich die Zeit mit `robot.getTime()` aus.
+
+Als Nächstes lernst du unter [Bewegung](/docs/programming/movement/), zu fahren und zu drehen.

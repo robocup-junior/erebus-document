@@ -1,0 +1,30 @@
+---
+title: RGB kamera
+description: Webots'ta kamera görüntülerini oku ve duvar işaretlerini bulmak için onları OpenCV ile işle.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Kamera, önündekinin görüntüsünü verir. [Duvar işaretlerini](/docs/programming/wall-tokens/) bulmak ve okumak için ona ihtiyacın var. Başlangıç robotunda `camera` adında, 64 × 40 piksellik bir kamera vardır.
+
+## Pikselleri okuma \{#reading-pixels\}
+
+Bir görüntü, piksellerden oluşan bir ızgaradır. Her pikselin 0 ile 255 arasında bir kırmızı, yeşil ve mavi değeri vardır; (0, 0, 0) siyah, (255, 255, 255) beyazdır.
+
+<CodeTabs file="read" />
+
+## OpenCV kullanma \{#using-opencv\}
+
+[OpenCV](https://opencv.org/), görüntü işlemeye yarayan bir kütüphanedir: şekilleri bulur, renkleri karşılaştırır ve çok daha fazlasını yapar. Webots görüntülerinde piksel başına BGRA sırasıyla 4 değer bulunur ve OpenCV bunları doğrudan kullanabilir. Bu program görüntüyü ve parlak kısımlarını iki pencerede gösterir:
+
+<CodeTabs file="opencv" />
+
+:::note
+Python için OpenCV, diğer [Python kütüphaneleriyle](/docs/installation/#python-libraries) birlikte kurulur. C++ için OpenCV'yi kurman ve [derlerken eklemen](/docs/programming/cpp/#compiling) gerekir. C++ örneği OpenCV 4 ile test edildi.
+:::
+
+Bunun gibi pencereler evde test etmek içindir: yarışmada onları kapat.
+
+## Çözünürlük \{#resolution\}
+
+Yüksek çözünürlükler işaretleri daha uzaktan görür, ama daha pahalıdır ve işlenmesi daha uzun sürer. Her kameranın çözünürlüğünü [Robot Customizer](/docs/robot/customizer/#components) içinde seçersin.

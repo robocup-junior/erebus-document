@@ -1,0 +1,20 @@
+---
+title: Abstandssensor
+description: Miss mit den Abstandssensoren die Entfernung zu Wänden und finde heraus, auf welchen Seiten des Roboters eine Wand ist.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Ein Abstandssensor misst die Entfernung in **Metern** zum ersten Objekt vor ihm, bis zu 0,8 m. Der Starter-Roboter hat drei davon: `leftDist`, `frontDist` und `rightDist`, die nach links, nach vorne und nach rechts schauen.
+
+## Einen Sensor auslesen \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## Wände finden \{#finding-walls\}
+
+Eine Kachel ist 12 cm breit. Steht der Roboter also in der Mitte einer Kachel, ist eine Wand an seiner Seite etwa 5 cm entfernt. Dieses Programm prüft die drei Sensoren und gibt aus, welche davon eine Wand sehen:
+
+<CodeTabs file="walls" />
+
+Die Sensoren messen von ihrer Position am Roboter aus, nicht von seiner Mitte. Gib die Werte neben einer Wand aus, um deine eigenen Grenzwerte festzulegen.

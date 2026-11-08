@@ -1,0 +1,66 @@
+---
+title: Komunikasi
+description: Laporkan penanda dinding, panggil kurangnya kemajuan, minta skor, dan akhiri permainan.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Programmu berkomunikasi dengan permainan melalui dua perangkat yang dimiliki setiap robot:
+
+- **Emitter** mengirim pesan ke permainan. Perangkat ini tidak perlu diaktifkan.
+- **Receiver** menerima pesan dari permainan. Aktifkan seperti sensor.
+
+Setiap bagian di bawah ini adalah program lengkap untuk [robot pemula](/docs/robot/). Semua pesan tercantum di [Referensi pesan](/docs/reference/messages/).
+
+## Mencetak poin dari penanda dinding \{#scoring-wall-tokens\}
+
+Untuk mencetak poin dari korban huruf (letter victim) atau target kognitif (cognitive target), robot harus:
+
+1. **Berhenti lebih dari 1 detik** di dekat penanda. Erebus mengabaikan laporan jika robot bergerak dalam satu detik terakhir.
+2. **Mengirim posisi dan jenis** penanda: X dan Z dalam **sentimeter**, dan jenisnya sebagai satu huruf.
+
+| Penanda dinding | Jenis |
+|---|---|
+| Korban huruf Φ (terluka) | `H` |
+| Korban huruf Ψ (stabil) | `S` |
+| Korban huruf Ω (tidak terluka) | `U` |
+| Target kognitif, jumlah 0 (Gas Mudah Terbakar) | `F` |
+| Target kognitif, jumlah 1 (Racun) | `P` |
+| Target kognitif, jumlah 2 (Korosif) | `C` |
+| Target kognitif, jumlah 3 (Peroksida Organik) | `O` |
+
+Jenisnya berupa huruf, meskipun sejak 2026 korban menampilkan simbol. GPS memberikan nilai dalam meter, jadi kalikan dengan 100.
+
+<CodeTabs file="report" />
+
+Robot harus berada di sisi dinding yang sama dengan penanda, dan baik robot maupun posisi yang kamu kirim harus dekat dengan penanda itu. Aturan mensyaratkan paling jauh setengah ubin, jadi usahakan sedekat itu. Erebus v26.1 memeriksa jarak 9 cm.
+
+Jalankan program ini di awal `world1.wbt`: tidak ada penanda di sana, jadi riwayat jendela kontrol menampilkan `Misidentification of Victim -5`. Laporan yang salah, termasuk laporan penanda palsu, mengurangi 5 poin, dan setiap penanda hanya bisa dihitung sekali.
+
+## Kurangnya kemajuan \{#lack-of-progress\}
+
+Saat robot terjebak, kurangnya kemajuan (Lack of Progress, LoP) memindahkannya kembali ke checkpoint terakhir dan mengurangi 5 poin. Ini terjadi otomatis setelah 20 detik tanpa bergerak, dan programmu juga bisa memanggilnya dengan mengirim `L`. Setiap kali terjadi, permainan mengirim `L` ke robot, agar programmu tahu posisinya sudah berubah.
+
+<CodeTabs file="lop" />
+
+Receiver bisa menerima pesan yang berbeda-beda, jadi periksa panjang setiap pesan sebelum membacanya, seperti pada contoh.
+
+## Informasi permainan \{#game-information\}
+
+Kirim `G` untuk mendapatkan skor dan sisa waktu. Permainan membalas dengan pesan 16 byte: huruf `G`, skor, sisa waktu permainan, dan sisa waktu nyata, dalam detik.
+
+<CodeTabs file="gameinfo" />
+
+Waktu permainan berjalan lebih cepat di rawa, dan permainan berakhir saat salah satu waktu habis. Gunakan keduanya untuk tahu kapan harus kembali ke titik awal.
+
+## Mengakhiri permainan \{#ending-the-game\}
+
+Kirim `E` untuk mengakhiri permainan. Jika robot berada di ubin awal dan sudah mengidentifikasi minimal satu penanda dinding, robot mendapat bonus keluar (exit bonus) 10%.
+
+<CodeTabs file="exit" />
+
+:::caution
+Permainan berakhir di mana pun robot berada saat mengirim `E`, dan robot tidak bisa melanjutkan. Pastikan robot sudah kembali ke ubin awal terlebih dahulu, dan sudah [mengirim petanya](/docs/programming/map-bonus/).
+:::
+
+Selanjutnya, pelajari cara membedakan penanda di [Penanda dinding](/docs/programming/wall-tokens/).

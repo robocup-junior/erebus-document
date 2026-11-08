@@ -1,0 +1,36 @@
+---
+title: ความต้องการของระบบ
+description: "สิ่งที่คุณต้องใช้ในการรัน Erebus v26: Webots R2023b, Python 3.9 ขึ้นไป และไลบรารีที่จำเป็น"
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## ซอฟต์แวร์ที่ต้องใช้ \{#software-requirements\}
+ระบบการจำลองประกอบด้วยองค์ประกอบหลักหลายส่วน ซึ่งต้องติดตั้งทุกส่วน แม้การติดตั้งจะง่าย แต่การดาวน์โหลดและติดตั้ง Webots อาจใช้เวลาสักหน่อย! องค์ประกอบทั้งสามได้แก่:
+
+1. Webots Robot Simulator เวอร์ชัน **R2023b** - สภาพแวดล้อมการจำลอง Erebus v26 ไม่รองรับ Webots เวอร์ชันอื่น
+1. Erebus - โลกต่าง ๆ และ Competition Supervisor ซึ่งทำหน้าที่ตามกติกาและการให้คะแนน เวอร์ชันล่าสุดคือ **v26.1**
+1. Python เวอร์ชัน **3.9 ขึ้นไป** - จำเป็นสำหรับการรัน Erebus เอง และสำหรับเขียนคอนโทรลเลอร์ของหุ่นยนต์ คุณยังเขียนคอนโทรลเลอร์ด้วย C/C++ ได้ด้วย
+
+## ความต้องการขั้นต่ำของระบบ \{#minimum-system-requirements\}
+* OS-Linux: Ubuntu 20.04 LTS, 22.04 LTS
+* OS-Windows: Windows 11, Windows 10 64 บิต
+* OS-Mac: macOS 11 "Big Sur" และ 12 "Monterey" ซึ่งเป็นเวอร์ชันที่ Webots R2023b รองรับ macOS เวอร์ชันใหม่กว่าก็อาจใช้งานได้เช่นกัน: เอกสารนี้ได้รับการตรวจสอบบน macOS 26
+* CPU: Dual Core 2 GHz
+* RAM: 2 GB
+* Nvidia 512MB หรือ AMD OpenGL 512MB
+
+## ไลบรารี Python \{#python-libraries\}
+Erebus ต้องใช้ไลบรารี Python ด้านล่างนี้ ส่วนใหญ่จะถูกติดตั้งโดยอัตโนมัติเมื่อเริ่มทำงาน แต่ **OpenCV จะไม่ถูกติดตั้งอัตโนมัติ** คุณจึงต้องติดตั้งเอง คู่มือของแต่ละระบบปฏิบัติการมีขั้นตอนนี้อยู่แล้ว
+
+```bash
+python3 -m pip install numpy termcolor requests overrides pillow opencv-python
+```
+
+## เลือกระบบปฏิบัติการของคุณ \{#choose-your-operating-system\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Windows 10 และ 11" href="/docs/installation/windows/" />
+	<LinkCard title="macOS" description="macOS บน Intel และ Apple silicon" href="/docs/installation/mac/" />
+	<LinkCard title="Linux" description="Ubuntu 20.04 และ 22.04" href="/docs/installation/linux/" />
+</CardGrid>

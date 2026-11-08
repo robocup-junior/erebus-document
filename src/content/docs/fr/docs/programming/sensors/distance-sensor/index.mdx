@@ -1,0 +1,20 @@
+---
+title: Capteur de distance
+description: Mesurez la distance aux murs avec les capteurs de distance, et trouvez de quels côtés du robot il y a un mur.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Un capteur de distance mesure la distance, en **mètres**, jusqu’au premier objet situé devant lui, jusqu’à 0,8 m. Le robot de départ en a trois : `leftDist`, `frontDist` et `rightDist`, orientés vers la gauche, l’avant et la droite.
+
+## Lire un capteur \{#reading-a-sensor\}
+
+<CodeTabs file="read" />
+
+## Trouver les murs \{#finding-walls\}
+
+Une case fait 12 cm de large : quand le robot est au milieu d’une case, un mur sur son côté se trouve donc à environ 5 cm. Ce programme vérifie les trois capteurs, et affiche ceux qui voient un mur :
+
+<CodeTabs file="walls" />
+
+Les capteurs mesurent depuis l’endroit où ils se trouvent sur le robot, pas depuis son centre. Affichez les valeurs à côté d’un mur pour choisir vos propres seuils.

@@ -1,0 +1,39 @@
+---
+title: Remote Controller
+description: Exécutez votre contrôleur sur votre propre ordinateur et connectez-le au serveur de jeu, comme en compétition.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+La fonction de contrôleur à distance (Remote Controller) d’Erebus vous permet de faire tourner des simulations Webots à travers un réseau. Un ordinateur fait tourner la simulation Webots (le serveur), et l’autre exécute le programme contrôleur du robot (le client). C’est ce que nous appelons la « configuration serveur-client » (Server-Client Setup).
+
+**Selon les règles 2026, c’est ainsi que se déroulent les parties en compétition.** Les organisateurs font tourner le serveur de jeu et fournissent une prise RJ-45. Vous devez apporter :
+
+- Un ordinateur avec votre programme, prêt à être lancé, et Webots R2023b installé
+- Un câble Ethernet. Un câble au moins CAT5 est fortement recommandé, pour supporter 100 Mbit/s.
+- Un port Ethernet. Si votre ordinateur n’en a pas, apportez un adaptateur et testez-le à l’avance.
+
+Pour que tout se passe bien sur le lieu de la compétition, essayez la configuration bien à l’avance. Toutes les équipes doivent aussi soumettre une courte vidéo montrant comment elles lancent leur contrôleur sur une carte d’exemple dans cette configuration, en plus du TDP, du poster et de la vidéo.
+
+## Comment ça marche \{#how-it-works\}
+
+1. Ouvrez le monde et activez le mode distant dans la fenêtre de contrôle.
+1. Lancez votre contrôleur depuis un terminal. Il se connecte à Webots et attend.
+1. Appuyez sur le bouton de démarrage dans la fenêtre de contrôle.
+
+Votre contrôleur utilise les mêmes bibliothèques Webots et le même code que lorsqu’il est chargé avec le bouton LOAD. Le robot personnalisé, si vous en avez un, est toujours chargé dans la fenêtre de contrôle du serveur.
+
+## À vérifier avant la compétition \{#things-to-check-before-the-competition\}
+
+- Toutes les bibliothèques dont votre programme a besoin sont installées sur le client.
+- Votre programme ne dépend pas de la vitesse de l’ordinateur : il doit utiliser `robot.step()` et le temps de simulation. Notez qu’une image de la caméra doit transiter par le réseau.
+- Toutes les fenêtres d’images (comme `cv2.imshow`) sont désactivées, sauf si vous en avez besoin.
+- Vous connaissez par cœur les commandes à lancer. Les écrire dans un petit script est une bonne idée.
+
+## Guide de configuration \{#setup-guide\}
+
+<CardGrid>
+	<LinkCard title="Windows" description="Configuration avec PowerShell" href="/docs/competition/remote-controller/windows/" />
+	<LinkCard title="macOS" description="Configuration avec le terminal" href="/docs/competition/remote-controller/mac/" />
+	<LinkCard title="Linux" description="Configuration avec le terminal" href="/docs/competition/remote-controller/linux/" />
+</CardGrid>
