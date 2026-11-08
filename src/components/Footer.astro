@@ -1,0 +1,21 @@
+---
+// Adds the RoboCupJunior Rescue mark under the default Starlight footer.
+import Default from '@astrojs/starlight/components/Footer.astro';
+import PartOfRoboCupJunior from './PartOfRoboCupJunior.astro';
+---
+
+<Default><slot /></Default>
+<div class="footer-part-of">
+	<PartOfRoboCupJunior />
+</div>
+
+<style>
+	.footer-part-of {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--sl-color-hairline);
+		color: var(--sl-color-gray-3);
+	}
+</style>

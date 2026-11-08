@@ -52,6 +52,7 @@ export default defineConfig({
 			customCss: ['./src/styles/theme.css'],
 			components: {
 				Banner: './src/components/Banner.astro',
+				Footer: './src/components/Footer.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
 			},
 			plugins: [starlightLinksValidator({ errorOnLocalLinks: false })],
@@ -170,7 +171,13 @@ export default defineConfig({
 				},
 				{
 					label: 'About',
-					items: ['docs/contributing', 'community', 'docs/privacy'],
+					items: [
+						'docs/contributing',
+						'community',
+						'docs/privacy',
+						{ label: 'RoboCupJunior Rescue', link: 'https://junior.robocup.org/rescue/', attrs: { target: '_blank' } },
+						{ label: 'RCJ Rescue Community', link: 'https://rescue.rcj.cloud', attrs: { target: '_blank' } },
+					],
 				},
 			],
 		}),

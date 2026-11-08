@@ -2,6 +2,7 @@
 // The home page. Update the values below for each Erebus release.
 // Media is in public/home/: real footage and screenshots from Webots.
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import PartOfRoboCupJunior from '@/components/PartOfRoboCupJunior.astro';
 
 const version = '26.1';
 const rulesYear = '2026';
@@ -179,10 +180,11 @@ const steps = [
 						))
 					}
 				</ol>
+				<div class="part-of"><PartOfRoboCupJunior /></div>
 				<p class="release">
-					Erebus v{version} · {rulesYear} rules · Webots R2023b ·
-					<a href="https://github.com/robocup-junior/erebus">GitHub</a> ·
-					<a href="/docs/reference/versions/">Other versions</a> ·
+					Erebus v{version} · {rulesYear} rules · Webots R2023b ·{' '}
+					<a href="https://github.com/robocup-junior/erebus">GitHub</a> ·{' '}
+					<a href="/docs/reference/versions/">Other versions</a> ·{' '}
 					<a href="/docs/privacy/">Privacy</a>
 				</p>
 			</div>
@@ -250,7 +252,8 @@ const steps = [
 		display: none;
 	}
 
-	body:has(.home) footer {
+	body:has(.home) footer,
+	body:has(.home) .footer-part-of {
 		display: none;
 	}
 </style>
@@ -600,6 +603,11 @@ const steps = [
 	.start b::before {
 		content: counter(step) '. ';
 		color: #7fdcef;
+	}
+
+	.part-of {
+		margin: 0 0 1.75rem;
+		color: #dbe6ea;
 	}
 
 	.release {

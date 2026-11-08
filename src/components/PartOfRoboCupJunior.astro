@@ -1,0 +1,53 @@
+---
+// Shows that Erebus is part of RoboCupJunior Rescue. Used in the footer and on the home page.
+import { Image } from 'astro:assets';
+import logo from '@/assets/robocupjunior-rescue.png';
+
+const OFFICIAL_URL = 'https://junior.robocup.org/rescue/';
+const COMMUNITY_URL = 'https://rescue.rcj.cloud';
+---
+
+<div class="rcj">
+	<a class="plate" href={OFFICIAL_URL}>
+		<Image src={logo} alt="RoboCupJunior Rescue" width={200} />
+	</a>
+	<p>
+		Erebus is part of <a href={OFFICIAL_URL}>RoboCupJunior Rescue</a>.<br />
+		News, events and team documents: <a href={COMMUNITY_URL}>RCJ Rescue Community Website</a>
+	</p>
+</div>
+
+<style>
+	.rcj {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.9rem 1.25rem;
+	}
+
+	/* A light plate keeps the official colours readable in dark mode */
+	.plate {
+		display: inline-flex;
+		padding: 0.4rem 0.7rem;
+		border-radius: 0.6rem;
+		background: #fff;
+	}
+
+	.plate img {
+		display: block;
+		height: auto;
+		border: 0;
+	}
+
+	p {
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.6;
+	}
+
+	p a {
+		color: inherit;
+		font-weight: 700;
+	}
+</style>
