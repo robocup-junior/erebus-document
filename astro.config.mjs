@@ -92,7 +92,7 @@ export default defineConfig({
 			head: [
 				// Opens the reader's language on their first visit. See src/i18n/language-redirect.mjs.
 				{ tag: 'script', content: languageRedirectScript() },
-				{ tag: 'link', attrs: { rel: 'icon', href: '/favicon.ico', sizes: '48x48' } },
+				{ tag: 'link', attrs: { rel: 'icon', href: '/favicon.ico', sizes: '32x32' } },
 				{ tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' } },
 				{ tag: 'meta', attrs: { name: 'theme-color', content: '#0b1a22' } },
 				{ tag: 'meta', attrs: { property: 'og:image', content: `${site}/og.png` } },
