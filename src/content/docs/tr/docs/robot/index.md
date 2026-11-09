@@ -27,6 +27,8 @@ Bu belgeler, her örnek olduğu gibi çalışsın diye her yerde tek bir robot k
 
 Robotun maliyeti, 3000'lik bütçenin 2400'üdür.
 
+![Etiketleri ve kamera görünümüyle bitmiş robot](../../../docs/robot/build/finished.png)
+
 ## Yolunu seç {#choose-your-path}
 
 **Önerilen: kendin yap.** Yaklaşık 15 dakika sürer ve robotunun her parçasını anlarsın. [Robotunu yap](/docs/robot/build/) sayfasını izle.

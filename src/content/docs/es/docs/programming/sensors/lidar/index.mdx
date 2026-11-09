@@ -13,7 +13,13 @@ Mide 512 puntos alrededor del robot, en 4 capas apiladas una encima de otra, has
 
 `getLayerRangeImage(0)` da las 512 distancias de una capa. La primera está delante del robot, y van en el **sentido de las agujas del reloj**: a un cuarto del recorrido está la derecha, a la mitad está detrás, y a tres cuartos está la izquierda.
 
+![Los puntos de una capa del lidar alrededor del robot: 0 delante, 128 a la derecha, 256 detrás y 384 a la izquierda](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+Esta es una capa medida por el robot inicial en `world1.wbt`, dibujada desde arriba con el robot en el centro. Las paredes que lo rodean aparecen como líneas de puntos.
+
+![Una capa del lidar vista desde arriba: las paredes alrededor del robot como líneas de puntos](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## Nube de puntos \{#point-cloud\}
 

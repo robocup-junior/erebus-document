@@ -20,6 +20,8 @@ Kesin tanımlar için [Kurallar](/docs/rules/#wall-tokens) sayfasına, bildirimi
 ## Kameranın gördükleri \{#what-the-camera-sees\}
 Başlangıç robotunun kamerası 64 × 40 pikseldir. Bu çözünürlükte bir işaret, robot yaklaşana kadar yalnızca birkaç pikselden ibarettir. Bu yüzden adayları uzaktan arayıp sonra okumak için yaklaşmak en iyisidir. Bildirim yapabilmek için robotun işarete en fazla yarım kare uzaklıkta olması gerektiğini ve özel kameraların daha yüksek çözünürlüğe sahip olabileceğini, ama bunun bir maliyeti olduğunu unutma.
 
+![Başlangıç robotu bir harf kazazedeye yaklaşırken kamerasından alınan 4 görüntü](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![64'e 40 piksellik bir kameranın gördüğü bilişsel hedef](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ Harf kazazedeler beyaz bir kare üzerindeki siyah sembollerdir ve herhangi bir a
 ## Bilişsel hedefi okuma \{#reading-a-cognitive-target\}
 Bilişsel hedef beş eş merkezli parçadan oluşur, bu yüzden şeklini tanımana gerek yoktur: merkezini ve dış yarıçapını bulduktan sonra her parçanın ortasındaki rengi örnekleyebilirsin. Parçaların yarıçapları 0,5, 1, 1,5, 2 ve 2,5 cm'dir; bu yüzden orta noktaları dış yarıçapın 0, 0,3, 0,5, 0,7 ve 0,9'undadır.
 
+![Her parçanın renginin okunacağı noktaları gösteren bir bilişsel hedef: dış yarıçapın 0, 0,3, 0,5, 0,7 ve 0,9 katı](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 Bu fonksiyon bunu Python'da OpenCV ile yapar. Merkezi ve yarıçapı bulmak için örneğin [Labirentte yol bul](/docs/programming/navigate-the-maze/) sayfasındaki gibi hedefin konturunu kullanabilirsin.
 
 <CodeTabs file="readRings" />
 
 Gerçek bir oyunda hedef eğik bir açıdan görülebilir; bu durumda elips gibi görünür. Hedefin karşısına geçmek, yanlış görünen renkleri bir uyarı işareti olarak değerlendirmek ya da birkaç görüntü karesini okumak sonucu daha güvenilir hale getirir.
+
+![Başlangıç robotunun kamerasından eğik açıyla görülen bir bilişsel hedef](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## Türü hesaplama \{#calculating-the-type\}
 Beş rengi elde ettikten sonra bildireceğin kod, bu renklerin toplamından çıkar. Komşu renkler aynı olsa bile beş parçanın her biri her zaman ayrı sayılır.

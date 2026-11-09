@@ -27,6 +27,8 @@ Diese Dokumentation verwendet überall denselben Roboter, den **Starter-Roboter*
 
 Er kostet 2400 vom Budget von 3000.
 
+![Der fertige Roboter mit Beschriftungen und Kameraansicht](../../../docs/robot/build/finished.png)
+
 ## Wähle deinen Weg {#choose-your-path}
 
 **Empfohlen: Bau ihn selbst.** Das dauert etwa 15 Minuten, und du verstehst danach jeden Teil deines Roboters. Folge der Anleitung [Roboter bauen](/docs/robot/build/).

@@ -55,6 +55,8 @@ Anggap lubang sebagai dinding. Rawa menghabiskan waktu, dan makin banyak setiap 
 | Dinding utara | Baris `4r`, kolom `4c` hingga `4c + 4` |
 | Dinding barat | Kolom `4c`, baris `4r` hingga `4r + 4` |
 
+![Sel-sel matriks peta untuk ubin di baris r dan kolom c: dinding utara di baris 4r, dinding barat di kolom 4c, dan tanda lantai di tengah seperempat ubin](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 Petamu bisa dimulai dari mana saja: Erebus [menyejajarkan matriks](/docs/rules/mapping/#how-correctness-is-calculated) menggunakan ubin awal, dan mencoba keempat rotasinya. [Aturan pemetaan](/docs/rules/mapping/) menjelaskan setiap nilai dalam matriks. Lalu [kirimkan petanya](/docs/programming/map-bonus/).
 
 Uji dengan world contoh, yang jawaban benarnya ada di [Aturan pemetaan](/docs/rules/mapping/#examples). Hasilnya muncul sebagai `Map Correctness` di riwayat jendela kontrol.

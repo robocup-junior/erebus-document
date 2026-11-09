@@ -13,7 +13,13 @@ Il mesure 512 points autour du robot, sur 4 couches superposées, jusqu’à 1 m
 
 `getLayerRangeImage(0)` donne les 512 distances d’une couche. La première est devant le robot, et elles tournent dans le **sens des aiguilles d’une montre** : au quart, c’est à droite, à la moitié, c’est derrière, et aux trois quarts, c’est à gauche.
 
+![Les points d’une couche du LIDAR autour du robot : 0 devant, 128 à droite, 256 derrière et 384 à gauche](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+Voici une couche mesurée par le robot de départ dans `world1.wbt`, dessinée vue de dessus avec le robot au centre. Les murs qui l’entourent apparaissent comme des lignes de points.
+
+![Une couche du LIDAR vue de dessus : les murs autour du robot forment des lignes de points](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## Nuage de points \{#point-cloud\}
 

@@ -37,6 +37,8 @@ El robot debe estar en el mismo lado de la pared que la marca, y tanto el robot 
 
 Ejecuta este programa al inicio de `world1.wbt`: ahí no hay ninguna marca, así que el historial de la ventana de control muestra `Misidentification of Victim -5`. Un informe erróneo, incluido el informe de una marca falsa, cuesta 5 puntos, y cada marca solo se puede puntuar una vez.
 
+![El historial de la ventana de control tras un informe erróneo y el envío de un mapa](../../../../docs/programming/communication/history.png)
+
 ## Falta de progreso \{#lack-of-progress\}
 
 Cuando el robot está atascado, una falta de progreso (Lack of Progress, LoP) lo devuelve al último punto de control (checkpoint) y cuesta 5 puntos. Ocurre automáticamente tras 20 segundos sin moverse, y tu programa también puede declararla enviando `L`. Cada vez, la partida envía `L` al robot, para que tu programa sepa que su posición ha cambiado.

@@ -20,6 +20,8 @@ Veja as [Regras](/docs/rules/#wall-tokens) para as definições exatas e [Comuni
 ## O que a câmera vê \{#what-the-camera-sees\}
 A câmera do robô inicial tem 64 × 40 pixels. Nessa resolução, um marcador ocupa só alguns pixels até o robô chegar perto, então o melhor é procurar candidatos de longe e depois se aproximar para lê-los. Lembre que, para informar, o robô precisa estar a no máximo meio ladrilho do marcador, e que câmeras personalizadas podem ter uma resolução maior, com um custo.
 
+![Quatro imagens da câmera do robô inicial enquanto ele se aproxima de uma vítima de letra](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![Um alvo cognitivo visto por uma câmera de 64 por 40](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ As vítimas de letra (letter victims) são símbolos pretos em um quadrado branc
 ## Lendo um alvo cognitivo \{#reading-a-cognitive-target\}
 Um alvo cognitivo (cognitive target) é formado por cinco partes concêntricas, então não é preciso reconhecer a sua forma: depois de encontrar o centro e o raio externo, você pode amostrar a cor no meio de cada parte. As partes têm raios de 0,5, 1, 1,5, 2 e 2,5 cm, então os pontos do meio delas ficam em 0, 0,3, 0,5, 0,7 e 0,9 do raio externo.
 
+![Um alvo cognitivo com os pontos onde ler a cor de cada parte, a 0, 0,3, 0,5, 0,7 e 0,9 do raio externo](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 Esta função faz isso com o OpenCV em Python. Para encontrar o centro e o raio, você pode, por exemplo, usar o contorno do alvo, como em [Navegue pelo labirinto](/docs/programming/navigate-the-maze/).
 
 <CodeTabs file="readRings" />
 
 Em uma execução real, o alvo pode ser visto de lado e, nesse caso, parece uma elipse. Posicionar-se de frente para ele, usar as cores que parecem erradas como alerta ou ler vários quadros vai deixar o resultado mais confiável.
+
+![Um alvo cognitivo visto de lado pela câmera do robô inicial](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## Calculando o tipo \{#calculating-the-type\}
 Depois de obter as cinco cores, o código a informar vem da soma delas. Cada uma das cinco partes sempre conta, mesmo quando cores vizinhas são iguais.

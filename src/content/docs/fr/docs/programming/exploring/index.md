@@ -55,6 +55,8 @@ La [matrice de la carte](/docs/rules/mapping/) compte 4 cellules par case, plus 
 | Mur nord | Ligne `4r`, colonnes `4c` à `4c + 4` |
 | Mur ouest | Colonne `4c`, lignes `4r` à `4r + 4` |
 
+![Les cellules de la matrice de la carte pour la case de la ligne r et de la colonne c : le mur nord à la ligne 4r, le mur ouest à la colonne 4c, et les marques au sol au centre des quarts de case](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 Votre carte peut commencer n’importe où : Erebus [aligne la matrice](/docs/rules/mapping/#how-correctness-is-calculated) à l’aide de la case de départ, et essaie les quatre rotations. Les [Règles de cartographie](/docs/rules/mapping/) expliquent chaque valeur de la matrice. Ensuite, [soumettez-la](/docs/programming/map-bonus/).
 
 Testez-la avec les mondes d’exemple, dont les bonnes réponses figurent dans [Règles de cartographie](/docs/rules/mapping/#examples). Le résultat apparaît sous la forme `Map Correctness` dans l’historique de la fenêtre de contrôle.

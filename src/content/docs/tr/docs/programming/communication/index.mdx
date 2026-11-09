@@ -37,6 +37,8 @@ Robot, işaretle duvarın aynı tarafında olmalı; hem robot hem de gönderdiğ
 
 Bu programı `world1.wbt`'nin başında çalıştır: orada hiç işaret yoktur, bu yüzden kontrol penceresinin geçmişinde `Misidentification of Victim -5` görünür. Sahte bir işareti bildirmek de dahil olmak üzere her yanlış bildirim 5 puana mal olur ve her işaretten yalnızca bir kez puan alınabilir.
 
+![Yanlış bir bildirim ve harita gönderiminden sonra kontrol penceresinin geçmişi](../../../../docs/programming/communication/history.png)
+
 ## İlerleme eksikliği \{#lack-of-progress\}
 
 Robot sıkıştığında bir ilerleme eksikliği (lack of progress, LoP), robotu son kontrol noktasına geri götürür ve 5 puana mal olur. Robot 20 saniye hareketsiz kalınca bu otomatik olarak gerçekleşir; programın da `L` göndererek ilerleme eksikliği çağırabilir. Her seferinde oyun robota `L` gönderir; böylece programın, robotun konumunun değiştiğini anlar.

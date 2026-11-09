@@ -55,6 +55,8 @@ Yalnızca bir duvarı izleme: bu yöntemle, işaretleri daha değerli olan [yüz
 | Kuzey duvarı | `4r` satırı, `4c` ile `4c + 4` arasındaki sütunlar |
 | Batı duvarı | `4c` sütunu, `4r` ile `4r + 4` arasındaki satırlar |
 
+![r satırı ve c sütunundaki karenin harita matrisindeki hücreleri: kuzey duvarı 4r satırında, batı duvarı 4c sütununda, zemin işaretleri çeyrek karelerin ortasında](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 Haritan herhangi bir yerden başlayabilir: Erebus başlangıç karesini kullanarak [matrisi hizalar](/docs/rules/mapping/#how-correctness-is-calculated) ve dört dönüşü de dener. [Haritalama kuralları](/docs/rules/mapping/) matrisin her değerini açıklar. Sonra [haritayı gönder](/docs/programming/map-bonus/).
 
 Doğru cevapları [Haritalama kuralları](/docs/rules/mapping/#examples) sayfasında bulunan örnek dünyalarla test et. Sonuç, kontrol penceresinin geçmişinde `Map Correctness` olarak görünür.

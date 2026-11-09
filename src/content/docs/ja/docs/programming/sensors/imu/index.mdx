@@ -11,6 +11,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `getValues()` は `[x, y, z]` を返します。**Y 軸が垂直方向** なので、`getValues()[1]` がロボットの旋回速度です。左に曲がるときに正の値になります。
 
+![左に曲がると正の値、右に曲がると負の値になる](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 これはスターターロボットのジャイロの場合です。軸はジャイロの回転に従うので、自作のロボットでジャイロを回転させて取り付けた場合は、ロボットが旋回したときにどの値が変わるかを確認してください。
 :::

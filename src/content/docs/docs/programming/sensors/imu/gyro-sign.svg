@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="250" viewBox="0 0 560 250">
+<rect width="560" height="250" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f8ba3"/></marker><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6b7780"/></marker></defs><circle cx="150" cy="160" r="50" fill="#eef3f5" stroke="#1d2327" stroke-width="2"/>
+<path d="M150 122.5 L141 137.5 L159 137.5 z" fill="#3aa655"/>
+<rect x="93" y="137.5" width="14.000000000000002" height="45" rx="3" fill="#1d2327"/><rect x="193" y="137.5" width="14.000000000000002" height="45" rx="3" fill="#1d2327"/><path d="M210 105 A82 82 0 0 0 90 105" fill="none" stroke="#1f8ba3" stroke-width="4" marker-end="url(#a)"/><text x="150" y="58" text-anchor="middle" font-size="30" font-weight="700" fill="#1f8ba3" font-family="Inter, system-ui, sans-serif">+</text><circle cx="410" cy="160" r="50" fill="#eef3f5" stroke="#1d2327" stroke-width="2"/>
+<path d="M410 122.5 L401 137.5 L419 137.5 z" fill="#3aa655"/>
+<rect x="353" y="137.5" width="14.000000000000002" height="45" rx="3" fill="#1d2327"/><rect x="453" y="137.5" width="14.000000000000002" height="45" rx="3" fill="#1d2327"/><path d="M350 105 A82 82 0 0 1 470 105" fill="none" stroke="#6b7780" stroke-width="4" marker-end="url(#m)"/><text x="410" y="58" text-anchor="middle" font-size="30" font-weight="700" fill="#6b7780" font-family="Inter, system-ui, sans-serif">−</text>
+</svg>

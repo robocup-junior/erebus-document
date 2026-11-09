@@ -37,6 +37,8 @@ Der Roboter muss auf derselben Seite der Wand sein wie die Markierung, und sowoh
 
 Führe dieses Programm am Start von `world1.wbt` aus: Dort gibt es keine Markierung, also zeigt der Verlauf des Steuerfensters `Misidentification of Victim -5`. Eine falsche Meldung, auch die Meldung einer Fälschung, kostet 5 Punkte, und jede Markierung bringt nur einmal Punkte.
 
+![Der Verlauf des Steuerfensters nach einer falschen Meldung und der Abgabe einer Karte](../../../../docs/programming/communication/history.png)
+
 ## Fehlender Fortschritt \{#lack-of-progress\}
 
 Wenn der Roboter feststeckt, setzt ihn ein fehlender Fortschritt (Lack of Progress, LoP) zum letzten Checkpoint zurück und kostet 5 Punkte. Das passiert automatisch nach 20 Sekunden ohne Bewegung, und dein Programm kann ihn auch selbst auslösen, indem es `L` sendet. Jedes Mal sendet das Spiel `L` an den Roboter, damit dein Programm weiß, dass sich seine Position geändert hat.

@@ -37,6 +37,8 @@ O robô precisa estar do mesmo lado da parede que o marcador, e tanto o robô qu
 
 Execute este programa no início de `world1.wbt`: não há nenhum marcador ali, então o histórico da janela de controle mostra `Misidentification of Victim -5`. Um informe errado, incluindo o informe de um falso, custa 5 pontos, e cada marcador só pode ser pontuado uma vez.
 
+![O histórico da janela de controle depois de um informe errado e do envio de um mapa](../../../../docs/programming/communication/history.png)
+
 ## Falta de progresso \{#lack-of-progress\}
 
 Quando o robô fica preso, uma falta de progresso (Lack of Progress, LoP) o leva de volta ao último ponto de controle (checkpoint) e custa 5 pontos. Ela acontece automaticamente após 20 segundos sem se mover, e o seu programa também pode declará-la enviando `L`. A cada vez, a partida envia `L` ao robô, para que o seu programa saiba que a posição dele mudou.

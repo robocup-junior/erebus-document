@@ -13,7 +13,13 @@ Lidar, robotun çevresinde üst üste dizilmiş 4 katmanda, 1 m uzaklığa kadar
 
 `getLayerRangeImage(0)`, bir katmanın 512 mesafesini verir. İlk değer robotun önüne aittir ve değerler **saat yönünde** ilerler: dizinin dörtte biri sağa, yarısı arkaya, dörtte üçü sola karşılık gelir.
 
+![Bir lidar katmanının robotun çevresindeki noktaları: 0 önde, 128 sağda, 256 arkada ve 384 solda](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+Aşağıda, başlangıç robotunun `world1.wbt` içinde ölçtüğü bir katman, robot ortada olacak şekilde yukarıdan çizilmiştir. Çevresindeki duvarlar nokta dizileri olarak görünür.
+
+![Yukarıdan görülen bir lidar katmanı: robotun çevresindeki duvarlar nokta dizileri olarak](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## Nokta bulutu \{#point-cloud\}
 

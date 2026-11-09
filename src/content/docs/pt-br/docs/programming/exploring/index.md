@@ -55,6 +55,8 @@ A [matriz do mapa](/docs/rules/mapping/) tem 4 células por ladrilho, mais uma. 
 | Parede norte | Linha `4r`, colunas `4c` a `4c + 4` |
 | Parede oeste | Coluna `4c`, linhas `4r` a `4r + 4` |
 
+![As células da matriz do mapa para o ladrilho na linha r e na coluna c: a parede norte na linha 4r, a parede oeste na coluna 4c e as marcas do piso no centro dos quartos de ladrilho](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 O seu mapa pode começar em qualquer lugar: o Erebus [alinha a matriz](/docs/rules/mapping/#how-correctness-is-calculated) usando o ladrilho inicial e testa as quatro rotações. As [Regras do mapa](/docs/rules/mapping/) explicam cada valor da matriz. Depois, [envie-o](/docs/programming/map-bonus/).
 
 Teste com os mundos de exemplo, cujas respostas corretas estão nas [Regras do mapa](/docs/rules/mapping/#examples). O resultado aparece como `Map Correctness` no histórico da janela de controle.

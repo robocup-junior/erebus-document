@@ -20,6 +20,8 @@ Consultez les [Règles](/docs/rules/#wall-tokens) pour les définitions exactes,
 ## Ce que voit la caméra \{#what-the-camera-sees\}
 La caméra du robot de départ fait 64 × 40 pixels. À cette résolution, un marqueur ne fait que quelques pixels tant que le robot n’est pas proche : il vaut donc mieux repérer les candidats de loin, puis s’approcher pour les lire. N’oubliez pas qu’un signalement exige que le robot soit à moins d’une demi-case du marqueur, et que les caméras personnalisées peuvent avoir une résolution plus élevée, moyennant un coût.
 
+![Quatre images de la caméra du robot de départ à mesure qu’il s’approche d’une victime lettre](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![Une cible cognitive vue par une caméra de 64 par 40](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ Les victimes lettres sont des symboles noirs sur un carré blanc, et elles peuve
 ## Lire une cible cognitive \{#reading-a-cognitive-target\}
 Une cible cognitive se compose de cinq parties concentriques : inutile donc de reconnaître sa forme. Une fois son centre et son rayon extérieur trouvés, vous pouvez échantillonner la couleur au milieu de chaque partie. Les parties ont des rayons de 0,5, 1, 1,5, 2 et 2,5 cm : leurs points médians se trouvent donc à 0, 0,3, 0,5, 0,7 et 0,9 fois le rayon extérieur.
 
+![Une cible cognitive avec les points où lire la couleur de chaque partie, à 0, 0,3, 0,5, 0,7 et 0,9 fois le rayon extérieur](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 Cette fonction le fait avec OpenCV en Python. Pour trouver le centre et le rayon, vous pouvez par exemple utiliser le contour de la cible, comme dans [Parcourir le labyrinthe](/docs/programming/navigate-the-maze/).
 
 <CodeTabs file="readRings" />
 
 En conditions réelles, la cible peut être vue de biais : elle ressemble alors à une ellipse. Se placer en face, considérer les couleurs qui semblent incorrectes comme un avertissement, ou lire plusieurs images rendra le résultat plus fiable.
+
+![Une cible cognitive vue de biais par la caméra du robot de départ](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## Calculer le type \{#calculating-the-type\}
 Une fois les cinq couleurs obtenues, le code à signaler découle de leur somme. Chacune des cinq parties compte toujours, même quand des couleurs voisines sont identiques.

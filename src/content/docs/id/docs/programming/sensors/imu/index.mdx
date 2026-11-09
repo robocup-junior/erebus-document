@@ -11,6 +11,8 @@ Giroskop mengembalikan kecepatan rotasi robot terhadap setiap sumbu, dalam **rad
 
 `getValues()` mengembalikan `[x, y, z]`. **Sumbu Y adalah sumbu vertikal**, jadi `getValues()[1]` adalah kecepatan belok robot. Nilainya positif saat berbelok ke kiri.
 
+![Berbelok ke kiri memberikan nilai positif, dan berbelok ke kanan memberikan nilai negatif](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 Ini berlaku untuk giroskop robot pemula. Sumbunya mengikuti rotasi giroskop, jadi jika kamu memutarnya di robot buatanmu sendiri, periksa nilai mana yang berubah saat robot berbelok.
 :::

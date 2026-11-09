@@ -27,6 +27,8 @@ Cette documentation utilise partout le même robot, le **robot de départ**, pou
 
 Il coûte 2400 sur un budget de 3000.
 
+![Le robot terminé, avec ses étiquettes et la vue de la caméra](../../../docs/robot/build/finished.png)
+
 ## Choisissez votre chemin {#choose-your-path}
 
 **Recommandé : construisez-le vous-même.** Cela prend environ 15 minutes, et vous comprendrez chaque élément de votre robot. Suivez [Construire votre robot](/docs/robot/build/).

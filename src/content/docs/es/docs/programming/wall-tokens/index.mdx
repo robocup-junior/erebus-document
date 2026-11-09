@@ -20,6 +20,8 @@ Consulta las [Reglas](/docs/rules/#wall-tokens) para ver las definiciones exacta
 ## Lo que ve la cámara \{#what-the-camera-sees\}
 La cámara del robot inicial tiene 64 × 40 píxeles. Con esa resolución, una marca ocupa solo unos pocos píxeles hasta que el robot está cerca, así que lo mejor es buscar candidatas desde lejos y luego acercarse para leerlas. Recuerda que un informe exige que el robot esté a menos de media baldosa de la marca, y que las cámaras personalizadas pueden tener más resolución, a cambio de un coste.
 
+![Cuatro imágenes de la cámara del robot inicial a medida que se acerca a una víctima de letra](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![Un objetivo cognitivo visto por una cámara de 64 por 40](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ Las víctimas de letra son símbolos negros sobre un cuadrado blanco, y pueden e
 ## Leer un objetivo cognitivo \{#reading-a-cognitive-target\}
 Un objetivo cognitivo está formado por cinco partes concéntricas, así que no hace falta reconocer su forma: cuando hayas encontrado su centro y su radio exterior, puedes tomar una muestra del color en el centro de cada parte. Las partes tienen radios de 0,5, 1, 1,5, 2 y 2,5 cm, así que sus puntos medios están a 0, 0,3, 0,5, 0,7 y 0,9 del radio exterior.
 
+![Un objetivo cognitivo con los puntos donde leer el color de cada parte, a 0, 0,3, 0,5, 0,7 y 0,9 del radio exterior](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 Esta función lo hace con OpenCV en Python. Para encontrar el centro y el radio, puedes usar por ejemplo el contorno del objetivo, como en [Recorre el laberinto](/docs/programming/navigate-the-maze/).
 
 <CodeTabs file="readRings" />
 
 En una ejecución real, puede que el objetivo se vea en ángulo, y entonces parece una elipse. Ponerte delante de él, tomar como aviso los colores que parezcan incorrectos o leer varios fotogramas hará que el resultado sea más fiable.
+
+![Un objetivo cognitivo visto en ángulo por la cámara del robot inicial](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## Calcular el tipo \{#calculating-the-type\}
 Cuando tengas los cinco colores, el código que debes enviar se obtiene de su suma. Cada una de las cinco partes cuenta siempre, aunque los colores vecinos sean iguales.

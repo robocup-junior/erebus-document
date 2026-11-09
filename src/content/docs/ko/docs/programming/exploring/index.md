@@ -55,6 +55,8 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 | 북쪽 벽 | `4r`행, `4c`열부터 `4c + 4`열까지 |
 | 서쪽 벽 | `4c`열, `4r`행부터 `4r + 4`행까지 |
 
+![r행 c열 타일에 해당하는 지도 행렬의 셀. 북쪽 벽은 4r행, 서쪽 벽은 4c열, 바닥 표시는 4분의 1 타일의 가운데](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 지도는 어디서 시작해도 돼요. Erebus가 시작 타일을 사용해 [행렬을 정렬](/docs/rules/mapping/#how-correctness-is-calculated)하고, 네 가지 회전을 시도해요. [지도 작성 규칙](/docs/rules/mapping/)에서 행렬의 모든 값을 설명해요. 그다음 [지도를 제출](/docs/programming/map-bonus/)하세요.
 
 정답이 [지도 작성 규칙](/docs/rules/mapping/#examples)에 나와 있는 예제 월드로 테스트해 보세요. 결과는 제어 창의 기록에 `Map Correctness`로 표시돼요.

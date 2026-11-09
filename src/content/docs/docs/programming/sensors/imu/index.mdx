@@ -11,6 +11,8 @@ The gyroscope returns the rotation speed of the robot around each axis, in **rad
 
 `getValues()` returns `[x, y, z]`. The **Y axis is vertical**, so `getValues()[1]` is the turning speed of the robot. It is positive when turning to the left.
 
+![Turning to the left gives a positive value, and turning to the right a negative value](./gyro-sign.svg)
+
 :::caution
 This is for the gyro of the starter robot. The axes follow the rotation of the gyro, so if you rotate it in your own robot, check which value changes when the robot turns.
 :::

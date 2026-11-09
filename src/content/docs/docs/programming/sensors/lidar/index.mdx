@@ -13,7 +13,13 @@ It measures 512 points around the robot, in 4 layers stacked on top of each othe
 
 `getLayerRangeImage(0)` gives the 512 distances of one layer. The first one is in front of the robot, and they go **clockwise**: a quarter of the way is on the right, half is behind, and three quarters is on the left.
 
+![The points of a lidar layer around the robot: 0 in front, 128 on the right, 256 behind and 384 on the left](./lidar-order.svg)
+
 <CodeTabs file="read" />
+
+Here is one layer measured by the starter robot in `world1.wbt`, drawn from above with the robot in the middle. The walls around it appear as lines of points.
+
+![One lidar layer drawn from above: walls around the robot as lines of points](./lidar-scan.svg)
 
 ## Point cloud
 

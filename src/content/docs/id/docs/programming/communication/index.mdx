@@ -37,6 +37,8 @@ Robot harus berada di sisi dinding yang sama dengan penanda, dan baik robot maup
 
 Jalankan program ini di awal `world1.wbt`: tidak ada penanda di sana, jadi riwayat jendela kontrol menampilkan `Misidentification of Victim -5`. Laporan yang salah, termasuk laporan penanda palsu, mengurangi 5 poin, dan setiap penanda hanya bisa dihitung sekali.
 
+![Riwayat jendela kontrol setelah laporan yang salah dan pengiriman peta](../../../../docs/programming/communication/history.png)
+
 ## Kurangnya kemajuan \{#lack-of-progress\}
 
 Saat robot terjebak, kurangnya kemajuan (lack of progress) memindahkannya kembali ke checkpoint terakhir dan mengurangi 5 poin. Ini terjadi otomatis setelah robot tidak bergerak selama 20 detik, dan programmu juga bisa memicunya dengan mengirim `L`. Setiap kali terjadi, permainan mengirim `L` ke robot, agar programmu tahu posisinya sudah berubah.

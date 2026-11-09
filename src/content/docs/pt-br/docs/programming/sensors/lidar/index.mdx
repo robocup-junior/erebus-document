@@ -13,7 +13,13 @@ Ele mede 512 pontos ao redor do robô, em 4 camadas empilhadas umas sobre as out
 
 `getLayerRangeImage(0)` fornece as 512 distâncias de uma camada. A primeira fica na frente do robô, e elas seguem no **sentido horário**: um quarto do caminho fica à direita, a metade fica atrás e três quartos ficam à esquerda.
 
+![Os pontos de uma camada do lidar ao redor do robô: 0 na frente, 128 à direita, 256 atrás e 384 à esquerda](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+Esta é uma camada medida pelo robô inicial em `world1.wbt`, desenhada vista de cima, com o robô no centro. As paredes ao redor aparecem como linhas de pontos.
+
+![Uma camada do lidar vista de cima: as paredes ao redor do robô como linhas de pontos](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## Nuvem de pontos \{#point-cloud\}
 

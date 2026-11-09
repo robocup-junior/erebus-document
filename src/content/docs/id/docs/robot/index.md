@@ -27,6 +27,8 @@ Dokumentasi ini menggunakan satu robot di semua tempat, yaitu **robot pemula**, 
 
 Robot ini memakai 2400 dari anggaran 3000.
 
+![Robot yang sudah jadi, dengan label dan tampilan kameranya](../../../docs/robot/build/finished.png)
+
 ## Pilih jalurmu {#choose-your-path}
 
 **Disarankan: rakit sendiri.** Butuh sekitar 15 menit, dan kamu akan memahami setiap bagian robotmu. Ikuti [Rakit robotmu](/docs/robot/build/).

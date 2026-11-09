@@ -13,7 +13,13 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `getLayerRangeImage(0)` 给出某一层的 512 个距离。第一个点在机器人正前方，之后按**顺时针**方向排列：四分之一处在右侧，一半处在后方，四分之三处在左侧。
 
+![一层激光雷达的点在机器人周围的位置：0 在前方，128 在右侧，256 在后方，384 在左侧](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+下图是入门机器人在 `world1.wbt` 中测得的一层数据，从上方绘制，机器人位于中心。周围的墙壁显示为一排排的点。
+
+![从上方看到的一层激光雷达数据：机器人周围的墙壁显示为一排排的点](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## 点云 \{#point-cloud\}
 

@@ -37,6 +37,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 在 `world1.wbt` 的起点运行这个程序：那里没有标识，所以控制窗口的历史记录会显示 `Misidentification of Victim -5`。错误的报告（包括报告假标识）会扣 5 分，而且每个标识只能得分一次。
 
+![一次错误报告和提交地图之后，控制窗口中的历史记录](../../../../docs/programming/communication/history.png)
+
 ## 缺乏进展 \{#lack-of-progress\}
 
 当机器人被卡住时，缺乏进展（Lack of progress，LoP）会把它移回最后一个检查点，并扣 5 分。机器人 20 秒不动时会自动触发，你的程序也可以通过发送 `L` 来主动请求。每次发生时，比赛都会向机器人发送 `L`，让你的程序知道它的位置已经改变。

@@ -11,6 +11,8 @@ Le gyroscope renvoie la vitesse de rotation du robot autour de chaque axe, en **
 
 `getValues()` renvoie `[x, y, z]`. L’**axe Y est vertical** : `getValues()[1]` est donc la vitesse de rotation du robot. Elle est positive quand il tourne vers la gauche.
 
+![Tourner vers la gauche donne une valeur positive, et tourner vers la droite une valeur négative](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 Ceci concerne le gyroscope du robot de départ. Les axes suivent la rotation du gyroscope : si vous le faites pivoter sur votre propre robot, vérifiez quelle valeur change quand le robot tourne.
 :::

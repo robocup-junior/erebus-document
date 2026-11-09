@@ -20,6 +20,8 @@ Lihat [Aturan](/docs/rules/#wall-tokens) untuk definisi yang tepat, dan [Komunik
 ## Apa yang dilihat kamera \{#what-the-camera-sees\}
 Kamera robot pemula beresolusi 64 × 40 piksel. Pada resolusi itu, penanda hanya terdiri atas beberapa piksel sampai robot cukup dekat, jadi sebaiknya cari kandidat dari kejauhan, lalu mendekat untuk membacanya. Ingat bahwa laporan mensyaratkan robot berada dalam jarak setengah ubin dari penanda, dan bahwa kamera kustom bisa punya resolusi lebih tinggi, dengan biaya tambahan.
 
+![Empat gambar kamera robot pemula saat robot makin mendekati korban huruf](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![Target kognitif dilihat oleh kamera 64 kali 40](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ Korban huruf adalah simbol hitam di atas kotak putih, dan bisa diputar ke sudut 
 ## Membaca target kognitif \{#reading-a-cognitive-target\}
 Target kognitif terdiri atas lima bagian konsentris, jadi kamu tidak perlu mengenali bentuknya: setelah kamu menemukan titik tengah dan jari-jari luarnya, kamu bisa mengambil sampel warna di tengah setiap bagian. Jari-jari bagian-bagiannya adalah 0,5; 1; 1,5; 2; dan 2,5 cm, jadi titik tengahnya berada di 0; 0,3; 0,5; 0,7; dan 0,9 kali jari-jari luar.
 
+![Target kognitif dengan titik-titik tempat membaca warna setiap bagian, di 0; 0,3; 0,5; 0,7; dan 0,9 kali jari-jari luar](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 Fungsi ini melakukannya dengan OpenCV di Python. Untuk menemukan titik tengah dan jari-jarinya, kamu bisa misalnya menggunakan kontur target, seperti di [Menavigasi labirin](/docs/programming/navigate-the-maze/).
 
 <CodeTabs file="readRings" />
 
 Dalam permainan sungguhan, target mungkin terlihat dari sudut miring sehingga tampak seperti elips. Memosisikan robot di depannya, menganggap warna yang tampak salah sebagai peringatan, atau membaca beberapa frame akan membuat hasilnya lebih andal.
+
+![Target kognitif yang dilihat dari sudut miring oleh kamera robot pemula](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## Menghitung jenisnya \{#calculating-the-type\}
 Setelah kamu mendapatkan kelima warna, kode yang dilaporkan berasal dari jumlahnya. Setiap bagian dari kelima bagian itu selalu dihitung, bahkan saat warna yang bersebelahan sama.

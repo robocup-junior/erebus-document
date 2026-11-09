@@ -20,6 +20,8 @@ Die genauen Definitionen stehen in den [Regeln](/docs/rules/#wall-tokens), und w
 ## Was die Kamera sieht \{#what-the-camera-sees\}
 Die Kamera des Starter-Roboters hat 64 × 40 Pixel. Bei dieser Auflösung ist eine Markierung nur wenige Pixel groß, bis der Roboter nah dran ist. Am besten suchst du also aus der Entfernung nach Kandidaten und fährst dann näher heran, um sie zu lesen. Denk daran, dass der Roboter für eine Meldung höchstens eine halbe Kachel von der Markierung entfernt sein darf und dass eigene Kameras gegen Aufpreis eine höhere Auflösung haben können.
 
+![Vier Bilder der Kamera des Starter-Roboters, während er sich einem Buchstabenopfer nähert](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![Ein kognitives Ziel, gesehen von einer Kamera mit 64 × 40 Pixeln](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ Buchstabenopfer sind schwarze Symbole auf einem weißen Quadrat, und sie können
 ## Ein kognitives Ziel lesen \{#reading-a-cognitive-target\}
 Ein kognitives Ziel besteht aus fünf konzentrischen Teilen, du musst seine Form also nicht erkennen: Sobald du seinen Mittelpunkt und seinen äußeren Radius gefunden hast, kannst du die Farbe in der Mitte jedes Teils abtasten. Die Teile haben Radien von 0,5, 1, 1,5, 2 und 2,5 cm, ihre Mittelpunkte liegen also bei 0, 0,3, 0,5, 0,7 und 0,9 des äußeren Radius.
 
+![Ein kognitives Ziel mit den Punkten, an denen die Farbe jedes Teils gelesen wird, bei 0, 0,3, 0,5, 0,7 und 0,9 des äußeren Radius](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 Diese Funktion macht das mit OpenCV in Python. Um Mittelpunkt und Radius zu finden, kannst du zum Beispiel die Kontur des Ziels verwenden, wie in [Durch das Labyrinth navigieren](/docs/programming/navigate-the-maze/).
 
 <CodeTabs file="readRings" />
 
 In einem echten Lauf siehst du das Ziel vielleicht schräg, dann sieht es wie eine Ellipse aus. Wenn du dich davorstellst, unplausible Farben als Warnung nutzt oder mehrere Bilder liest, wird das Ergebnis zuverlässiger.
+
+![Ein kognitives Ziel, von der Kamera des Starter-Roboters schräg gesehen](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## Den Typ berechnen \{#calculating-the-type\}
 Sobald du die fünf Farben hast, ergibt sich der zu meldende Code aus ihrer Summe. Jeder der fünf Teile zählt immer, auch wenn benachbarte Farben gleich sind.

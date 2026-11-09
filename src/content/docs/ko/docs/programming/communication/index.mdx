@@ -37,6 +37,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 이 프로그램을 `world1.wbt`의 시작 지점에서 실행해 보세요. 그곳에는 토큰이 없으므로 제어 창의 기록에 `Misidentification of Victim -5`가 표시돼요. 가짜를 보고하는 것을 포함해 잘못 보고하면 5점이 깎이고, 각 토큰은 한 번만 점수를 얻을 수 있어요.
 
+![잘못된 보고와 지도 제출 후의 제어 창 기록](../../../../docs/programming/communication/history.png)
+
 ## 진행 불능 \{#lack-of-progress\}
 
 로봇이 갇혔을 때 진행 불능(Lack of Progress, LoP)이 발생하면 로봇은 마지막 체크포인트(Checkpoint)로 돌아가고 5점을 잃어요. 20초 동안 움직이지 않으면 자동으로 발생하고, 프로그램이 `L`을 보내서 선언할 수도 있어요. 그때마다 게임이 로봇에 `L`을 보내므로, 프로그램은 위치가 바뀌었다는 것을 알 수 있어요.

@@ -13,7 +13,13 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `getLayerRangeImage(0)` 會提供一層的 512 個距離。第一個點在機器人正前方，接著**順時針**排列：四分之一處在右方，一半處在後方，四分之三處在左方。
 
+![光達一層的點在機器人周圍的位置：0 在前方，128 在右方，256 在後方，384 在左方](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+下圖是入門機器人在 `world1.wbt` 中測得的一層資料，從上方繪製，機器人位於中央。周圍的牆壁會顯示成一排排的點。
+
+![從上方看到的一層光達資料：機器人周圍的牆壁顯示成一排排的點](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## 點雲 \{#point-cloud\}
 

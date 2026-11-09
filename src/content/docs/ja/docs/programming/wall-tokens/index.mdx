@@ -20,6 +20,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## カメラに写るもの \{#what-the-camera-sees\}
 スターターロボットのカメラは 64 × 40 ピクセルです。この解像度では、ロボットが近づくまでトークンは数ピクセルにしか写らないので、遠くから候補を探し、近づいてから読み取るのがよいでしょう。報告するにはロボットがトークンからタイル半分以内にいる必要があること、そしてカスタムのカメラはコストをかければ解像度を上げられることを覚えておきましょう。
 
+![文字の被災者に近づいていくスターターロボットのカメラ画像 4 枚](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![64 × 40 のカメラで見たコグニティブターゲット](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## コグニティブターゲットを読み取る \{#reading-a-cognitive-target\}
 コグニティブターゲットは 5 つの同心円の部分でできているので、形を認識する必要はありません。中心と外側の半径がわかれば、各部分の中央の色をサンプリングできます。各部分の半径は 0.5、1、1.5、2、2.5 cm なので、それぞれの中央の点は外側の半径の 0、0.3、0.5、0.7、0.9 の位置にあります。
 
+![各部分の色を読み取る点を示したコグニティブターゲット。外側の半径の 0、0.3、0.5、0.7、0.9 の位置](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 次の関数は、Python の OpenCV でこれを行います。中心と半径を見つけるには、たとえば[迷路を進む](/docs/programming/navigate-the-maze/)のように、ターゲットの輪郭を使えます。
 
 <CodeTabs file="readRings" />
 
 実際の走行では、ターゲットを斜めから見ることがあり、その場合は楕円に見えます。ターゲットの正面に回る、おかしく見える色を警告として扱う、複数のフレームを読み取る、といった工夫で結果の信頼性が上がります。
+
+![スターターロボットのカメラで斜めから見たコグニティブターゲット](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## 種類を計算する \{#calculating-the-type\}
 5 つの色がわかれば、報告するコードはその合計から決まります。隣り合う色が同じでも、5 つの部分はそれぞれ必ず数えます。

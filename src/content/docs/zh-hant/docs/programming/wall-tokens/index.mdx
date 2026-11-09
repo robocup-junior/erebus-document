@@ -20,6 +20,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 攝影機看到的畫面 \{#what-the-camera-sees\}
 入門機器人的攝影機是 64 × 40 像素。在這個解析度下，除非機器人靠得很近，否則標記只有幾個像素大，所以最好先從遠處尋找可能的標記，再靠近辨識。請記住，回報時機器人必須在距離標記半個地塊以內；另外，自訂攝影機可以有更高的解析度，但需要花費更多預算。
 
+![入門機器人逐漸接近字母受害者時拍到的 4 張攝影機影像](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![64 × 40 攝影機看到的認知目標](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 讀取認知目標 \{#reading-a-cognitive-target\}
 認知目標由五個同心的部分組成，所以不需要辨識它的形狀：一旦找到它的中心和外半徑，就可以在每個部分的中間取樣顏色。各部分的半徑分別是 0.5、1、1.5、2 和 2.5 cm，所以它們的中間點分別位於外半徑的 0、0.3、0.5、0.7 和 0.9 處。
 
+![標出各部分取色位置的認知目標，分別位於外半徑的 0、0.3、0.5、0.7 和 0.9 處](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 這個函式用 Python 和 OpenCV 做到這一點。要找出中心和半徑，例如可以像[迷宮導航](/docs/programming/navigate-the-maze/)那樣使用目標的輪廓。
 
 <CodeTabs file="readRings" />
 
 實際執行時，可能會從斜角看到目標，這時它看起來會像橢圓形。移動到目標正前方、把看起來不對的顏色當作警訊，或讀取多個畫面，都能讓結果更可靠。
+
+![入門機器人的攝影機從斜角看到的認知目標](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## 計算類型 \{#calculating-the-type\}
 取得五個顏色之後，要回報的代碼就由它們的總和決定。五個部分每一個都要計算，即使相鄰的顏色相同也一樣。

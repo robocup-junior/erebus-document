@@ -13,7 +13,13 @@ Es misst 512 Punkte rund um den Roboter, in 4 übereinanderliegenden Schichten, 
 
 `getLayerRangeImage(0)` liefert die 512 Entfernungen einer Schicht. Die erste liegt vor dem Roboter, und sie verlaufen **im Uhrzeigersinn**: Nach einem Viertel kommt die rechte Seite, nach der Hälfte die Rückseite und nach drei Vierteln die linke Seite.
 
+![Die Punkte einer Lidar-Schicht rund um den Roboter: 0 vorne, 128 rechts, 256 hinten und 384 links](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+Hier ist eine Schicht, die der Starter-Roboter in `world1.wbt` gemessen hat, von oben gezeichnet, mit dem Roboter in der Mitte. Die Wände um ihn herum erscheinen als Reihen von Punkten.
+
+![Eine Lidar-Schicht von oben: Wände um den Roboter als Reihen von Punkten](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## Punktwolke \{#point-cloud\}
 

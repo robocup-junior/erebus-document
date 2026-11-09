@@ -13,7 +13,13 @@ Lidar mengukur 512 titik di sekeliling robot, dalam 4 lapisan yang bertumpuk, hi
 
 `getLayerRangeImage(0)` memberikan 512 jarak dari satu lapisan. Jarak pertama berada di depan robot, dan urutannya **searah jarum jam**: titik di seperempat putaran ada di kanan, di setengah putaran ada di belakang, dan di tiga perempat putaran ada di kiri.
 
+![Titik-titik satu lapisan lidar di sekeliling robot: 0 di depan, 128 di kanan, 256 di belakang, dan 384 di kiri](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+Berikut satu lapisan yang diukur robot pemula di `world1.wbt`, digambar dari atas dengan robot di tengahnya. Dinding di sekelilingnya tampak sebagai deretan titik.
+
+![Satu lapisan lidar dilihat dari atas: dinding di sekeliling robot berupa deretan titik](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## Awan titik \{#point-cloud\}
 

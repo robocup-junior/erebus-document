@@ -20,6 +20,8 @@ See [Rules](/docs/rules/#wall-tokens) for the exact definitions, and [Communicat
 ## What the camera sees
 The camera of the starter robot has 64 × 40 pixels. At that resolution, a token is only a few pixels until the robot is close, so it is best to look for candidates from a distance, and then get closer to read them. Remember that a report needs the robot within half a tile of the token, and that custom cameras can have a higher resolution, at a cost.
 
+![Four images of the starter robot’s camera as it gets closer to a letter victim](./camera-distance.png)
+
 ![A cognitive target seen by a 64 by 40 camera](./camera_target.png)
 
 
@@ -31,11 +33,15 @@ Letter victims are black symbols on a white square, and they can be rotated to a
 ## Reading a cognitive target
 A cognitive target is made of five concentric parts, so there is no need to recognize its shape: once you have found its centre and its outer radius, you can sample the colour in the middle of each part. The parts have radii of 0.5, 1, 1.5, 2 and 2.5 cm, so their middle points are at 0, 0.3, 0.5, 0.7 and 0.9 of the outer radius.
 
+![A cognitive target with the points where to read the colour of each part, at 0, 0.3, 0.5, 0.7 and 0.9 of the outer radius](./cognitive-target-sampling.svg)
+
 This function does that with OpenCV in Python. To find the centre and the radius, you can for example use the contour of the target, as in [Navigate the maze](/docs/programming/navigate-the-maze/).
 
 <CodeTabs file="readRings" />
 
 In a real run, the target may be viewed at an angle, in which case it looks like an ellipse. Getting in front of it, using the colours that look wrong as a warning, or reading several frames will make the result more reliable.
+
+![A cognitive target seen at an angle by the starter robot’s camera](./cognitive-target-angle.png)
 
 ## Calculating the type
 Once you have the five colours, the code to report comes from their sum. Each of the five parts always counts, even when neighbouring colours are the same.

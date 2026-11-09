@@ -55,6 +55,8 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 | 北側牆壁 | 第 `4r` 列，第 `4c` 到 `4c + 4` 行 |
 | 西側牆壁 | 第 `4c` 行，第 `4r` 到 `4r + 4` 列 |
 
+![第 r 列、第 c 行地塊在地圖矩陣中對應的格子：北側牆壁在第 4r 列，西側牆壁在第 4c 行，地板標示在四分之一地塊的中央](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 你的地圖可以從任何位置開始：Erebus 會利用起始地塊[對齊矩陣](/docs/rules/mapping/#how-correctness-is-calculated)，並嘗試四種旋轉方向。[地圖規則](/docs/rules/mapping/)說明了矩陣中的每一個值。然後再[提交地圖](/docs/programming/map-bonus/)。
 
 用範例世界來測試，它們的正確答案在[地圖規則](/docs/rules/mapping/#examples)中。結果會以 `Map Correctness` 顯示在控制視窗的歷史紀錄中。

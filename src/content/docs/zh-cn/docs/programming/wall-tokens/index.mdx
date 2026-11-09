@@ -20,6 +20,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 摄像头看到的画面 \{#what-the-camera-sees\}
 入门机器人的摄像头只有 64 × 40 像素。在这个分辨率下，机器人靠近之前，一个标识只占几个像素，所以最好先从远处寻找可能的标识，再靠近去识别它们。记住，报告时机器人必须在距离标识半个地块以内；另外，自定义摄像头可以使用更高的分辨率，但要花费更多预算。
 
+![入门机器人逐渐靠近字母受害者时拍到的 4 张摄像头图像](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![64 × 40 摄像头看到的认知目标](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 读取认知目标 \{#reading-a-cognitive-target\}
 认知目标由五个同心的部分组成，所以不需要识别它的形状：只要找到它的圆心和外半径，就可以在每个部分的中间取样颜色。各部分的半径分别是 0.5、1、1.5、2 和 2.5 cm，所以它们的中点分别位于外半径的 0、0.3、0.5、0.7 和 0.9 处。
 
+![标出了每个部分取色位置的认知目标，分别位于外半径的 0、0.3、0.5、0.7 和 0.9 处](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 下面的函数用 Python 和 OpenCV 实现了这一点。要找到圆心和半径，你可以像[迷宫导航](/docs/programming/navigate-the-maze/)中那样使用目标的轮廓。
 
 <CodeTabs file="readRings" />
 
 在实际运行中，机器人可能会从斜着的角度看到目标，这时它看起来像一个椭圆。移动到目标正前方、把看起来不对的颜色当作警示，或者读取多帧画面，都能让结果更可靠。
+
+![入门机器人的摄像头从斜着的角度看到的认知目标](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## 计算类型 \{#calculating-the-type\}
 得到五种颜色之后，要报告的代码就由它们的和决定。五个部分中的每一个都始终计入，即使相邻的颜色相同也是如此。

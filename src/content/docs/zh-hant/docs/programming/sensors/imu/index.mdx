@@ -11,6 +11,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `getValues()` 會回傳 `[x, y, z]`。**Y 軸是垂直方向**，所以 `getValues()[1]` 就是機器人的轉向速度。向左轉時為正值。
 
+![向左轉時為正值，向右轉時為負值](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 這是針對入門機器人的陀螺儀。座標軸會跟著陀螺儀的旋轉而改變，所以如果你在自己的機器人中旋轉了陀螺儀，請確認機器人轉向時是哪個數值在變化。
 :::

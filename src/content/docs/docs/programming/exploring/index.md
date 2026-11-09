@@ -55,6 +55,8 @@ The [map matrix](/docs/rules/mapping/) has 4 cells per tile, plus one. For a til
 | North wall | Row `4r`, columns `4c` to `4c + 4` |
 | West wall | Column `4c`, rows `4r` to `4r + 4` |
 
+![The cells of the map matrix for the tile in row r and column c: the north wall in row 4r, the west wall in column 4c, and floor marks in the middle of the quarter tiles](./tile-to-matrix.svg)
+
 Your map can start anywhere: Erebus [aligns the matrix](/docs/rules/mapping/#how-correctness-is-calculated) using the starting tile, and it tries the four rotations. The [Mapping rules](/docs/rules/mapping/) explain every value of the matrix. Then [submit it](/docs/programming/map-bonus/).
 
 Test it with the example worlds, whose correct answers are in [Mapping rules](/docs/rules/mapping/#examples). The result appears as `Map Correctness` in the history of the control window.

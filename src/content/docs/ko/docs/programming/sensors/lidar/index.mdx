@@ -13,7 +13,13 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `getLayerRangeImage(0)`은 한 레이어의 512개 거리를 줘요. 첫 번째 값은 로봇의 정면이고, **시계 방향**으로 이어져요. 4분의 1 지점은 오른쪽, 절반은 뒤쪽, 4분의 3 지점은 왼쪽이에요.
 
+![로봇 주위의 라이다 레이어의 점. 0은 앞, 128은 오른쪽, 256은 뒤, 384는 왼쪽](../../../../../docs/programming/sensors/lidar/lidar-order.svg)
+
 <CodeTabs file="read" />
+
+다음은 `world1.wbt`에서 스타터 로봇이 측정한 레이어 하나를, 로봇을 가운데에 두고 위에서 본 그림이에요. 주위의 벽이 점의 줄로 나타나요.
+
+![위에서 본 라이다 레이어 하나. 로봇 주위의 벽이 점의 줄로 보여요](../../../../../docs/programming/sensors/lidar/lidar-scan.svg)
 
 ## 포인트 클라우드 \{#point-cloud\}
 

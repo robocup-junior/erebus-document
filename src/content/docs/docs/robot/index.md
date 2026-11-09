@@ -27,6 +27,8 @@ This documentation uses one robot everywhere, the **starter robot**, so that eve
 
 It costs 2400 of the budget of 3000.
 
+![The finished robot, with its labels and camera view](./build/finished.png)
+
 ## Choose your path
 
 **Recommended: build it yourself.** It takes about 15 minutes, and you will understand every part of your robot. Follow [Build your robot](/docs/robot/build/).

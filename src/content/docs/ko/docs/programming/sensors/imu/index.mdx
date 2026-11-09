@@ -11,6 +11,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `getValues()`는 `[x, y, z]`를 반환해요. **Y축이 수직**이므로 `getValues()[1]`이 로봇의 회전 속도예요. 왼쪽으로 돌 때 양수가 돼요.
 
+![왼쪽으로 돌면 양수, 오른쪽으로 돌면 음수가 돼요](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 이 내용은 스타터 로봇의 자이로 기준이에요. 축은 자이로의 회전을 따르므로, 직접 만든 로봇에서 자이로를 회전시켰다면 로봇이 돌 때 어떤 값이 바뀌는지 확인하세요.
 :::

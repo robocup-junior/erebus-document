@@ -27,6 +27,8 @@ Esta documentación usa un único robot en todas partes, el **robot inicial**, p
 
 Cuesta 2400 del presupuesto de 3000.
 
+![El robot terminado, con sus etiquetas y la vista de la cámara](../../../docs/robot/build/finished.png)
+
 ## Elige tu camino {#choose-your-path}
 
 **Recomendado: constrúyelo tú mismo.** Se tarda unos 15 minutos y entenderás cada parte de tu robot. Sigue [Construye tu robot](/docs/robot/build/).

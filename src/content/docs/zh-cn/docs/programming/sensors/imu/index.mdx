@@ -11,6 +11,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 `getValues()` 返回 `[x, y, z]`。**Y 轴是竖直方向**，所以 `getValues()[1]` 就是机器人的转向速度。向左转时它为正值。
 
+![向左转时为正值，向右转时为负值](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 这里说的是入门机器人的陀螺仪。坐标轴会跟着陀螺仪一起旋转，所以如果你在自己的机器人上旋转了陀螺仪，请检查机器人转向时是哪个数值在变化。
 :::

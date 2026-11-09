@@ -27,6 +27,8 @@ Esta documentação usa o mesmo robô em todo lugar, o **robô inicial**, para q
 
 Ele custa 2400 do orçamento de 3000.
 
+![O robô pronto, com os rótulos e a visão da câmera](../../../docs/robot/build/finished.png)
+
 ## Escolha o seu caminho {#choose-your-path}
 
 **Recomendado: monte-o você mesmo.** Leva cerca de 15 minutos, e você vai entender cada parte do seu robô. Siga [Monte seu robô](/docs/robot/build/).

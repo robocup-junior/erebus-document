@@ -11,6 +11,8 @@ Das Gyroskop liefert die Drehgeschwindigkeit des Roboters um jede Achse in **Rad
 
 `getValues()` gibt `[x, y, z]` zurück. Die **Y-Achse ist vertikal**, also ist `getValues()[1]` die Drehgeschwindigkeit des Roboters. Sie ist positiv, wenn er sich nach links dreht.
 
+![Eine Drehung nach links ergibt einen positiven Wert, eine Drehung nach rechts einen negativen Wert](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 Das gilt für das Gyroskop des Starter-Roboters. Die Achsen folgen der Drehung des Gyroskops. Wenn du es in deinem eigenen Roboter drehst, prüfe also, welcher Wert sich ändert, wenn sich der Roboter dreht.
 :::

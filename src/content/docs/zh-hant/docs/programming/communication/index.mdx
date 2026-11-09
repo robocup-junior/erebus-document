@@ -37,6 +37,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 在 `world1.wbt` 的起點執行這個程式：那裡沒有標記，所以控制視窗的歷史紀錄會顯示 `Misidentification of Victim -5`。錯誤的回報（包括回報假目標）會扣 5 分，而且每個標記只能得分一次。
 
+![一次錯誤回報和提交地圖之後，控制視窗中的歷史紀錄](../../../../docs/programming/communication/history.png)
+
 ## 缺乏進展 \{#lack-of-progress\}
 
 當機器人卡住時，缺乏進展（lack of progress）會把它移回最後一個檢查點，並扣 5 分。機器人 20 秒沒有移動就會自動發生，你的程式也可以傳送 `L` 主動宣告。每次發生時，比賽都會傳送 `L` 給機器人，讓你的程式知道它的位置改變了。

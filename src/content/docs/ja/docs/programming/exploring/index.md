@@ -55,6 +55,8 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 | 北の壁 | 行 `4r`、列 `4c` 〜 `4c + 4` |
 | 西の壁 | 列 `4c`、行 `4r` 〜 `4r + 4` |
 
+![r 行 c 列のタイルに対応する地図行列のセル。北の壁は行 4r、西の壁は列 4c、床のマークは 4 分の 1 タイルの中央](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 地図はどこから始めてもかまいません。Erebus はスタートタイルを使って[行列の位置を合わせ](/docs/rules/mapping/#how-correctness-is-calculated)、4 通りの回転を試します。行列のすべての値は[地図作成のルール](/docs/rules/mapping/)で説明しています。それから[地図を提出](/docs/programming/map-bonus/)しましょう。
 
 サンプルワールドでテストしましょう。正解は[地図作成のルール](/docs/rules/mapping/#examples)に載っています。結果は、コントロールウィンドウの履歴に `Map Correctness` として表示されます。

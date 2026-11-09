@@ -55,6 +55,8 @@ Die [Kartenmatrix](/docs/rules/mapping/) hat 4 Zellen pro Kachel, plus eine. Fü
 | Nordwand | Zeile `4r`, Spalten `4c` bis `4c + 4` |
 | Westwand | Spalte `4c`, Zeilen `4r` bis `4r + 4` |
 
+![Die Zellen der Kartenmatrix für die Kachel in Zeile r und Spalte c: die Nordwand in Zeile 4r, die Westwand in Spalte 4c und die Bodenmarkierungen in der Mitte der Viertelkacheln](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 Deine Karte kann überall beginnen: Erebus [richtet die Matrix](/docs/rules/mapping/#how-correctness-is-calculated) anhand der Startkachel aus und probiert die vier Drehungen. Die [Regeln für die Karte](/docs/rules/mapping/) erklären jeden Wert der Matrix. Danach [gibst du sie ab](/docs/programming/map-bonus/).
 
 Teste sie mit den Beispielwelten, deren richtige Lösungen in den [Regeln für die Karte](/docs/rules/mapping/#examples) stehen. Das Ergebnis erscheint als `Map Correctness` im Verlauf des Steuerfensters.

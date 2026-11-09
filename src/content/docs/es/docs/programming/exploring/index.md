@@ -55,6 +55,8 @@ La [matriz del mapa](/docs/rules/mapping/) tiene 4 celdas por baldosa, más una.
 | Pared norte | Fila `4r`, columnas `4c` a `4c + 4` |
 | Pared oeste | Columna `4c`, filas `4r` a `4r + 4` |
 
+![Las celdas de la matriz del mapa para la baldosa de la fila r y la columna c: la pared norte en la fila 4r, la pared oeste en la columna 4c y las marcas del suelo en el centro de los cuartos de baldosa](../../../../docs/programming/exploring/tile-to-matrix.svg)
+
 Tu mapa puede empezar en cualquier sitio: Erebus [alinea la matriz](/docs/rules/mapping/#how-correctness-is-calculated) usando la baldosa de salida y prueba las cuatro rotaciones. Las [Reglas del mapa](/docs/rules/mapping/) explican cada valor de la matriz. Después, [envíalo](/docs/programming/map-bonus/).
 
 Pruébalo con los mundos de ejemplo, cuyas respuestas correctas están en [Reglas del mapa](/docs/rules/mapping/#examples). El resultado aparece como `Map Correctness` en el historial de la ventana de control.

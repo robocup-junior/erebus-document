@@ -37,6 +37,8 @@ The robot must be on the same side of the wall as the token, and both the robot 
 
 Run this program at the start of `world1.wbt`: there is no token there, so the history of the control window shows `Misidentification of Victim -5`. A wrong report, including a report of a fake, costs 5 points, and each token can only be scored once.
 
+![The history of the control window after a wrong report and a map submission](./history.png)
+
 ## Lack of progress
 
 When the robot is stuck, a lack of progress moves it back to the last checkpoint and costs 5 points. It happens automatically after 20 seconds without moving, and your program can also call it by sending `L`. Each time, the game sends `L` to the robot, so that your program knows its position has changed.

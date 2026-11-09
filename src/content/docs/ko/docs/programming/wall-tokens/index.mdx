@@ -20,6 +20,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 카메라에 보이는 것 \{#what-the-camera-sees\}
 스타터 로봇의 카메라는 64 × 40 픽셀이에요. 이 해상도에서는 로봇이 가까이 가기 전까지 토큰이 몇 픽셀밖에 되지 않으므로, 멀리서 후보를 찾은 다음 가까이 가서 읽는 것이 좋아요. 보고하려면 로봇이 토큰에서 반 타일 이내에 있어야 하고, 커스텀 카메라는 비용을 들여 해상도를 높일 수 있다는 점을 기억하세요.
 
+![문자 피해자에게 다가가는 스타터 로봇의 카메라 이미지 4장](../../../../docs/programming/wall-tokens/camera-distance.png)
+
 ![64 × 40 카메라로 본 인지 표적](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
@@ -31,11 +33,15 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 인지 표적 읽기 \{#reading-a-cognitive-target\}
 인지 표적은 다섯 개의 동심원 부분으로 이루어져 있어서 모양을 인식할 필요가 없어요. 중심과 바깥 반지름을 찾으면 각 부분의 가운데 색을 샘플링할 수 있어요. 각 부분의 반지름은 0.5, 1, 1.5, 2, 2.5 cm이므로, 가운데 지점은 바깥 반지름의 0, 0.3, 0.5, 0.7, 0.9 위치에 있어요.
 
+![각 부분의 색을 읽을 지점을 표시한 인지 표적. 바깥 반지름의 0, 0.3, 0.5, 0.7, 0.9 위치](../../../../docs/programming/wall-tokens/cognitive-target-sampling.svg)
+
 이 함수는 Python에서 OpenCV로 그 작업을 해요. 중심과 반지름을 찾으려면 예를 들어 [미로 탐색](/docs/programming/navigate-the-maze/)에서처럼 표적의 윤곽선을 사용할 수 있어요.
 
 <CodeTabs file="readRings" />
 
 실제로 실행할 때는 표적을 비스듬히 보게 될 수도 있고, 그러면 타원처럼 보여요. 표적 정면으로 가거나, 이상해 보이는 색을 경고 신호로 사용하거나, 여러 프레임을 읽으면 결과를 더 믿을 수 있어요.
+
+![스타터 로봇의 카메라로 비스듬히 본 인지 표적](../../../../docs/programming/wall-tokens/cognitive-target-angle.png)
 
 ## 종류 계산하기 \{#calculating-the-type\}
 다섯 가지 색을 얻으면, 보고할 코드는 그 합으로 정해져요. 이웃한 색이 같더라도 다섯 부분은 항상 각각 계산해요.

@@ -37,6 +37,8 @@ Le robot doit être du même côté du mur que le marqueur, et le robot comme la
 
 Exécutez ce programme au départ de `world1.wbt` : il n’y a pas de marqueur à cet endroit, donc l’historique de la fenêtre de contrôle affiche `Misidentification of Victim -5`. Un mauvais signalement, y compris le signalement d’un leurre, coûte 5 points, et chaque marqueur ne rapporte des points qu’une seule fois.
 
+![L’historique de la fenêtre de contrôle après un mauvais signalement et la soumission d’une carte](../../../../docs/programming/communication/history.png)
+
 ## Absence de progression \{#lack-of-progress\}
 
 Quand le robot est bloqué, une absence de progression (Lack of Progress) le ramène au dernier point de contrôle et coûte 5 points. Elle se produit automatiquement au bout de 20 secondes sans mouvement, et votre programme peut aussi la déclencher en envoyant `L`. À chaque fois, le jeu envoie `L` au robot, pour que votre programme sache que sa position a changé.

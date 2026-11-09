@@ -11,6 +11,8 @@ O giroscópio retorna a velocidade de rotação do robô em torno de cada eixo, 
 
 `getValues()` retorna `[x, y, z]`. O **eixo Y é vertical**, então `getValues()[1]` é a velocidade com que o robô gira. Ela é positiva quando ele gira para a esquerda.
 
+![Girar para a esquerda dá um valor positivo, e girar para a direita, um valor negativo](../../../../../docs/programming/sensors/imu/gyro-sign.svg)
+
 :::caution
 Isto vale para o giroscópio do robô inicial. Os eixos acompanham a rotação do giroscópio, então, se você girá-lo no seu próprio robô, confira qual valor muda quando o robô gira.
 :::
