@@ -9,7 +9,7 @@ Bu sayfa, 2026 kurallarına göre uluslararası yarışma için bir kılavuzdur.
 
 | Ne zaman | Ne |
 |---|---|
-| Yıl boyunca | Açıklamaların yayımlandığı [etkinlik sayfasını](/docs/events/upcoming-events/) ve [forumu](https://junior.forum.robocup.org/) takip et |
+| Yıl boyunca | [Etkinlik sayfasını](/docs/events/upcoming-events/) ve kural açıklamalarının yayımlandığı [forumu](https://junior.forum.robocup.org/) takip et |
 | En az 4 hafta önce | Organizatörler, mülakatlara hazırlık için doldurulacak web formuyla ilgili talimatları verir |
 | İlk günden 3 hafta önce | Belgeler için son tarih |
 | Kurulum günü | Kayıt, mülakatlar ve takım toplantıları için mekâna erken git |

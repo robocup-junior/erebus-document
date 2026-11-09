@@ -62,7 +62,7 @@ Les cases argentées sont des points de contrôle (checkpoints), et elles peuven
 ## Marécages, obstacles et trous {#swamps-obstacles-and-holes}
 ![Un terrain avec un marécage, un trou et un obstacle](../../../docs/rules/rules_obstacles.png)
 
-* Les **marécages** (swamps, cases marron) font s’écouler le temps de jeu plus vite tant que le robot s’y trouve. La première fois que le robot entre dans un marécage, le temps s’écoule 5 fois plus vite. Chaque nouvelle entrée dans le même marécage ajoute un de plus, jusqu’à la limite de x10.
+* Les **marécages** (swamps, cases marron) font s’écouler le temps de jeu plus vite tant que le robot s’y trouve. La première fois que le robot entre dans un marécage, le temps s’écoule 5 fois plus vite. Chaque nouvelle entrée dans le même marécage augmente ce facteur de un, jusqu’à x10 au maximum.
 * Les **obstacles** peuvent être fixés au sol, avoir n’importe quelle forme et couleur, et réduisent la largeur du couloir. Dans les zones 1 à 3, le centre d’un obstacle est toujours sur une case, jamais sur le bord entre deux cases, et il y a au plus un obstacle par case.
 * Les **trous** ont des bords noirs. Si le robot tombe dans l’un d’eux, une absence de progression se produit.
 

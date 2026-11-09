@@ -62,7 +62,7 @@ Os ladrilhos prateados são pontos de controle (checkpoints) e podem ficar em qu
 ## Pântanos, obstáculos e buracos {#swamps-obstacles-and-holes}
 ![Um campo com um pântano, um buraco e um obstáculo](../../../docs/rules/rules_obstacles.png)
 
-* Os **pântanos** (swamps, ladrilhos marrons) fazem o tempo de partida correr mais rápido enquanto o robô está sobre eles. Na primeira vez que o robô entra em um pântano, o tempo corre 5 vezes mais rápido. Cada nova entrada no mesmo pântano soma mais um, até o limite de x10.
+* Os **pântanos** (swamps, ladrilhos marrons) fazem o tempo de partida correr mais rápido enquanto o robô está sobre eles. Na primeira vez que o robô entra em um pântano, o tempo corre 5 vezes mais rápido. Cada nova entrada no mesmo pântano aumenta esse fator em um, até o máximo de x10.
 * Os **obstáculos** podem estar fixos no piso, podem ter qualquer forma e cor e afetam a largura do caminho. Nas áreas 1 a 3, o centro de um obstáculo fica sempre em um ladrilho, nunca na borda entre ladrilhos, e há no máximo um obstáculo por ladrilho.
 * Os **buracos** (holes) têm bordas pretas. Se o robô cair em um, acontece uma falta de progresso.
 

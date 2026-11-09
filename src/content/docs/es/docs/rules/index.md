@@ -62,7 +62,7 @@ Las baldosas plateadas son puntos de control (checkpoints), y pueden estar en cu
 ## Pantanos, obstáculos y agujeros {#swamps-obstacles-and-holes}
 ![Un campo con un pantano, un agujero y un obstáculo](../../../docs/rules/rules_obstacles.png)
 
-* Los **pantanos** (swamps, baldosas marrones) hacen que el tiempo de partida corra más rápido mientras el robot está sobre ellos. La primera vez que el robot entra en un pantano, el tiempo corre 5 veces más rápido. Cada nueva entrada en el mismo pantano suma uno más, hasta el límite de x10.
+* Los **pantanos** (swamps, baldosas marrones) hacen que el tiempo de partida corra más rápido mientras el robot está sobre ellos. La primera vez que el robot entra en un pantano, el tiempo corre 5 veces más rápido. Cada nueva entrada en el mismo pantano aumenta este factor en uno, hasta un máximo de x10.
 * Los **obstáculos** pueden estar fijados al suelo, pueden tener cualquier forma y color, y afectan al ancho del pasillo. En las áreas 1 a 3, el centro de un obstáculo está siempre sobre una baldosa, nunca en el borde entre baldosas, y hay como máximo un obstáculo por baldosa.
 * Los **agujeros** tienen bordes negros. Si el robot cae en uno, se produce una falta de progreso.
 

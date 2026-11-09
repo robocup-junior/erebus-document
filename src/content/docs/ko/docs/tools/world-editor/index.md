@@ -10,7 +10,7 @@ description: Erebus World Editor로 나만의 월드를 만드는 방법.
 
 ![World Editor에서 완성한 맵](../../../../docs/tools/world-editor/overview.png)
 
-테스트용 작은 맵만 만든다면 경기장이 규칙을 따르는지는 크게 중요하지 않을 거예요. 하지만 대회용 경기장을 만들 계획이라면 공식 [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf)를 읽어 보세요. 에디터는 작업하는 동안 맵이 규칙에 맞는지 확인해 줘요.
+테스트용 작은 맵만 만든다면 경기장이 규칙을 따르는지는 크게 중요하지 않을 거예요. 하지만 대회용 경기장을 만들 계획이라면 공식 [시뮬레이션 규칙(Simulation Rules)](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf)을 읽어 보세요. 에디터는 작업하는 동안 맵이 규칙에 맞는지 확인해 줘요.
 
 에디터에는 가이드가 내장되어 있어요. 오른쪽 아래의 **Guide**를 누르면 샘플 맵을 만드는 실습 레슨(약 15분), 화면 둘러보기, Room 4 레슨을 볼 수 있어요. 에디터의 언어는 그 옆에서 바꿀 수 있어요.
 
@@ -78,7 +78,7 @@ Room 1에서는 타일의 각 변에 피해자를 하나씩 놓을 수 있어요
 ![Victims 도구](../../../../docs/tools/world-editor/victims.png)
 
 ## Room 4 {#room-4}
-Room 4는 타일 기반이 아니므로 그림으로 그려요. **Rooms** 도구로 Room 4를 칠하고, **Draw room 4**를 누르거나(또는 방을 더블클릭해서) Room 4 작성기를 여세요.
+Room 4는 타일 기반이 아니므로 그림으로 그려요. **Rooms** 도구로 Room 4를 칠하고, **Draw room 4**를 누르면(또는 방을 더블클릭하면) Room 4 작성기가 열려요.
 
 ![Room 4 작성기](../../../../docs/tools/world-editor/room4.png)
 

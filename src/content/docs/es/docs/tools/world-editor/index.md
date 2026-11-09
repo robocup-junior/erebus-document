@@ -10,7 +10,7 @@ Para eso existe el [World Editor de Erebus](https://world.erebus.rcj.cloud/), en
 
 ![Un mapa terminado en el World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Si solo construyes mapas pequeños para hacer pruebas, probablemente no te importe mucho que el campo cumpla las reglas. Pero si piensas construir un campo de competición, lee las [reglas oficiales de Simulation](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). El editor comprueba tu mapa frente a las reglas mientras trabajas.
+Si solo construyes mapas pequeños para hacer pruebas, probablemente no te importe mucho que el campo cumpla las reglas. Pero si piensas construir un campo de competición, lee las [reglas oficiales de la simulación (Simulation Rules)](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). El editor comprueba tu mapa frente a las reglas mientras trabajas.
 
 El editor tiene una guía integrada: pulsa **Guide** abajo a la derecha para una lección práctica que crea un mapa de ejemplo (unos 15 minutos), un recorrido por la pantalla o una lección sobre la habitación 4 (Room 4). El idioma del editor se puede cambiar justo al lado.
 

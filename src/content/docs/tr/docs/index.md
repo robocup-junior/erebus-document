@@ -31,4 +31,4 @@ Her örnek [başlangıç robotunu](/docs/robot/) kullanır, bu yüzden örnekler
 | C ya da C++ ile programla | [C++ denetleyicileri](/docs/programming/cpp/) |
 | Bir mesaja ya da cihaz adına bak | [Başvuru](/docs/reference/parameters/) |
 | Bir sorunu çöz | [Sorun giderme](/docs/troubleshooting/) ve [SSS](/docs/faq/) |
-| Daha eski bir sürümden geliyorsun | [v26'daki yenilikler](/docs/whats-new/) |
+| Eski bir sürümden geçiş yap | [v26'daki yenilikler](/docs/whats-new/) |

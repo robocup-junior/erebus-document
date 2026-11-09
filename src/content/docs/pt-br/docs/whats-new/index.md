@@ -16,7 +16,7 @@ O Erebus v26 implementa as regras de 2026. Se você vem de uma versão anterior,
 | Ruído dos sensores | - | O GPS tem ruído. Os organizadores não vão mudar os níveis de ruído na competição. |
 | Execução das partidas | Anunciada a cada evento | Configuração servidor-cliente: o seu controlador roda no seu próprio computador, conectado ao servidor da partida por Ethernet. Veja [Remote Controller](/docs/competition/remote-controller/). |
 | Documentos | TDP, pôster, vídeo | Além disso, um vídeo curto mostrando como você executa o seu controlador na configuração servidor-cliente. |
-| Partidas perdidas | -50 pontos | 0 pontos. |
+| Partidas não disputadas | -50 pontos | 0 pontos. |
 
 A versão do Webots não mudou: o Erebus v26 continua rodando no Webots **R2023b**.
 

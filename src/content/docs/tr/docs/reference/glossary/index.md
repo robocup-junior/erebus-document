@@ -5,8 +5,8 @@ description: Erebus'ta ve kurallarda kullanılan terimler.
 
 | Terim | Anlamı |
 |---|---|
+| **Alan** (Area) | Sahanın dört bölümünden biri; her birinin kendine özgü bir duvar türü vardır. World Editor bunlara oda (room) der. |
 | **Alan çarpanı** (Area multiplier, AM) | Her alanın puanlarına uygulanan 1, 1,25, 1,5 ya da 2 değerindeki çarpan |
-| **Alan çarpanı** (Area multiplier, AM) | Her alanın puanlarına uygulanan 1, 1.25, 1.5 ya da 2 |
 | **Kontrol noktası** (Checkpoint) | Gümüş renkli bir kare. Robot bir ilerleme eksikliğinden sonra ziyaret ettiği son kontrol noktasına döner. |
 | **Bilişsel hedef** (Cognitive target) | Beş eş merkezli renkten oluşan bir duvar işareti; renklerin toplamı bir tehlikeli madde türünü verir. 2026'da tehlikeli madde işaretlerinin (hazmat signs) yerini aldı. |
 | **Kontrol penceresi** (Control window) | Programları yüklediğin ve oyunu çalıştırdığın web sayfası. Robot penceresi (robot window) olarak da adlandırılır. |

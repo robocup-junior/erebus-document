@@ -1,6 +1,6 @@
 ---
 title: 即將舉行的活動
-description: 即將使用 Erebus 的 RoboCupJunior 比賽，包括 RoboCup 2027。
+description: 即將舉行、使用 Erebus 的 RoboCupJunior 比賽，包括 RoboCup 2027。
 ---
 
 ## RoboCupJunior 2027 國際賽 {#robocupjunior-2027-international-competition}

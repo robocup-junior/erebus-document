@@ -45,7 +45,7 @@ import mazeC from '../../../../docs/programming/navigate-the-maze/maze.c?url';
 이것은 간단한 출발점이에요. 기호를 구별하지 못하고, 인지 표적도 잘 보지 못해요. [벽 토큰](/docs/programming/wall-tokens/) 튜토리얼에서 더 잘하는 방법을 보여 줘요.
 
 ### 5. 보고하기 \{#5-reporting\}
-토큰으로 점수를 얻으려면 로봇이 1초 이상 정지하고, 위치와 토큰의 종류를 보내야 해요. 각 토큰은 한 번만 점수를 얻을 수 있고 다시 보고하면 5점을 잃으므로, 프로그램은 보고한 위치를 기억해요. 이 메시지들은 [통신](/docs/programming/communication/)에서 설명해요.
+토큰으로 점수를 얻으려면 로봇이 1초 넘게 정지한 뒤, 위치와 토큰의 종류를 보내야 해요. 각 토큰은 한 번만 점수를 얻을 수 있고 다시 보고하면 5점을 잃으므로, 프로그램은 보고한 위치를 기억해요. 이 메시지들은 [통신](/docs/programming/communication/)에서 설명해요.
 
 <CodeTabs file="maze" region="report" />
 

@@ -29,7 +29,7 @@ Evet. Kodun yazarlarını belirttiğin ve lisansına uyduğun sürece harici kod
 Evet. Her program yüklediğin bir robot üzerinde çalışır, bu yüzden [Robotunu edin](/docs/robot/) sayfasıyla başla. Acelen varsa hazır başlangıç robotunu indirebilirsin.
 
 ### Robot nereden başlar? {#where-does-the-robot-start}
-1. alandaki başlangıç karesinden. Her zaman duvar olmayan bir yöne bakar.
+Başlangıç karesinden; bu kare 1. alandadır. Robot her zaman duvar olmayan bir yöne bakar.
 
 ### Robot bir çukura düşerse ne olur? {#what-happens-if-the-robot-falls-into-a-hole}
 Bir ilerleme eksikliği (lack of progress, LoP) olur: robot ziyaret ettiği son kontrol noktasına döner ve 5 puan kaybedersin.

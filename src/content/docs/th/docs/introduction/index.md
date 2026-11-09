@@ -13,8 +13,8 @@ Erebus สร้างบน [Webots](https://cyberbotics.com/) ซึ่งเ�
 
 | องค์ประกอบ | หน้าที่ | หาได้จากที่ใด |
 |---|---|---|
-| **Webots R2023b** | ซิมูเลเตอร์หุ่นยนต์แบบ 3 มิติ | [Webots R2023b release](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
-| **Erebus** | โลกต่าง ๆ และตัวจัดการเกม (Main Supervisor) ซึ่งใช้กติกาและคำนวณคะแนน | [Erebus releases](https://github.com/robocup-junior/erebus/releases) |
+| **Webots R2023b** | ซิมูเลเตอร์หุ่นยนต์แบบ 3 มิติ | [หน้ารีลีส Webots R2023b](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
+| **Erebus** | โลกต่าง ๆ และตัวจัดการเกม (Main Supervisor) ซึ่งใช้กติกาและคำนวณคะแนน | [หน้ารีลีส Erebus](https://github.com/robocup-junior/erebus/releases) |
 | **คอนโทรลเลอร์ของคุณ** | โปรแกรมของหุ่นยนต์ของคุณ เขียนด้วย Python หรือ C/C++ | คุณเขียนเอง! |
 | **Robot Customizer** | เครื่องมือบนเว็บสำหรับออกแบบหุ่นยนต์แบบกำหนดเอง และส่งออกเป็นไฟล์ JSON | [robot.erebus.rcj.cloud](https://robot.erebus.rcj.cloud/) |
 | **World Editor** | เครื่องมือบนเว็บสำหรับวาดแผนที่ฝึกซ้อม และส่งออกเป็นโลก `.wbt` | [world.erebus.rcj.cloud](https://world.erebus.rcj.cloud/) |

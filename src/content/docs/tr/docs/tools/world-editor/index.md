@@ -73,7 +73,7 @@ Duvar çizmek için **Line** aracını kullan: 1. odada kare kenarlarına, 2. ve
 - Bilişsel hedefler: tehlikeli madde türünü seç, istersen halkaların renklerini de seç. Toplam gösterilir ve türü o belirler
 - Halkalarının toplamı 0 ile 3 dışında bir değer olan sahte hedefler
 
-1. odada her kare kenarında bir kazazede olabilir. 2. ve 3. odalarda kazazedeler 6 cm'lik duvarların yüzlerine yerleşir; kavislerde ise iç ve dış olmak üzere iki yer vardır. **Turn** altında sabit bir dönüş ya da her yeni işaret için rastgele bir dönüş seç. Yerleştirilmiş bir işareti değiştirmek ya da kaldırmak için ona tıkla veya duvarı boyunca sürükle.
+İlk odada (Room 1) her kare kenarında bir kazazede olabilir. 2. ve 3. odalarda kazazedeler 6 cm'lik duvarların yüzlerine yerleşir; kavislerde ise iç ve dış olmak üzere iki yer vardır. **Turn** altında sabit bir dönüş ya da her yeni işaret için rastgele bir dönüş seç. Yerleştirilmiş bir işareti değiştirmek ya da kaldırmak için ona tıkla veya duvarı boyunca sürükle.
 
 ![Victims aracı](../../../../docs/tools/world-editor/victims.png)
 
