@@ -1,32 +1,31 @@
 ---
-title: Yang baru di v26
-description: Perubahan di Erebus v26 dan aturan 2026 yang memengaruhi robotmu.
+title: Yang baru di v27
+description: Perubahan di Erebus v27 dan aturan 2027 yang memengaruhi robotmu.
 ---
 
-Erebus v26 menerapkan aturan 2026. Jika sebelumnya kamu memakai versi lama, inilah perubahan yang memengaruhi robotmu.
+Erebus v27 menerapkan aturan 2027. Jika kamu beralih dari v26, berikut perubahan yang memengaruhi robotmu.
 
-| Topik | Hingga 2025 | Mulai 2026 |
+| Topik | Sampai 2026 | Mulai 2027 |
 |---|---|---|
-| Korban huruf (letter victim) | Huruf H, S, U | Simbol Φ (terluka), Ψ (stabil), Ω (tidak terluka). Tetap dilaporkan sebagai `H`, `S`, `U`. |
-| Tanda hazmat (hazmat sign) | Empat label hazmat | Digantikan oleh [target kognitif](/docs/rules/#cognitive-targets) (cognitive target): cincin berwarna konsentris yang nilainya dijumlahkan menjadi jenisnya. Tetap dilaporkan sebagai `F`, `P`, `C`, `O`. |
-| Penanda palsu | - | Baru: [korban palsu](/docs/rules/#fake-victims) (fake victim) dengan huruf tiga dimensi, dan target kognitif yang jumlahnya bukan 0 sampai 3. Jangan laporkan atau petakan. |
-| Rawa (swamp) | Waktu terpakai 5x lebih cepat | Masuk pertama ke rawa bernilai x5, dan setiap kali masuk lagi ke rawa yang sama menambah 1, hingga x10. |
-| Rintangan di peta | Tidak dipetakan | Ubin dengan rintangan dipetakan sebagai `x`. |
-| Bonus pemetaan | Hingga x2 | Pengalinya sekarang ketepatan × 1,2 + 1. |
-| Derau sensor | - | GPS memiliki derau. Panitia tidak akan mengubah tingkat derau untuk kompetisi. |
-| Pelaksanaan permainan | Diumumkan per acara | Pengaturan server-klien: controller-mu berjalan di komputermu sendiri, terhubung ke server permainan melalui Ethernet. Lihat [Remote Controller](/docs/competition/remote-controller/). |
-| Dokumen | TDP, Poster, Video | Ditambah video singkat yang menunjukkan cara kamu menjalankan controller dengan pengaturan server-klien. |
-| Permainan yang terlewat | -50 poin | 0 poin. |
+| Baterai | - | Baru: robot memiliki [baterai](/docs/rules/#the-battery) yang berkurang sesuai kecepatan motornya. Jika habis, permainan berakhir. |
+| Ubin kontak | - | Baru: [ubin kontak](/docs/rules/#contact-tiles) berwarna sian. Diam 5 detik di atasnya akan mengganti baterai. Ubin ini dipetakan sebagai `k`. |
+| Rawa | Waktu permainan berjalan lebih cepat: x5 saat pertama masuk, hingga x10 | Baterai berkurang lebih cepat. Waktu permainan tidak terpengaruh. |
+| Korban | Simbol Φ, Ψ, Ω | [Wajah smiley](/docs/rules/#smiley-victims): sedih (terluka), datar (stabil), dan senang (tidak terluka). Tetap dilaporkan sebagai `H`, `S`, `U`. |
+| Korban palsu | Simbol tiga dimensi | Wajah smiley tiga dimensi |
+| Informasi permainan | Balasan `G` berukuran 16 byte | Balasan `G` berukuran 20 byte, dan diakhiri dengan level baterai. Lihat [Informasi permainan](/docs/programming/communication/#game-information). |
+| Jarak pelaporan | Erebus v26 menerima laporan hingga 9 cm dari penanda | Setengah ubin (6 cm), sesuai aturan |
+| Area | Empat area, Area 4 opsional | Hingga empat area: Area 1 selalu ada, dan panitia boleh tidak menyertakan Area 2 sampai 4 |
+| Webots | R2023b | **R2025a** |
+| Python | 3.9 atau lebih baru | 3.10 atau lebih baru |
 
-Versi Webots tidak berubah: Erebus v26 tetap berjalan di Webots **R2023b**.
-
-Dua versi yang dirilis setelah v26.0.0 tidak mengubah aturan. v26.0.1 menambahkan world contoh dengan korban palsu dan skrip yang mengubah korban di world yang sudah ada menjadi palsu, dan v26.1 memperbaiki cara rintangan ditandai di Area 4.
+[Menjalankan pertama kali](/docs/getting-started/) menjelaskan cara memakai jendela kontrol Erebus v27.
 
 ## Memperbarui programmu {#updating-your-program}
 
-1. Perbarui deteksi korbanmu ke simbol-simbol baru. Huruf yang kamu laporkan tidak berubah.
-2. Ganti deteksi hazmat dengan [pembacaan target kognitif](/docs/programming/wall-tokens/#reading-a-cognitive-target).
-3. Pastikan programmu tidak melaporkan penanda palsu, dan tidak memasukkannya ke peta.
-4. Tambahkan rintangan ke petamu, sebagai `x`.
-5. Rencanakan rutemu dengan memperhatikan rawa yang baru: setiap kali robot masuk ke rawa yang sama, waktu yang terbuang makin banyak.
-6. Latih [pengaturan server-klien](/docs/competition/remote-controller/).
+1. Baca balasan `G` sebagai 20 byte. Program yang hanya menerima 16 byte tidak lagi menerima informasi permainan.
+1. Pantau level baterai, dan rencanakan rutemu agar robot mencapai ubin kontak sebelum baterai habis. Lihat [Baterai](/docs/programming/battery/).
+1. Tambahkan ubin kontak ke petamu, sebagai `k`.
+1. Perbarui deteksi korbanmu untuk wajah smiley. Huruf yang kamu laporkan tidak berubah.
+1. Laporkan penanda dari jarak lebih dekat: titik tengah robot dan posisi yang kamu kirim harus berada dalam setengah ubin dari penanda.
+1. Rawa sekarang menghabiskan baterai, bukan waktu, jadi perhitungkan dalam rencana baterai.
+1. Instal Webots R2025a dan Python 3.10 atau lebih baru, dan periksa apakah programmu masih berjalan. Lihat [Instalasi](/docs/installation/).

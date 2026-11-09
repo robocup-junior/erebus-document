@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: Windows에 Erebus와 Webots R2023b를 설치해요.
+description: Windows에 Erebus와 Webots R2025a를 설치해요.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. [공식 웹사이트](https://www.python.org/downloads/windows/)에서 64비트 **Python 3.9 이상**을 설치하세요. 설치하는 동안 Python이 PATH에 추가되도록 꼭 설정하세요.
+1. [공식 웹사이트](https://www.python.org/downloads/windows/)에서 64비트 **Python 3.10 이상**을 설치하세요. 설치하는 동안 Python이 PATH에 추가되도록 꼭 설정하세요.
 
    ![Python 설치 프로그램의 Add Python to PATH 옵션](../../../../docs/installation/windows/python-path.png)
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. [공식 저장소](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe)에서 **Webots R2023b**를 설치하세요.
+3. [공식 저장소](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a_setup.exe)에서 **Webots R2025a**를 설치하세요.
 
 4. <DownloadErebus /> 파일을 다운로드하고 압축을 푸세요.
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 월드 파일 `game/worlds/world1.wbt`를 더블클릭해 Webots에서 여세요.
 
-Webots가 웹 브라우저에서 Erebus 제어 창을 열어요. 처음 실행할 때는 Erebus가 Python 라이브러리 몇 개를 설치하므로 시간이 좀 걸릴 수 있어요. 창에 08:00 게임 타이머가 표시되면 준비가 끝난 거예요.
+Webots가 웹 브라우저에서 Erebus 제어 창을 열어요. 처음 실행할 때는 Erebus가 Python 라이브러리 몇 개를 설치하고 로봇 모델을 준비하므로 시간이 좀 걸릴 수 있어요. 창에 **Ready**와 08:00 게임 타이머가 표시되면 준비가 끝난 거예요.
 
 ![시작할 준비가 된 Erebus 제어 창](../../../../docs/installation/windows/../control-window-ready.png)
+
+처음 실행할 때는 Webots 콘솔에 `ERROR: Skipped PROTO 'custom_robot'`이 표시될 수도 있어요. 무시해도 돼요. Erebus가 로봇 모델을 준비하고 월드를 알아서 다시 불러와요.
 
 다음으로 [규칙 요약](/docs/rules/)을 읽고 게임을 이해하세요. 문제가 생기면 [문제 해결](/docs/troubleshooting/)을 참고하세요.

@@ -39,7 +39,7 @@ No te limites a seguir una pared: así nunca llegarás a las [baldosas flotantes
 3. Si no, encuentra la baldosa más cercana con una vecina sin visitar mediante una búsqueda en anchura y ve allí.
 4. Cuando no quede ninguna baldosa así, o quede poco tiempo, vuelve a la salida de la misma forma.
 
-Trata los agujeros como paredes. Los pantanos cuestan tiempo, y más cada vez que entras en el mismo, así que visítalos solo cuando merezca la pena.
+Trata los agujeros como paredes. Los pantanos descargan la batería más rápido, así que entra en ellos solo cuando valga la pena. Recuerda dónde están las baldosas de contacto, para [reemplazar la batería](/docs/programming/battery/) por el camino.
 
 ## Gestiona lo inesperado {#handle-the-unexpected}
 - **Falta de progreso (Lack of Progress):** el robot se traslada al último punto de control. [Escucha el mensaje `L`](/docs/programming/communication/#lack-of-progress) y actualiza tu posición.
@@ -59,4 +59,4 @@ La [matriz del mapa](/docs/rules/mapping/) tiene 4 celdas por baldosa, más una.
 
 Tu mapa puede empezar en cualquier sitio: Erebus [alinea la matriz](/docs/rules/mapping/#how-correctness-is-calculated) usando la baldosa de salida y prueba las cuatro rotaciones. Las [Reglas del mapa](/docs/rules/mapping/) explican cada valor de la matriz. Después, [envíalo](/docs/programming/map-bonus/).
 
-Pruébalo con los mundos de ejemplo, cuyas respuestas correctas están en [Reglas del mapa](/docs/rules/mapping/#examples). El resultado aparece como `Map Correctness` en el historial de la ventana de control.
+Pruébalo con los mundos de ejemplo, cuyas respuestas correctas están en [Reglas del mapa](/docs/rules/mapping/#examples). El resultado aparece como `Map Correctness` en los eventos de la partida de la ventana de control.

@@ -39,7 +39,7 @@ Folge nicht einfach einer Wand: So erreichst du nie die [schwebenden Kacheln](/d
 3. Falls nicht, finde mit einer Breitensuche die nächste Kachel mit einem unbesuchten Nachbarn und fahr dorthin.
 4. Wenn keine solche Kachel mehr übrig ist oder die Zeit knapp wird, kehr auf demselben Weg zum Start zurück.
 
-Behandle Löcher wie Wände. Sümpfe kosten Zeit, und zwar jedes Mal mehr, wenn du denselben betrittst. Besuche sie also nur, wenn es sich lohnt.
+Behandle Löcher wie Wände. Sümpfe leeren den Akku schneller, also fahre nur hinein, wenn es sich lohnt. Merke dir, wo die Kontaktkacheln sind, um unterwegs [den Akku auszutauschen](/docs/programming/battery/).
 
 ## Mit dem Unerwarteten umgehen {#handle-the-unexpected}
 - **Fehlender Fortschritt (Lack of Progress):** Der Roboter wird zum letzten Checkpoint versetzt. [Achte auf die Nachricht `L`](/docs/programming/communication/#lack-of-progress) und aktualisiere deine Position.
@@ -59,4 +59,4 @@ Die [Kartenmatrix](/docs/rules/mapping/) hat 4 Zellen pro Kachel, plus eine. Fü
 
 Deine Karte kann überall beginnen: Erebus [richtet die Matrix](/docs/rules/mapping/#how-correctness-is-calculated) anhand der Startkachel aus und probiert die vier Drehungen. Die [Regeln für die Karte](/docs/rules/mapping/) erklären jeden Wert der Matrix. Danach [gibst du sie ab](/docs/programming/map-bonus/).
 
-Teste sie mit den Beispielwelten, deren richtige Lösungen in den [Regeln für die Karte](/docs/rules/mapping/#examples) stehen. Das Ergebnis erscheint als `Map Correctness` im Verlauf des Steuerfensters.
+Teste sie mit den Beispielwelten, deren richtige Lösungen in den [Regeln für die Karte](/docs/rules/mapping/#examples) stehen. Das Ergebnis erscheint als `Map Correctness` in den Spielereignissen des Steuerfensters.

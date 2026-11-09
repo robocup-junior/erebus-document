@@ -15,7 +15,7 @@ Bu belgelerde Python ve C/C++ ele alınıyor. Erebus Java ve MATLAB denetleyicil
 Hayır, [gereksinimlere](/docs/installation/) bak. Daha yavaş bilgisayarlarda [grafik ayarlarını düşürmek](/docs/troubleshooting/#the-simulation-runs-too-slowly) gerekebilir.
 
 ### Webots'un daha yeni bir sürümünü kullanabilir miyim? {#can-i-use-a-newer-version-of-webots}
-Hayır. Erebus v26, Webots **R2023b** üzerinde çalışır. Diğer sürümleri onun yanında kurulu tutabilirsin.
+Hayır. Erebus v27, Webots **R2025a** üzerinde çalışır. Erebus v26 için R2023b gibi diğer sürümleri onun yanında kurulu tutabilirsin.
 
 ### OpenCV ya da NumPy gibi kütüphaneleri kullanabilir miyim? {#can-i-use-libraries-like-opencv-or-numpy}
 Evet. Kodun yazarlarını belirttiğin ve lisansına uyduğun sürece harici kod kullanabilirsin. Takımlar öğrenmeye öncelik vermeli ve çözümlerinin nasıl çalıştığını açıklayabilmelidir.
@@ -38,7 +38,13 @@ Bir ilerleme eksikliği (lack of progress, LoP) olur: robot ziyaret ettiği son 
 Hayır, ama robot en az bir duvar işaretini tanımladıysa başlangıç karesine dönüp `E` göndermek %10'luk çıkış bonusu kazandırır.
 
 ### Robotum ne kadar süre kaldığını nasıl öğrenebilir? {#how-can-my-robot-tell-how-much-time-is-left}
-[`G` mesajıyla](/docs/programming/communication/#game-information). İki sayaç vardır ve oyun süresi bataklıklarda daha hızlı akar.
+[`G` mesajıyla](/docs/programming/communication/#game-information). İki sayaç vardır ve herhangi biri bittiğinde oyun sona erer.
+
+### Batarya bitince ne olur? {#what-happens-when-the-battery-runs-out}
+Oyun sona erer. Bunu önlemek için camgöbeği bir temas karesinin üzerinde 5 saniye dur; bu, bataryayı değiştirir. Programın batarya seviyesini [`G` mesajıyla](/docs/programming/communication/#game-information) okuyabilir. Bkz. [Batarya](/docs/programming/battery/).
+
+### Yavaş gitmek bataryayı korur mu? {#does-driving-slowly-save-the-battery}
+Batarya, motorların hızına göre azalır. Yani yavaş bir robot saniyede daha az batarya harcar, ama o sürede daha az yol da alır. Robotun için en iyi dengeyi deneyerek bul.
 
 ### 4. alanı keşfetmem gerekiyor mu? {#do-i-have-to-explore-area-4}
 Hayır. İsteğe bağlıdır, ama oradaki işaretler en değerli olanlardır: en yüksek puanı verirler ve bu puan 2 ile çarpılır.

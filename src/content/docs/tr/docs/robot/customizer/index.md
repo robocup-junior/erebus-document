@@ -30,7 +30,7 @@ Yeni mi başlıyorsun? Başlangıç robotunu adım adım yapan [Robotunu yap](/d
 
 ## Erebus'ta kullanma {#using-it-in-erebus}
 
-[Kontrol penceresinin](/docs/getting-started/#the-control-window) sağdaki LOAD düğmesine bas ve `.json` dosyanı seç. [Erebus'a yükle](/docs/robot/#load-it-in-erebus) bölümüne bak. Erebus bütçeyi kontrol eder ve robotu oluşturur; Webots konsolu da her bileşeni ve maliyetini listeler.
+[Kontrol penceresinde](/docs/getting-started/#robot-setup) **Robot setup** düğmesine, ardından **Robot JSON** altındaki **Load file** düğmesine bas ve `.json` dosyanı seç. Bkz. [Erebus'a yükle](/docs/robot/#load-it-in-erebus). Erebus bütçeyi kontrol edip robotu oluşturur, Webots konsolu da her bileşeni maliyetiyle listeler.
 
 Önce robotunu, sonra programını yükle.
 

@@ -10,7 +10,7 @@ description: Saha ölçüleri, oyun süreleri, puan çarpanları, robot sınırl
 | Kare | 12 cm × 12 cm |
 | Çeyrek kare (2. ve 3. alanlar) | 6 cm × 6 cm |
 | Duvar | 1 cm kalınlığında, 6 cm yüksekliğinde |
-| Harf kazazede | 2 cm × 2 cm |
+| Gülen yüz kazazede | 2 cm × 2 cm |
 | Bilişsel hedef | 5 cm çapında |
 
 ## Oyun {#game}
@@ -21,7 +21,10 @@ description: Saha ölçüleri, oyun süreleri, puan çarpanları, robot sınırl
 | Gerçek zaman | 10 dakika |
 | Otomatik ilerleme eksikliği | Sabit bir konumda 20 saniye kaldıktan sonra |
 | Duvar işareti bildirmek için durma süresi | En az 1 saniye |
-| Bataklıkta zaman çarpanı | İlk girişte x5, aynı bataklığa her yeni girişte +1, en fazla x10 |
+| Duvar işaretini bildirme mesafesi | Hem robotun merkezi hem gönderilen konum için yarım kare (6 cm) |
+| Batarya | Başlangıçta %100. Tekerleklerin hızına göre azalır; iki tekerlek tam hızdayken saniyede yaklaşık %1,25. |
+| Bataklıkta batarya | 5 kat daha hızlı azalır |
+| Batarya değişimi | Bir temas karesinin üzerinde 5 saniye hareketsiz durmak |
 | Alan çarpanları | 1., 2., 3. ve 4. alanlar için sırasıyla 1, 1,25, 1,5 ve 2 |
 | Çıkış bonusu | +%10 |
 | Haritalama bonusu çarpanı | doğruluk × 1,2 + 1 |
@@ -38,7 +41,7 @@ description: Saha ölçüleri, oyun süreleri, puan çarpanları, robot sınırl
 | En yüksek tekerlek hızı | 6,28 rad/s |
 | Lidar | Katman başına 512 nokta, 4 katman, 0,01-1 m |
 
-`timeStep`, sensör güncellemeleri arasındaki milisaniye sayısını belirler. `int(robot.getBasicTimeStep())` dünyanın temel zaman adımını verir; bu, Erebus v26.1 dünyalarında 16 ms'dir.
+`timeStep`, sensör güncellemeleri arasındaki milisaniye sayısını belirler. `int(robot.getBasicTimeStep())` dünyanın temel zaman adımını verir; bu, Erebus v27 dünyalarında 16 ms'dir.
 
 ## Başlangıç robotunun cihaz adları {#device-names-of-the-starter-robot}
 

@@ -10,12 +10,12 @@ description: Erebus World Editor로 나만의 월드를 만드는 방법.
 
 ![World Editor에서 완성한 맵](../../../../docs/tools/world-editor/overview.png)
 
-테스트용 작은 맵만 만든다면 경기장이 규칙을 따르는지는 크게 중요하지 않을 거예요. 하지만 대회용 경기장을 만들 계획이라면 공식 [시뮬레이션 규칙(Simulation Rules)](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf)을 읽어 보세요. 에디터는 작업하는 동안 맵이 규칙에 맞는지 확인해 줘요.
+테스트용 작은 맵만 만든다면 경기장이 규칙을 따르는지는 크게 중요하지 않을 거예요. 하지만 대회용 경기장을 만들 계획이라면 공식 [시뮬레이션 규칙(Simulation Rules)](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf)을 읽어 보세요. 에디터는 작업하는 동안 맵이 규칙에 맞는지 확인해 줘요.
 
 에디터에는 가이드가 내장되어 있어요. 오른쪽 아래의 **Guide**를 누르면 샘플 맵을 만드는 실습 레슨(약 15분), 화면 둘러보기, Room 4 레슨을 볼 수 있어요. 에디터의 언어는 그 옆에서 바꿀 수 있어요.
 
 ## 맵 시작하기 {#starting-a-map}
-에디터를 열면 **어느 해의 규칙**을 따를지 고르고 **New map**을 누르세요. **Erebus v26에서는 2026년 규칙을 선택하세요.** 2027년 규칙은 Erebus 다음 버전을 위한 초안이에요.
+에디터를 열면 따를 **연도의 규칙**을 선택하고 **New map**을 누르세요. **Erebus v27에는 2027년 규칙을 선택하세요.** 2026년 규칙은 Erebus v26용이에요. 지도의 규칙은 나중에 위쪽 막대에서 바꿀 수 있어요.
 
 ![World Editor의 시작 화면](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ description: Erebus World Editor로 나만의 월드를 만드는 방법.
 | Line | `L` | 벽 그리기 |
 | Curve | `A` | Room 3에 곡선 벽 그리기 |
 | Eraser | `E` | 벽, 바닥, 장애물, 피해자 지우기 |
-| Floor | `F` | 체크포인트, 구멍, 늪, 시작 타일 설정 |
+| Floor | `F` | 체크포인트, 구멍, 늪, 접촉 타일, 시작 타일 설정 |
 | Obstacle | `O` | 장애물 배치 |
-| Victims | `V` | 문자 피해자, 인지 표적, 가짜 배치 |
+| Victims | `V` | 스마일리 피해자, 인지 표적, 가짜 배치 |
 
 마우스 휠로 확대·축소하고, Space를 누른 채 끌면 화면이 이동하며, 실행 취소는 `⌘Z` 또는 `Ctrl+Z`예요.
 
@@ -57,7 +57,7 @@ description: Erebus World Editor로 나만의 월드를 만드는 방법.
 ![벽을 그리는 Line 도구](../../../../docs/tools/world-editor/walls.png)
 
 ## 바닥과 장애물 {#floors-and-obstacles}
-**Floor** 도구로 바닥 종류를 고르고 타일을 클릭해서 설정하세요. 시작 타일은 Room 1의 타일이어야 하고, 시작 타일이 없으면 월드를 내보낼 수 없어요. 한 타일은 구멍, 늪, 체크포인트, 장애물, 시작, 통로 중 하나만 될 수 있어요.
+**Floor** 도구로 바닥 종류를 고르고 타일을 클릭해서 설정해요: 체크포인트, 구멍, 늪, 접촉 타일, 시작. 시작 타일은 룸 1의 타일이어야 하고, 시작 타일이 없으면 월드를 내보낼 수 없어요. 타일 하나는 구멍, 늪, 체크포인트, 접촉 타일, 장애물, 시작, 통로 중 하나만 될 수 있어요.
 
 ![Floor 도구](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ description: Erebus World Editor로 나만의 월드를 만드는 방법.
 ## 피해자와 인지 표적 {#victims-and-cognitive-targets}
 **Victims** 도구로 종류를 고르고 벽 근처를 클릭하세요. 다음을 배치할 수 있어요.
 
-- 진짜 문자 피해자: 부상(harmed), 안정(stable), 무사(unharmed)
-- 입체 기호로 된 가짜 문자 피해자
+- 진짜 스마일리 피해자: 부상, 안정, 무사
+- 입체적인 얼굴의 가짜 스마일리 피해자
 - 인지 표적: 위험물 종류를 고르고, 원하면 고리의 색도 고르세요. 합이 표시되고, 그 합이 종류를 정해요
 - 고리의 합이 0~3이 아닌 가짜 표적
 
@@ -105,8 +105,8 @@ Room 4는 타일 기반이 아니므로 그림으로 그려요. **Rooms** 도구
 1. `.wbt` 파일을 Erebus의 `game/worlds` 폴더에 복사하세요. 월드가 Erebus의 파일을 사용하므로 반드시 이 폴더에 있어야 해요.
 1. Webots에서 열거나, [제어 창](/docs/getting-started/)의 **Worlds** 버튼으로 선택하세요.
 
-![Erebus v26.1에서 실행 중인 에디터 가이드의 샘플 맵.](../../../../docs/tools/world-editor/exported_world.png)
+![Erebus v27에서 실행 중인 에디터 가이드의 샘플 맵.](../../../../docs/tools/world-editor/exported_world.png)
 
-*Erebus v26.1에서 실행 중인 에디터 가이드의 샘플 맵.*
+*Erebus v27에서 실행 중인 에디터 가이드의 샘플 맵.*
 
 `.wbt` 파일은 다시 편집 가능한 맵으로 되돌릴 수 없으니, JSON도 함께 보관하세요.

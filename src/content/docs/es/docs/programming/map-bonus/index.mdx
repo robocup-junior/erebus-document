@@ -18,12 +18,19 @@ La bonificación por mapa (mapping bonus) multiplica tu puntuación hasta por 2,
 - Asegúrate de que queda tiempo. Si la partida termina antes de que envíes `M`, no hay mapa que evaluar.
 - No tienes que enviar `E` para conseguir la bonificación: también se aplica si se acaba el tiempo. Pero `E` es la forma de conseguir la bonificación de salida (Exit bonus), y esa bonificación se suma antes de aplicar la bonificación por mapa.
 - El mapa debe contener la baldosa de salida (`5`), que se usa para alinearlo con la respuesta correcta. Sin ella, el mapa no se puede evaluar.
-- El resultado aparece como `Map Correctness` en el historial de la ventana de control. Si recibes un `Map scoring error` en la consola de Webots, revisa tu formato.
+- El resultado aparece como `Map Correctness` en los eventos de la partida de la ventana de control. Si recibes un `Map scoring error` en la consola de Webots, revisa tu formato.
 
 El ejemplo siguiente envía la respuesta correcta para `world1.wbt`, lo que es útil para comprobar tu código de comunicación. Si lo ejecutas al inicio de la partida, la termina inmediatamente y la puntuación se queda en 0, ya que un multiplicador no tiene nada que multiplicar.
 
 <CodeTabs file="basics" />
 
-![El historial de la ventana de control tras el ejemplo: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+![Los eventos de la partida después del ejemplo: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+
+## Revisar tu mapa \{#reviewing-your-map\}
+Pulsa **Save map** en la ventana de control para ver cómo se puntuó tu mapa. Erebus guarda el resultado en la carpeta `map` de la partida, dentro de `match-results`, y lo abre en tu navegador. Con **Automatic map result** en **Advanced setup**, se abre en cuanto se evalúa el mapa.
+
+![La revisión del mapa del ejemplo: todas las celdas son correctas](../../../../docs/programming/map-bonus/map-review.png)
+
+Las celdas incorrectas se marcan en rojo. Haz clic en una celda para ver lo que envió tu robot y cuál es la respuesta correcta. **Save matrix** guarda el mapa que envió tu robot, y **Save PNG** guarda la imagen.
 
 El ejemplo `MapScorerExample.py` de la carpeta `player_controllers` de la versión de Erebus funciona de la misma forma.

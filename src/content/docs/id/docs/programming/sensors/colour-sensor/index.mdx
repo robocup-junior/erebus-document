@@ -1,32 +1,35 @@
 ---
 title: Sensor warna
-description: "Gunakan sensor warna untuk melihat lantai di bawah robot: lubang, rawa, checkpoint, dan lorong penghubung."
+description: "Gunakan sensor warna untuk melihat lantai di bawah robot: lubang, rawa, ubin kontak, checkpoint, dan lorong penghubung."
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-Sensor warna melihat ke lantai, jadi sensor ini memberi tahu robot tentang lubang, rawa, dan lorong penghubung. Sensor ini adalah kamera satu piksel yang menghadap ke bawah. Pada robot pemula, namanya `color`, dan letaknya di bagian depan robot, agar bisa melihat lubang sebelum roda mencapainya.
+Sensor warna melihat ke lantai, jadi sensor ini memberi tahu robot tentang lubang, rawa, ubin kontak, dan lorong penghubung. Sensor ini adalah kamera satu piksel yang menghadap ke bawah. Pada robot pemula, namanya `color`, dan letaknya di bagian depan robot, agar bisa melihat lubang sebelum roda mencapainya.
 
 <CodeTabs file="read" />
 
 ## Warna lantai \{#floor-colours\}
 
-Nilai-nilai ini diukur dengan robot pemula di `world2.wbt`:
+Nilai-nilai ini diukur dengan robot pemula di `world2.wbt` dan `mapping_example_1_cyan_tiles.wbt`:
 
 | Lantai | Merah | Hijau | Biru |
 |---|---:|---:|---:|
-| Normal | 252 | 252 | 252 |
-| Rawa | 245 | 222 | 142 |
-| Lorong penghubung Area 1 dan 2 (biru) | 91 | 91 | 255 |
-| Lorong penghubung Area 2 dan 3 (ungu) | 193 | 91 | 251 |
-| Lorong penghubung Area 1 dan 4 (hijau) | 48 | 255 | 48 |
-| Lorong penghubung Area 3 dan 4 (merah) | 255 | 91 | 91 |
+| Normal | 242 | 242 | 242 |
+| Checkpoint | 254 | 254 | 254 |
+| Rawa | 225 | 193 | 115 |
+| Ubin kontak (sian) | 0 | 242 | 242 |
+| Lubang (tepi hitam) | 34 | 34 | 34 |
+| Lorong penghubung Area 1 dan 2 (biru) | 72 | 72 | 254 |
+| Lorong penghubung Area 2 dan 3 (ungu) | 161 | 72 | 238 |
+| Lorong penghubung Area 1 dan 4 (hijau) | 38 | 253 | 38 |
+| Lorong penghubung Area 3 dan 4 (merah) | 254 | 72 | 72 |
 
 :::caution
-Nilainya berubah tergantung world: lantai normal terbaca sekitar 240 di `world1.wbt`. Gunakan rentang nilai, bukan nilai yang persis, dan periksa dengan `calibrateColourSensor.py` di folder `player_controllers` milik Erebus.
+Nilainya bisa berubah tergantung world dan pengaturan grafis. Gunakan rentang, bukan nilai pasti, dan periksa dengan `calibrateColourSensor.py` di folder `player_controllers` Erebus.
 :::
 
-Lubang punya tepi hitam, jadi lantai menjadi gelap tepat sebelum lubang. Bagi sensor ini, checkpoint terlihat hampir sama dengan lantai normal, jadi lakukan kalibrasi pada salah satu checkpoint di world-mu.
+Lubang memiliki tepi hitam, jadi lantai menjadi gelap tepat sebelum lubang. Checkpoint hanya sedikit lebih terang dari lantai biasa, jadi kalibrasikan pada checkpoint di world-mu sebelum mengandalkannya.
 
 ## Contoh: mengamati lantai \{#example-watching-the-floor\}
 

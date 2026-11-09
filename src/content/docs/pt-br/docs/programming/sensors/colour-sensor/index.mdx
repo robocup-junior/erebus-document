@@ -1,32 +1,35 @@
 ---
 title: Sensor de cor
-description: "Use o sensor de cor para ver o piso embaixo do robô: buracos, pântanos, pontos de controle e passagens."
+description: "Use o sensor de cor para ver o piso embaixo do robô: buracos, pântanos, ladrilhos de contato, pontos de controle e passagens."
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-O sensor de cor olha para o piso, então ele informa o robô sobre buracos, pântanos e passagens. Ele é uma câmera de um único pixel, apontada para baixo. No robô inicial, ele se chama `color` e fica na frente do robô, para que veja um buraco antes que as rodas cheguem até ele.
+O sensor de cor olha para o piso, então ele informa o robô sobre buracos, pântanos, ladrilhos de contato e passagens. Ele é uma câmera de um único pixel, apontada para baixo. No robô inicial, ele se chama `color` e fica na frente do robô, para que veja um buraco antes que as rodas cheguem até ele.
 
 <CodeTabs file="read" />
 
 ## Cores do piso \{#floor-colours\}
 
-Estes valores foram medidos com o robô inicial em `world2.wbt`:
+Estes valores foram medidos com o robô inicial em `world2.wbt` e `mapping_example_1_cyan_tiles.wbt`:
 
 | Piso | Vermelho | Verde | Azul |
 |---|---:|---:|---:|
-| Normal | 252 | 252 | 252 |
-| Pântano | 245 | 222 | 142 |
-| Passagem entre as áreas 1 e 2 (azul) | 91 | 91 | 255 |
-| Passagem entre as áreas 2 e 3 (roxa) | 193 | 91 | 251 |
-| Passagem entre as áreas 1 e 4 (verde) | 48 | 255 | 48 |
-| Passagem entre as áreas 3 e 4 (vermelha) | 255 | 91 | 91 |
+| Normal | 242 | 242 | 242 |
+| Ponto de controle | 254 | 254 | 254 |
+| Pântano | 225 | 193 | 115 |
+| Ladrilho de contato (ciano) | 0 | 242 | 242 |
+| Buraco (borda preta) | 34 | 34 | 34 |
+| Passagem entre as áreas 1 e 2 (azul) | 72 | 72 | 254 |
+| Passagem entre as áreas 2 e 3 (roxa) | 161 | 72 | 238 |
+| Passagem entre as áreas 1 e 4 (verde) | 38 | 253 | 38 |
+| Passagem entre as áreas 3 e 4 (vermelha) | 254 | 72 | 72 |
 
 :::caution
-Os valores mudam de um mundo para outro: o piso normal fica em cerca de 240 em `world1.wbt`. Use faixas em vez de valores exatos e confira-as com `calibrateColourSensor.py`, na pasta `player_controllers` do Erebus.
+Os valores podem mudar conforme o mundo e as configurações gráficas. Use faixas em vez de valores exatos, e confira-os com `calibrateColourSensor.py` na pasta `player_controllers` do Erebus.
 :::
 
-Os buracos têm uma borda preta, então o piso escurece logo antes de um buraco. Os pontos de controle parecem quase um piso normal para este sensor, então faça a calibração em um deles no seu mundo.
+Os buracos têm uma borda preta, então o piso fica escuro logo antes de um buraco. Os pontos de controle são só um pouco mais claros que o piso normal, então calibre em um deles no seu mundo antes de confiar nisso.
 
 ## Exemplo: observando o piso \{#example-watching-the-floor\}
 

@@ -1,94 +1,130 @@
 ---
 title: 첫 실행
-description: 로봇과 미리 만들어진 프로그램을 불러와서, 로봇이 미로를 탐색하는 모습을 지켜봐요.
+description: 로봇과 완성된 프로그램을 불러와서, 로봇이 미로를 탐색하는 모습을 지켜보세요.
 ---
 
 import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
 
-이 페이지에서는 완성된 프로그램을 로봇에서 실행해 보고, Erebus 제어 창 사용법을 배워요. [Erebus 설치](/docs/installation/)와 [로봇](/docs/robot/)이 필요해요.
+이 페이지에서는 로봇으로 완성된 프로그램을 실행하고, Erebus 제어 창 사용법을 배워요. [Erebus 설치](/docs/installation/)와 [로봇](/docs/robot/)이 필요해요.
 
 ## Erebus 폴더 \{#the-erebus-folder\}
 다운로드한 릴리스의 주요 폴더는 다음과 같아요.
 
 | 폴더 | 내용 |
 |---|---|
-| `game/worlds` | 월드(`.wbt` 파일). 시작하려면 이 중 하나를 여세요. |
+| `game/worlds` | 월드(`.wbt` 파일). 이 중 하나를 열어서 시작해요. |
 | `game/logs` | 각 게임이 끝날 때 기록되는 게임 로그 |
-| `player_controllers` | 예제 컨트롤러 |
+| `match-results` | 경기마다 하나씩 있는 폴더로, 리플레이와 지도 결과가 들어 있어요 |
+| `player_controllers` | 컨트롤러 예제 |
 
 ## 제어 창 \{#the-control-window\}
-1. Webots에서 `game/worlds/world1.wbt`를 여세요.
+1. Webots에서 `game/worlds/world1.wbt`를 열어요.
 1. Webots가 웹 브라우저에서 Erebus 제어 창(Main Supervisor의 로봇 창)을 열어요. 여기서 프로그램을 불러오고 게임을 실행해요.
 
 ![Erebus 제어 창](../../../docs/getting-started/control_window.png)
 
+위에서부터 차례로:
+
 | 부분 | 용도 |
 |---|---|
-| 왼쪽 **LOAD** (노트북 아이콘) | 로봇의 컨트롤러 프로그램을 불러와요 |
-| 오른쪽 **LOAD** (로봇 아이콘) | 로봇(`.json` 파일)을 불러와요 |
-| **TOGGLE REMOTE** | Webots 밖에서 실행되는 프로그램이 로봇을 제어할 수 있게 해요. [Remote Controller](/docs/competition/remote-controller/)를 참고하세요. |
-| **Docker path** | `Dockerfile`이 있는 폴더로, 재생 버튼 옆의 Docker 버튼으로 컨테이너 안에서 컨트롤러를 실행할 때 사용해요. [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) 저장소를 참고하세요. 선택 사항이에요. |
-| **Settings** | 링크와 옵션. 아래에서 설명해요 |
+| 월드와 상태 | 월드의 이름과 경기 상태: Ready, Running, Paused 또는 Finished |
+| **Robot setup** | 프로그램과 로봇을 불러오고, 원격 컨트롤러를 연결해요. 아래에서 설명해요. |
+| **Advanced setup** | 옵션. 아래에서 설명해요 |
 | **Worlds** | 다른 월드로 바꿔요 |
-| **Reset** | 불러온 프로그램과 게임을 리셋해요 |
-| **Give up!** | 게임을 끝내요 |
-| 타이머 | 게임 시간과, 그 아래 괄호 안에 실제 시간이 있어요. 둘 중 하나가 0이 되면 게임이 끝나요. |
-| 계산기 | 현재 점수 |
+| 점수 | 현재 점수 |
+| **Robot battery** | 로봇의 배터리 잔량. 20% 아래로 내려가면 "Low battery"라고 표시돼요. [배터리](/docs/programming/battery/)를 참고하세요. |
+| **Simulation remaining** | 남은 게임 시간. **Real-world allowance**는 남은 실제 시간이 게임 시간보다 얼마나 더 많은지 보여 줘요. 둘 중 하나라도 다 되면 게임이 끝나요. |
+| 경기 조작 | 실행, 일시 정지, 재배치, 리셋, 포기, 지도 저장. 아래에서 설명해요. |
+| **Match events** | 경기 기록으로, 최신 항목이 맨 위에 있어요. **Export CSV**로 파일에 저장할 수 있어요. |
+
+오른쪽 위의 버튼은 같은 창을 별도의 작은 브라우저 창으로 열어요.
+
+:::note
+[Wireshark](/docs/installation/#optional-wireshark)가 설치되어 있지 않으면, 창에 네트워크 접근이 감시되지 않는다는 경고도 표시되고 확인을 요청해요. 이 감시는 대회 운영자를 위한 기능이므로, 경고를 확인하고 평소처럼 연습하면 돼요.
+:::
+
+### Robot setup \{#robot-setup\}
+**Robot setup**을 눌러서 프로그램과 로봇을 불러와요.
+
+![프로그램과 로봇을 불러온 Robot setup 패널](../../../docs/getting-started/robot-setup.png)
+
+| 부분 | 용도 |
+|---|---|
+| **Controller** | **Load file**로 로봇의 프로그램을 불러와요. Python 파일은 그대로 불러와요. C와 C++ 프로그램은 먼저 컴파일해야 해요. |
+| **Robot JSON** | **Load file**로 로봇, 즉 [Robot Customizer](/docs/robot/customizer/)로 만든 `.json` 파일을 불러와요 |
+| **Keep files after Reset** | 게임을 리셋해도 프로그램과 로봇을 불러온 상태로 유지해요. 기본으로 켜져 있어요. |
+| **Reload before Run** | 경기를 실행할 때마다 **Original controller file**에서 프로그램을 다시 불러와서, 최신 변경 사항을 사용해요. Webots를 실행하는 컴퓨터에 있는 파일의 경로를 적어요. |
+| **Remote mode** | Webots 밖에서 실행되는 프로그램이 로봇을 조종할 수 있게 해요. [원격 컨트롤러](/docs/competition/remote-controller/)를 참고하세요. **Keep on Reset**을 켜면 게임을 리셋해도 켜진 상태로 유지돼요. |
+| **Docker project path** | `Dockerfile`이 있는 폴더로, **Run Docker**로 컨트롤러를 컨테이너에서 실행해요. [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) 저장소를 참고하세요. 선택 사항이에요. |
+
+### 경기 조작 \{#match-controls\}
+
+![경기 조작 버튼](../../../docs/getting-started/match-controls.png)
+
+| 버튼 | 용도 |
+|---|---|
+| **Run match** | 게임을 시작해요. 로봇이 월드에 나타나고 프로그램이 시작돼요. |
+| **Pause** | 로봇을 잠시 멈춰요. 계속하려면 **Run match**를 눌러요. |
+| **Relocate** | 진행 불능을 선언해요. 로봇이 마지막으로 도착한 체크포인트로 돌아가고, 5점을 잃어요 |
+| **Reset** | 게임과 월드를 리셋해요 |
+| **Give up** | 게임을 끝내요 |
+| **Save map** | 로봇이 제출한 지도의 결과를 저장하고 열어요. [지도 제출](/docs/programming/map-bonus/)을 참고하세요. |
 
 ## 프로그램 실행하기 \{#run-a-program\}
-로봇이 미로를 돌아다니게 하는 완성된 프로그램 <a href={mazeUrl} download="maze.py">maze.py를 다운로드</a>하세요. [미로 탐색](/docs/programming/navigate-the-maze/)에서 직접 작성하게 될 프로그램이에요.
+<a href={mazeUrl} download="maze.py">maze.py를 다운로드</a>하세요. 로봇이 미로를 돌아다니게 하는 완성된 프로그램으로, [미로 탐색](/docs/programming/navigate-the-maze/)에서 직접 작성하게 될 프로그램이에요.
 
-1. `game/worlds/world1.wbt`를 여세요.
-1. 아직 하지 않았다면 **오른쪽 LOAD 버튼**으로 로봇을 불러오세요. 로봇이 들어간 상태로 월드가 다시 불러와져요.
-1. **왼쪽 LOAD 버튼**으로 `maze.py`를 불러오세요. 프로그램을 불러오면 버튼이 주황색 REMOVE 버튼으로 바뀌어요.
-1. 시작 버튼을 누르세요. 로봇이 월드에 나타나서 움직이기 시작해요.
-![시작 버튼](../../../docs/getting-started/start_button.png)
-1. 로봇을 잠시 멈추려면 일시 정지 버튼을 누르세요.
-![일시 정지 버튼](../../../docs/getting-started/pause_button.png)
-1. 로봇이 갇혔다면 재시작 버튼을 눌러 진행 불능(Lack of Progress)을 발생시키세요. 로봇이 마지막으로 도달한 체크포인트로 돌아가고, 5점이 깎여요.
-![진행 불능 버튼](../../../docs/getting-started/lop_button.png)
-1. Reset 버튼을 누르면 불러온 프로그램과 진행 중인 게임이 리셋돼요. 게임이 끝난 뒤 다시 실행하려면 월드를 다시 불러오세요.
+1. `game/worlds/world1.wbt`를 열어요.
+1. 아직 하지 않았다면 **Robot setup**을 누르고, **Robot JSON** 아래의 **Load file**로 로봇을 불러와요.
+1. **Controller** 아래의 **Load file**로 `maze.py`를 불러와요. 파일을 불러오면 이름이 표시돼요.
+1. **Run match**를 눌러요. 로봇이 월드에 나타나 움직이기 시작해요.
+1. 로봇을 잠시 멈추려면 **Pause**를 눌러요.
+1. 로봇이 움직이지 못하게 되면 **Relocate**를 눌러 진행 불능을 일으켜요.
+1. **Reset**을 누르면 게임이 리셋돼요. 프로그램과 로봇은 불러온 상태로 남아 있으므로 다시 실행할 수 있어요.
 
-이 프로그램에는 다른 [Python 라이브러리](/docs/installation/#python-libraries)와 함께 설치한 OpenCV가 필요해요. 프로그램의 메시지와 오류는 Webots 콘솔에 표시돼요.
+이 프로그램에는 OpenCV가 필요해요. OpenCV는 다른 [Python 라이브러리](/docs/installation/#python-libraries)와 함께 설치했어요. 프로그램의 메시지와 오류는 Webots 콘솔에 표시돼요.
 
-게임이 진행되는 동안 창 아래쪽에 점수 기록이 나타나요. 왜 점수를 얻거나 잃었는지 정확히 알려 주므로, 프로그램을 확인하는 가장 좋은 도구예요.
+게임이 진행되는 동안 창 아래쪽에 경기 이벤트가 표시돼요. 점수를 얻거나 잃은 이유를 정확히 알려 주기 때문에, 프로그램을 확인하는 데 가장 좋은 도구예요.
 
-![게임 중 점수 기록이 표시된 제어 창](../../../docs/getting-started/control_window_running.png)
+![게임 중의 제어 창과 경기 이벤트](../../../docs/getting-started/control_window_running.png)
 
-게임이 끝나면 같은 정보가 `game/logs` 폴더에 저장돼요.
+`maze.py`는 최고 속도로 달리고 배터리를 한 번도 교체하지 않기 때문에, `world1.wbt`에서는 2분도 안 되어 `Battery depleted`로 게임이 끝나요. 배터리를 관리하는 방법은 [배터리](/docs/programming/battery/)에서 배워요.
+
+게임이 끝나면 같은 정보가 `game/logs` 폴더에 저장돼요. 경기는 대화형 3D 리플레이로 `match-results` 폴더에도 저장돼요. 다시 보려면 `recording/replay.html`을 브라우저에서 열어요.
 
 ## 다른 월드 사용하기 \{#using-other-worlds\}
-**Worlds**를 눌러 다른 월드로 바꾸세요. 각 월드에는 썸네일이 있고, [World Editor](/docs/tools/world-editor/)로 만든 나만의 월드를 추가할 수도 있어요.
+**Worlds**를 누르면 다른 월드로 바꿀 수 있어요. 이름으로 월드를 검색하고 선택한 다음 **Load world**를 눌러요. [World Editor](/docs/tools/world-editor/)로 만든 자신의 월드를 추가할 수도 있어요.
 
-![제어 창의 Worlds 탭](../../../docs/getting-started/worlds.png)
+![제어 창의 Worlds 패널](../../../docs/getting-started/worlds.png)
 
-Erebus v26.1에 포함된 월드는 다음과 같아요.
+Erebus v27에 포함된 월드는 다음과 같아요.
 
 | 월드 | 용도 |
 |---|---|
+| `2027_d1r1.wbt`, `2027_d1r2.wbt`, `2027_d2r1.wbt`, `2027_d2r2.wbt` | 2027년 규칙의 예제 월드로, 접촉 타일과 가짜 피해자가 있어요 |
 | `world1.wbt`, `world2.wbt` | 예제 월드. `world2.wbt`에는 구역 4가 있어요. |
-| `world3.wbt`, `world4.wbt` | 더 큰 예제 월드로, **가짜 피해자**도 들어 있어요 |
-| `mapping_example_1.wbt` ~ `mapping_example_3.wbt` | 지도 작성을 테스트하는 월드. [지도 작성 규칙](/docs/rules/mapping/)을 참고하세요. |
-| `NewPassages.wbt` | 구역 사이 통로의 예제 |
+| `world3.wbt`, `world4.wbt` | 더 큰 예제 월드로, **가짜 피해자**도 있어요 |
+| `mapping_example_1.wbt` ~ `mapping_example_3.wbt` | 지도 작성을 테스트하는 월드. [지도 작성](/docs/rules/mapping/)을 참고하세요. |
+| `mapping_example_1_cyan_tiles.wbt` | `mapping_example_1.wbt`에 접촉 타일 두 개를 더한 월드 |
+| `NewPassages.wbt` | 구역 사이 통로의 예 |
 
-## 설정 \{#settings\}
-![제어 창의 Settings 탭](../../../docs/getting-started/settings.png)
+## Advanced setup \{#advanced-setup\}
+![제어 창의 Advanced setup 패널](../../../docs/getting-started/settings.png)
 
 | 설정 | 용도 |
 |---|---|
-| Keep controller/robot files | 월드를 다시 불러올 때 프로그램과 로봇을 불러온 상태로 유지해요 |
-| Disable automatic LoP | 20초 후의 자동 진행 불능을 멈춰요. 디버깅용으로만 사용하세요. |
+| Show head-up display | Webots 창에 점수, 시간, 최근 이벤트를 표시해요 |
 | Automatic camera | 시점이 로봇을 따라가게 해요 |
-| Recording | 게임을 동영상으로 녹화해요 |
-| Keep remote controller on | 월드를 다시 불러올 때 TOGGLE REMOTE를 켠 상태로 유지해요 |
-| Enable debugging | Webots 콘솔에 추가 정보를 출력해요. 예를 들어 벽 토큰 보고가 왜 거부되었는지 알려 줘요 |
+| HTML replay recording | 경기마다 대화형 3D 리플레이를 `match-results` 폴더에 저장해요 |
+| Automatic map result | 로봇이 지도를 제출하면 바로 지도의 결과를 저장하고 열어요 |
+| Disable automatic LoP | 20초 후의 자동 진행 불능을 꺼요. 디버깅 전용이에요. |
+| Enable debugging | Webots 콘솔에 추가 정보를 출력해요. 예를 들어 벽 토큰 보고가 거부된 이유 같은 것이에요 |
 
-위쪽의 링크는 변경 로그와, 월드와 로봇을 만드는 도구로 연결돼요. 2026년 규칙으로 월드를 만들려면 [World Editor](https://world.erebus.rcj.cloud/)를 사용하세요.
+창 아래쪽의 **References**에서 변경 기록, 이 문서, 월드와 로봇을 만드는 도구로 이동할 수 있어요. 2027년 규칙으로 월드를 만들려면 [World Editor](https://world.erebus.rcj.cloud/)를 사용하세요.
 
-## 로봇을 원하는 곳으로 직접 옮기기 \{#manually-move-the-robot-where-you-want-it-to-go\}
-시뮬레이션 창에서 로봇을 클릭하면 빨강, 초록, 파랑 화살표가 나타나요. 마우스로 이 화살표를 끌어서 로봇을 원하는 위치로 옮기세요. 프로그램을 시작하기 전까지는 로봇이 표시되지 않는다는 점에 주의하세요.
-![화살표로 옮길 수 있도록 Webots에서 선택된 로봇](../../../docs/getting-started/manual.png)
+## 로봇을 원하는 위치로 직접 옮기기 \{#manually-move-the-robot-where-you-want-it-to-go\}
+시뮬레이션 창에서 로봇을 클릭하면 빨강, 초록, 파랑 화살표가 나타나요. 이 화살표를 마우스로 끌어서 로봇을 원하는 위치로 옮길 수 있어요. 프로그램이 시작될 때까지는 로봇이 표시되지 않는다는 점에 주의하세요.
+![Webots에서 선택한 로봇과 이동용 화살표](../../../docs/getting-started/manual.png)
 
 
-## 다음 단계 \{#next\}
-로봇이 스스로 탐색하는 모습을 봤어요. 이제 직접 프로그래밍하는 법을 배워 보세요. [첫 번째 프로그램](/docs/programming/first-program/)부터 시작하세요.
+## 다음 \{#next\}
+로봇이 혼자서 탐색하는 모습을 봤어요. 이제 직접 프로그래밍하는 법을 배워 봐요. [첫 번째 프로그램](/docs/programming/first-program/)부터 시작하세요.

@@ -22,6 +22,9 @@ Webots weiß nicht, wo Python ist.
 
    ![Das Feld Python command in den Webots-Einstellungen](../../../docs/troubleshooting/preferences.png)
 
+### `ERROR: Skipped PROTO 'custom_robot'` {#error-skipped-proto-custom_robot}
+Das erscheint beim ersten Öffnen einer Welt, bevor Erebus das Robotermodell vorbereitet hat. Erebus bereitet es vor und lädt die Welt von selbst neu, du kannst es also ignorieren.
+
 ### Der Spieltimer erscheint nicht {#the-game-timer-does-not-appear}
 Der erste Start kann einige Minuten dauern, während Erebus Bibliotheken installiert. Wenn er nie fertig wird, sieh in der Konsole nach Fehlern. Wenn die automatische Installation nicht funktioniert, installiere die [benötigten Bibliotheken](/docs/installation/#python-libraries) selbst.
 
@@ -30,9 +33,14 @@ Der erste Start kann einige Minuten dauern, während Erebus Bibliotheken install
 ### Das Steuerfenster erscheint nicht {#the-control-window-does-not-appear}
 Das Steuerfenster ist eine Webseite, die Webots öffnet.
 
-1. Wenn dein Browser es blockiert hat, öffne [das Steuerfenster](http://localhost:1234/robot_windows/MainSupervisorWindow/MainSupervisorWindow.html?name=robot), während die Welt geöffnet ist.
+1. Wenn du es geschlossen hast oder dein Browser es blockiert hat, lade die Welt mit dem Neuladen-Button von Webots neu. Erebus öffnet das Steuerfenster dann erneut.
 2. Andernfalls stelle mit **Tools > Scene Tree** sicher, dass der Scene Tree angezeigt wird.
 3. Suche **DEF MAINSUPERVISOR Robot** im Scene Tree, klicke mit der rechten Maustaste darauf und wähle **Show Robot Window**.
+
+Das Steuerfenster hat eine private Adresse, die sich bei jedem Laden der Welt ändert. Wenn du das Fenster selbst unter `localhost:1234` öffnest, zeigt es **Read-only**, und seine Schaltflächen funktionieren nicht.
+
+### Das Steuerfenster meldet „Access log incomplete“ {#the-control-window-says-access-log-incomplete}
+Diese Warnung erscheint, wenn [Wireshark](/docs/installation/#optional-wireshark) nicht installiert ist. Sie ist für Veranstalter bei Wettbewerben gedacht: Drücke auf **Acknowledge** und übe wie gewohnt.
 
 ![Die Option Show Robot Window im Scene Tree](../../../docs/troubleshooting/showrobot.png)
 
@@ -52,11 +60,8 @@ Diese Einstellungen verändern, was die Kameras sehen, und der Wettbewerb verwen
 
 ## Dein Roboter {#your-robot}
 
-### `PROTO parameter 'camera_width' has no matching IS field` {#proto-parameter-camera_width-has-no-matching-is-field}
-Erebus v26.1 zeigt diesen Fehler in Rot, wenn es einen Roboter lädt, der mit dem aktuellen Robot Customizer erstellt wurde. Du kannst ihn ignorieren: Der Roboter funktioniert, und seine Kameras haben die Auflösung, die du gewählt hast.
-
 ### Mein Programm meldet, dass ein Gerät nicht gefunden wurde {#my-program-says-a-device-was-not-found}
-Siehe unten. Prüfe außerdem, ob du deinen Roboter vor dem Spielstart mit dem **rechten** LOAD-Button geladen hast.
+Siehe unten. Prüfe außerdem, ob du deinen Roboter vor dem Spielstart unter **Robot JSON** in **Robot setup** geladen hast.
 
 ## Dein Programm {#your-program}
 
@@ -64,10 +69,16 @@ Siehe unten. Prüfe außerdem, ob du deinen Roboter vor dem Spielstart mit dem *
 Der Gerätename in deinem Programm passt nicht zu deinem Roboter. Die Namen des Starter-Roboters stehen in der [Referenz](/docs/reference/parameters/#device-names-of-the-starter-robot). Bei deinem eigenen Roboter sind es die Namen, die du im [Robot Customizer](/docs/robot/customizer/) festgelegt hast. Prüfe, ob dein Roboter geladen wurde.
 
 ### Nichts passiert, wenn ich eine Wandmarkierung melde {#nothing-happens-when-i-report-a-wall-token}
-Schalte im Tab „Settings“ des Steuerfensters **Enable debugging** ein und sieh in der Konsole nach. Die häufigsten Ursachen sind, dass der Roboter nicht mindestens 1 Sekunde gestanden hat oder dass die Koordinaten nicht in Zentimeter umgerechnet wurden. Siehe [Kommunikation](/docs/programming/communication/#scoring-wall-tokens).
+Schalte im Steuerfenster unter **Advanced setup** die Option **Enable debugging** ein und sieh in der Konsole nach. Die häufigsten Ursachen sind, dass der Roboter nicht mindestens 1 Sekunde stand, dass die Koordinaten nicht in Zentimeter umgerechnet wurden und dass der Roboter oder die Position mehr als eine halbe Kachel (6 cm) von der Markierung entfernt war. Siehe [Kommunikation](/docs/programming/communication/#scoring-wall-tokens).
 
 ### Meine Meldungen sind Fehlerkennungen {#my-reports-are-misidentifications}
 Der Roboter darf höchstens eine halbe Kachel von der Markierung entfernt sein und muss auf derselben Seite der Wand stehen, und jede Markierung bringt nur einmal Punkte. Auch das Melden einer Fälschung zählt als Fehlerkennung.
+
+### Das Spiel endet mit „Battery depleted“ {#the-game-ends-with-battery-depleted}
+Der Akku war leer. Halte vorher 5 Sekunden lang auf einer Kontaktkachel an, um ihn auszutauschen. Siehe [Akku](/docs/programming/battery/).
+
+### Mein Programm erhält keine Spielinformationen mehr {#my-program-no-longer-receives-the-game-information}
+Seit Erebus v27 ist die Antwort auf `G` 20 Byte lang, mit dem Akkustand am Ende. Passe die Längenprüfung in deinem Programm an. Siehe [Spielinformationen](/docs/programming/communication/#game-information).
 
 ### Die Karte bekommt 0 % oder einen Bewertungsfehler {#the-map-gets-0-or-a-scoring-error}
 Deine Karte muss die Startkachel (`5`) enthalten, und sie kann nur einmal bewertet werden. Siehe [Die Karte abgeben](/docs/programming/map-bonus/).

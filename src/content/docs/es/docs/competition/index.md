@@ -3,7 +3,7 @@ title: Prepararse para una competición
 description: Una lista de comprobación para prepararte para una competición de RoboCupJunior Rescue Simulation.
 ---
 
-Esta página es una guía para la competición internacional con las reglas de 2026. Las competiciones locales y regionales pueden ser diferentes, así que consúltalo con tu organizador. Las [reglas](/docs/rules/) oficiales se aplican siempre.
+Esta página es una guía para la competición internacional con las reglas de 2027. Las competiciones locales y regionales pueden ser diferentes, así que consúltalo con tu organizador. Las [reglas](/docs/rules/) oficiales se aplican siempre.
 
 ## Calendario {#timeline}
 
@@ -22,7 +22,7 @@ Las plantillas y las rúbricas están en el [sitio web de la comunidad RCJ Rescu
 - [ ] **Technical Description Paper (TDP).** Sigue la plantilla al pie de la letra: si no, la puntuación del documento es 0.
 - [ ] **Póster,** como archivo y como póster físico en la sede, no más grande que A1.
 - [ ] **Vídeo** que muestre tu proyecto.
-- [ ] **Vídeo servidor-cliente,** novedad de 2026: un vídeo corto que muestre cómo ejecutas tu controlador en un mapa de ejemplo con la configuración servidor-cliente.
+- [ ] **Vídeo servidor-cliente:** un vídeo corto que muestre cómo ejecutas tu controlador en un mapa de ejemplo con la configuración servidor-cliente.
 - [ ] **Código fuente** y el **formulario web** para las entrevistas.
 
 ## Configuración de la competición {#competition-setup}
@@ -30,7 +30,7 @@ Las partidas se juegan con una configuración servidor-cliente: los organizadore
 
 Trae:
 
-- [ ] Un ordenador con tu programa y todas sus bibliotecas instaladas, y Webots R2023b
+- [ ] Un ordenador con tu programa y todas sus bibliotecas instaladas, y Webots R2025a
 - [ ] Un cable Ethernet, y un adaptador si tu ordenador lo necesita
 - [ ] El archivo `.json` de tu robot, si tienes un robot personalizado
 - [ ] El póster físico
@@ -47,9 +47,9 @@ Salvo que los organizadores anuncien lo contrario, se usan los siguientes ajuste
 | Anti-aliasing | Disabled |
 
 ## Probar tu robot {#testing-your-robot}
-- [ ] Ejecútalo en todos los mundos incluidos, sobre todo en `world3.wbt` y `world4.wbt`, que incluyen falsos.
+- [ ] Probar en todos los mundos incluidos, sobre todo en los cuatro mundos `2027_`, que incluyen baldosas de contacto y marcas falsas.
 - [ ] Crea tus propios mapas con el [World Editor](/docs/tools/world-editor/), con las cuatro áreas.
-- [ ] Comprueba la partida completa: ¿llega hasta el final, envía el mapa y vuelve a la salida a tiempo?
+- [ ] Comprobar la partida completa: ¿llega hasta el final, reemplaza la batería a tiempo, envía el mapa y vuelve al inicio?
 - [ ] Prueba qué pasa después de una falta de progreso (Lack of Progress).
 - [ ] Haz pruebas en el ordenador que vas a llevar y con los ajustes de OpenGL de arriba.
 

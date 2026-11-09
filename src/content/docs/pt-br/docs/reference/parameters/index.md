@@ -10,7 +10,7 @@ description: Tamanhos do campo, tempos da partida, multiplicadores de pontuaçã
 | Ladrilho | 12 cm × 12 cm |
 | Quarto de ladrilho (áreas 2 e 3) | 6 cm × 6 cm |
 | Parede | 1 cm de espessura, 6 cm de altura |
-| Vítima de letra | 2 cm × 2 cm |
+| Vítima smiley | 2 cm × 2 cm |
 | Alvo cognitivo | 5 cm de diâmetro |
 
 ## Partida {#game}
@@ -21,7 +21,10 @@ description: Tamanhos do campo, tempos da partida, multiplicadores de pontuaçã
 | Tempo real | 10 minutos |
 | Falta de progresso automática | Após 20 segundos em um mesmo lugar |
 | Tempo parado para informar um marcador | Pelo menos 1 segundo |
-| Multiplicador de tempo em um pântano | x5 na primeira entrada, +1 a cada nova entrada no mesmo pântano, até x10 |
+| Distância para informar um marcador | Meio ladrilho (6 cm), tanto para o centro do robô quanto para a posição enviada |
+| Bateria | 100% no início. Descarrega conforme a velocidade das rodas, cerca de 1,25% por segundo com duas rodas na velocidade máxima. |
+| Bateria em um pântano | Descarrega 5 vezes mais rápido |
+| Substituição da bateria | Ficar parado 5 segundos sobre um ladrilho de contato |
 | Multiplicadores de área | 1, 1,25, 1,5 e 2 para as áreas 1, 2, 3 e 4 |
 | Bônus de saída | +10% |
 | Multiplicador do bônus de mapa | acerto × 1,2 + 1 |
@@ -38,7 +41,7 @@ description: Tamanhos do campo, tempos da partida, multiplicadores de pontuaçã
 | Velocidade máxima da roda | 6,28 rad/s |
 | Lidar | 512 pontos por camada, 4 camadas, de 0,01 a 1 m |
 
-`timeStep` define o número de milissegundos entre as atualizações dos sensores. `int(robot.getBasicTimeStep())` obtém o passo de tempo básico do mundo, que é de 16 ms nos mundos do Erebus v26.1.
+`timeStep` define o número de milissegundos entre as atualizações dos sensores. `int(robot.getBasicTimeStep())` obtém o passo de tempo básico do mundo, que é de 16 ms nos mundos do Erebus v27.
 
 ## Nomes dos dispositivos do robô inicial {#device-names-of-the-starter-robot}
 

@@ -10,12 +10,12 @@ Dafür gibt es den Online-[Erebus World Editor](https://world.erebus.rcj.cloud/)
 
 ![Eine fertige Karte im World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Wenn du nur kleine Karten zum Testen baust, spielt es wahrscheinlich keine große Rolle, ob das Spielfeld den Regeln entspricht. Wenn du aber ein Wettbewerbsfeld bauen möchtest, lies die offiziellen [Simulationsregeln](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). Der Editor prüft deine Karte während der Arbeit anhand der Regeln.
+Wenn du nur kleine Karten zum Testen baust, spielt es wahrscheinlich keine große Rolle, ob das Spielfeld den Regeln entspricht. Wenn du aber ein Wettbewerbsfeld bauen möchtest, lies die offiziellen [Simulationsregeln](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf). Der Editor prüft deine Karte während der Arbeit anhand der Regeln.
 
 Der Editor hat eine eingebaute Anleitung: Drücke unten rechts auf **Guide**, um eine praktische Lektion zu starten, in der du eine Beispielkarte erstellst (etwa 15 Minuten), eine Tour durch die Oberfläche oder eine Lektion zu Raum 4. Daneben kannst du die Sprache des Editors ändern.
 
 ## Eine Karte beginnen {#starting-a-map}
-Wenn du den Editor öffnest, wähle, **nach den Regeln welchen Jahres** du dich richten möchtest, und drücke **New map**. **Wähle für Erebus v26 die Regeln von 2026.** Die Regeln von 2027 sind ein Entwurf für die nächste Version von Erebus.
+Wenn du den Editor öffnest, wähle, **welchen Jahrgang der Regeln** du verwenden willst, und drücke auf **New map**. **Wähle für Erebus v27 die Regeln 2027.** Die Regeln 2026 sind für Erebus v26. Du kannst die Regeln einer Karte später in der oberen Leiste ändern.
 
 ![Der Startbildschirm des World Editor](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ Eine gute Arbeitsreihenfolge ist Größe und Umriss, Räume, Durchgänge, Wände
 | Line | `L` | Wände zeichnen |
 | Curve | `A` | Gekrümmte Wände in Raum 3 zeichnen |
 | Eraser | `E` | Wände, Böden, Hindernisse und Opfer entfernen |
-| Floor | `F` | Checkpoints, Löcher, Sümpfe und die Startkachel setzen |
+| Floor | `F` | Checkpoints, Löcher, Sümpfe, Kontaktkacheln und die Startkachel setzen |
 | Obstacle | `O` | Hindernisse platzieren |
-| Victims | `V` | Buchstabenopfer, kognitive Ziele und Fälschungen platzieren |
+| Victims | `V` | Smiley-Opfer, kognitive Ziele und Fälschungen platzieren |
 
 Mit dem Mausrad zoomst du, Ziehen bei gedrückter Leertaste verschiebt die Ansicht, und Rückgängig ist `⌘Z` oder `Ctrl+Z`.
 
@@ -57,7 +57,7 @@ Zeichne Wände mit dem Werkzeug **Line**: in Raum 1 auf den Kachelkanten, in den
 ![Das Werkzeug Line für Wände](../../../../docs/tools/world-editor/walls.png)
 
 ## Böden und Hindernisse {#floors-and-obstacles}
-Wähle mit dem Werkzeug **Floor** einen Bodentyp und klicke auf eine Kachel, um ihn zu setzen. Die Startkachel muss eine Kachel in Raum 1 sein, und ohne sie kann die Welt nicht exportiert werden. Eine Kachel kann nur genau eines davon sein: Loch, Sumpf, Checkpoint, Hindernis, Start oder Durchgang.
+Wähle mit dem Werkzeug **Floor** einen Bodentyp und klicke auf eine Kachel, um ihn zu setzen: Checkpoint, Loch, Sumpf, Kontaktkachel oder Start. Die Startkachel muss eine Kachel von Raum 1 sein, und ohne sie kann die Welt nicht exportiert werden. Eine Kachel kann nur eines von Loch, Sumpf, Checkpoint, Kontaktkachel, Hindernis, Start oder Durchgang sein.
 
 ![Das Werkzeug Floor](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ Wähle mit dem Werkzeug **Obstacle** eine Form und klicke auf eine Kachel. In de
 ## Opfer und kognitive Ziele {#victims-and-cognitive-targets}
 Wähle mit dem Werkzeug **Victims** eine Art und klicke in die Nähe einer Wand. Du kannst platzieren:
 
-- Echte Buchstabenopfer: verletzt (harmed), stabil (stable) und unverletzt (unharmed)
-- Gefälschte Buchstabenopfer (Fake victims) mit dreidimensionalen Symbolen
+- Echte Smiley-Opfer: verletzt, stabil und unverletzt
+- Gefälschte Smiley-Opfer mit dreidimensionalen Gesichtern
 - Kognitive Ziele (Cognitive targets): Wähle das Gefahrgut und, wenn du möchtest, die Farben der Ringe. Die Summe wird angezeigt und bestimmt den Typ
 - Gefälschte Ziele, deren Ringe zusammen etwas anderes als 0 bis 3 ergeben
 
@@ -105,8 +105,8 @@ Lege den Namen der Karte in der oberen Leiste fest und drücke oben rechts den B
 1. Kopiere die `.wbt`-Datei in den Ordner `game/worlds` von Erebus. Sie muss in diesem Ordner liegen, weil die Welt Dateien von Erebus verwendet.
 1. Öffne sie in Webots oder wähle sie mit dem Button **Worlds** des [Steuerfensters](/docs/getting-started/).
 
-![Die Beispielkarte aus der Anleitung des Editors, ausgeführt in Erebus v26.1.](../../../../docs/tools/world-editor/exported_world.png)
+![Die Beispielkarte aus der Anleitung des Editors, ausgeführt in Erebus v27.](../../../../docs/tools/world-editor/exported_world.png)
 
-*Die Beispielkarte aus der Anleitung des Editors, ausgeführt in Erebus v26.1.*
+*Die Beispielkarte aus der Anleitung des Editors, ausgeführt in Erebus v27.*
 
 Eine `.wbt`-Datei lässt sich nicht wieder in eine bearbeitbare Karte umwandeln, also bewahre auch die JSON-Datei auf.

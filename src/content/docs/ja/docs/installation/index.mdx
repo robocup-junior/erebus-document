@@ -1,27 +1,28 @@
 ---
 title: 動作環境
-description: "Erebus v26 の実行に必要なもの: Webots R2023b、Python 3.9 以降、必要なライブラリ。"
+description: "Erebus v27 の実行に必要なもの: Webots R2025a、Python 3.10 以降、必要なライブラリ。"
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { latestVersion } from '@/data/release';
 
 ## 必要なソフトウェア \{#software-requirements\}
 シミュレーションシステムは 3 つの構成要素でできていて、それぞれをインストールする必要があります。インストールは簡単ですが、Webots のダウンロードとインストールには少し時間がかかることがあります。3 つの構成要素は次のとおりです。
 
-1. Webots ロボットシミュレーター（バージョン **R2023b**）: シミュレーション環境です。Erebus v26 は、ほかのバージョンの Webots には対応していません。
-1. Erebus: ワールドと、ルールを適用して得点を計算する Main Supervisor です。最新バージョンは **v26.1** です。
-1. Python（バージョン **3.9 以降**）: Erebus 自体の実行と、ロボットのコントローラーを書くのに必要です。コントローラーは C/C++ でも書けます。
+1. Webots ロボットシミュレーター（バージョン **R2025a**）: シミュレーション環境です。Erebus v27 は、ほかのバージョンの Webots には対応していません。
+1. Erebus: ワールドと、ルールを適用して得点を計算する Main Supervisor です。最新バージョンは **v<span data-erebus-version>{latestVersion}</span>** です。
+1. Python（バージョン **3.10 以降**）: Erebus 自体の実行と、ロボットのコントローラーを書くのに必要です。コントローラーは C/C++ でも書けます。
 
 ## 最小システム要件 \{#minimum-system-requirements\}
-* Linux: Ubuntu 20.04 LTS または 22.04 LTS
+* Linux: Ubuntu 22.04 LTS または 24.04 LTS
 * Windows: Windows 10 または 11（64 ビット）
-* macOS: macOS 11「Big Sur」または 12「Monterey」。これらは Webots R2023b が対応しているバージョンです。より新しい macOS でも動作することがあり、このドキュメントは macOS 26 でテストしています。
+* macOS: macOS 12「Monterey」、13「Ventura」または 14「Sonoma」。これらは Webots R2025a が対応しているバージョンです。より新しい macOS でも動作することがあり、このドキュメントは macOS 26 でテストしています。
 * CPU: デュアルコア、2 GHz
 * RAM: 2 GB
-* グラフィックス: OpenGL に対応し、512 MB のメモリーを搭載した NVIDIA または AMD のグラフィックスカード
+* グラフィックス: OpenGL 3.3 に対応し、512 MB のメモリーを搭載した NVIDIA または AMD のグラフィックスカード
 
 ## Python ライブラリ \{#python-libraries\}
-Erebus には、以下の Python ライブラリが必要です。ほとんどは起動時に自動でインストールされますが、**OpenCV はインストールされない** ので、自分でインストールする必要があります。各 OS のガイドにはこの手順が含まれています。
+Erebus には、以下の Python ライブラリが必要です。ほとんどは起動時に自動でインストールされますが、**OpenCV はインストールされない** ので、自分でインストールする必要があります。各 OS のガイドにはこの手順が含まれています。 Erebus フォルダーの `requirements.txt` には、Erebus のテストに使われたバージョンが書かれています。
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python
@@ -32,5 +33,8 @@ python3 -m pip install numpy termcolor requests overrides pillow opencv-python
 <CardGrid>
 	<LinkCard title="Windows" description="Windows 10 と 11" href="/docs/installation/windows/" />
 	<LinkCard title="macOS" description="Intel と Apple シリコンの macOS" href="/docs/installation/mac/" />
-	<LinkCard title="Linux" description="Ubuntu 20.04 と 22.04" href="/docs/installation/linux/" />
+	<LinkCard title="Linux" description="Ubuntu 22.04 と 24.04" href="/docs/installation/linux/" />
 </CardGrid>
+
+## オプション：Wireshark \{#optional-wireshark\}
+Erebus は、試合中にゲームへの不正なアクセスがないかネットワークを監視できます。これは大会で運営者が使う機能で、[Wireshark](https://www.wireshark.org/download.html) が必要です。練習には必要ありません。Wireshark がない場合、コントロールウィンドウにネットワークアクセスが監視されていないという警告が出ますが、確認して無視してかまいません。

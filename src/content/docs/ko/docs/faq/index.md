@@ -15,7 +15,7 @@ description: Erebus와 대회에 대해 자주 묻는 질문.
 아니요. [요구 사항](/docs/installation/)을 참고하세요. 느린 컴퓨터에서는 [그래픽 설정을 낮춰야](/docs/troubleshooting/#the-simulation-runs-too-slowly) 할 수도 있어요.
 
 ### 더 새로운 버전의 Webots를 써도 되나요? {#can-i-use-a-newer-version-of-webots}
-아니요. Erebus v26은 Webots **R2023b**에서 실행돼요. 다른 버전을 함께 설치해 두는 것은 괜찮아요.
+아니요. Erebus v27은 Webots **R2025a**에서 실행돼요. Erebus v26용 R2023b처럼 다른 버전을 함께 설치해 두는 것은 괜찮아요.
 
 ### OpenCV나 NumPy 같은 라이브러리를 써도 되나요? {#can-i-use-libraries-like-opencv-or-numpy}
 네. 만든 사람을 밝히고 라이선스를 지킨다면 외부 코드를 사용할 수 있어요. 팀은 배우는 것을 우선해야 하고, 자신의 해법이 어떻게 작동하는지 설명할 수 있어야 해요.
@@ -38,7 +38,13 @@ description: Erebus와 대회에 대해 자주 묻는 질문.
 아니요. 하지만 벽 토큰을 하나 이상 식별했다면, 시작 타일로 돌아와 `E`를 보내면 10%의 탈출 보너스(Exit bonus)를 받아요.
 
 ### 로봇이 남은 시간을 어떻게 알 수 있나요? {#how-can-my-robot-tell-how-much-time-is-left}
-[`G` 메시지](/docs/programming/communication/#game-information)로 알 수 있어요. 타이머는 두 개이고, 늪에서는 게임 시간이 더 빨리 흘러요.
+[`G` 메시지](/docs/programming/communication/#game-information)로 알 수 있어요. 타이머는 두 개이고, 둘 중 하나라도 다 되면 게임이 끝나요.
+
+### 배터리가 다 떨어지면 어떻게 되나요? {#what-happens-when-the-battery-runs-out}
+게임이 끝나요. 이를 피하려면 청록색 접촉 타일 위에 5초 동안 멈춰서 배터리를 교체하세요. 프로그램은 [`G` 메시지](/docs/programming/communication/#game-information)로 배터리 잔량을 읽을 수 있어요. [배터리](/docs/programming/battery/)를 참고하세요.
+
+### 천천히 달리면 배터리가 절약되나요? {#does-driving-slowly-save-the-battery}
+배터리는 모터 속도에 따라 줄어들기 때문에 느린 로봇은 초당 배터리를 덜 쓰지만, 그 시간 동안 이동하는 거리도 짧아요. 테스트로 로봇에 가장 알맞은 균형을 찾아보세요.
 
 ### 구역 4를 탐색해야 하나요? {#do-i-have-to-explore-area-4}
 아니요. 선택 사항이지만, 구역 4의 토큰은 가치가 가장 커요. 가장 높은 점수를 받고, 거기에 2를 곱해요.

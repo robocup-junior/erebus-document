@@ -39,7 +39,7 @@ Ne vous contentez pas de suivre un mur : cela n’atteint jamais les [cases flot
 3. Sinon, trouvez la case la plus proche ayant une voisine non visitée grâce à un parcours en largeur, et allez-y.
 4. Quand il ne reste plus de telle case, ou que le temps vient à manquer, revenez au départ de la même façon.
 
-Traitez les trous comme des murs. Les marécages coûtent du temps, et davantage à chaque fois que vous entrez dans le même : ne les visitez que si cela en vaut la peine.
+Traitez les trous comme des murs. Les marécages vident la batterie plus vite : n’y allez que si cela en vaut la peine. Retenez où sont les cases de contact, pour [remplacer la batterie](/docs/programming/battery/) en chemin.
 
 ## Gérer l’imprévu {#handle-the-unexpected}
 - **Absence de progression (Lack of Progress) :** le robot est ramené au dernier point de contrôle. [Écoutez le message `L`](/docs/programming/communication/#lack-of-progress), et mettez à jour votre position.
@@ -59,4 +59,4 @@ La [matrice de la carte](/docs/rules/mapping/) compte 4 cellules par case, plus 
 
 Votre carte peut commencer n’importe où : Erebus [aligne la matrice](/docs/rules/mapping/#how-correctness-is-calculated) à l’aide de la case de départ, et essaie les quatre rotations. Les [Règles de cartographie](/docs/rules/mapping/) expliquent chaque valeur de la matrice. Ensuite, [soumettez-la](/docs/programming/map-bonus/).
 
-Testez-la avec les mondes d’exemple, dont les bonnes réponses figurent dans [Règles de cartographie](/docs/rules/mapping/#examples). Le résultat apparaît sous la forme `Map Correctness` dans l’historique de la fenêtre de contrôle.
+Testez-la avec les mondes d’exemple, dont les bonnes réponses figurent dans [Règles de cartographie](/docs/rules/mapping/#examples). Le résultat apparaît sous la forme `Map Correctness` dans les événements du match de la fenêtre de contrôle.

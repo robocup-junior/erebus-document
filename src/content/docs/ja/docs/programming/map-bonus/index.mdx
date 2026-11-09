@@ -18,12 +18,19 @@ import CodeTabs from '@/components/CodeTabs.astro';
 - 時間が残っていることを確認してください。`M` を送る前にゲームが終わると、評価する地図がありません。
 - ボーナスを得るために `E` を送る必要はありません。時間切れになった場合もボーナスは適用されます。ただし、脱出ボーナス（Exit bonus）を得るには `E` を送る必要があり、脱出ボーナスは地図ボーナスが適用される前に加算されます。
 - 地図にはスタートタイル（`5`）が含まれている必要があります。スタートタイルは、地図を正解に合わせるために使われます。スタートタイルがないと、地図を評価できません。
-- 結果は、コントロールウィンドウの履歴に `Map Correctness` として表示されます。Webots のコンソールに `Map scoring error` と表示された場合は、形式を確認してください。
+- 結果は、コントロールウィンドウの試合のイベントに `Map Correctness` として表示されます。Webots のコンソールに `Map scoring error` と表示された場合は、形式を確認してください。
 
 次の例は `world1.wbt` の正解を送ります。通信のコードを確認するのに便利です。ゲーム開始直後に実行するとすぐにゲームが終了し、倍率を掛ける対象がないので、スコアは 0 のままです。
 
 <CodeTabs file="basics" />
 
-![例を実行した後のコントロールウィンドウの履歴: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+![例を実行した後の試合のイベント: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+
+## 地図を確認する \{#reviewing-your-map\}
+コントロールウィンドウの **Save map** を押すと、地図がどのように採点されたかを確認できます。Erebus は結果を `match-results` にある試合の `map` フォルダーに保存し、ブラウザーで開きます。**Advanced setup** の **Automatic map result** を使うと、地図が評価されたらすぐに開きます。
+
+![例の地図の確認: すべてのセルが正しい](../../../../docs/programming/map-bonus/map-review.png)
+
+間違ったセルは赤く表示されます。セルをクリックすると、ロボットが送った値と正しい答えがわかります。**Save matrix** はロボットが送った地図を保存し、**Save PNG** は画像を保存します。
 
 Erebus リリースの `player_controllers` フォルダーにある例 `MapScorerExample.py` も、同じように動作します。

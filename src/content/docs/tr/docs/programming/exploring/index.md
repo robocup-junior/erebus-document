@@ -39,7 +39,7 @@ Yalnızca bir duvarı izleme: bu yöntemle, işaretleri daha değerli olan [yüz
 3. Yoksa, genişlik öncelikli arama (breadth-first search) ile ziyaret edilmemiş bir komşusu olan en yakın kareyi bul ve oraya git.
 4. Böyle bir kare kalmadığında ya da süre azaldığında aynı yoldan başlangıca dön.
 
-Çukurları duvar gibi ele al. Bataklıklar zaman kaybettirir ve aynı bataklığa her girişinde daha fazla zaman kaybedersin; bu yüzden bataklıklara yalnızca buna değecekse gir.
+Çukurları duvar gibi düşün. Bataklıklar bataryayı daha hızlı bitirir, bu yüzden onlara yalnızca değdiğinde gir. Yolda [bataryayı değiştirmek](/docs/programming/battery/) için temas karelerinin yerini hatırla.
 
 ## Beklenmedik durumlarla başa çık {#handle-the-unexpected}
 - **İlerleme eksikliği:** robot son kontrol noktasına taşınır. [`L` mesajını dinle](/docs/programming/communication/#lack-of-progress) ve konumunu güncelle.
@@ -59,4 +59,4 @@ Yalnızca bir duvarı izleme: bu yöntemle, işaretleri daha değerli olan [yüz
 
 Haritan herhangi bir yerden başlayabilir: Erebus başlangıç karesini kullanarak [matrisi hizalar](/docs/rules/mapping/#how-correctness-is-calculated) ve dört dönüşü de dener. [Haritalama kuralları](/docs/rules/mapping/) matrisin her değerini açıklar. Sonra [haritayı gönder](/docs/programming/map-bonus/).
 
-Doğru cevapları [Haritalama kuralları](/docs/rules/mapping/#examples) sayfasında bulunan örnek dünyalarla test et. Sonuç, kontrol penceresinin geçmişinde `Map Correctness` olarak görünür.
+Doğru cevapları [Haritalama kuralları](/docs/rules/mapping/#examples) sayfasında bulunan örnek dünyalarla test et. Sonuç, kontrol penceresinin maç olaylarında `Map Correctness` olarak görünür.

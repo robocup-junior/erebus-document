@@ -18,12 +18,19 @@ Le bonus de cartographie (mapping bonus) multiplie votre score jusqu’à 2,2 : 
 - Assurez-vous qu’il reste du temps. Si la partie se termine avant que vous envoyiez `M`, il n’y a aucune carte à évaluer.
 - Vous n’êtes pas obligé d’envoyer `E` pour obtenir le bonus : il est aussi appliqué si le temps est écoulé. Mais `E` permet d’obtenir le bonus de sortie, et ce bonus est ajouté avant l’application du bonus de cartographie.
 - La carte doit contenir la case de départ (`5`), qui sert à l’aligner sur la bonne réponse. Sans elle, la carte ne peut pas être évaluée.
-- Le résultat s’affiche sous la forme `Map Correctness` dans l’historique de la fenêtre de contrôle. Si vous obtenez une `Map scoring error` dans la console de Webots, vérifiez votre format.
+- Le résultat s’affiche sous la forme `Map Correctness` dans les événements du match de la fenêtre de contrôle. Si vous obtenez une `Map scoring error` dans la console de Webots, vérifiez votre format.
 
 L’exemple ci-dessous envoie la bonne réponse pour `world1.wbt`, ce qui est utile pour vérifier votre code de communication. Si vous l’exécutez au début de la partie, il termine immédiatement la partie, et le score reste à 0, puisqu’un multiplicateur n’a rien à multiplier.
 
 <CodeTabs file="basics" />
 
-![L’historique de la fenêtre de contrôle après l’exemple : Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+![Les événements du match après l’exemple : Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+
+## Examiner votre carte \{#reviewing-your-map\}
+Appuyez sur **Save map** dans la fenêtre de contrôle pour voir comment votre carte a été notée. Erebus enregistre le résultat dans le dossier `map` du match, dans `match-results`, et l’ouvre dans votre navigateur. Avec **Automatic map result** dans **Advanced setup**, il s’ouvre dès que la carte est évaluée.
+
+![L’examen de la carte de l’exemple : toutes les cellules sont correctes](../../../../docs/programming/map-bonus/map-review.png)
+
+Les cellules fausses sont marquées en rouge. Cliquez sur une cellule pour voir ce que votre robot a envoyé et quelle est la bonne réponse. **Save matrix** enregistre la carte envoyée par votre robot, et **Save PNG** enregistre l’image.
 
 L’exemple `MapScorerExample.py` du dossier `player_controllers` de la version d’Erebus fonctionne de la même façon.

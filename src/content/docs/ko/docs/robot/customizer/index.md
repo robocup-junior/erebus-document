@@ -30,7 +30,7 @@ description: Robot Customizer의 화면, 구성 요소, 비용, 제한.
 
 ## Erebus에서 사용하기 {#using-it-in-erebus}
 
-[제어 창](/docs/getting-started/#the-control-window)의 오른쪽 LOAD 버튼을 누르고 `.json` 파일을 선택하세요. [Erebus에 불러오기](/docs/robot/#load-it-in-erebus)를 참고하세요. Erebus가 예산을 확인하고 로봇을 생성하며, Webots 콘솔에 각 구성 요소와 비용이 나열돼요.
+[제어 창](/docs/getting-started/#robot-setup)에서 **Robot setup**을 누른 다음, **Robot JSON** 아래의 **Load file**을 눌러 `.json` 파일을 선택하세요. [Erebus에 불러오기](/docs/robot/#load-it-in-erebus)를 참고하세요. Erebus가 예산을 확인하고 로봇을 생성하며, Webots 콘솔에 각 부품과 그 비용이 나열돼요.
 
 로봇을 먼저 불러오고, 그다음 프로그램을 불러오세요.
 

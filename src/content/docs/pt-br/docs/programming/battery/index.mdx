@@ -1,0 +1,53 @@
+---
+title: Bateria
+description: Leia o nível da bateria do seu robô e substitua-a em um ladrilho de contato antes que acabe.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Seu robô tem uma bateria, e a partida termina quando ela acaba. Nesta página, você aprende a que ritmo ela descarrega, como seu programa pode lê-la e como substituí-la.
+
+## Como a bateria funciona \{#how-the-battery-works\}
+
+- A bateria começa em 100% e **descarrega conforme a velocidade das rodas**: quanto mais rápido elas giram, mais rápido ela descarrega. Com as configurações padrão, um robô parado não gasta bateria.
+- Nos **pântanos**, ela descarrega mais rápido.
+- Para substituí-la, o robô precisa **ficar parado sobre um ladrilho de contato por 5 segundos**. A bateria então volta a 100%. Se ele se mexer, ou sair do ladrilho, os 5 segundos recomeçam.
+- Se a bateria chegar a 0%, a partida termina com `Battery depleted`. Uma bateria vazia não pode ser substituída.
+
+A janela de controle mostra o nível da bateria acima dos cronômetros. Abaixo de 20%, mostra "Low battery":
+
+![A pontuação, o nível da bateria e os cronômetros na janela de controle, com a bateria fraca](../../../../docs/programming/battery/battery-low.png)
+
+As regras não dizem a que ritmo a bateria descarrega: espera-se que as equipes descubram isso com testes. Com as configurações padrão do Erebus v27, duas rodas na velocidade máxima (6,28 rad/s) gastam cerca de 1,25% por segundo, então um robô que nunca para ficaria sem bateria em menos de um minuto e meio, bem menos que os 8 minutos de uma partida. Os organizadores podem mudar essas configurações, então meça-as no seu programa em vez de confiar nesses números.
+
+## Lendo o nível da bateria \{#reading-the-battery-level\}
+
+O nível da bateria é o último valor das [informações da partida](/docs/programming/communication/#game-information). Esta função as pede uma vez por segundo e guarda o valor mais recente em `battery`:
+
+<CodeTabs file="battery" region="battery" />
+
+## Substituindo a bateria \{#replacing-the-battery\}
+
+Os ladrilhos de contato são ciano, então o [sensor de cor](/docs/programming/sensors/colour-sensor/) os enxerga: o vermelho fica perto de 0, e o verde e o azul ficam altos.
+
+O sensor de cor do robô inicial fica na frente, mas o Erebus verifica a posição do **centro** do robô. Por isso, quando o sensor vê ciano, o robô anda mais um pouco antes de parar. Depois, ele espera até a bateria ficar cheia, o que leva 5 segundos:
+
+<CodeTabs file="battery" region="contact" />
+
+## O programa completo \{#the-complete-program\}
+
+Este programa anda desviando das paredes e substitui a bateria quando passa por um ladrilho de contato com menos de 50%. Execute-o em `2027_d1r1.wbt`, onde há um ladrilho de contato ao lado do ladrilho inicial.
+
+<CodeTabs file="battery" />
+
+Os eventos da partida mostram cada substituição como `Battery replaced`:
+
+![Os eventos da partida, com duas substituições de bateria](../../../../docs/programming/battery/battery-events.png)
+
+## Planejamento \{#planning\}
+- Saiba onde estão os ladrilhos de contato: memorize-os enquanto explora, como faz com o mapa.
+- Antes de a bateria ficar fraca, vá para o ladrilho de contato conhecido mais próximo. Deixe uma margem, porque o caminho pode demorar mais do que você espera.
+- Evite os pântanos quando puder, ou atravesse-os rápido.
+- Parar custa tempo de partida, mas não bateria com as configurações padrão, então a parada de 1 segundo para informar um marcador não gasta bateria.
+
+Em seguida, aprenda a registrar por onde o robô já passou em [Explorar e mapear](/docs/programming/exploring/).

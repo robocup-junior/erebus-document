@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: Installiere Erebus und Webots R2023b unter Windows.
+description: Installiere Erebus und Webots R2025a unter Windows.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. Installiere **Python 3.9 oder neuer** (64 Bit) von der [offiziellen Website](https://www.python.org/downloads/windows/). Achte bei der Installation darauf, dass Python zu deinem PATH hinzugefügt wird:
+1. Installiere **Python 3.10 oder neuer** (64 Bit) von der [offiziellen Website](https://www.python.org/downloads/windows/). Achte bei der Installation darauf, dass Python zu deinem PATH hinzugefügt wird:
 
    ![Die Option „Add Python to PATH“ im Python-Installationsprogramm](../../../../docs/installation/windows/python-path.png)
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. Installiere **Webots R2023b** aus dem [offiziellen Repository](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe).
+3. Installiere **Webots R2025a** aus dem [offiziellen Repository](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a_setup.exe).
 
 4. Lade <DownloadErebus /> herunter und entpacke die Datei.
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 Doppelklicke auf die Weltdatei `game/worlds/world1.wbt`, um sie in Webots zu öffnen.
 
-Webots öffnet das Erebus-Steuerfenster in deinem Webbrowser. Beim ersten Mal installiert Erebus einige Python-Bibliotheken, was eine Weile dauern kann. Es ist bereit, wenn das Fenster den Spieltimer 08:00 anzeigt:
+Webots öffnet das Erebus-Steuerfenster in deinem Webbrowser. Beim ersten Mal installiert Erebus einige Python-Bibliotheken und bereitet das Robotermodell vor, was eine Weile dauern kann. Es ist bereit, wenn das Fenster **Ready** und den Spieltimer 08:00 anzeigt:
 
 ![Das Erebus-Steuerfenster, startbereit](../../../../docs/installation/windows/../control-window-ready.png)
+
+Beim ersten Mal kann die Webots-Konsole auch `ERROR: Skipped PROTO 'custom_robot'` anzeigen. Das kannst du ignorieren: Erebus bereitet das Robotermodell vor und lädt die Welt von selbst neu.
 
 Lies als Nächstes die [Regeln im Überblick](/docs/rules/), um das Spiel zu verstehen. Wenn etwas schiefgeht, sieh unter [Fehlerbehebung](/docs/troubleshooting/) nach.

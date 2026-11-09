@@ -39,7 +39,7 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 3. なければ、幅優先探索で、未訪問の隣接タイルを持ついちばん近いタイルを見つけ、そこに進みます。
 4. そのようなタイルがなくなるか、時間が少なくなったら、同じ方法でスタートに戻ります。
 
-穴は壁として扱いましょう。沼地は時間がかかり、同じ沼地に入るたびにさらに多くかかるので、価値があるときだけ入りましょう。
+穴は壁として扱いましょう。沼地ではバッテリーが速く減るので、行く価値があるときだけ入りましょう。コンタクトタイルの場所を覚えておくと、途中で[バッテリーを交換](/docs/programming/battery/)できます。
 
 ## 予想外のことに対処する {#handle-the-unexpected}
 - **競技進行停止:** ロボットは最後のチェックポイントに移動されます。[`L` メッセージを受け取ったら](/docs/programming/communication/#lack-of-progress)、自分の位置を更新しましょう。
@@ -59,4 +59,4 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 
 地図はどこから始めてもかまいません。Erebus はスタートタイルを使って[行列の位置を合わせ](/docs/rules/mapping/#how-correctness-is-calculated)、4 通りの回転を試します。行列のすべての値は[地図作成のルール](/docs/rules/mapping/)で説明しています。それから[地図を提出](/docs/programming/map-bonus/)しましょう。
 
-サンプルワールドでテストしましょう。正解は[地図作成のルール](/docs/rules/mapping/#examples)に載っています。結果は、コントロールウィンドウの履歴に `Map Correctness` として表示されます。
+サンプルワールドでテストしましょう。正解は[地図作成のルール](/docs/rules/mapping/#examples)に載っています。結果は、コントロールウィンドウの試合のイベントに `Map Correctness` として表示されます。

@@ -7,9 +7,9 @@ description: Como configurar o Remote Controller no Linux (Ubuntu 22.04 LTS).
 Primeiro, tente executar o servidor da partida e o seu programa controlador no mesmo computador. Essa não é a configuração usada nas competições, mas é útil para depurar localmente.
 
 ## Ative o modo remoto {#toggle-remote-mode}
-Abra o mundo e pressione "TOGGLE REMOTE" na janela de controle. O botão fica laranja para mostrar que o modo remoto está ativado.
+Abra o mundo, clique em **Robot setup** na janela de controle e ative **Remote mode**. Se você tem um robô personalizado, carregue antes seu robô em **Robot JSON**.
 
-![O botão TOGGLE REMOTE, ativado](../../../../../docs/competition/remote-controller/linux/toggle_remote.png)
+![Remote mode, ativado em Robot setup](../../../../../docs/competition/remote-controller/linux/toggle_remote.png)
 
 Se a janela de controle não aparecer, clique com o botão direito em "DEF MAINSUPERVISOR Robot" na Scene Tree (árvore da cena) e escolha "Show Robot Window".
 
@@ -26,17 +26,17 @@ Isso pressupõe que o Webots foi instalado com o pacote `.deb` em `/usr/local/we
 O controlador se conecta ao Webots e espera até a partida começar.
 
 ## Inicie a partida {#start-the-game}
-Pressione o botão de início na janela de controle. O robô aparece, e o seu programa começa a rodar.
+Clique em **Run match** na janela de controle. O robô aparece e seu programa começa a rodar.
 
 ## Encerre a partida {#terminate-the-game}
 Para parar a partida, pressione Ctrl+C no terminal.
 
-Quando a simulação termina, o gerenciador da partida do Erebus também para. Para executar a partida de novo, recarregue o mundo.
+Quando a partida terminar, clique em **Reset** para executá-la de novo. O reset desativa o Remote mode, a menos que **Keep on Reset** esteja ativado.
 
 # Executando o servidor da partida em outro computador
 Esta é a configuração usada nas competições oficiais. O computador que executa o seu controlador (o cliente) e o que executa a partida (o servidor) precisam estar conectados à mesma rede.
 
-1. (Servidor) Inicie o Webots no servidor, abra o mundo e ative o modo remoto na janela de controle.
+1. (Servidor) Inicie o Webots no servidor, abra o mundo e ative **Remote mode** em **Robot setup** da janela de controle.
 1. (Servidor) Descubra o endereço IP do servidor, por exemplo com o comando `ip addr`.
 1. (Cliente) Execute os comandos a seguir, substituindo `<Your controller path>` pelo caminho do seu programa controlador e `<Server IP address>` pelo endereço IP que você encontrou na etapa anterior.
 
@@ -44,12 +44,12 @@ Esta é a configuração usada nas competições oficiais. O computador que exec
     export WEBOTS_HOME=/usr/local/webots
     "$WEBOTS_HOME/webots-controller" --protocol=tcp --ip-address=<Server IP address> "<Your controller path>"
     ```
-1. (Servidor) Inicie a partida pressionando o botão de início.
+1. (Servidor) Inicie a partida clicando em **Run match**.
 
 ## Solução de problemas {#troubleshooting}
 - **O controlador não consegue se conectar:** confira se os dois computadores conseguem se comunicar, por exemplo com `ping`, se o firewall do servidor permite a porta TCP 1234 e se a lista de IPs permitidos na aba Network das preferências do Webots está vazia ou inclui o cliente.
-- **Aparece `No robot name provided`:** essa mensagem é normal enquanto o controlador espera. Se ela não sumir, o modo remoto não está ativado: confira o botão TOGGLE REMOTE.
+- **O controlador espera, mas o robô não se mexe:** confira se **Remote mode** está ativado e clique em **Run match**.
 - **O controlador não encontra uma biblioteca Python:** o programa roda com a instalação do Python do cliente, então instale a biblioteca nela.
 
 # Documentação oficial
-Para mais detalhes sobre essa configuração, consulte o [guia do Webots](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2023b).
+Para mais detalhes sobre essa configuração, consulte o [guia do Webots](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2025a).

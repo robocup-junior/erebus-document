@@ -1,27 +1,28 @@
 ---
 title: Voraussetzungen
-description: "Was du für Erebus v26 brauchst: Webots R2023b, Python 3.9 oder neuer und die benötigten Bibliotheken."
+description: "Was du für Erebus v27 brauchst: Webots R2025a, Python 3.10 oder neuer und die benötigten Bibliotheken."
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { latestVersion } from '@/data/release';
 
 ## Software-Voraussetzungen \{#software-requirements\}
 Das Simulationssystem besteht aus drei Komponenten, die du alle installieren musst. Die Installation ist einfach, aber das Herunterladen und Installieren von Webots kann eine Weile dauern. Die drei Komponenten sind:
 
-1. Der Robotersimulator Webots, Version **R2023b**: die Simulationsumgebung. Erebus v26 unterstützt keine anderen Versionen von Webots.
-1. Erebus: die Welten und der Main Supervisor, der die Regeln anwendet und die Punktzahl berechnet. Die neueste Version ist **v26.1**.
-1. Python, Version **3.9 oder neuer**: nötig, um Erebus selbst auszuführen und Controller für die Roboter zu schreiben. Du kannst Controller auch in C/C++ schreiben.
+1. Der Robotersimulator Webots, Version **R2025a**: die Simulationsumgebung. Erebus v27 unterstützt keine anderen Versionen von Webots.
+1. Erebus: die Welten und der Main Supervisor, der die Regeln anwendet und die Punktzahl berechnet. Die neueste Version ist **v<span data-erebus-version>{latestVersion}</span>**.
+1. Python, Version **3.10 oder neuer**: nötig, um Erebus selbst auszuführen und Controller für die Roboter zu schreiben. Du kannst Controller auch in C/C++ schreiben.
 
 ## Minimale Systemvoraussetzungen \{#minimum-system-requirements\}
-* Linux: Ubuntu 20.04 LTS oder 22.04 LTS
+* Linux: Ubuntu 22.04 LTS oder 24.04 LTS
 * Windows: Windows 10 oder 11, 64 Bit
-* macOS: macOS 11 „Big Sur“ oder 12 „Monterey“. Das sind die Versionen, die Webots R2023b unterstützt. Neuere Versionen von macOS funktionieren eventuell auch: Diese Dokumentation wurde unter macOS 26 getestet.
+* macOS: macOS 12 „Monterey“, 13 „Ventura“ oder 14 „Sonoma“. Das sind die Versionen, die Webots R2025a unterstützt. Neuere Versionen von macOS funktionieren eventuell auch: Diese Dokumentation wurde unter macOS 26 getestet.
 * CPU: Dual-Core, 2 GHz
 * RAM: 2 GB
-* Grafik: NVIDIA- oder AMD-Grafikkarte mit OpenGL-Unterstützung und 512 MB Speicher
+* Grafik: NVIDIA- oder AMD-Grafikkarte mit OpenGL 3.3-Unterstützung und 512 MB Speicher
 
 ## Python-Bibliotheken \{#python-libraries\}
-Erebus braucht die folgenden Python-Bibliotheken. Die meisten werden beim Start automatisch installiert, aber **OpenCV nicht**, also musst du es selbst installieren. Die Anleitung für jedes Betriebssystem enthält diesen Schritt.
+Erebus braucht die folgenden Python-Bibliotheken. Die meisten werden beim Start automatisch installiert, aber **OpenCV nicht**, also musst du es selbst installieren. Die Anleitung für jedes Betriebssystem enthält diesen Schritt. Die Datei `requirements.txt` im Erebus-Ordner nennt die Versionen, mit denen Erebus getestet wurde.
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python
@@ -32,5 +33,8 @@ python3 -m pip install numpy termcolor requests overrides pillow opencv-python
 <CardGrid>
 	<LinkCard title="Windows" description="Windows 10 und 11" href="/docs/installation/windows/" />
 	<LinkCard title="macOS" description="macOS auf Intel und Apple Silicon" href="/docs/installation/mac/" />
-	<LinkCard title="Linux" description="Ubuntu 20.04 und 22.04" href="/docs/installation/linux/" />
+	<LinkCard title="Linux" description="Ubuntu 22.04 und 24.04" href="/docs/installation/linux/" />
 </CardGrid>
+
+## Optional: Wireshark \{#optional-wireshark\}
+Erebus kann während eines Spiels das Netzwerk auf unbefugte Zugriffe auf das Spiel überwachen, was Veranstalter bei Wettbewerben nutzen. Dafür wird [Wireshark](https://www.wireshark.org/download.html) gebraucht. Zum Üben brauchst du es nicht: Ohne Wireshark zeigt das Steuerfenster eine Warnung, dass der Netzwerkzugriff nicht überwacht wird. Du kannst sie bestätigen und ignorieren.

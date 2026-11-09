@@ -22,6 +22,7 @@ Así que un mapa perfecto multiplica tu puntuación por 2,2. Para aprender a env
 | Puntos de control | `4` |
 | Baldosa de salida | `5` |
 | Baldosa con un obstáculo | `x` |
+| Baldosa de contacto (cian) | `k` |
 | Paso entre las áreas 1 y 2 (azul) | `b` |
 | Paso entre las áreas 1 y 3 (amarillo) | `y` |
 | Paso entre las áreas 1 y 4 (verde) | `g` |
@@ -32,8 +33,8 @@ Así que un mapa perfecto multiplica tu puntuación por 2,2. Para aprender a env
 | Todas las baldosas, bordes y vértices del área 4, incluido su borde exterior | `*` |
 | Cualquier otra baldosa, borde y vértice | `0` |
 
-* Los elementos del suelo (`2`, `3`, `4`, `5`, `x` y los pasos) se escriben en la celda central de cada uno de los cuatro cuartos de baldosa de la baldosa, como puedes ver en los ejemplos de abajo.
-* Ninguna baldosa es a la vez más de una de estas cosas: pantano, agujero, punto de control, baldosa de salida, baldosa con un obstáculo o paso entre áreas.
+* Los elementos del suelo (`2`, `3`, `4`, `5`, `x`, `k` y los pasos) se escriben en la celda central de cada uno de los cuatro cuartos de baldosa de la baldosa, como puedes ver en los ejemplos de abajo.
+* Ninguna baldosa es a la vez más de una de estas cosas: pantano, agujero, punto de control, baldosa de contacto, baldosa de salida, baldosa con un obstáculo o paso entre áreas.
 * En las paredes curvas del área 3, el vértice se representa con un `0`.
 * Una marca en la pared se escribe en la celda de la pared en la que está. Si hay varias marcas en la misma pared, por ejemplo en sus dos caras, concatena sus códigos en una sola celda, en el orden de su posición absoluta en el mapa: primero de arriba abajo, después de izquierda a derecha.
 * Las marcas falsas no deben incluirse en el mapa: ni las víctimas falsas ni los objetivos cognitivos con una suma no válida.
@@ -55,7 +56,7 @@ La excepción es el caso siguiente, en el que un lado de la pared es un ángulo 
 ![Una pared con un ángulo recto a un lado y una curva al otro](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Ejemplos {#examples}
-Estas son las soluciones correctas de algunos de los mundos incluidos en Erebus v26, generadas por el propio Erebus.
+Estas son las soluciones correctas de algunos de los mundos incluidos en Erebus v27, generadas por el propio Erebus.
 
 Los mundos de la carpeta `game/worlds` cambian entre versiones, así que si tu versión de Erebus es distinta, puede que tu solución sea diferente. `MapScorerExample.py`, en la carpeta `player_controllers`, también tiene matrices de ejemplo.
 
@@ -78,6 +79,33 @@ Un mundo pequeño con una sola área. La baldosa de salida es la baldosa verde d
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '1', '1', '1', '1', '1', 'F', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
+]
+```
+
+### mapping_example_1_cyan_tiles.wbt {#mapping_example_1_cyan_tileswbt}
+El mismo mundo que `mapping_example_1.wbt`, con dos baldosas de contacto, que se marcan con `k`.
+
+![El mundo mapping_example_1_cyan_tiles en Webots](../../../../docs/rules/mapping/mapping_example_1_cyan_tiles.png)
+
+```
+[
+['1', '1', 'S', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', 'C', '0', '0', '0', '0', '0', '0', '0', 'O', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['F', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', '0', '0', '0', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', '0', '0', '0', '1', '1', 'U', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
 ['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],

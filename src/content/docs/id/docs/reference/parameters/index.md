@@ -10,7 +10,7 @@ description: Ukuran arena, waktu permainan, pengali skor, batasan robot, dan nam
 | Ubin | 12 cm × 12 cm |
 | Seperempat ubin (Area 2 dan 3) | 6 cm × 6 cm |
 | Dinding | Tebal 1 cm, tinggi 6 cm |
-| Korban huruf | 2 cm × 2 cm |
+| Korban smiley | 2 cm × 2 cm |
 | Target kognitif | Diameter 5 cm |
 
 ## Permainan {#game}
@@ -21,7 +21,10 @@ description: Ukuran arena, waktu permainan, pengali skor, batasan robot, dan nam
 | Waktu dunia nyata | 10 menit |
 | Kurangnya kemajuan otomatis | Setelah 20 detik di lokasi yang sama |
 | Waktu berhenti untuk melaporkan penanda dinding | Minimal 1 detik |
-| Pengali waktu di rawa | x5 pada masuk pertama, +1 setiap kali masuk lagi ke rawa yang sama, hingga x10 |
+| Jarak untuk melaporkan penanda dinding | Setengah ubin (6 cm), baik untuk titik tengah robot maupun posisi yang dikirim |
+| Baterai | 100% di awal. Berkurang sesuai kecepatan roda, sekitar 1,25% per detik dengan dua roda pada kecepatan penuh. |
+| Baterai di rawa | Berkurang 5 kali lebih cepat |
+| Penggantian baterai | Diam di atas ubin kontak selama 5 detik |
 | Pengali area | 1; 1,25; 1,5; dan 2 untuk Area 1, 2, 3, dan 4 |
 | Bonus keluar | +10% |
 | Pengali bonus pemetaan | ketepatan × 1,2 + 1 |
@@ -38,7 +41,7 @@ description: Ukuran arena, waktu permainan, pengali skor, batasan robot, dan nam
 | Kecepatan roda maksimum | 6,28 rad/s |
 | Lidar | 512 titik per lapisan, 4 lapisan, 0,01 hingga 1 m |
 
-`timeStep` menentukan jumlah milidetik di antara pembaruan sensor. `int(robot.getBasicTimeStep())` mengambil time step dasar dari world, yaitu 16 ms di world Erebus v26.1.
+`timeStep` menentukan jumlah milidetik di antara pembaruan sensor. `int(robot.getBasicTimeStep())` mengambil time step dasar dari world, yaitu 16 ms di world Erebus v27.
 
 ## Nama perangkat pada robot pemula {#device-names-of-the-starter-robot}
 

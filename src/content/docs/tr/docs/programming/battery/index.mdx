@@ -1,0 +1,53 @@
+---
+title: Batarya
+description: Robotunun batarya seviyesini oku, ve batarya bitmeden bir temas karesinde bataryayı değiştir.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Robotunun bir bataryası var ve batarya bitince oyun sona erer. Bu sayfada bataryanın ne kadar hızlı azaldığını, programının onu nasıl okuyabileceğini ve nasıl değiştirileceğini öğreneceksin.
+
+## Batarya nasıl çalışır \{#how-the-battery-works\}
+
+- Batarya %100'den başlar ve **tekerleklerin hızına göre azalır**: tekerlekler ne kadar hızlı dönerse o kadar hızlı biter. Varsayılan ayarlarla duran bir robot batarya harcamaz.
+- **Bataklıklarda** daha hızlı azalır.
+- Değiştirmek için robot **bir temas karesinin üzerinde 5 saniye hareketsiz durmalıdır**. Batarya ardından yeniden %100 olur. Hareket etmek ya da kareden çıkmak 5 saniyeyi yeniden başlatır.
+- Batarya %0'a ulaşırsa oyun `Battery depleted` ile biter. Boş bir batarya değiştirilemez.
+
+Kontrol penceresi batarya seviyesini sayaçların üstünde gösterir. %20'nin altında "Low battery" yazar:
+
+![Kontrol penceresinde puan, batarya seviyesi ve sayaçlar, batarya düşükken](../../../../docs/programming/battery/battery-low.png)
+
+Kurallar bataryanın ne kadar hızlı azaldığını söylemez: takımların bunu test ederek bulmaları beklenir. Erebus v27'nin varsayılan ayarlarıyla, tam hızdaki (6,28 rad/s) iki tekerlek saniyede yaklaşık %1,25 harcar. Yani hiç durmayan bir robotun bataryası bir buçuk dakikadan kısa sürede biter; bu, bir oyunun 8 dakikasından çok daha kısadır. Organizatörler bu ayarları değiştirebilir, bu yüzden bu sayılara güvenmek yerine onları programında ölç.
+
+## Batarya seviyesini okuma \{#reading-the-battery-level\}
+
+Batarya seviyesi, [oyun bilgisinin](/docs/programming/communication/#game-information) son değeridir. Bu fonksiyon onu saniyede bir ister ve en son değeri `battery` içinde tutar:
+
+<CodeTabs file="battery" region="battery" />
+
+## Bataryayı değiştirme \{#replacing-the-battery\}
+
+Temas kareleri camgöbeğidir, bu yüzden [renk sensörü](/docs/programming/sensors/colour-sensor/) onları görür: kırmızı 0'a yakın, yeşil ve mavi yüksektir.
+
+Başlangıç robotunun renk sensörü öndedir, ama Erebus robotun **merkezinin** konumunu kontrol eder. Bu yüzden sensör camgöbeği gördüğünde robot durmadan önce biraz daha ilerler. Ardından batarya dolana kadar bekler; bu 5 saniye sürer:
+
+<CodeTabs file="battery" region="contact" />
+
+## Programın tamamı \{#the-complete-program\}
+
+Bu program duvarlardan kaçınarak dolaşır ve %50'nin altındayken bir temas karesinden geçtiğinde bataryasını değiştirir. Onu, başlangıç karesinin yanında bir temas karesi olan `2027_d1r1.wbt` üzerinde çalıştır.
+
+<CodeTabs file="battery" />
+
+Maç olayları her değişimi `Battery replaced` olarak gösterir:
+
+![İki batarya değişimi gösteren maç olayları](../../../../docs/programming/battery/battery-events.png)
+
+## Planlama \{#planning\}
+- Temas karelerinin nerede olduğunu bil: harita için yaptığın gibi, keşfederken onları hatırla.
+- Batarya azalmadan önce bildiğin en yakın temas karesine yönel. Pay bırak, çünkü yol beklediğinden uzun sürebilir.
+- Mümkünse bataklıklardan kaçın ya da onları hızlıca geç.
+- Durmak oyun süresine mal olur ama varsayılan ayarlarla bataryaya mal olmaz; yani bir duvar işaretini bildirmek için 1 saniye durmak batarya harcamaz.
+
+Sırada, [Keşif ve haritalama](/docs/programming/exploring/) bölümünde robotun nerelerden geçtiğini kaydetmeyi öğren.

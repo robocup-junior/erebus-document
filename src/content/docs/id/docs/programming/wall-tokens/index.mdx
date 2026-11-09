@@ -1,6 +1,6 @@
 ---
 title: Penanda dinding
-description: Cara membedakan korban huruf, target kognitif, dan penanda palsu.
+description: Cara membedakan korban smiley, target kognitif, dan yang palsu.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -10,8 +10,8 @@ Penanda dinding (wall token) menyumbang sebagian besar poinmu, dan setiap lapora
 
 | Penanda itu... | Yang harus dilakukan |
 |---|---|
-| Korban huruf (Φ, Ψ, Ω) | Laporkan `H`, `S`, atau `U` |
-| Korban palsu (simbol yang sama, tetapi tiga dimensi) | Jangan laporkan, dan jangan masukkan ke peta |
+| Korban smiley (sedih, datar, senang) | Laporkan `H`, `S`, atau `U` |
+| Korban palsu (wajah yang sama, tiga dimensi) | Jangan laporkan, dan jangan masukkan ke peta |
 | Target kognitif dengan jumlah 0 sampai 3 | Laporkan `F`, `P`, `C`, atau `O` |
 | Target kognitif dengan jumlah lainnya | Penanda palsu: jangan laporkan, dan jangan masukkan ke peta |
 
@@ -20,14 +20,14 @@ Lihat [Aturan](/docs/rules/#wall-tokens) untuk definisi yang tepat, dan [Komunik
 ## Apa yang dilihat kamera \{#what-the-camera-sees\}
 Kamera robot pemula beresolusi 64 × 40 piksel. Pada resolusi itu, penanda hanya terdiri atas beberapa piksel sampai robot cukup dekat, jadi sebaiknya cari kandidat dari kejauhan, lalu mendekat untuk membacanya. Ingat bahwa laporan mensyaratkan robot berada dalam jarak setengah ubin dari penanda, dan bahwa kamera kustom bisa punya resolusi lebih tinggi, dengan biaya tambahan.
 
-![Empat gambar kamera robot pemula saat robot makin mendekati korban huruf](../../../../docs/programming/wall-tokens/camera-distance.png)
+![Empat gambar dari kamera robot pemula saat mendekati korban smiley](../../../../docs/programming/wall-tokens/camera-distance.png)
 
 ![Target kognitif dilihat oleh kamera 64 kali 40](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
-Korban huruf adalah simbol hitam di atas kotak putih, dan bisa diputar ke sudut mana pun, jadi metodemu tidak boleh bergantung pada orientasinya.
+Korban smiley adalah wajah hitam di atas kotak putih, dan bisa diputar ke sudut mana pun, jadi metodemu tidak boleh bergantung pada orientasi. Ketiga wajah berbeda pada bentuk mulutnya: melengkung ke bawah pada wajah sedih (`H`), lurus pada wajah datar (`S`), dan melengkung ke atas pada wajah senang (`U`).
 
-![Korban huruf di dinding dalam simulator](../../../../docs/programming/wall-tokens/letter_victim.png)
+![Korban smiley di dinding dalam simulator](../../../../docs/programming/wall-tokens/smiley_victim.png)
 
 
 ## Membaca target kognitif \{#reading-a-cognitive-target\}
@@ -51,7 +51,7 @@ Setelah kamu mendapatkan kelima warna, kode yang dilaporkan berasal dari jumlahn
 Misalnya, `['Y', 'B', 'R', 'K', 'G']` berjumlah 0, jadi jenisnya `F`, dan `['B', 'Y', 'K', 'K', 'K']` berjumlah -4, jadi penanda itu palsu.
 
 ## Mendeteksi korban palsu \{#detecting-fake-victims\}
-Korban palsu menampilkan simbol yang sama dengan korban asli, tetapi hurufnya tiga dimensi. Dari depan, kamera saja mungkin tidak bisa membedakannya:
+Korban palsu menampilkan wajah yang sama dengan yang asli, tetapi emojinya tiga dimensi. Dari depan, kamera saja mungkin tidak bisa membedakannya:
 
 ![Korban palsu dilihat dari depan](../../../../docs/programming/wall-tokens/fake_victim_front.png)
 
@@ -59,8 +59,10 @@ Korban palsu menampilkan simbol yang sama dengan korban asli, tetapi hurufnya ti
 Aturan menyatakan bahwa kedalamannya bisa dideteksi dengan salah satu sensor yang tersedia di Robot Customizer. Beberapa ide untuk dijelajahi:
 
 - Bandingkan pengukuran jarak di sepanjang penanda, dengan Lidar atau sensor jarak, untuk mencari perbedaan ketinggian.
-- Lihat penanda dari sudut miring, karena relief mengubah bentuk simbolnya.
+- Melihat penanda dari samping, tempat relief mengubah bentuk wajahnya.
 
-World `world3.wbt` dan `world4.wbt` berisi korban palsu, dan [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) bisa menambahkannya ke petamu sendiri. Erebus juga menyertakan skrip `scripts/update_maps_with_fakes.py`, yang secara acak mengubah korban di world yang sudah ada menjadi palsu.
+![Korban palsu yang sama dilihat dari samping, tempat reliefnya terlihat](../../../../docs/programming/wall-tokens/fake_victim_angle.png)
+
+World `world3.wbt`, `world4.wbt`, dan keempat world `2027_` berisi korban palsu, dan [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) bisa menambahkannya ke petamu sendiri. Erebus juga menyertakan skrip `scripts/update_maps_with_fakes.py`, yang secara acak mengubah korban di world yang sudah ada menjadi palsu.
 
 Melaporkan penanda palsu mengurangi 5 poin sebagai salah identifikasi, sedangkan korban asli di ubin linear di Area 1 bernilai 15 poin jika jenisnya juga benar, dan lebih tinggi lagi di area lain. Ingatlah hal itu saat menentukan seberapa yakin robotmu perlu sebelum melaporkan penanda.

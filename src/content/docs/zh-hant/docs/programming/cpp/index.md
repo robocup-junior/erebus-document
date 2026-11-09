@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## 編譯 {#compiling}
-在任何系統上最簡單的方式是使用 Webots 編輯器：用 **Wizards > New Robot Controller** 建立一個附有 `Makefile` 的 C++ 控制器，然後按下 **Build** 按鈕。請參閱 [Webots 指南](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b)。
+在任何系統上最簡單的方式是使用 Webots 編輯器：用 **Wizards > New Robot Controller** 建立一個附有 `Makefile` 的 C++ 控制器，然後按下 **Build** 按鈕。請參閱 [Webots 指南](https://cyberbotics.com/doc/guide/using-cpp?version=R2025a)。
 
 你也可以從終端機編譯。這個指令已在 macOS 上測試過：
 
@@ -53,5 +53,5 @@ clang++ -std=c++17 -I$WEBOTS/include/controller/cpp -L$WEBOTS/lib/controller \
 
 ## 執行 {#running}
 
-- **在 Windows 上，** 用控制視窗左邊的 LOAD 按鈕載入 `.exe` 檔案。
-- **在 macOS 和 Linux 上，** 編譯後的程式沒有副檔名，無法用 LOAD 按鈕選取。請改用 [Remote Controller](/docs/competition/remote-controller/) 執行它們，就像在比賽中一樣。
+- **在 Windows 上，** 在控制視窗 **Robot setup** 中的 **Controller** 下載入 `.exe` 檔案。
+- **在 macOS 和 Linux 上，** 編譯後的程式沒有副檔名，無法用 **Load file** 選取。請改用 [Remote Controller](/docs/competition/remote-controller/) 執行它們，就像在比賽中一樣。

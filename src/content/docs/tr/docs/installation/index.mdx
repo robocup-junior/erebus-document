@@ -1,27 +1,28 @@
 ---
 title: Gereksinimler
-description: "Erebus v26'yı çalıştırmak için gerekenler: Webots R2023b, Python 3.9 ya da daha yenisi ve gerekli kütüphaneler."
+description: "Erebus v27'yı çalıştırmak için gerekenler: Webots R2025a, Python 3.10 ya da daha yenisi ve gerekli kütüphaneler."
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { latestVersion } from '@/data/release';
 
 ## Yazılım gereksinimleri \{#software-requirements\}
 Simülasyon sistemi üç bileşenden oluşur ve her birini kurman gerekir. Kurulum kolaydır, ama Webots'u indirip kurmak biraz zaman alabilir. Üç bileşen şunlardır:
 
-1. Webots robot simülatörü, **R2023b** sürümü: simülasyon ortamı. Erebus v26, Webots'un diğer sürümlerini desteklemez.
-1. Erebus: dünyalar ve kuralları uygulayıp puanı hesaplayan Main Supervisor. En yeni sürüm **v26.1**'dir.
-1. Python, **3.9 ya da daha yeni** sürüm: Erebus'un kendisini çalıştırmak ve robotlar için denetleyici yazmak için gerekir. Denetleyicileri C/C++ ile de yazabilirsin.
+1. Webots robot simülatörü, **R2025a** sürümü: simülasyon ortamı. Erebus v27, Webots'un diğer sürümlerini desteklemez.
+1. Erebus: dünyalar ve kuralları uygulayıp puanı hesaplayan Main Supervisor. En yeni sürüm **v<span data-erebus-version>{latestVersion}</span>**'dir.
+1. Python, **3.10 ya da daha yeni** sürüm: Erebus'un kendisini çalıştırmak ve robotlar için denetleyici yazmak için gerekir. Denetleyicileri C/C++ ile de yazabilirsin.
 
 ## Minimum sistem gereksinimleri \{#minimum-system-requirements\}
-* Linux: Ubuntu 20.04 LTS ya da 22.04 LTS
+* Linux: Ubuntu 22.04 LTS ya da 24.04 LTS
 * Windows: Windows 10 ya da 11, 64 bit
-* macOS: macOS 11 "Big Sur" ya da 12 "Monterey". Bunlar, Webots R2023b'nin desteklediği sürümlerdir. macOS'un daha yeni sürümleri de çalışabilir: bu belgeler macOS 26'da test edildi.
+* macOS: macOS 12 "Monterey", 13 "Ventura" ya da 14 "Sonoma". Bunlar, Webots R2025a'nın desteklediği sürümlerdir. macOS'un daha yeni sürümleri de çalışabilir: bu belgeler macOS 26'da test edildi.
 * CPU: çift çekirdekli, 2 GHz
 * RAM: 2 GB
-* Grafik: OpenGL destekli ve 512 MB belleğe sahip bir NVIDIA ya da AMD ekran kartı
+* Grafik: OpenGL 3.3 destekli ve 512 MB belleğe sahip bir NVIDIA ya da AMD ekran kartı
 
 ## Python kütüphaneleri \{#python-libraries\}
-Erebus'un aşağıdaki Python kütüphanelerine ihtiyacı var. Çoğu, Erebus başladığında otomatik olarak kurulur, ama **OpenCV kurulmaz**; bu yüzden onu kendin kurmalısın. Her işletim sisteminin kurulum kılavuzunda bu adım yer alır.
+Erebus'un aşağıdaki Python kütüphanelerine ihtiyacı var. Çoğu, Erebus başladığında otomatik olarak kurulur, ama **OpenCV kurulmaz**; bu yüzden onu kendin kurmalısın. Her işletim sisteminin kurulum kılavuzunda bu adım yer alır. Erebus klasöründeki `requirements.txt` dosyası, Erebus'un test edildiği sürümleri listeler.
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python
@@ -32,5 +33,8 @@ python3 -m pip install numpy termcolor requests overrides pillow opencv-python
 <CardGrid>
 	<LinkCard title="Windows" description="Windows 10 ve 11" href="/docs/installation/windows/" />
 	<LinkCard title="macOS" description="Intel ve Apple silicon üzerinde macOS" href="/docs/installation/mac/" />
-	<LinkCard title="Linux" description="Ubuntu 20.04 ve 22.04" href="/docs/installation/linux/" />
+	<LinkCard title="Linux" description="Ubuntu 22.04 ve 24.04" href="/docs/installation/linux/" />
 </CardGrid>
+
+## İsteğe bağlı: Wireshark \{#optional-wireshark\}
+Erebus, bir maç sırasında oyuna yetkisiz erişim olup olmadığını görmek için ağı izleyebilir; organizatörler bunu yarışmalarda kullanır. Bunun için [Wireshark](https://www.wireshark.org/download.html) gerekir. Çalışırken ona ihtiyacın yok: Wireshark yoksa kontrol penceresi ağ erişiminin izlenmediğine dair bir uyarı gösterir; onaylayıp görmezden gelebilirsin.

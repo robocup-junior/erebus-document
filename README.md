@@ -98,5 +98,7 @@ Before a release, run each example on the starter robot in Erebus: load the robo
 1. In `src/data/versions.ts`, add the new version with `current: true`, and change the previous one to `current: false` with its `vNN.erebus.rcj.cloud` address.
 1. We support the latest two years, so remove older versions from `src/data/versions.ts`.
 1. Search `src/content/docs` for the old version numbers, and for the Webots version if it has changed.
-1. Update the rules summary from the new rules PDF. Links to the PDF are in `rules/index.md` and `tutorials/map-creator/index.md`.
+1. Update the rules summary from the new rules PDF. Links to the PDF are in `rules/index.md` and `tools/world-editor/index.md`.
 1. Check the example matrices in `rules/mapping/index.md`. If the worlds have changed, they must be generated again from the new version.
+1. Give the new version its own accent colour, so that readers can tell the versions apart: change the `--sl-color-accent*` and `--erebus-highlight*` variables at the top of `src/styles/theme.css`.
+1. Retake the screenshots and the home page clips (`public/home/`) with the new version.

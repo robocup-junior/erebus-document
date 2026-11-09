@@ -39,7 +39,7 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 3. 如果没有，用广度优先搜索找到最近的、有未访问相邻地块的地块，然后前往那里。
 4. 当不再有这样的地块，或者时间不多时，用同样的方法返回起点。
 
-把坑洞当作墙来处理。沼泽会消耗时间，而且每次进入同一片沼泽消耗得更多，所以只有在值得时才进入。
+把坑洞当作墙。沼泽会让电池消耗得更快，所以只在值得时才进入。记住接触地块的位置，以便在途中[更换电池](/docs/programming/battery/)。
 
 ## 应对意外情况 {#handle-the-unexpected}
 - **缺乏进展**：机器人会被移到最后一个检查点。[监听 `L` 消息](/docs/programming/communication/#lack-of-progress)，并更新你的位置。
@@ -59,4 +59,4 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 
 你的地图可以从任何位置开始：Erebus 会利用起始地块来[对齐矩阵](/docs/rules/mapping/#how-correctness-is-calculated)，并尝试四种旋转方向。[地图规则](/docs/rules/mapping/)解释了矩阵中的每一个值。然后[提交地图](/docs/programming/map-bonus/)。
 
-用示例世界来测试，它们的正确答案在[地图规则](/docs/rules/mapping/#examples)中。结果会以 `Map Correctness` 的形式显示在控制窗口的历史记录中。
+用示例世界来测试，它们的正确答案在[地图规则](/docs/rules/mapping/#examples)中。结果会以 `Map Correctness` 的形式显示在控制窗口的比赛事件中。

@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## Mengompilasi {#compiling}
-Cara termudah di sistem apa pun adalah editor Webots: gunakan **Wizards > New Robot Controller** untuk membuat controller C++ beserta `Makefile`-nya, lalu tekan tombol **Build**. Lihat [panduan Webots](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b).
+Cara termudah di sistem apa pun adalah editor Webots: gunakan **Wizards > New Robot Controller** untuk membuat controller C++ beserta `Makefile`-nya, lalu tekan tombol **Build**. Lihat [panduan Webots](https://cyberbotics.com/doc/guide/using-cpp?version=R2025a).
 
 Kamu juga bisa mengompilasi dari terminal. Perintah ini sudah diuji di macOS:
 
@@ -53,5 +53,5 @@ Di Linux, opsi yang sama bisa dipakai dengan `WEBOTS=/usr/local/webots`. Jika ka
 
 ## Menjalankan {#running}
 
-- **Di Windows,** muat berkas `.exe` dengan tombol LOAD sebelah kiri di jendela kontrol.
-- **Di macOS dan Linux,** program hasil kompilasi tidak punya ekstensi berkas, dan tombol LOAD tidak bisa memilihnya. Sebagai gantinya, jalankan dengan [Remote Controller](/docs/competition/remote-controller/), seperti yang akan kamu lakukan di kompetisi.
+- **Di Windows,** muat berkas `.exe` di bawah **Controller** pada **Robot setup** di jendela kontrol.
+- **Di macOS dan Linux,** program hasil kompilasi tidak punya ekstensi berkas, dan **Load file** tidak bisa memilihnya. Sebagai gantinya, jalankan dengan [Remote Controller](/docs/competition/remote-controller/), seperti yang akan kamu lakukan di kompetisi.

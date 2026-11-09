@@ -1,32 +1,31 @@
 ---
-title: Novidades da v26
-description: As mudanças do Erebus v26 e das regras de 2026 que afetam o seu robô.
+title: Novidades da v27
+description: As mudanças do Erebus v27 e das regras de 2027 que afetam seu robô.
 ---
 
-O Erebus v26 implementa as regras de 2026. Se você vem de uma versão anterior, estas são as mudanças que afetam o seu robô.
+O Erebus v27 implementa as regras de 2027. Se você vem da v26, estas são as mudanças que afetam seu robô.
 
-| Tema | Até 2025 | A partir de 2026 |
+| Assunto | Até 2026 | A partir de 2027 |
 |---|---|---|
-| Vítimas de letra | Letras H, S, U | Símbolos Φ (ferida), Ψ (estável), Ω (ilesa). Elas continuam sendo informadas como `H`, `S`, `U`. |
-| Sinais de materiais perigosos | Quatro rótulos de materiais perigosos (hazmat) | Substituídos pelos [alvos cognitivos](/docs/rules/#cognitive-targets) (cognitive targets): anéis coloridos concêntricos cujos valores somados dão o tipo. Eles continuam sendo informados como `F`, `P`, `C`, `O`. |
-| Marcadores falsos | - | Novo: [vítimas falsas](/docs/rules/#fake-victims) (fake victims) com letras tridimensionais e alvos cognitivos cuja soma não está entre 0 e 3. Não os informe nem os coloque no mapa. |
-| Pântanos | Tempo consumido 5x mais rápido | A primeira entrada em um pântano é x5, e cada nova entrada no mesmo pântano soma 1, até x10. |
-| Obstáculos no mapa | Não mapeados | Ladrilhos com um obstáculo são mapeados como `x`. |
-| Bônus de mapa | Até x2 | O multiplicador agora é acerto × 1,2 + 1. |
-| Ruído dos sensores | - | O GPS tem ruído. Os organizadores não vão mudar os níveis de ruído na competição. |
-| Execução das partidas | Anunciada a cada evento | Configuração servidor-cliente: o seu controlador roda no seu próprio computador, conectado ao servidor da partida por Ethernet. Veja [Remote Controller](/docs/competition/remote-controller/). |
-| Documentos | TDP, pôster, vídeo | Além disso, um vídeo curto mostrando como você executa o seu controlador na configuração servidor-cliente. |
-| Partidas não disputadas | -50 pontos | 0 pontos. |
+| Bateria | - | Novo: o robô tem uma [bateria](/docs/rules/#the-battery) que descarrega conforme a velocidade dos motores. Se ela acabar, a partida termina. |
+| Ladrilhos de contato | - | Novo: [ladrilhos de contato](/docs/rules/#contact-tiles) ciano. Ficar parado 5 segundos sobre um substitui a bateria. Eles são mapeados como `k`. |
+| Pântanos | O tempo de partida corre mais rápido: x5 na primeira entrada, até x10 | A bateria descarrega mais rápido. O tempo de partida não é afetado. |
+| Vítimas | Símbolos Φ, Ψ, Ω | [Rostos smiley](/docs/rules/#smiley-victims): triste (ferida), neutro (estável) e feliz (ilesa). Continuam sendo informados como `H`, `S`, `U`. |
+| Vítimas falsas | Símbolos tridimensionais | Rostos smiley tridimensionais |
+| Informações da partida | A resposta a `G` tem 16 bytes | A resposta a `G` tem 20 bytes e termina com o nível da bateria. Veja [Informações da partida](/docs/programming/communication/#game-information). |
+| Distância para informar | O Erebus v26 aceitava informes até 9 cm do marcador | Meio ladrilho (6 cm), como dizem as regras |
+| Áreas | Quatro áreas, a área 4 opcional | Até quatro áreas: a área 1 sempre existe, e os organizadores podem deixar de fora as áreas 2 a 4 |
+| Webots | R2023b | **R2025a** |
+| Python | 3.9 ou mais recente | 3.10 ou mais recente |
 
-A versão do Webots não mudou: o Erebus v26 continua rodando no Webots **R2023b**.
+[Sua primeira execução](/docs/getting-started/) mostra como usar a janela de controle do Erebus v27.
 
-As duas versões lançadas depois da v26.0.0 não mudam as regras. A v26.0.1 adiciona mundos de exemplo com vítimas falsas e um script que transforma as vítimas de um mundo existente em falsas, e a v26.1 corrige a forma como os obstáculos são marcados na área 4.
+## Atualizando seu programa {#updating-your-program}
 
-## Atualizando o seu programa {#updating-your-program}
-
-1. Atualize a sua detecção de vítimas para os novos símbolos. As letras que você informa não mudam.
-2. Substitua a detecção de materiais perigosos pela [leitura de alvos cognitivos](/docs/programming/wall-tokens/#reading-a-cognitive-target).
-3. Garanta que o seu programa não informe os falsos e os deixe fora do mapa.
-4. Adicione os obstáculos ao seu mapa, como `x`.
-5. Planeje a sua rota pensando nos novos pântanos: cada vez que o robô entra no mesmo pântano, isso custa mais tempo.
-6. Pratique a [configuração servidor-cliente](/docs/competition/remote-controller/).
+1. Leia a resposta a `G` como 20 bytes. Um programa que só aceita 16 bytes não recebe mais as informações da partida.
+1. Acompanhe o nível da bateria e planeje sua rota para que o robô chegue a um ladrilho de contato antes que ela acabe. Veja [Bateria](/docs/programming/battery/).
+1. Adicione os ladrilhos de contato ao seu mapa, como `k`.
+1. Atualize sua detecção de vítimas para os rostos smiley. As letras que você informa não mudam.
+1. Informe os marcadores de mais perto: o centro do robô, e a posição enviada, precisam estar a menos de meio ladrilho do marcador.
+1. Os pântanos agora gastam bateria em vez de tempo, então leve-os em conta no seu plano de bateria.
+1. Instale o Webots R2025a e o Python 3.10 ou mais recente, e confira se seu programa ainda funciona. Veja [Instalação](/docs/installation/).

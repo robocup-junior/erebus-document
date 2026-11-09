@@ -18,12 +18,19 @@ Haritalama bonusu puanını 2,2 katına kadar çıkarır, yani çok değerlidir.
 - Süre kaldığından emin ol. Oyun sen `M`'yi göndermeden biterse değerlendirilecek bir harita olmaz.
 - Bonusu almak için `E` göndermen gerekmez: süre dolduğunda da uygulanır. Ama çıkış bonusunu almanın yolu `E` göndermektir ve bu bonus, haritalama bonusu uygulanmadan önce eklenir.
 - Harita, başlangıç karesini (`5`) içermelidir; bu kare haritayı doğru cevapla hizalamak için kullanılır. O olmadan harita değerlendirilemez.
-- Sonuç, kontrol penceresinin geçmişinde `Map Correctness` olarak gösterilir. Webots konsolunda `Map scoring error` alırsan biçimini kontrol et.
+- Sonuç, kontrol penceresinin maç olaylarında `Map Correctness` olarak gösterilir. Webots konsolunda `Map scoring error` alırsan biçimini kontrol et.
 
 Aşağıdaki örnek, `world1.wbt` için doğru cevabı gönderir; iletişim kodunu kontrol etmek için kullanışlıdır. Örneği oyunun başında çalıştırırsan oyun hemen biter ve çarpanın çarpacağı bir puan olmadığı için puan 0'da kalır.
 
 <CodeTabs file="basics" />
 
-![Örnekten sonra kontrol penceresinin geçmişi: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+![Örnekten sonraki maç olayları: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+
+## Haritanı inceleme \{#reviewing-your-map\}
+Haritanın nasıl puanlandığını görmek için kontrol penceresindeki **Save map** düğmesine bas. Erebus sonucu `match-results` içindeki maçın `map` klasörüne kaydeder ve tarayıcında açar. **Advanced setup** içindeki **Automatic map result** ile harita değerlendirilir değerlendirilmez açılır.
+
+![Örneğin harita incelemesi: her hücre doğru](../../../../docs/programming/map-bonus/map-review.png)
+
+Yanlış hücreler kırmızıyla işaretlenir. Robotunun ne gönderdiğini ve doğru cevabın ne olduğunu görmek için bir hücreye tıkla. **Save matrix** robotunun gönderdiği haritayı, **Save PNG** ise resmi kaydeder.
 
 Erebus sürüm paketindeki `player_controllers` klasöründe bulunan `MapScorerExample.py` örneği de aynı şekilde çalışır.

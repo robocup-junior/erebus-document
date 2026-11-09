@@ -7,9 +7,9 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 Mit der Remote-Controller-Funktion von Erebus kannst du Webots-Simulationen über ein Netzwerk ausführen. Ein Computer führt die Webots-Simulation aus (der Server), und der andere Computer führt das Controller-Programm des Roboters aus (der Client). Wir nennen das das „Server-Client-Setup“.
 
-**Nach den Regeln von 2026 werden die Spiele beim Wettbewerb so ausgetragen.** Die Organisatoren betreiben den Spielserver und stellen eine RJ-45-Buchse bereit. Du musst mitbringen:
+**Nach den Regeln von 2027 werden die Spiele beim Wettbewerb so ausgetragen.** Die Organisatoren betreiben den Spielserver und stellen eine RJ-45-Buchse bereit. Du musst mitbringen:
 
-- Einen Computer mit deinem Programm, startbereit und mit installiertem Webots R2023b
+- Einen Computer mit deinem Programm, startbereit und mit installiertem Webots R2025a
 - Ein Ethernet-Kabel. Mindestens CAT5 wird dringend empfohlen, um 100 Mbit/s zu unterstützen.
 - Einen Ethernet-Anschluss. Wenn dein Computer keinen hat, bring einen Adapter mit und teste ihn vorher.
 
@@ -17,11 +17,11 @@ Damit vor Ort alles reibungslos klappt, probiere das Setup rechtzeitig vorher au
 
 ## So funktioniert es \{#how-it-works\}
 
-1. Öffne die Welt und schalte im Steuerfenster den Remote-Modus ein.
+1. Öffne die Welt und schalte **Remote mode** in **Robot setup** des Steuerfensters ein.
 1. Starte deinen Controller in einem Terminal. Er verbindet sich mit Webots und wartet.
-1. Drücke den Start-Button im Steuerfenster.
+1. Drücke im Steuerfenster auf **Run match**.
 
-Dein Controller verwendet dieselben Webots-Bibliotheken und denselben Code wie beim Laden mit dem LOAD-Button. Der eigene Roboter, falls du einen hast, wird weiterhin im Steuerfenster des Servers geladen.
+Dein Controller verwendet dieselben Webots-Bibliotheken und denselben Code wie beim Laden mit **Load file**. Der eigene Roboter, falls du einen hast, wird weiterhin im Steuerfenster des Servers geladen.
 
 ## Vor dem Wettbewerb prüfen \{#things-to-check-before-the-competition\}
 

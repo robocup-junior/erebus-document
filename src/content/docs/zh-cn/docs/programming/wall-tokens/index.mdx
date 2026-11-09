@@ -1,6 +1,6 @@
 ---
 title: 墙面标识
-description: 如何区分字母受害者、认知目标和假标识。
+description: 如何区分笑脸受害者、认知目标和假标识。
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -10,8 +10,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 | 它是…… | 怎么做 |
 |---|---|
-| 字母受害者（Letter victim：Φ、Ψ、Ω） | 报告 `H`、`S` 或 `U` |
-| 假受害者（Fake victim：同样的符号，但是立体的） | 不要报告，也不要把它画进地图 |
+| 笑脸受害者（难过、平静、开心） | 报告 `H`、`S` 或 `U` |
+| 假受害者（同样的表情，但是立体的） | 不要报告，也不要写进地图 |
 | 数值之和为 0 到 3 的认知目标（Cognitive target） | 报告 `F`、`P`、`C` 或 `O` |
 | 数值之和为其他值的认知目标 | 它是假标识：不要报告，也不要把它画进地图 |
 
@@ -20,14 +20,14 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 摄像头看到的画面 \{#what-the-camera-sees\}
 入门机器人的摄像头只有 64 × 40 像素。在这个分辨率下，机器人靠近之前，一个标识只占几个像素，所以最好先从远处寻找可能的标识，再靠近去识别它们。记住，报告时机器人必须在距离标识半个地块以内；另外，自定义摄像头可以使用更高的分辨率，但要花费更多预算。
 
-![入门机器人逐渐靠近字母受害者时拍到的 4 张摄像头图像](../../../../docs/programming/wall-tokens/camera-distance.png)
+![入门机器人的摄像头在逐渐靠近笑脸受害者时拍到的四张图像](../../../../docs/programming/wall-tokens/camera-distance.png)
 
 ![64 × 40 摄像头看到的认知目标](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
-字母受害者是白色方块上的黑色符号，它们可能被旋转成任意角度，所以你的方法不能依赖于方向。
+笑脸受害者是白色方块上的黑色表情，它们可能被旋转成任意角度，所以你的方法不能依赖于方向。三种表情的区别在于嘴的形状：难过的脸（`H`）嘴角向下弯，平静的脸（`S`）是直的，开心的脸（`U`）嘴角向上弯。
 
-![仿真器中墙上的一个字母受害者](../../../../docs/programming/wall-tokens/letter_victim.png)
+![仿真器中墙上的笑脸受害者](../../../../docs/programming/wall-tokens/smiley_victim.png)
 
 
 ## 读取认知目标 \{#reading-a-cognitive-target\}
@@ -51,7 +51,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 例如，`['Y', 'B', 'R', 'K', 'G']` 的和为 0，所以它是 `F`；而 `['B', 'Y', 'K', 'K', 'K']` 的和为 -4，所以它是假标识。
 
 ## 识别假受害者 \{#detecting-fake-victims\}
-假受害者显示的符号与真受害者相同，但字母是立体的。从正面看，仅凭摄像头可能无法区分它们：
+假受害者显示的表情和真的一样，但表情符号是立体的。从正面看，仅靠摄像头可能无法区分：
 
 ![从正面看到的假受害者](../../../../docs/programming/wall-tokens/fake_victim_front.png)
 
@@ -59,8 +59,10 @@ import CodeTabs from '@/components/CodeTabs.astro';
 规则规定，可以用 Robot Customizer 中提供的某一种传感器检测出这种深度。下面是一些可以尝试的思路：
 
 - 用激光雷达或距离传感器在标识上不同位置测量距离并进行比较，寻找高度差。
-- 从斜着的角度观察标识，此时凸起会改变符号的形状。
+- 从斜侧方观察标识，凸起会改变表情的形状。
 
-`world3.wbt` 和 `world4.wbt` 这两个世界中包含假受害者，[World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) 也可以把它们添加到你自己的地图中。Erebus 还附带了脚本 `scripts/update_maps_with_fakes.py`，它会把现有世界中的受害者随机变成假受害者。
+![从斜侧方看到的同一个假受害者，可以看到它的凸起](../../../../docs/programming/wall-tokens/fake_victim_angle.png)
+
+`world3.wbt`、`world4.wbt` 和四个 `2027_` 世界中包含假受害者，[World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) 也可以把它们添加到你自己的地图中。Erebus 还附带了脚本 `scripts/update_maps_with_fakes.py`，它会把现有世界中的受害者随机变成假受害者。
 
 报告一个假标识会被算作误判，扣 5 分；而在区域 1 的线性地块上，一个真受害者连同正确类型可以得 15 分，在其他区域还会更多。在决定机器人需要多有把握才进行报告时，请记住这一点。

@@ -25,9 +25,9 @@ Erebus bu mesajları uzunluklarına göre ayırt eder, bu yüzden bir bildirim t
 | Mesaj | Biçim | Uzunluk | Amaç |
 |---|---|---|---|
 | `L` | `c` | 1 bayt | Bir ilerleme eksikliği oldu |
-| `G` | `c f i i`: `G`, puan, kalan oyun süresi, kalan gerçek zaman | 16 bayt | `G`'ye yanıt. Süreler saniye cinsindendir. |
+| `G` | `c f i i f`: `G`, puan, kalan oyun süresi, kalan gerçek zaman, batarya seviyesi | 20 bayt | `G` yanıtı. Süreler saniye cinsindendir, batarya seviyesi 0 ile 100 arasında bir yüzdedir. |
 
-`G` paketinin dolgu (padding) içerdiğine dikkat et, çünkü yukarıdaki `struct` biçimi float değeri hizalar: puan 4. bayttan, süreler ise 8. ve 12. baytlardan başlar.
+`G` paketinin dolgu baytları içerdiğine dikkat et, çünkü yukarıdaki `struct` biçimi ondalıklı sayıyı hizalar: puan 4. bayttan, süreler 8. ve 12. baytlardan, batarya seviyesi ise 16. bayttan başlar.
 
 ## Sık kullanılan Webots fonksiyonları {#common-webots-functions}
 

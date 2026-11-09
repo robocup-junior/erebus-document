@@ -18,12 +18,19 @@ Der Kartenbonus (Mapping bonus) multipliziert deine Punktzahl mit bis zu 2,2, er
 - Achte darauf, dass noch Zeit übrig ist. Endet das Spiel, bevor du `M` sendest, gibt es keine Karte zum Bewerten.
 - Du musst nicht `E` senden, um den Bonus zu bekommen: Er wird auch angewendet, wenn die Zeit abläuft. Aber mit `E` bekommst du den Ausgangsbonus (Exit bonus), und dieser Bonus wird addiert, bevor der Kartenbonus angewendet wird.
 - Die Karte muss die Startkachel (`5`) enthalten, mit der sie an der richtigen Lösung ausgerichtet wird. Ohne sie kann die Karte nicht bewertet werden.
-- Das Ergebnis wird als `Map Correctness` im Verlauf des Steuerfensters angezeigt. Wenn du in der Webots-Konsole einen `Map scoring error` bekommst, prüfe dein Format.
+- Das Ergebnis wird als `Map Correctness` in den Spielereignissen des Steuerfensters angezeigt. Wenn du in der Webots-Konsole einen `Map scoring error` bekommst, prüfe dein Format.
 
 Das Beispiel unten sendet die richtige Lösung für `world1.wbt`. Das ist nützlich, um deinen Kommunikationscode zu prüfen. Führst du es zu Beginn des Spiels aus, beendet es das Spiel sofort, und die Punktzahl bleibt bei 0, denn ein Multiplikator hat nichts zu multiplizieren.
 
 <CodeTabs file="basics" />
 
-![Der Verlauf des Steuerfensters nach dem Beispiel: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+![Die Spielereignisse nach dem Beispiel: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+
+## Deine Karte überprüfen \{#reviewing-your-map\}
+Drücke im Steuerfenster auf **Save map**, um zu sehen, wie deine Karte bewertet wurde. Erebus speichert das Ergebnis im Ordner `map` des Spiels in `match-results` und öffnet es in deinem Browser. Mit **Automatic map result** in **Advanced setup** öffnet es sich, sobald die Karte bewertet ist.
+
+![Die Kartenprüfung des Beispiels: Jede Zelle ist richtig](../../../../docs/programming/map-bonus/map-review.png)
+
+Falsche Zellen sind rot markiert. Klicke auf eine Zelle, um zu sehen, was dein Roboter gesendet hat und was die richtige Antwort ist. **Save matrix** speichert die Karte, die dein Roboter gesendet hat, und **Save PNG** speichert das Bild.
 
 Das Beispiel `MapScorerExample.py` im Ordner `player_controllers` der Erebus-Version funktioniert auf die gleiche Weise.

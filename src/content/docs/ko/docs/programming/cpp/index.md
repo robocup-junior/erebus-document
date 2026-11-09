@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## 컴파일하기 {#compiling}
-어떤 시스템에서든 가장 쉬운 방법은 Webots 에디터예요. **Wizards > New Robot Controller**로 `Makefile`이 포함된 C++ 컨트롤러를 만들고, **Build** 버튼을 누르세요. [Webots 가이드](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b)를 참고하세요.
+어떤 시스템에서든 가장 쉬운 방법은 Webots 에디터예요. **Wizards > New Robot Controller**로 `Makefile`이 포함된 C++ 컨트롤러를 만들고, **Build** 버튼을 누르세요. [Webots 가이드](https://cyberbotics.com/doc/guide/using-cpp?version=R2025a)를 참고하세요.
 
 터미널에서 컴파일할 수도 있어요. 이 명령은 macOS에서 테스트했어요.
 
@@ -53,5 +53,5 @@ Linux에서는 `WEBOTS=/usr/local/webots`로 같은 옵션을 사용할 수 있�
 
 ## 실행하기 {#running}
 
-- **Windows에서는** 제어 창의 왼쪽 LOAD 버튼으로 `.exe` 파일을 불러오세요.
-- **macOS와 Linux에서는** 컴파일된 프로그램에 파일 확장자가 없어서 LOAD 버튼으로 선택할 수 없어요. 대신 대회에서처럼 [Remote Controller](/docs/competition/remote-controller/)로 실행하세요.
+- **Windows에서는** 제어 창의 **Robot setup**에 있는 **Controller**에서 `.exe` 파일을 불러와요.
+- **macOS와 Linux에서는** 컴파일된 프로그램에 파일 확장자가 없어서 **Load file**로 선택할 수 없어요. 대신 대회에서처럼 [Remote Controller](/docs/competition/remote-controller/)로 실행하세요.

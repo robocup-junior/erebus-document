@@ -7,9 +7,9 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 O recurso de controle remoto do Erebus permite executar simulações do Webots por uma rede. Um computador executa a simulação do Webots (o servidor), e o outro computador executa o programa controlador do robô (o cliente). Chamamos isso de "configuração servidor-cliente" (Server-Client Setup).
 
-**De acordo com as regras de 2026, é assim que as partidas são executadas na competição.** Os organizadores rodam o servidor da partida e fornecem uma tomada RJ-45. Você precisa levar:
+**De acordo com as regras de 2027, é assim que as partidas são executadas na competição.** Os organizadores rodam o servidor da partida e fornecem uma tomada RJ-45. Você precisa levar:
 
-- Um computador com o seu programa, pronto para rodar, e com o Webots R2023b instalado
+- Um computador com o seu programa, pronto para rodar, e com o Webots R2025a instalado
 - Um cabo Ethernet. Recomendamos fortemente pelo menos CAT5, para suportar 100 Mbit/s.
 - Uma porta Ethernet. Se o seu computador não tiver uma, leve um adaptador e teste-o com antecedência.
 
@@ -17,11 +17,11 @@ Para que tudo corra bem quando você chegar ao local da competição, experiment
 
 ## Como funciona \{#how-it-works\}
 
-1. Abra o mundo e ative o modo remoto na janela de controle.
+1. Abra o mundo e ative **Remote mode** em **Robot setup** da janela de controle.
 1. Inicie o seu controlador pelo terminal. Ele se conecta ao Webots e fica esperando.
-1. Pressione o botão de início na janela de controle.
+1. Clique em **Run match** na janela de controle.
 
-O seu controlador usa as mesmas bibliotecas do Webots e o mesmo código de quando é carregado com o botão LOAD. O robô personalizado, se você tiver um, continua sendo carregado na janela de controle do servidor.
+O seu controlador usa as mesmas bibliotecas do Webots e o mesmo código de quando é carregado com o **Load file**. O robô personalizado, se você tiver um, continua sendo carregado na janela de controle do servidor.
 
 ## O que conferir antes da competição \{#things-to-check-before-the-competition\}
 

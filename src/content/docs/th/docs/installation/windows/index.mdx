@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: ติดตั้ง Erebus และ Webots R2023b บน Windows
+description: ติดตั้ง Erebus และ Webots R2025a บน Windows
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. ติดตั้ง **Python 3.9 ขึ้นไป** (64 บิต) จาก[เว็บไซต์ทางการ](https://www.python.org/downloads/windows/) ระหว่างการติดตั้ง ตรวจสอบให้แน่ใจว่าได้เพิ่ม Python ลงใน PATH แล้ว:
+1. ติดตั้ง **Python 3.10 ขึ้นไป** (64 บิต) จาก[เว็บไซต์ทางการ](https://www.python.org/downloads/windows/) ระหว่างการติดตั้ง ตรวจสอบให้แน่ใจว่าได้เพิ่ม Python ลงใน PATH แล้ว:
 
    ![ตัวเลือก Add Python to PATH ของตัวติดตั้ง Python](../../../../docs/installation/windows/python-path.png)
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. ติดตั้ง **Webots R2023b** จาก[รีโพสิทอรีทางการ](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe)
+3. ติดตั้ง **Webots R2025a** จาก[รีโพสิทอรีทางการ](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a_setup.exe)
 
 4. ดาวน์โหลด <DownloadErebus /> แล้วแตกไฟล์
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 ดับเบิลคลิกไฟล์โลก `game/worlds/world1.wbt` เพื่อเปิดใน Webots
 
-Webots จะเปิดหน้าต่างควบคุมของ Erebus ในเว็บเบราว์เซอร์ของคุณ ในครั้งแรก Erebus จะติดตั้งไลบรารี Python บางตัว ซึ่งอาจใช้เวลาสักพัก เมื่อหน้าต่างแสดงตัวจับเวลาเกม 08:00 ก็แสดงว่าพร้อมแล้ว:
+Webots จะเปิดหน้าต่างควบคุมของ Erebus ในเว็บเบราว์เซอร์ของคุณ ในครั้งแรก Erebus จะติดตั้งไลบรารี Python บางตัวและเตรียมโมเดลหุ่นยนต์ ซึ่งอาจใช้เวลาสักพัก เมื่อหน้าต่างแสดง **Ready** และตัวจับเวลาเกม 08:00 ก็แสดงว่าพร้อมแล้ว:
 
 ![หน้าต่างควบคุมของ Erebus ที่พร้อมเริ่มต้น](../../../../docs/installation/windows/../control-window-ready.png)
+
+ในครั้งแรก คอนโซลของ Webots อาจแสดง `ERROR: Skipped PROTO 'custom_robot'` ด้วย ซึ่งไม่ต้องสนใจ Erebus จะเตรียมโมเดลหุ่นยนต์และโหลดโลกใหม่เอง
 
 ขั้นต่อไป อ่าน[สรุปกติกา](/docs/rules/) เพื่อทำความเข้าใจเกม หากเกิดปัญหา ดูที่[การแก้ไขปัญหา](/docs/troubleshooting/)

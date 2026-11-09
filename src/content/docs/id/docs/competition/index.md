@@ -3,7 +3,7 @@ title: Persiapan kompetisi
 description: Daftar periksa untuk bersiap menghadapi kompetisi RoboCupJunior Rescue Simulation.
 ---
 
-Halaman ini adalah panduan untuk kompetisi internasional dengan aturan 2026. Kompetisi lokal dan regional mungkin berbeda, jadi tanyakan kepada panitiamu. [Aturan](/docs/rules/) resmi selalu berlaku.
+Halaman ini adalah panduan untuk kompetisi internasional dengan aturan 2027. Kompetisi lokal dan regional mungkin berbeda, jadi tanyakan kepada panitiamu. [Aturan](/docs/rules/) resmi selalu berlaku.
 
 ## Jadwal {#timeline}
 
@@ -22,7 +22,7 @@ Templat dan rubrik ada di [Situs Web Komunitas RCJ Rescue](https://rescue.rcj.cl
 - [ ] **Technical Description Paper (TDP).** Ikuti templatnya dengan ketat: jika tidak, skor untuk dokumen ini 0.
 - [ ] **Poster,** sebagai berkas digital dan sebagai poster fisik di lokasi, tidak lebih besar dari A1.
 - [ ] **Video** yang menampilkan proyekmu.
-- [ ] **Video server-klien,** baru di 2026: video singkat yang menunjukkan cara kamu menjalankan controller pada peta contoh dengan pengaturan server-klien.
+- [ ] **Video server-klien:** video singkat yang menunjukkan cara kamu menjalankan controller pada peta contoh dalam pengaturan server-klien.
 - [ ] **Kode sumber** dan **formulir web** untuk wawancara.
 
 ## Pengaturan kompetisi {#competition-setup}
@@ -30,7 +30,7 @@ Permainan berjalan dengan pengaturan server-klien: panitia menjalankan server pe
 
 Bawalah:
 
-- [ ] Komputer dengan programmu dan semua library-nya terinstal, serta Webots R2023b
+- [ ] Komputer dengan programmu dan semua library-nya terinstal, serta Webots R2025a
 - [ ] Kabel Ethernet, dan adaptor jika komputermu membutuhkannya
 - [ ] Berkas `.json` robotmu, jika kamu punya robot kustom
 - [ ] Poster fisik
@@ -47,9 +47,9 @@ Kecuali panitia mengumumkan hal lain, pengaturan berikut yang digunakan. Pengatu
 | Anti-aliasing | Disabled |
 
 ## Menguji robotmu {#testing-your-robot}
-- [ ] Jalankan di setiap world yang disertakan, terutama `world3.wbt` dan `world4.wbt`, yang berisi penanda palsu.
+- [ ] Jalankan di setiap world yang disertakan, terutama keempat world `2027_`, yang berisi ubin kontak dan penanda palsu.
 - [ ] Buat petamu sendiri dengan [World Editor](/docs/tools/world-editor/), mencakup keempat area.
-- [ ] Periksa seluruh permainan: apakah robot berjalan sampai akhir, mengirim peta, dan kembali ke titik awal tepat waktu?
+- [ ] Periksa seluruh permainan: apakah berjalan sampai akhir, mengganti baterai tepat waktu, mengirim peta, dan kembali ke start?
 - [ ] Uji apa yang terjadi setelah kurangnya kemajuan (lack of progress).
 - [ ] Uji di komputer yang akan kamu bawa, dan dengan pengaturan OpenGL di atas.
 

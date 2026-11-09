@@ -18,12 +18,19 @@ O bônus de mapa (mapping bonus) multiplica a sua pontuação por até 2,2, ent�
 - Garanta que ainda haja tempo. Se a partida terminar antes de você enviar `M`, não há mapa para avaliar.
 - Você não precisa enviar `E` para ganhar o bônus: ele também é aplicado se o tempo acabar. Mas `E` é a forma de ganhar o bônus de saída (exit bonus), e esse bônus é somado antes de o bônus de mapa ser aplicado.
 - O mapa precisa conter o ladrilho inicial (`5`), que é usado para alinhá-lo à resposta correta. Sem ele, o mapa não pode ser avaliado.
-- O resultado aparece como `Map Correctness` no histórico da janela de controle. Se você receber um `Map scoring error` no console do Webots, confira o seu formato.
+- O resultado aparece como `Map Correctness` nos eventos da partida da janela de controle. Se você receber um `Map scoring error` no console do Webots, confira o seu formato.
 
 O exemplo abaixo envia a resposta correta para `world1.wbt`, o que é útil para conferir o seu código de comunicação. Se você executá-lo no início da partida, ele termina a partida na hora, e a pontuação fica em 0, já que um multiplicador não tem nada para multiplicar.
 
 <CodeTabs file="basics" />
 
-![O histórico da janela de controle depois do exemplo: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+![Os eventos da partida depois do exemplo: Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+
+## Revisando seu mapa \{#reviewing-your-map\}
+Clique em **Save map** na janela de controle para ver como seu mapa foi pontuado. O Erebus salva o resultado na pasta `map` da partida, em `match-results`, e o abre no seu navegador. Com **Automatic map result** em **Advanced setup**, ele abre assim que o mapa é avaliado.
+
+![A revisão do mapa do exemplo: todas as células estão corretas](../../../../docs/programming/map-bonus/map-review.png)
+
+As células erradas ficam marcadas em vermelho. Clique em uma célula para ver o que seu robô enviou e qual é a resposta correta. **Save matrix** salva o mapa que seu robô enviou, e **Save PNG** salva a imagem.
 
 O exemplo `MapScorerExample.py`, na pasta `player_controllers` da versão do Erebus, funciona da mesma forma.

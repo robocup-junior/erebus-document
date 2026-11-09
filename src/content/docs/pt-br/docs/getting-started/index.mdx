@@ -1,6 +1,6 @@
 ---
 title: Sua primeira execução
-description: Carregue o seu robô e um programa pronto e veja-o explorar um labirinto.
+description: Carregue seu robô e um programa pronto, e veja-o explorar um labirinto.
 ---
 
 import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
@@ -13,82 +13,118 @@ Estas são as principais pastas da versão que você baixou:
 | Pasta | Conteúdo |
 |---|---|
 | `game/worlds` | Os mundos (arquivos `.wbt`). Abra um deles para começar. |
-| `game/logs` | Os logs da partida, gravados no fim de cada partida |
+| `game/logs` | Os registros escritos no fim de cada partida |
+| `match-results` | Uma pasta para cada partida, com o replay e o resultado do mapa |
 | `player_controllers` | Controladores de exemplo |
 
 ## A janela de controle \{#the-control-window\}
 1. Abra `game/worlds/world1.wbt` no Webots.
-1. O Webots abre a janela de controle do Erebus (a janela do robô do Main Supervisor) no seu navegador. É aqui que você carrega o seu programa e executa a partida.
+1. O Webots abre a janela de controle do Erebus (a janela de robô do Main Supervisor) no seu navegador. É nela que você carrega seu programa e executa a partida.
 
 ![A janela de controle do Erebus](../../../docs/getting-started/control_window.png)
 
+De cima para baixo:
+
 | Parte | Uso |
 |---|---|
-| **LOAD** da esquerda (ícone de notebook) | Carrega o programa controlador do seu robô |
-| **LOAD** da direita (ícone de robô) | Carrega o seu robô (arquivo `.json`) |
-| **TOGGLE REMOTE** | Permite que um programa rodando fora do Webots controle o robô. Veja [Remote Controller](/docs/competition/remote-controller/). |
-| **Docker path** | Pasta com um `Dockerfile`, para executar o seu controlador em um contêiner com o botão Docker ao lado do botão play. Veja o repositório [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). Isso é opcional. |
-| **Settings** | Links e opções, explicados abaixo |
+| Mundo e estado | O nome do mundo e o estado da partida: Ready, Running, Paused ou Finished |
+| **Robot setup** | Carrega seu programa e seu robô, e conecta um controlador remoto. Veja abaixo. |
+| **Advanced setup** | Opções, explicadas abaixo |
 | **Worlds** | Muda para outro mundo |
-| **Reset** | Reinicia o programa carregado e a partida |
-| **Give up!** | Termina a partida |
-| Cronômetros | O tempo de partida e, abaixo dele, o tempo real entre parênteses. A partida termina quando qualquer um deles chega a 0. |
-| Calculadora | A pontuação atual |
+| Pontuação | A pontuação atual |
+| **Robot battery** | O nível de bateria do robô. Abaixo de 20%, mostra "Low battery". Veja [Bateria](/docs/programming/battery/). |
+| **Simulation remaining** | O tempo de partida restante. **Real-world allowance** mostra quanto tempo real resta a mais que o tempo de partida. A partida termina quando qualquer um dos dois acaba. |
+| Controles da partida | Executar, pausar, reposicionar, reiniciar, desistir e salvar o mapa. Veja abaixo. |
+| **Match events** | O histórico da partida, do mais recente para o mais antigo. **Export CSV** salva o histórico em um arquivo. |
+
+O botão no canto superior direito abre a mesma janela como uma janela de navegador separada e menor.
+
+:::note
+Se o [Wireshark](/docs/installation/#optional-wireshark) não estiver instalado, a janela também mostra um aviso de que o acesso à rede não está sendo monitorado e pede que você o confirme. Esse monitoramento é para os organizadores nas competições, então você pode confirmar o aviso e treinar normalmente.
+:::
+
+### Robot setup \{#robot-setup\}
+Clique em **Robot setup** para carregar seu programa e seu robô.
+
+![O painel Robot setup, com um programa e um robô carregados](../../../docs/getting-started/robot-setup.png)
+
+| Parte | Uso |
+|---|---|
+| **Controller** | **Load file** carrega o programa do seu robô. Arquivos Python são carregados como estão. Programas em C e C++ precisam ser compilados antes. |
+| **Robot JSON** | **Load file** carrega seu robô, o arquivo `.json` feito com o [Robot Customizer](/docs/robot/customizer/) |
+| **Keep files after Reset** | Mantém seu programa e seu robô carregados quando a partida é reiniciada. Vem ativado por padrão. |
+| **Reload before Run** | Carrega seu programa de novo a partir de **Original controller file** a cada partida, para usar suas últimas alterações. Escreva o caminho do arquivo no computador que executa o Webots. |
+| **Remote mode** | Permite que um programa executado fora do Webots controle o robô. Veja [Controlador remoto](/docs/competition/remote-controller/). **Keep on Reset** o mantém ativado quando a partida é reiniciada. |
+| **Docker project path** | Pasta com um `Dockerfile`, para executar seu controlador em um contêiner com **Run Docker**. Veja o repositório [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). É opcional. |
+
+### Controles da partida \{#match-controls\}
+
+![Os controles da partida](../../../docs/getting-started/match-controls.png)
+
+| Botão | Uso |
+|---|---|
+| **Run match** | Inicia a partida. O robô aparece no mundo e seu programa começa. |
+| **Pause** | Para o robô temporariamente. Clique em **Run match** para continuar. |
+| **Relocate** | Declara uma falta de progresso: o robô volta ao último ponto de controle alcançado, e você perde 5 pontos |
+| **Reset** | Reinicia a partida e o mundo |
+| **Give up** | Encerra a partida |
+| **Save map** | Salva o resultado do mapa que seu robô enviou e o abre. Veja [Enviar o mapa](/docs/programming/map-bonus/). |
 
 ## Execute um programa \{#run-a-program\}
-<a href={mazeUrl} download="maze.py">Baixe o maze.py</a>, um programa completo que faz o robô andar pelo labirinto. É o programa que você mesmo vai escrever em [Navegue pelo labirinto](/docs/programming/navigate-the-maze/).
+<a href={mazeUrl} download="maze.py">Baixe maze.py</a>, um programa completo que faz o robô percorrer o labirinto. É o programa que você mesmo vai escrever em [Navegue pelo labirinto](/docs/programming/navigate-the-maze/).
 
 1. Abra `game/worlds/world1.wbt`.
-1. Carregue o seu robô com o **botão LOAD da direita**, se ainda não fez isso. O mundo é recarregado com ele.
-1. Carregue `maze.py` com o **botão LOAD da esquerda**. Quando o programa é carregado, o botão vira um botão REMOVE laranja.
-1. Pressione o botão de início. O robô aparece no mundo e começa a se mover.
-![Botão de início](../../../docs/getting-started/start_button.png)
-1. Para parar o robô temporariamente, pressione o botão de pausa.
-![Botão de pausa](../../../docs/getting-started/pause_button.png)
-1. Se o robô ficar preso, pressione o botão de reinício para provocar uma falta de progresso (Lack of Progress, LoP). Ela leva o robô de volta ao último ponto de controle (checkpoint) que ele alcançou e custa 5 pontos.
-![Botão de falta de progresso](../../../docs/getting-started/lop_button.png)
-1. Pressione o botão Reset para reiniciar o programa carregado e a partida em andamento. Recarregue o mundo se quiser executá-lo de novo depois que uma partida terminar.
+1. Clique em **Robot setup** e carregue seu robô com **Load file** em **Robot JSON**, se ainda não fez isso.
+1. Carregue `maze.py` com **Load file** em **Controller**. O nome de cada arquivo aparece quando ele é carregado.
+1. Clique em **Run match**. O robô aparece no mundo e começa a se mover.
+1. Para parar o robô temporariamente, clique em **Pause**.
+1. Se o robô ficar preso, clique em **Relocate** para provocar uma falta de progresso.
+1. Clique em **Reset** para reiniciar a partida. Seu programa e seu robô continuam carregados, então você pode executar de novo.
 
-O programa precisa do OpenCV, que você instalou junto com as outras [bibliotecas Python](/docs/installation/#python-libraries). As mensagens do seu programa, e os erros, aparecem no console do Webots.
+O programa precisa do OpenCV, que você instalou com as outras [bibliotecas Python](/docs/installation/#python-libraries). As mensagens do seu programa, e os erros, aparecem no console do Webots.
 
-Enquanto a partida está rodando, o histórico de pontuação aparece na parte de baixo da janela. Ele mostra exatamente por que você ganhou ou perdeu pontos, então é a melhor ferramenta para conferir o seu programa.
+Durante a partida, os eventos aparecem na parte de baixo da janela. Eles dizem exatamente por que você ganhou ou perdeu pontos, então são a melhor ferramenta para conferir seu programa.
 
-![A janela de controle durante uma partida, com o histórico de pontuação](../../../docs/getting-started/control_window_running.png)
+![A janela de controle durante uma partida, com os eventos da partida](../../../docs/getting-started/control_window_running.png)
 
-No fim da partida, as mesmas informações são salvas na pasta `game/logs`.
+`maze.py` anda na velocidade máxima e nunca substitui a bateria, então em `world1.wbt` a partida termina em menos de dois minutos, com `Battery depleted`. Você vai aprender a cuidar da bateria em [Bateria](/docs/programming/battery/).
 
-## Usando outros mundos \{#using-other-worlds\}
-Pressione **Worlds** para mudar para outro mundo. Cada mundo tem uma miniatura, e você também pode adicionar os seus, feitos com o [World Editor](/docs/tools/world-editor/).
+No fim da partida, as mesmas informações são salvas na pasta `game/logs`. A partida também é salva como um replay 3D interativo na pasta `match-results`: abra `recording/replay.html` no navegador para assistir de novo.
 
-![A aba Worlds da janela de controle](../../../docs/getting-started/worlds.png)
+## Usar outros mundos \{#using-other-worlds\}
+Clique em **Worlds** para mudar para outro mundo. Procure um mundo pelo nome, escolha-o e clique em **Load world**. Você também pode adicionar os seus, feitos com o [World Editor](/docs/tools/world-editor/).
 
-Os mundos incluídos no Erebus v26.1 são:
+![O painel Worlds da janela de controle](../../../docs/getting-started/worlds.png)
+
+Os mundos incluídos no Erebus v27 são:
 
 | Mundo | Finalidade |
 |---|---|
+| `2027_d1r1.wbt`, `2027_d1r2.wbt`, `2027_d2r1.wbt`, `2027_d2r2.wbt` | Mundos de exemplo para as regras de 2027, com ladrilhos de contato e vítimas falsas |
 | `world1.wbt`, `world2.wbt` | Mundos de exemplo. `world2.wbt` inclui a área 4. |
 | `world3.wbt`, `world4.wbt` | Mundos de exemplo maiores, que também incluem **vítimas falsas** |
-| `mapping_example_1.wbt` a `mapping_example_3.wbt` | Mundos para testar o seu mapeamento. Veja [Regras do mapa](/docs/rules/mapping/). |
+| `mapping_example_1.wbt` a `mapping_example_3.wbt` | Mundos para testar seu mapeamento. Veja [Mapeamento](/docs/rules/mapping/). |
+| `mapping_example_1_cyan_tiles.wbt` | `mapping_example_1.wbt` com dois ladrilhos de contato |
 | `NewPassages.wbt` | Exemplo das passagens entre áreas |
 
-## Configurações \{#settings\}
-![A aba Settings da janela de controle](../../../docs/getting-started/settings.png)
+## Advanced setup \{#advanced-setup\}
+![O painel Advanced setup da janela de controle](../../../docs/getting-started/settings.png)
 
 | Configuração | Uso |
 |---|---|
-| Keep controller/robot files | Mantém o seu programa e o seu robô carregados quando o mundo é recarregado |
-| Disable automatic LoP | Desativa a falta de progresso automática após 20 segundos. Só para depuração. |
-| Automatic camera | Faz a visão acompanhar o robô |
-| Recording | Grava a partida como vídeo |
-| Keep remote controller on | Mantém o TOGGLE REMOTE ativado quando o mundo é recarregado |
-| Enable debugging | Mostra informações extras no console do Webots, por exemplo por que o informe de um marcador foi rejeitado |
+| Show head-up display | Mostra a pontuação, o tempo e os últimos eventos na janela do Webots |
+| Automatic camera | Faz a visão seguir o robô |
+| HTML replay recording | Salva cada partida como um replay 3D interativo na pasta `match-results` |
+| Automatic map result | Salva e abre o resultado do mapa assim que o robô o envia |
+| Disable automatic LoP | Desliga a falta de progresso automática depois de 20 segundos. Só para depuração. |
+| Enable debugging | Mostra informações extras no console do Webots, por exemplo por que um marcador informado foi rejeitado |
 
-Os links no topo levam ao changelog e às ferramentas para criar mundos e robôs. Para criar mundos com as regras de 2026, use o [World Editor](https://world.erebus.rcj.cloud/).
+As **References** na parte de baixo da janela levam ao changelog, a esta documentação e às ferramentas para criar mundos e robôs. Para criar mundos com as regras de 2027, use o [World Editor](https://world.erebus.rcj.cloud/).
 
-## Mova o robô manualmente para onde você quiser \{#manually-move-the-robot-where-you-want-it-to-go\}
-Quando você clica em um robô na janela da simulação, aparecem setas vermelha, verde e azul. Arraste essas setas com o mouse para mover o robô para qualquer posição. Observe que o robô só aparece depois que o programa é iniciado.
+## Mova o robô à mão para onde quiser \{#manually-move-the-robot-where-you-want-it-to-go\}
+Quando você clica em um robô na janela de simulação, aparecem setas vermelha, verde e azul. Arraste essas setas com o mouse para mover o robô para qualquer posição. Note que o robô só aparece depois que o programa começa.
 ![O robô selecionado no Webots, com setas para movê-lo](../../../docs/getting-started/manual.png)
 
 
 ## Próximo passo \{#next\}
-Você viu um robô explorar sozinho. Agora aprenda a programá-lo você mesmo: comece por [Seu primeiro programa](/docs/programming/first-program/).
+Você viu um robô explorar sozinho. Agora aprenda a programá-lo você mesmo: comece com [Seu primeiro programa](/docs/programming/first-program/).

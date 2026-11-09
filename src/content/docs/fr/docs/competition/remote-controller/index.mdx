@@ -7,9 +7,9 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 La fonction de contrôleur à distance (Remote Controller) d’Erebus vous permet de faire tourner des simulations Webots en réseau. Un ordinateur fait tourner la simulation Webots (le serveur), et l’autre exécute le programme contrôleur du robot (le client). C’est ce que nous appelons la « configuration serveur-client » (Server-Client Setup).
 
-**Selon les règles 2026, c’est ainsi que se déroulent les parties en compétition.** Les organisateurs font tourner le serveur de jeu et fournissent une prise RJ-45. Vous devez apporter :
+**Selon les règles 2027, c’est ainsi que se déroulent les parties en compétition.** Les organisateurs font tourner le serveur de jeu et fournissent une prise RJ-45. Vous devez apporter :
 
-- Un ordinateur avec votre programme, prêt à être lancé, et Webots R2023b installé
+- Un ordinateur avec votre programme, prêt à être lancé, et Webots R2025a installé
 - Un câble Ethernet. Un câble au moins CAT5 est fortement recommandé, pour supporter 100 Mbit/s.
 - Un port Ethernet. Si votre ordinateur n’en a pas, apportez un adaptateur et testez-le à l’avance.
 
@@ -17,11 +17,11 @@ Pour que tout se passe bien sur le lieu de la compétition, essayez la configura
 
 ## Comment ça marche \{#how-it-works\}
 
-1. Ouvrez le monde et activez le mode distant dans la fenêtre de contrôle.
+1. Ouvrez le monde et activez **Remote mode** dans **Robot setup** de la fenêtre de contrôle.
 1. Lancez votre contrôleur depuis un terminal. Il se connecte à Webots et attend.
-1. Appuyez sur le bouton de démarrage dans la fenêtre de contrôle.
+1. Appuyez sur **Run match** dans la fenêtre de contrôle.
 
-Votre contrôleur utilise les mêmes bibliothèques Webots et le même code que lorsqu’il est chargé avec le bouton LOAD. Le robot personnalisé, si vous en avez un, est toujours chargé dans la fenêtre de contrôle du serveur.
+Votre contrôleur utilise les mêmes bibliothèques Webots et le même code que lorsqu’il est chargé avec **Load file**. Le robot personnalisé, si vous en avez un, est toujours chargé dans la fenêtre de contrôle du serveur.
 
 ## À vérifier avant la compétition \{#things-to-check-before-the-competition\}
 

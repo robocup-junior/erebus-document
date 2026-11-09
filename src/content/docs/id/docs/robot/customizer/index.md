@@ -30,7 +30,7 @@ Pratinjau 3D ada di sebelah kiri, sedangkan komponen dan anggaran ada di sebelah
 
 ## Menggunakannya di Erebus {#using-it-in-erebus}
 
-Tekan tombol LOAD sebelah kanan di [jendela kontrol](/docs/getting-started/#the-control-window), lalu pilih berkas `.json`-mu. Lihat [Muat di Erebus](/docs/robot/#load-it-in-erebus). Erebus memeriksa anggaran dan membuat robotnya, dan konsol Webots menampilkan daftar setiap komponen beserta biayanya.
+Di [jendela kontrol](/docs/getting-started/#robot-setup), tekan **Robot setup**, lalu **Load file** di bawah **Robot JSON**, dan pilih berkas `.json`-mu. Lihat [Muat di Erebus](/docs/robot/#load-it-in-erebus). Erebus memeriksa anggaran dan membuat robot, dan konsol Webots menampilkan setiap komponen beserta biayanya.
 
 Muat robotmu terlebih dahulu, baru programmu.
 

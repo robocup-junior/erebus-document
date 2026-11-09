@@ -1,6 +1,6 @@
 ---
 title: Linux (Ubuntu)
-description: Instala Erebus y Webots R2023b en Ubuntu 20.04 o 22.04.
+description: Instala Erebus y Webots R2025a en Ubuntu 22.04 o 24.04.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -15,11 +15,13 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python3 -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-2. Descarga e instala **Webots R2023b**:
+   En Ubuntu 24.04, pip se niega a instalar bibliotecas en el Python del sistema, con un error `externally-managed-environment`. Añade `--break-system-packages` al segundo comando, o instala las bibliotecas en un [entorno virtual](https://docs.python.org/3/library/venv.html) y configura su Python en las preferencias de Webots.
+
+2. Descarga e instala **Webots R2025a**:
 
    ```bash
-   wget https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb
-   sudo apt install ./webots_2023b_amd64.deb
+   wget https://github.com/cyberbotics/webots/releases/download/R2025a/webots_2025a_amd64.deb
+   sudo apt install ./webots_2025a_amd64.deb
    ```
 
 3. Descarga <DownloadErebus /> y descomprímelo.
@@ -34,8 +36,10 @@ Abre el mundo desde la terminal, cambiando la ruta por la de tu carpeta de Erebu
 webots ~/EREBUS_FOLDER/game/worlds/world1.wbt
 ```
 
-Webots abre la ventana de control de Erebus en tu navegador web. La primera vez, Erebus instala algunas bibliotecas de Python, lo que puede tardar un rato. Está lista cuando la ventana muestra el temporizador de partida en 08:00:
+Webots abre la ventana de control de Erebus en tu navegador web. La primera vez, Erebus instala algunas bibliotecas de Python y prepara el modelo del robot, lo que puede tardar un rato. Está lista cuando la ventana muestra **Ready** y el temporizador de partida en 08:00:
 
 ![La ventana de control de Erebus, lista para empezar](../../../../docs/installation/linux/../control-window-ready.png)
+
+La primera vez, la consola de Webots también puede mostrar `ERROR: Skipped PROTO 'custom_robot'`. Puedes ignorarlo: Erebus prepara el modelo del robot y vuelve a cargar el mundo por sí solo.
 
 A continuación, lee el [Resumen de las reglas](/docs/rules/) para entender el juego. Si algo sale mal, consulta [Solución de problemas](/docs/troubleshooting/).

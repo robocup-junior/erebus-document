@@ -10,12 +10,12 @@ Pour cela, il existe le [World Editor d’Erebus](https://world.erebus.rcj.cloud
 
 ![Une carte terminée dans le World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Si vous créez seulement de petites cartes pour vos tests, la conformité du terrain aux règles n’a sans doute pas beaucoup d’importance. Mais si vous prévoyez de construire un terrain de compétition, lisez les [Règles de la simulation](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) officielles. L’éditeur vérifie votre carte par rapport aux règles pendant que vous travaillez.
+Si vous créez seulement de petites cartes pour vos tests, la conformité du terrain aux règles n’a sans doute pas beaucoup d’importance. Mais si vous prévoyez de construire un terrain de compétition, lisez les [Règles de la simulation](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf) officielles. L’éditeur vérifie votre carte par rapport aux règles pendant que vous travaillez.
 
 L’éditeur dispose d’un guide intégré : appuyez sur **Guide** en bas à droite pour une leçon pratique qui crée une carte d’exemple (environ 15 minutes), une visite de l’écran, ou une leçon sur la salle 4 (Room 4). La langue de l’éditeur peut être changée juste à côté.
 
 ## Commencer une carte {#starting-a-map}
-Quand vous ouvrez l’éditeur, choisissez **les règles de quelle année** vous voulez suivre, puis appuyez sur **New map**. **Choisissez les règles 2026 pour Erebus v26.** Les règles 2027 sont un projet pour la prochaine version d’Erebus.
+À l’ouverture de l’éditeur, choisissez **les règles de quelle année** suivre, puis appuyez sur **New map**. **Choisissez les règles 2027 pour Erebus v27.** Les règles 2026 sont pour Erebus v26. Vous pourrez changer les règles d’une carte plus tard dans la barre du haut.
 
 ![L’écran de démarrage du World Editor](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ Voici un bon ordre de travail : taille et contour, salles, passages, murs, sols,
 | Line | `L` | Dessiner des murs |
 | Curve | `A` | Dessiner des murs courbes dans la salle 3 |
 | Eraser | `E` | Supprimer des murs, sols, obstacles et victimes |
-| Floor | `F` | Placer les points de contrôle, les trous, les marécages et la case de départ |
+| Floor | `F` | Placer les points de contrôle, les trous, les marécages, les cases de contact et la case de départ |
 | Obstacle | `O` | Placer des obstacles |
-| Victims | `V` | Placer des victimes lettres, des cibles cognitives et des leurres |
+| Victims | `V` | Placer des victimes smiley, des cibles cognitives et des leurres |
 
 La molette de la souris zoome, un glisser en maintenant Espace déplace la vue, et l’annulation se fait avec `⌘Z` ou `Ctrl+Z`.
 
@@ -57,7 +57,7 @@ Utilisez l’outil **Line** pour dessiner des murs : sur les bords des cases dan
 ![L’outil Line pour les murs](../../../../docs/tools/world-editor/walls.png)
 
 ## Sols et obstacles {#floors-and-obstacles}
-Avec l’outil **Floor**, choisissez un type de sol et cliquez sur une case pour l’appliquer. La case de départ doit être une case de la salle 1, et le monde ne peut pas être exporté sans elle. Une case ne peut être qu’une seule chose parmi : trou, marécage, point de contrôle, obstacle, départ ou passage.
+Avec l’outil **Floor**, choisissez un type de sol et cliquez sur une case pour le définir : point de contrôle, trou, marécage, case de contact ou départ. La case de départ doit être une case de la salle 1, et le monde ne peut pas être exporté sans elle. Une case ne peut être qu’un seul des éléments suivants : trou, marécage, point de contrôle, case de contact, obstacle, départ ou passage.
 
 ![L’outil Floor](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ Avec l’outil **Obstacle**, choisissez une forme et cliquez sur une case. Dans 
 ## Victimes et cibles cognitives {#victims-and-cognitive-targets}
 Avec l’outil **Victims**, choisissez un type et cliquez près d’un mur. Vous pouvez placer :
 
-- De vraies victimes lettres : blessée (harmed), stable et indemne (unharmed)
-- De fausses victimes lettres, aux symboles en trois dimensions
+- De vraies victimes smiley : blessée, stable et indemne
+- De fausses victimes smiley avec des visages en relief
 - Des cibles cognitives : choisissez la matière dangereuse, et les couleurs des anneaux si vous le souhaitez. La somme s’affiche, et c’est elle qui détermine le type
 - De fausses cibles, dont les anneaux donnent une somme autre que 0 à 3
 
@@ -105,8 +105,8 @@ Indiquez le nom de la carte dans la barre du haut, et appuyez sur le bouton **.w
 1. Copiez le fichier `.wbt` dans le dossier `game/worlds` d’Erebus. Il doit se trouver dans ce dossier, car le monde utilise des fichiers d’Erebus.
 1. Ouvrez-le dans Webots, ou choisissez-le avec le bouton **Worlds** de la [fenêtre de contrôle](/docs/getting-started/).
 
-![La carte d’exemple du guide de l’éditeur, lancée dans Erebus v26.1.](../../../../docs/tools/world-editor/exported_world.png)
+![La carte d’exemple du guide de l’éditeur, lancée dans Erebus v27.](../../../../docs/tools/world-editor/exported_world.png)
 
-*La carte d’exemple du guide de l’éditeur, lancée dans Erebus v26.1.*
+*La carte d’exemple du guide de l’éditeur, lancée dans Erebus v27.*
 
 Un fichier `.wbt` ne peut pas être reconverti en carte modifiable : conservez donc aussi le JSON.

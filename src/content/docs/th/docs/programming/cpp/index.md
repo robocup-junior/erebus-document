@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## การคอมไพล์ {#compiling}
-วิธีที่ง่ายที่สุดในทุกระบบคือใช้ตัวแก้ไขของ Webots: ใช้ **Wizards > New Robot Controller** เพื่อสร้างคอนโทรลเลอร์ C++ พร้อม `Makefile` แล้วกดปุ่ม **Build** ดู[คู่มือของ Webots](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b)
+วิธีที่ง่ายที่สุดในทุกระบบคือใช้ตัวแก้ไขของ Webots: ใช้ **Wizards > New Robot Controller** เพื่อสร้างคอนโทรลเลอร์ C++ พร้อม `Makefile` แล้วกดปุ่ม **Build** ดู[คู่มือของ Webots](https://cyberbotics.com/doc/guide/using-cpp?version=R2025a)
 
 คุณยังคอมไพล์จากเทอร์มินัลได้ด้วย คำสั่งนี้ทดสอบบน macOS แล้ว:
 
@@ -53,5 +53,5 @@ clang++ -std=c++17 -I$WEBOTS/include/controller/cpp -L$WEBOTS/lib/controller \
 
 ## การรัน {#running}
 
-- **บน Windows** โหลดไฟล์ `.exe` ด้วยปุ่ม LOAD ด้านซ้ายของหน้าต่างควบคุม
-- **บน macOS และ Linux** โปรแกรมที่คอมไพล์แล้วไม่มีนามสกุลไฟล์ และปุ่ม LOAD เลือกไฟล์เหล่านี้ไม่ได้ ให้รันด้วย [Remote Controller](/docs/competition/remote-controller/) แทน เหมือนที่คุณทำในการแข่งขัน
+- **บน Windows** ให้โหลดไฟล์ `.exe` ใต้ **Controller** ใน **Robot setup** ของหน้าต่างควบคุม
+- **บน macOS และ Linux** โปรแกรมที่คอมไพล์แล้วไม่มีนามสกุลไฟล์ และ**Load file** เลือกไฟล์เหล่านี้ไม่ได้ ให้รันด้วย [Remote Controller](/docs/competition/remote-controller/) แทน เหมือนที่คุณทำในการแข่งขัน

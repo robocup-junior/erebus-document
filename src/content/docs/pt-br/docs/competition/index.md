@@ -3,7 +3,7 @@ title: Preparando-se para uma competição
 description: Uma lista de verificação para se preparar para uma competição de RoboCupJunior Rescue Simulation.
 ---
 
-Esta página é um guia para a competição internacional com as regras de 2026. As competições locais e regionais podem ser diferentes, então confirme com a organização. As [regras](/docs/rules/) oficiais sempre valem.
+Esta página é um guia para a competição internacional com as regras de 2027. As competições locais e regionais podem ser diferentes, então confirme com a organização. As [regras](/docs/rules/) oficiais sempre valem.
 
 ## Cronograma {#timeline}
 
@@ -22,7 +22,7 @@ Os modelos e os critérios de avaliação estão no [site da comunidade RCJ Resc
 - [ ] **Technical Description Paper (TDP).** Siga o modelo à risca: caso contrário, a nota do documento é 0.
 - [ ] **Pôster,** como arquivo e como pôster físico no local, no máximo do tamanho A1.
 - [ ] **Vídeo** apresentando o seu projeto.
-- [ ] **Vídeo servidor-cliente,** novo em 2026: um vídeo curto mostrando como você executa o seu controlador em um mapa de exemplo na configuração servidor-cliente.
+- [ ] **Vídeo servidor-cliente:** um vídeo curto mostrando como você executa seu controlador em um mapa de exemplo na configuração servidor-cliente.
 - [ ] **Código-fonte** e o **formulário web** das entrevistas.
 
 ## Configuração da competição {#competition-setup}
@@ -30,7 +30,7 @@ As partidas rodam em uma configuração servidor-cliente: os organizadores rodam
 
 Leve:
 
-- [ ] Um computador com o seu programa e todas as bibliotecas dele instaladas, além do Webots R2023b
+- [ ] Um computador com o seu programa e todas as bibliotecas dele instaladas, além do Webots R2025a
 - [ ] Um cabo Ethernet, e um adaptador se o seu computador precisar
 - [ ] O arquivo `.json` do seu robô, se você tiver um robô personalizado
 - [ ] O pôster físico
@@ -47,9 +47,9 @@ A menos que os organizadores anunciem outra coisa, são usadas as configuraçõe
 | Anti-aliasing | Disabled |
 
 ## Testando o seu robô {#testing-your-robot}
-- [ ] Rode em todos os mundos incluídos, principalmente `world3.wbt` e `world4.wbt`, que têm falsos.
+- [ ] Rodar em todos os mundos incluídos, principalmente nos quatro mundos `2027_`, que têm ladrilhos de contato e falsos.
 - [ ] Crie os seus próprios mapas com o [World Editor](/docs/tools/world-editor/), incluindo as quatro áreas.
-- [ ] Confira a partida inteira: ela roda até o fim, envia o mapa e volta ao início a tempo?
+- [ ] Conferir a partida inteira: ela vai até o fim, substitui a bateria a tempo, envia o mapa e volta ao início?
 - [ ] Teste o que acontece depois de uma falta de progresso (Lack of Progress, LoP).
 - [ ] Teste no computador que você vai levar e com as configurações de OpenGL acima.
 

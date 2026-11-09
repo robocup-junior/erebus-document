@@ -15,7 +15,7 @@ Python et C/C++ sont traités dans cette documentation. Erebus peut aussi charge
 Non, consultez la [configuration requise](/docs/installation/). Les ordinateurs plus lents peuvent avoir besoin de [réglages graphiques plus bas](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Puis-je utiliser une version plus récente de Webots ? {#can-i-use-a-newer-version-of-webots}
-Non. Erebus v26 fonctionne avec Webots **R2023b**. Vous pouvez garder d’autres versions installées à côté.
+Non. Erebus v27 fonctionne avec Webots **R2025a**. Vous pouvez garder d’autres versions installées à côté, comme R2023b pour Erebus v26.
 
 ### Puis-je utiliser des bibliothèques comme OpenCV ou NumPy ? {#can-i-use-libraries-like-opencv-or-numpy}
 Oui. Le code externe est autorisé, à condition de citer ses auteurs et de respecter sa licence. Les équipes doivent donner la priorité à l’apprentissage, et doivent pouvoir expliquer comment leur solution fonctionne.
@@ -38,7 +38,13 @@ Une absence de progression (Lack of Progress) se produit : le robot retourne au 
 Non, mais revenir sur la case de départ et envoyer `E` donne un bonus de sortie (exit bonus) de 10 %, à condition que le robot ait identifié au moins un marqueur mural.
 
 ### Comment mon robot peut-il savoir combien de temps il reste ? {#how-can-my-robot-tell-how-much-time-is-left}
-Avec le [message `G`](/docs/programming/communication/#game-information). Il y a deux chronomètres, et le temps de jeu s’écoule plus vite dans les marécages.
+Avec le [message `G`](/docs/programming/communication/#game-information). Il y a deux chronomètres, et le jeu se termine quand l’un des deux arrive à zéro.
+
+### Que se passe-t-il quand la batterie est vide ? {#what-happens-when-the-battery-runs-out}
+Le jeu se termine. Pour l’éviter, arrêtez-vous 5 secondes sur une case de contact cyan, ce qui remplace la batterie. Votre programme peut lire le niveau de la batterie avec le [message `G`](/docs/programming/communication/#game-information). Voir [Batterie](/docs/programming/battery/).
+
+### Rouler lentement économise-t-il la batterie ? {#does-driving-slowly-save-the-battery}
+La batterie se vide selon la vitesse des moteurs : un robot lent consomme moins de batterie par seconde, mais il parcourt aussi moins de terrain pendant ce temps. Trouvez par des tests le meilleur équilibre pour votre robot.
 
 ### Dois-je explorer la zone 4 ? {#do-i-have-to-explore-area-4}
 Non. C’est facultatif, mais ses marqueurs rapportent le plus : les points les plus élevés, multipliés par 2.

@@ -10,12 +10,12 @@ Para eso existe el [World Editor de Erebus](https://world.erebus.rcj.cloud/), en
 
 ![Un mapa terminado en el World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Si solo construyes mapas pequeños para hacer pruebas, probablemente no te importe mucho que el campo cumpla las reglas. Pero si piensas construir un campo de competición, lee las [reglas oficiales de la simulación (Simulation Rules)](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). El editor comprueba tu mapa frente a las reglas mientras trabajas.
+Si solo construyes mapas pequeños para hacer pruebas, probablemente no te importe mucho que el campo cumpla las reglas. Pero si piensas construir un campo de competición, lee las [reglas oficiales de la simulación (Simulation Rules)](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf). El editor comprueba tu mapa frente a las reglas mientras trabajas.
 
 El editor tiene una guía integrada: pulsa **Guide** abajo a la derecha para una lección práctica que crea un mapa de ejemplo (unos 15 minutos), un recorrido por la pantalla o una lección sobre la habitación 4 (Room 4). El idioma del editor se puede cambiar justo al lado.
 
 ## Empezar un mapa {#starting-a-map}
-Cuando abras el editor, elige **las reglas de qué año** quieres seguir y pulsa **New map**. **Elige las reglas de 2026 para Erebus v26.** Las reglas de 2027 son un borrador para la próxima versión de Erebus.
+Al abrir el editor, elige **las reglas de qué año** quieres seguir y pulsa **New map**. **Elige las reglas de 2027 para Erebus v27.** Las reglas de 2026 son para Erebus v26. Puedes cambiar las reglas de un mapa más tarde en la barra superior.
 
 ![La pantalla de inicio del World Editor](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ Un buen orden de trabajo es tamaño y contorno, habitaciones, pasos, paredes, su
 | Line | `L` | Dibujar paredes |
 | Curve | `A` | Dibujar paredes curvas en la habitación 3 |
 | Eraser | `E` | Quitar paredes, suelos, obstáculos y víctimas |
-| Floor | `F` | Poner puntos de control, agujeros, pantanos y la baldosa de salida |
+| Floor | `F` | Poner puntos de control, agujeros, pantanos, baldosas de contacto y la baldosa de salida |
 | Obstacle | `O` | Colocar obstáculos |
-| Victims | `V` | Colocar víctimas de letra, objetivos cognitivos y falsos |
+| Victims | `V` | Colocar víctimas smiley, objetivos cognitivos y falsos |
 
 La rueda del ratón hace zoom, arrastrar manteniendo pulsado Espacio mueve la vista, y deshacer es `⌘Z` o `Ctrl+Z`.
 
@@ -57,7 +57,7 @@ Usa la herramienta **Line** para dibujar paredes: en los bordes de las baldosas 
 ![La herramienta Line para las paredes](../../../../docs/tools/world-editor/walls.png)
 
 ## Suelos y obstáculos {#floors-and-obstacles}
-Con la herramienta **Floor**, elige un tipo de suelo y haz clic en una baldosa para ponerlo. La baldosa de salida debe ser una baldosa de la habitación 1, y el mundo no se puede exportar sin ella. Una baldosa solo puede ser una de estas cosas: agujero, pantano, punto de control, obstáculo, salida o paso.
+Con la herramienta **Floor**, elige un tipo de suelo y haz clic en una baldosa para ponerlo: punto de control, agujero, pantano, baldosa de contacto o inicio. La baldosa de inicio debe ser de la sala 1, y sin ella el mundo no se puede exportar. Una baldosa solo puede ser una de estas cosas: agujero, pantano, punto de control, baldosa de contacto, obstáculo, inicio o paso.
 
 ![La herramienta Floor](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ Con la herramienta **Obstacle**, elige una forma y haz clic en una baldosa. En l
 ## Víctimas y objetivos cognitivos {#victims-and-cognitive-targets}
 Con la herramienta **Victims**, elige un tipo y haz clic cerca de una pared. Puedes colocar:
 
-- Víctimas de letra reales: herida, estable e ilesa
-- Víctimas de letra falsas con símbolos tridimensionales
+- Víctimas smiley reales: herida, estable e ilesa
+- Víctimas smiley falsas con caras tridimensionales
 - Objetivos cognitivos: elige el material peligroso (hazmat) y, si quieres, los colores de los anillos. Se muestra la suma, que decide el tipo
 - Objetivos falsos, cuyos anillos suman algo distinto de 0 a 3
 
@@ -105,8 +105,8 @@ Pon el nombre del mapa en la barra superior y pulsa el botón **.wbt** de arriba
 1. Copia el archivo `.wbt` en la carpeta `game/worlds` de Erebus. Tiene que estar en esa carpeta, porque el mundo usa archivos de Erebus.
 1. Ábrelo en Webots, o elígelo con el botón **Worlds** de la [ventana de control](/docs/getting-started/).
 
-![El mapa de ejemplo de la guía del editor, ejecutándose en Erebus v26.1.](../../../../docs/tools/world-editor/exported_world.png)
+![El mapa de ejemplo de la guía del editor, ejecutándose en Erebus v27.](../../../../docs/tools/world-editor/exported_world.png)
 
-*El mapa de ejemplo de la guía del editor, ejecutándose en Erebus v26.1.*
+*El mapa de ejemplo de la guía del editor, ejecutándose en Erebus v27.*
 
 Un archivo `.wbt` no se puede volver a convertir en un mapa editable, así que guarda también el JSON.

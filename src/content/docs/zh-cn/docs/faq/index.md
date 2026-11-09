@@ -15,7 +15,7 @@ description: 关于 Erebus 和比赛的常见问题。
 不需要，请参阅[系统要求](/docs/installation/)。较慢的电脑可能需要[降低图形设置](/docs/troubleshooting/#the-simulation-runs-too-slowly)。
 
 ### 我可以使用更新版本的 Webots 吗？ {#can-i-use-a-newer-version-of-webots}
-不可以。Erebus v26 在 Webots **R2023b** 上运行。你可以同时保留已安装的其他版本。
+不可以。Erebus v27 在 Webots **R2025a** 上运行。你可以同时保留已安装的其他版本，例如用于 Erebus v26 的 R2023b。
 
 ### 我可以使用 OpenCV 或 NumPy 之类的库吗？ {#can-i-use-libraries-like-opencv-or-numpy}
 可以。允许使用外部代码，前提是你注明代码的作者并遵守它的许可证。各队应把学习放在首位，并且必须能够解释自己的方案是如何工作的。
@@ -38,7 +38,13 @@ description: 关于 Erebus 和比赛的常见问题。
 不需要。但只要机器人已经识别出至少一个墙面标识，回到起始地块并发送 `E` 就能获得 10% 的离场奖励（Exit bonus）。
 
 ### 我的机器人怎样知道还剩多少时间？ {#how-can-my-robot-tell-how-much-time-is-left}
-通过 [`G` 消息](/docs/programming/communication/#game-information)。共有两个计时器，而在沼泽中比赛时间会流逝得更快。
+通过 [`G` 消息](/docs/programming/communication/#game-information)。共有两个计时器，任意一个耗尽，比赛就会结束。
+
+### 电池耗尽会怎样？ {#what-happens-when-the-battery-runs-out}
+比赛结束。为了避免这种情况，请在青色的接触地块上停留 5 秒来更换电池。你的程序可以通过 [`G` 消息](/docs/programming/communication/#game-information)读取电池电量。参见[电池](/docs/programming/battery/)。
+
+### 开得慢能省电吗？ {#does-driving-slowly-save-the-battery}
+电池按电机的速度消耗，所以慢速机器人每秒耗电更少，但同样时间内走过的距离也更短。请通过测试为你的机器人找到最佳平衡。
 
 ### 我必须探索区域 4 吗？ {#do-i-have-to-explore-area-4}
 不需要。这是可选的，但那里的标识价值最高：分值最高，而且还要乘以 2。

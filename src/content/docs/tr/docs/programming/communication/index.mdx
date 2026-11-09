@@ -1,6 +1,6 @@
 ---
 title: İletişim
-description: Duvar işaretlerini bildir, ilerleme eksikliği çağır, puanı sor ve oyunu bitir.
+description: Duvar işaretlerini bildirme, ilerleme eksikliği ilan etme, puanı, süreyi ve bataryayı sorma ve oyunu bitirme.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -14,30 +14,30 @@ Aşağıdaki her bölüm, [başlangıç robotu](/docs/robot/) için eksiksiz bir
 
 ## Duvar işaretleriyle puan kazanma \{#scoring-wall-tokens\}
 
-Bir harf kazazede ya da bilişsel hedeften puan almak için robot şunları yapmalıdır:
+Bir gülen yüz kazazede ya da bilişsel hedeften puan almak için robot şunları yapmalıdır:
 
 1. İşaretin yakınında **1 saniyeden uzun süre durmak**. Robot son bir saniye içinde hareket ettiyse Erebus bildirimi dikkate almaz.
 2. İşaretin **konumunu ve türünü göndermek**: X ve Z **santimetre** cinsinden, tür ise tek bir harf olarak gönderilir.
 
 | Duvar işareti | Tür |
 |---|---|
-| Harf kazazede Φ (yaralı) | `H` |
-| Harf kazazede Ψ (stabil) | `S` |
-| Harf kazazede Ω (yarasız) | `U` |
+| Gülen yüz kazazede, üzgün yüz (yaralı) | `H` |
+| Gülen yüz kazazede, nötr yüz (stabil) | `S` |
+| Gülen yüz kazazede, mutlu yüz (yarasız) | `U` |
 | Bilişsel hedef, toplam 0 (Yanıcı Gaz) | `F` |
 | Bilişsel hedef, toplam 1 (Zehir) | `P` |
 | Bilişsel hedef, toplam 2 (Aşındırıcı) | `C` |
 | Bilişsel hedef, toplam 3 (Organik Peroksit) | `O` |
 
-Kazazedeler 2026'dan beri sembol gösterse de türler harftir. GPS metre verdiği için 100 ile çarp.
+Kazazedeler yüz gösterse de türler harftir. GPS metre verir, bu yüzden 100 ile çarp.
 
 <CodeTabs file="report" />
 
-Robot, işaretle duvarın aynı tarafında olmalı; hem robot hem de gönderdiğin konum işarete yakın olmalıdır. Kurallar en fazla yarım kare mesafe ister, bunu hedefle. Erebus v26.1, 9 cm'lik bir mesafeyi kontrol eder.
+Robot, işaretle duvarın aynı tarafında olmalıdır; robotun merkezi ve gönderdiğin konum, işarete yarım kare (6 cm) mesafede olmalıdır.
 
-Bu programı `world1.wbt`'nin başında çalıştır: orada hiç işaret yoktur, bu yüzden kontrol penceresinin geçmişinde `Misidentification of Victim -5` görünür. Sahte bir işareti bildirmek de dahil olmak üzere her yanlış bildirim 5 puana mal olur ve her işaretten yalnızca bir kez puan alınabilir.
+Bu programı `world1.wbt` başlangıcında çalıştır: orada işaret yok, bu yüzden kontrol penceresinin maç olaylarında `Misidentification of Victim -5` görünür. Sahte bir işareti bildirmek dahil yanlış bir bildirim 5 puana mal olur ve her işaret yalnızca bir kez puan getirir.
 
-![Yanlış bir bildirim ve harita gönderiminden sonra kontrol penceresinin geçmişi](../../../../docs/programming/communication/history.png)
+![Yanlış bir bildirimden sonraki maç olayları](../../../../docs/programming/communication/history.png)
 
 ## İlerleme eksikliği \{#lack-of-progress\}
 
@@ -49,11 +49,11 @@ Alıcı farklı mesajlar alabilir, bu yüzden örnekteki gibi her mesajı okumad
 
 ## Oyun bilgileri \{#game-information\}
 
-Puanı ve kalan süreyi öğrenmek için `G` gönder. Oyun 16 baytlık bir mesajla yanıt verir: `G` harfi, puan, kalan oyun süresi ve kalan gerçek zaman (saniye cinsinden).
+Puanı, kalan süreyi ve batarya seviyesini almak için `G` gönder. Oyun 20 baytlık bir mesajla yanıt verir: `G` harfi, puan, saniye cinsinden kalan oyun süresi ve gerçek zaman, ve yüzde cinsinden batarya seviyesi.
 
 <CodeTabs file="gameinfo" />
 
-Oyun süresi bataklıklarda daha hızlı akar ve iki süreden biri dolduğunda oyun biter. Başlangıca ne zaman döneceğini bilmek için ikisini de kullan.
+Sürelerden biri bittiğinde ya da batarya boşaldığında oyun sona erer. Başlangıca ne zaman döneceğini ve [bataryayı ne zaman değiştireceğini](/docs/programming/battery/) bilmek için bunları kullan.
 
 ## Oyunu bitirme \{#ending-the-game\}
 

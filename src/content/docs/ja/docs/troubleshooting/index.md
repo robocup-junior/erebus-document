@@ -22,6 +22,9 @@ Webots が Python の場所を見つけられません。
 
    ![Webots の設定にある Python command の欄](../../../docs/troubleshooting/preferences.png)
 
+### `ERROR: Skipped PROTO 'custom_robot'` {#error-skipped-proto-custom_robot}
+初めてワールドを開いたとき、Erebus がロボットモデルを準備する前に表示されます。Erebus が準備して自動でワールドを再読み込みするので、無視してかまいません。
+
 ### ゲームタイマーが表示されない {#the-game-timer-does-not-appear}
 初回の起動では、Erebus がライブラリをインストールするので数分かかることがあります。いつまでも終わらない場合は、コンソールにエラーがないか確認してください。自動インストールがうまくいかない場合は、[必要なライブラリ](/docs/installation/#python-libraries)を自分でインストールしてください。
 
@@ -30,9 +33,14 @@ Webots が Python の場所を見つけられません。
 ### コントロールウィンドウが表示されない {#the-control-window-does-not-appear}
 コントロールウィンドウは、Webots が開く Web ページです。
 
-1. ブラウザーがブロックした場合は、ワールドを開いた状態で[コントロールウィンドウ](http://localhost:1234/robot_windows/MainSupervisorWindow/MainSupervisorWindow.html?name=robot)を開いてください。
+1. ウィンドウを閉じてしまったか、ブラウザーがブロックした場合は、Webots の再読み込みボタンでワールドを再読み込みします。Erebus がコントロールウィンドウをもう一度開きます。
 2. そうでない場合は、**Tools > Scene Tree** で Scene Tree が表示されていることを確認します。
 3. Scene Tree で **DEF MAINSUPERVISOR Robot** を見つけて右クリックし、**Show Robot Window** を選びます。
+
+コントロールウィンドウには、ワールドを読み込むたびに変わる専用のアドレスがあります。自分で `localhost:1234` のウィンドウを開くと **Read-only** と表示され、ボタンは動きません。
+
+### コントロールウィンドウに「Access log incomplete」と表示される {#the-control-window-says-access-log-incomplete}
+この警告は、[Wireshark](/docs/installation/#optional-wireshark) がインストールされていないときに表示されます。大会で運営者が使うためのものなので、**Acknowledge** を押して、いつもどおり練習してください。
 
 ![Scene Tree にある Show Robot Window の項目](../../../docs/troubleshooting/showrobot.png)
 
@@ -52,11 +60,8 @@ Webots が Python の場所を見つけられません。
 
 ## ロボット {#your-robot}
 
-### `PROTO parameter 'camera_width' has no matching IS field` {#proto-parameter-camera_width-has-no-matching-is-field}
-Erebus v26.1 では、現在の Robot Customizer で作ったロボットを読み込むと、このエラーが赤字で表示されます。これは無視してかまいません。ロボットは動作し、カメラは選んだ解像度になっています。
-
 ### デバイスが見つからないとプログラムに表示される {#my-program-says-a-device-was-not-found}
-下を参照してください。また、ゲームを開始する前に、**右側の** LOAD ボタンでロボットを読み込んだことを確認してください。
+下を参照してください。また、ゲームを開始する前に、**Robot setup** の **Robot JSON** でロボットを読み込んだか確認してください。
 
 ## プログラム {#your-program}
 
@@ -64,10 +69,16 @@ Erebus v26.1 では、現在の Robot Customizer で作ったロボットを読�
 プログラムのデバイス名がロボットと一致していません。スターターロボットの名前は[リファレンス](/docs/reference/parameters/#device-names-of-the-starter-robot)に載っています。自作のロボットの場合は、[Robot Customizer](/docs/robot/customizer/) で設定した名前です。ロボットが読み込まれていることも確認してください。
 
 ### 壁のトークンを報告しても何も起こらない {#nothing-happens-when-i-report-a-wall-token}
-コントロールウィンドウの Settings タブで **Enable debugging** をオンにして、コンソールを確認してください。よくある原因は、ロボットが 1 秒以上停止していなかったことと、座標をセンチメートルに変換していなかったことです。[通信](/docs/programming/communication/#scoring-wall-tokens)を参照してください。
+コントロールウィンドウの **Advanced setup** で **Enable debugging** をオンにして、コンソールを確認してください。よくある原因は、ロボットが 1 秒以上止まっていなかったこと、座標をセンチメートルに変換していなかったこと、ロボットや位置がトークンからタイル半分（6 cm）より離れていたことです。[通信](/docs/programming/communication/#scoring-wall-tokens)を参照してください。
 
 ### 報告が誤識別になる {#my-reports-are-misidentifications}
 ロボットはトークンからタイル半分以内で、壁の同じ側にいる必要があります。また、各トークンで得点できるのは 1 回だけです。偽物を報告した場合も誤識別になります。
+
+### ゲームが「Battery depleted」で終わる {#the-game-ends-with-battery-depleted}
+バッテリーが切れました。その前に、コンタクトタイルの上で 5 秒間止まってバッテリーを交換しましょう。[バッテリー](/docs/programming/battery/)を参照してください。
+
+### プログラムがゲーム情報を受け取れなくなった {#my-program-no-longer-receives-the-game-information}
+Erebus v27 から、`G` への返信は 20 バイトになり、最後にバッテリー残量が入っています。プログラムの長さのチェックを更新してください。[ゲーム情報](/docs/programming/communication/#game-information)を参照してください。
 
 ### 地図が 0% になる、または得点計算エラーになる {#the-map-gets-0-or-a-scoring-error}
 地図にはスタートタイル（`5`）が含まれている必要があり、評価されるのは 1 回だけです。[地図の提出](/docs/programming/map-bonus/)を参照してください。

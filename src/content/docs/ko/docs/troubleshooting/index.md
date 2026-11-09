@@ -22,6 +22,9 @@ Webots가 Python이 어디에 있는지 몰라요.
 
    ![Webots 환경 설정의 Python command 칸](../../../docs/troubleshooting/preferences.png)
 
+### `ERROR: Skipped PROTO 'custom_robot'` {#error-skipped-proto-custom_robot}
+처음 월드를 열 때, Erebus가 로봇 모델을 준비하기 전에 표시돼요. Erebus가 모델을 준비하고 월드를 알아서 다시 불러오므로 무시해도 돼요.
+
 ### 게임 타이머가 나타나지 않아요 {#the-game-timer-does-not-appear}
 처음 시작할 때는 Erebus가 라이브러리를 설치하느라 몇 분 걸릴 수 있어요. 끝나지 않는다면 콘솔에서 오류를 확인하세요. 자동 설치가 작동하지 않으면 [필요한 라이브러리](/docs/installation/#python-libraries)를 직접 설치하세요.
 
@@ -30,9 +33,14 @@ Webots가 Python이 어디에 있는지 몰라요.
 ### 제어 창이 나타나지 않아요 {#the-control-window-does-not-appear}
 제어 창은 Webots가 여는 웹 페이지예요.
 
-1. 브라우저가 차단했다면, 월드가 열려 있는 동안 [제어 창](http://localhost:1234/robot_windows/MainSupervisorWindow/MainSupervisorWindow.html?name=robot)을 여세요.
+1. 창을 닫았거나 브라우저가 막았다면, Webots의 다시 불러오기 버튼으로 월드를 다시 불러와요. Erebus가 제어 창을 다시 열어요.
 2. 그렇지 않다면 **Tools > Scene Tree**로 Scene Tree가 표시되어 있는지 확인하세요.
 3. Scene Tree에서 **DEF MAINSUPERVISOR Robot**을 찾아 마우스 오른쪽 버튼으로 클릭하고 **Show Robot Window**를 선택하세요.
+
+제어 창에는 월드를 불러올 때마다 바뀌는 전용 주소가 있어요. 직접 `localhost:1234`에서 창을 열면 **Read-only**로 표시되고 버튼이 작동하지 않아요.
+
+### 제어 창에 "Access log incomplete"가 표시돼요 {#the-control-window-says-access-log-incomplete}
+이 경고는 [Wireshark](/docs/installation/#optional-wireshark)가 설치되어 있지 않을 때 나타나요. 대회 운영자를 위한 기능이므로 **Acknowledge**를 누르고 평소처럼 연습하세요.
 
 ![Scene Tree의 Show Robot Window 옵션](../../../docs/troubleshooting/showrobot.png)
 
@@ -52,11 +60,8 @@ Webots가 Python이 어디에 있는지 몰라요.
 
 ## 로봇 {#your-robot}
 
-### `PROTO parameter 'camera_width' has no matching IS field` {#proto-parameter-camera_width-has-no-matching-is-field}
-Erebus v26.1은 현재 버전의 Robot Customizer로 만든 로봇을 불러올 때 이 오류를 빨간색으로 표시해요. 무시해도 돼요. 로봇은 작동하고, 카메라는 선택한 해상도 그대로예요.
-
 ### 장치를 찾을 수 없다고 나와요 {#my-program-says-a-device-was-not-found}
-아래를 참고하세요. 게임을 시작하기 전에 **오른쪽** LOAD 버튼으로 로봇을 불러왔는지도 확인하세요.
+아래를 참고하세요. 또한 게임을 시작하기 전에 **Robot setup**의 **Robot JSON**에서 로봇을 불러왔는지 확인하세요.
 
 ## 프로그램 {#your-program}
 
@@ -64,10 +69,16 @@ Erebus v26.1은 현재 버전의 Robot Customizer로 만든 로봇을 불러올 
 프로그램의 장치 이름이 로봇과 맞지 않아요. 스타터 로봇의 이름은 [레퍼런스](/docs/reference/parameters/#device-names-of-the-starter-robot)에 있어요. 직접 만든 로봇이라면 [Robot Customizer](/docs/robot/customizer/)에서 설정한 이름이에요. 로봇을 불러왔는지 확인하세요.
 
 ### 벽 토큰을 보고해도 아무 일도 일어나지 않아요 {#nothing-happens-when-i-report-a-wall-token}
-제어 창의 Settings 탭에서 **Enable debugging**을 켜고 콘솔을 확인하세요. 가장 흔한 원인은 로봇이 최소 1초 동안 정지해 있지 않았거나, 좌표를 센티미터로 변환하지 않은 경우예요. [통신](/docs/programming/communication/#scoring-wall-tokens)을 참고하세요.
+제어 창의 **Advanced setup**에서 **Enable debugging**을 켜고 콘솔을 확인하세요. 가장 흔한 원인은 로봇이 1초 이상 멈춰 있지 않았거나, 좌표를 센티미터로 바꾸지 않았거나, 로봇 또는 위치가 토큰에서 반 타일(6cm)보다 멀리 있었던 경우예요. [통신](/docs/programming/communication/#scoring-wall-tokens)을 참고하세요.
 
 ### 보고가 오식별로 처리돼요 {#my-reports-are-misidentifications}
 로봇은 토큰에서 최대 반 타일 이내, 같은 쪽 벽에 있어야 하고, 각 토큰은 한 번만 점수를 얻을 수 있어요. 가짜를 보고해도 오식별로 처리돼요.
+
+### 게임이 "Battery depleted"로 끝나요 {#the-game-ends-with-battery-depleted}
+배터리가 다 떨어졌어요. 그 전에 접촉 타일 위에서 5초 동안 멈춰 배터리를 교체하세요. [배터리](/docs/programming/battery/)를 참고하세요.
+
+### 프로그램이 더 이상 게임 정보를 받지 못해요 {#my-program-no-longer-receives-the-game-information}
+Erebus v27부터 `G`의 응답은 20바이트이고, 마지막에 배터리 잔량이 들어 있어요. 프로그램의 길이 확인을 업데이트하세요. [게임 정보](/docs/programming/communication/#game-information)를 참고하세요.
 
 ### 지도가 0%이거나 점수 계산 오류가 나요 {#the-map-gets-0-or-a-scoring-error}
 지도에는 시작 타일(`5`)이 있어야 하고, 평가는 한 번만 할 수 있어요. [지도 제출](/docs/programming/map-bonus/)을 참고하세요.

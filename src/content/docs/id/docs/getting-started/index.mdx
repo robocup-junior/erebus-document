@@ -1,94 +1,130 @@
 ---
-title: Percobaan pertamamu
-description: Muat robotmu dan program siap pakai, lalu lihat robotmu menjelajahi labirin.
+title: Menjalankan pertama kali
+description: Muat robotmu dan program siap pakai, lalu lihat robot menjelajahi labirin.
 ---
 
 import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
 
-Di halaman ini, kamu akan menjalankan program lengkap di robotmu, dan belajar menggunakan jendela kontrol Erebus. Kamu membutuhkan [Erebus yang sudah terinstal](/docs/installation/) dan [robotmu](/docs/robot/).
+Di halaman ini, kamu menjalankan program lengkap di robotmu, dan belajar memakai jendela kontrol Erebus. Kamu memerlukan [Erebus yang sudah terinstal](/docs/installation/) dan [robotmu](/docs/robot/).
 
 ## Folder Erebus \{#the-erebus-folder\}
-Ini adalah folder-folder utama dari rilis yang kamu unduh:
+Berikut folder utama dari rilis yang kamu unduh:
 
 | Folder | Isi |
 |---|---|
 | `game/worlds` | World (berkas `.wbt`). Buka salah satunya untuk memulai. |
 | `game/logs` | Log permainan yang ditulis di akhir setiap permainan |
+| `match-results` | Satu folder untuk setiap pertandingan, berisi replay dan hasil petanya |
 | `player_controllers` | Contoh controller |
 
 ## Jendela kontrol \{#the-control-window\}
 1. Buka `game/worlds/world1.wbt` di Webots.
-1. Webots membuka jendela kontrol Erebus (jendela robot milik Main Supervisor) di browser web-mu. Di sinilah kamu memuat programmu dan menjalankan permainan.
+1. Webots membuka jendela kontrol Erebus (jendela robot dari Main Supervisor) di browser web-mu. Di sinilah kamu memuat program dan menjalankan permainan.
 
 ![Jendela kontrol Erebus](../../../docs/getting-started/control_window.png)
 
+Dari atas ke bawah:
+
 | Bagian | Kegunaan |
 |---|---|
-| **LOAD** kiri (ikon laptop) | Memuat program controller robotmu |
-| **LOAD** kanan (ikon robot) | Memuat robotmu (berkas `.json`) |
-| **TOGGLE REMOTE** | Memungkinkan program yang berjalan di luar Webots mengendalikan robot. Lihat [Remote Controller](/docs/competition/remote-controller/). |
-| **Docker path** | Folder berisi `Dockerfile`, untuk menjalankan controller-mu di dalam container dengan tombol Docker di sebelah tombol play. Lihat repositori [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). Ini opsional. |
-| **Settings** | Tautan dan opsi, dijelaskan di bawah |
+| World dan status | Nama world, dan status pertandingan: Ready, Running, Paused, atau Finished |
+| **Robot setup** | Memuat program dan robotmu, dan menghubungkan remote controller. Lihat di bawah. |
+| **Advanced setup** | Opsi, dijelaskan di bawah |
 | **Worlds** | Berpindah ke world lain |
-| **Reset** | Me-reset program yang dimuat dan permainannya |
-| **Give up!** | Mengakhiri permainan |
-| Pewaktu | Waktu permainan, dan di bawahnya waktu dunia nyata dalam tanda kurung. Permainan berakhir saat salah satunya mencapai 0. |
-| Kalkulator | Skor saat ini |
+| Skor | Skor saat ini |
+| **Robot battery** | Level baterai robot. Di bawah 20%, ditampilkan "Low battery". Lihat [Baterai](/docs/programming/battery/). |
+| **Simulation remaining** | Sisa waktu permainan. **Real-world allowance** menunjukkan berapa banyak sisa waktu nyata dibandingkan sisa waktu permainan. Permainan berakhir saat salah satunya habis. |
+| Kontrol pertandingan | Jalankan, jeda, pindahkan, reset, menyerah, dan simpan peta. Lihat di bawah. |
+| **Match events** | Riwayat pertandingan, yang terbaru di atas. **Export CSV** menyimpannya sebagai berkas. |
 
-## Jalankan program \{#run-a-program\}
-<a href={mazeUrl} download="maze.py">Unduh maze.py</a>, program lengkap yang membuat robot berkeliling labirin. Ini adalah program yang nanti akan kamu tulis sendiri di [Menavigasi labirin](/docs/programming/navigate-the-maze/).
+Tombol di kanan atas membuka jendela yang sama sebagai jendela browser terpisah yang lebih kecil.
+
+:::note
+Jika [Wireshark](/docs/installation/#optional-wireshark) tidak terinstal, jendela juga menampilkan peringatan bahwa akses jaringan tidak dipantau, dan memintamu mengonfirmasinya. Pemantauan ini untuk panitia di kompetisi, jadi kamu bisa mengonfirmasi peringatan itu dan berlatih seperti biasa.
+:::
+
+### Robot setup \{#robot-setup\}
+Tekan **Robot setup** untuk memuat program dan robotmu.
+
+![Panel Robot setup, dengan program dan robot yang sudah dimuat](../../../docs/getting-started/robot-setup.png)
+
+| Bagian | Kegunaan |
+|---|---|
+| **Controller** | **Load file** memuat program robotmu. Berkas Python dimuat apa adanya. Program C dan C++ harus dikompilasi dulu. |
+| **Robot JSON** | **Load file** memuat robotmu, yaitu berkas `.json` yang dibuat dengan [Robot Customizer](/docs/robot/customizer/) |
+| **Keep files after Reset** | Membuat program dan robotmu tetap dimuat saat permainan direset. Aktif secara bawaan. |
+| **Reload before Run** | Memuat ulang programmu dari **Original controller file** setiap kali kamu menjalankan pertandingan, agar perubahan terbarumu dipakai. Tulis path berkas di komputer yang menjalankan Webots. |
+| **Remote mode** | Membiarkan program yang berjalan di luar Webots mengendalikan robot. Lihat [Remote Controller](/docs/competition/remote-controller/). **Keep on Reset** membuatnya tetap aktif saat permainan direset. |
+| **Docker project path** | Folder dengan `Dockerfile`, untuk menjalankan controller-mu di dalam container dengan **Run Docker**. Lihat repositori [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles). Ini opsional. |
+
+### Kontrol pertandingan \{#match-controls\}
+
+![Kontrol pertandingan](../../../docs/getting-started/match-controls.png)
+
+| Tombol | Kegunaan |
+|---|---|
+| **Run match** | Memulai permainan. Robot muncul di world, dan programmu mulai berjalan. |
+| **Pause** | Menghentikan robot sementara. Tekan **Run match** untuk melanjutkan. |
+| **Relocate** | Menyatakan kurangnya kemajuan: robot kembali ke checkpoint terakhir yang dicapainya, dan kamu kehilangan 5 poin |
+| **Reset** | Mereset permainan dan world |
+| **Give up** | Mengakhiri permainan |
+| **Save map** | Menyimpan hasil peta yang dikirim robotmu, lalu membukanya. Lihat [Mengirim peta](/docs/programming/map-bonus/). |
+
+## Menjalankan program \{#run-a-program\}
+<a href={mazeUrl} download="maze.py">Unduh maze.py</a>, program lengkap yang mengendarai robot keliling labirin. Ini adalah program yang akan kamu tulis sendiri di [Menavigasi labirin](/docs/programming/navigate-the-maze/).
 
 1. Buka `game/worlds/world1.wbt`.
-1. Muat robotmu dengan **tombol LOAD sebelah kanan**, jika belum. World akan dimuat ulang bersama robotmu.
-1. Muat `maze.py` dengan **tombol LOAD sebelah kiri**. Saat program sudah dimuat, tombolnya berubah menjadi tombol REMOVE berwarna oranye.
-1. Tekan tombol start. Robot muncul di world dan mulai bergerak.
-![Tombol start](../../../docs/getting-started/start_button.png)
-1. Untuk menghentikan robot sementara, tekan tombol pause.
-![Tombol pause](../../../docs/getting-started/pause_button.png)
-1. Jika robot terjebak, tekan tombol restart untuk memicu kurangnya kemajuan (lack of progress). Robot akan dipindahkan kembali ke checkpoint terakhir yang dicapainya, dan kamu kehilangan 5 poin.
-![Tombol lack of progress](../../../docs/getting-started/lop_button.png)
-1. Tekan tombol Reset untuk me-reset program yang dimuat dan permainan yang sedang berjalan. Muat ulang world jika kamu ingin menjalankannya lagi setelah permainan berakhir.
+1. Tekan **Robot setup**, lalu muat robotmu dengan **Load file** di bawah **Robot JSON**, jika belum.
+1. Muat `maze.py` dengan **Load file** di bawah **Controller**. Nama setiap berkas muncul saat sudah dimuat.
+1. Tekan **Run match**. Robot muncul di world dan mulai bergerak.
+1. Untuk menghentikan robot sementara, tekan **Pause**.
+1. Jika robot tersangkut, tekan **Relocate** untuk memicu kurangnya kemajuan.
+1. Tekan **Reset** untuk mereset permainan. Program dan robotmu tetap dimuat, jadi kamu bisa menjalankannya lagi.
 
-Program ini membutuhkan OpenCV, yang sudah kamu instal bersama [library Python](/docs/installation/#python-libraries) lainnya. Pesan dan error dari programmu muncul di konsol Webots.
+Program ini membutuhkan OpenCV, yang sudah kamu instal bersama [library Python](/docs/installation/#python-libraries) lainnya. Pesan dari programmu, dan error, muncul di konsol Webots.
 
-Selama permainan berjalan, riwayat skor muncul di bagian bawah jendela. Riwayat ini memberitahumu dengan tepat mengapa kamu mendapat atau kehilangan poin, jadi ini adalah alat terbaik untuk memeriksa programmu.
+Saat permainan berjalan, event pertandingan muncul di bagian bawah jendela. Event ini memberi tahu dengan tepat mengapa kamu mendapat atau kehilangan poin, jadi ini alat terbaik untuk memeriksa programmu.
 
-![Jendela kontrol selama permainan, dengan riwayat skor](../../../docs/getting-started/control_window_running.png)
+![Jendela kontrol saat permainan, dengan event pertandingan](../../../docs/getting-started/control_window_running.png)
 
-Di akhir permainan, informasi yang sama disimpan di folder `game/logs`.
+`maze.py` melaju dengan kecepatan penuh dan tidak pernah mengganti baterainya, jadi di `world1.wbt` permainan berakhir dalam waktu kurang dari dua menit, dengan `Battery depleted`. Kamu akan belajar merawat baterai di [Baterai](/docs/programming/battery/).
 
-## Menggunakan world lain \{#using-other-worlds\}
-Tekan **Worlds** untuk berpindah ke world lain. Setiap world punya gambar mini (thumbnail), dan kamu juga bisa menambahkan world buatanmu sendiri yang dibuat dengan [World Editor](/docs/tools/world-editor/).
+Di akhir permainan, informasi yang sama disimpan di folder `game/logs`. Pertandingan juga disimpan sebagai replay 3D interaktif di folder `match-results`: buka `recording/replay.html` di browser-mu untuk menontonnya lagi.
 
-![Tab Worlds di jendela kontrol](../../../docs/getting-started/worlds.png)
+## Memakai world lain \{#using-other-worlds\}
+Tekan **Worlds** untuk berpindah ke world lain. Cari world berdasarkan namanya, pilih, lalu tekan **Load world**. Kamu juga bisa menambahkan world-mu sendiri yang dibuat dengan [World Editor](/docs/tools/world-editor/).
 
-World yang disertakan di Erebus v26.1 adalah:
+![Panel Worlds pada jendela kontrol](../../../docs/getting-started/worlds.png)
+
+World yang disertakan di Erebus v27 adalah:
 
 | World | Kegunaan |
 |---|---|
-| `world1.wbt`, `world2.wbt` | World contoh. `world2.wbt` mencakup Area 4. |
-| `world3.wbt`, `world4.wbt` | World contoh yang lebih besar, yang juga berisi **korban palsu** |
-| `mapping_example_1.wbt` hingga `mapping_example_3.wbt` | World untuk menguji pemetaanmu. Lihat [Aturan pemetaan](/docs/rules/mapping/). |
+| `2027_d1r1.wbt`, `2027_d1r2.wbt`, `2027_d2r1.wbt`, `2027_d2r2.wbt` | Contoh world untuk aturan 2027, dengan ubin kontak dan korban palsu |
+| `world1.wbt`, `world2.wbt` | Contoh world. `world2.wbt` menyertakan Area 4. |
+| `world3.wbt`, `world4.wbt` | Contoh world yang lebih besar, yang juga menyertakan **korban palsu** |
+| `mapping_example_1.wbt` sampai `mapping_example_3.wbt` | World untuk menguji pemetaanmu. Lihat [Pemetaan](/docs/rules/mapping/). |
+| `mapping_example_1_cyan_tiles.wbt` | `mapping_example_1.wbt` dengan dua ubin kontak |
 | `NewPassages.wbt` | Contoh lorong penghubung antar-area |
 
-## Pengaturan \{#settings\}
-![Tab Settings di jendela kontrol](../../../docs/getting-started/settings.png)
+## Advanced setup \{#advanced-setup\}
+![Panel Advanced setup pada jendela kontrol](../../../docs/getting-started/settings.png)
 
 | Pengaturan | Kegunaan |
 |---|---|
-| Keep controller/robot files | Membuat program dan robotmu tetap termuat saat world dimuat ulang |
-| Disable automatic LoP | Menghentikan kurangnya kemajuan otomatis setelah 20 detik. Hanya untuk debugging. |
+| Show head-up display | Menampilkan skor, waktu, dan event terbaru di jendela Webots |
 | Automatic camera | Membuat tampilan mengikuti robot |
-| Recording | Merekam permainan sebagai video |
-| Keep remote controller on | Membuat TOGGLE REMOTE tetap aktif saat world dimuat ulang |
-| Enable debugging | Mencetak informasi tambahan di konsol Webots, misalnya alasan laporan penanda dinding ditolak |
+| HTML replay recording | Menyimpan setiap pertandingan sebagai replay 3D interaktif di folder `match-results` |
+| Automatic map result | Menyimpan dan membuka hasil peta begitu robot mengirimkannya |
+| Disable automatic LoP | Mematikan kurangnya kemajuan otomatis setelah 20 detik. Hanya untuk debugging. |
+| Enable debugging | Menampilkan informasi tambahan di konsol Webots, misalnya mengapa laporan penanda dinding ditolak |
 
-Tautan di bagian atas mengarah ke changelog dan ke alat untuk membuat world dan robot. Untuk membuat world dengan aturan 2026, gunakan [World Editor](https://world.erebus.rcj.cloud/).
+**References** di bagian bawah jendela mengarah ke changelog, dokumentasi ini, dan alat untuk membuat world dan robot. Untuk membuat world dengan aturan 2027, gunakan [World Editor](https://world.erebus.rcj.cloud/).
 
-## Memindahkan robot secara manual ke tempat yang kamu inginkan \{#manually-move-the-robot-where-you-want-it-to-go\}
-Saat kamu mengklik robot di jendela simulasi, panah merah, hijau, dan biru akan muncul. Seret panah-panah ini dengan mouse untuk memindahkan robot ke posisi mana pun. Perhatikan bahwa robot baru ditampilkan setelah program dimulai.
+## Memindahkan robot secara manual ke tempat yang kamu mau \{#manually-move-the-robot-where-you-want-it-to-go\}
+Saat kamu mengklik robot di jendela simulasi, muncul panah merah, hijau, dan biru. Seret panah-panah ini dengan mouse untuk memindahkan robot ke posisi mana pun. Perhatikan bahwa robot tidak ditampilkan sampai program dimulai.
 ![Robot yang dipilih di Webots, dengan panah untuk memindahkannya](../../../docs/getting-started/manual.png)
 
 
-## Selanjutnya \{#next\}
+## Berikutnya \{#next\}
 Kamu sudah melihat robot menjelajah sendiri. Sekarang belajarlah memprogramnya sendiri: mulai dengan [Program pertamamu](/docs/programming/first-program/).

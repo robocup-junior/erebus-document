@@ -22,6 +22,7 @@ Yani kusursuz bir harita puanını 2,2 ile çarpar. Matrisin nasıl gönderilece
 | Kontrol noktaları | `4` |
 | Başlangıç karesi | `5` |
 | Engelli kare | `x` |
+| Temas karesi (camgöbeği) | `k` |
 | 1. ve 2. alanlar arasındaki geçit (mavi) | `b` |
 | 1. ve 3. alanlar arasındaki geçit (sarı) | `y` |
 | 1. ve 4. alanlar arasındaki geçit (yeşil) | `g` |
@@ -32,8 +33,8 @@ Yani kusursuz bir harita puanını 2,2 ile çarpar. Matrisin nasıl gönderilece
 | Sınırı dahil, 4. alanın tüm kareleri, kenarları ve köşeleri | `*` |
 | Diğer tüm kareler, kenarlar ve köşeler | `0` |
 
-* Zemin öğeleri (`2`, `3`, `4`, `5`, `x` ve geçitler), aşağıdaki örneklerde görebileceğin gibi, karenin dört çeyrek karesinin her birinin merkez hücresine yazılır.
-* Hiçbir kare aynı anda şunlardan birden fazlası olamaz: bataklık, çukur, kontrol noktası, başlangıç karesi, engelli kare ya da alan geçidi.
+* Zemin öğeleri (`2`, `3`, `4`, `5`, `x`, `k` ve geçitler), aşağıdaki örneklerde görebileceğin gibi, karenin dört çeyrek karesinin her birinin merkez hücresine yazılır.
+* Hiçbir kare aynı anda şunlardan birden fazlası olamaz: bataklık, çukur, kontrol noktası, temas karesi, başlangıç karesi, engelli kare ya da alan geçidi.
 * 3. alandaki kavisli duvarlar için köşe `0` ile temsil edilir.
 * Bir duvar işareti, üzerinde bulunduğu duvarın hücresine yazılır. Aynı duvarda, örneğin iki yüzünde, birden fazla duvar işareti varsa kodlarını haritadaki mutlak konumlarına göre sırayla tek bir hücrede birleştir: önce yukarıdan aşağıya, sonra soldan sağa.
 * Sahte işaretler haritaya eklenmemelidir: ne sahte kazazedeler ne de toplamı geçersiz olan bilişsel hedefler.
@@ -55,7 +56,7 @@ Kurallara göre kavisli bir duvarın köşeleri sıfırla temsil edilir.
 ![Bir yanında dik açı, diğer yanında kavis olan bir duvar](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Örnekler {#examples}
-Aşağıda, Erebus v26 ile gelen bazı dünyaların Erebus'un kendisinin ürettiği doğru cevapları var.
+Aşağıda, Erebus v27 ile gelen bazı dünyaların Erebus'un kendisinin ürettiği doğru cevapları var.
 
 `game/worlds` klasöründeki dünyalar sürümden sürüme değişir, bu yüzden Erebus sürümün farklıysa cevabın da farklı olabilir. `player_controllers` klasöründeki `MapScorerExample.py` dosyasında da örnek matrisler var.
 
@@ -78,6 +79,33 @@ Tek alanlı küçük bir dünya. Başlangıç karesi sol alttaki yeşil karedir.
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '1', '1', '1', '1', '1', 'F', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
+]
+```
+
+### mapping_example_1_cyan_tiles.wbt {#mapping_example_1_cyan_tileswbt}
+`mapping_example_1.wbt` ile aynı dünya; `k` ile gösterilen iki temas karesi eklenmiştir.
+
+![Webots'ta mapping_example_1_cyan_tiles dünyası](../../../../docs/rules/mapping/mapping_example_1_cyan_tiles.png)
+
+```
+[
+['1', '1', 'S', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', 'C', '0', '0', '0', '0', '0', '0', '0', 'O', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['F', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', '0', '0', '0', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', '0', '0', '0', '1', '1', 'U', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
 ['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],

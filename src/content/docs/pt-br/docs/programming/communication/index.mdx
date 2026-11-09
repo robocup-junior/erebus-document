@@ -1,6 +1,6 @@
 ---
 title: Comunicação
-description: Informe marcadores nas paredes, declare uma falta de progresso, peça a pontuação e termine a partida.
+description: Informar marcadores, declarar falta de progresso, pedir a pontuação, o tempo e a bateria, e encerrar a partida.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -14,30 +14,30 @@ Cada seção abaixo é um programa completo para o [robô inicial](/docs/robot/)
 
 ## Pontuando com marcadores nas paredes \{#scoring-wall-tokens\}
 
-Para pontuar com uma vítima de letra (letter victim) ou um alvo cognitivo (cognitive target), o robô precisa:
+Para pontuar com uma vítima smiley (letter victim) ou um alvo cognitivo (cognitive target), o robô precisa:
 
 1. **Ficar parado por mais de 1 segundo** perto do marcador. O Erebus ignora o informe se o robô se moveu no último segundo.
 2. **Enviar a posição e o tipo** do marcador: X e Z em **centímetros**, e o tipo como uma letra.
 
 | Marcador de parede | Tipo |
 |---|---|
-| Vítima de letra Φ (ferida) | `H` |
-| Vítima de letra Ψ (estável) | `S` |
-| Vítima de letra Ω (ilesa) | `U` |
+| Vítima smiley, rosto triste (ferida) | `H` |
+| Vítima smiley, rosto neutro (estável) | `S` |
+| Vítima smiley, rosto feliz (ilesa) | `U` |
 | Alvo cognitivo, soma 0 (gás inflamável) | `F` |
 | Alvo cognitivo, soma 1 (veneno) | `P` |
 | Alvo cognitivo, soma 2 (corrosivo) | `C` |
 | Alvo cognitivo, soma 3 (peróxido orgânico) | `O` |
 
-Os tipos são letras, mesmo que as vítimas mostrem símbolos desde 2026. O GPS fornece metros, então multiplique por 100.
+Os tipos são letras, mesmo que as vítimas mostrem rostos. O GPS dá metros, então multiplique por 100.
 
 <CodeTabs file="report" />
 
-O robô precisa estar do mesmo lado da parede que o marcador, e tanto o robô quanto a posição que você envia precisam estar perto dele. As regras exigem no máximo meio ladrilho, então mire nisso. O Erebus v26.1 verifica uma distância de 9 cm.
+O robô precisa estar do mesmo lado da parede que o marcador, e tanto o centro do robô quanto a posição enviada precisam estar a menos de meio ladrilho (6 cm) dele.
 
-Execute este programa no início de `world1.wbt`: não há nenhum marcador ali, então o histórico da janela de controle mostra `Misidentification of Victim -5`. Um informe errado, incluindo o informe de um falso, custa 5 pontos, e cada marcador só pode ser pontuado uma vez.
+Execute este programa no início de `world1.wbt`: não há nenhum marcador ali, então os eventos da partida na janela de controle mostram `Misidentification of Victim -5`. Um informe errado, inclusive o de um marcador falso, custa 5 pontos, e cada marcador só pontua uma vez.
 
-![O histórico da janela de controle depois de um informe errado e do envio de um mapa](../../../../docs/programming/communication/history.png)
+![Os eventos da partida depois de um informe errado](../../../../docs/programming/communication/history.png)
 
 ## Falta de progresso \{#lack-of-progress\}
 
@@ -49,11 +49,11 @@ O receptor pode receber mensagens diferentes, então confira o tamanho de cada u
 
 ## Informações da partida \{#game-information\}
 
-Envie `G` para obter a pontuação e o tempo restante. A partida responde com uma mensagem de 16 bytes: a letra `G`, a pontuação, o tempo de partida restante e o tempo real restante, em segundos.
+Envie `G` para obter a pontuação, o tempo restante e o nível da bateria. A partida responde com uma mensagem de 20 bytes: a letra `G`, a pontuação, o tempo de partida e o tempo real restantes em segundos, e o nível da bateria em porcentagem.
 
 <CodeTabs file="gameinfo" />
 
-O tempo de partida corre mais rápido nos pântanos, e a partida termina quando qualquer um dos dois tempos acaba. Use os dois para saber quando voltar para o início.
+A partida termina quando qualquer um dos tempos acaba, ou quando a bateria fica vazia. Use-os para saber quando voltar ao início e quando [substituir a bateria](/docs/programming/battery/).
 
 ## Terminando a partida \{#ending-the-game\}
 

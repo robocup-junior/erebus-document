@@ -3,7 +3,7 @@ title: Vorbereitung auf einen Wettbewerb
 description: Eine Checkliste, um dich auf einen Wettbewerb in RoboCupJunior Rescue Simulation vorzubereiten.
 ---
 
-Diese Seite ist ein Leitfaden für den internationalen Wettbewerb nach den Regeln von 2026. Lokale und regionale Wettbewerbe können abweichen, also frag bei deinen Organisatoren nach. Die offiziellen [Regeln](/docs/rules/) gelten immer.
+Diese Seite ist ein Leitfaden für den internationalen Wettbewerb nach den Regeln von 2027. Lokale und regionale Wettbewerbe können abweichen, also frag bei deinen Organisatoren nach. Die offiziellen [Regeln](/docs/rules/) gelten immer.
 
 ## Zeitplan {#timeline}
 
@@ -22,7 +22,7 @@ Vorlagen und Bewertungsbögen findest du auf der [RCJ Rescue Community-Website](
 - [ ] **Technical Description Paper (TDP).** Halte dich genau an die Vorlage, sonst bekommt das Dokument 0 Punkte.
 - [ ] **Poster**, als Datei und als gedrucktes Poster vor Ort, höchstens A1.
 - [ ] **Video**, das dein Projekt vorstellt.
-- [ ] **Server-Client-Video**, neu seit 2026: ein kurzes Video, das zeigt, wie du deinen Controller im Server-Client-Setup auf einer Beispielkarte ausführst.
+- [ ] **Server-Client-Video:** ein kurzes Video, das zeigt, wie du deinen Controller auf einer Beispielkarte im Server-Client-Setup ausführst.
 - [ ] **Quellcode** und das **Webformular** für die Interviews.
 
 ## Setup beim Wettbewerb {#competition-setup}
@@ -30,7 +30,7 @@ Die Spiele laufen in einem Server-Client-Setup: Die Organisatoren betreiben den 
 
 Bring mit:
 
-- [ ] Einen Computer mit deinem Programm und allen installierten Bibliotheken sowie Webots R2023b
+- [ ] Einen Computer mit deinem Programm und allen installierten Bibliotheken sowie Webots R2025a
 - [ ] Ein Ethernet-Kabel und einen Adapter, falls dein Computer einen braucht
 - [ ] Die `.json`-Datei deines Roboters, falls du einen eigenen Roboter hast
 - [ ] Das gedruckte Poster
@@ -47,9 +47,9 @@ Sofern die Organisatoren nichts anderes ankündigen, werden die folgenden Einste
 | Anti-aliasing | Disabled |
 
 ## Deinen Roboter testen {#testing-your-robot}
-- [ ] Lass ihn in jeder mitgelieferten Welt laufen, besonders in `world3.wbt` und `world4.wbt`, die Fälschungen enthalten.
+- [ ] Auf jeder enthaltenen Welt fahren, besonders auf den vier `2027_`-Welten, die Kontaktkacheln und Fälschungen enthalten.
 - [ ] Erstelle mit dem [World Editor](/docs/tools/world-editor/) eigene Karten mit allen vier Bereichen.
-- [ ] Prüfe das ganze Spiel: Läuft es bis zum Ende, gibt es die Karte ab und kehrt rechtzeitig zum Start zurück?
+- [ ] Das ganze Spiel prüfen: Läuft es bis zum Ende, tauscht der Roboter rechtzeitig seinen Akku aus, gibt er die Karte ab und kehrt er zum Start zurück?
 - [ ] Teste, was nach einem fehlenden Fortschritt (Lack of Progress) passiert.
 - [ ] Teste auf dem Computer, den du mitbringst, und mit den OpenGL-Einstellungen oben.
 

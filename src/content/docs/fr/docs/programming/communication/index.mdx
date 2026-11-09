@@ -1,6 +1,6 @@
 ---
 title: Communication
-description: Signalez les marqueurs muraux, déclenchez une absence de progression, demandez le score et terminez la partie.
+description: Signaler les marqueurs muraux, déclarer une absence de progression, demander le score, le temps et la batterie, et terminer le jeu.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -14,30 +14,30 @@ Chaque section ci-dessous est un programme complet pour le [robot de départ](/d
 
 ## Marquer des points avec les marqueurs muraux \{#scoring-wall-tokens\}
 
-Pour marquer les points d’une victime lettre (letter victim) ou d’une cible cognitive (cognitive target), le robot doit :
+Pour marquer les points d’une victime smiley (letter victim) ou d’une cible cognitive (cognitive target), le robot doit :
 
 1. **S’arrêter plus d’une seconde** près du marqueur. Erebus ignore le signalement si le robot a bougé au cours de la dernière seconde.
 2. **Envoyer la position et le type** du marqueur : X et Z en **centimètres**, et le type sous forme d’une lettre.
 
 | Marqueur mural | Type |
 |---|---|
-| Victime lettre Φ (blessée, harmed) | `H` |
-| Victime lettre Ψ (stable) | `S` |
-| Victime lettre Ω (indemne, unharmed) | `U` |
+| Victime smiley, visage triste (blessée) | `H` |
+| Victime smiley, visage neutre (stable) | `S` |
+| Victime smiley, visage content (indemne) | `U` |
 | Cible cognitive, somme 0 (Gaz inflammable, Flammable Gas) | `F` |
 | Cible cognitive, somme 1 (Toxique, Poison) | `P` |
 | Cible cognitive, somme 2 (Corrosif, Corrosive) | `C` |
 | Cible cognitive, somme 3 (Peroxyde organique, Organic Peroxide) | `O` |
 
-Les types sont des lettres, même si les victimes affichent des symboles depuis 2026. Le GPS donne des mètres : multipliez donc par 100.
+Les types sont des lettres, même si les victimes montrent des visages. Le GPS donne des mètres : multipliez par 100.
 
 <CodeTabs file="report" />
 
-Le robot doit être du même côté du mur que le marqueur, et le robot comme la position envoyée doivent en être proches. Les règles exigent au plus une demi-case : visez cela. Erebus v26.1 vérifie une distance de 9 cm.
+Le robot doit être du même côté du mur que le marqueur, et le centre du robot comme la position envoyée doivent être à moins d’une demi-case (6 cm) de celui-ci.
 
-Exécutez ce programme au départ de `world1.wbt` : il n’y a pas de marqueur à cet endroit, donc l’historique de la fenêtre de contrôle affiche `Misidentification of Victim -5`. Un mauvais signalement, y compris le signalement d’un leurre, coûte 5 points, et chaque marqueur ne rapporte des points qu’une seule fois.
+Lancez ce programme au départ de `world1.wbt` : il n’y a pas de marqueur à cet endroit, donc les événements du match de la fenêtre de contrôle affichent `Misidentification of Victim -5`. Un mauvais signalement, y compris celui d’un leurre, coûte 5 points, et chaque marqueur ne peut rapporter des points qu’une fois.
 
-![L’historique de la fenêtre de contrôle après un mauvais signalement et la soumission d’une carte](../../../../docs/programming/communication/history.png)
+![Les événements du match après un mauvais signalement](../../../../docs/programming/communication/history.png)
 
 ## Absence de progression \{#lack-of-progress\}
 
@@ -49,11 +49,11 @@ Le récepteur peut recevoir différents messages : vérifiez donc la longueur de
 
 ## Informations de jeu \{#game-information\}
 
-Envoyez `G` pour obtenir le score et le temps restant. Le jeu répond par un message de 16 octets : la lettre `G`, le score, le temps de jeu restant et le temps réel restant, en secondes.
+Envoyez `G` pour obtenir le score, le temps restant et le niveau de la batterie. Le jeu répond par un message de 20 octets : la lettre `G`, le score, le temps de jeu et le temps réel restants en secondes, et le niveau de la batterie en pourcentage.
 
 <CodeTabs file="gameinfo" />
 
-Le temps de jeu s’écoule plus vite dans les marécages, et la partie se termine dès que l’un des deux temps est écoulé. Utilisez les deux pour savoir quand revenir au départ.
+Le jeu se termine quand l’un des deux temps est écoulé, ou quand la batterie est vide. Servez-vous-en pour savoir quand revenir au départ, et quand [remplacer la batterie](/docs/programming/battery/).
 
 ## Terminer la partie \{#ending-the-game\}
 

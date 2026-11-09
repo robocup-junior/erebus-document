@@ -3,7 +3,7 @@ title: 什麼是 Erebus？
 description: Erebus 是 RoboCupJunior 的救援模擬平台，以 Webots 為基礎打造。了解它的各個部分如何組合在一起。
 ---
 
-Erebus 是一個機器人模擬比賽環境。你要為一台機器人開發控制器，讓它自主探索迷宮、找到並辨識牆上的標記（字母受害者和認知目標）、避開障礙物和陷阱，並建立環境的地圖。
+Erebus 是一個機器人模擬比賽環境。你要為一台機器人開發控制器，讓它自主探索迷宮、找到並辨識牆上的標記（笑臉受害者和認知目標）、避開障礙物和陷阱、維持電池電量，並建立環境的地圖。
 
 它以 [Webots](https://cyberbotics.com/) 為基礎。Webots 是一個專為專業用途設計的機器人模擬平台，廣泛應用於產業、教育和研究。自 1998 年以來，Cyberbotics 一直持續維護 Webots。
 
@@ -13,8 +13,8 @@ Erebus 是一個機器人模擬比賽環境。你要為一台機器人開發控�
 
 | 元件 | 功能 | 取得方式 |
 |---|---|---|
-| **Webots R2023b** | 3D 機器人模擬器 | [Webots R2023b 版本](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
-| **Erebus** | 各個世界和比賽管理程式（Main Supervisor），負責套用規則並計算分數 | [Erebus 版本](https://github.com/robocup-junior/erebus/releases) |
+| **Webots R2025a** | 3D 機器人模擬器 | [Webots R2025a 版本](https://github.com/cyberbotics/webots/releases/tag/R2025a) |
+| **Erebus** | 各個世界和監督程式（Main Supervisor），負責套用規則並計算分數 | [Erebus 版本](https://github.com/robocup-junior/erebus/releases) |
 | **你的控制器** | 你的機器人的程式，使用 Python 或 C/C++ | 由你撰寫！ |
 | **Robot Customizer** | 設計自訂機器人並匯出為 JSON 檔案的網頁工具 | [robot.erebus.rcj.cloud](https://robot.erebus.rcj.cloud/) |
 | **World Editor** | 繪製練習地圖並匯出為 `.wbt` 世界的網頁工具 | [world.erebus.rcj.cloud](https://world.erebus.rcj.cloud/) |
@@ -26,12 +26,12 @@ Erebus 是一個機器人模擬比賽環境。你要為一台機器人開發控�
 3. **執行。** 在內建的世界或你自己的世界上測試，並觀察分數。
 4. **參加比賽。** 參加地區、區域和國際的 RoboCupJunior 比賽。
 
-如果你已經認識 Erebus，請參閱 [v26 新功能](/docs/whats-new/)。
+如果你已經認識 Erebus，請參閱 [v27 新功能](/docs/whats-new/)。
 
 ## 實用參考資料 {#useful-references}
 學習和使用 Erebus 的實用連結：
-- [Webots 使用者指南](https://cyberbotics.com/doc/guide/index?version=R2023b)
-- [Webots 參考手冊](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
+- [Webots 使用者指南](https://cyberbotics.com/doc/guide/index?version=R2025a)
+- [Webots 參考手冊](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2025a)
 - [Python 文件](https://www.python.org/doc/)
 - [C++ 文件](https://www.cplusplus.com/doc/tutorial/)
 - [OpenCV 教學](https://docs.opencv.org/4.x/d9/df8/tutorial_root.html)

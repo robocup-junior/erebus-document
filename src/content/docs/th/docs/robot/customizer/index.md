@@ -30,7 +30,7 @@ description: หน้าจอ องค์ประกอบ ราคา แ�
 
 ## การใช้งานใน Erebus {#using-it-in-erebus}
 
-กดปุ่ม LOAD ด้านขวาของ[หน้าต่างควบคุม](/docs/getting-started/#the-control-window) แล้วเลือกไฟล์ `.json` ของคุณ ดู[โหลดเข้า Erebus](/docs/robot/#load-it-in-erebus) Erebus จะตรวจสอบงบประมาณและสร้างหุ่นยนต์ และคอนโซลของ Webots จะแสดงรายการองค์ประกอบแต่ละชิ้นพร้อมราคา
+ใน[หน้าต่างควบคุม](/docs/getting-started/#robot-setup) กด **Robot setup** แล้วกด **Load file** ใต้ **Robot JSON** และเลือกไฟล์ `.json` ของคุณ ดู[โหลดเข้า Erebus](/docs/robot/#load-it-in-erebus) Erebus จะตรวจงบประมาณและสร้างหุ่นยนต์ และคอนโซลของ Webots จะแสดงรายการชิ้นส่วนแต่ละชิ้นพร้อมราคา
 
 โหลดหุ่นยนต์ของคุณก่อน แล้วจึงโหลดโปรแกรม
 

@@ -7,7 +7,7 @@ Dans Erebus, **c’est vous qui concevez votre robot** : vous choisissez ses cap
 
 ![Un vrai robot e-puck](../../../docs/robot/real_robot.thumbnail.jpg)
 
-Le robot est basé sur l’[e-puck](https://cyberbotics.com/doc/guide/epuck?version=R2023b), un petit robot éducatif rond à deux roues. Vous lui ajoutez des capteurs avec le [Robot Customizer](https://robot.erebus.rcj.cloud/), et vous enregistrez le modèle dans un fichier `.json` qu’Erebus charge.
+Le robot est basé sur l’[e-puck](https://cyberbotics.com/doc/guide/epuck?version=R2025a), un petit robot éducatif rond à deux roues. Vous lui ajoutez des capteurs avec le [Robot Customizer](https://robot.erebus.rcj.cloud/), et vous enregistrez le modèle dans un fichier `.json` qu’Erebus charge.
 
 ## Le robot de départ {#the-starter-robot}
 Cette documentation utilise partout le même robot, le **robot de départ**, pour que chaque exemple fonctionne tel quel. Il possède tous les capteurs dont les tutoriels ont besoin :
@@ -18,7 +18,7 @@ Cette documentation utilise partout le même robot, le **robot de départ**, pou
 | Encodeurs de roues | `left wheel sensor`, `right wheel sensor` | Mesurer de combien les roues ont tourné |
 | Trois capteurs de distance | `leftDist`, `frontDist`, `rightDist` | Détecter les murs à gauche, devant et à droite |
 | Caméra, 64 × 40 pixels | `camera` | Trouver les marqueurs muraux |
-| Capteur de couleur | `color` | Voir le sol : trous, marécages et passages |
+| Capteur de couleur | `color` | Voir le sol : trous, marécages, cases de contact et passages |
 | GPS | `gps` | Connaître sa position, pour signaler les marqueurs |
 | Gyroscope | `gyro` | Mesurer de combien il a tourné |
 | Accéléromètre | `accelerometer` | Mesurer l’accélération |
@@ -39,14 +39,10 @@ Il coûte 2400 sur un budget de 3000.
 
 ## Le charger dans Erebus {#load-it-in-erebus}
 1. Ouvrez un monde, par exemple `game/worlds/world1.wbt`.
-2. Dans la fenêtre de contrôle, appuyez sur le **bouton LOAD de droite**, avec l’icône de robot, et choisissez votre fichier `.json`.
-3. Vérifiez la console de Webots. Erebus liste chaque composant avec son coût, et termine par `Your custom robot has been successfully generated!`.
+2. Dans la fenêtre de contrôle, appuyez sur **Robot setup**, puis sur **Load file** sous **Robot JSON**, et choisissez votre fichier `.json`.
+3. Regardez la console de Webots. Erebus liste chaque composant avec son coût, et termine par `Your custom robot has been successfully generated!` et le budget utilisé.
 
-:::note
-Erebus v26.1 affiche aussi `PROTO parameter 'camera_width' has no matching IS field` en rouge. Vous pouvez l’ignorer : votre caméra a bien la résolution que vous avez choisie.
-:::
-
-Le robot reste chargé jusqu’à ce que vous en chargiez un autre ou que vous réinitialisiez la partie. Ensuite, [lancez votre premier programme](/docs/getting-started/).
+Le robot reste chargé jusqu’à ce que vous en chargiez un autre. Avec **Keep files after Reset**, activé par défaut, il reste aussi chargé quand vous réinitialisez le jeu. Ensuite, [exécutez votre premier programme](/docs/getting-started/).
 
 ## Concevoir le vôtre {#designing-your-own}
 Une fois les bases acquises, modifiez le robot de départ ou concevez-en un nouveau : plus de caméras avec une meilleure résolution, plus de capteurs de distance, des capteurs à d’autres endroits. La [Référence du Robot Customizer](/docs/robot/customizer/) liste tous les composants, leurs coûts et leurs limites.

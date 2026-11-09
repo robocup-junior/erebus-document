@@ -1,27 +1,28 @@
 ---
 title: 系统要求
-description: 运行 Erebus v26 需要什么：Webots R2023b、Python 3.9 或更高版本，以及所需的库。
+description: 运行 Erebus v27 需要什么：Webots R2025a、Python 3.10 或更高版本，以及所需的库。
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { latestVersion } from '@/data/release';
 
 ## 软件要求 \{#software-requirements\}
 仿真系统由三个部分组成，每个部分都需要安装。安装很简单，但下载和安装 Webots 可能需要一些时间。这三个部分是：
 
-1. Webots 机器人仿真器，**R2023b** 版本：仿真环境。Erebus v26 不支持其他版本的 Webots。
-1. Erebus：包含各个世界和 Main Supervisor，后者负责执行规则并计算得分。最新版本是 **v26.1**。
-1. Python，**3.9 或更高版本**：运行 Erebus 本身需要它，为机器人编写控制器也需要它。你也可以用 C/C++ 编写控制器。
+1. Webots 机器人仿真器，**R2025a** 版本：仿真环境。Erebus v27 不支持其他版本的 Webots。
+1. Erebus：包含各个世界和 Main Supervisor，后者负责执行规则并计算得分。最新版本是 **v<span data-erebus-version>{latestVersion}</span>**。
+1. Python，**3.10 或更高版本**：运行 Erebus 本身需要它，为机器人编写控制器也需要它。你也可以用 C/C++ 编写控制器。
 
 ## 最低系统要求 \{#minimum-system-requirements\}
-* Linux：Ubuntu 20.04 LTS 或 22.04 LTS
+* Linux：Ubuntu 22.04 LTS 或 24.04 LTS
 * Windows：Windows 10 或 11，64 位
-* macOS：macOS 11“Big Sur”或 12“Monterey”。这些是 Webots R2023b 支持的版本。更新的 macOS 版本可能也能运行：本文档已在 macOS 26 上测试过。
+* macOS：macOS 12“Monterey”、13“Ventura”或 14“Sonoma”。这些是 Webots R2025a 支持的版本。更新的 macOS 版本可能也能运行：本文档已在 macOS 26 上测试过。
 * CPU：双核，2 GHz
 * 内存：2 GB
-* 显卡：支持 OpenGL、显存 512 MB 的 NVIDIA 或 AMD 显卡
+* 显卡：支持 OpenGL 3.3、显存 512 MB 的 NVIDIA 或 AMD 显卡
 
 ## Python 库 \{#python-libraries\}
-Erebus 需要下面这些 Python 库。大多数库会在 Erebus 启动时自动安装，但 **OpenCV 不会**，所以你必须自己安装它。各个操作系统的安装指南中都包含这一步。
+Erebus 需要下面这些 Python 库。大多数库会在 Erebus 启动时自动安装，但 **OpenCV 不会**，所以你必须自己安装它。各个操作系统的安装指南中都包含这一步。Erebus 文件夹中的 `requirements.txt` 列出了 Erebus 测试时使用的版本。
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python
@@ -32,5 +33,8 @@ python3 -m pip install numpy termcolor requests overrides pillow opencv-python
 <CardGrid>
 	<LinkCard title="Windows" description="Windows 10 和 11" href="/docs/installation/windows/" />
 	<LinkCard title="macOS" description="Intel 和 Apple 芯片的 macOS" href="/docs/installation/mac/" />
-	<LinkCard title="Linux" description="Ubuntu 20.04 和 22.04" href="/docs/installation/linux/" />
+	<LinkCard title="Linux" description="Ubuntu 22.04 和 24.04" href="/docs/installation/linux/" />
 </CardGrid>
+
+## 可选：Wireshark \{#optional-wireshark\}
+Erebus 可以在比赛进行时监控网络，检查是否有对比赛的未授权访问，组织者会在比赛中使用这个功能。它需要 [Wireshark](https://www.wireshark.org/download.html)。练习时不需要它：没有 Wireshark 时，控制窗口会显示网络访问未被监控的警告，你可以确认后忽略它。

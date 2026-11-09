@@ -1,6 +1,6 @@
 ---
 title: 牆上的標記
-description: 如何分辨字母受害者、認知目標和假目標。
+description: 如何分辨笑臉受害者、認知目標和假標記。
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -10,8 +10,8 @@ import CodeTabs from '@/components/CodeTabs.astro';
 
 | 它是…… | 該怎麼做 |
 |---|---|
-| 字母受害者（Φ、Ψ、Ω） | 回報 `H`、`S` 或 `U` |
-| 假受害者（相同的符號，但是立體的） | 不要回報，也不要畫進地圖 |
+| 笑臉受害者（難過、平靜、開心） | 回報 `H`、`S` 或 `U` |
+| 假受害者（同樣的表情，但是立體的） | 不要回報，也不要寫進地圖 |
 | 總和為 0 到 3 的認知目標 | 回報 `F`、`P`、`C` 或 `O` |
 | 總和為其他數值的認知目標 | 它是假目標：不要回報，也不要畫進地圖 |
 
@@ -20,14 +20,14 @@ import CodeTabs from '@/components/CodeTabs.astro';
 ## 攝影機看到的畫面 \{#what-the-camera-sees\}
 入門機器人的攝影機是 64 × 40 像素。在這個解析度下，除非機器人靠得很近，否則標記只有幾個像素大，所以最好先從遠處尋找可能的標記，再靠近辨識。請記住，回報時機器人必須在距離標記半個地塊以內；另外，自訂攝影機可以有更高的解析度，但需要花費更多預算。
 
-![入門機器人逐漸接近字母受害者時拍到的 4 張攝影機影像](../../../../docs/programming/wall-tokens/camera-distance.png)
+![入門機器人的攝影機在逐漸靠近笑臉受害者時拍到的四張影像](../../../../docs/programming/wall-tokens/camera-distance.png)
 
 ![64 × 40 攝影機看到的認知目標](../../../../docs/programming/wall-tokens/camera_target.png)
 
 
-字母受害者是白色方塊上的黑色符號，而且可能被旋轉成任何角度，所以你的方法不能依賴方向。
+笑臉受害者是白色方塊上的黑色表情，而且可能被旋轉成任何角度，所以你的方法不能依賴方向。三種表情的差別在於嘴巴的形狀：難過的臉（`H`）嘴角往下彎，平靜的臉（`S`）是直的，開心的臉（`U`）嘴角往上彎。
 
-![模擬器中牆上的字母受害者](../../../../docs/programming/wall-tokens/letter_victim.png)
+![模擬器中牆上的笑臉受害者](../../../../docs/programming/wall-tokens/smiley_victim.png)
 
 
 ## 讀取認知目標 \{#reading-a-cognitive-target\}
@@ -51,7 +51,7 @@ import CodeTabs from '@/components/CodeTabs.astro';
 例如，`['Y', 'B', 'R', 'K', 'G']` 的總和是 0，所以是 `F`；`['B', 'Y', 'K', 'K', 'K']` 的總和是 -4，所以是假目標。
 
 ## 偵測假受害者 \{#detecting-fake-victims\}
-假受害者顯示的符號和真的受害者相同，但字母是立體的。從正面看，光靠攝影機可能無法分辨它們：
+假受害者顯示的表情和真的一樣，但表情符號是立體的。從正面看，只靠攝影機可能無法分辨：
 
 ![從正面看到的假受害者](../../../../docs/programming/wall-tokens/fake_victim_front.png)
 
@@ -59,8 +59,10 @@ import CodeTabs from '@/components/CodeTabs.astro';
 規則指出，可以用 Robot Customizer 中提供的其中一種感測器偵測到深度。以下是一些可以嘗試的思路：
 
 - 用光達或距離感測器在標記上橫向取得多個距離測量值並比較，尋找高度差異。
-- 從斜角觀察標記，立體的浮雕會改變符號的形狀。
+- 從斜側方觀察標記，凸起會改變表情的形狀。
 
-`world3.wbt` 和 `world4.wbt` 這兩個世界包含假受害者，[World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) 也可以把它們加入你自己的地圖。Erebus 還包含 `scripts/update_maps_with_fakes.py` 腳本，可以把現有世界中的受害者隨機轉換成假受害者。
+![從斜側方看到的同一個假受害者，可以看到它的凸起](../../../../docs/programming/wall-tokens/fake_victim_angle.png)
+
+`world3.wbt`、`world4.wbt` 和四個 `2027_` 世界包含假受害者，[World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) 也可以把它們加入你自己的地圖。Erebus 還包含 `scripts/update_maps_with_fakes.py` 腳本，可以把現有世界中的受害者隨機轉換成假受害者。
 
 回報假目標會被視為誤判而扣 5 分，而區域 1 中線性地塊上的真受害者連同類型可得 15 分，其他區域的分數更高。在決定機器人要有多大把握才回報時，請把這一點列入考量。

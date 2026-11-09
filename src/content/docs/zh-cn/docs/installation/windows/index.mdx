@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: 在 Windows 上安装 Erebus 和 Webots R2023b。
+description: 在 Windows 上安装 Erebus 和 Webots R2025a。
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. 从[官方网站](https://www.python.org/downloads/windows/)安装 **Python 3.9 或更高版本**（64 位）。安装时，请确保把 Python 添加到 PATH 中：
+1. 从[官方网站](https://www.python.org/downloads/windows/)安装 **Python 3.10 或更高版本**（64 位）。安装时，请确保把 Python 添加到 PATH 中：
 
    ![Python 安装程序中的 Add Python to PATH 选项](../../../../docs/installation/windows/python-path.png)
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. 从[官方仓库](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe)安装 **Webots R2023b**。
+3. 从[官方仓库](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a_setup.exe)安装 **Webots R2025a**。
 
 4. 下载 <DownloadErebus />，然后解压。
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 双击世界文件 `game/worlds/world1.wbt`，在 Webots 中打开它。
 
-Webots 会在你的网页浏览器中打开 Erebus 控制窗口。第一次运行时，Erebus 会安装一些 Python 库，这可能需要一段时间。当窗口显示 08:00 的比赛计时器时，就准备好了：
+Webots 会在你的网页浏览器中打开 Erebus 控制窗口。第一次运行时，Erebus 会安装一些 Python 库并准备机器人模型，这可能需要一段时间。当窗口显示 **Ready** 和 08:00 的比赛计时器时，就准备好了：
 
 ![准备开始的 Erebus 控制窗口](../../../../docs/installation/windows/../control-window-ready.png)
+
+第一次运行时，Webots 控制台还可能显示 `ERROR: Skipped PROTO 'custom_robot'`。可以忽略它：Erebus 会准备好机器人模型，并自动重新加载世界。
 
 接下来，阅读[规则概要](/docs/rules/)来了解比赛。如果遇到问题，请查看[故障排除](/docs/troubleshooting/)。

@@ -1,27 +1,28 @@
 ---
 title: Requisitos
-description: "O que você precisa para rodar o Erebus v26: Webots R2023b, Python 3.9 ou mais recente e as bibliotecas necessárias."
+description: "O que você precisa para rodar o Erebus v27: Webots R2025a, Python 3.10 ou mais recente e as bibliotecas necessárias."
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { latestVersion } from '@/data/release';
 
 ## Requisitos de software \{#software-requirements\}
 O sistema de simulação é formado por três componentes, e você precisa instalar cada um deles. A instalação é fácil, mas baixar e instalar o Webots pode demorar um pouco. Os três componentes são:
 
-1. Simulador de robôs Webots, versão **R2023b**: o ambiente de simulação. O Erebus v26 não é compatível com outras versões do Webots.
-1. Erebus: os mundos e o Main Supervisor, que aplica as regras e calcula a pontuação. A versão mais recente é a **v26.1**.
-1. Python, versão **3.9 ou mais recente**: necessário para rodar o próprio Erebus e para escrever os controladores dos robôs. Você também pode escrever controladores em C/C++.
+1. Simulador de robôs Webots, versão **R2025a**: o ambiente de simulação. O Erebus v27 não é compatível com outras versões do Webots.
+1. Erebus: os mundos e o Main Supervisor, que aplica as regras e calcula a pontuação. A versão mais recente é a **v<span data-erebus-version>{latestVersion}</span>**.
+1. Python, versão **3.10 ou mais recente**: necessário para rodar o próprio Erebus e para escrever os controladores dos robôs. Você também pode escrever controladores em C/C++.
 
 ## Requisitos mínimos do sistema \{#minimum-system-requirements\}
-* Linux: Ubuntu 20.04 LTS ou 22.04 LTS
+* Linux: Ubuntu 22.04 LTS ou 24.04 LTS
 * Windows: Windows 10 ou 11, 64 bits
-* macOS: macOS 11 "Big Sur" ou 12 "Monterey". Essas são as versões suportadas pelo Webots R2023b. Versões mais novas do macOS também podem funcionar: esta documentação foi testada no macOS 26.
+* macOS: macOS 12 "Monterey", 13 "Ventura" ou 14 "Sonoma". Essas são as versões suportadas pelo Webots R2025a. Versões mais novas do macOS também podem funcionar: esta documentação foi testada no macOS 26.
 * CPU: dual-core, 2 GHz
 * RAM: 2 GB
-* Placa de vídeo: NVIDIA ou AMD, com suporte a OpenGL e 512 MB de memória
+* Placa de vídeo: NVIDIA ou AMD, com suporte a OpenGL 3.3 e 512 MB de memória
 
 ## Bibliotecas Python \{#python-libraries\}
-O Erebus precisa das bibliotecas Python abaixo. A maioria delas é instalada automaticamente quando ele inicia, mas **o OpenCV não é**, então você precisa instalá-lo por conta própria. O guia de cada sistema operacional inclui essa etapa.
+O Erebus precisa das bibliotecas Python abaixo. A maioria delas é instalada automaticamente quando ele inicia, mas **o OpenCV não é**, então você precisa instalá-lo por conta própria. O guia de cada sistema operacional inclui essa etapa. O arquivo `requirements.txt` na pasta do Erebus lista as versões com que o Erebus foi testado.
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python
@@ -32,5 +33,8 @@ python3 -m pip install numpy termcolor requests overrides pillow opencv-python
 <CardGrid>
 	<LinkCard title="Windows" description="Windows 10 e 11" href="/docs/installation/windows/" />
 	<LinkCard title="macOS" description="macOS em Intel e Apple silicon" href="/docs/installation/mac/" />
-	<LinkCard title="Linux" description="Ubuntu 20.04 e 22.04" href="/docs/installation/linux/" />
+	<LinkCard title="Linux" description="Ubuntu 22.04 e 24.04" href="/docs/installation/linux/" />
 </CardGrid>
+
+## Opcional: Wireshark \{#optional-wireshark\}
+O Erebus pode monitorar a rede durante uma partida em busca de acessos não autorizados ao jogo, o que os organizadores usam nas competições. Para isso ele precisa do [Wireshark](https://www.wireshark.org/download.html). Você não precisa dele para treinar: sem ele, a janela de controle mostra um aviso de que o acesso à rede não está sendo monitorado, que você pode confirmar e ignorar.

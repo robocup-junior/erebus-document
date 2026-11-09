@@ -3,7 +3,7 @@ title: Erebus nedir?
 description: Erebus, RoboCupJunior'ın Webots üzerine kurulu kurtarma simülasyonu platformudur. Parçalarının nasıl bir araya geldiğini öğren.
 ---
 
-Erebus bir robot simülasyonu yarışma ortamıdır. Bir labirenti kendi başına keşfeden, duvar işaretlerini (harf kazazedeler ve bilişsel hedefler) bulup tanıyan, engellerden ve tuzaklardan kaçınan ve ortamın haritasını çıkaran bir robot için denetleyici geliştirirsin.
+Erebus bir robot simülasyonu yarışma ortamıdır. Bir labirenti kendi başına keşfeden, duvar işaretlerini (gülen yüz kazazedeler ve bilişsel hedefler) bulup tanıyan, engellerden ve tuzaklardan kaçınan, bataryasını dolu tutan ve ortamın haritasını çıkaran bir robot için denetleyici geliştirirsin.
 
 Erebus, profesyonel kullanım için tasarlanmış ve endüstride, eğitimde ve araştırmada yaygın olarak kullanılan bir robot simülasyonu platformu olan [Webots](https://cyberbotics.com/) üzerine kuruludur. Cyberbotics, Webots'u 1998'den beri kesintisiz olarak geliştiriyor.
 
@@ -13,8 +13,8 @@ Platform öncelikle [RoboCupJunior Rescue Simulation](https://junior.robocup.org
 
 | Bileşen | Ne yapar | Nereden edinilir |
 |---|---|---|
-| **Webots R2023b** | 3B robot simülatörü | [Webots R2023b sürümü](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
-| **Erebus** | Dünyalar ve kuralları uygulayıp puanı hesaplayan oyun yöneticisi (Main Supervisor) | [Erebus sürümleri](https://github.com/robocup-junior/erebus/releases) |
+| **Webots R2025a** | 3B robot simülatörü | [Webots R2025a sürümü](https://github.com/cyberbotics/webots/releases/tag/R2025a) |
+| **Erebus** | Dünyalar ve kuralları uygulayıp puanı hesaplayan süpervizör (Main Supervisor) | [Erebus sürümleri](https://github.com/robocup-junior/erebus/releases) |
 | **Denetleyicin** | Robotunun Python ya da C/C++ ile yazılmış programı | Bunu sen yazarsın! |
 | **Robot Customizer** | Özel bir robot tasarlayıp JSON dosyası olarak dışa aktarmak için web aracı | [robot.erebus.rcj.cloud](https://robot.erebus.rcj.cloud/) |
 | **World Editor** | Alıştırma haritaları çizip `.wbt` dünyaları olarak dışa aktarmak için web aracı | [world.erebus.rcj.cloud](https://world.erebus.rcj.cloud/) |
@@ -26,12 +26,12 @@ Platform öncelikle [RoboCupJunior Rescue Simulation](https://junior.robocup.org
 3. **Onu çalıştır.** Hazır dünyalarda ya da kendi dünyalarında test et ve puanı izle.
 4. **Yarış.** Yerel, bölgesel ve uluslararası RoboCupJunior yarışmalarına katıl.
 
-Erebus'u zaten tanıyorsan [v26'daki yenilikler](/docs/whats-new/) sayfasına bak.
+Erebus'u zaten tanıyorsan [v27'daki yenilikler](/docs/whats-new/) sayfasına bak.
 
 ## Faydalı kaynaklar {#useful-references}
 Erebus'u öğrenmek ve onunla çalışmak için faydalı bağlantılar:
-- [Webots Kullanıcı Kılavuzu](https://cyberbotics.com/doc/guide/index?version=R2023b)
-- [Webots Başvuru Kılavuzu](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
+- [Webots Kullanıcı Kılavuzu](https://cyberbotics.com/doc/guide/index?version=R2025a)
+- [Webots Başvuru Kılavuzu](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2025a)
 - [Python Belgeleri](https://www.python.org/doc/)
 - [C++ Belgeleri](https://www.cplusplus.com/doc/tutorial/)
 - [OpenCV Eğitimleri](https://docs.opencv.org/4.x/d9/df8/tutorial_root.html)

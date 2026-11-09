@@ -7,4 +7,4 @@ description: RoboCup 2027 をはじめ、Erebus を使う今後の RoboCupJunior
 
 RoboCup 2027 は、2027 年 6 月 17 日から 6 月 21 日まで、ドイツのニュルンベルクで開催されます。RoboCupJunior Rescue Simulation 競技に出場するチームは、Erebus シミュレーターを使います。
 
-この大会のルールと Erebus のリリースはまだ確定していません。このドキュメントは Erebus v26 と 2026 年ルールについて説明しているので、ルール案、競技用の Erebus のバージョン、最新ニュースは[イベントページ](https://rescue.rcj.cloud/events/2027/RoboCup2027/simulation/index.html)で確認してください。
+このドキュメントは、この大会で使われる Erebus v27 と 2027 年ルールについて説明しています。最新のニュースやルールの変更は、[イベントページ](https://rescue.rcj.cloud/events/2027/RoboCup2027/simulation/index.html)と[フォーラム](https://junior.forum.robocup.org/)で確認してください。

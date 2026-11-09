@@ -22,6 +22,9 @@ O Webots não sabe onde o Python está.
 
    ![O campo Python command nas preferências do Webots](../../../docs/troubleshooting/preferences.png)
 
+### `ERROR: Skipped PROTO 'custom_robot'` {#error-skipped-proto-custom_robot}
+Aparece na primeira vez que você abre um mundo, antes de o Erebus preparar o modelo do robô. O Erebus o prepara e recarrega o mundo sozinho, então você pode ignorar.
+
 ### O cronômetro da partida não aparece {#the-game-timer-does-not-appear}
 A primeira inicialização pode levar alguns minutos enquanto o Erebus instala as bibliotecas. Se ela nunca terminar, procure erros no console. Se a instalação automática não funcionar, instale as [bibliotecas necessárias](/docs/installation/#python-libraries) por conta própria.
 
@@ -30,9 +33,14 @@ A primeira inicialização pode levar alguns minutos enquanto o Erebus instala a
 ### A janela de controle não aparece {#the-control-window-does-not-appear}
 A janela de controle é uma página web aberta pelo Webots.
 
-1. Se o seu navegador a bloqueou, abra [a janela de controle](http://localhost:1234/robot_windows/MainSupervisorWindow/MainSupervisorWindow.html?name=robot) enquanto o mundo estiver aberto.
+1. Se você a fechou, ou o navegador a bloqueou, recarregue o mundo com o botão de recarregar do Webots. O Erebus abre a janela de controle de novo.
 2. Caso contrário, garanta que a Scene Tree (árvore da cena) esteja visível, com **Tools > Scene Tree**.
 3. Encontre **DEF MAINSUPERVISOR Robot** na Scene Tree, clique com o botão direito e escolha **Show Robot Window**.
+
+A janela de controle tem um endereço privado, que muda a cada vez que o mundo é carregado. Se você mesmo abrir a janela em `localhost:1234`, ela mostra **Read-only**, e os botões não funcionam.
+
+### A janela de controle diz "Access log incomplete" {#the-control-window-says-access-log-incomplete}
+Este aviso aparece quando o [Wireshark](/docs/installation/#optional-wireshark) não está instalado. Ele é para os organizadores nas competições: clique em **Acknowledge** e treine normalmente.
 
 ![A opção Show Robot Window na Scene Tree](../../../docs/troubleshooting/showrobot.png)
 
@@ -52,11 +60,8 @@ Essas configurações mudam o que as câmeras veem, e a competição usa [config
 
 ## O seu robô {#your-robot}
 
-### `PROTO parameter 'camera_width' has no matching IS field` {#proto-parameter-camera_width-has-no-matching-is-field}
-O Erebus v26.1 mostra este erro em vermelho quando carrega um robô feito com o Robot Customizer atual. Você pode ignorá-lo: o robô funciona, e as câmeras dele têm a resolução que você escolheu.
-
 ### O meu programa diz que um dispositivo não foi encontrado {#my-program-says-a-device-was-not-found}
-Veja abaixo. Confira também se você carregou o seu robô com o botão LOAD da **direita** antes de iniciar a partida.
+Veja abaixo. Confira também se você carregou seu robô em **Robot JSON**, no **Robot setup**, antes de começar a partida.
 
 ## O seu programa {#your-program}
 
@@ -64,10 +69,16 @@ Veja abaixo. Confira também se você carregou o seu robô com o botão LOAD da 
 O nome do dispositivo no seu programa não corresponde ao seu robô. Os nomes do robô inicial estão na [Referência](/docs/reference/parameters/#device-names-of-the-starter-robot). No seu próprio robô, eles são os nomes que você definiu no [Robot Customizer](/docs/robot/customizer/). Confira se o seu robô foi carregado.
 
 ### Nada acontece quando informo um marcador {#nothing-happens-when-i-report-a-wall-token}
-Ative **Enable debugging** na aba Settings da janela de controle e confira o console. As causas mais comuns são o robô não ter ficado parado por pelo menos 1 segundo e as coordenadas não terem sido convertidas para centímetros. Veja [Comunicação](/docs/programming/communication/#scoring-wall-tokens).
+Ative **Enable debugging** em **Advanced setup** na janela de controle e confira o console. As causas mais comuns são o robô não ter ficado parado por pelo menos 1 segundo, as coordenadas não terem sido convertidas para centímetros, e o robô ou a posição estarem a mais de meio ladrilho (6 cm) do marcador. Veja [Comunicação](/docs/programming/communication/#scoring-wall-tokens).
 
 ### Os meus informes contam como identificação errada {#my-reports-are-misidentifications}
 O robô precisa estar a no máximo meio ladrilho do marcador e do mesmo lado da parede, e cada marcador só pode ser pontuado uma vez. Informar um falso também conta como identificação errada.
+
+### A partida termina com "Battery depleted" {#the-game-ends-with-battery-depleted}
+A bateria acabou. Antes que isso aconteça, pare por 5 segundos sobre um ladrilho de contato para substituí-la. Veja [Bateria](/docs/programming/battery/).
+
+### Meu programa não recebe mais as informações da partida {#my-program-no-longer-receives-the-game-information}
+Desde o Erebus v27, a resposta a `G` tem 20 bytes, com o nível da bateria no final. Atualize a verificação do tamanho no seu programa. Veja [Informações da partida](/docs/programming/communication/#game-information).
 
 ### O mapa recebe 0% ou um erro de pontuação {#the-map-gets-0-or-a-scoring-error}
 O seu mapa precisa conter o ladrilho inicial (`5`), e ele só pode ser avaliado uma vez. Veja [Enviar o mapa](/docs/programming/map-bonus/).

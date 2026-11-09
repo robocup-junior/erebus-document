@@ -15,7 +15,7 @@ Diese Dokumentation behandelt Python und C/C++. Erebus kann auch Controller in J
 Nein, siehe die [Voraussetzungen](/docs/installation/). Langsamere Computer brauchen eventuell [niedrigere Grafikeinstellungen](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Kann ich eine neuere Version von Webots verwenden? {#can-i-use-a-newer-version-of-webots}
-Nein. Erebus v26 läuft mit Webots **R2023b**. Du kannst andere Versionen daneben installiert lassen.
+Nein. Erebus v27 läuft mit Webots **R2025a**. Du kannst andere Versionen daneben installiert lassen, etwa R2023b für Erebus v26.
 
 ### Kann ich Bibliotheken wie OpenCV oder NumPy verwenden? {#can-i-use-libraries-like-opencv-or-numpy}
 Ja. Fremder Code ist erlaubt, solange du seine Urheber nennst und seine Lizenz beachtest. Teams sollten das Lernen in den Vordergrund stellen und müssen erklären können, wie ihre Lösung funktioniert.
@@ -38,7 +38,13 @@ Es tritt ein fehlender Fortschritt (Lack of Progress) ein: Der Roboter kehrt zum
 Nein, aber wenn er zur Startkachel zurückkehrt und `E` sendet, bekommt er einen Ausgangsbonus (Exit bonus) von 10 %, sofern er mindestens eine Wandmarkierung erkannt hat.
 
 ### Wie erfährt mein Roboter, wie viel Zeit noch übrig ist? {#how-can-my-robot-tell-how-much-time-is-left}
-Mit der [Nachricht `G`](/docs/programming/communication/#game-information). Es gibt zwei Timer, und die Spielzeit läuft in Sümpfen schneller ab.
+Mit der [Nachricht `G`](/docs/programming/communication/#game-information). Es gibt zwei Timer, und das Spiel endet, sobald einer von ihnen abläuft.
+
+### Was passiert, wenn der Akku leer ist? {#what-happens-when-the-battery-runs-out}
+Das Spiel endet. Um das zu vermeiden, halte 5 Sekunden lang auf einer cyanfarbenen Kontaktkachel an: Dann wird der Akku ausgetauscht. Dein Programm kann den Akkustand mit der [Nachricht `G`](/docs/programming/communication/#game-information) lesen. Siehe [Akku](/docs/programming/battery/).
+
+### Spart langsames Fahren Akku? {#does-driving-slowly-save-the-battery}
+Der Akku entlädt sich mit der Geschwindigkeit der Motoren. Ein langsamer Roboter verbraucht also weniger Akku pro Sekunde, legt in dieser Zeit aber auch weniger Strecke zurück. Finde durch Tests die beste Balance für deinen Roboter.
 
 ### Muss ich Bereich 4 erkunden? {#do-i-have-to-explore-area-4}
 Nein. Er ist optional, aber seine Markierungen sind am meisten wert: die höchsten Punkte, multipliziert mit 2.

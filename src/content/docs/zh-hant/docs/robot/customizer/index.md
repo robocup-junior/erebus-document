@@ -30,7 +30,7 @@ description: Robot Customizer 的畫面、元件、成本和限制。
 
 ## 在 Erebus 中使用 {#using-it-in-erebus}
 
-按下[控制視窗](/docs/getting-started/#the-control-window)右邊的 LOAD 按鈕，然後選擇你的 `.json` 檔案。請參閱[在 Erebus 中載入](/docs/robot/#load-it-in-erebus)。Erebus 會檢查預算並產生機器人，Webots 主控台會列出每個元件和它的成本。
+在[控制視窗](/docs/getting-started/#robot-setup)中，按 **Robot setup**，再按 **Robot JSON** 下的 **Load file**，然後選擇你的 `.json` 檔案。請參閱[在 Erebus 中載入](/docs/robot/#load-it-in-erebus)。Erebus 會檢查預算並產生機器人，Webots 主控台會列出每個零件及其花費。
 
 請先載入機器人，再載入程式。
 

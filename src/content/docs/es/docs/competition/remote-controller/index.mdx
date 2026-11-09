@@ -7,9 +7,9 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 La función de controlador remoto de Erebus te permite ejecutar simulaciones de Webots a través de una red. Un ordenador ejecuta la simulación de Webots (el servidor) y el otro ejecuta el programa controlador del robot (el cliente). Lo llamamos la "configuración servidor-cliente" (Server-Client Setup).
 
-**Según las reglas de 2026, así es como se juegan las partidas en la competición.** Los organizadores ejecutan el servidor de la partida y ofrecen una toma RJ-45. Tienes que traer:
+**Según las reglas de 2027, así es como se juegan las partidas en la competición.** Los organizadores ejecutan el servidor de la partida y ofrecen una toma RJ-45. Tienes que traer:
 
-- Un ordenador con tu programa, listo para ejecutarse, y con Webots R2023b instalado
+- Un ordenador con tu programa, listo para ejecutarse, y con Webots R2025a instalado
 - Un cable Ethernet. Se recomienda encarecidamente que sea al menos CAT5, para soportar 100 Mbit/s.
 - Un puerto Ethernet. Si tu ordenador no tiene, trae un adaptador y pruébalo con antelación.
 
@@ -17,11 +17,11 @@ Para que todo vaya bien al llegar a la sede de la competición, prueba la config
 
 ## Cómo funciona \{#how-it-works\}
 
-1. Abre el mundo y activa el modo remoto en la ventana de control.
+1. Abre el mundo y activa **Remote mode** en **Robot setup** de la ventana de control.
 1. Inicia tu controlador desde una terminal. Se conecta a Webots y espera.
-1. Pulsa el botón de inicio en la ventana de control.
+1. Pulsa **Run match** en la ventana de control.
 
-Tu controlador usa las mismas bibliotecas de Webots y el mismo código que cuando se carga con el botón LOAD. El robot personalizado, si tienes uno, se sigue cargando en la ventana de control del servidor.
+Tu controlador usa las mismas bibliotecas de Webots y el mismo código que cuando se carga con **Load file**. El robot personalizado, si tienes uno, se sigue cargando en la ventana de control del servidor.
 
 ## Qué comprobar antes de la competición \{#things-to-check-before-the-competition\}
 

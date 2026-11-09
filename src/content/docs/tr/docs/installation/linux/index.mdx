@@ -1,6 +1,6 @@
 ---
 title: Linux (Ubuntu)
-description: Erebus'u ve Webots R2023b'yi Ubuntu 20.04 ya da 22.04'e kur.
+description: Erebus'u ve Webots R2025a'yi Ubuntu 22.04 ya da 24.04'e kur.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -15,11 +15,13 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python3 -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-2. **Webots R2023b**'yi indir ve kur:
+   Ubuntu 24.04'te pip, sistemin Python'una kütüphane kurmayı `externally-managed-environment` hatasıyla reddeder. İkinci komuta `--break-system-packages` ekle ya da kütüphaneleri bir [sanal ortama](https://docs.python.org/3/library/venv.html) kurup onun Python'unu Webots tercihlerinde ayarla.
+
+2. **Webots R2025a**'yi indir ve kur:
 
    ```bash
-   wget https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb
-   sudo apt install ./webots_2023b_amd64.deb
+   wget https://github.com/cyberbotics/webots/releases/download/R2025a/webots_2025a_amd64.deb
+   sudo apt install ./webots_2025a_amd64.deb
    ```
 
 3. <DownloadErebus /> dosyasını indir ve zip'ten çıkar.
@@ -34,8 +36,10 @@ Yolu kendi Erebus klasörüne göre değiştirerek dünyayı terminalden aç:
 webots ~/EREBUS_FOLDER/game/worlds/world1.wbt
 ```
 
-Webots, Erebus kontrol penceresini web tarayıcında açar. İlk açılışta Erebus bazı Python kütüphanelerini kurar; bu biraz zaman alabilir. Pencerede 08:00 oyun süresi göründüğünde Erebus hazırdır:
+Webots, Erebus kontrol penceresini web tarayıcında açar. İlk açılışta Erebus bazı Python kütüphanelerini kurar ve robot modelini hazırlar; bu biraz zaman alabilir. Pencerede **Ready** ve 08:00 oyun süresi göründüğünde Erebus hazırdır:
 
 ![Erebus kontrol penceresi, başlamaya hazır](../../../../docs/installation/linux/../control-window-ready.png)
+
+İlk açılışta Webots konsolu `ERROR: Skipped PROTO 'custom_robot'` mesajını da gösterebilir. Bunu görmezden gelebilirsin: Erebus robot modelini hazırlar ve dünyayı kendiliğinden yeniden yükler.
 
 Ardından oyunu anlamak için [Kural özeti](/docs/rules/) sayfasını oku. Bir sorun çıkarsa [Sorun giderme](/docs/troubleshooting/) sayfasına bak.

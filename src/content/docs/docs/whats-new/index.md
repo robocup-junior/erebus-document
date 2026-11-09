@@ -18,7 +18,7 @@ Erebus v27 implements the 2027 rules. If you are coming from v26, these are the 
 | Webots | R2023b | **R2025a** |
 | Python | 3.9 or later | 3.10 or later |
 
-The control window has also changed. [Your first run](/docs/getting-started/) shows how to use it.
+[Your first run](/docs/getting-started/) shows how to use the control window of Erebus v27.
 
 ## Updating your program
 

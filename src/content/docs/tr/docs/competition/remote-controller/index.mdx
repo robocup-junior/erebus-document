@@ -7,9 +7,9 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 Erebus'un uzaktan denetleyici (remote controller) özelliği, Webots simülasyonlarını bir ağ üzerinden çalıştırmanı sağlar. Bilgisayarlardan biri Webots simülasyonunu (sunucu), diğeri robotun denetleyici programını (istemci) çalıştırır. Buna "sunucu-istemci kurulumu" (server-client setup) diyoruz.
 
-**2026 kurallarına göre yarışmada oyunlar bu şekilde yürütülür.** Organizatörler oyun sunucusunu çalıştırır ve bir RJ-45 soketi sağlar. Yanında getirmen gerekenler:
+**2027 kurallarına göre yarışmada oyunlar bu şekilde yürütülür.** Organizatörler oyun sunucusunu çalıştırır ve bir RJ-45 soketi sağlar. Yanında getirmen gerekenler:
 
-- Programının çalışmaya hazır olduğu ve Webots R2023b'nin kurulu olduğu bir bilgisayar
+- Programının çalışmaya hazır olduğu ve Webots R2025a'nin kurulu olduğu bir bilgisayar
 - Bir Ethernet kablosu. 100 Mbit/sn hızı desteklemesi için en az CAT5 kablo kullanman şiddetle önerilir.
 - Bir Ethernet portu. Bilgisayarında yoksa bir adaptör getir ve önceden test et.
 
@@ -17,11 +17,11 @@ Yarışma alanında her şeyin sorunsuz gitmesi için kurulumu çok önceden den
 
 ## Nasıl çalışır \{#how-it-works\}
 
-1. Dünyayı aç ve kontrol penceresinde uzaktan modu aç.
+1. Dünyayı aç ve kontrol penceresinin **Robot setup** bölümünde **Remote mode** seçeneğini aç.
 1. Denetleyicini bir terminalden başlat. Denetleyici Webots'a bağlanır ve bekler.
-1. Kontrol penceresinde başlat düğmesine bas.
+1. Kontrol penceresinde **Run match** düğmesine bas.
 
-Denetleyicin, LOAD düğmesiyle yüklendiğinde kullandığı Webots kütüphanelerinin ve kodun aynısını kullanır. Özel bir robotun varsa o robot yine sunucudaki kontrol penceresinde yüklenir.
+Denetleyicin, **Load file** ile yüklendiğinde kullandığı Webots kütüphanelerinin ve kodun aynısını kullanır. Özel bir robotun varsa o robot yine sunucudaki kontrol penceresinde yüklenir.
 
 ## Yarışmadan önce kontrol edilecekler \{#things-to-check-before-the-competition\}
 

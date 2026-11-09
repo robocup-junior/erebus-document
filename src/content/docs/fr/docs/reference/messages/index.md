@@ -25,9 +25,9 @@ Erebus distingue ces messages par leur longueur : un signalement doit donc faire
 | Message | Format | Longueur | Rôle |
 |---|---|---|---|
 | `L` | `c` | 1 octet | Une absence de progression s’est produite |
-| `G` | `c f i i` : `G`, score, temps de jeu restant, temps réel restant | 16 octets | Réponse à `G`. Les temps sont en secondes. |
+| `G` | `c f i i f` : `G`, score, temps de jeu restant, temps réel restant, niveau de la batterie | 20 octets | Réponse à `G`. Les temps sont en secondes, et le niveau de la batterie est un pourcentage de 0 à 100. |
 
-Notez que le paquet de `G` contient des octets de remplissage, car le format `struct` ci-dessus aligne le nombre flottant : le score commence à l’octet 4, et les temps aux octets 8 et 12.
+Notez que le paquet de `G` contient du remplissage, car le format `struct` ci-dessus aligne le nombre à virgule : le score commence à l’octet 4, les temps aux octets 8 et 12, et le niveau de la batterie à l’octet 16.
 
 ## Fonctions Webots courantes {#common-webots-functions}
 

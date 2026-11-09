@@ -1,94 +1,130 @@
 ---
 title: İlk çalıştırman
-description: Robotunu ve hazır bir programı yükle, robotun bir labirenti keşfetmesini izle.
+description: Robotunu ve hazır bir programı yükle, ve bir labirenti keşfedişini izle.
 ---
 
 import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
 
-Bu sayfada robotunda eksiksiz bir program çalıştıracak ve Erebus kontrol penceresini kullanmayı öğreneceksin. Bunun için [Erebus'u kurmuş](/docs/installation/) ve [robotunu hazırlamış](/docs/robot/) olman gerekir.
+Bu sayfada robotunda eksiksiz bir program çalıştırır ve Erebus kontrol penceresini kullanmayı öğrenirsin. [Kurulu bir Erebus](/docs/installation/) ve [robotun](/docs/robot/) gerekir.
 
 ## Erebus klasörü \{#the-erebus-folder\}
 İndirdiğin sürümün ana klasörleri şunlardır:
 
 | Klasör | İçerik |
 |---|---|
-| `game/worlds` | Dünyalar (`.wbt` dosyaları). Başlamak için bunlardan birini aç. |
+| `game/worlds` | Dünyalar (`.wbt` dosyaları). Başlamak için birini aç. |
 | `game/logs` | Her oyunun sonunda yazılan oyun kayıtları |
+| `match-results` | Her maç için, tekrarını ve harita sonucunu içeren bir klasör |
 | `player_controllers` | Örnek denetleyiciler |
 
 ## Kontrol penceresi \{#the-control-window\}
-1. `game/worlds/world1.wbt` dünyasını Webots'ta aç.
-1. Webots, Erebus kontrol penceresini (Main Supervisor'ın robot penceresi) web tarayıcında açar. Programını yüklediğin ve oyunu çalıştırdığın yer burasıdır.
+1. `game/worlds/world1.wbt` dosyasını Webots'ta aç.
+1. Webots, Erebus kontrol penceresini (Main Supervisor'ın robot penceresi) web tarayıcında açar. Programını burada yükler ve oyunu çalıştırırsın.
 
 ![Erebus kontrol penceresi](../../../docs/getting-started/control_window.png)
 
+Yukarıdan aşağıya:
+
 | Bölüm | Kullanım |
 |---|---|
-| Soldaki **LOAD** (dizüstü bilgisayar simgesi) | Robotunun denetleyici programını yükler |
-| Sağdaki **LOAD** (robot simgesi) | Robotunu (`.json` dosyası) yükler |
-| **TOGGLE REMOTE** | Webots dışında çalışan bir programın robotu kontrol etmesini sağlar. [Remote Controller](/docs/competition/remote-controller/) sayfasına bak. |
-| **Docker path** | Denetleyicini, oynat düğmesinin yanındaki Docker düğmesiyle bir konteynerde çalıştırmak için `Dockerfile` içeren klasör. [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) deposuna bak. Bu isteğe bağlıdır. |
-| **Settings** | Aşağıda açıklanan bağlantılar ve seçenekler |
+| Dünya ve durum | Dünyanın adı ve maçın durumu: Ready, Running, Paused veya Finished |
+| **Robot setup** | Programını ve robotunu yükler, bir uzaktan denetleyici bağlar. Aşağıya bak. |
+| **Advanced setup** | Aşağıda açıklanan seçenekler |
 | **Worlds** | Başka bir dünyaya geçer |
-| **Reset** | Yüklenen programı ve oyunu sıfırlar |
-| **Give up!** | Oyunu bitirir |
-| Sayaçlar | Oyun süresi ve altında, parantez içinde gerçek zaman. Herhangi biri 0'a ulaştığında oyun biter. |
-| Hesap makinesi | Güncel puan |
+| Puan | Güncel puan |
+| **Robot battery** | Robotun batarya seviyesi. %20'nin altında "Low battery" gösterir. Bkz. [Batarya](/docs/programming/battery/). |
+| **Simulation remaining** | Kalan oyun süresi. **Real-world allowance**, kalan gerçek zamanın oyun süresinden ne kadar fazla olduğunu gösterir. Herhangi biri bittiğinde oyun sona erer. |
+| Maç kontrolleri | Başlatma, duraklatma, yeniden konumlandırma, sıfırlama, pes etme ve haritayı kaydetme. Aşağıya bak. |
+| **Match events** | Maçın geçmişi, en yenisi en üstte. **Export CSV** onu bir dosyaya kaydeder. |
+
+Sağ üstteki düğme aynı pencereyi ayrı ve daha küçük bir tarayıcı penceresinde açar.
+
+:::note
+[Wireshark](/docs/installation/#optional-wireshark) kurulu değilse pencere ayrıca ağ erişiminin izlenmediğine dair bir uyarı gösterir ve onaylamanı ister. Bu izleme, yarışmalarda organizatörler içindir; uyarıyı onaylayıp her zamanki gibi çalışabilirsin.
+:::
+
+### Robot setup \{#robot-setup\}
+Programını ve robotunu yüklemek için **Robot setup** düğmesine bas.
+
+![Bir program ve bir robot yüklenmiş Robot setup paneli](../../../docs/getting-started/robot-setup.png)
+
+| Bölüm | Kullanım |
+|---|---|
+| **Controller** | **Load file**, robotunun programını yükler. Python dosyaları olduğu gibi yüklenir. C ve C++ programlarının önce derlenmesi gerekir. |
+| **Robot JSON** | **Load file**, robotunu, yani [Robot Customizer](/docs/robot/customizer/) ile yapılan `.json` dosyasını yükler |
+| **Keep files after Reset** | Oyun sıfırlandığında programını ve robotunu yüklü tutar. Varsayılan olarak açıktır. |
+| **Reload before Run** | Her maçı başlattığında programını **Original controller file** üzerinden yeniden yükler, böylece son değişikliklerin kullanılır. Webots'u çalıştıran bilgisayardaki dosyanın yolunu yaz. |
+| **Remote mode** | Webots dışında çalışan bir programın robotu kontrol etmesini sağlar. Bkz. [Uzaktan Denetleyici](/docs/competition/remote-controller/). **Keep on Reset**, oyun sıfırlandığında bunu açık tutar. |
+| **Docker project path** | Denetleyicini **Run Docker** ile bir kapsayıcıda çalıştırmak için `Dockerfile` içeren klasör. Bkz. [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) deposu. Bu isteğe bağlıdır. |
+
+### Maç kontrolleri \{#match-controls\}
+
+![Maç kontrolleri](../../../docs/getting-started/match-controls.png)
+
+| Düğme | Kullanım |
+|---|---|
+| **Run match** | Oyunu başlatır. Robot dünyada belirir ve programın başlar. |
+| **Pause** | Robotu geçici olarak durdurur. Devam etmek için **Run match** düğmesine bas. |
+| **Relocate** | İlerleme eksikliği ilan eder: robot ulaştığı son kontrol noktasına geri döner ve 5 puan kaybedersin |
+| **Reset** | Oyunu ve dünyayı sıfırlar |
+| **Give up** | Oyunu bitirir |
+| **Save map** | Robotunun gönderdiği haritanın sonucunu kaydeder ve açar. Bkz. [Haritayı gönderme](/docs/programming/map-bonus/). |
 
 ## Bir program çalıştır \{#run-a-program\}
-Robotu labirentte dolaştıran eksiksiz bir program olan <a href={mazeUrl} download="maze.py">maze.py dosyasını indir</a>. Bu, [Labirentte yol bul](/docs/programming/navigate-the-maze/) sayfasında kendin yazacağın programdır.
+<a href={mazeUrl} download="maze.py">maze.py dosyasını indir</a>; robotu labirentte dolaştıran eksiksiz bir program. Bu, [Labirentte yol bul](/docs/programming/navigate-the-maze/) bölümünde kendin yazacağın programdır.
 
-1. `game/worlds/world1.wbt` dünyasını aç.
-1. Henüz yapmadıysan robotunu **sağdaki LOAD düğmesiyle** yükle. Dünya robotla birlikte yeniden yüklenir.
-1. `maze.py` dosyasını **soldaki LOAD düğmesiyle** yükle. Program yüklendiğinde düğme turuncu bir REMOVE düğmesine dönüşür.
-1. Başlat düğmesine bas. Robot dünyada belirir ve hareket etmeye başlar.
-![Başlat düğmesi](../../../docs/getting-started/start_button.png)
-1. Robotu geçici olarak durdurmak için duraklat düğmesine bas.
-![Duraklat düğmesi](../../../docs/getting-started/pause_button.png)
-1. Robot sıkışırsa yeniden başlatma düğmesine basarak bir ilerleme eksikliği (lack of progress, LoP) tetikle. Bu, robotu ulaştığı son kontrol noktasına geri taşır ve sana 5 puana mal olur.
-![İlerleme eksikliği düğmesi](../../../docs/getting-started/lop_button.png)
-1. Yüklenen programı ve devam eden oyunu sıfırlamak için Reset düğmesine bas. Bir oyun bittikten sonra yeniden çalıştırmak istersen dünyayı yeniden yükle.
+1. `game/worlds/world1.wbt` dosyasını aç.
+1. Henüz yapmadıysan **Robot setup** düğmesine bas ve robotunu **Robot JSON** altındaki **Load file** ile yükle.
+1. `maze.py` dosyasını **Controller** altındaki **Load file** ile yükle. Her dosya yüklendiğinde adı görünür.
+1. **Run match** düğmesine bas. Robot dünyada belirir ve hareket etmeye başlar.
+1. Robotu geçici olarak durdurmak için **Pause** düğmesine bas.
+1. Robot sıkışırsa ilerleme eksikliği başlatmak için **Relocate** düğmesine bas.
+1. Oyunu sıfırlamak için **Reset** düğmesine bas. Programın ve robotun yüklü kalır, böylece yeniden çalıştırabilirsin.
 
-Program, diğer [Python kütüphaneleriyle](/docs/installation/#python-libraries) birlikte kurduğun OpenCV'yi kullanır. Programından gelen mesajlar ve hatalar Webots konsolunda görünür.
+Programın OpenCV'ye ihtiyacı var; onu diğer [Python kütüphaneleriyle](/docs/installation/#python-libraries) birlikte kurmuştun. Programının mesajları ve hatalar Webots konsolunda görünür.
 
-Oyun sürerken pencerenin altında puan geçmişi görünür. Puan geçmişi, tam olarak neden puan kazandığını ya da kaybettiğini gösterdiği için programını kontrol etmenin en iyi yoludur.
+Oyun sürerken maç olayları pencerenin altında görünür. Neden puan kazandığını veya kaybettiğini tam olarak söyler; bu yüzden programını kontrol etmek için en iyi araçtır.
 
-![Oyun sırasında puan geçmişiyle birlikte kontrol penceresi](../../../docs/getting-started/control_window_running.png)
+![Bir oyun sırasında, maç olaylarıyla birlikte kontrol penceresi](../../../docs/getting-started/control_window_running.png)
 
-Oyunun sonunda aynı bilgiler `game/logs` klasörüne kaydedilir.
+`maze.py` tam hızla gider ve bataryasını hiç değiştirmez; bu yüzden `world1.wbt` üzerinde oyun iki dakikadan kısa sürede `Battery depleted` ile biter. Bataryayla ilgilenmeyi [Batarya](/docs/programming/battery/) bölümünde öğreneceksin.
 
-## Diğer dünyaları kullanma \{#using-other-worlds\}
-Başka bir dünyaya geçmek için **Worlds** düğmesine bas. Her dünyanın bir küçük resmi vardır; [World Editor](/docs/tools/world-editor/) ile yaptığın kendi dünyalarını da ekleyebilirsin.
+Oyunun sonunda aynı bilgiler `game/logs` klasörüne kaydedilir. Maç ayrıca `match-results` klasörüne etkileşimli bir 3B tekrar olarak kaydedilir: yeniden izlemek için `recording/replay.html` dosyasını tarayıcında aç.
 
-![Kontrol penceresinin Worlds sekmesi](../../../docs/getting-started/worlds.png)
+## Başka dünyalar kullanma \{#using-other-worlds\}
+Başka bir dünyaya geçmek için **Worlds** düğmesine bas. Bir dünyayı adıyla ara, seç ve **Load world** düğmesine bas. [World Editor](/docs/tools/world-editor/) ile yaptığın kendi dünyalarını da ekleyebilirsin.
 
-Erebus v26.1 ile gelen dünyalar şunlardır:
+![Kontrol penceresinin Worlds paneli](../../../docs/getting-started/worlds.png)
+
+Erebus v27'deki dünyalar şunlardır:
 
 | Dünya | Amaç |
 |---|---|
-| `world1.wbt`, `world2.wbt` | Örnek dünyalar. `world2.wbt` 4. alanı içerir. |
+| `2027_d1r1.wbt`, `2027_d1r2.wbt`, `2027_d2r1.wbt`, `2027_d2r2.wbt` | 2027 kuralları için temas kareleri ve sahte kazazedeler içeren örnek dünyalar |
+| `world1.wbt`, `world2.wbt` | Örnek dünyalar. `world2.wbt` Alan 4'ü içerir. |
 | `world3.wbt`, `world4.wbt` | **Sahte kazazedeler** de içeren daha büyük örnek dünyalar |
-| `mapping_example_1.wbt` - `mapping_example_3.wbt` | Haritalamanı test etmek için dünyalar. [Haritalama](/docs/rules/mapping/) sayfasına bak. |
-| `NewPassages.wbt` | Alanlar arasındaki geçitlere örnek |
+| `mapping_example_1.wbt` – `mapping_example_3.wbt` | Haritalamanı test etmek için dünyalar. Bkz. [Haritalama](/docs/rules/mapping/). |
+| `mapping_example_1_cyan_tiles.wbt` | İki temas karesi eklenmiş `mapping_example_1.wbt` |
+| `NewPassages.wbt` | Alanlar arasındaki geçitlerin örneği |
 
-## Ayarlar \{#settings\}
-![Kontrol penceresinin Settings sekmesi](../../../docs/getting-started/settings.png)
+## Advanced setup \{#advanced-setup\}
+![Kontrol penceresinin Advanced setup paneli](../../../docs/getting-started/settings.png)
 
 | Ayar | Kullanım |
 |---|---|
-| Keep controller/robot files | Dünya yeniden yüklendiğinde programını ve robotunu yüklü tutar |
-| Disable automatic LoP | 20 saniye sonraki otomatik ilerleme eksikliğini durdurur. Yalnızca hata ayıklama için. |
-| Automatic camera | Görünümün robotu izlemesini sağlar |
-| Recording | Oyunu video olarak kaydeder |
-| Keep remote controller on | Dünya yeniden yüklendiğinde TOGGLE REMOTE'u açık tutar |
-| Enable debugging | Webots konsoluna ek bilgiler yazdırır; örneğin bir duvar işareti bildiriminin neden reddedildiğini |
+| Show head-up display | Puanı, süreyi ve son olayları Webots penceresinde gösterir |
+| Automatic camera | Görüntünün robotu takip etmesini sağlar |
+| HTML replay recording | Her maçı `match-results` klasörüne etkileşimli bir 3B tekrar olarak kaydeder |
+| Automatic map result | Robot haritayı gönderir göndermez harita sonucunu kaydeder ve açar |
+| Disable automatic LoP | 20 saniye sonraki otomatik ilerleme eksikliğini kapatır. Sadece hata ayıklama için. |
+| Enable debugging | Webots konsolunda ek bilgiler yazdırır; örneğin bir duvar işareti bildiriminin neden reddedildiğini |
 
-Üstteki bağlantılar değişiklik günlüğüne ve dünya ile robot yapma araçlarına götürür. 2026 kurallarına uygun dünyalar yapmak için [World Editor](https://world.erebus.rcj.cloud/)'ü kullan.
+Pencerenin altındaki **References**, değişiklik kaydına, bu belgelere ve dünya ile robot yapma araçlarına götürür. 2027 kurallarıyla dünya yapmak için [World Editor](https://world.erebus.rcj.cloud/) kullan.
 
-## Robotu elle istediğin yere taşı \{#manually-move-the-robot-where-you-want-it-to-go\}
-Simülasyon penceresinde bir robota tıkladığında kırmızı, yeşil ve mavi oklar görünür. Bu okları fareyle sürükleyerek robotu istediğin konuma taşı. Robotun, program başlayana kadar görüntülenmediğini unutma.
-![Webots'ta seçilmiş, taşımak için okları görünen robot](../../../docs/getting-started/manual.png)
+## Robotu istediğin yere elle taşı \{#manually-move-the-robot-where-you-want-it-to-go\}
+Simülasyon penceresinde bir robota tıkladığında kırmızı, yeşil ve mavi oklar görünür. Robotu herhangi bir konuma taşımak için bu okları fareyle sürükle. Program başlayana kadar robotun görünmediğini unutma.
+![Webots'ta seçilmiş robot ve onu taşımak için oklar](../../../docs/getting-started/manual.png)
 
 
-## Sonraki adım \{#next\}
+## Sırada \{#next\}
 Bir robotun kendi başına keşif yaptığını gördün. Şimdi onu kendin programlamayı öğren: [İlk programın](/docs/programming/first-program/) ile başla.

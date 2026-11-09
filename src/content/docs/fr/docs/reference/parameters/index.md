@@ -10,7 +10,7 @@ description: Dimensions du terrain, durées de jeu, multiplicateurs de score, li
 | Case | 12 cm × 12 cm |
 | Quart de case (zones 2 et 3) | 6 cm × 6 cm |
 | Mur | 1 cm d’épaisseur, 6 cm de hauteur |
-| Victime lettre | 2 cm × 2 cm |
+| Victime smiley | 2 cm × 2 cm |
 | Cible cognitive | 5 cm de diamètre |
 
 ## Jeu {#game}
@@ -21,7 +21,10 @@ description: Dimensions du terrain, durées de jeu, multiplicateurs de score, li
 | Temps réel | 10 minutes |
 | Absence de progression automatique | Après 20 secondes au même endroit |
 | Temps d’arrêt pour signaler un marqueur mural | Au moins 1 seconde |
-| Multiplicateur de temps dans un marécage | x5 à la première entrée, +1 à chaque nouvelle entrée dans le même marécage, jusqu’à x10 |
+| Distance pour signaler un marqueur mural | Une demi-case (6 cm), pour le centre du robot et pour la position envoyée |
+| Batterie | 100 % au départ. Elle se vide selon la vitesse des roues, environ 1,25 % par seconde avec deux roues à pleine vitesse. |
+| Batterie dans un marécage | Se vide 5 fois plus vite |
+| Remplacement de la batterie | Rester immobile 5 secondes sur une case de contact |
 | Multiplicateurs de zone | 1, 1,25, 1,5 et 2 pour les zones 1, 2, 3 et 4 |
 | Bonus de sortie | +10 % |
 | Multiplicateur du bonus de cartographie | exactitude × 1,2 + 1 |
@@ -38,7 +41,7 @@ description: Dimensions du terrain, durées de jeu, multiplicateurs de score, li
 | Vitesse maximale des roues | 6,28 rad/s |
 | LIDAR | 512 points par couche, 4 couches, 0,01 à 1 m |
 
-`timeStep` définit le nombre de millisecondes entre deux mises à jour des capteurs. `int(robot.getBasicTimeStep())` obtient le pas de temps de base du monde, qui est de 16 ms dans les mondes d’Erebus v26.1.
+`timeStep` définit le nombre de millisecondes entre deux mises à jour des capteurs. `int(robot.getBasicTimeStep())` obtient le pas de temps de base du monde, qui est de 16 ms dans les mondes d’Erebus v27.
 
 ## Noms des composants du robot de départ {#device-names-of-the-starter-robot}
 

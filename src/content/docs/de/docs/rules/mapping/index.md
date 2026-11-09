@@ -22,6 +22,7 @@ Eine perfekte Karte multipliziert deine Punktzahl also mit 2,2. Wie du die Matri
 | Checkpoints | `4` |
 | Startkachel | `5` |
 | Kachel mit Hindernis | `x` |
+| Kontaktkachel (cyan) | `k` |
 | Durchgang zwischen Bereich 1 und 2 (blau) | `b` |
 | Durchgang zwischen Bereich 1 und 3 (gelb) | `y` |
 | Durchgang zwischen Bereich 1 und 4 (grün) | `g` |
@@ -32,8 +33,8 @@ Eine perfekte Karte multipliziert deine Punktzahl also mit 2,2. Wie du die Matri
 | Alle Kacheln, Kanten und Eckpunkte von Bereich 4, einschließlich seines Rands | `*` |
 | Alle anderen Kacheln, Kanten und Eckpunkte | `0` |
 
-* Bodenelemente (`2`, `3`, `4`, `5`, `x` und die Durchgänge) werden in die mittlere Zelle jeder der vier Viertelkacheln der Kachel geschrieben, wie du in den Beispielen unten sehen kannst.
-* Keine Kachel ist gleichzeitig mehr als eines davon: Sumpf, Loch, Checkpoint, Startkachel, Kachel mit Hindernis oder Durchgang zwischen Bereichen.
+* Bodenelemente (`2`, `3`, `4`, `5`, `x`, `k` und die Durchgänge) werden in die mittlere Zelle jeder der vier Viertelkacheln der Kachel geschrieben, wie du in den Beispielen unten sehen kannst.
+* Keine Kachel ist gleichzeitig mehr als eines davon: Sumpf, Loch, Checkpoint, Kontaktkachel, Startkachel, Kachel mit Hindernis oder Durchgang zwischen Bereichen.
 * Bei gekrümmten Wänden in Bereich 3 wird der Eckpunkt durch eine `0` dargestellt.
 * Eine Wandmarkierung wird in der Zelle der Wand eingetragen, an der sie sich befindet. Wenn an derselben Wand mehrere Wandmarkierungen sind, zum Beispiel auf beiden Seiten, verkette ihre Codes in einer Zelle, in der Reihenfolge ihrer absoluten Position auf der Karte: zuerst von oben nach unten, dann von links nach rechts.
 * Gefälschte Markierungen dürfen nicht in die Karte aufgenommen werden: weder gefälschte Opfer (Fake victims) noch kognitive Ziele mit ungültiger Summe.
@@ -55,7 +56,7 @@ Die Ausnahme ist der folgende Fall, bei dem eine Seite der Wand ein normaler rec
 ![Eine Wand mit einem rechten Winkel auf der einen und einer Kurve auf der anderen Seite](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Beispiele {#examples}
-Das sind die richtigen Lösungen für einige der Welten, die in Erebus v26 enthalten sind, erzeugt von Erebus selbst.
+Das sind die richtigen Lösungen für einige der Welten, die in Erebus v27 enthalten sind, erzeugt von Erebus selbst.
 
 Die Welten im Ordner `game/worlds` ändern sich zwischen den Versionen. Wenn deine Erebus-Version abweicht, kann deine Lösung also anders sein. `MapScorerExample.py` im Ordner `player_controllers` enthält ebenfalls Beispielmatrizen.
 
@@ -78,6 +79,33 @@ Eine kleine Welt mit einem einzigen Bereich. Die Startkachel ist die grüne Kach
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '1', '1', '1', '1', '1', 'F', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
+]
+```
+
+### mapping_example_1_cyan_tiles.wbt {#mapping_example_1_cyan_tileswbt}
+Dieselbe Welt wie `mapping_example_1.wbt`, mit zwei Kontaktkacheln, die mit `k` markiert werden.
+
+![Die Welt mapping_example_1_cyan_tiles in Webots](../../../../docs/rules/mapping/mapping_example_1_cyan_tiles.png)
+
+```
+[
+['1', '1', 'S', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', 'C', '0', '0', '0', '0', '0', '0', '0', 'O', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['F', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', '0', '0', '0', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', '0', '0', '0', '1', '1', 'U', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
 ['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],

@@ -7,8 +7,8 @@ description: Cómo configurar el Remote Controller en Windows.
 Primero, prueba a ejecutar el servidor de la partida y tu programa controlador en el mismo ordenador. No es la misma configuración que en una competición, pero resulta útil para depurar en local.
 
 ## Activar el modo remoto {#toggle-remote-mode}
-Abre el mundo y pulsa "TOGGLE REMOTE" en la ventana de control. El botón se vuelve naranja para indicar que el modo remoto está activado.  
-![El botón TOGGLE REMOTE](../../../../../docs/competition/remote-controller/windows/toggleRemote.png)
+Abre el mundo, pulsa **Robot setup** en la ventana de control y activa **Remote mode**. Si tienes un robot personalizado, carga antes tu robot en **Robot JSON**.  
+![Remote mode, activado en Robot setup](../../../../../docs/competition/remote-controller/windows/../mac/toggle_remote.png)
 
 Si no se muestra la ventana de control, haz clic derecho en "DEF MAINSUPERVISOR Robot" en el Scene Tree y elige "Show Robot Window".  
 ![La opción Show Robot Window](../../../../../docs/competition/remote-controller/windows/showRobotWindow.png)
@@ -29,26 +29,25 @@ Si no conoces la ruta de tu programa controlador, arrastra el archivo y suéltal
 Después, pulsa Intro para ejecutar el comando. El controlador se conecta a Webots y espera hasta que empieza la partida.
 
 ## Iniciar la partida {#start-the-game}
-Pulsa el botón de inicio en la ventana de control para iniciar la simulación.  
-![El botón de inicio de la ventana de control](../../../../../docs/competition/remote-controller/windows/run.png)
+Pulsa **Run match** en la ventana de control para iniciar la partida.  
+![El botón Run match de la ventana de control](../../../../../docs/competition/remote-controller/windows/../../../getting-started/match-controls.png)
 
 ## Terminar la partida {#terminate-the-game}
 Para detener la partida, pulsa Ctrl+C en PowerShell y así detendrás tu programa.
 
-Cuando la simulación termina, el gestor de la partida de Erebus también se detiene. Para volver a ejecutar la partida, recarga el mundo.  
-![El botón de recarga de Webots](../../../../../docs/competition/remote-controller/windows/reload.png)
+Cuando termine la partida, pulsa **Reset** para ejecutarla otra vez. Al reiniciar se desactiva Remote mode, a menos que **Keep on Reset** esté activado.
 
 # Ejecutar el servidor de la partida en otro ordenador
 Esta es la configuración que se usa en las competiciones oficiales. El ordenador que ejecuta tu controlador (el cliente) y el que ejecuta la partida (el servidor) deben estar conectados a la misma red.
 
-1. (Servidor) Inicia Webots en el servidor, abre el mundo y activa el modo remoto en la ventana de control.
+2. (Servidor) Inicia Webots en el servidor, abre el mundo y activa **Remote mode** en **Robot setup** de la ventana de control.
 2. (Servidor) Averigua la dirección IP del servidor. Consulta [Buscar la dirección IP en Windows](https://support.microsoft.com/en-gb/windows/find-your-ip-address-in-windows-f21a9bbc-c582-55cd-35e0-73431160a1b9).
 3. (Cliente) Ejecuta el siguiente comando en PowerShell, sustituyendo `<Your controller path>` por la ruta de tu programa controlador y `<Server IP address>` por la dirección IP que encontraste en el paso anterior.  
 `webots-controller.exe --protocol=tcp --ip-address=<Server IP address> <Your controller path>`
-4. (Servidor) Inicia la partida pulsando el botón de inicio.
+4. (Servidor) Inicia la partida pulsando **Run match**.
 
 # Solución de problemas
 Si el controlador no puede conectarse, comprueba que los dos ordenadores pueden comunicarse entre sí, que el cortafuegos del servidor permite el puerto TCP 1234, y que la lista de IP permitidas de la pestaña Network de las preferencias (Preferences) de Webots está vacía o incluye al cliente.
 
 # Documentación oficial
-Para más detalles sobre esta configuración, consulta la [guía de Webots](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2023b).
+Para más detalles sobre esta configuración, consulta la [guía de Webots](https://cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2025a).

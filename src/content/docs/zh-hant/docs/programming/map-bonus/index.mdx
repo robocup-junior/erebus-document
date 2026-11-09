@@ -18,12 +18,19 @@ import CodeTabs from '@/components/CodeTabs.astro';
 - 請確保還有剩餘時間。如果比賽在你傳送 `M` 之前就結束了，就沒有地圖可以評估。
 - 你不一定要傳送 `E` 才能獲得加成：時間用完時也會套用加成。但 `E` 是獲得出口加成的方式，而出口加成會在套用地圖加成之前先加上去。
 - 地圖必須包含起始地塊（`5`），它用來將地圖與正確答案對齊。沒有它，地圖就無法評估。
-- 結果會以 `Map Correctness` 顯示在控制視窗的歷史紀錄中。如果在 Webots 主控台看到 `Map scoring error`，請檢查你的格式。
+- 結果會以 `Map Correctness` 顯示在控制視窗的比賽事件中。如果在 Webots 主控台看到 `Map scoring error`，請檢查你的格式。
 
 下面的範例會傳送 `world1.wbt` 的正確答案，可以用來檢查你的通訊程式碼。如果你在比賽一開始就執行它，比賽會立刻結束，而且分數會維持 0，因為倍數沒有可以相乘的分數。
 
 <CodeTabs file="basics" />
 
-![執行範例之後控制視窗中的歷史紀錄：Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+![執行範例後的比賽事件：Map Correctness 100.0%](../../../../docs/programming/map-bonus/map-history.png)
+
+## 檢查你的地圖 \{#reviewing-your-map\}
+在控制視窗中按 **Save map**，就能看到你的地圖是如何計分的。Erebus 會把結果儲存在 `match-results` 中該場比賽的 `map` 資料夾裡，並在瀏覽器中開啟。如果開啟 **Advanced setup** 中的 **Automatic map result**，地圖一被評估就會開啟。
+
+![範例地圖的檢查結果：每個儲存格都正確](../../../../docs/programming/map-bonus/map-review.png)
+
+錯誤的儲存格會標成紅色。點選一個儲存格，可以看到機器人傳送的值和正確答案。**Save matrix** 儲存機器人傳送的地圖，**Save PNG** 儲存圖片。
 
 Erebus 發行版中 `player_controllers` 資料夾裡的範例 `MapScorerExample.py` 也是以同樣的方式運作。

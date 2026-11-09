@@ -22,6 +22,7 @@ Jadi peta yang sempurna mengalikan skormu dengan 2,2. Untuk mempelajari cara men
 | Checkpoint | `4` |
 | Ubin awal | `5` |
 | Ubin dengan rintangan | `x` |
+| Ubin kontak (sian) | `k` |
 | Lorong penghubung antara Area 1 dan 2 (biru) | `b` |
 | Lorong penghubung antara Area 1 dan 3 (kuning) | `y` |
 | Lorong penghubung antara Area 1 dan 4 (hijau) | `g` |
@@ -32,8 +33,8 @@ Jadi peta yang sempurna mengalikan skormu dengan 2,2. Untuk mempelajari cara men
 | Semua ubin, tepi, dan titik sudut Area 4, termasuk batasnya | `*` |
 | Ubin, tepi, dan titik sudut lainnya | `0` |
 
-* Elemen lantai (`2`, `3`, `4`, `5`, `x`, dan lorong penghubung) ditulis di sel tengah masing-masing dari keempat seperempat ubin pada ubin tersebut, seperti yang bisa kamu lihat di contoh-contoh di bawah.
-* Satu ubin tidak pernah sekaligus menjadi lebih dari satu hal berikut: rawa, lubang, checkpoint, ubin awal, ubin dengan rintangan, atau lorong penghubung antar-area.
+* Elemen lantai (`2`, `3`, `4`, `5`, `x`, `k`, dan lorong penghubung) ditulis di sel tengah masing-masing dari keempat seperempat ubin pada ubin tersebut, seperti yang bisa kamu lihat di contoh-contoh di bawah.
+* Satu ubin tidak pernah sekaligus menjadi lebih dari satu hal berikut: rawa, lubang, checkpoint, ubin kontak, ubin awal, ubin dengan rintangan, atau lorong penghubung antar-area.
 * Untuk dinding melengkung di Area 3, titik sudutnya direpresentasikan dengan `0`.
 * Penanda dinding ditulis di sel dinding tempat penanda itu berada. Jika ada beberapa penanda dinding di dinding yang sama, misalnya di kedua sisinya, gabungkan kode-kodenya dalam satu sel, berurutan sesuai posisi absolutnya di peta: pertama dari atas ke bawah, lalu dari kiri ke kanan.
 * Penanda palsu tidak boleh dimasukkan ke peta: baik korban palsu maupun target kognitif dengan jumlah yang tidak valid.
@@ -55,7 +56,7 @@ Pengecualiannya adalah kasus berikut, ketika satu sisi dinding berupa sudut siku
 ![Dinding dengan sudut siku di satu sisi dan lengkungan di sisi lainnya](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Contoh {#examples}
-Berikut adalah jawaban benar untuk beberapa world yang disertakan di Erebus v26, yang dihasilkan oleh Erebus sendiri.
+Berikut adalah jawaban benar untuk beberapa world yang disertakan di Erebus v27, yang dihasilkan oleh Erebus sendiri.
 
 World di folder `game/worlds` berubah antar-versi, jadi jika versi Erebus-mu berbeda, jawabanmu mungkin juga berbeda. `MapScorerExample.py` di folder `player_controllers` juga berisi contoh matriks.
 
@@ -78,6 +79,33 @@ World kecil dengan satu area. Ubin awalnya adalah ubin hijau di kiri bawah.
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '1', '1', '1', '1', '1', 'F', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
+]
+```
+
+### mapping_example_1_cyan_tiles.wbt {#mapping_example_1_cyan_tileswbt}
+World yang sama dengan `mapping_example_1.wbt`, dengan dua ubin kontak, yang ditandai dengan `k`.
+
+![World mapping_example_1_cyan_tiles di Webots](../../../../docs/rules/mapping/mapping_example_1_cyan_tiles.png)
+
+```
+[
+['1', '1', 'S', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', 'C', '0', '0', '0', '0', '0', '0', '0', 'O', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['F', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', '0', '0', '0', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', '0', '0', '0', '1', '1', 'U', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
 ['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],

@@ -22,6 +22,9 @@ Webots 不知道 Python 在哪裡。
 
    ![Webots 偏好設定中的 Python command 欄位](../../../docs/troubleshooting/preferences.png)
 
+### `ERROR: Skipped PROTO 'custom_robot'` {#error-skipped-proto-custom_robot}
+第一次開啟世界時，在 Erebus 準備好機器人模型之前會顯示這則訊息。Erebus 會準備好模型並自動重新載入世界，所以可以忽略它。
+
 ### 比賽計時器沒有出現 {#the-game-timer-does-not-appear}
 第一次啟動時，Erebus 會安裝函式庫，可能需要幾分鐘。如果一直沒有完成，請查看主控台是否有錯誤。如果自動安裝無法運作，請自行安裝[所需的函式庫](/docs/installation/#python-libraries)。
 
@@ -30,9 +33,14 @@ Webots 不知道 Python 在哪裡。
 ### 控制視窗沒有出現 {#the-control-window-does-not-appear}
 控制視窗是由 Webots 開啟的網頁。
 
-1. 如果被你的瀏覽器封鎖了，請在世界開啟時開啟[控制視窗](http://localhost:1234/robot_windows/MainSupervisorWindow/MainSupervisorWindow.html?name=robot)。
+1. 如果你關掉了視窗，或瀏覽器擋住了它，請用 Webots 的重新載入按鈕重新載入世界。Erebus 會再次開啟控制視窗。
 2. 否則，請用 **Tools > Scene Tree** 確認已顯示 Scene Tree（場景樹）。
 3. 在 Scene Tree 中找到 **DEF MAINSUPERVISOR Robot**，按右鍵並選擇 **Show Robot Window**。
+
+控制視窗有一個專用網址，每次載入世界都會改變。如果你自己在 `localhost:1234` 開啟視窗，它會顯示 **Read-only**，按鈕也無法使用。
+
+### 控制視窗顯示「Access log incomplete」 {#the-control-window-says-access-log-incomplete}
+沒有安裝 [Wireshark](/docs/installation/#optional-wireshark) 時會出現這個警告。它是給比賽主辦單位用的：按 **Acknowledge**，然後照常練習。
 
 ![Scene Tree 中的 Show Robot Window 選項](../../../docs/troubleshooting/showrobot.png)
 
@@ -52,11 +60,8 @@ Webots 不知道 Python 在哪裡。
 
 ## 你的機器人 {#your-robot}
 
-### `PROTO parameter 'camera_width' has no matching IS field` {#proto-parameter-camera_width-has-no-matching-is-field}
-Erebus v26.1 在載入用目前的 Robot Customizer 製作的機器人時，會以紅色顯示這則錯誤。你可以忽略它：機器人可以正常運作，攝影機也是你選擇的解析度。
-
 ### 我的程式說找不到某個裝置 {#my-program-says-a-device-was-not-found}
-請參閱下方說明。另外，請確認你在開始比賽之前，已經用**右邊的** LOAD 按鈕載入了你的機器人。
+見下文。另外，請確認開始比賽前已經在 **Robot setup** 的 **Robot JSON** 下載入機器人。
 
 ## 你的程式 {#your-program}
 
@@ -64,10 +69,16 @@ Erebus v26.1 在載入用目前的 Robot Customizer 製作的機器人時，會�
 你的程式中的裝置名稱與你的機器人不符。入門機器人的名稱請參閱[參考](/docs/reference/parameters/#device-names-of-the-starter-robot)。如果是你自己的機器人，名稱就是你在 [Robot Customizer](/docs/robot/customizer/) 中設定的名稱。請確認你的機器人已經載入。
 
 ### 回報牆上的標記時沒有任何反應 {#nothing-happens-when-i-report-a-wall-token}
-在控制視窗的 Settings 分頁中開啟 **Enable debugging**，然後查看主控台。最常見的原因是機器人沒有停止至少 1 秒，以及座標沒有換算成公分。請參閱[通訊](/docs/programming/communication/#scoring-wall-tokens)。
+在控制視窗的 **Advanced setup** 中開啟 **Enable debugging**，然後查看主控台。最常見的原因是：機器人沒有停止至少 1 秒、座標沒有換算成公分，以及機器人或位置離標記超過半個地塊（6 cm）。請參閱[通訊](/docs/programming/communication/#scoring-wall-tokens)。
 
 ### 我的回報都被判定為誤判 {#my-reports-are-misidentifications}
 機器人必須距離標記最多半個地塊，並且和標記在牆的同一側，而且每個標記只能得分一次。回報假目標也會被視為誤判。
+
+### 比賽以「Battery depleted」結束 {#the-game-ends-with-battery-depleted}
+電池用完了。在那之前，在接觸地塊上停留 5 秒來更換電池。請參閱[電池](/docs/programming/battery/)。
+
+### 我的程式收不到比賽資訊了 {#my-program-no-longer-receives-the-game-information}
+從 Erebus v27 開始，`G` 的回覆為 20 位元組，最後是電池電量。請更新程式中對長度的檢查。請參閱[比賽資訊](/docs/programming/communication/#game-information)。
 
 ### 地圖得到 0% 或出現計分錯誤 {#the-map-gets-0-or-a-scoring-error}
 你的地圖必須包含起始地塊（`5`），而且只能被評估一次。請參閱[提交地圖](/docs/programming/map-bonus/)。

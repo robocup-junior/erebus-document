@@ -39,7 +39,7 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 3. 없으면 너비 우선 탐색으로 방문하지 않은 이웃이 있는 가장 가까운 타일을 찾아 그곳으로 가요.
 4. 그런 타일이 더 이상 없거나 시간이 얼마 남지 않으면, 같은 방법으로 출발점으로 돌아가요.
 
-구멍은 벽처럼 다루세요. 늪은 시간이 들고, 같은 늪에 들어갈 때마다 더 많이 들기 때문에 가치가 있을 때만 들어가세요.
+구멍은 벽으로 취급하세요. 늪은 배터리를 더 빨리 줄이므로, 그럴 만한 가치가 있을 때만 들어가세요. 도중에 [배터리를 교체할](/docs/programming/battery/) 수 있도록 접촉 타일의 위치를 기억해 두세요.
 
 ## 예상치 못한 상황 처리하기 {#handle-the-unexpected}
 - **진행 불능 (Lack of Progress):** 로봇이 마지막 체크포인트로 옮겨져요. [`L` 메시지를 받아서](/docs/programming/communication/#lack-of-progress) 위치를 업데이트하세요.
@@ -59,4 +59,4 @@ tiles[(0, 0)] = {"walls": {"N": False, "E": True, "S": False, "W": True}, "floor
 
 지도는 어디서 시작해도 돼요. Erebus가 시작 타일을 사용해 [행렬을 정렬](/docs/rules/mapping/#how-correctness-is-calculated)하고, 네 가지 회전을 시도해요. [지도 작성 규칙](/docs/rules/mapping/)에서 행렬의 모든 값을 설명해요. 그다음 [지도를 제출](/docs/programming/map-bonus/)하세요.
 
-정답이 [지도 작성 규칙](/docs/rules/mapping/#examples)에 나와 있는 예제 월드로 테스트해 보세요. 결과는 제어 창의 기록에 `Map Correctness`로 표시돼요.
+정답이 [지도 작성 규칙](/docs/rules/mapping/#examples)에 나와 있는 예제 월드로 테스트해 보세요. 결과는 제어 창의 경기 이벤트에 `Map Correctness`로 표시돼요.

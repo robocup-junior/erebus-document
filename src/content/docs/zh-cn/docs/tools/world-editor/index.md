@@ -10,12 +10,12 @@ description: 如何用 Erebus World Editor 创建你自己的世界。
 
 ![World Editor 中一张完成的地图](../../../../docs/tools/world-editor/overview.png)
 
-如果你只是制作用于测试的小地图，场地是否符合规则可能并不重要。但如果你打算制作比赛用的场地，请阅读官方的[仿真规则](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf)。编辑器会在你工作时根据规则检查你的地图。
+如果你只是制作用于测试的小地图，场地是否符合规则可能并不重要。但如果你打算制作比赛用的场地，请阅读官方的[仿真规则](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf)。编辑器会在你工作时根据规则检查你的地图。
 
 编辑器内置了指南：按右下角的 **Guide**，可以选择一堂制作示例地图的实践课（约 15 分钟）、一次界面导览，或者一堂关于房间 4 的课。编辑器的语言可以在它旁边切换。
 
 ## 开始制作地图 {#starting-a-map}
-打开编辑器时，选择你想遵循**哪一年的规则**，然后按 **New map**。**Erebus v26 请选择 2026 年规则。** 2027 年规则是为下一个 Erebus 版本准备的草案。
+打开编辑器后，选择要遵循的**哪一年的规则**，然后按 **New map**。**Erebus v27 请选择 2027 年规则。** 2026 年规则用于 Erebus v26。之后也可以在顶部栏更改地图的规则。
 
 ![World Editor 的开始界面](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ description: 如何用 Erebus World Editor 创建你自己的世界。
 | Line | `L` | 绘制墙壁 |
 | Curve | `A` | 在房间 3 中绘制弧形墙 |
 | Eraser | `E` | 删除墙壁、地面、障碍物和受害者 |
-| Floor | `F` | 设置检查点、坑洞、沼泽和起始地块 |
+| Floor | `F` | 设置检查点、坑洞、沼泽、接触地块和起始地块 |
 | Obstacle | `O` | 放置障碍物 |
-| Victims | `V` | 放置字母受害者、认知目标和假标识 |
+| Victims | `V` | 放置笑脸受害者、认知目标和假标识 |
 
 鼠标滚轮可以缩放，按住空格键拖动可以移动视图，撤销是 `⌘Z` 或 `Ctrl+Z`。
 
@@ -57,7 +57,7 @@ description: 如何用 Erebus World Editor 创建你自己的世界。
 ![用于绘制墙壁的 Line 工具](../../../../docs/tools/world-editor/walls.png)
 
 ## 地面和障碍物 {#floors-and-obstacles}
-用 **Floor** 工具选择一种地面类型，然后点击地块来设置。起始地块必须是房间 1 中的地块，没有起始地块的世界无法导出。一个地块只能是坑洞、沼泽、检查点、障碍物、起点或通道中的一种。
+用 **Floor** 工具选择一种地面类型，然后点击地块进行设置：检查点、坑洞、沼泽、接触地块或起点。起始地块必须是房间 1 中的地块，没有它就无法导出世界。一个地块只能是坑洞、沼泽、检查点、接触地块、障碍物、起点或通道中的一种。
 
 ![Floor 工具](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ description: 如何用 Erebus World Editor 创建你自己的世界。
 ## 受害者和认知目标 {#victims-and-cognitive-targets}
 用 **Victims** 工具选择一种类型，然后在墙附近点击。你可以放置：
 
-- 真实的字母受害者：受伤、稳定和未受伤
-- 带有立体符号的假字母受害者
+- 真的笑脸受害者：受伤、稳定和未受伤
+- 带立体表情的假笑脸受害者
 - 认知目标：选择危险品类型，如果需要，还可以选择各个圆环的颜色。编辑器会显示数值之和，它决定了类型
 - 假认知目标，其圆环数值之和不在 0 到 3 之间
 
@@ -105,8 +105,8 @@ description: 如何用 Erebus World Editor 创建你自己的世界。
 1. 把 `.wbt` 文件复制到 Erebus 的 `game/worlds` 文件夹中。它必须放在这个文件夹里，因为世界会用到 Erebus 中的文件。
 1. 在 Webots 中打开它，或者用[控制窗口](/docs/getting-started/)的 **Worlds** 按钮选择它。
 
-![编辑器指南中的示例地图，在 Erebus v26.1 中运行](../../../../docs/tools/world-editor/exported_world.png)
+![编辑器指南中的示例地图，在 Erebus v27 中运行](../../../../docs/tools/world-editor/exported_world.png)
 
-*编辑器指南中的示例地图，在 Erebus v26.1 中运行。*
+*编辑器指南中的示例地图，在 Erebus v27 中运行。*
 
 `.wbt` 文件无法转换回可以编辑的地图，所以也请保留 JSON 文件。

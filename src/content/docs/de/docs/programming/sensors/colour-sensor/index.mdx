@@ -1,32 +1,35 @@
 ---
 title: Farbsensor
-description: "Sieh mit dem Farbsensor den Boden unter dem Roboter: Löcher, Sümpfe, Checkpoints und Durchgänge."
+description: "Sieh mit dem Farbsensor den Boden unter dem Roboter: Löcher, Sümpfe, Kontaktkacheln, Checkpoints und Durchgänge."
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-Der Farbsensor schaut auf den Boden und informiert den Roboter so über Löcher, Sümpfe und Durchgänge. Er ist eine Kamera mit einem einzigen Pixel, die nach unten zeigt. Beim Starter-Roboter heißt er `color` und sitzt vorne am Roboter, damit er ein Loch sieht, bevor die Räder es erreichen.
+Der Farbsensor schaut auf den Boden und informiert den Roboter so über Löcher, Sümpfe, Kontaktkacheln und Durchgänge. Er ist eine Kamera mit einem einzigen Pixel, die nach unten zeigt. Beim Starter-Roboter heißt er `color` und sitzt vorne am Roboter, damit er ein Loch sieht, bevor die Räder es erreichen.
 
 <CodeTabs file="read" />
 
 ## Bodenfarben \{#floor-colours\}
 
-Diese Werte wurden mit dem Starter-Roboter in `world2.wbt` gemessen:
+Diese Werte wurden mit dem Starter-Roboter in `world2.wbt` und `mapping_example_1_cyan_tiles.wbt` gemessen:
 
 | Boden | Rot | Grün | Blau |
 |---|---:|---:|---:|
-| Normal | 252 | 252 | 252 |
-| Sumpf | 245 | 222 | 142 |
-| Durchgang zwischen Bereich 1 und 2 (blau) | 91 | 91 | 255 |
-| Durchgang zwischen Bereich 2 und 3 (lila) | 193 | 91 | 251 |
-| Durchgang zwischen Bereich 1 und 4 (grün) | 48 | 255 | 48 |
-| Durchgang zwischen Bereich 3 und 4 (rot) | 255 | 91 | 91 |
+| Normal | 242 | 242 | 242 |
+| Checkpoint | 254 | 254 | 254 |
+| Sumpf | 225 | 193 | 115 |
+| Kontaktkachel (cyan) | 0 | 242 | 242 |
+| Loch (schwarzer Rand) | 34 | 34 | 34 |
+| Durchgang zwischen Bereich 1 und 2 (blau) | 72 | 72 | 254 |
+| Durchgang zwischen Bereich 2 und 3 (lila) | 161 | 72 | 238 |
+| Durchgang zwischen Bereich 1 und 4 (grün) | 38 | 253 | 38 |
+| Durchgang zwischen Bereich 3 und 4 (rot) | 254 | 72 | 72 |
 
 :::caution
-Die Werte ändern sich mit der Welt: Normaler Boden liefert in `world1.wbt` etwa 240. Verwende Wertebereiche statt exakter Werte und prüfe sie mit `calibrateColourSensor.py` im Ordner `player_controllers` von Erebus.
+Die Werte können sich je nach Welt und Grafikeinstellungen ändern. Verwende Bereiche statt genauer Werte, und prüfe sie mit `calibrateColourSensor.py` im Ordner `player_controllers` von Erebus.
 :::
 
-Löcher haben einen schwarzen Rand, daher wird der Boden kurz vor einem Loch dunkel. Checkpoints sehen für diesen Sensor fast wie normaler Boden aus, also kalibriere ihn auf einem Checkpoint in deiner Welt.
+Löcher haben einen schwarzen Rand, daher wird der Boden kurz vor einem Loch dunkel. Checkpoints sind nur wenig heller als normaler Boden, also kalibriere auf einem Checkpoint in deiner Welt, bevor du dich darauf verlässt.
 
 ## Beispiel: den Boden beobachten \{#example-watching-the-floor\}
 

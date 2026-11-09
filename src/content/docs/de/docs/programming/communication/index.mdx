@@ -1,6 +1,6 @@
 ---
 title: Kommunikation
-description: Melde Wandmarkierungen, löse einen fehlenden Fortschritt aus, frag die Punktzahl ab und beende das Spiel.
+description: Wandmarkierungen melden, einen fehlenden Fortschritt ausrufen, Punktzahl, Zeit und Akkustand abfragen und das Spiel beenden.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -14,30 +14,30 @@ Jeder Abschnitt unten ist ein vollständiges Programm für den [Starter-Roboter]
 
 ## Punkte für Wandmarkierungen \{#scoring-wall-tokens\}
 
-Um für ein Buchstabenopfer (Letter victim) oder ein kognitives Ziel (Cognitive target) Punkte zu bekommen, muss der Roboter:
+Um für ein Smiley-Opfer (Letter victim) oder ein kognitives Ziel (Cognitive target) Punkte zu bekommen, muss der Roboter:
 
 1. **Länger als 1 Sekunde** in der Nähe der Markierung **stehen bleiben**. Erebus ignoriert die Meldung, wenn sich der Roboter in der letzten Sekunde bewegt hat.
 2. **Position und Typ** der Markierung **senden**: X und Z in **Zentimetern** und den Typ als einen Buchstaben.
 
 | Wandmarkierung | Typ |
 |---|---|
-| Buchstabenopfer Φ (verletzt) | `H` |
-| Buchstabenopfer Ψ (stabil) | `S` |
-| Buchstabenopfer Ω (unverletzt) | `U` |
+| Smiley-Opfer, trauriges Gesicht (verletzt) | `H` |
+| Smiley-Opfer, neutrales Gesicht (stabil) | `S` |
+| Smiley-Opfer, fröhliches Gesicht (unverletzt) | `U` |
 | Kognitives Ziel, Summe 0 (entzündbares Gas) | `F` |
 | Kognitives Ziel, Summe 1 (Gift) | `P` |
 | Kognitives Ziel, Summe 2 (ätzend) | `C` |
 | Kognitives Ziel, Summe 3 (organisches Peroxid) | `O` |
 
-Die Typen sind Buchstaben, obwohl die Opfer seit 2026 Symbole zeigen. Das GPS liefert Meter, also multipliziere mit 100.
+Die Typen sind Buchstaben, obwohl die Opfer Gesichter zeigen. Das GPS liefert Meter, also multipliziere mit 100.
 
 <CodeTabs file="report" />
 
-Der Roboter muss auf derselben Seite der Wand sein wie die Markierung, und sowohl der Roboter als auch die gesendete Position müssen nah an ihr liegen. Die Regeln verlangen höchstens eine halbe Kachel, also ziele darauf. Erebus v26.1 prüft eine Entfernung von 9 cm.
+Der Roboter muss auf derselben Seite der Wand sein wie die Markierung, und sowohl der Mittelpunkt des Roboters als auch die gesendete Position müssen innerhalb einer halben Kachel (6 cm) von ihr liegen.
 
-Führe dieses Programm am Start von `world1.wbt` aus: Dort gibt es keine Markierung, also zeigt der Verlauf des Steuerfensters `Misidentification of Victim -5`. Eine falsche Meldung, auch die Meldung einer Fälschung, kostet 5 Punkte, und jede Markierung bringt nur einmal Punkte.
+Führe dieses Programm am Start von `world1.wbt` aus: Dort gibt es keine Markierung, also zeigen die Spielereignisse des Steuerfensters `Misidentification of Victim -5`. Eine falsche Meldung, auch die Meldung einer Fälschung, kostet 5 Punkte, und jede Markierung kann nur einmal gewertet werden.
 
-![Der Verlauf des Steuerfensters nach einer falschen Meldung und der Abgabe einer Karte](../../../../docs/programming/communication/history.png)
+![Die Spielereignisse nach einer falschen Meldung](../../../../docs/programming/communication/history.png)
 
 ## Fehlender Fortschritt \{#lack-of-progress\}
 
@@ -49,11 +49,11 @@ Der Empfänger kann verschiedene Nachrichten erhalten. Prüfe also die Länge je
 
 ## Spielinformationen \{#game-information\}
 
-Sende `G`, um die Punktzahl und die verbleibende Zeit zu erhalten. Das Spiel antwortet mit einer 16 Byte langen Nachricht: dem Buchstaben `G`, der Punktzahl, der verbleibenden Spielzeit und der verbleibenden Echtzeit, in Sekunden.
+Sende `G`, um die Punktzahl, die verbleibende Zeit und den Akkustand zu erhalten. Das Spiel antwortet mit einer 20-Byte-Nachricht: dem Buchstaben `G`, der Punktzahl, der verbleibenden Spielzeit und Echtzeit in Sekunden und dem Akkustand in Prozent.
 
 <CodeTabs file="gameinfo" />
 
-Die Spielzeit läuft in Sümpfen schneller ab, und das Spiel endet, wenn eine der beiden Zeiten abgelaufen ist. Nutze beide, um zu wissen, wann du zum Start zurückkehren solltest.
+Das Spiel endet, wenn eine der beiden Zeiten abläuft oder der Akku leer ist. Nutze sie, um zu wissen, wann du zum Start zurückfahren und wann du [den Akku austauschen](/docs/programming/battery/) musst.
 
 ## Das Spiel beenden \{#ending-the-game\}
 

@@ -22,6 +22,7 @@ Une carte parfaite multiplie donc votre score par 2,2. Pour savoir comment envoy
 | Points de contrôle | `4` |
 | Case de départ | `5` |
 | Case avec un obstacle | `x` |
+| Case de contact (cyan) | `k` |
 | Passage entre les zones 1 et 2 (bleu) | `b` |
 | Passage entre les zones 1 et 3 (jaune) | `y` |
 | Passage entre les zones 1 et 4 (vert) | `g` |
@@ -32,8 +33,8 @@ Une carte parfaite multiplie donc votre score par 2,2. Pour savoir comment envoy
 | Toutes les cases, bords et sommets de la zone 4, y compris sa bordure | `*` |
 | Toutes les autres cases, bords et sommets | `0` |
 
-* Les éléments de sol (`2`, `3`, `4`, `5`, `x` et les passages) sont inscrits dans la cellule centrale de chacun des quatre quarts de case de la case, comme le montrent les exemples ci-dessous.
-* Aucune case n’est à la fois plus d’un de ces éléments : marécage, trou, point de contrôle, case de départ, case avec un obstacle, ou passage entre zones.
+* Les éléments de sol (`2`, `3`, `4`, `5`, `x`, `k` et les passages) sont inscrits dans la cellule centrale de chacun des quatre quarts de case de la case, comme le montrent les exemples ci-dessous.
+* Aucune case n’est à la fois plus d’un de ces éléments : marécage, trou, point de contrôle, case de contact, case de départ, case avec un obstacle, ou passage entre zones.
 * Pour les murs courbes de la zone 3, le sommet est représenté par un `0`.
 * Un marqueur mural est inscrit dans la cellule du mur sur lequel il se trouve. S’il y a plusieurs marqueurs muraux sur le même mur, par exemple sur ses deux faces, concaténez leurs codes dans une seule cellule, dans l’ordre de leur position absolue sur la carte : d’abord de haut en bas, puis de gauche à droite.
 * Les leurres ne doivent pas figurer sur la carte : ni les fausses victimes, ni les cibles cognitives dont la somme n’est pas valide.
@@ -55,7 +56,7 @@ L’exception est le cas suivant, où un côté du mur forme un angle droit norm
 ![Un mur avec un angle droit d’un côté et une courbe de l’autre](../../../../docs/rules/mapping/ambiguous1.png)
 
 ## Exemples {#examples}
-Voici les bonnes réponses pour certains des mondes inclus dans Erebus v26, générées par Erebus lui-même.
+Voici les bonnes réponses pour certains des mondes inclus dans Erebus v27, générées par Erebus lui-même.
 
 Les mondes du dossier `game/worlds` changent d’une version à l’autre : si votre version d’Erebus est différente, votre réponse peut l’être aussi. `MapScorerExample.py` dans le dossier `player_controllers` contient aussi des matrices d’exemple.
 
@@ -78,6 +79,33 @@ Un petit monde avec une seule zone. La case de départ est la case verte en bas 
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
+['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
+['1', '1', '1', '1', '1', '1', 'F', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
+]
+```
+
+### mapping_example_1_cyan_tiles.wbt {#mapping_example_1_cyan_tileswbt}
+Le même monde que `mapping_example_1.wbt`, avec deux cases de contact, notées `k`.
+
+![Le monde mapping_example_1_cyan_tiles dans Webots](../../../../docs/rules/mapping/mapping_example_1_cyan_tiles.png)
+
+```
+[
+['1', '1', 'S', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', 'C', '0', '0', '0', '0', '0', '0', '0', 'O', '0', '0', '0', '0'],
+['1', '4', '0', '4', '1', '0', '0', '0', '0', 'k', '0', 'k', '1', '0', '0', '0', '0'],
+['1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['F', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'P', '0', '0', '0', '1'],
+['1', '0', '0', '0', '0', '3', '0', '3', '0', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', '0', '0', '0', '1', '1', 'U', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
+['1', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'H'],
+['1', 'k', '0', 'k', '0', '0', '0', '0', '1', '0', '0', '0', '0', '4', '0', '4', '1'],
 ['1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1'],
 ['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1'],
 ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],

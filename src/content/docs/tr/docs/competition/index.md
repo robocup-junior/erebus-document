@@ -3,7 +3,7 @@ title: Yarışmaya hazırlanma
 description: Bir RoboCupJunior Rescue Simulation yarışmasına hazırlanmak için bir kontrol listesi.
 ---
 
-Bu sayfa, 2026 kurallarına göre uluslararası yarışma için bir kılavuzdur. Yerel ve bölgesel yarışmalar farklı olabilir, bu yüzden organizatörüne danış. Resmî [kurallar](/docs/rules/) her zaman geçerlidir.
+Bu sayfa, 2027 kurallarına göre uluslararası yarışma için bir kılavuzdur. Yerel ve bölgesel yarışmalar farklı olabilir, bu yüzden organizatörüne danış. Resmî [kurallar](/docs/rules/) her zaman geçerlidir.
 
 ## Zaman çizelgesi {#timeline}
 
@@ -22,7 +22,7 @@ Bu sayfa, 2026 kurallarına göre uluslararası yarışma için bir kılavuzdur.
 - [ ] **Technical Description Paper (TDP).** Şablona harfiyen uy: aksi halde belgenin puanı 0 olur.
 - [ ] **Poster:** hem dosya olarak hem de mekânda en fazla A1 boyutunda basılı poster olarak.
 - [ ] Projeni tanıtan bir **video**.
-- [ ] **Sunucu-istemci videosu** (2026'da yeni): denetleyicini sunucu-istemci kurulumunda örnek bir harita üzerinde nasıl çalıştırdığını gösteren kısa bir video.
+- [ ] **Sunucu-istemci videosu:** denetleyicini sunucu-istemci kurulumunda bir örnek harita üzerinde nasıl çalıştırdığını gösteren kısa bir video.
 - [ ] Mülakatlar için **kaynak kod** ve **web formu**.
 
 ## Yarışma kurulumu {#competition-setup}
@@ -30,7 +30,7 @@ Oyunlar sunucu-istemci kurulumuyla yürütülür: organizatörler oyun sunucusun
 
 Yanında getirmen gerekenler:
 
-- [ ] Programının, programının ihtiyaç duyduğu tüm kütüphanelerin ve Webots R2023b'nin kurulu olduğu bir bilgisayar
+- [ ] Programının, programının ihtiyaç duyduğu tüm kütüphanelerin ve Webots R2025a'nin kurulu olduğu bir bilgisayar
 - [ ] Bir Ethernet kablosu ve bilgisayarın gerektiriyorsa bir adaptör
 - [ ] Özel bir robotun varsa robotunun `.json` dosyası
 - [ ] Basılı poster
@@ -47,9 +47,9 @@ Organizatörler aksini duyurmadıkça aşağıdaki ayarlar kullanılır. Kameral
 | Anti-aliasing | Disabled |
 
 ## Robotunu test etme {#testing-your-robot}
-- [ ] Programını Erebus'la gelen her dünyada, özellikle sahte işaretler içeren `world3.wbt` ve `world4.wbt` üzerinde çalıştır.
+- [ ] Dahil olan her dünyada, özellikle temas kareleri ve sahteler içeren dört `2027_` dünyasında çalıştır.
 - [ ] [World Editor](/docs/tools/world-editor/) ile dört alanın tamamını içeren kendi haritalarını yap.
-- [ ] Oyunun tamamını kontrol et: sonuna kadar çalışıyor, haritayı gönderiyor ve zamanında başlangıca dönüyor mu?
+- [ ] Oyunun tamamını kontrol et: sonuna kadar çalışıyor mu, bataryasını zamanında değiştiriyor mu, haritayı gönderip başlangıca dönüyor mu?
 - [ ] Bir ilerleme eksikliğinden sonra ne olduğunu test et.
 - [ ] Yanında getireceğin bilgisayarda ve yukarıdaki OpenGL ayarlarıyla test et.
 

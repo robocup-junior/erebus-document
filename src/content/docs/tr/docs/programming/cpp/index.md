@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## Derleme {#compiling}
-Her sistemde en kolay yol, Webots'un yerleşik düzenleyicisini kullanmaktır: `Makefile` dosyasıyla birlikte bir C++ denetleyicisi oluşturmak için **Wizards > New Robot Controller** seçeneğini kullan ve **Build** düğmesine bas. [Webots kılavuzuna](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b) bak.
+Her sistemde en kolay yol, Webots'un yerleşik düzenleyicisini kullanmaktır: `Makefile` dosyasıyla birlikte bir C++ denetleyicisi oluşturmak için **Wizards > New Robot Controller** seçeneğini kullan ve **Build** düğmesine bas. [Webots kılavuzuna](https://cyberbotics.com/doc/guide/using-cpp?version=R2025a) bak.
 
 Terminalden de derleyebilirsin. Bu komut macOS'ta test edildi:
 
@@ -53,5 +53,5 @@ Linux'ta aynı seçenekler `WEBOTS=/usr/local/webots` ile çalışır. OpenCV ku
 
 ## Çalıştırma {#running}
 
-- **Windows'ta,** `.exe` dosyasını kontrol penceresinin soldaki LOAD düğmesiyle yükle.
-- **macOS ve Linux'ta,** derlenmiş programların dosya uzantısı yoktur ve LOAD düğmesi onları seçemez. Bunun yerine, bir yarışmada yapacağın gibi, onları [Remote Controller](/docs/competition/remote-controller/) ile çalıştır.
+- **Windows'ta,** `.exe` dosyasını kontrol penceresinin **Robot setup** bölümündeki **Controller** altından yükle.
+- **macOS ve Linux'ta,** derlenmiş programların dosya uzantısı yoktur ve **Load file** onları seçemez. Bunun yerine, bir yarışmada yapacağın gibi, onları [Remote Controller](/docs/competition/remote-controller/) ile çalıştır.

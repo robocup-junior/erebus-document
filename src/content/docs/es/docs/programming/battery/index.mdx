@@ -1,0 +1,53 @@
+---
+title: Batería
+description: Lee el nivel de batería de tu robot, y reemplázala en una baldosa de contacto antes de que se agote.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Tu robot tiene una batería, y la partida termina cuando se agota. En esta página aprendes a qué ritmo se descarga, cómo puede leerla tu programa y cómo reemplazarla.
+
+## Cómo funciona la batería \{#how-the-battery-works\}
+
+- La batería empieza en el 100 % y **se descarga según la velocidad de las ruedas**: cuanto más rápido giran, más rápido se descarga. Con la configuración por defecto, un robot parado no gasta batería.
+- En los **pantanos** se descarga más rápido.
+- Para reemplazarla, el robot debe **permanecer quieto sobre una baldosa de contacto durante 5 segundos**. Entonces la batería vuelve al 100 %. Si se mueve, o sale de la baldosa, los 5 segundos vuelven a empezar.
+- Si la batería llega al 0 %, la partida termina con `Battery depleted`. Una batería agotada no se puede reemplazar.
+
+La ventana de control muestra el nivel de la batería encima de los temporizadores. Por debajo del 20 % muestra "Low battery":
+
+![La puntuación, el nivel de batería y los temporizadores en la ventana de control, con la batería baja](../../../../docs/programming/battery/battery-low.png)
+
+Las reglas no dicen a qué ritmo se descarga la batería: se espera que los equipos lo descubran con pruebas. Con la configuración por defecto de Erebus v27, dos ruedas a toda velocidad (6,28 rad/s) gastan alrededor del 1,25 % por segundo, así que un robot que nunca se detiene se quedaría sin batería en menos de un minuto y medio, mucho menos que los 8 minutos de una partida. Los organizadores pueden cambiar esta configuración, así que mídela en tu programa en lugar de fiarte de estos números.
+
+## Leer el nivel de la batería \{#reading-the-battery-level\}
+
+El nivel de la batería es el último valor de la [información de la partida](/docs/programming/communication/#game-information). Esta función la pide una vez por segundo y guarda el valor más reciente en `battery`:
+
+<CodeTabs file="battery" region="battery" />
+
+## Reemplazar la batería \{#replacing-the-battery\}
+
+Las baldosas de contacto son de color cian, así que el [sensor de color](/docs/programming/sensors/colour-sensor/) las ve: el rojo está cerca de 0, y el verde y el azul son altos.
+
+El sensor de color del robot inicial está en la parte delantera, pero Erebus comprueba la posición del **centro** del robot. Por eso, cuando el sensor ve cian, el robot avanza un poco más antes de detenerse. Después espera hasta que la batería está llena, lo que tarda 5 segundos:
+
+<CodeTabs file="battery" region="contact" />
+
+## El programa completo \{#the-complete-program\}
+
+Este programa se mueve evitando las paredes y reemplaza su batería cuando pasa por una baldosa de contacto con menos del 50 %. Ejecútalo en `2027_d1r1.wbt`, donde hay una baldosa de contacto junto a la baldosa de inicio.
+
+<CodeTabs file="battery" />
+
+Los eventos de la partida muestran cada reemplazo como `Battery replaced`:
+
+![Los eventos de la partida, con dos reemplazos de batería](../../../../docs/programming/battery/battery-events.png)
+
+## Planificar \{#planning\}
+- Conoce dónde están las baldosas de contacto: recuérdalas mientras exploras, igual que haces con el mapa.
+- Antes de que la batería esté baja, dirígete a la baldosa de contacto conocida más cercana. Deja un margen, porque el camino puede tardar más de lo que esperas.
+- Evita los pantanos cuando puedas, o crúzalos rápido.
+- Detenerse cuesta tiempo de partida, pero no batería con la configuración por defecto, así que la parada de 1 segundo para informar de una marca no gasta batería.
+
+A continuación, aprende a registrar por dónde ha pasado el robot en [Explorar y mapear](/docs/programming/exploring/).

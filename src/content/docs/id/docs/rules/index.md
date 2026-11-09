@@ -1,10 +1,10 @@
 ---
 title: Ringkasan aturan
-description: "Ringkasan aturan RoboCupJunior Rescue Simulation 2026: arena, penanda dinding, penilaian, dan kompetisi."
+description: "Ringkasan aturan RoboCupJunior Rescue Simulation 2027: lapangan, penanda dinding, baterai, penilaian, dan kompetisi."
 ---
 
 :::note
-Halaman ini adalah ringkasan untuk membantumu memulai. Satu-satunya aturan resmi adalah [RoboCupJunior Rescue Simulation Rules 2026](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) (terakhir diperbarui 2026-02-11). Jika halaman ini berbeda dengan aturan resmi, aturan resmi yang berlaku.
+Halaman ini adalah ringkasan untuk membantumu memulai. Satu-satunya aturan resmi adalah [RoboCupJunior Rescue Simulation Rules 2027](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf). Ringkasan ini mengikuti versi yang diperbarui pada 2026-10-24. Jika halaman ini dan aturan resmi berbeda, aturan resmi yang berlaku.
 
 Koreksi dan klarifikasi diumumkan di [Forum resmi RoboCupJunior](https://junior.forum.robocup.org/). Setiap tim bertanggung jawab untuk memeriksanya.
 :::
@@ -14,10 +14,11 @@ Robotmu dijatuhkan ke dalam labirin yang tidak dikenal, sendirian. Dalam 8 menit
 
 1. **Menjelajahi** labirin tanpa terjebak atau jatuh ke lubang.
 2. **Menemukan penanda dinding** (wall token), yaitu korban dan target kognitif di dinding, lalu melaporkan jenis masing-masing penanda.
-3. **Memetakan** labirin, dan mengirim petanya di akhir.
-4. **Kembali** ke tempat awalnya.
+3. **Menjaga baterainya tetap terisi**, dengan berhenti di ubin kontak sebelum baterainya habis.
+4. **Memetakan** labirin, dan mengirim peta di akhir.
+5. **Kembali** ke tempat ia mulai.
 
-Bagian-bagian di bawah ini menjelaskan keempat tugas tersebut secara detail. Kamu tidak perlu mengingat semuanya sekarang: kembalilah ke halaman ini saat kamu memprogram setiap bagiannya.
+Semua yang ada di bawah menjelaskan kelima tugas ini secara rinci. Kamu tidak perlu mengingat semuanya sekarang: kembali ke sini saat memprogram setiap bagian.
 
 ## Misi dan tujuan {#mission-and-objective}
 ![Tampilan atas arena Erebus dengan empat area](../../../docs/rules/rules_environment.png)
@@ -26,10 +27,10 @@ Robot harus menjelajahi lingkungan yang tidak dikenal secara mandiri sambil meng
 
 - Menavigasi labirin yang rumit tanpa terjebak
 - Memetakan lingkungan dengan akurat
-- Menemukan dan mengidentifikasi penanda dinding: korban huruf (letter victim) dan target kognitif (cognitive target)
+- Menemukan dan mengidentifikasi penanda dinding: korban smiley (letter victim) dan target kognitif (cognitive target)
 
 ## Arena {#the-field}
-Arena bisa dibagi menjadi empat area, dan setiap lorong penghubung antar-area selebar satu ubin standar. Ubin adalah konsep yang dipakai untuk membuat arena, bukan struktur fisik.
+Lapangan terdiri dari hingga empat area. Area 1 selalu menjadi bagian dari lapangan, dan panitia boleh tidak menyertakan Area 2 sampai 4. Setiap lorong penghubung antar-area lebarnya satu ubin standar. Ubin adalah konsep untuk membuat lapangan, bukan struktur fisik.
 
 - Satu ubin berukuran **12 cm × 12 cm**. Di Area 2 dan 3, setiap ubin dibagi menjadi empat **seperempat ubin** (quarter tile) berukuran 6 cm × 6 cm.
 - Dinding memiliki **tebal 1 cm dan tinggi 6 cm**.
@@ -49,10 +50,10 @@ Lorong penghubung (passage) adalah satu ubin dengan dinding di dua sisinya, sehi
 
 ![Tabel warna lorong penghubung antara setiap pasangan area](../../../docs/rules/rules_passages.png)
 
-Korban huruf tidak ditempatkan di lorong penghubung.
+Penanda dinding tidak dipasang di dinding lorong penghubung.
 
 ### Ubin linear dan ubin mengambang {#linear-and-floating-tiles}
-Ubin yang bisa mencapai ubin awal dengan terus menyusuri dinding paling kiri atau paling kanan disebut **ubin linear** (linear tile). Semua ubin lainnya adalah **ubin mengambang** (floating tile). Penanda di ubin mengambang bernilai lebih tinggi. Seperempat ubin tidak diperhitungkan, dan lubang hitam dihitung sebagai dinding virtual di sini.
+Ubin yang bisa mencapai ubin awal dengan terus menyusuri dinding paling kiri atau paling kanan disebut **ubin linear** (linear tile). Semua ubin lainnya adalah **ubin mengambang** (floating tile). Penanda di ubin mengambang bernilai lebih tinggi. Seperempat ubin tidak diperhitungkan, dan lubang dihitung sebagai dinding virtual di sini.
 
 ![Arena yang menunjukkan ubin linear berwarna abu-abu dan ubin mengambang berwarna merah muda](../../../docs/rules/rules_linear_floating.png)
 
@@ -62,32 +63,37 @@ Ubin berwarna perak adalah checkpoint, dan bisa berada di mana saja di arena. Ar
 ## Rawa, rintangan, dan lubang {#swamps-obstacles-and-holes}
 ![Arena dengan rawa, lubang, dan rintangan](../../../docs/rules/rules_obstacles.png)
 
-* **Rawa** (swamp, ubin cokelat) membuat waktu permainan berjalan lebih cepat selama robot berada di atasnya. Saat pertama kali robot masuk ke rawa, waktu berjalan 5 kali lebih cepat. Setiap kali masuk lagi ke rawa yang sama, pengalinya bertambah satu, hingga batas x10.
+* **Rawa** (ubin cokelat) membuat baterai berkurang lebih cepat selama robot berada di atasnya, karena motor harus bekerja lebih keras. Waktu permainan tidak terpengaruh.
 * **Rintangan** (obstacle) bisa terpasang di lantai, bisa berbentuk dan berwarna apa saja, dan memengaruhi lebar jalur. Di Area 1 sampai 3, titik tengah rintangan selalu berada di ubin, tidak pernah di tepi antar-ubin, dan paling banyak ada satu rintangan per ubin.
-* **Lubang** (hole) punya tepi hitam. Jika robot jatuh ke dalamnya, terjadi kurangnya kemajuan.
+* **Lubang** adalah ubin dengan bukaan di lantai. Tepinya berwarna hitam, 1,5 cm dari ubin di sebelahnya. Jika robot jatuh ke dalamnya, terjadi kurangnya kemajuan.
 
-Satu ubin tidak pernah sekaligus menjadi lebih dari satu hal berikut: rawa, lubang, checkpoint, ubin awal, ubin dengan rintangan, atau lorong penghubung antar-area.
+Tidak ada ubin yang sekaligus menjadi lebih dari satu hal berikut: rawa, lubang, checkpoint, ubin kontak, ubin start, ubin dengan rintangan, atau lorong penghubung antar-area.
+
+## Ubin kontak {#contact-tiles}
+Ubin kontak adalah ubin berwarna **sian** tempat baterai robot dapat diganti selama permainan. Robot harus diam di atas ubin selama baterainya diganti. Lihat [Baterai](#the-battery).
+
+![Lapangan dengan ubin kontak berwarna sian](../../../docs/rules/rules_contact_tiles.png)
 
 ## Penanda dinding {#wall-tokens}
-Ada dua jenis penanda dinding: korban huruf dan target kognitif. Keduanya bisa muncul di dinding mana pun, termasuk permukaan melengkung. Korban huruf juga bisa diputar ke sudut mana pun.
+Ada dua jenis penanda dinding: korban smiley dan target kognitif. Keduanya bisa berada di dinding mana pun, termasuk permukaan melengkung, kecuali dinding lorong penghubung antar-area. Korban smiley juga bisa diputar ke sudut berapa pun, dari 0 sampai 360 derajat.
 
-![Target kognitif dan korban huruf di dinding arena](../../../docs/rules/rules_wall_tokens.png)
+![Target kognitif dan korban smiley di dinding arena](../../../docs/rules/rules_wall_tokens.png)
 
-### Korban huruf {#letter-victims}
-Korban huruf (letter victim) adalah gambar berukuran 2 cm × 2 cm. Simbolnya menunjukkan kondisi kesehatan korban, dan kodenya adalah huruf yang kamu laporkan dan tulis di peta.
+### Korban smiley {#smiley-victims}
+Korban smiley adalah gambar berukuran 2 cm × 2 cm dari emoji wajah smiley yang dicetak hitam. Ekspresi wajahnya menunjukkan kondisi kesehatan korban, dan kodenya adalah huruf yang kamu laporkan dan tulis di peta.
 
-| Kondisi | Simbol | Kode |
+| Kondisi | Wajah | Kode |
 |---|---|---|
-| Terluka (Harmed) | Φ | `H` |
-| Stabil (Stable) | Ψ | `S` |
-| Tidak terluka (Unharmed) | Ω | `U` |
+| Terluka | Sedih | `H` |
+| Stabil | Datar | `S` |
+| Tidak terluka | Senang | `U` |
 
-![Simbol phi, psi, dan omega](../../../docs/rules/rules_victims.png)
+![Wajah sedih, datar, dan senang](../../../docs/rules/rules_victims.png)
 
 ### Korban palsu {#fake-victims}
-Beberapa penanda dinding menampilkan simbol yang sama, tetapi dengan huruf **tiga dimensi**. Penanda itu palsu: kamu tidak boleh melaporkannya ke supervisor atau memasukkannya ke peta. Aturan menyatakan bahwa kedalaman ini bisa dideteksi dengan salah satu sensor yang tersedia di Robot Customizer.
+Beberapa penanda dinding menampilkan wajah yang sama, tetapi emojinya **tiga dimensi**. Penanda ini palsu: kamu tidak boleh melaporkannya ke supervisor atau memasukkannya ke peta. Aturan menyebutkan bahwa kedalaman ini dapat dideteksi dengan salah satu sensor yang tersedia di Robot Customizer.
 
-![Korban palsu dengan simbol tiga dimensi di dinding](../../../docs/rules/rules_fake_victims.png)
+![Korban palsu dengan wajah tiga dimensi di dinding](../../../docs/rules/rules_fake_victims.png)
 
 ### Target kognitif {#cognitive-targets}
 Target kognitif (cognitive target) mewakili bahan berbahaya (hazmat). Bentuknya lingkaran berdiameter 5 cm yang terdiri atas lima bagian konsentris, dengan diameter 1, 2, 3, 4, dan 5 cm. Setiap warna punya nilai:
@@ -96,7 +102,7 @@ Target kognitif (cognitive target) mewakili bahan berbahaya (hazmat). Bentuknya 
 |---|---|---|---|---|
 | -2 | -1 | 0 | 1 | 2 |
 
-Jumlahkan nilai kelima bagian untuk mendapatkan jenisnya. Jika jumlahnya tidak tercantum di bawah ini, target itu palsu dan tidak boleh dilaporkan atau dipetakan.
+Jumlahkan nilai kelima bagian untuk mendapatkan jenisnya. Jika jumlahnya tidak ada di daftar di bawah, target itu adalah penanda dinding palsu dan tidak boleh dilaporkan atau dipetakan.
 
 | Jumlah | Hazmat | Kode |
 |---|---|---|
@@ -117,14 +123,23 @@ Target kiri berwarna Kuning, Biru, Merah, Hitam, Hijau dari tengah ke luar: 0 + 
 - Tim menggunakan model robot yang disediakan panitia, dan boleh memodifikasinya dengan [Robot Customizer](https://robot.erebus.rcj.cloud/) dalam anggaran **3000**. Lihat [Robot](/docs/robot/).
 - Robot bisa menggunakan GPS, sensor warna, sensor jarak, kamera RGB, LiDAR, giroskop, dan akselerometer.
 - Sensor simulasi punya derau yang realistis. Programmu harus tahan terhadapnya, dan panitia tidak akan mengubah tingkat derau untuk kompetisi.
+
+### Baterai {#the-battery}
+Robot memiliki baterai yang berkurang sesuai kecepatan motornya. Level baterai ditampilkan di jendela kontrol, di atas pewaktu. Aturan tidak menyebutkan lajunya secara pasti: tim diharapkan mengetahui perilakunya melalui pengujian.
+
+- Untuk mengganti baterai, robot harus **diam di atas ubin kontak selama 5 detik** waktu simulasi. Setelah itu baterai penuh kembali.
+- Di rawa, baterai berkurang lebih cepat.
+- Jika baterai habis, permainan berakhir.
+
+Tutorial [Baterai](/docs/programming/battery/) menunjukkan bagaimana programmu dapat membaca level baterai dan menggantinya.
 - Robot harus otonom. Setiap tim hanya punya satu robot di arena.
 - Pemetaan sebelumnya (pre-mapping) dilarang: ini mencakup arena maupun lokasi penanda dinding, termasuk gerakan yang ditentukan sebelumnya dari posisi yang sudah diketahui. Pelanggarannya berakibat diskualifikasi langsung dari ronde tersebut.
 
 ## Memainkan permainan {#playing-a-game}
 - Satu permainan berlangsung **8 menit waktu simulasi**. Pewaktu kedua berjalan dalam waktu nyata dengan batas **10 menit**. Permainan berakhir saat salah satu pewaktu habis.
-- Sebuah ubin dihitung sudah dikunjungi saat titik tengah robot berada di dalamnya. Erebus menilainya secara otomatis.
-- Permainan juga berakhir saat robot mengirim perintah keluar, atau saat kapten tim menyatakan permainan berakhir (tergantung cara permainan dijalankan).
-- World kompetisi diungkapkan tepat sebelum permainan, dan program tidak bisa diubah setelah batas waktu setiap ronde.
+- Sebuah ubin dihitung sudah dikunjungi saat titik tengah robot berada di dalamnya, sesuai penentuan supervisor.
+- Permainan juga berakhir saat baterai habis, saat robot mengirim perintah keluar, atau saat kapten tim meminta permainan diakhiri (tergantung bagaimana permainan dijalankan).
+- World kompetisi baru diumumkan tepat sebelum permainan, dan program tidak boleh diubah setelah tenggat resmi setiap babak yang diumumkan panitia.
 
 ### Kurangnya kemajuan {#lack-of-progress}
 Kurangnya kemajuan (lack of progress, LoP) terjadi saat:
@@ -140,18 +155,18 @@ Robot lalu ditempatkan kembali di checkpoint terakhir yang dikunjungi, atau di u
 ## Penilaian {#scoring}
 Penilaian dilakukan otomatis oleh Erebus. Poin tidak diberikan dua kali: misalnya, setiap checkpoint hanya dihitung pada kunjungan pertama.
 
-Untuk mengidentifikasi penanda dinding, robot harus berhenti **minimal 1 detik**, lalu [mengirim jenis dan posisinya](/docs/programming/communication/#scoring-wall-tokens) ke pengelola permainan. Titik tengah robot harus berada paling jauh setengah ubin dari penanda.
+Untuk mengidentifikasi penanda dinding, robot harus berhenti **minimal 1 detik**, lalu [mengirim jenis dan posisinya](/docs/programming/communication/#scoring-wall-tokens) ke supervisor. Titik tengah robot harus berada paling jauh setengah ubin dari penanda.
 
 | Item | Poin |
 |---|---|
-| Identifikasi penanda dinding (TI) di ubin linear di Area 1 sampai 3 | Korban huruf: 5, target kognitif: 10 |
-| Identifikasi penanda dinding (TI) di ubin mengambang di Area 1 sampai 3, dan semua penanda di Area 4 | Korban huruf: 15, target kognitif: 30 |
-| Jenis yang benar (TT), sebagai tambahan TI | Korban huruf: 10, target kognitif: 20 |
+| Identifikasi penanda dinding (TI) di ubin linear di Area 1 sampai 3 | Korban smiley: 5, target kognitif: 10 |
+| Identifikasi penanda dinding (TI) di ubin mengambang di Area 1 sampai 3, dan semua penanda di Area 4 | Korban smiley: 15, target kognitif: 30 |
+| Jenis yang benar (TT), sebagai tambahan TI | Korban smiley: 10, target kognitif: 20 |
 | Checkpoint dikunjungi (CN) | 10 |
 | Salah identifikasi penanda dinding (TMI) | -5 |
 | Kurangnya kemajuan (LoP) | -5 |
 
-Skor total tidak bisa kurang dari nol. Salah identifikasi berarti melaporkan posisi yang lebih dari setengah ubin dari penanda, melaporkan penanda di tempat yang tidak ada penandanya, atau melaporkan korban huruf sebagai target kognitif atau sebaliknya. Melaporkan penanda palsu termasuk kategori kedua.
+Skor total tidak bisa kurang dari nol. Salah identifikasi berarti melaporkan posisi yang lebih dari setengah ubin dari penanda, melaporkan penanda di tempat yang tidak ada penandanya, atau melaporkan korban smiley sebagai target kognitif atau sebaliknya. Melaporkan penanda palsu termasuk kategori kedua.
 
 **Pengali area (area multiplier, AM)**: TI, TT, dan CN dikalikan berturut-turut dengan 1; 1,25; 1,5; dan 2 di Area 1, 2, 3, dan 4. TMI dan LoP tidak dikalikan.
 
@@ -163,7 +178,7 @@ Skor lapangan sebuah permainan dihitung sebagai berikut:
 
 ![Skor lapangan sama dengan jumlah dari keempat area atas TI ditambah TT ditambah CN dikali AM, dikurangi TMI dan LoP, semuanya dikalikan EB dan MB](../../../docs/rules/rules_field_score.png)
 
-Misalnya, permainan dengan hasil berikut mendapat skor 2680,15 poin:
+Misalnya, permainan dengan hasil berikut mendapat skor 2825,35 poin:
 
 ![Contoh perhitungan skor](../../../docs/rules/rules_scoring_example.png)
 

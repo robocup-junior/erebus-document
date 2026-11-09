@@ -25,9 +25,9 @@ Erebus unterscheidet diese Nachrichten an ihrer Länge, also muss eine Meldung g
 | Nachricht | Format | Länge | Zweck |
 |---|---|---|---|
 | `L` | `c` | 1 Byte | Ein fehlender Fortschritt ist eingetreten |
-| `G` | `c f i i`: `G`, Punktzahl, verbleibende Spielzeit, verbleibende Echtzeit | 16 Bytes | Antwort auf `G`. Die Zeiten sind in Sekunden. |
+| `G` | `c f i i f`: `G`, Punktzahl, verbleibende Spielzeit, verbleibende Echtzeit, Akkustand | 20 Byte | Antwort auf `G`. Die Zeiten sind in Sekunden, und der Akkustand ist ein Prozentwert von 0 bis 100. |
 
-Beachte, dass das Paket von `G` Füllbytes enthält, weil das `struct`-Format oben den Float ausrichtet: Die Punktzahl beginnt bei Byte 4, die Zeiten bei Byte 8 und 12.
+Beachte, dass das Paket von `G` Füllbytes enthält, da das `struct`-Format oben die Gleitkommazahl ausrichtet: Die Punktzahl beginnt bei Byte 4, die Zeiten bei den Bytes 8 und 12 und der Akkustand bei Byte 16.
 
 ## Häufige Webots-Funktionen {#common-webots-functions}
 

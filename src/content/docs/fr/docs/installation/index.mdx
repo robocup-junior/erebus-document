@@ -1,27 +1,28 @@
 ---
 title: Configuration requise
-description: "Ce qu’il faut pour faire tourner Erebus v26 : Webots R2023b, Python 3.9 ou plus récent et les bibliothèques nécessaires."
+description: "Ce qu’il faut pour faire tourner Erebus v27 : Webots R2025a, Python 3.10 ou plus récent et les bibliothèques nécessaires."
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { latestVersion } from '@/data/release';
 
 ## Logiciels nécessaires \{#software-requirements\}
 Le système de simulation se compose de trois éléments, que vous devez installer chacun. L’installation est simple, mais le téléchargement et l’installation de Webots peuvent prendre un moment. Les trois éléments sont :
 
-1. Le simulateur de robots Webots, version **R2023b** : l’environnement de simulation. Erebus v26 ne prend pas en charge les autres versions de Webots.
-1. Erebus : les mondes et le Main Supervisor (superviseur principal), qui applique les règles et calcule le score. La dernière version est la **v26.1**.
-1. Python, version **3.9 ou plus récente** : nécessaire pour faire tourner Erebus lui-même et pour écrire les contrôleurs des robots. Vous pouvez aussi écrire vos contrôleurs en C/C++.
+1. Le simulateur de robots Webots, version **R2025a** : l’environnement de simulation. Erebus v27 ne prend pas en charge les autres versions de Webots.
+1. Erebus : les mondes et le Main Supervisor (superviseur principal), qui applique les règles et calcule le score. La dernière version est la **v<span data-erebus-version>{latestVersion}</span>**.
+1. Python, version **3.10 ou plus récente** : nécessaire pour faire tourner Erebus lui-même et pour écrire les contrôleurs des robots. Vous pouvez aussi écrire vos contrôleurs en C/C++.
 
 ## Configuration minimale \{#minimum-system-requirements\}
-* Linux : Ubuntu 20.04 LTS ou 22.04 LTS
+* Linux : Ubuntu 22.04 LTS ou 24.04 LTS
 * Windows : Windows 10 ou 11, 64 bits
-* macOS : macOS 11 « Big Sur » ou 12 « Monterey ». Ce sont les versions prises en charge par Webots R2023b. Les versions plus récentes de macOS peuvent aussi fonctionner : cette documentation a été testée sur macOS 26.
+* macOS : macOS 12 « Monterey », 13 « Ventura » ou 14 « Sonoma ». Ce sont les versions prises en charge par Webots R2025a. Les versions plus récentes de macOS peuvent aussi fonctionner : cette documentation a été testée sur macOS 26.
 * Processeur : double cœur, 2 GHz
 * Mémoire vive : 2 Go
-* Carte graphique : NVIDIA ou AMD compatible OpenGL, avec 512 Mo de mémoire
+* Carte graphique : NVIDIA ou AMD compatible OpenGL 3.3, avec 512 Mo de mémoire
 
 ## Bibliothèques Python \{#python-libraries\}
-Erebus a besoin des bibliothèques Python ci-dessous. La plupart sont installées automatiquement à son démarrage, mais **pas OpenCV** : vous devez l’installer vous-même. Le guide de chaque système d’exploitation inclut cette étape.
+Erebus a besoin des bibliothèques Python ci-dessous. La plupart sont installées automatiquement à son démarrage, mais **pas OpenCV** : vous devez l’installer vous-même. Le guide de chaque système d’exploitation inclut cette étape. Le fichier `requirements.txt` du dossier d’Erebus indique les versions avec lesquelles Erebus a été testé.
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python
@@ -32,5 +33,8 @@ python3 -m pip install numpy termcolor requests overrides pillow opencv-python
 <CardGrid>
 	<LinkCard title="Windows" description="Windows 10 et 11" href="/docs/installation/windows/" />
 	<LinkCard title="macOS" description="macOS sur Intel et Apple silicon" href="/docs/installation/mac/" />
-	<LinkCard title="Linux" description="Ubuntu 20.04 et 22.04" href="/docs/installation/linux/" />
+	<LinkCard title="Linux" description="Ubuntu 22.04 et 24.04" href="/docs/installation/linux/" />
 </CardGrid>
+
+## Facultatif : Wireshark \{#optional-wireshark\}
+Erebus peut surveiller le réseau pendant un match pour détecter les accès non autorisés au jeu, ce que les organisateurs utilisent en compétition. Cela nécessite [Wireshark](https://www.wireshark.org/download.html). Vous n’en avez pas besoin pour vous entraîner : sans lui, la fenêtre de contrôle affiche un avertissement indiquant que l’accès réseau n’est pas surveillé, que vous pouvez valider et ignorer.

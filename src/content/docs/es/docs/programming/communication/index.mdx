@@ -1,6 +1,6 @@
 ---
 title: Comunicación
-description: Informa de las marcas en las paredes, declara una falta de progreso, pide la puntuación y termina la partida.
+description: Informar de las marcas en las paredes, declarar una falta de progreso, pedir la puntuación, el tiempo y la batería, y terminar la partida.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -14,30 +14,30 @@ Cada sección siguiente es un programa completo para el [robot inicial](/docs/ro
 
 ## Puntuar las marcas en las paredes \{#scoring-wall-tokens\}
 
-Para puntuar una víctima de letra (Letter victim) o un objetivo cognitivo (Cognitive target), el robot debe:
+Para puntuar una víctima smiley (Letter victim) o un objetivo cognitivo (Cognitive target), el robot debe:
 
 1. **Detenerse más de 1 segundo** cerca de la marca. Erebus ignora el informe si el robot se ha movido en el último segundo.
 2. **Enviar la posición y el tipo** de la marca: X y Z en **centímetros**, y el tipo como una letra.
 
 | Marca en la pared | Tipo |
 |---|---|
-| Víctima de letra Φ (herida) | `H` |
-| Víctima de letra Ψ (estable) | `S` |
-| Víctima de letra Ω (ilesa) | `U` |
+| Víctima smiley, cara triste (herida) | `H` |
+| Víctima smiley, cara neutral (estable) | `S` |
+| Víctima smiley, cara feliz (ilesa) | `U` |
 | Objetivo cognitivo, suma 0 (gas inflamable) | `F` |
 | Objetivo cognitivo, suma 1 (veneno) | `P` |
 | Objetivo cognitivo, suma 2 (corrosivo) | `C` |
 | Objetivo cognitivo, suma 3 (peróxido orgánico) | `O` |
 
-Los tipos son letras, aunque desde 2026 las víctimas muestran símbolos. El GPS da metros, así que multiplica por 100.
+Los tipos son letras, aunque las víctimas muestren caras. El GPS da metros, así que multiplica por 100.
 
 <CodeTabs file="report" />
 
-El robot debe estar en el mismo lado de la pared que la marca, y tanto el robot como la posición que envías deben estar cerca de ella. Las reglas exigen como máximo media baldosa, así que apunta a eso. Erebus v26.1 comprueba una distancia de 9 cm.
+El robot debe estar en el mismo lado de la pared que la marca, y tanto el centro del robot como la posición que envías deben estar a menos de media baldosa (6 cm) de ella.
 
-Ejecuta este programa al inicio de `world1.wbt`: ahí no hay ninguna marca, así que el historial de la ventana de control muestra `Misidentification of Victim -5`. Un informe erróneo, incluido el informe de una marca falsa, cuesta 5 puntos, y cada marca solo se puede puntuar una vez.
+Ejecuta este programa al inicio de `world1.wbt`: allí no hay ninguna marca, así que los eventos de la partida de la ventana de control muestran `Misidentification of Victim -5`. Un informe erróneo, incluido el de una marca falsa, cuesta 5 puntos, y cada marca solo puntúa una vez.
 
-![El historial de la ventana de control tras un informe erróneo y el envío de un mapa](../../../../docs/programming/communication/history.png)
+![Los eventos de la partida después de un informe erróneo](../../../../docs/programming/communication/history.png)
 
 ## Falta de progreso \{#lack-of-progress\}
 
@@ -49,11 +49,11 @@ El receptor puede recibir mensajes distintos, así que comprueba la longitud de 
 
 ## Información de la partida \{#game-information\}
 
-Envía `G` para obtener la puntuación y el tiempo restante. La partida responde con un mensaje de 16 bytes: la letra `G`, la puntuación, el tiempo de partida restante y el tiempo real restante, en segundos.
+Envía `G` para obtener la puntuación, el tiempo restante y el nivel de batería. La partida responde con un mensaje de 20 bytes: la letra `G`, la puntuación, el tiempo de partida y el tiempo real restantes en segundos, y el nivel de batería en porcentaje.
 
 <CodeTabs file="gameinfo" />
 
-El tiempo de partida corre más rápido en los pantanos, y la partida termina cuando se acaba cualquiera de los dos tiempos. Usa ambos para saber cuándo volver a la salida.
+La partida termina cuando se agota cualquiera de los dos tiempos, o cuando la batería está vacía. Úsalos para saber cuándo volver al inicio y cuándo [reemplazar la batería](/docs/programming/battery/).
 
 ## Terminar la partida \{#ending-the-game\}
 

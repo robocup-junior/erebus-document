@@ -25,9 +25,9 @@ Erebus membedakan pesan-pesan ini berdasarkan panjangnya, jadi laporan harus tep
 | Pesan | Format | Panjang | Kegunaan |
 |---|---|---|---|
 | `L` | `c` | 1 byte | Kurangnya kemajuan telah terjadi |
-| `G` | `c f i i`: `G`, skor, sisa waktu permainan, sisa waktu dunia nyata | 16 byte | Balasan untuk `G`. Waktunya dalam detik. |
+| `G` | `c f i i f`: `G`, skor, sisa waktu permainan, sisa waktu nyata, level baterai | 20 byte | Balasan untuk `G`. Waktunya dalam detik, dan level baterai adalah persentase dari 0 sampai 100. |
 
-Perhatikan bahwa paket `G` berisi padding, karena format `struct` di atas menyejajarkan float: skor dimulai di byte 4, dan waktunya di byte 8 dan 12.
+Perhatikan bahwa paket `G` berisi padding, karena format `struct` di atas menyelaraskan float: skor dimulai pada byte 4, waktu pada byte 8 dan 12, dan level baterai pada byte 16.
 
 ## Fungsi Webots yang umum {#common-webots-functions}
 

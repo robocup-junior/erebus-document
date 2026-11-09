@@ -1,10 +1,10 @@
 ---
 title: Kural özeti
-description: "RoboCupJunior Rescue Simulation 2026 kurallarının özeti: saha, duvar işaretleri, puanlama ve yarışma."
+description: "RoboCupJunior Rescue Simulation 2027 kurallarının özeti: saha, duvar işaretleri, batarya, puanlama ve yarışma."
 ---
 
 :::note
-Bu sayfa, başlamana yardımcı olacak bir özettir. Tek resmî kurallar [RoboCupJunior Rescue Simulation Rules 2026](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) belgesidir (son güncelleme 2026-02-11). Bu sayfa ile resmî kurallar arasında fark varsa resmî kurallar geçerlidir.
+Bu sayfa başlaman için hazırlanmış bir özettir. Tek resmi kurallar [RoboCupJunior Rescue Simulation Rules 2027](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf) belgesidir. Bu özet, 2026-10-24 tarihinde güncellenen sürümü temel alır. Bu sayfa ile resmi kurallar farklıysa resmi kurallar geçerlidir.
 
 Düzeltmeler ve açıklamalar [resmî RoboCupJunior Forumu](https://junior.forum.robocup.org/) üzerinde yayımlanır. Bunları kontrol etmek her takımın sorumluluğundadır.
 :::
@@ -14,10 +14,11 @@ Robotun, bilinmeyen bir labirente tek başına bırakılır. 8 dakika içinde, s
 
 1. Sıkışmadan ya da çukurlara düşmeden labirenti **keşfetmek**.
 2. Duvarlardaki **duvar işaretlerini** (wall tokens), yani kazazedeleri ve bilişsel hedefleri **bulmak** ve her birinin ne olduğunu bildirmek.
-3. Labirentin **haritasını çıkarmak** ve sonunda haritayı göndermek.
-4. Başladığı yere **geri dönmek**.
+3. **Bataryasını dolu tutmak**: batarya bitmeden bir temas karesinde durmak.
+4. Labirentin **haritasını çıkarmak** ve haritayı sonunda göndermek.
+5. Başladığı yere **dönmek**.
 
-Aşağıdaki her şey bu dört işi ayrıntılı olarak açıklar. Şimdi hepsini hatırlaman gerekmiyor: her bölümü programlarken buraya geri dön.
+Aşağıdaki her şey bu beş görevi ayrıntılı olarak açıklar. Şimdi hepsini aklında tutman gerekmiyor: her bölümü programlarken buraya geri dön.
 
 ## Görev ve amaç {#mission-and-objective}
 ![Dört alanlı bir Erebus sahasının üstten görünümü](../../../docs/rules/rules_environment.png)
@@ -26,10 +27,10 @@ Robot, kendini tehlikeye atmadan bilinmeyen bir ortamı otonom olarak keşfetmel
 
 - Sıkışmadan karmaşık bir labirentte yol bulmak
 - Ortamın haritasını doğru şekilde çıkarmak
-- Duvar işaretlerini bulmak ve tanımlamak: harf kazazedeler (letter victims) ve bilişsel hedefler (cognitive targets)
+- Duvar işaretlerini bulmak ve tanımlamak: gülen yüz kazazedeler (letter victims) ve bilişsel hedefler (cognitive targets)
 
 ## Saha {#the-field}
-Saha dört alana (area) bölünebilir ve alanlar arasındaki her geçit bir standart kare genişliğindedir. Kareler (tiles), sahayı oluşturmak için kullanılan bir kavramdır; fiziksel yapılar değildir.
+Saha en fazla dört alandan oluşur. Alan 1 her zaman sahanın bir parçasıdır; organizatörler Alan 2-4'ü sahaya koymayabilir. Alanlar arasındaki her geçit bir standart kare genişliğindedir. Kareler fiziksel yapılar değil, sahayı oluşturmak için kullanılan bir kavramdır.
 
 - Bir kare **12 cm × 12 cm**'dir. 2. ve 3. alanlarda her kare 6 cm × 6 cm'lik dört **çeyrek kareye** (quarter tiles) bölünür.
 - Duvarlar **1 cm kalınlığında ve 6 cm yüksekliğindedir**.
@@ -49,10 +50,10 @@ Geçitler, belirgin bir girişleri ve çıkışları olması için iki yanında 
 
 ![Her alan çifti arasındaki geçit renklerinin tablosu](../../../docs/rules/rules_passages.png)
 
-Geçitlere harf kazazede yerleştirilmez.
+Geçitlerin duvarlarına duvar işareti konmaz.
 
 ### Doğrusal ve yüzen kareler {#linear-and-floating-tiles}
-En soldaki ya da en sağdaki duvar sürekli izlenerek başlangıç karesine götüren kareler **doğrusal karelerdir** (linear tiles). Diğerlerinin hepsi **yüzen karelerdir** (floating tiles). Yüzen karelerdeki işaretler daha fazla puan değerindedir. Burada çeyrek kareler hesaba katılmaz ve siyah çukurlar sanal duvar sayılır.
+En soldaki ya da en sağdaki duvar sürekli izlenerek başlangıç karesine götüren kareler **doğrusal karelerdir** (linear tiles). Diğerlerinin hepsi **yüzen karelerdir** (floating tiles). Yüzen karelerdeki işaretler daha fazla puan değerindedir. Burada çeyrek kareler hesaba katılmaz ve çukurlar sanal duvar sayılır.
 
 ![Doğrusal karelerin gri, yüzen karelerin pembe gösterildiği bir saha](../../../docs/rules/rules_linear_floating.png)
 
@@ -62,32 +63,37 @@ Gümüş renkli kareler kontrol noktalarıdır (checkpoints) ve sahanın herhang
 ## Bataklıklar, engeller ve çukurlar {#swamps-obstacles-and-holes}
 ![Bataklık, çukur ve engel içeren bir saha](../../../docs/rules/rules_obstacles.png)
 
-* **Bataklıklar** (swamps, kahverengi kareler), robot üzerlerindeyken oyun süresinin daha hızlı akmasını sağlar. Robot bir bataklığa ilk kez girdiğinde süre 5 kat hızlı akar. Aynı bataklığa her yeni girişte bu değer bir kat artar; üst sınır 10 kattır.
+* **Bataklıklar** (kahverengi kareler), robot üzerlerindeyken motorlar daha çok zorlandığı için bataryanın daha hızlı bitmesine yol açar. Oyun süresi etkilenmez.
 * **Engeller** zemine sabitlenmiş olabilir, herhangi bir şekil ve renkte olabilir ve yolun genişliğini etkiler. 1-3. alanlarda bir engelin merkezi her zaman bir karenin üzerindedir, asla kareler arasındaki kenarda değildir ve her karede en fazla bir engel bulunur.
-* **Çukurların** siyah kenarları vardır. Robot birine düşerse bir ilerleme eksikliği olur.
+* **Çukurlar**, zemininde açıklık olan karelerdir. Kenarları siyahtır ve komşu karelerden 1,5 cm içeridedir. Robot birine düşerse ilerleme eksikliği oluşur.
 
-Hiçbir kare aynı anda şunlardan birden fazlası olamaz: bataklık, çukur, kontrol noktası, başlangıç karesi, engelli kare ya da alan geçidi.
+Hiçbir kare aynı anda şunlardan birden fazlası olamaz: bataklık, çukur, kontrol noktası, temas karesi, başlangıç karesi, engelli kare veya alanlar arası geçit.
+
+## Temas kareleri {#contact-tiles}
+Temas kareleri, oyun sırasında robotun bataryasının değiştirilebildiği **camgöbeği** renkli karelerdir. Batarya değiştirilirken robot karenin üzerinde hareketsiz durmalıdır. Bkz. [Batarya](#the-battery).
+
+![Camgöbeği temas kareleri olan bir saha](../../../docs/rules/rules_contact_tiles.png)
 
 ## Duvar işaretleri {#wall-tokens}
-İki tür duvar işareti vardır: harf kazazedeler ve bilişsel hedefler. İkisi de kavisli yüzeyler dahil herhangi bir duvarda görünebilir. Harf kazazedeler ayrıca herhangi bir açıyla döndürülmüş olabilir.
+İki tür duvar işareti vardır: gülen yüz kazazedeler ve bilişsel hedefler. İkisi de alanlar arası geçitlerin duvarları hariç, eğri yüzeyler dahil her duvarda bulunabilir. Gülen yüz kazazedeler ayrıca 0 ile 360 derece arasında herhangi bir açıyla döndürülmüş olabilir.
 
-![Bir sahanın duvarlarındaki bilişsel hedefler ve harf kazazedeler](../../../docs/rules/rules_wall_tokens.png)
+![Bir sahanın duvarlarındaki bilişsel hedefler ve gülen yüz kazazedeler](../../../docs/rules/rules_wall_tokens.png)
 
-### Harf kazazedeler {#letter-victims}
-Harf kazazedeler 2 cm × 2 cm'lik resimlerdir. Sembol, kazazedenin sağlık durumunu temsil eder; kod ise bildirdiğin ve haritaya yazdığın harftir.
+### Gülen yüz kazazedeler {#smiley-victims}
+Gülen yüz kazazedeler, siyah basılmış bir gülen yüz emojisinin 2 cm × 2 cm boyutundaki görüntüleridir. Yüz ifadesi kazazedenin sağlık durumunu gösterir; kod ise bildirdiğin ve haritaya yazdığın harftir.
 
-| Durum | Sembol | Kod |
+| Durum | Yüz | Kod |
 |---|---|---|
-| Yaralı (Harmed) | Φ | `H` |
-| Stabil (Stable) | Ψ | `S` |
-| Yarasız (Unharmed) | Ω | `U` |
+| Yaralı | Üzgün | `H` |
+| Stabil | Nötr | `S` |
+| Yarasız | Mutlu | `U` |
 
-![Fi, psi ve omega sembolleri](../../../docs/rules/rules_victims.png)
+![Üzgün, nötr ve mutlu bir yüz](../../../docs/rules/rules_victims.png)
 
 ### Sahte kazazedeler {#fake-victims}
-Bazı duvar işaretleri aynı sembolleri gösterir, ama harfleri **üç boyutludur**. Bunlar sahtedir: onları supervisor'a bildirmemeli ve haritaya eklememelisin. Kurallar, bu derinliğin Robot Customizer'daki sensörlerden biriyle tespit edilebileceğini belirtir.
+Bazı duvar işaretleri aynı yüzleri gösterir ama emojiler **üç boyutludur**. Bunlar sahtedir: onları süpervizöre bildirmemeli ve haritaya koymamalısın. Kurallara göre bu derinlik, Robot Customizer'daki sensörlerden biriyle algılanabilir.
 
-![Bir duvarda üç boyutlu sembollü sahte kazazedeler](../../../docs/rules/rules_fake_victims.png)
+![Duvardaki, üç boyutlu yüzleri olan sahte kazazedeler](../../../docs/rules/rules_fake_victims.png)
 
 ### Bilişsel hedefler {#cognitive-targets}
 Bilişsel hedefler, tehlikeli maddeleri (hazmat) temsil eder. Bunlar, çapları 1, 2, 3, 4 ve 5 cm olan beş eş merkezli parçadan oluşan, 5 cm çapında dairelerdir. Her rengin bir değeri vardır:
@@ -96,7 +102,7 @@ Bilişsel hedefler, tehlikeli maddeleri (hazmat) temsil eder. Bunlar, çapları 
 |---|---|---|---|---|
 | -2 | -1 | 0 | 1 | 2 |
 
-Türü bulmak için beş parçanın değerlerini topla. Toplam aşağıda listelenmemişse hedef sahtedir; bildirilmemeli ve haritaya eklenmemelidir.
+Türü bulmak için beş parçanın değerlerini topla. Toplam aşağıdaki listede yoksa hedef sahte bir duvar işaretidir; bildirilmemeli ve haritaya konmamalıdır.
 
 | Toplam | Tehlikeli madde | Kod |
 |---|---|---|
@@ -117,14 +123,23 @@ Soldaki hedef, merkezden dışa doğru sarı, mavi, kırmızı, siyah ve yeşild
 - Takımlar organizatörlerin sağladığı robot modelini kullanır ve onu **3000**'lik bir bütçe dahilinde [Robot Customizer](https://robot.erebus.rcj.cloud/) ile özelleştirebilir. [Robot](/docs/robot/) sayfasına bak.
 - Robot bir GPS, bir renk sensörü, mesafe sensörleri, RGB kameralar, bir LiDAR, bir jiroskop ve bir ivmeölçer kullanabilir.
 - Simüle edilen sensörlerde gerçekçi gürültü vardır. Programın buna karşı dayanıklı olmalıdır; organizatörler yarışma için gürültü seviyelerini değiştirmez.
+
+### Batarya {#the-battery}
+Robotun, motorlarının hızına bağlı olarak azalan bir bataryası vardır. Batarya seviyesi kontrol penceresinde, sayaçların üstünde gösterilir. Kurallar tam azalma hızını vermez: takımların bunu test ederek bulmaları beklenir.
+
+- Bataryayı değiştirmek için robot, **simülasyon zamanıyla 5 saniye boyunca bir temas karesinin üzerinde hareketsiz durmalıdır**. Batarya ardından yeniden dolar.
+- Bataklıklarda batarya daha hızlı azalır.
+- Batarya biterse oyun sona erer.
+
+[Batarya](/docs/programming/battery/) eğitimi, programının batarya seviyesini nasıl okuyup bataryayı nasıl değiştirebileceğini gösterir.
 - Robotlar otonom olmalıdır. Her takımın sahada bir robotu vardır.
 - Önceden haritalama yasaktır: bu yasak hem sahayı hem de duvar işaretlerinin konumlarını kapsar; bilinen konumlardan yola çıkan önceden tanımlanmış hareketler de buna dahildir. Önceden haritalama yapan takım o turdan derhal diskalifiye edilir.
 
 ## Bir oyun oynama {#playing-a-game}
 - Bir oyun **8 dakika simülasyon zamanı** sürer. İkinci bir sayaç da gerçek zamanlı olarak, **10 dakika** sınırıyla çalışır. Sayaçlardan herhangi biri dolduğunda oyun biter.
-- Robotun merkezi bir karenin içindeyse o kare ziyaret edilmiş sayılır. Erebus bu kararı otomatik olarak verir.
-- Oyun ayrıca robot çıkış komutunu gönderdiğinde ya da takım kaptanı oyunun bitirilmesini istediğinde de biter (oyunun nasıl yürütüldüğüne bağlı olarak).
-- Yarışma dünyaları oyunlardan hemen önce açıklanır ve her turun son tarihinden sonra programlar değiştirilemez.
+- Robotun merkezi bir karenin içindeyse o kare ziyaret edilmiş sayılır; bunu süpervizör belirler.
+- Oyun ayrıca batarya bittiğinde, robot çıkış komutunu gönderdiğinde ya da takım kaptanı oyunun bittiğini bildirdiğinde (oyunun nasıl yürütüldüğüne bağlı olarak) sona erer.
+- Yarışma dünyaları oyunlardan hemen önce açıklanır ve organizatörlerin duyurduğu her turun resmi son tarihinden sonra programlar değiştirilemez.
 
 ### İlerleme eksikliği {#lack-of-progress}
 İlerleme eksikliği (lack of progress, LoP) şu durumlarda olur:
@@ -140,18 +155,18 @@ Robot daha sonra ziyaret ettiği son kontrol noktasına ya da hiçbirine ulaşma
 ## Puanlama {#scoring}
 Puanlama Erebus tarafından otomatik olarak yapılır. Ödüller tekrarlanmaz: örneğin her kontrol noktası yalnızca ilk seferde puan kazandırır.
 
-Bir duvar işaretini tanımlamak için robot **en az 1 saniye** durmalı, sonra türü ve konumu oyun yöneticisine [göndermelidir](/docs/programming/communication/#scoring-wall-tokens). Robotun merkezi işarete en fazla yarım kare uzaklıkta olmalıdır.
+Bir duvar işaretini tanımlamak için robot **en az 1 saniye** durmalı, sonra türü ve konumu süpervizöre [göndermelidir](/docs/programming/communication/#scoring-wall-tokens). Robotun merkezi işarete en fazla yarım kare uzaklıkta olmalıdır.
 
 | Öğe | Puan |
 |---|---|
-| 1-3. alanlarda doğrusal bir karede duvar işareti tanımlama (TI) | Harf kazazede: 5, bilişsel hedef: 10 |
-| 1-3. alanlarda yüzen bir karede duvar işareti tanımlama (TI) ve 4. alandaki tüm işaretler | Harf kazazede: 15, bilişsel hedef: 30 |
-| TI'ya ek olarak doğru tür (TT) | Harf kazazede: 10, bilişsel hedef: 20 |
+| 1-3. alanlarda doğrusal bir karede duvar işareti tanımlama (TI) | Gülen yüz kazazede: 5, bilişsel hedef: 10 |
+| 1-3. alanlarda yüzen bir karede duvar işareti tanımlama (TI) ve 4. alandaki tüm işaretler | Gülen yüz kazazede: 15, bilişsel hedef: 30 |
+| TI'ya ek olarak doğru tür (TT) | Gülen yüz kazazede: 10, bilişsel hedef: 20 |
 | Ziyaret edilen kontrol noktası (CN) | 10 |
 | Yanlış duvar işareti tanımlama (TMI) | -5 |
 | İlerleme eksikliği (LoP) | -5 |
 
-Toplam puan sıfırın altına düşemez. Yanlış tanımlama; işarete yarım kareden daha uzak bir konum bildirmek, işaret olmayan bir yerde işaret bildirmek ya da bir harf kazazedeyi bilişsel hedef olarak bildirmek (veya tersi) anlamına gelir. Sahte bir işareti bildirmek ikinci kategoriye girer.
+Toplam puan sıfırın altına düşemez. Yanlış tanımlama; işarete yarım kareden daha uzak bir konum bildirmek, işaret olmayan bir yerde işaret bildirmek ya da bir gülen yüz kazazedeyi bilişsel hedef olarak bildirmek (veya tersi) anlamına gelir. Sahte bir işareti bildirmek ikinci kategoriye girer.
 
 **Alan çarpanları (AM)**: TI, TT ve CN; 1., 2., 3. ve 4. alanlarda sırasıyla 1, 1,25, 1,5 ve 2 ile çarpılır. TMI ve LoP çarpılmaz.
 
@@ -163,7 +178,7 @@ Bir oyunun saha puanı şöyle hesaplanır:
 
 ![Saha puanı, dört alan üzerinden (TI + TT + CN) × AM toplamından TMI ve LoP çıkarılıp tümünün EB ve MB ile çarpılmasına eşittir](../../../docs/rules/rules_field_score.png)
 
-Örneğin bu sonuçları alan bir oyun 2680,15 puan alır:
+Örneğin bu sonuçları alan bir oyun 2825,35 puan alır:
 
 ![Bir puan hesaplamasının adım adım örneği](../../../docs/rules/rules_scoring_example.png)
 

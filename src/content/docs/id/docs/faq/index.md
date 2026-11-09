@@ -15,7 +15,7 @@ Python dan C/C++ dibahas di dokumentasi ini. Erebus juga bisa memuat controller 
 Tidak, lihat [persyaratan](/docs/installation/). Komputer yang lebih lambat mungkin perlu [pengaturan grafis yang lebih rendah](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Bisakah aku memakai versi Webots yang lebih baru? {#can-i-use-a-newer-version-of-webots}
-Tidak. Erebus v26 berjalan di Webots **R2023b**. Kamu tetap bisa menginstal versi lain di sampingnya.
+Tidak. Erebus v27 berjalan di Webots **R2025a**. Kamu tetap bisa menginstal versi lain di sampingnya, misalnya R2023b untuk Erebus v26.
 
 ### Bisakah aku memakai library seperti OpenCV atau NumPy? {#can-i-use-libraries-like-opencv-or-numpy}
 Bisa. Kode eksternal diperbolehkan, asalkan kamu mencantumkan pembuatnya dan menghormati lisensinya. Tim sebaiknya mengutamakan belajar, dan harus bisa menjelaskan cara kerja solusi mereka.
@@ -38,7 +38,13 @@ Terjadi kurangnya kemajuan (lack of progress): robot kembali ke checkpoint terak
 Tidak, tetapi kembali ke ubin awal dan mengirim `E` memberikan bonus keluar 10%, asalkan robot sudah mengidentifikasi minimal satu penanda dinding.
 
 ### Bagaimana robotku tahu berapa sisa waktunya? {#how-can-my-robot-tell-how-much-time-is-left}
-Dengan [pesan `G`](/docs/programming/communication/#game-information). Ada dua pewaktu, dan waktu permainan berjalan lebih cepat di rawa.
+Dengan [pesan `G`](/docs/programming/communication/#game-information). Ada dua pewaktu, dan permainan berakhir saat salah satunya habis.
+
+### Apa yang terjadi kalau baterai habis? {#what-happens-when-the-battery-runs-out}
+Permainan berakhir. Untuk menghindarinya, berhentilah 5 detik di ubin kontak berwarna sian, yang akan mengganti baterai. Programmu bisa membaca level baterai dengan [pesan `G`](/docs/programming/communication/#game-information). Lihat [Baterai](/docs/programming/battery/).
+
+### Apakah melaju pelan menghemat baterai? {#does-driving-slowly-save-the-battery}
+Baterai berkurang sesuai kecepatan motor, jadi robot yang pelan memakai lebih sedikit baterai per detik, tetapi juga menempuh jarak lebih pendek dalam waktu itu. Temukan keseimbangan terbaik untuk robotmu dengan pengujian.
 
 ### Apakah aku harus menjelajahi Area 4? {#do-i-have-to-explore-area-4}
 Tidak. Area ini opsional, tetapi penandanya bernilai paling tinggi: poin tertinggi, dikalikan 2.

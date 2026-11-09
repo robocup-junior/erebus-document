@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## コンパイル {#compiling}
-どのシステムでもいちばん簡単なのは、Webots のエディターを使う方法です。**Wizards > New Robot Controller** で `Makefile` 付きの C++ コントローラーを作成し、**Build** ボタンを押します。[Webots のガイド](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b)を参照してください。
+どのシステムでもいちばん簡単なのは、Webots のエディターを使う方法です。**Wizards > New Robot Controller** で `Makefile` 付きの C++ コントローラーを作成し、**Build** ボタンを押します。[Webots のガイド](https://cyberbotics.com/doc/guide/using-cpp?version=R2025a)を参照してください。
 
 ターミナルからコンパイルすることもできます。次のコマンドは macOS でテストしました。
 
@@ -53,5 +53,5 @@ Linux では、`WEBOTS=/usr/local/webots` にすれば同じオプションが�
 
 ## 実行 {#running}
 
-- **Windows では、** コントロールウィンドウの左側の LOAD ボタンで `.exe` ファイルを読み込みます。
-- **macOS と Linux では、** コンパイルしたプログラムにファイル拡張子がないため、LOAD ボタンでは選択できません。代わりに、競技のときと同じように [Remote Controller](/docs/competition/remote-controller/) で実行してください。
+- **Windows では、** コントロールウィンドウの **Robot setup** にある **Controller** で `.exe` ファイルを読み込みます。
+- **macOS と Linux では、** コンパイルしたプログラムにファイル拡張子がないため、**Load file** では選択できません。代わりに、競技のときと同じように [Remote Controller](/docs/competition/remote-controller/) で実行してください。

@@ -1,6 +1,6 @@
 ---
 title: Komunikasi
-description: Laporkan penanda dinding, picu kurangnya kemajuan, minta skor, dan akhiri permainan.
+description: Melaporkan penanda dinding, menyatakan kurangnya kemajuan, meminta skor, waktu, dan baterai, serta mengakhiri permainan.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -14,30 +14,30 @@ Setiap bagian di bawah ini adalah program lengkap untuk [robot pemula](/docs/rob
 
 ## Mencetak poin dari penanda dinding \{#scoring-wall-tokens\}
 
-Untuk mencetak poin dari korban huruf (letter victim) atau target kognitif (cognitive target), robot harus:
+Untuk mencetak poin dari korban smiley (letter victim) atau target kognitif (cognitive target), robot harus:
 
 1. **Berhenti lebih dari 1 detik** di dekat penanda. Erebus mengabaikan laporan jika robot bergerak dalam satu detik terakhir.
 2. **Mengirim posisi dan jenis** penanda: X dan Z dalam **sentimeter**, dan jenisnya sebagai satu huruf.
 
 | Penanda dinding | Jenis |
 |---|---|
-| Korban huruf Φ (terluka) | `H` |
-| Korban huruf Ψ (stabil) | `S` |
-| Korban huruf Ω (tidak terluka) | `U` |
+| Korban smiley, wajah sedih (terluka) | `H` |
+| Korban smiley, wajah datar (stabil) | `S` |
+| Korban smiley, wajah senang (tidak terluka) | `U` |
 | Target kognitif, jumlah 0 (Gas Mudah Terbakar) | `F` |
 | Target kognitif, jumlah 1 (Racun) | `P` |
 | Target kognitif, jumlah 2 (Korosif) | `C` |
 | Target kognitif, jumlah 3 (Peroksida Organik) | `O` |
 
-Jenisnya berupa huruf, meskipun sejak 2026 korban menampilkan simbol. GPS memberikan nilai dalam meter, jadi kalikan dengan 100.
+Jenisnya berupa huruf, meskipun korban menampilkan wajah. GPS memberikan meter, jadi kalikan dengan 100.
 
 <CodeTabs file="report" />
 
-Robot harus berada di sisi dinding yang sama dengan penanda, dan baik robot maupun posisi yang kamu kirim harus dekat dengan penanda itu. Aturan mensyaratkan jarak paling jauh setengah ubin, jadi usahakan agar tidak lebih dari itu. Erebus v26.1 memeriksa jarak 9 cm.
+Robot harus berada di sisi dinding yang sama dengan penanda, dan titik tengah robot maupun posisi yang kamu kirim harus berada dalam setengah ubin (6 cm) dari penanda.
 
-Jalankan program ini di awal `world1.wbt`: tidak ada penanda di sana, jadi riwayat jendela kontrol menampilkan `Misidentification of Victim -5`. Laporan yang salah, termasuk laporan penanda palsu, mengurangi 5 poin, dan setiap penanda hanya bisa dihitung sekali.
+Jalankan program ini di awal `world1.wbt`: tidak ada penanda di sana, jadi event pertandingan di jendela kontrol menampilkan `Misidentification of Victim -5`. Laporan yang salah, termasuk melaporkan penanda palsu, mengurangi 5 poin, dan setiap penanda hanya bisa mendapat poin sekali.
 
-![Riwayat jendela kontrol setelah laporan yang salah dan pengiriman peta](../../../../docs/programming/communication/history.png)
+![Event pertandingan setelah laporan yang salah](../../../../docs/programming/communication/history.png)
 
 ## Kurangnya kemajuan \{#lack-of-progress\}
 
@@ -49,11 +49,11 @@ Receiver bisa menerima pesan yang berbeda-beda, jadi periksa panjang setiap pesa
 
 ## Informasi permainan \{#game-information\}
 
-Kirim `G` untuk mendapatkan skor dan sisa waktu. Permainan membalas dengan pesan 16 byte: huruf `G`, skor, sisa waktu permainan, dan sisa waktu nyata, dalam detik.
+Kirim `G` untuk mendapatkan skor, sisa waktu, dan level baterai. Permainan membalas dengan pesan 20 byte: huruf `G`, skor, sisa waktu permainan dan waktu nyata dalam detik, dan level baterai dalam persen.
 
 <CodeTabs file="gameinfo" />
 
-Waktu permainan berjalan lebih cepat di rawa, dan permainan berakhir saat salah satu waktu habis. Gunakan keduanya untuk menentukan kapan robot harus kembali ke titik awal.
+Permainan berakhir saat salah satu waktu habis, atau saat baterai kosong. Gunakan nilai-nilai ini untuk mengetahui kapan kembali ke start, dan kapan [mengganti baterai](/docs/programming/battery/).
 
 ## Mengakhiri permainan \{#ending-the-game\}
 

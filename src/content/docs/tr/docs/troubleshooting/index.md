@@ -22,6 +22,9 @@ Webots, Python'un nerede olduğunu bilmiyor.
 
    ![Webots tercihlerindeki Python command alanı](../../../docs/troubleshooting/preferences.png)
 
+### `ERROR: Skipped PROTO 'custom_robot'` {#error-skipped-proto-custom_robot}
+Bu mesaj, bir dünyayı ilk açtığında, Erebus robot modelini hazırlamadan önce görünür. Erebus modeli hazırlar ve dünyayı kendiliğinden yeniden yükler, bu yüzden görmezden gelebilirsin.
+
 ### Oyun süresi görünmüyor {#the-game-timer-does-not-appear}
 İlk başlatma, Erebus kütüphaneleri kurarken birkaç dakika sürebilir. İşlem hiç bitmiyorsa konsolda hata olup olmadığına bak. Otomatik kurulum çalışmazsa [gerekli kütüphaneleri](/docs/installation/#python-libraries) kendin kur.
 
@@ -30,9 +33,14 @@ Webots, Python'un nerede olduğunu bilmiyor.
 ### Kontrol penceresi görünmüyor {#the-control-window-does-not-appear}
 Kontrol penceresi, Webots'un açtığı bir web sayfasıdır.
 
-1. Tarayıcın onu engellediyse dünya açıkken [kontrol penceresini](http://localhost:1234/robot_windows/MainSupervisorWindow/MainSupervisorWindow.html?name=robot) aç.
+1. Pencereyi kapattıysan ya da tarayıcın engellediyse, dünyayı Webots'un yeniden yükleme düğmesiyle yeniden yükle. Erebus kontrol penceresini yeniden açar.
 2. Aksi halde **Tools > Scene Tree** ile Scene Tree'nin görüntülendiğinden emin ol.
 3. Scene Tree'de **DEF MAINSUPERVISOR Robot** öğesini bul, sağ tıkla ve **Show Robot Window** seçeneğini seç.
+
+Kontrol penceresinin, dünya her yüklendiğinde değişen özel bir adresi vardır. Pencereyi `localhost:1234` adresinde kendin açarsan **Read-only** gösterir ve düğmeleri çalışmaz.
+
+### Kontrol penceresi "Access log incomplete" diyor {#the-control-window-says-access-log-incomplete}
+Bu uyarı, [Wireshark](/docs/installation/#optional-wireshark) kurulu olmadığında görünür. Yarışmalardaki organizatörler içindir: **Acknowledge** düğmesine bas ve her zamanki gibi çalış.
 
 ![Scene Tree'deki Show Robot Window seçeneği](../../../docs/troubleshooting/showrobot.png)
 
@@ -52,11 +60,8 @@ Bu ayarlar kameraların gördüklerini değiştirir ve yarışma [kendi ayarlar�
 
 ## Robotun {#your-robot}
 
-### `PROTO parameter 'camera_width' has no matching IS field` {#proto-parameter-camera_width-has-no-matching-is-field}
-Erebus v26.1, güncel Robot Customizer ile yapılmış bir robotu yüklediğinde bu hatayı kırmızı renkte gösterir. Bunu yok sayabilirsin: robot çalışır ve kameraları seçtiğin çözünürlüğe sahiptir.
-
 ### Programım bir cihazın bulunamadığını söylüyor {#my-program-says-a-device-was-not-found}
-Aşağıya bak. Ayrıca oyunu başlatmadan önce robotunu **sağdaki** LOAD düğmesiyle yüklediğini kontrol et.
+Aşağıya bak. Ayrıca oyunu başlatmadan önce robotunu **Robot setup** içindeki **Robot JSON** altından yüklediğini kontrol et.
 
 ## Programın {#your-program}
 
@@ -64,10 +69,16 @@ Aşağıya bak. Ayrıca oyunu başlatmadan önce robotunu **sağdaki** LOAD dü�
 Programındaki cihaz adı robotunla eşleşmiyor. Başlangıç robotunun adları [Başvuru](/docs/reference/parameters/#device-names-of-the-starter-robot) sayfasındadır. Kendi robotun için bunlar [Robot Customizer](/docs/robot/customizer/) içinde belirlediğin adlardır. Robotunun yüklendiğini kontrol et.
 
 ### Bir duvar işaretini bildirdiğimde hiçbir şey olmuyor {#nothing-happens-when-i-report-a-wall-token}
-Kontrol penceresinin Settings sekmesinde **Enable debugging** seçeneğini aç ve konsolu kontrol et. En yaygın nedenler, robotun en az 1 saniye durmamış olması ve koordinatların santimetreye dönüştürülmemiş olmasıdır. [İletişim](/docs/programming/communication/#scoring-wall-tokens) sayfasına bak.
+Kontrol penceresinin **Advanced setup** bölümünde **Enable debugging** seçeneğini aç ve konsolu kontrol et. En yaygın nedenler; robotun en az 1 saniye durmamış olması, koordinatların santimetreye çevrilmemiş olması ve robotun ya da konumun işarete yarım kareden (6 cm) uzak olmasıdır. Bkz. [İletişim](/docs/programming/communication/#scoring-wall-tokens).
 
 ### Bildirimlerim yanlış tanımlama sayılıyor {#my-reports-are-misidentifications}
 Robot işarete en fazla yarım kare uzaklıkta ve duvarın aynı tarafında olmalıdır; ayrıca her işaretten yalnızca bir kez puan alınabilir. Sahte bir işareti bildirmek de yanlış tanımlama sayılır.
+
+### Oyun "Battery depleted" ile bitiyor {#the-game-ends-with-battery-depleted}
+Batarya bitti. Bu olmadan önce bataryayı değiştirmek için bir temas karesinin üzerinde 5 saniye dur. Bkz. [Batarya](/docs/programming/battery/).
+
+### Programım artık oyun bilgisini almıyor {#my-program-no-longer-receives-the-game-information}
+Erebus v27'den itibaren `G` yanıtı 20 bayttır ve sonunda batarya seviyesi bulunur. Programındaki uzunluk kontrolünü güncelle. Bkz. [Oyun bilgisi](/docs/programming/communication/#game-information).
 
 ### Harita %0 alıyor ya da puanlama hatası veriyor {#the-map-gets-0-or-a-scoring-error}
 Haritan başlangıç karesini (`5`) içermelidir ve yalnızca bir kez değerlendirilebilir. [Haritayı gönderme](/docs/programming/map-bonus/) sayfasına bak.

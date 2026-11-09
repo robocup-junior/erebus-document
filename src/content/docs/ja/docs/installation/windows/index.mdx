@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: Windows に Erebus と Webots R2023b をインストールします。
+description: Windows に Erebus と Webots R2025a をインストールします。
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. [公式サイト](https://www.python.org/downloads/windows/)から 64 ビット版の **Python 3.9 以降** をインストールします。インストール中に、Python が PATH に追加されるようにしてください。
+1. [公式サイト](https://www.python.org/downloads/windows/)から 64 ビット版の **Python 3.10 以降** をインストールします。インストール中に、Python が PATH に追加されるようにしてください。
 
    ![Python インストーラーの Add Python to PATH オプション](../../../../docs/installation/windows/python-path.png)
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. [公式リポジトリ](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe)から **Webots R2023b** をインストールします。
+3. [公式リポジトリ](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a_setup.exe)から **Webots R2025a** をインストールします。
 
 4. <DownloadErebus /> をダウンロードして展開します。
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 ワールドファイル `game/worlds/world1.wbt` をダブルクリックして、Webots で開きます。
 
-Webots が、Web ブラウザーで Erebus のコントロールウィンドウを開きます。初回は Erebus がいくつかの Python ライブラリをインストールするので、少し時間がかかることがあります。ウィンドウに 08:00 のゲームタイマーが表示されたら準備完了です。
+Webots が、Web ブラウザーで Erebus のコントロールウィンドウを開きます。初回は Erebus がいくつかの Python ライブラリをインストールし、ロボットモデルを準備するので、少し時間がかかることがあります。ウィンドウに **Ready** と 08:00 のゲームタイマーが表示されたら準備完了です。
 
 ![開始準備ができた Erebus のコントロールウィンドウ](../../../../docs/installation/windows/../control-window-ready.png)
+
+初回は、Webots のコンソールに `ERROR: Skipped PROTO 'custom_robot'` と表示されることもあります。これは無視してかまいません。Erebus がロボットモデルを準備して、自動でワールドを再読み込みします。
 
 次は[ルールの概要](/docs/rules/)を読んで、ゲームを理解しましょう。うまくいかないときは[トラブルシューティング](/docs/troubleshooting/)を見てください。

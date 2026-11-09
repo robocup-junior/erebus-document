@@ -1,6 +1,6 @@
 ---
 title: Linux (Ubuntu)
-description: Instal Erebus dan Webots R2023b di Ubuntu 20.04 atau 22.04.
+description: Instal Erebus dan Webots R2025a di Ubuntu 22.04 atau 24.04.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -15,11 +15,13 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python3 -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-2. Unduh dan instal **Webots R2023b**:
+   Di Ubuntu 24.04, pip menolak menginstal library ke Python sistem, dengan error `externally-managed-environment`. Tambahkan `--break-system-packages` ke perintah kedua, atau instal library di [virtual environment](https://docs.python.org/3/library/venv.html) dan atur Python-nya di preferensi Webots.
+
+2. Unduh dan instal **Webots R2025a**:
 
    ```bash
-   wget https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb
-   sudo apt install ./webots_2023b_amd64.deb
+   wget https://github.com/cyberbotics/webots/releases/download/R2025a/webots_2025a_amd64.deb
+   sudo apt install ./webots_2025a_amd64.deb
    ```
 
 3. Unduh <DownloadErebus />, lalu ekstrak berkas zip-nya.
@@ -34,8 +36,10 @@ Buka world dari terminal. Ganti path-nya dengan path ke folder Erebus milikmu:
 webots ~/EREBUS_FOLDER/game/worlds/world1.wbt
 ```
 
-Webots membuka jendela kontrol Erebus di browser web-mu. Saat pertama kali, Erebus menginstal beberapa library Python, yang mungkin butuh waktu cukup lama. Erebus sudah siap saat jendela menampilkan pewaktu permainan 08:00:
+Webots membuka jendela kontrol Erebus di browser web-mu. Saat pertama kali, Erebus menginstal beberapa library Python dan menyiapkan model robot, yang mungkin butuh waktu cukup lama. Erebus sudah siap saat jendela menampilkan **Ready** dan pewaktu permainan 08:00:
 
 ![Jendela kontrol Erebus, siap untuk dimulai](../../../../docs/installation/linux/../control-window-ready.png)
+
+Saat pertama kali, konsol Webots juga mungkin menampilkan `ERROR: Skipped PROTO 'custom_robot'`. Kamu bisa mengabaikannya: Erebus menyiapkan model robot dan memuat ulang world dengan sendirinya.
 
 Selanjutnya, baca [Ringkasan aturan](/docs/rules/) untuk memahami permainannya. Jika ada yang tidak beres, lihat [Pemecahan masalah](/docs/troubleshooting/).

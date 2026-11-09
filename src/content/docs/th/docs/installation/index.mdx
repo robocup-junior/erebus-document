@@ -1,27 +1,28 @@
 ---
 title: ความต้องการของระบบ
-description: "สิ่งที่คุณต้องใช้ในการรัน Erebus v26: Webots R2023b, Python 3.9 ขึ้นไป และไลบรารีที่จำเป็น"
+description: "สิ่งที่คุณต้องใช้ในการรัน Erebus v27: Webots R2025a, Python 3.10 ขึ้นไป และไลบรารีที่จำเป็น"
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { latestVersion } from '@/data/release';
 
 ## ซอฟต์แวร์ที่ต้องใช้ \{#software-requirements\}
 ระบบการจำลองประกอบด้วยองค์ประกอบสามส่วน และต้องติดตั้งทุกส่วน การติดตั้งไม่ยาก แต่การดาวน์โหลดและติดตั้ง Webots อาจใช้เวลาสักพัก องค์ประกอบทั้งสามได้แก่:
 
-1. ซิมูเลเตอร์หุ่นยนต์ Webots เวอร์ชัน **R2023b**: สภาพแวดล้อมการจำลอง Erebus v26 ไม่รองรับ Webots เวอร์ชันอื่น
-1. Erebus: โลกต่าง ๆ และ Main Supervisor ซึ่งใช้กติกาและคำนวณคะแนน เวอร์ชันล่าสุดคือ **v26.1**
-1. Python เวอร์ชัน **3.9 ขึ้นไป**: จำเป็นสำหรับการรัน Erebus เอง และสำหรับเขียนคอนโทรลเลอร์ของหุ่นยนต์ นอกจากนี้คุณยังเขียนคอนโทรลเลอร์ด้วย C/C++ ได้ด้วย
+1. ซิมูเลเตอร์หุ่นยนต์ Webots เวอร์ชัน **R2025a**: สภาพแวดล้อมการจำลอง Erebus v27 ไม่รองรับ Webots เวอร์ชันอื่น
+1. Erebus: โลกต่าง ๆ และ Main Supervisor ซึ่งใช้กติกาและคำนวณคะแนน เวอร์ชันล่าสุดคือ **v<span data-erebus-version>{latestVersion}</span>**
+1. Python เวอร์ชัน **3.10 ขึ้นไป**: จำเป็นสำหรับการรัน Erebus เอง และสำหรับเขียนคอนโทรลเลอร์ของหุ่นยนต์ นอกจากนี้คุณยังเขียนคอนโทรลเลอร์ด้วย C/C++ ได้ด้วย
 
 ## ความต้องการขั้นต่ำของระบบ \{#minimum-system-requirements\}
-* Linux: Ubuntu 20.04 LTS หรือ 22.04 LTS
+* Linux: Ubuntu 22.04 LTS หรือ 24.04 LTS
 * Windows: Windows 10 หรือ 11 แบบ 64 บิต
-* macOS: macOS 11 "Big Sur" หรือ 12 "Monterey" ซึ่งเป็นเวอร์ชันที่ Webots R2023b รองรับ macOS เวอร์ชันใหม่กว่าก็อาจใช้งานได้เช่นกัน โดยเอกสารนี้ทดสอบบน macOS 26
+* macOS: macOS 12 "Monterey", 13 "Ventura" หรือ 14 "Sonoma" ซึ่งเป็นเวอร์ชันที่ Webots R2025a รองรับ macOS เวอร์ชันใหม่กว่าก็อาจใช้งานได้เช่นกัน โดยเอกสารนี้ทดสอบบน macOS 26
 * CPU: ดูอัลคอร์ 2 GHz
 * RAM: 2 GB
-* กราฟิก: การ์ดจอ NVIDIA หรือ AMD ที่รองรับ OpenGL และมีหน่วยความจำ 512 MB
+* กราฟิก: การ์ดจอ NVIDIA หรือ AMD ที่รองรับ OpenGL 3.3 และมีหน่วยความจำ 512 MB
 
 ## ไลบรารี Python \{#python-libraries\}
-Erebus ต้องใช้ไลบรารี Python ด้านล่างนี้ ส่วนใหญ่จะถูกติดตั้งโดยอัตโนมัติเมื่อเริ่มทำงาน แต่ **OpenCV จะไม่ถูกติดตั้งอัตโนมัติ** คุณจึงต้องติดตั้งเอง คู่มือการติดตั้งของแต่ละระบบปฏิบัติการมีขั้นตอนนี้อยู่แล้ว
+Erebus ต้องใช้ไลบรารี Python ด้านล่างนี้ ส่วนใหญ่จะถูกติดตั้งโดยอัตโนมัติเมื่อเริ่มทำงาน แต่ **OpenCV จะไม่ถูกติดตั้งอัตโนมัติ** คุณจึงต้องติดตั้งเอง คู่มือการติดตั้งของแต่ละระบบปฏิบัติการมีขั้นตอนนี้อยู่แล้ว ไฟล์ `requirements.txt` ในโฟลเดอร์ Erebus ระบุเวอร์ชันที่ใช้ทดสอบ Erebus
 
 ```bash
 python3 -m pip install numpy termcolor requests overrides pillow opencv-python
@@ -32,5 +33,8 @@ python3 -m pip install numpy termcolor requests overrides pillow opencv-python
 <CardGrid>
 	<LinkCard title="Windows" description="Windows 10 และ 11" href="/docs/installation/windows/" />
 	<LinkCard title="macOS" description="macOS บน Intel และ Apple silicon" href="/docs/installation/mac/" />
-	<LinkCard title="Linux" description="Ubuntu 20.04 และ 22.04" href="/docs/installation/linux/" />
+	<LinkCard title="Linux" description="Ubuntu 22.04 และ 24.04" href="/docs/installation/linux/" />
 </CardGrid>
+
+## ไม่บังคับ: Wireshark \{#optional-wireshark\}
+Erebus สามารถเฝ้าดูเครือข่ายระหว่างการแข่งขันเพื่อตรวจหาการเข้าถึงเกมโดยไม่ได้รับอนุญาต ซึ่งผู้จัดใช้ในการแข่งขัน ฟีเจอร์นี้ต้องใช้ [Wireshark](https://www.wireshark.org/download.html) คุณไม่จำเป็นต้องใช้มันสำหรับการฝึกซ้อม ถ้าไม่มี หน้าต่างควบคุมจะแสดงคำเตือนว่าไม่ได้เฝ้าดูการเข้าถึงเครือข่าย ซึ่งคุณกดรับทราบและไม่ต้องสนใจได้

@@ -7,9 +7,9 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 Fitur remote controller pada Erebus memungkinkanmu menjalankan simulasi Webots melalui jaringan. Satu komputer menjalankan simulasi Webots (server), dan komputer lainnya menjalankan program controller robot (klien). Kami menyebutnya "pengaturan server-klien" (Server-Client Setup).
 
-**Menurut aturan 2026, beginilah cara permainan dijalankan di kompetisi.** Panitia menjalankan server permainan dan menyediakan satu soket RJ-45. Kamu perlu membawa:
+**Menurut aturan 2027, beginilah cara permainan dijalankan di kompetisi.** Panitia menjalankan server permainan dan menyediakan satu soket RJ-45. Kamu perlu membawa:
 
-- Komputer dengan programmu, siap dijalankan, dan dengan Webots R2023b terinstal
+- Komputer dengan programmu, siap dijalankan, dan dengan Webots R2025a terinstal
 - Kabel Ethernet. Minimal CAT5 sangat disarankan, untuk mendukung 100 Mbit/s.
 - Port Ethernet. Jika komputermu tidak punya, bawa adaptor dan uji terlebih dahulu.
 
@@ -17,11 +17,11 @@ Agar persiapan di lokasi kompetisi berjalan lancar, cobalah pengaturan ini jauh-
 
 ## Cara kerjanya \{#how-it-works\}
 
-1. Buka world dan aktifkan mode remote di jendela kontrol.
+1. Buka world dan aktifkan **Remote mode** di **Robot setup** pada jendela kontrol.
 1. Jalankan controller-mu dari terminal. Controller akan terhubung ke Webots dan menunggu.
-1. Tekan tombol start di jendela kontrol.
+1. Tekan **Run match** di jendela kontrol.
 
-Controller-mu menggunakan library Webots yang sama dan kode yang sama seperti saat dimuat dengan tombol LOAD. Robot kustom, jika kamu punya, tetap dimuat di jendela kontrol pada server.
+Controller-mu menggunakan library Webots yang sama dan kode yang sama seperti saat dimuat dengan **Load file**. Robot kustom, jika kamu punya, tetap dimuat di jendela kontrol pada server.
 
 ## Yang perlu diperiksa sebelum kompetisi \{#things-to-check-before-the-competition\}
 

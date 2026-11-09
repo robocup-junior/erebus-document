@@ -1,10 +1,10 @@
 ---
 title: Resumo das regras
-description: "Um resumo das regras da RoboCupJunior Rescue Simulation 2026: o campo, os marcadores nas paredes, a pontuação e a competição."
+description: "Um resumo das regras da RoboCupJunior Rescue Simulation 2027: o campo, os marcadores nas paredes, a bateria, a pontuação e a competição."
 ---
 
 :::note
-Esta página é um resumo para ajudar você a começar. As únicas regras oficiais são as [RoboCupJunior Rescue Simulation Rules 2026](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) (última atualização em 11/02/2026). Se esta página e as regras oficiais forem diferentes, valem as regras oficiais.
+Esta página é um resumo para ajudar você a começar. As únicas regras oficiais são as [RoboCupJunior Rescue Simulation Rules 2027](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf). Este resumo segue a versão atualizada em 2026-10-24. Se esta página e as regras oficiais forem diferentes, valem as regras oficiais.
 
 Correções e esclarecimentos são publicados no [fórum oficial da RoboCupJunior](https://junior.forum.robocup.org/). É responsabilidade de cada equipe acompanhá-los.
 :::
@@ -14,10 +14,11 @@ O seu robô é colocado sozinho em um labirinto desconhecido. Em 8 minutos, sem 
 
 1. **Explorar** o labirinto sem ficar preso nem cair em buracos.
 2. **Encontrar os marcadores nas paredes** (wall tokens), ou seja, as vítimas e os alvos cognitivos, e informar o que cada um é.
-3. **Mapear** o labirinto e enviar o mapa no final.
-4. **Voltar** para onde começou.
+3. **Manter a bateria carregada**, parando em um ladrilho de contato antes que ela acabe.
+4. **Mapear** o labirinto e enviar o mapa no final.
+5. **Voltar** para onde começou.
 
-Tudo o que vem abaixo explica essas quatro tarefas em detalhe. Você não precisa lembrar de tudo agora: volte aqui conforme for programando cada parte.
+Tudo o que vem a seguir explica essas cinco tarefas em detalhes. Você não precisa decorar tudo agora: volte aqui quando for programar cada parte.
 
 ## Missão e objetivo {#mission-and-objective}
 ![Vista de cima de um campo do Erebus com quatro áreas](../../../docs/rules/rules_environment.png)
@@ -26,10 +27,10 @@ O robô precisa explorar de forma autônoma um ambiente desconhecido, sem se met
 
 - Navegar por um labirinto complexo sem ficar preso
 - Mapear o ambiente com precisão
-- Encontrar e identificar os marcadores nas paredes: vítimas de letra e alvos cognitivos
+- Encontrar e identificar os marcadores nas paredes: vítimas smiley e alvos cognitivos
 
 ## O campo {#the-field}
-O campo pode ser dividido em quatro áreas, e cada passagem entre áreas tem a largura de um ladrilho padrão. Os ladrilhos (tiles) são um conceito usado para gerar o campo, não estruturas físicas.
+O campo tem até quatro áreas. A área 1 sempre faz parte do campo, e os organizadores podem deixar de fora as áreas 2 a 4. Cada passagem entre áreas tem a largura de um ladrilho padrão. Os ladrilhos são um conceito usado para gerar o campo, não estruturas físicas.
 
 - Um ladrilho mede **12 cm × 12 cm**. Nas áreas 2 e 3, cada ladrilho é subdividido em quatro **quartos de ladrilho** (quarter tiles) de 6 cm × 6 cm.
 - As paredes têm **1 cm de espessura e 6 cm de altura**.
@@ -49,10 +50,10 @@ As passagens são ladrilhos únicos com paredes em dois lados, para que tenham u
 
 ![Tabela das cores das passagens entre cada par de áreas](../../../docs/rules/rules_passages.png)
 
-Não são colocadas vítimas de letra nas passagens.
+Não há marcadores nas paredes das passagens.
 
 ### Ladrilhos lineares e flutuantes {#linear-and-floating-tiles}
-Os ladrilhos que levam ao ladrilho inicial seguindo sempre a parede mais à esquerda ou mais à direita são **ladrilhos lineares** (linear tiles). Todos os outros são **ladrilhos flutuantes** (floating tiles). Os marcadores em ladrilhos flutuantes valem mais pontos. Os quartos de ladrilho não são levados em conta, e os buracos pretos contam como paredes virtuais aqui.
+Os ladrilhos que levam ao ladrilho inicial seguindo sempre a parede mais à esquerda ou mais à direita são **ladrilhos lineares** (linear tiles). Todos os outros são **ladrilhos flutuantes** (floating tiles). Os marcadores em ladrilhos flutuantes valem mais pontos. Os quartos de ladrilho não são levados em conta, e os buracos contam como paredes virtuais aqui.
 
 ![Um campo mostrando ladrilhos lineares em cinza e ladrilhos flutuantes em rosa](../../../docs/rules/rules_linear_floating.png)
 
@@ -62,32 +63,37 @@ Os ladrilhos prateados são pontos de controle (checkpoints) e podem ficar em qu
 ## Pântanos, obstáculos e buracos {#swamps-obstacles-and-holes}
 ![Um campo com um pântano, um buraco e um obstáculo](../../../docs/rules/rules_obstacles.png)
 
-* Os **pântanos** (swamps, ladrilhos marrons) fazem o tempo de partida correr mais rápido enquanto o robô está sobre eles. Na primeira vez que o robô entra em um pântano, o tempo corre 5 vezes mais rápido. Cada nova entrada no mesmo pântano aumenta esse fator em um, até o máximo de x10.
+* Os **pântanos** (ladrilhos marrons) fazem a bateria descarregar mais rápido enquanto o robô está sobre eles, porque os motores precisam fazer mais força. O tempo de partida não é afetado.
 * Os **obstáculos** podem estar fixos no piso, podem ter qualquer forma e cor e afetam a largura do caminho. Nas áreas 1 a 3, o centro de um obstáculo fica sempre em um ladrilho, nunca na borda entre ladrilhos, e há no máximo um obstáculo por ladrilho.
-* Os **buracos** (holes) têm bordas pretas. Se o robô cair em um, acontece uma falta de progresso.
+* Os **buracos** são ladrilhos com uma abertura no piso. As bordas são pretas, a 1,5 cm dos ladrilhos vizinhos. Se o robô cair em um, ocorre uma falta de progresso.
 
-Nenhum ladrilho é mais de uma destas coisas ao mesmo tempo: pântano, buraco, ponto de controle, ladrilho inicial, ladrilho com obstáculo ou passagem entre áreas.
+Nenhum ladrilho é mais de uma destas coisas ao mesmo tempo: pântano, buraco, ponto de controle, ladrilho de contato, ladrilho inicial, ladrilho com obstáculo ou passagem entre áreas.
+
+## Ladrilhos de contato {#contact-tiles}
+Os ladrilhos de contato são ladrilhos **ciano** onde a bateria do robô pode ser substituída durante a partida. O robô precisa ficar parado sobre o ladrilho enquanto a bateria é substituída. Veja [A bateria](#the-battery).
+
+![Um campo com ladrilhos de contato ciano](../../../docs/rules/rules_contact_tiles.png)
 
 ## Marcadores nas paredes {#wall-tokens}
-Há dois tipos de marcadores nas paredes: vítimas de letra e alvos cognitivos. Os dois podem aparecer em qualquer parede, inclusive em superfícies curvas. As vítimas de letra também podem estar giradas em qualquer ângulo.
+Há dois tipos de marcadores nas paredes: vítimas smiley e alvos cognitivos. Os dois podem aparecer em qualquer parede, inclusive em superfícies curvas, exceto nas paredes das passagens entre áreas. As vítimas smiley também podem estar giradas em qualquer ângulo, de 0 a 360 graus.
 
-![Alvos cognitivos e vítimas de letra nas paredes de um campo](../../../docs/rules/rules_wall_tokens.png)
+![Alvos cognitivos e vítimas smiley nas paredes de um campo](../../../docs/rules/rules_wall_tokens.png)
 
-### Vítimas de letra {#letter-victims}
-As vítimas de letra (letter victims) são imagens de 2 cm × 2 cm. O símbolo representa o estado de saúde da vítima, e o código é a letra que você informa e escreve no mapa.
+### Vítimas smiley {#smiley-victims}
+As vítimas smiley são imagens de 2 cm × 2 cm de um emoji de carinha, impresso em preto. A expressão do rosto representa o estado de saúde da vítima, e o código é a letra que você informa e escreve no mapa.
 
-| Estado | Símbolo | Código |
+| Estado | Rosto | Código |
 |---|---|---|
-| Ferida (Harmed) | Φ | `H` |
-| Estável (Stable) | Ψ | `S` |
-| Ilesa (Unharmed) | Ω | `U` |
+| Ferida | Triste | `H` |
+| Estável | Neutro | `S` |
+| Ilesa | Feliz | `U` |
 
-![Os símbolos fi, psi e ômega](../../../docs/rules/rules_victims.png)
+![Um rosto triste, um neutro e um feliz](../../../docs/rules/rules_victims.png)
 
 ### Vítimas falsas {#fake-victims}
-Alguns marcadores mostram os mesmos símbolos, mas com letras **tridimensionais**. Eles são falsos (fake victims): você não deve informá-los ao supervisor nem incluí-los no mapa. As regras dizem que essa profundidade pode ser detectada com um dos sensores disponíveis no Robot Customizer.
+Alguns marcadores mostram os mesmos rostos, mas os emojis são **tridimensionais**. Eles são falsos: você não deve informá-los ao supervisor nem incluí-los no mapa. As regras dizem que essa profundidade pode ser detectada com um dos sensores disponíveis no Robot Customizer.
 
-![Vítimas falsas com símbolos tridimensionais em uma parede](../../../docs/rules/rules_fake_victims.png)
+![Vítimas falsas com rostos tridimensionais em uma parede](../../../docs/rules/rules_fake_victims.png)
 
 ### Alvos cognitivos {#cognitive-targets}
 Os alvos cognitivos (cognitive targets) representam materiais perigosos (hazmats). São círculos com 5 cm de diâmetro, formados por cinco partes concêntricas, com diâmetros de 1, 2, 3, 4 e 5 cm. Cada cor tem um valor:
@@ -96,7 +102,7 @@ Os alvos cognitivos (cognitive targets) representam materiais perigosos (hazmats
 |---|---|---|---|---|
 | -2 | -1 | 0 | 1 | 2 |
 
-Some os valores das cinco partes para obter o tipo. Se a soma não estiver na lista abaixo, o alvo é falso e não deve ser informado nem mapeado.
+Some os valores das cinco partes para obter o tipo. Se a soma não estiver na lista abaixo, o alvo é um marcador falso e não deve ser informado nem mapeado.
 
 | Soma | Material perigoso | Código |
 |---|---|---|
@@ -117,14 +123,23 @@ O [tutorial Marcadores nas paredes](/docs/programming/wall-tokens/) mostra como 
 - As equipes usam o modelo de robô fornecido pelos organizadores e podem personalizá-lo com o [Robot Customizer](https://robot.erebus.rcj.cloud/) dentro de um orçamento de **3000**. Veja [Obtenha seu robô](/docs/robot/).
 - O robô pode usar um GPS, um sensor de cor, sensores de distância, câmeras RGB, um LiDAR, um giroscópio e um acelerômetro.
 - Os sensores simulados têm ruído realista. O seu programa precisa ser robusto a ele, e os organizadores não vão mudar os níveis de ruído na competição.
+
+### A bateria {#the-battery}
+O robô tem uma bateria que descarrega conforme a velocidade dos motores. O nível da bateria aparece na janela de controle, acima dos cronômetros. As regras não dizem o ritmo exato: espera-se que as equipes descubram o comportamento dela com testes.
+
+- Para substituir a bateria, o robô precisa **ficar parado sobre um ladrilho de contato por 5 segundos** de tempo simulado. A bateria então fica cheia de novo.
+- Nos pântanos, a bateria descarrega mais rápido.
+- Se a bateria acabar, a partida termina.
+
+O tutorial [Bateria](/docs/programming/battery/) mostra como seu programa pode ler o nível da bateria e substituí-la.
 - Os robôs precisam ser autônomos. Cada equipe tem um robô no campo.
 - O mapeamento prévio é proibido: isso vale tanto para o campo quanto para a localização dos marcadores, incluindo movimentos predefinidos a partir de posições conhecidas. Ele resulta em desclassificação imediata da rodada.
 
 ## Jogando uma partida {#playing-a-game}
 - Uma partida dura **8 minutos de tempo simulado**. Um segundo cronômetro corre em tempo real, com limite de **10 minutos**. A partida termina quando qualquer um dos cronômetros acaba.
-- Um ladrilho conta como visitado quando o centro do robô está dentro dele. O Erebus faz esse julgamento automaticamente.
-- A partida também termina quando o robô envia o comando de saída, ou quando o capitão da equipe pede o fim da partida (dependendo de como a partida é executada).
-- Os mundos da competição são revelados pouco antes das partidas, e os programas não podem ser alterados depois do prazo de cada rodada.
+- Um ladrilho conta como visitado quando o centro do robô está dentro dele, conforme determinado pelo supervisor.
+- A partida também termina quando a bateria acaba, quando o robô envia o comando de saída ou quando o capitão da equipe pede o fim da partida (dependendo de como a partida é realizada).
+- Os mundos da competição são revelados pouco antes das partidas, e os programas não podem ser alterados depois do prazo oficial de cada rodada, anunciado pelos organizadores.
 
 ### Falta de progresso {#lack-of-progress}
 Uma falta de progresso (Lack of Progress, LoP) acontece quando:
@@ -140,18 +155,18 @@ O robô é então colocado de volta no último ponto de controle visitado, ou no
 ## Pontuação {#scoring}
 A pontuação é automatizada pelo Erebus. As recompensas não se repetem: por exemplo, cada ponto de controle só pontua na primeira vez.
 
-Para identificar um marcador, o robô precisa parar por **pelo menos 1 segundo** e depois [enviar o tipo e a posição](/docs/programming/communication/#scoring-wall-tokens) ao gerenciador da partida. O centro do robô precisa estar a no máximo meio ladrilho do marcador.
+Para identificar um marcador, o robô precisa parar por **pelo menos 1 segundo** e depois [enviar o tipo e a posição](/docs/programming/communication/#scoring-wall-tokens) ao supervisor. O centro do robô precisa estar a no máximo meio ladrilho do marcador.
 
 | Item | Pontos |
 |---|---|
-| Identificação do marcador (TI) em um ladrilho linear nas áreas 1 a 3 | Vítima de letra: 5, alvo cognitivo: 10 |
-| Identificação do marcador (TI) em um ladrilho flutuante nas áreas 1 a 3, e todos os marcadores da área 4 | Vítima de letra: 15, alvo cognitivo: 30 |
-| Tipo correto (TT), além da TI | Vítima de letra: 10, alvo cognitivo: 20 |
+| Identificação do marcador (TI) em um ladrilho linear nas áreas 1 a 3 | Vítima smiley: 5, alvo cognitivo: 10 |
+| Identificação do marcador (TI) em um ladrilho flutuante nas áreas 1 a 3, e todos os marcadores da área 4 | Vítima smiley: 15, alvo cognitivo: 30 |
+| Tipo correto (TT), além da TI | Vítima smiley: 10, alvo cognitivo: 20 |
 | Ponto de controle visitado (CN) | 10 |
 | Identificação errada do marcador (TMI) | -5 |
 | Falta de progresso (LoP) | -5 |
 
-A pontuação total não pode ficar abaixo de zero. Uma identificação errada significa informar uma posição a mais de meio ladrilho do marcador, informar um marcador onde não há nenhum, ou informar uma vítima de letra como alvo cognitivo, ou vice-versa. Informar um marcador falso se encaixa na segunda categoria.
+A pontuação total não pode ficar abaixo de zero. Uma identificação errada significa informar uma posição a mais de meio ladrilho do marcador, informar um marcador onde não há nenhum, ou informar uma vítima smiley como alvo cognitivo, ou vice-versa. Informar um marcador falso se encaixa na segunda categoria.
 
 **Multiplicadores de área (AM)**: TI, TT e CN são multiplicados por 1, 1,25, 1,5 e 2 nas áreas 1, 2, 3 e 4, respectivamente. TMI e LoP não são multiplicados.
 
@@ -163,7 +178,7 @@ A pontuação de campo de uma partida é calculada assim:
 
 ![A pontuação de campo é igual à soma, nas quatro áreas, de TI mais TT mais CN vezes AM, menos TMI e LoP, tudo multiplicado por EB e MB](../../../docs/rules/rules_field_score.png)
 
-Por exemplo, uma execução com estes resultados marca 2680,15 pontos:
+Por exemplo, uma execução com estes resultados marca 2825,35 pontos:
 
 ![Exemplo resolvido de um cálculo de pontuação](../../../docs/rules/rules_scoring_example.png)
 

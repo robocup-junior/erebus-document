@@ -25,9 +25,9 @@ O Erebus diferencia essas mensagens pelo tamanho, então um informe precisa ter 
 | Mensagem | Formato | Tamanho | Finalidade |
 |---|---|---|---|
 | `L` | `c` | 1 byte | Aconteceu uma falta de progresso |
-| `G` | `c f i i`: `G`, pontuação, tempo de partida restante, tempo real restante | 16 bytes | Resposta a `G`. Os tempos são em segundos. |
+| `G` | `c f i i f`: `G`, pontuação, tempo de partida restante, tempo real restante, nível da bateria | 20 bytes | Resposta a `G`. Os tempos são em segundos, e o nível da bateria é uma porcentagem de 0 a 100. |
 
-Observe que o pacote de `G` inclui preenchimento (padding), já que o formato `struct` acima alinha o float: a pontuação começa no byte 4, e os tempos nos bytes 8 e 12.
+Note que o pacote de `G` inclui preenchimento, porque o formato `struct` acima alinha o número de ponto flutuante: a pontuação começa no byte 4, os tempos nos bytes 8 e 12, e o nível da bateria no byte 16.
 
 ## Funções comuns do Webots {#common-webots-functions}
 

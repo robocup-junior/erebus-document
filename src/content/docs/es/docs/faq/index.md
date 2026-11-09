@@ -15,7 +15,7 @@ Esta documentación trata Python y C/C++. Erebus también puede cargar controlad
 No, consulta los [requisitos](/docs/installation/). Los ordenadores más lentos pueden necesitar [ajustes gráficos más bajos](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### ¿Puedo usar una versión más reciente de Webots? {#can-i-use-a-newer-version-of-webots}
-No. Erebus v26 funciona con Webots **R2023b**. Puedes tener otras versiones instaladas a la vez.
+No. Erebus v27 funciona con Webots **R2025a**. Puedes tener otras versiones instaladas a la vez, como R2023b para Erebus v26.
 
 ### ¿Puedo usar bibliotecas como OpenCV o NumPy? {#can-i-use-libraries-like-opencv-or-numpy}
 Sí. Se permite código externo, siempre que reconozcas a sus autores y respetes su licencia. Los equipos deben dar prioridad al aprendizaje y tienen que poder explicar cómo funciona su solución.
@@ -38,7 +38,13 @@ Se produce una falta de progreso (Lack of Progress, LoP): el robot vuelve al úl
 No, pero volver a la baldosa de salida y enviar `E` da una bonificación de salida (Exit bonus) del 10 %, siempre que haya identificado al menos una marca en la pared.
 
 ### ¿Cómo puede saber mi robot cuánto tiempo queda? {#how-can-my-robot-tell-how-much-time-is-left}
-Con el [mensaje `G`](/docs/programming/communication/#game-information). Hay dos temporizadores, y el tiempo de partida corre más rápido en los pantanos.
+Con el [mensaje `G`](/docs/programming/communication/#game-information). Hay dos temporizadores, y la partida termina cuando cualquiera de ellos se agota.
+
+### ¿Qué pasa cuando se agota la batería? {#what-happens-when-the-battery-runs-out}
+La partida termina. Para evitarlo, detente 5 segundos sobre una baldosa de contacto cian, lo que reemplaza la batería. Tu programa puede leer el nivel de la batería con el [mensaje `G`](/docs/programming/communication/#game-information). Consulta [Batería](/docs/programming/battery/).
+
+### ¿Conducir despacio ahorra batería? {#does-driving-slowly-save-the-battery}
+La batería se descarga según la velocidad de los motores, así que un robot lento gasta menos batería por segundo, pero también recorre menos terreno en ese tiempo. Busca con pruebas el mejor equilibrio para tu robot.
 
 ### ¿Tengo que explorar el área 4? {#do-i-have-to-explore-area-4}
 No. Es opcional, pero sus marcas son las que más valen: los puntos más altos, multiplicados por 2.

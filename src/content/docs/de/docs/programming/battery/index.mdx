@@ -1,0 +1,53 @@
+---
+title: Akku
+description: Lies den Akkustand deines Roboters, und tausche den Akku auf einer Kontaktkachel aus, bevor er leer ist.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Dein Roboter hat einen Akku, und das Spiel endet, wenn er leer ist. Auf dieser Seite lernst du, wie schnell er sich entlädt, wie dein Programm ihn lesen kann und wie du ihn austauschst.
+
+## Wie der Akku funktioniert \{#how-the-battery-works\}
+
+- Der Akku beginnt bei 100 % und **entlädt sich mit der Geschwindigkeit der Räder**: Je schneller sie sich drehen, desto schneller wird er leer. Mit den Standardeinstellungen verbraucht ein stehender Roboter keinen Akku.
+- In **Sümpfen** entlädt er sich schneller.
+- Um ihn auszutauschen, muss der Roboter **5 Sekunden lang auf einer Kontaktkachel stillstehen**. Danach ist der Akku wieder bei 100 %. Bewegt er sich oder verlässt er die Kachel, beginnen die 5 Sekunden von vorn.
+- Erreicht der Akku 0 %, endet das Spiel mit `Battery depleted`. Ein leerer Akku kann nicht ausgetauscht werden.
+
+Das Steuerfenster zeigt den Akkustand über den Timern an. Unter 20 % zeigt es „Low battery“:
+
+![Die Punktzahl, der Akkustand und die Timer im Steuerfenster, mit fast leerem Akku](../../../../docs/programming/battery/battery-low.png)
+
+Die Regeln sagen nicht, wie schnell sich der Akku entlädt: Von den Teams wird erwartet, dass sie es durch Tests herausfinden. Mit den Standardeinstellungen von Erebus v27 verbrauchen zwei Räder bei voller Geschwindigkeit (6,28 rad/s) etwa 1,25 % pro Sekunde. Ein Roboter, der nie anhält, hätte also in weniger als anderthalb Minuten keinen Akku mehr, viel weniger als die 8 Minuten eines Spiels. Veranstalter können diese Einstellungen ändern, also miss sie in deinem Programm, statt dich auf diese Zahlen zu verlassen.
+
+## Den Akkustand lesen \{#reading-the-battery-level\}
+
+Der Akkustand ist der letzte Wert der [Spielinformationen](/docs/programming/communication/#game-information). Diese Funktion fragt sie einmal pro Sekunde ab und hält den neuesten Wert in `battery` fest:
+
+<CodeTabs file="battery" region="battery" />
+
+## Den Akku austauschen \{#replacing-the-battery\}
+
+Kontaktkacheln sind cyanfarben, deshalb erkennt sie der [Farbsensor](/docs/programming/sensors/colour-sensor/): Rot ist nahe 0, Grün und Blau sind hoch.
+
+Der Farbsensor des Starterroboters sitzt vorne, aber Erebus prüft die Position des **Mittelpunkts** des Roboters. Wenn der Sensor Cyan sieht, fährt der Roboter deshalb noch kurz weiter, bevor er anhält. Dann wartet er, bis der Akku voll ist, was 5 Sekunden dauert:
+
+<CodeTabs file="battery" region="contact" />
+
+## Das vollständige Programm \{#the-complete-program\}
+
+Dieses Programm fährt herum, weicht Wänden aus und tauscht seinen Akku aus, wenn es mit weniger als 50 % über eine Kontaktkachel fährt. Führe es auf `2027_d1r1.wbt` aus, wo eine Kontaktkachel neben der Startkachel liegt.
+
+<CodeTabs file="battery" />
+
+Die Spielereignisse zeigen jeden Austausch als `Battery replaced`:
+
+![Die Spielereignisse, mit zwei Akkuwechseln](../../../../docs/programming/battery/battery-events.png)
+
+## Planen \{#planning\}
+- Merke dir, wo die Kontaktkacheln sind: Speichere sie beim Erkunden, wie du es für die Karte tust.
+- Fahre zur nächsten bekannten Kontaktkachel, bevor der Akku knapp wird. Plane einen Puffer ein, denn der Rückweg kann länger dauern als gedacht.
+- Meide Sümpfe, wenn du kannst, oder durchquere sie schnell.
+- Anhalten kostet Spielzeit, mit den Standardeinstellungen aber keinen Akku. Der Halt von 1 Sekunde, um eine Wandmarkierung zu melden, kostet also keinen Akku.
+
+Als Nächstes lernst du in [Erkunden und Kartieren](/docs/programming/exploring/), festzuhalten, wo der Roboter schon war.

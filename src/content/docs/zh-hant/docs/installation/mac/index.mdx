@@ -1,6 +1,6 @@
 ---
 title: macOS
-description: 在 macOS 上安裝 Erebus 和 Webots R2023b。
+description: 在 macOS 上安裝 Erebus 和 Webots R2025a。
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. 從[官方網站](https://www.python.org/downloads/macos/)安裝 **Python 3.9 或更新版本**。
+1. 從[官方網站](https://www.python.org/downloads/macos/)安裝 **Python 3.10 或更新版本**。
 
    即使你已經透過 Homebrew、Anaconda 或類似工具安裝了 Python，我們仍建議用這個方式安裝。否則，模擬可能無法正常運作。
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python3 -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. 從[官方儲存庫](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b.dmg)安裝 **Webots R2023b**。
+3. 從[官方儲存庫](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a.dmg)安裝 **Webots R2025a**。
 
 4. 下載 <DownloadErebus />，然後解壓縮。
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 雙擊世界檔 `game/worlds/world1.wbt`，在 Webots 中開啟它。
 
-Webots 會在你的網頁瀏覽器中開啟 Erebus 控制視窗。第一次執行時，Erebus 會安裝一些 Python 函式庫，可能需要一點時間。當視窗顯示 08:00 的比賽計時器時，就準備好了：
+Webots 會在你的網頁瀏覽器中開啟 Erebus 控制視窗。第一次執行時，Erebus 會安裝一些 Python 函式庫並準備機器人模型，可能需要一點時間。當視窗顯示 **Ready** 和 08:00 的比賽計時器時，就準備好了：
 
 ![Erebus 控制視窗，已準備好開始](../../../../docs/installation/mac/../control-window-ready.png)
+
+第一次執行時，Webots 主控台還可能顯示 `ERROR: Skipped PROTO 'custom_robot'`。可以忽略它：Erebus 會準備好機器人模型，並自動重新載入世界。
 
 接下來，請閱讀[規則摘要](/docs/rules/)以了解比賽。如果發生問題，請參閱[疑難排解](/docs/troubleshooting/)。

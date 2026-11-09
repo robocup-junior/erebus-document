@@ -30,7 +30,7 @@ L’aperçu 3D est à gauche, et les composants et le budget sont à droite.
 
 ## L’utiliser dans Erebus {#using-it-in-erebus}
 
-Appuyez sur le bouton LOAD de droite de la [fenêtre de contrôle](/docs/getting-started/#the-control-window) et choisissez votre fichier `.json`. Consultez [Le charger dans Erebus](/docs/robot/#load-it-in-erebus). Erebus vérifie le budget et génère le robot, et la console de Webots liste chaque composant et son coût.
+Dans la [fenêtre de contrôle](/docs/getting-started/#robot-setup), appuyez sur **Robot setup**, puis sur **Load file** sous **Robot JSON**, et choisissez votre fichier `.json`. Voir [Le charger dans Erebus](/docs/robot/#load-it-in-erebus). Erebus vérifie le budget et génère le robot, et la console de Webots liste chaque composant avec son coût.
 
 Chargez d’abord votre robot, puis votre programme.
 

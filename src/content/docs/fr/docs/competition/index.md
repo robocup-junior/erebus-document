@@ -3,7 +3,7 @@ title: Se préparer à une compétition
 description: Une liste de vérification pour être prêt pour une compétition RoboCupJunior Rescue Simulation.
 ---
 
-Cette page est un guide pour la compétition internationale selon les règles 2026. Les compétitions locales et régionales peuvent être différentes : renseignez-vous auprès de vos organisateurs. Les [règles](/docs/rules/) officielles s’appliquent toujours.
+Cette page est un guide pour la compétition internationale selon les règles 2027. Les compétitions locales et régionales peuvent être différentes : renseignez-vous auprès de vos organisateurs. Les [règles](/docs/rules/) officielles s’appliquent toujours.
 
 ## Calendrier {#timeline}
 
@@ -22,7 +22,7 @@ Les modèles et les grilles d’évaluation se trouvent sur le [site de la commu
 - [ ] **Technical Description Paper (TDP).** Suivez strictement le modèle : sinon, le document obtient 0 point.
 - [ ] **Poster,** sous forme de fichier et en version imprimée sur place, au format A1 maximum.
 - [ ] **Vidéo** présentant votre projet.
-- [ ] **Vidéo serveur-client,** nouveauté 2026 : une courte vidéo montrant comment vous lancez votre contrôleur sur une carte d’exemple dans la configuration serveur-client.
+- [ ] **Vidéo serveur-client :** une courte vidéo montrant comment vous lancez votre contrôleur sur une carte d’exemple dans la configuration serveur-client.
 - [ ] **Code source** et **formulaire web** pour les entretiens.
 
 ## Configuration de la compétition {#competition-setup}
@@ -30,7 +30,7 @@ Les parties se déroulent en configuration serveur-client : les organisateurs fo
 
 Apportez :
 
-- [ ] Un ordinateur avec votre programme et toutes ses bibliothèques installées, ainsi que Webots R2023b
+- [ ] Un ordinateur avec votre programme et toutes ses bibliothèques installées, ainsi que Webots R2025a
 - [ ] Un câble Ethernet, et un adaptateur si votre ordinateur en a besoin
 - [ ] Le fichier `.json` de votre robot, si vous avez un robot personnalisé
 - [ ] Le poster imprimé
@@ -47,9 +47,9 @@ Sauf annonce contraire des organisateurs, les réglages suivants sont utilisés.
 | Anti-aliasing | Disabled |
 
 ## Tester votre robot {#testing-your-robot}
-- [ ] Faites tourner votre robot sur tous les mondes fournis, en particulier `world3.wbt` et `world4.wbt`, qui contiennent des leurres.
+- [ ] Faire tourner sur chaque monde inclus, en particulier les quatre mondes `2027_`, qui comprennent des cases de contact et des leurres.
 - [ ] Créez vos propres cartes avec le [World Editor](/docs/tools/world-editor/), avec les quatre zones.
-- [ ] Vérifiez la partie complète : va-t-elle jusqu’au bout, avec la soumission de la carte et le retour au départ dans les temps ?
+- [ ] Vérifier le jeu entier : va-t-il jusqu’au bout, remplace-t-il sa batterie à temps, soumet-il la carte et revient-il au départ ?
 - [ ] Testez ce qui se passe après une absence de progression (Lack of Progress).
 - [ ] Testez sur l’ordinateur que vous apporterez, et avec les réglages OpenGL ci-dessus.
 

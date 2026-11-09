@@ -39,7 +39,7 @@ Jangan hanya menyusuri dinding: cara itu tidak akan pernah mencapai [ubin mengam
 3. Jika tidak ada, cari ubin terdekat yang punya tetangga belum dikunjungi dengan breadth-first search, lalu pergi ke sana.
 4. Jika tidak ada lagi ubin seperti itu, atau waktunya hampir habis, kembali ke titik awal dengan cara yang sama.
 
-Anggap lubang sebagai dinding. Rawa menghabiskan waktu, dan makin banyak setiap kali kamu masuk ke rawa yang sama, jadi masuki rawa hanya jika sepadan.
+Perlakukan lubang seperti dinding. Rawa menguras baterai lebih cepat, jadi masuklah hanya jika sepadan. Ingat di mana ubin kontak berada, untuk [mengganti baterai](/docs/programming/battery/) di jalan.
 
 ## Tangani hal yang tak terduga {#handle-the-unexpected}
 - **Kurangnya kemajuan (lack of progress):** robot dipindahkan ke checkpoint terakhir. [Dengarkan pesan `L`](/docs/programming/communication/#lack-of-progress), dan perbarui posisimu.
@@ -59,4 +59,4 @@ Anggap lubang sebagai dinding. Rawa menghabiskan waktu, dan makin banyak setiap 
 
 Petamu bisa dimulai dari mana saja: Erebus [menyejajarkan matriks](/docs/rules/mapping/#how-correctness-is-calculated) menggunakan ubin awal, dan mencoba keempat rotasinya. [Aturan pemetaan](/docs/rules/mapping/) menjelaskan setiap nilai dalam matriks. Lalu [kirimkan petanya](/docs/programming/map-bonus/).
 
-Uji dengan world contoh, yang jawaban benarnya ada di [Aturan pemetaan](/docs/rules/mapping/#examples). Hasilnya muncul sebagai `Map Correctness` di riwayat jendela kontrol.
+Uji dengan world contoh, yang jawaban benarnya ada di [Aturan pemetaan](/docs/rules/mapping/#examples). Hasilnya muncul sebagai `Map Correctness` di event pertandingan jendela kontrol.

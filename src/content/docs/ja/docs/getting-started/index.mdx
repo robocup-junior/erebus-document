@@ -13,7 +13,8 @@ import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-m
 | フォルダー | 内容 |
 |---|---|
 | `game/worlds` | ワールド（`.wbt` ファイル）。どれかを開いて始めます。 |
-| `game/logs` | 各ゲームの終了時に書き出されるゲームのログ |
+| `game/logs` | 各ゲームの終了時に書き出されるゲームログ |
+| `match-results` | 試合ごとのフォルダー。リプレイと地図の結果が入ります |
 | `player_controllers` | コントローラーの例 |
 
 ## コントロールウィンドウ \{#the-control-window\}
@@ -22,73 +23,108 @@ import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-m
 
 ![Erebus のコントロールウィンドウ](../../../docs/getting-started/control_window.png)
 
+上から順に:
+
 | 部分 | 用途 |
 |---|---|
-| 左の **LOAD**（ノートパソコンのアイコン） | ロボットのコントローラープログラムを読み込みます |
-| 右の **LOAD**（ロボットのアイコン） | ロボット（`.json` ファイル）を読み込みます |
-| **TOGGLE REMOTE** | Webots の外で動くプログラムがロボットを制御できるようにします。[Remote Controller](/docs/competition/remote-controller/) を参照してください。 |
-| **Docker path** | `Dockerfile` のあるフォルダーです。再生ボタンの横にある Docker ボタンで、コントローラーをコンテナー内で実行します。[erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) リポジトリを参照してください。これは任意です。 |
-| **Settings** | リンクとオプションです。下で説明します |
+| ワールドと状態 | ワールドの名前と、試合の状態: Ready、Running、Paused、Finished |
+| **Robot setup** | プログラムとロボットを読み込み、リモートコントローラーを接続します。下で説明します。 |
+| **Advanced setup** | オプション。下で説明します |
 | **Worlds** | 別のワールドに切り替えます |
-| **Reset** | 読み込んだプログラムとゲームをリセットします |
-| **Give up!** | ゲームを終了します |
-| タイマー | ゲーム時間と、その下のかっこ内に実時間が表示されます。どちらかが 0 になるとゲームは終了します。 |
-| 電卓 | 現在のスコア |
+| スコア | 現在のスコア |
+| **Robot battery** | ロボットのバッテリー残量。20% を下回ると「Low battery」と表示されます。[バッテリー](/docs/programming/battery/)を参照してください。 |
+| **Simulation remaining** | 残りのゲーム時間。**Real-world allowance** は、実時間の残りがゲーム時間の残りよりどれだけ多いかを表します。どちらかが 0 になるとゲームは終わります。 |
+| 試合の操作 | 実行、一時停止、再配置、リセット、棄権、地図の保存。下で説明します。 |
+| **Match events** | 試合の履歴（新しい順）。**Export CSV** でファイルに保存できます。 |
+
+右上のボタンを押すと、同じウィンドウを別の小さなブラウザーウィンドウで開けます。
+
+:::note
+[Wireshark](/docs/installation/#optional-wireshark) をインストールしていない場合、ウィンドウにはネットワークアクセスが監視されていないという警告も表示され、確認を求められます。この監視は大会で運営者が使うものなので、警告を確認して、いつもどおり練習してかまいません。
+:::
+
+### Robot setup \{#robot-setup\}
+**Robot setup** を押して、プログラムとロボットを読み込みます。
+
+![プログラムとロボットを読み込んだ Robot setup パネル](../../../docs/getting-started/robot-setup.png)
+
+| 部分 | 用途 |
+|---|---|
+| **Controller** | **Load file** でロボットのプログラムを読み込みます。Python のファイルはそのまま読み込めます。C や C++ のプログラムは先にコンパイルしておく必要があります。 |
+| **Robot JSON** | **Load file** でロボット、つまり[ロボットカスタマイザー](/docs/robot/customizer/)で作った `.json` ファイルを読み込みます |
+| **Keep files after Reset** | ゲームをリセットしても、プログラムとロボットを読み込んだままにします。初期設定でオンです。 |
+| **Reload before Run** | 試合を実行するたびに **Original controller file** からプログラムを読み込み直し、最新の変更を使います。Webots を実行しているコンピューター上のファイルのパスを書きます。 |
+| **Remote mode** | Webots の外で動いているプログラムでロボットを操作できるようにします。[リモートコントローラー](/docs/competition/remote-controller/)を参照してください。**Keep on Reset** を使うと、ゲームをリセットしてもオンのままになります。 |
+| **Docker project path** | `Dockerfile` のあるフォルダー。**Run Docker** でコントローラーをコンテナーで実行します。[erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) リポジトリを参照してください。これは任意です。 |
+
+### 試合の操作 \{#match-controls\}
+
+![試合の操作ボタン](../../../docs/getting-started/match-controls.png)
+
+| ボタン | 用途 |
+|---|---|
+| **Run match** | ゲームを開始します。ワールドにロボットが現れ、プログラムが動き始めます。 |
+| **Pause** | ロボットを一時的に止めます。続けるには **Run match** を押します。 |
+| **Relocate** | 競技進行停止を宣言します。ロボットは最後に到達したチェックポイントに戻り、5 点を失います |
+| **Reset** | ゲームとワールドをリセットします |
+| **Give up** | ゲームを終了します |
+| **Save map** | ロボットが提出した地図の結果を保存して開きます。[地図の提出](/docs/programming/map-bonus/)を参照してください。 |
 
 ## プログラムを実行する \{#run-a-program\}
-<a href={mazeUrl} download="maze.py">maze.py をダウンロード</a>してください。ロボットに迷路を走り回らせる完全なプログラムで、[迷路を進む](/docs/programming/navigate-the-maze/)で自分で書くことになるプログラムです。
+<a href={mazeUrl} download="maze.py">maze.py をダウンロード</a>します。ロボットに迷路を走らせる完全なプログラムで、[迷路を進む](/docs/programming/navigate-the-maze/)で自分で書くことになるプログラムです。
 
 1. `game/worlds/world1.wbt` を開きます。
-1. まだ読み込んでいなければ、**右側の LOAD ボタン** でロボットを読み込みます。ワールドがロボットと一緒に再読み込みされます。
-1. **左側の LOAD ボタン** で `maze.py` を読み込みます。プログラムが読み込まれると、ボタンがオレンジ色の REMOVE ボタンに変わります。
-1. スタートボタンを押します。ロボットがワールドに現れ、動き始めます。
-![スタートボタン](../../../docs/getting-started/start_button.png)
-1. ロボットを一時的に止めるには、一時停止ボタンを押します。
-![一時停止ボタン](../../../docs/getting-started/pause_button.png)
-1. ロボットが動けなくなったら、リスタートボタンを押して競技進行停止（Lack of Progress）にします。ロボットは最後に到達したチェックポイントに戻され、5 点を失います。
-![競技進行停止ボタン](../../../docs/getting-started/lop_button.png)
-1. Reset ボタンを押すと、読み込んだプログラムと進行中のゲームがリセットされます。ゲーム終了後にもう一度実行したい場合は、ワールドを再読み込みしてください。
+1. まだなら、**Robot setup** を押し、**Robot JSON** の **Load file** でロボットを読み込みます。
+1. **Controller** の **Load file** で `maze.py` を読み込みます。読み込まれると、それぞれのファイル名が表示されます。
+1. **Run match** を押します。ワールドにロボットが現れ、動き始めます。
+1. ロボットを一時的に止めるには、**Pause** を押します。
+1. ロボットが動けなくなったら、**Relocate** を押して競技進行停止にします。
+1. **Reset** を押すとゲームがリセットされます。プログラムとロボットは読み込まれたままなので、もう一度実行できます。
 
-このプログラムには OpenCV が必要です。OpenCV は、ほかの [Python ライブラリ](/docs/installation/#python-libraries)と一緒にインストールしました。プログラムからのメッセージやエラーは、Webots のコンソールに表示されます。
+このプログラムには OpenCV が必要です。OpenCV はほかの [Python ライブラリ](/docs/installation/#python-libraries)と一緒にインストールしました。プログラムからのメッセージやエラーは Webots のコンソールに表示されます。
 
-ゲームの実行中は、ウィンドウの下部にスコアの履歴が表示されます。なぜ得点したのか、なぜ減点されたのかが正確にわかるので、プログラムを確認するのに最も役立ちます。
+ゲーム中は、ウィンドウの下に試合のイベントが表示されます。点が増えたり減ったりした理由が正確にわかるので、プログラムを確認するのにいちばん役立つ道具です。
 
-![ゲーム中のコントロールウィンドウとスコアの履歴](../../../docs/getting-started/control_window_running.png)
+![ゲーム中のコントロールウィンドウと試合のイベント](../../../docs/getting-started/control_window_running.png)
 
-ゲームが終わると、同じ情報が `game/logs` フォルダーに保存されます。
+`maze.py` は全速力で走り、バッテリーを交換しないので、`world1.wbt` では 2 分足らずで `Battery depleted` となってゲームが終わります。バッテリーの管理は[バッテリー](/docs/programming/battery/)で学びます。
+
+ゲームが終わると、同じ情報が `game/logs` フォルダーに保存されます。試合はインタラクティブな 3D リプレイとして `match-results` フォルダーにも保存されます。もう一度見るには、`recording/replay.html` をブラウザーで開きます。
 
 ## ほかのワールドを使う \{#using-other-worlds\}
-**Worlds** を押すと、別のワールドに切り替えられます。各ワールドにはサムネイルがあり、[World Editor](/docs/tools/world-editor/) で作った自作のワールドを追加することもできます。
+**Worlds** を押すと、別のワールドに切り替えられます。名前でワールドを検索して選び、**Load world** を押します。[ワールドエディター](/docs/tools/world-editor/)で作った自分のワールドを追加することもできます。
 
-![コントロールウィンドウの Worlds タブ](../../../docs/getting-started/worlds.png)
+![コントロールウィンドウの Worlds パネル](../../../docs/getting-started/worlds.png)
 
-Erebus v26.1 に含まれるワールドは次のとおりです。
+Erebus v27 に含まれるワールドは次のとおりです。
 
 | ワールド | 用途 |
 |---|---|
-| `world1.wbt`、`world2.wbt` | サンプルワールド。`world2.wbt` にはエリア 4 があります。 |
-| `world3.wbt`、`world4.wbt` | より大きなサンプルワールドで、**偽の被災者** も含まれています |
-| `mapping_example_1.wbt` 〜 `mapping_example_3.wbt` | 地図作成をテストするためのワールド。[地図作成](/docs/rules/mapping/)を参照してください。 |
+| `2027_d1r1.wbt`、`2027_d1r2.wbt`、`2027_d2r1.wbt`、`2027_d2r2.wbt` | 2027 年ルールの例のワールド。コンタクトタイルと偽物の被災者があります |
+| `world1.wbt`、`world2.wbt` | 例のワールド。`world2.wbt` にはエリア 4 があります。 |
+| `world3.wbt`、`world4.wbt` | より大きな例のワールドで、**偽物の被災者**もあります |
+| `mapping_example_1.wbt` から `mapping_example_3.wbt` | 地図作成をテストするためのワールド。[地図作成](/docs/rules/mapping/)を参照してください。 |
+| `mapping_example_1_cyan_tiles.wbt` | `mapping_example_1.wbt` にコンタクトタイルを 2 つ加えたもの |
 | `NewPassages.wbt` | エリア間の通路の例 |
 
-## 設定 \{#settings\}
-![コントロールウィンドウの Settings タブ](../../../docs/getting-started/settings.png)
+## Advanced setup \{#advanced-setup\}
+![コントロールウィンドウの Advanced setup パネル](../../../docs/getting-started/settings.png)
 
 | 設定 | 用途 |
 |---|---|
-| Keep controller/robot files | ワールドを再読み込みしても、プログラムとロボットを読み込んだままにします |
-| Disable automatic LoP | 20 秒後の自動の競技進行停止を止めます。デバッグ専用です。 |
+| Show head-up display | Webots のウィンドウにスコア、時間、最新のイベントを表示します |
 | Automatic camera | 視点がロボットを追いかけるようにします |
-| Recording | ゲームをビデオとして録画します |
-| Keep remote controller on | ワールドを再読み込みしても TOGGLE REMOTE をオンのままにします |
-| Enable debugging | たとえば壁のトークンの報告が却下された理由など、追加の情報を Webots のコンソールに表示します |
+| HTML replay recording | 試合ごとに、インタラクティブな 3D リプレイを `match-results` フォルダーに保存します |
+| Automatic map result | ロボットが地図を提出したらすぐに、地図の結果を保存して開きます |
+| Disable automatic LoP | 20 秒後の自動の競技進行停止を止めます。デバッグ専用です。 |
+| Enable debugging | Webots のコンソールに追加の情報を表示します。たとえば、壁のトークンの報告が拒否された理由などです |
 
-上部のリンクから、変更履歴や、ワールドとロボットを作るためのツールに移動できます。2026 年ルールのワールドを作るには、[World Editor](https://world.erebus.rcj.cloud/) を使ってください。
+ウィンドウの下にある **References** から、変更履歴、このドキュメント、ワールドやロボットを作るツールに移動できます。2027 年ルールのワールドを作るには、[ワールドエディター](https://world.erebus.rcj.cloud/)を使います。
 
 ## ロボットを好きな位置に手動で動かす \{#manually-move-the-robot-where-you-want-it-to-go\}
-シミュレーションウィンドウでロボットをクリックすると、赤・緑・青の矢印が表示されます。これらの矢印をマウスでドラッグすると、ロボットを好きな位置に動かせます。なお、プログラムを開始するまでロボットは表示されません。
+シミュレーションウィンドウでロボットをクリックすると、赤、緑、青の矢印が表示されます。この矢印をマウスでドラッグすると、ロボットを好きな位置に動かせます。ロボットはプログラムが開始するまで表示されないことに注意してください。
 ![Webots で選択したロボットと、移動用の矢印](../../../docs/getting-started/manual.png)
 
 
 ## 次へ \{#next\}
-ロボットが自分で探索する様子を見ました。次は、自分でプログラムを書いてみましょう。まずは[最初のプログラム](/docs/programming/first-program/)から始めてください。
+ロボットが自分で探索するところを見ました。次は自分でプログラムを書いてみましょう。[初めてのプログラム](/docs/programming/first-program/)から始めます。

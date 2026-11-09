@@ -15,7 +15,7 @@ description: Erebus と競技についてよくある質問です。
 いいえ。[動作環境](/docs/installation/)を参照してください。遅いコンピューターでは、[グラフィックスの設定を下げる](/docs/troubleshooting/#the-simulation-runs-too-slowly)必要があるかもしれません。
 
 ### 新しいバージョンの Webots を使えますか？ {#can-i-use-a-newer-version-of-webots}
-いいえ。Erebus v26 は Webots **R2023b** で動作します。ほかのバージョンを並べてインストールしておくことはできます。
+いいえ。Erebus v27 は Webots **R2025a** で動作します。Erebus v26 用の R2023b など、ほかのバージョンを並べてインストールしておくことはできます。
 
 ### OpenCV や NumPy などのライブラリを使えますか？ {#can-i-use-libraries-like-opencv-or-numpy}
 はい。作成者のクレジットを表記し、ライセンスを守れば、外部のコードを使えます。チームは学ぶことを優先し、自分たちの解決策のしくみを説明できなければなりません。
@@ -38,7 +38,13 @@ description: Erebus と競技についてよくある質問です。
 いいえ。ただし、壁のトークンを 1 つ以上識別していれば、スタートタイルに戻って `E` を送ることで 10% の脱出ボーナス（Exit bonus）が得られます。
 
 ### ロボットは残り時間をどうやって知るのですか？ {#how-can-my-robot-tell-how-much-time-is-left}
-[`G` メッセージ](/docs/programming/communication/#game-information)を使います。タイマーは 2 つあり、沼地ではゲーム時間が速く進みます。
+[`G` メッセージ](/docs/programming/communication/#game-information)を使います。タイマーは 2 つあり、どちらかが 0 になるとゲームは終わります。
+
+### バッテリーが切れるとどうなりますか？ {#what-happens-when-the-battery-runs-out}
+ゲームが終わります。そうならないように、シアンのコンタクトタイルの上で 5 秒間止まって、バッテリーを交換しましょう。プログラムは [`G` メッセージ](/docs/programming/communication/#game-information)でバッテリー残量を読み取れます。[バッテリー](/docs/programming/battery/)を参照してください。
+
+### ゆっくり走ればバッテリーは長持ちしますか？ {#does-driving-slowly-save-the-battery}
+バッテリーはモーターの速さに応じて減るので、遅いロボットは 1 秒あたりのバッテリー消費が少なくなりますが、その間に進める距離も短くなります。テストして、あなたのロボットにいちばん合うバランスを見つけましょう。
 
 ### エリア 4 を探索しなければなりませんか？ {#do-i-have-to-explore-area-4}
 いいえ。任意ですが、エリア 4 のトークンはいちばん価値があります。点数が最も高く、さらに 2 倍されます。

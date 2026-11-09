@@ -1,6 +1,6 @@
 ---
 title: macOS
-description: ติดตั้ง Erebus และ Webots R2023b บน macOS
+description: ติดตั้ง Erebus และ Webots R2025a บน macOS
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. ติดตั้ง **Python 3.9 ขึ้นไป** จาก[เว็บไซต์ทางการ](https://www.python.org/downloads/macos/)
+1. ติดตั้ง **Python 3.10 ขึ้นไป** จาก[เว็บไซต์ทางการ](https://www.python.org/downloads/macos/)
 
    แม้คุณจะมี Python ผ่าน Homebrew, Anaconda หรือเครื่องมืออื่นที่คล้ายกันอยู่แล้ว เราก็แนะนำให้ติดตั้งด้วยวิธีนี้ มิฉะนั้นการจำลองอาจทำงานไม่ถูกต้อง
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python3 -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. ติดตั้ง **Webots R2023b** จาก[รีโพสิทอรีทางการ](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b.dmg)
+3. ติดตั้ง **Webots R2025a** จาก[รีโพสิทอรีทางการ](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a.dmg)
 
 4. ดาวน์โหลด <DownloadErebus /> แล้วแตกไฟล์
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 ดับเบิลคลิกไฟล์โลก `game/worlds/world1.wbt` เพื่อเปิดใน Webots
 
-Webots จะเปิดหน้าต่างควบคุมของ Erebus ในเว็บเบราว์เซอร์ของคุณ ในครั้งแรก Erebus จะติดตั้งไลบรารี Python บางตัว ซึ่งอาจใช้เวลาสักพัก เมื่อหน้าต่างแสดงตัวจับเวลาเกม 08:00 ก็แสดงว่าพร้อมแล้ว:
+Webots จะเปิดหน้าต่างควบคุมของ Erebus ในเว็บเบราว์เซอร์ของคุณ ในครั้งแรก Erebus จะติดตั้งไลบรารี Python บางตัวและเตรียมโมเดลหุ่นยนต์ ซึ่งอาจใช้เวลาสักพัก เมื่อหน้าต่างแสดง **Ready** และตัวจับเวลาเกม 08:00 ก็แสดงว่าพร้อมแล้ว:
 
 ![หน้าต่างควบคุมของ Erebus ที่พร้อมเริ่มต้น](../../../../docs/installation/mac/../control-window-ready.png)
+
+ในครั้งแรก คอนโซลของ Webots อาจแสดง `ERROR: Skipped PROTO 'custom_robot'` ด้วย ซึ่งไม่ต้องสนใจ Erebus จะเตรียมโมเดลหุ่นยนต์และโหลดโลกใหม่เอง
 
 ขั้นต่อไป อ่าน[สรุปกติกา](/docs/rules/) เพื่อทำความเข้าใจเกม หากเกิดปัญหา ดูที่[การแก้ไขปัญหา](/docs/troubleshooting/)

@@ -25,9 +25,9 @@ Erebus distingue estos mensajes por su longitud, así que un informe debe tener 
 | Mensaje | Formato | Longitud | Función |
 |---|---|---|---|
 | `L` | `c` | 1 byte | Se ha producido una falta de progreso |
-| `G` | `c f i i`: `G`, puntuación, tiempo de partida restante, tiempo real restante | 16 bytes | Respuesta a `G`. Los tiempos están en segundos. |
+| `G` | `c f i i f`: `G`, puntuación, tiempo de partida restante, tiempo real restante, nivel de batería | 20 bytes | Respuesta a `G`. Los tiempos están en segundos, y el nivel de batería es un porcentaje de 0 a 100. |
 
-Ten en cuenta que el paquete de `G` incluye relleno, ya que el formato `struct` anterior alinea el float: la puntuación empieza en el byte 4, y los tiempos en los bytes 8 y 12.
+Ten en cuenta que el paquete de `G` incluye relleno, porque el formato `struct` de arriba alinea el número de coma flotante: la puntuación empieza en el byte 4, los tiempos en los bytes 8 y 12, y el nivel de batería en el byte 16.
 
 ## Funciones habituales de Webots {#common-webots-functions}
 

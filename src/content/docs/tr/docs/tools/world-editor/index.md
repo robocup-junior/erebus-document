@@ -10,12 +10,12 @@ Bunun için çevrim içi [Erebus World Editor](https://world.erebus.rcj.cloud/) 
 
 ![World Editor'da bitmiş bir harita](../../../../docs/tools/world-editor/overview.png)
 
-Yalnızca test için küçük haritalar yapıyorsan sahanın kurallara uyup uymadığı muhtemelen pek önemli değildir. Ama bir yarışma sahası yapmayı planlıyorsan resmî [Simülasyon Kurallarını](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) oku. Editör, sen çalışırken haritanı kurallara göre kontrol eder.
+Yalnızca test için küçük haritalar yapıyorsan sahanın kurallara uyup uymadığı muhtemelen pek önemli değildir. Ama bir yarışma sahası yapmayı planlıyorsan resmî [Simülasyon Kurallarını](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf) oku. Editör, sen çalışırken haritanı kurallara göre kontrol eder.
 
 Editörün yerleşik bir rehberi var: örnek bir harita yapan uygulamalı bir ders (yaklaşık 15 dakika), ekranın tanıtımı ya da Room 4 (4. oda) hakkında bir ders için sağ alttaki **Guide** düğmesine bas. Editörün dili hemen yanından değiştirilebilir.
 
 ## Harita başlatma {#starting-a-map}
-Editörü açtığında **hangi yılın kurallarını** izlemek istediğini seç ve **New map** düğmesine bas. **Erebus v26 için 2026 kurallarını seç.** 2027 kuralları, Erebus'un bir sonraki sürümü için bir taslaktır.
+Düzenleyiciyi açtığında **hangi yılın kurallarını** izleyeceğini seç ve **New map** düğmesine bas. **Erebus v27 için 2027 kurallarını seç.** 2026 kuralları Erebus v26 içindir. Bir haritanın kurallarını daha sonra üst çubuktan değiştirebilirsin.
 
 ![World Editor'ın başlangıç ekranı](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ Editörü açtığında **hangi yılın kurallarını** izlemek istediğini seç
 | Line | `L` | Duvar çiz |
 | Curve | `A` | 3. odada kavisli duvarlar çiz |
 | Eraser | `E` | Duvarları, zeminleri, engelleri ve kazazedeleri kaldır |
-| Floor | `F` | Kontrol noktalarını, çukurları, bataklıkları ve başlangıç karesini belirle |
+| Floor | `F` | Kontrol noktalarını, çukurları, bataklıkları, temas karelerini ve başlangıç karesini belirle |
 | Obstacle | `O` | Engel yerleştir |
-| Victims | `V` | Harf kazazedeleri, bilişsel hedefleri ve sahteleri yerleştir |
+| Victims | `V` | Gülen yüz kazazedeleri, bilişsel hedefleri ve sahteleri yerleştir |
 
 Fare tekerleği yakınlaştırır, Space tuşu basılıyken sürüklemek görünümü taşır; geri alma kısayolu ise `⌘Z` ya da `Ctrl+Z`'dir.
 
@@ -57,7 +57,7 @@ Duvar çizmek için **Line** aracını kullan: 1. odada kare kenarlarına, 2. ve
 ![Duvarlar için Line aracı](../../../../docs/tools/world-editor/walls.png)
 
 ## Zeminler ve engeller {#floors-and-obstacles}
-**Floor** aracıyla bir zemin türü seç ve ayarlamak için bir kareye tıkla. Başlangıç karesi 1. odadaki bir kare olmalıdır ve o olmadan dünya dışa aktarılamaz. Bir kare yalnızca çukur, bataklık, kontrol noktası, engel, başlangıç ya da geçitten biri olabilir.
+**Floor** aracıyla bir zemin türü seç ve ayarlamak için bir kareye tıkla: kontrol noktası, çukur, bataklık, temas karesi veya başlangıç. Başlangıç karesi Oda 1'de olmalıdır ve o olmadan dünya dışa aktarılamaz. Bir kare yalnızca çukur, bataklık, kontrol noktası, temas karesi, engel, başlangıç veya geçitten biri olabilir.
 
 ![Floor aracı](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ Duvar çizmek için **Line** aracını kullan: 1. odada kare kenarlarına, 2. ve
 ## Kazazedeler ve bilişsel hedefler {#victims-and-cognitive-targets}
 **Victims** aracıyla bir tür seç ve bir duvarın yakınına tıkla. Şunları yerleştirebilirsin:
 
-- Gerçek harf kazazedeler: yaralı, stabil ve yarasız
-- Üç boyutlu sembollü sahte harf kazazedeler
+- Gerçek gülen yüz kazazedeler: yaralı, stabil ve yarasız
+- Üç boyutlu yüzleri olan sahte gülen yüz kazazedeler
 - Bilişsel hedefler: tehlikeli madde türünü seç, istersen halkaların renklerini de seç. Toplam gösterilir ve türü o belirler
 - Halkalarının toplamı 0 ile 3 dışında bir değer olan sahte hedefler
 
@@ -105,8 +105,8 @@ Her değişiklik, sağ üstteki **Checks** kartında kurallara göre kontrol edi
 1. `.wbt` dosyasını Erebus'un `game/worlds` klasörüne kopyala. Dünya Erebus'taki dosyaları kullandığı için dosya o klasörde olmalıdır.
 1. Onu Webots'ta aç ya da [kontrol penceresinin](/docs/getting-started/) **Worlds** düğmesiyle seç.
 
-![Editör rehberindeki örnek harita, Erebus v26.1'de çalışırken.](../../../../docs/tools/world-editor/exported_world.png)
+![Editör rehberindeki örnek harita, Erebus v27'de çalışırken.](../../../../docs/tools/world-editor/exported_world.png)
 
-*Editör rehberindeki örnek harita, Erebus v26.1'de çalışırken.*
+*Editör rehberindeki örnek harita, Erebus v27'de çalışırken.*
 
 Bir `.wbt` dosyası düzenlenebilir bir haritaya geri dönüştürülemez, bu yüzden JSON dosyasını da sakla.

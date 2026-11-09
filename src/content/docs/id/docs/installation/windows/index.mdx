@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: Instal Erebus dan Webots R2023b di Windows.
+description: Instal Erebus dan Webots R2025a di Windows.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. Instal **Python 3.9 atau yang lebih baru** (64-bit) dari [situs web resminya](https://www.python.org/downloads/windows/). Selama instalasi, pastikan Python ditambahkan ke PATH-mu:
+1. Instal **Python 3.10 atau yang lebih baru** (64-bit) dari [situs web resminya](https://www.python.org/downloads/windows/). Selama instalasi, pastikan Python ditambahkan ke PATH-mu:
 
    ![Opsi Add Python to PATH pada installer Python](../../../../docs/installation/windows/python-path.png)
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. Instal **Webots R2023b** dari [repositori resminya](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe).
+3. Instal **Webots R2025a** dari [repositori resminya](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a_setup.exe).
 
 4. Unduh <DownloadErebus />, lalu ekstrak berkas zip-nya.
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 Klik dua kali berkas world `game/worlds/world1.wbt` untuk membukanya di Webots.
 
-Webots membuka jendela kontrol Erebus di browser web-mu. Saat pertama kali, Erebus menginstal beberapa library Python, yang mungkin butuh waktu cukup lama. Erebus sudah siap saat jendela menampilkan pewaktu permainan 08:00:
+Webots membuka jendela kontrol Erebus di browser web-mu. Saat pertama kali, Erebus menginstal beberapa library Python dan menyiapkan model robot, yang mungkin butuh waktu cukup lama. Erebus sudah siap saat jendela menampilkan **Ready** dan pewaktu permainan 08:00:
 
 ![Jendela kontrol Erebus, siap untuk dimulai](../../../../docs/installation/windows/../control-window-ready.png)
+
+Saat pertama kali, konsol Webots juga mungkin menampilkan `ERROR: Skipped PROTO 'custom_robot'`. Kamu bisa mengabaikannya: Erebus menyiapkan model robot dan memuat ulang world dengan sendirinya.
 
 Selanjutnya, baca [Ringkasan aturan](/docs/rules/) untuk memahami permainannya. Jika ada yang tidak beres, lihat [Pemecahan masalah](/docs/troubleshooting/).

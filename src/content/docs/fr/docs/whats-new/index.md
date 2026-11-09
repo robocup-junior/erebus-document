@@ -1,32 +1,31 @@
 ---
-title: Nouveautés de la v26
-description: Les changements d’Erebus v26 et des règles 2026 qui concernent votre robot.
+title: Nouveautés de la v27
+description: Les changements d’Erebus v27 et des règles 2027 qui concernent votre robot.
 ---
 
-Erebus v26 met en œuvre les règles 2026. Si vous venez d’une version précédente, voici les changements qui concernent votre robot.
+Erebus v27 applique les règles 2027. Si vous venez de la v26, voici les changements qui concernent votre robot.
 
-| Sujet | Jusqu’en 2025 | À partir de 2026 |
+| Sujet | Jusqu’en 2026 | À partir de 2027 |
 |---|---|---|
-| Victimes lettres | Lettres H, S, U | Symboles Φ (blessée, harmed), Ψ (stable), Ω (indemne, unharmed). Elles sont toujours signalées par `H`, `S`, `U`. |
-| Panneaux de matières dangereuses (hazmat signs) | Quatre étiquettes de matières dangereuses | Remplacés par les [cibles cognitives](/docs/rules/#cognitive-targets) (cognitive targets) : des anneaux colorés concentriques dont les valeurs s’additionnent pour donner le type. Elles sont toujours signalées par `F`, `P`, `C`, `O`. |
-| Leurres | - | Nouveauté : des [fausses victimes](/docs/rules/#fake-victims) (fake victims) aux lettres en trois dimensions, et des cibles cognitives dont la somme n’est pas comprise entre 0 et 3. Ne les signalez pas et ne les mettez pas sur la carte. |
-| Marécages | Temps consommé 5 fois plus vite | La première entrée dans un marécage vaut x5, et chaque nouvelle entrée dans le même marécage ajoute 1, jusqu’à x10. |
-| Obstacles sur la carte | Non cartographiés | Les cases avec un obstacle sont cartographiées par `x`. |
-| Bonus de cartographie | Jusqu’à x2 | Le multiplicateur vaut désormais exactitude × 1,2 + 1. |
-| Bruit des capteurs | - | Le GPS a du bruit. Les organisateurs ne modifieront pas les niveaux de bruit pour la compétition. |
-| Déroulement des parties | Annoncé pour chaque événement | Configuration serveur-client : votre contrôleur tourne sur votre propre ordinateur, relié au serveur de jeu par Ethernet. Consultez [Remote Controller](/docs/competition/remote-controller/). |
-| Documents | TDP, poster, vidéo | En plus, une courte vidéo montrant comment vous lancez votre contrôleur dans la configuration serveur-client. |
-| Parties manquées | -50 points | 0 point. |
+| Batterie | - | Nouveau : le robot a une [batterie](/docs/rules/#the-battery) qui se vide selon la vitesse de ses moteurs. Si elle est vide, le jeu se termine. |
+| Cases de contact | - | Nouveau : des [cases de contact](/docs/rules/#contact-tiles) cyan. Rester immobile 5 secondes dessus remplace la batterie. Elles sont cartographiées avec `k`. |
+| Marécages | Le temps de jeu s’écoule plus vite : x5 à la première entrée, jusqu’à x10 | La batterie se vide plus vite. Le temps de jeu n’est pas affecté. |
+| Victimes | Symboles Φ, Ψ, Ω | [Visages smiley](/docs/rules/#smiley-victims) : triste (blessée), neutre (stable) et content (indemne). Ils sont toujours signalés avec `H`, `S`, `U`. |
+| Victimes leurres | Symboles en relief | Visages smiley en relief |
+| Informations de jeu | La réponse à `G` fait 16 octets | La réponse à `G` fait 20 octets, et se termine par le niveau de la batterie. Voir [Informations de jeu](/docs/programming/communication/#game-information). |
+| Distance de signalement | Erebus v26 acceptait les signalements jusqu’à 9 cm du marqueur | Une demi-case (6 cm), comme le disent les règles |
+| Zones | Quatre zones, la zone 4 facultative | Jusqu’à quatre zones : la zone 1 est toujours présente, et les organisateurs peuvent omettre les zones 2 à 4 |
+| Webots | R2023b | **R2025a** |
+| Python | 3.9 ou plus récent | 3.10 ou plus récent |
 
-La version de Webots n’a pas changé : Erebus v26 fonctionne toujours avec Webots **R2023b**.
-
-Les deux versions publiées après la v26.0.0 ne modifient pas les règles. La v26.0.1 ajoute des mondes d’exemple avec des fausses victimes et un script qui transforme les victimes d’un monde existant en leurres, et la v26.1 corrige le marquage des obstacles dans la zone 4.
+[Votre première exécution](/docs/getting-started/) explique comment utiliser la fenêtre de contrôle d’Erebus v27.
 
 ## Mettre à jour votre programme {#updating-your-program}
 
-1. Adaptez votre détection des victimes aux nouveaux symboles. Les lettres que vous signalez ne changent pas.
-2. Remplacez la détection des matières dangereuses par la [lecture des cibles cognitives](/docs/programming/wall-tokens/#reading-a-cognitive-target).
-3. Assurez-vous que votre programme ne signale pas les leurres, et les laisse hors de la carte.
-4. Ajoutez les obstacles à votre carte, sous la forme `x`.
-5. Planifiez votre itinéraire en tenant compte des nouveaux marécages : chaque fois que le robot entre dans le même marécage, cela coûte plus de temps.
-6. Entraînez-vous avec la [configuration serveur-client](/docs/competition/remote-controller/).
+1. Lisez la réponse à `G` sur 20 octets. Un programme qui n’accepte que 16 octets ne reçoit plus les informations de jeu.
+1. Surveillez le niveau de la batterie, et prévoyez votre trajet pour que le robot atteigne une case de contact avant qu’elle soit vide. Voir [Batterie](/docs/programming/battery/).
+1. Ajoutez les cases de contact à votre carte, avec `k`.
+1. Adaptez votre détection des victimes aux visages smiley. Les lettres que vous signalez ne changent pas.
+1. Signalez les marqueurs de plus près : le centre du robot, et la position envoyée, doivent être à moins d’une demi-case du marqueur.
+1. Les marécages coûtent maintenant de la batterie au lieu du temps : tenez-en compte dans votre plan de batterie.
+1. Installez Webots R2025a et Python 3.10 ou plus récent, et vérifiez que votre programme fonctionne toujours. Voir [Installation](/docs/installation/).

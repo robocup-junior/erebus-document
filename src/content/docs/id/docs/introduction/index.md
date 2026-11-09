@@ -3,7 +3,7 @@ title: Apa itu Erebus?
 description: Erebus adalah platform simulasi penyelamatan RoboCupJunior, yang dibangun di atas Webots. Pelajari bagaimana bagian-bagiannya saling berkaitan.
 ---
 
-Erebus adalah lingkungan kompetisi simulasi robot. Kamu mengembangkan controller untuk robot yang secara mandiri menjelajahi labirin, menemukan dan mengidentifikasi penanda dinding (korban huruf dan target kognitif), menghindari rintangan dan jebakan, serta membuat peta lingkungannya.
+Erebus adalah lingkungan kompetisi simulasi robot. Kamu mengembangkan controller untuk robot yang secara mandiri menjelajahi labirin, menemukan dan mengidentifikasi penanda dinding (korban smiley dan target kognitif), menghindari rintangan dan jebakan, menjaga baterainya tetap terisi, serta membuat peta lingkungannya.
 
 Erebus dibangun di atas [Webots](https://cyberbotics.com/), platform simulasi robotik yang dirancang untuk penggunaan profesional dan banyak dipakai di industri, pendidikan, dan penelitian. Cyberbotics terus mengembangkan dan memelihara Webots sejak 1998.
 
@@ -13,8 +13,8 @@ Platform ini terutama dirancang untuk kompetisi [RoboCupJunior Rescue Simulation
 
 | Komponen | Fungsinya | Tempat mendapatkannya |
 |---|---|---|
-| **Webots R2023b** | Simulator robot 3D | [Rilis Webots R2023b](https://github.com/cyberbotics/webots/releases/tag/R2023b) |
-| **Erebus** | World dan pengelola permainan (Main Supervisor), yang menerapkan aturan dan menghitung skor | [Rilis Erebus](https://github.com/robocup-junior/erebus/releases) |
+| **Webots R2025a** | Simulator robot 3D | [Rilis Webots R2025a](https://github.com/cyberbotics/webots/releases/tag/R2025a) |
+| **Erebus** | World dan supervisor (Main Supervisor), yang menerapkan aturan dan menghitung skor | [Rilis Erebus](https://github.com/robocup-junior/erebus/releases) |
 | **Controller-mu** | Program robotmu, dalam Python atau C/C++ | Kamu yang menulisnya! |
 | **Robot Customizer** | Alat web untuk merancang robot kustom dan mengekspornya sebagai berkas JSON | [robot.erebus.rcj.cloud](https://robot.erebus.rcj.cloud/) |
 | **World Editor** | Alat web untuk menggambar peta latihan dan mengekspornya sebagai world `.wbt` | [world.erebus.rcj.cloud](https://world.erebus.rcj.cloud/) |
@@ -26,12 +26,12 @@ Platform ini terutama dirancang untuk kompetisi [RoboCupJunior Rescue Simulation
 3. **Jalankan.** Uji di world yang sudah disertakan atau di world buatanmu sendiri, dan lihat skornya.
 4. **Bertanding.** Ikuti kompetisi RoboCupJunior tingkat lokal, regional, dan internasional.
 
-Jika kamu sudah mengenal Erebus, lihat [Yang baru di v26](/docs/whats-new/).
+Jika kamu sudah mengenal Erebus, lihat [Yang baru di v27](/docs/whats-new/).
 
 ## Referensi yang berguna {#useful-references}
 Tautan yang berguna untuk mempelajari dan menggunakan Erebus:
-- [Panduan Pengguna Webots](https://cyberbotics.com/doc/guide/index?version=R2023b)
-- [Manual Referensi Webots](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2023b)
+- [Panduan Pengguna Webots](https://cyberbotics.com/doc/guide/index?version=R2025a)
+- [Manual Referensi Webots](https://cyberbotics.com/doc/reference/nodes-and-api-functions?version=R2025a)
 - [Dokumentasi Python](https://www.python.org/doc/)
 - [Dokumentasi C++](https://www.cplusplus.com/doc/tutorial/)
 - [Tutorial OpenCV](https://docs.opencv.org/4.x/d9/df8/tutorial_root.html)

@@ -1,32 +1,31 @@
 ---
-title: v26'daki yenilikler
-description: Erebus v26'daki ve 2026 kurallarındaki, robotunu etkileyen değişiklikler.
+title: v27'deki yenilikler
+description: Erebus v27'deki ve 2027 kurallarındaki, robotunu etkileyen değişiklikler.
 ---
 
-Erebus v26, 2026 kurallarını uygular. Daha eski bir sürümden geliyorsan robotunu etkileyen değişiklikler şunlardır.
+Erebus v27, 2027 kurallarını uygular. v26'dan geliyorsan robotunu etkileyen değişiklikler şunlardır.
 
-| Konu | 2025'e kadar | 2026'dan itibaren |
+| Konu | 2026'ya kadar | 2027'den itibaren |
 |---|---|---|
-| Harf kazazedeler | H, S, U harfleri | Φ (yaralı), Ψ (stabil), Ω (yarasız) sembolleri. Hâlâ `H`, `S`, `U` olarak bildirilirler. |
-| Tehlikeli madde işaretleri (hazmat signs) | Dört tehlikeli madde etiketi | Yerlerini [bilişsel hedefler](/docs/rules/#cognitive-targets) aldı: değerlerinin toplamı türü veren, eş merkezli renkli halkalar. Hâlâ `F`, `P`, `C`, `O` olarak bildirilirler. |
-| Sahte işaretler | - | Yeni: üç boyutlu harfli [sahte kazazedeler](/docs/rules/#fake-victims) ve toplamı 0 ile 3 arasında olmayan bilişsel hedefler. Bunları bildirme ve haritaya ekleme. |
-| Bataklıklar | Süre 5 kat hızlı akar | Bir bataklığa ilk girişte çarpan x5'tir; aynı bataklığa her yeni girişte 1 artar, en fazla x10 olur. |
-| Haritadaki engeller | Haritaya eklenmez | Engel bulunan kareler haritada `x` olarak işaretlenir. |
-| Haritalama bonusu | En fazla x2 | Çarpan artık doğruluk × 1,2 + 1. |
-| Sensör gürültüsü | - | GPS'te gürültü var. Organizatörler yarışma için gürültü seviyelerini değiştirmez. |
-| Oyunların yürütülmesi | Her etkinlik için duyurulur | Sunucu-istemci kurulumu: denetleyicin kendi bilgisayarında çalışır ve oyun sunucusuna Ethernet ile bağlanır. [Remote Controller](/docs/competition/remote-controller/) sayfasına bak. |
-| Belgeler | TDP, poster, video | Bunlara ek olarak, denetleyicini sunucu-istemci kurulumunda nasıl çalıştırdığını gösteren kısa bir video. |
-| Kaçırılan oyunlar | -50 puan | 0 puan. |
+| Batarya | - | Yeni: robotun, motorlarının hızına göre azalan bir [bataryası](/docs/rules/#the-battery) var. Biterse oyun sona erer. |
+| Temas kareleri | - | Yeni: camgöbeği [temas kareleri](/docs/rules/#contact-tiles). Birinin üzerinde 5 saniye hareketsiz durmak bataryayı değiştirir. Haritada `k` ile gösterilir. |
+| Bataklıklar | Oyun süresi daha hızlı akar: ilk girişte x5, en fazla x10 | Batarya daha hızlı azalır. Oyun süresi etkilenmez. |
+| Kazazedeler | Φ, Ψ, Ω sembolleri | [Gülen yüzler](/docs/rules/#smiley-victims): üzgün (yaralı), nötr (stabil) ve mutlu (yarasız). Hâlâ `H`, `S`, `U` olarak bildirilir. |
+| Sahte kazazedeler | Üç boyutlu semboller | Üç boyutlu gülen yüzler |
+| Oyun bilgisi | `G` yanıtı 16 bayttır | `G` yanıtı 20 bayttır ve batarya seviyesiyle biter. Bkz. [Oyun bilgisi](/docs/programming/communication/#game-information). |
+| Bildirim mesafesi | Erebus v26 işarete 9 cm'ye kadar olan bildirimleri kabul ediyordu | Kurallardaki gibi yarım kare (6 cm) |
+| Alanlar | Dört alan, Alan 4 isteğe bağlı | En fazla dört alan: Alan 1 her zaman vardır, organizatörler Alan 2-4'ü koymayabilir |
+| Webots | R2023b | **R2025a** |
+| Python | 3.9 veya üstü | 3.10 veya üstü |
 
-Webots sürümü değişmedi: Erebus v26 hâlâ Webots **R2023b** üzerinde çalışır.
-
-v26.0.0'dan sonra yayımlanan iki sürüm kuralları değiştirmez. v26.0.1, sahte kazazedeler içeren örnek dünyalar ve mevcut bir dünyadaki kazazedeleri sahteye dönüştüren bir betik ekler. v26.1 ise 4. alandaki engellerin işaretlenme şeklini düzeltir.
+[İlk çalıştırman](/docs/getting-started/), Erebus v27 kontrol penceresinin nasıl kullanılacağını gösterir.
 
 ## Programını güncelleme {#updating-your-program}
 
-1. Kazazede tespitini yeni sembollere göre güncelle. Bildirdiğin harfler değişmez.
-2. Tehlikeli madde tespitini [bilişsel hedef okuma](/docs/programming/wall-tokens/#reading-a-cognitive-target) ile değiştir.
-3. Programının sahteleri bildirmediğinden ve onları haritaya eklemediğinden emin ol.
-4. Engelleri haritana `x` olarak ekle.
-5. Rotanı yeni bataklıkları göz önünde bulundurarak planla: robot aynı bataklığa her girdiğinde daha fazla zaman kaybeder.
-6. [Sunucu-istemci kurulumu](/docs/competition/remote-controller/) ile pratik yap.
+1. `G` yanıtını 20 bayt olarak oku. Yalnızca 16 baytı kabul eden bir program artık oyun bilgisini alamaz.
+1. Batarya seviyesini izle ve rotanı, robot batarya bitmeden bir temas karesine ulaşacak şekilde planla. Bkz. [Batarya](/docs/programming/battery/).
+1. Temas karelerini haritana `k` olarak ekle.
+1. Kazazede algılamanı gülen yüzlere göre güncelle. Bildirdiğin harfler değişmez.
+1. İşaretleri daha yakından bildir: robotun merkezi ve gönderdiğin konum, işarete yarım kare mesafede olmalıdır.
+1. Bataklıklar artık zaman yerine batarya harcatır; batarya planında bunları hesaba kat.
+1. Webots R2025a ile Python 3.10 veya üstünü kur, ve programının hâlâ çalıştığını kontrol et. Bkz. [Kurulum](/docs/installation/).

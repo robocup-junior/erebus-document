@@ -1,6 +1,6 @@
 ---
 title: macOS
-description: Instala Erebus y Webots R2023b en macOS.
+description: Instala Erebus y Webots R2025a en macOS.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. Instala **Python 3.9 o posterior** desde el [sitio web oficial](https://www.python.org/downloads/macos/).
+1. Instala **Python 3.10 o posterior** desde el [sitio web oficial](https://www.python.org/downloads/macos/).
 
    Aunque ya tengas Python mediante Homebrew, Anaconda u otra herramienta similar, te recomendamos instalarlo de esta forma. Si no, puede que la simulación no funcione correctamente.
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python3 -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. Instala **Webots R2023b** desde el [repositorio oficial](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b.dmg).
+3. Instala **Webots R2025a** desde el [repositorio oficial](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a.dmg).
 
 4. Descarga <DownloadErebus /> y descomprímelo.
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 Haz doble clic en el archivo de mundo `game/worlds/world1.wbt` para abrirlo en Webots.
 
-Webots abre la ventana de control de Erebus en tu navegador web. La primera vez, Erebus instala algunas bibliotecas de Python, lo que puede tardar un rato. Está lista cuando la ventana muestra el temporizador de partida en 08:00:
+Webots abre la ventana de control de Erebus en tu navegador web. La primera vez, Erebus instala algunas bibliotecas de Python y prepara el modelo del robot, lo que puede tardar un rato. Está lista cuando la ventana muestra **Ready** y el temporizador de partida en 08:00:
 
 ![La ventana de control de Erebus, lista para empezar](../../../../docs/installation/mac/../control-window-ready.png)
+
+La primera vez, la consola de Webots también puede mostrar `ERROR: Skipped PROTO 'custom_robot'`. Puedes ignorarlo: Erebus prepara el modelo del robot y vuelve a cargar el mundo por sí solo.
 
 A continuación, lee el [Resumen de las reglas](/docs/rules/) para entender el juego. Si algo sale mal, consulta [Solución de problemas](/docs/troubleshooting/).

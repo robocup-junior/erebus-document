@@ -1,10 +1,10 @@
 ---
 title: Résumé des règles
-description: "Un résumé des règles 2026 de la RoboCupJunior Rescue Simulation : le terrain, les marqueurs muraux, le score et la compétition."
+description: "Un résumé des règles de la RoboCupJunior Rescue Simulation 2027 : le terrain, les marqueurs muraux, la batterie, le score et la compétition."
 ---
 
 :::note
-Cette page est un résumé pour vous aider à démarrer. Les seules règles officielles sont les [RoboCupJunior Rescue Simulation Rules 2026](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) (dernière mise à jour le 11/02/2026). En cas de différence entre cette page et les règles officielles, ce sont les règles officielles qui s’appliquent.
+Cette page est un résumé pour bien démarrer. Les seules règles officielles sont les [RoboCupJunior Rescue Simulation Rules 2027](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf). Ce résumé suit la version mise à jour le 2026-10-24. Si cette page et les règles officielles diffèrent, ce sont les règles officielles qui s’appliquent.
 
 Les corrections et clarifications sont publiées sur le [Forum officiel de la RoboCupJunior](https://junior.forum.robocup.org/). Il appartient à chaque équipe de les consulter.
 :::
@@ -14,10 +14,11 @@ Votre robot est lâché seul dans un labyrinthe inconnu. En 8 minutes, sans aucu
 
 1. **Explorer** le labyrinthe sans rester bloqué ni tomber dans les trous.
 2. **Trouver les marqueurs muraux** (wall tokens), c’est-à-dire les victimes et les cibles cognitives placées sur les murs, et signaler ce qu’est chacun d’eux.
-3. **Cartographier** le labyrinthe, et envoyer la carte à la fin.
-4. **Revenir** à son point de départ.
+3. **Garder sa batterie chargée**, en s’arrêtant sur une case de contact avant qu’elle ne soit vide.
+4. **Cartographier** le labyrinthe et envoyer la carte à la fin.
+5. **Revenir** à son point de départ.
 
-Tout ce qui suit explique ces quatre tâches en détail. Inutile de tout retenir maintenant : revenez-y au fur et à mesure que vous programmez chaque partie.
+La suite explique ces cinq tâches en détail. Inutile de tout retenir maintenant : revenez-y au moment de programmer chaque partie.
 
 ## Mission et objectif {#mission-and-objective}
 ![Vue de dessus d’un terrain Erebus avec quatre zones](../../../docs/rules/rules_environment.png)
@@ -26,10 +27,10 @@ Le robot doit explorer en autonomie un environnement inconnu tout en évitant le
 
 - Parcourir un labyrinthe complexe sans rester bloqué
 - Cartographier l’environnement avec précision
-- Trouver et identifier les marqueurs muraux : victimes lettres (letter victims) et cibles cognitives (cognitive targets)
+- Trouver et identifier les marqueurs muraux : victimes smiley (letter victims) et cibles cognitives (cognitive targets)
 
 ## Le terrain {#the-field}
-Le terrain peut être divisé en quatre zones (areas), et chaque passage entre deux zones fait la largeur d’une case standard. Les cases (tiles) sont un concept utilisé pour générer le terrain, pas des structures physiques.
+Le terrain comporte jusqu’à quatre zones. La zone 1 fait toujours partie du terrain, et les organisateurs peuvent omettre les zones 2 à 4. Chaque passage entre deux zones a la largeur d’une case standard. Les cases sont un concept qui sert à générer le terrain, pas des structures physiques.
 
 - Une case mesure **12 cm × 12 cm**. Dans les zones 2 et 3, chaque case est subdivisée en quatre **quarts de case** (quarter tiles) de 6 cm × 6 cm.
 - Les murs font **1 cm d’épaisseur et 6 cm de hauteur**.
@@ -49,10 +50,10 @@ Les passages sont des cases uniques avec des murs sur deux côtés, pour que leu
 
 ![Tableau des couleurs des passages entre chaque paire de zones](../../../docs/rules/rules_passages.png)
 
-Aucune victime lettre n’est placée dans les passages.
+Les murs des passages ne portent pas de marqueurs muraux.
 
 ### Cases linéaires et flottantes {#linear-and-floating-tiles}
-Les cases qui mènent à la case de départ en suivant toujours le mur le plus à gauche ou le plus à droite sont des **cases linéaires** (linear tiles). Toutes les autres sont des **cases flottantes** (floating tiles). Les marqueurs situés sur des cases flottantes rapportent plus de points. Les quarts de case ne sont pas pris en compte, et les trous noirs comptent ici comme des murs virtuels.
+Les cases qui mènent à la case de départ en suivant toujours le mur le plus à gauche ou le plus à droite sont des **cases linéaires** (linear tiles). Toutes les autres sont des **cases flottantes** (floating tiles). Les marqueurs situés sur des cases flottantes rapportent plus de points. Les quarts de case ne sont pas pris en compte, et les trous comptent ici comme des murs virtuels.
 
 ![Un terrain montrant les cases linéaires en gris et les cases flottantes en rose](../../../docs/rules/rules_linear_floating.png)
 
@@ -62,32 +63,37 @@ Les cases argentées sont des points de contrôle (checkpoints), et elles peuven
 ## Marécages, obstacles et trous {#swamps-obstacles-and-holes}
 ![Un terrain avec un marécage, un trou et un obstacle](../../../docs/rules/rules_obstacles.png)
 
-* Les **marécages** (swamps, cases marron) font s’écouler le temps de jeu plus vite tant que le robot s’y trouve. La première fois que le robot entre dans un marécage, le temps s’écoule 5 fois plus vite. Chaque nouvelle entrée dans le même marécage augmente ce facteur de un, jusqu’à x10 au maximum.
+* Les **marécages** (cases marron) vident la batterie plus vite tant que le robot est dessus, car les moteurs doivent forcer davantage. Le temps de jeu n’est pas affecté.
 * Les **obstacles** peuvent être fixés au sol, avoir n’importe quelle forme et couleur, et réduisent la largeur du couloir. Dans les zones 1 à 3, le centre d’un obstacle est toujours sur une case, jamais sur le bord entre deux cases, et il y a au plus un obstacle par case.
-* Les **trous** ont des bords noirs. Si le robot tombe dans l’un d’eux, une absence de progression se produit.
+* Les **trous** sont des cases avec une ouverture dans le sol. Leurs bords sont noirs, à 1,5 cm des cases voisines. Si le robot tombe dedans, il y a absence de progression.
 
-Aucune case n’est à la fois plus d’un des éléments suivants : marécage, trou, point de contrôle, case de départ, case avec un obstacle, ou passage entre zones.
+Aucune case n’est à la fois plusieurs des éléments suivants : marécage, trou, point de contrôle, case de contact, case de départ, case avec un obstacle ou passage entre zones.
+
+## Cases de contact {#contact-tiles}
+Les cases de contact sont des cases **cyan** où la batterie du robot peut être remplacée pendant le jeu. Le robot doit rester immobile sur la case pendant le remplacement de sa batterie. Voir [La batterie](#the-battery).
+
+![Un terrain avec des cases de contact cyan](../../../docs/rules/rules_contact_tiles.png)
 
 ## Marqueurs muraux {#wall-tokens}
-Il existe deux sortes de marqueurs muraux : les victimes lettres et les cibles cognitives. Les deux peuvent apparaître sur n’importe quel mur, y compris sur les surfaces courbes. Les victimes lettres peuvent aussi être tournées selon n’importe quel angle.
+Il existe deux types de marqueurs muraux : les victimes smiley et les cibles cognitives. Les deux peuvent se trouver sur n’importe quel mur, y compris les surfaces courbes, sauf les murs des passages entre zones. Les victimes smiley peuvent aussi être tournées d’un angle quelconque, de 0 à 360 degrés.
 
-![Cibles cognitives et victimes lettres sur les murs d’un terrain](../../../docs/rules/rules_wall_tokens.png)
+![Cibles cognitives et victimes smiley sur les murs d’un terrain](../../../docs/rules/rules_wall_tokens.png)
 
-### Victimes lettres {#letter-victims}
-Les victimes lettres (letter victims) sont des images de 2 cm × 2 cm. Le symbole représente l’état de santé de la victime, et le code est la lettre que vous signalez et inscrivez sur la carte.
+### Victimes smiley {#smiley-victims}
+Les victimes smiley sont des images de 2 cm × 2 cm d’un émoji smiley imprimé en noir. L’expression du visage représente l’état de santé de la victime, et le code est la lettre que vous signalez et inscrivez sur la carte.
 
-| État | Symbole | Code |
+| État | Visage | Code |
 |---|---|---|
-| Blessée (Harmed) | Φ | `H` |
-| Stable | Ψ | `S` |
-| Indemne (Unharmed) | Ω | `U` |
+| Blessée | Triste | `H` |
+| Stable | Neutre | `S` |
+| Indemne | Content | `U` |
 
-![Les symboles phi, psi et oméga](../../../docs/rules/rules_victims.png)
+![Un visage triste, un neutre et un content](../../../docs/rules/rules_victims.png)
 
 ### Fausses victimes {#fake-victims}
-Certains marqueurs muraux affichent les mêmes symboles, mais avec des lettres **en trois dimensions**. Ce sont des fausses victimes (fake victims) : vous ne devez ni les signaler au superviseur ni les inclure dans la carte. Les règles précisent que ce relief peut être détecté avec l’un des capteurs disponibles dans le Robot Customizer.
+Certains marqueurs muraux montrent les mêmes visages, mais les émojis sont **en relief**. Ce sont des leurres : vous ne devez ni les signaler au superviseur, ni les inclure dans la carte. Selon les règles, ce relief peut être détecté avec l’un des capteurs disponibles dans le Robot Customizer.
 
-![Fausses victimes aux symboles en trois dimensions sur un mur](../../../docs/rules/rules_fake_victims.png)
+![Des victimes leurres avec des visages en relief sur un mur](../../../docs/rules/rules_fake_victims.png)
 
 ### Cibles cognitives {#cognitive-targets}
 Les cibles cognitives (cognitive targets) représentent des matières dangereuses (hazmats). Ce sont des cercles de 5 cm de diamètre composés de cinq parties concentriques, de diamètres 1, 2, 3, 4 et 5 cm. Chaque couleur a une valeur :
@@ -96,7 +102,7 @@ Les cibles cognitives (cognitive targets) représentent des matières dangereuse
 |---|---|---|---|---|
 | -2 | -1 | 0 | 1 | 2 |
 
-Additionnez les valeurs des cinq parties pour obtenir le type. Si la somme ne figure pas ci-dessous, la cible est un leurre et ne doit être ni signalée ni cartographiée.
+Additionnez les valeurs des cinq parties pour obtenir le type. Si la somme n’est pas dans la liste ci-dessous, la cible est un marqueur mural leurre : il ne faut ni la signaler ni la cartographier.
 
 | Somme | Matière dangereuse | Code |
 |---|---|---|
@@ -117,14 +123,23 @@ Le [tutoriel Marqueurs muraux](/docs/programming/wall-tokens/) montre comment li
 - Les équipes utilisent le modèle de robot fourni par les organisateurs, et peuvent le personnaliser avec le [Robot Customizer](https://robot.erebus.rcj.cloud/) dans la limite d’un budget de **3000**. Consultez [Le robot](/docs/robot/).
 - Le robot peut utiliser un GPS, un capteur de couleur, des capteurs de distance, des caméras RVB (RGB), un LIDAR, un gyroscope et un accéléromètre.
 - Les capteurs simulés ont un bruit réaliste. Votre programme doit y être robuste, et les organisateurs ne modifieront pas les niveaux de bruit pour la compétition.
+
+### La batterie {#the-battery}
+Le robot a une batterie qui se vide selon la vitesse de ses moteurs. Son niveau s’affiche dans la fenêtre de contrôle, au-dessus des chronomètres. Les règles ne donnent pas le rythme exact : les équipes doivent découvrir son comportement par des tests.
+
+- Pour remplacer la batterie, le robot doit **rester immobile sur une case de contact pendant 5 secondes** de temps simulé. La batterie est alors de nouveau pleine.
+- Dans les marécages, la batterie se vide plus vite.
+- Si la batterie est vide, le jeu se termine.
+
+Le tutoriel [Batterie](/docs/programming/battery/) montre comment votre programme peut lire le niveau de la batterie et la remplacer.
 - Les robots doivent être autonomes. Chaque équipe a un robot sur le terrain.
 - La cartographie préalable est interdite : cela concerne à la fois le terrain et l’emplacement des marqueurs muraux, y compris les mouvements prédéfinis à partir de positions connues. Elle entraîne la disqualification immédiate pour la manche.
 
 ## Déroulement d’une partie {#playing-a-game}
 - Une partie dure **8 minutes de temps simulé**. Un second chronomètre tourne en temps réel, avec une limite de **10 minutes**. La partie se termine dès que l’un des deux chronomètres expire.
-- Une case compte comme visitée quand le centre du robot s’y trouve. Erebus le détermine automatiquement.
-- La partie se termine aussi quand le robot envoie la commande de sortie, ou quand le capitaine de l’équipe demande la fin de la partie (selon la façon dont la partie est exécutée).
-- Les mondes de compétition sont dévoilés juste avant les parties, et les programmes ne peuvent plus être modifiés après la date limite de chaque manche.
+- Une case compte comme visitée quand le centre du robot est à l’intérieur, d’après le superviseur.
+- Le jeu se termine aussi quand la batterie est vide, quand le robot envoie la commande de sortie, ou quand le capitaine de l’équipe demande la fin du jeu (selon la façon dont le jeu se déroule).
+- Les mondes de compétition sont dévoilés juste avant les matchs, et les programmes ne peuvent plus être modifiés après la date limite officielle de chaque manche, annoncée par les organisateurs.
 
 ### Absence de progression {#lack-of-progress}
 Une absence de progression (Lack of Progress, LoP) se produit quand :
@@ -140,18 +155,18 @@ Le robot est alors replacé sur le dernier point de contrôle visité, ou sur la
 ## Score {#scoring}
 Le calcul du score est automatisé par Erebus. Les récompenses ne se cumulent pas : par exemple, chaque point de contrôle ne rapporte des points que la première fois.
 
-Pour identifier un marqueur mural, le robot doit s’arrêter **au moins 1 seconde**, puis [envoyer le type et la position](/docs/programming/communication/#scoring-wall-tokens) au gestionnaire de jeu. Le centre du robot doit être à au plus une demi-case du marqueur.
+Pour identifier un marqueur mural, le robot doit s’arrêter **au moins 1 seconde**, puis [envoyer le type et la position](/docs/programming/communication/#scoring-wall-tokens) au superviseur. Le centre du robot doit être à au plus une demi-case du marqueur.
 
 | Élément | Points |
 |---|---|
-| Identification d’un marqueur mural (TI) sur une case linéaire des zones 1 à 3 | Victime lettre : 5, cible cognitive : 10 |
-| Identification d’un marqueur mural (TI) sur une case flottante des zones 1 à 3, et tous les marqueurs de la zone 4 | Victime lettre : 15, cible cognitive : 30 |
-| Type correct (TT), en plus de TI | Victime lettre : 10, cible cognitive : 20 |
+| Identification d’un marqueur mural (TI) sur une case linéaire des zones 1 à 3 | Victime smiley : 5, cible cognitive : 10 |
+| Identification d’un marqueur mural (TI) sur une case flottante des zones 1 à 3, et tous les marqueurs de la zone 4 | Victime smiley : 15, cible cognitive : 30 |
+| Type correct (TT), en plus de TI | Victime smiley : 10, cible cognitive : 20 |
 | Point de contrôle visité (CN) | 10 |
 | Erreur d’identification d’un marqueur mural (TMI) | -5 |
 | Absence de progression (LoP) | -5 |
 
-Le score total ne peut pas descendre en dessous de zéro. Une erreur d’identification consiste à signaler une position à plus d’une demi-case du marqueur, à signaler un marqueur là où il n’y en a pas, ou à signaler une victime lettre comme une cible cognitive, ou inversement. Signaler un leurre entre dans la deuxième catégorie.
+Le score total ne peut pas descendre en dessous de zéro. Une erreur d’identification consiste à signaler une position à plus d’une demi-case du marqueur, à signaler un marqueur là où il n’y en a pas, ou à signaler une victime smiley comme une cible cognitive, ou inversement. Signaler un leurre entre dans la deuxième catégorie.
 
 **Multiplicateurs de zone (Area multipliers, AM)** : TI, TT et CN sont multipliés par 1, 1,25, 1,5 et 2 respectivement dans les zones 1, 2, 3 et 4. TMI et LoP ne sont pas multipliés.
 
@@ -163,7 +178,7 @@ Le score sur le terrain d’une partie se calcule ainsi :
 
 ![Le score sur le terrain est égal à la somme sur les quatre zones de (TI plus TT plus CN) multipliée par AM, moins TMI et LoP, le tout multiplié par EB et MB](../../../docs/rules/rules_field_score.png)
 
-Par exemple, une partie avec ces résultats obtient 2680,15 points :
+Par exemple, une partie avec ces résultats obtient 2825,35 points :
 
 ![Exemple détaillé de calcul du score](../../../docs/rules/rules_scoring_example.png)
 

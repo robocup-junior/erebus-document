@@ -1,0 +1,53 @@
+---
+title: Batterie
+description: Lisez le niveau de la batterie de votre robot, et remplacez-la sur une case de contact avant qu’elle ne soit vide.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Votre robot a une batterie, et le jeu se termine quand elle est vide. Sur cette page, vous apprenez à quelle vitesse elle se vide, comment votre programme peut la lire, et comment la remplacer.
+
+## Comment fonctionne la batterie \{#how-the-battery-works\}
+
+- La batterie commence à 100 % et **se vide selon la vitesse des roues** : plus elles tournent vite, plus elle se vide vite. Avec les réglages par défaut, un robot à l’arrêt n’utilise pas de batterie.
+- Dans les **marécages**, elle se vide plus vite.
+- Pour la remplacer, le robot doit **rester immobile sur une case de contact pendant 5 secondes**. La batterie revient alors à 100 %. Bouger, ou quitter la case, fait recommencer les 5 secondes.
+- Si la batterie atteint 0 %, le jeu se termine avec `Battery depleted`. Une batterie vide ne peut pas être remplacée.
+
+La fenêtre de contrôle affiche le niveau de la batterie au-dessus des chronomètres. En dessous de 20 %, elle indique « Low battery » :
+
+![Le score, le niveau de la batterie et les chronomètres dans la fenêtre de contrôle, avec une batterie faible](../../../../docs/programming/battery/battery-low.png)
+
+Les règles ne disent pas à quelle vitesse la batterie se vide : les équipes doivent le découvrir par des tests. Avec les réglages par défaut d’Erebus v27, deux roues à pleine vitesse (6,28 rad/s) consomment environ 1,25 % par seconde : un robot qui ne s’arrête jamais serait donc à plat en moins d’une minute et demie, bien moins que les 8 minutes d’un jeu. Les organisateurs peuvent changer ces réglages : mesurez-les dans votre programme au lieu de vous fier à ces chiffres.
+
+## Lire le niveau de la batterie \{#reading-the-battery-level\}
+
+Le niveau de la batterie est la dernière valeur des [informations de jeu](/docs/programming/communication/#game-information). Cette fonction les demande une fois par seconde, et garde la dernière valeur dans `battery` :
+
+<CodeTabs file="battery" region="battery" />
+
+## Remplacer la batterie \{#replacing-the-battery\}
+
+Les cases de contact sont cyan, donc le [capteur de couleur](/docs/programming/sensors/colour-sensor/) les voit : le rouge est proche de 0, le vert et le bleu sont élevés.
+
+Le capteur de couleur du robot de départ est à l’avant, mais Erebus vérifie la position du **centre** du robot. Quand le capteur voit du cyan, le robot avance donc encore un peu avant de s’arrêter. Puis il attend que la batterie soit pleine, ce qui prend 5 secondes :
+
+<CodeTabs file="battery" region="contact" />
+
+## Le programme complet \{#the-complete-program\}
+
+Ce programme se déplace en évitant les murs, et remplace sa batterie quand il passe sur une case de contact avec moins de 50 %. Lancez-le sur `2027_d1r1.wbt`, où une case de contact est à côté de la case de départ.
+
+<CodeTabs file="battery" />
+
+Les événements du match indiquent chaque remplacement avec `Battery replaced` :
+
+![Les événements du match, avec deux remplacements de batterie](../../../../docs/programming/battery/battery-events.png)
+
+## Planifier \{#planning\}
+- Sachez où sont les cases de contact : retenez-les pendant l’exploration, comme pour la carte.
+- Avant que la batterie soit faible, dirigez-vous vers la case de contact connue la plus proche. Gardez une marge, car le chemin peut prendre plus de temps que prévu.
+- Évitez les marécages quand vous le pouvez, ou traversez-les vite.
+- S’arrêter coûte du temps de jeu, mais pas de batterie avec les réglages par défaut : l’arrêt de 1 seconde pour signaler un marqueur mural ne coûte rien à la batterie.
+
+Ensuite, apprenez à garder la trace des endroits où le robot est passé dans [Explorer et cartographier](/docs/programming/exploring/).

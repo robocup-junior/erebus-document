@@ -10,12 +10,12 @@ description: 如何用 Erebus World Editor 建立你自己的世界。
 
 ![World Editor 中完成的地圖](../../../../docs/tools/world-editor/overview.png)
 
-如果你只是製作小型地圖來測試，場地是否符合規則可能不太重要。但如果你打算製作比賽用的場地，請閱讀官方的[模擬規則](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf)。編輯器會在你工作時依照規則檢查你的地圖。
+如果你只是製作小型地圖來測試，場地是否符合規則可能不太重要。但如果你打算製作比賽用的場地，請閱讀官方的[模擬規則](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf)。編輯器會在你工作時依照規則檢查你的地圖。
 
 編輯器內建了指南：按下右下角的 **Guide**，可以選擇製作範例地圖的實作課程（約 15 分鐘）、畫面導覽，或 Room 4 的課程。編輯器的語言可以在它旁邊切換。
 
 ## 開始製作地圖 {#starting-a-map}
-開啟編輯器時，請選擇要依照**哪一年的規則**，然後按下 **New map**。**Erebus v26 請選擇 2026 年規則。** 2027 年規則是下一版 Erebus 的草案。
+開啟編輯器後，選擇要遵循**哪一年的規則**，然後按 **New map**。**Erebus v27 請選擇 2027 年規則。** 2026 年規則是給 Erebus v26 用的。之後也可以在上方工具列變更地圖的規則。
 
 ![World Editor 的開始畫面](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ description: 如何用 Erebus World Editor 建立你自己的世界。
 | Line | `L` | 繪製牆壁 |
 | Curve | `A` | 在 Room 3 中繪製弧形牆 |
 | Eraser | `E` | 移除牆壁、地板、障礙物和受害者 |
-| Floor | `F` | 設定檢查點、坑洞、沼澤和起始地塊 |
+| Floor | `F` | 設定檢查點、坑洞、沼澤、接觸地塊和起始地塊 |
 | Obstacle | `O` | 放置障礙物 |
-| Victims | `V` | 放置字母受害者、認知目標和假目標 |
+| Victims | `V` | 放置笑臉受害者、認知目標和假目標 |
 
 滑鼠滾輪可以縮放，按住空白鍵拖曳可以移動視角，復原則是 `⌘Z` 或 `Ctrl+Z`。
 
@@ -57,7 +57,7 @@ description: 如何用 Erebus World Editor 建立你自己的世界。
 ![繪製牆壁的 Line 工具](../../../../docs/tools/world-editor/walls.png)
 
 ## 地板和障礙物 {#floors-and-obstacles}
-用 **Floor** 工具選擇地板類型，然後點選地塊進行設定。起始地塊必須是 Room 1 中的地塊，沒有起始地塊就無法匯出世界。一個地塊只能是坑洞、沼澤、檢查點、障礙物、起點或通道其中之一。
+用 **Floor** 工具選擇一種地板類型，然後點選地塊進行設定：檢查點、坑洞、沼澤、接觸地塊或起點。起始地塊必須是房間 1 的地塊，沒有它就無法匯出世界。一個地塊只能是坑洞、沼澤、檢查點、接觸地塊、障礙物、起點或通道其中之一。
 
 ![Floor 工具](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ description: 如何用 Erebus World Editor 建立你自己的世界。
 ## 受害者和認知目標 {#victims-and-cognitive-targets}
 用 **Victims** 工具選擇種類，然後在牆壁附近點選。你可以放置：
 
-- 真的字母受害者：受傷（harmed）、穩定（stable）和未受傷（unharmed）
-- 帶有立體符號的假字母受害者
+- 真的笑臉受害者：受傷、穩定和未受傷
+- 帶立體表情的假笑臉受害者
 - 認知目標：選擇危險物品類型，如果想要也可以自己選擇圓環的顏色。畫面會顯示總和，而總和決定了類型
 - 假目標，它們的圓環總和不在 0 到 3 之間
 
@@ -105,8 +105,8 @@ Room 4 不是以地塊為基礎，所以要用畫圖的方式繪製。用 **Room
 1. 把 `.wbt` 檔案複製到 Erebus 的 `game/worlds` 資料夾中。它必須放在這個資料夾裡，因為世界會使用 Erebus 中的檔案。
 1. 在 Webots 中開啟它，或用[控制視窗](/docs/getting-started/)的 **Worlds** 按鈕選擇它。
 
-![編輯器指南中的範例地圖，在 Erebus v26.1 中執行。](../../../../docs/tools/world-editor/exported_world.png)
+![編輯器指南中的範例地圖，在 Erebus v27 中執行。](../../../../docs/tools/world-editor/exported_world.png)
 
-*編輯器指南中的範例地圖，在 Erebus v26.1 中執行。*
+*編輯器指南中的範例地圖，在 Erebus v27 中執行。*
 
 `.wbt` 檔案無法轉回可以編輯的地圖，所以請一併保留 JSON 檔案。

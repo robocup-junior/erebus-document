@@ -1,95 +1,130 @@
 ---
-title: 首次執行
-description: 載入你的機器人和一個現成的程式，看著它探索迷宮。
+title: 第一次執行
+description: 載入你的機器人和一個現成的程式，看它探索迷宮。
 ---
 
 import mazeUrl from '../../../docs/getting-started/../programming/navigate-the-maze/maze.py?url';
 
-在本頁中，你會在你的機器人上執行一個完整的程式，並學習使用 Erebus 控制視窗。你需要[已安裝 Erebus](/docs/installation/)，並準備好[你的機器人](/docs/robot/)。
+在本頁中，你會在機器人上執行一個完整的程式，並學會使用 Erebus 控制視窗。你需要先[安裝 Erebus](/docs/installation/)並準備好[你的機器人](/docs/robot/)。
 
 ## Erebus 資料夾 \{#the-erebus-folder\}
-以下是你下載的版本中主要的資料夾：
+你下載的版本中主要有這些資料夾：
 
 | 資料夾 | 內容 |
 |---|---|
-| `game/worlds` | 各個世界（`.wbt` 檔案）。開啟其中一個就可以開始。 |
-| `game/logs` | 每場比賽結束時寫入的比賽紀錄 |
+| `game/worlds` | 各個世界（`.wbt` 檔案）。開啟其中一個即可開始。 |
+| `game/logs` | 每場比賽結束時寫入的比賽記錄 |
+| `match-results` | 每場比賽一個資料夾，包含重播和地圖結果 |
 | `player_controllers` | 範例控制器 |
 
 ## 控制視窗 \{#the-control-window\}
 1. 在 Webots 中開啟 `game/worlds/world1.wbt`。
-1. Webots 會在你的網頁瀏覽器中開啟 Erebus 控制視窗（Main Supervisor 的機器人視窗）。你要在這裡載入程式並執行比賽。
+1. Webots 會在網頁瀏覽器中開啟 Erebus 控制視窗（Main Supervisor 的機器人視窗）。你在這裡載入程式並執行比賽。
 
 ![Erebus 控制視窗](../../../docs/getting-started/control_window.png)
 
+由上到下依序是：
+
 | 部分 | 用途 |
 |---|---|
-| 左邊的 **LOAD**（筆電圖示） | 載入機器人的控制器程式 |
-| 右邊的 **LOAD**（機器人圖示） | 載入你的機器人（`.json` 檔案） |
-| **TOGGLE REMOTE** | 讓在 Webots 外部執行的程式控制機器人。請參閱 [Remote Controller](/docs/competition/remote-controller/)。 |
-| **Docker path** | 含有 `Dockerfile` 的資料夾，可以用播放按鈕旁邊的 Docker 按鈕，在容器中執行你的控制器。請參閱 [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) 儲存庫。這是選擇性的功能。 |
-| **Settings** | 連結和選項，說明如下 |
-| **Worlds** | 切換到其他世界 |
-| **Reset** | 重設已載入的程式和比賽 |
-| **Give up!** | 結束比賽 |
-| 計時器 | 比賽時間，下方括號內是實際時間。任一個歸零時，比賽就會結束。 |
-| 計算機 | 目前的分數 |
+| 世界和狀態 | 世界的名稱，以及比賽的狀態：Ready、Running、Paused 或 Finished |
+| **Robot setup** | 載入你的程式和機器人，並連接遠端控制器。見下文。 |
+| **Advanced setup** | 各種選項，見下文 |
+| **Worlds** | 切換到另一個世界 |
+| 分數 | 目前的分數 |
+| **Robot battery** | 機器人的電池電量。低於 20% 時會顯示「Low battery」。請參閱[電池](/docs/programming/battery/)。 |
+| **Simulation remaining** | 剩下的比賽時間。**Real-world allowance** 表示剩下的真實時間比比賽時間多出多少。任何一個用完，比賽就結束。 |
+| 比賽控制 | 執行、暫停、重新定位、重設、放棄和儲存地圖。見下文。 |
+| **Match events** | 比賽紀錄，最新的在最前面。**Export CSV** 可以把它存成檔案。 |
+
+右上角的按鈕會把同一個視窗開成另一個較小的瀏覽器視窗。
+
+:::note
+如果沒有安裝 [Wireshark](/docs/installation/#optional-wireshark)，視窗還會顯示網路存取未受監看的警告，並要求你確認。這種監看是給比賽主辦單位用的，所以你可以確認警告後照常練習。
+:::
+
+### Robot setup \{#robot-setup\}
+按 **Robot setup** 來載入你的程式和機器人。
+
+![已載入程式和機器人的 Robot setup 面板](../../../docs/getting-started/robot-setup.png)
+
+| 部分 | 用途 |
+|---|---|
+| **Controller** | **Load file** 載入機器人的程式。Python 檔案可以直接載入。C 和 C++ 程式必須先編譯。 |
+| **Robot JSON** | **Load file** 載入你的機器人，也就是用[機器人客製化工具](/docs/robot/customizer/)做的 `.json` 檔案 |
+| **Keep files after Reset** | 重設比賽時保持程式和機器人的載入狀態。預設開啟。 |
+| **Reload before Run** | 每次執行比賽時，都從 **Original controller file** 重新載入程式，以使用你最新的修改。請填寫執行 Webots 的電腦上該檔案的路徑。 |
+| **Remote mode** | 讓在 Webots 外部執行的程式控制機器人。請參閱[遠端控制器](/docs/competition/remote-controller/)。**Keep on Reset** 會在重設比賽時保持開啟。 |
+| **Docker project path** | 含有 `Dockerfile` 的資料夾，用 **Run Docker** 在容器中執行你的控制器。請參閱 [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) 儲存庫。這是選用的。 |
+
+### 比賽控制 \{#match-controls\}
+
+![比賽控制按鈕](../../../docs/getting-started/match-controls.png)
+
+| 按鈕 | 用途 |
+|---|---|
+| **Run match** | 開始比賽。機器人出現在世界中，你的程式開始執行。 |
+| **Pause** | 暫時停止機器人。按 **Run match** 繼續。 |
+| **Relocate** | 宣告缺乏進展：機器人回到最後到達的檢查點，你失去 5 分 |
+| **Reset** | 重設比賽和世界 |
+| **Give up** | 結束比賽 |
+| **Save map** | 儲存機器人提交的地圖的結果並開啟它。請參閱[提交地圖](/docs/programming/map-bonus/)。 |
 
 ## 執行程式 \{#run-a-program\}
-<a href={mazeUrl} download="maze.py">下載 maze.py</a>，這是一個讓機器人在迷宮中四處行駛的完整程式。你之後會在[迷宮導航](/docs/programming/navigate-the-maze/)中自己寫出這個程式。
+<a href={mazeUrl} download="maze.py">下載 maze.py</a>，這是一個讓機器人在迷宮中行駛的完整程式，也就是你將在[迷宮導航](/docs/programming/navigate-the-maze/)中親自撰寫的程式。
 
 1. 開啟 `game/worlds/world1.wbt`。
-1. 如果還沒載入機器人，請用**右邊的 LOAD 按鈕**載入。世界會連同機器人一起重新載入。
-1. 用**左邊的 LOAD 按鈕**載入 `maze.py`。程式載入後，按鈕會變成橘色的 REMOVE 按鈕。
-1. 按下開始按鈕。機器人會出現在世界中並開始移動。
-![開始按鈕](../../../docs/getting-started/start_button.png)
-1. 要暫時停止機器人，請按下暫停按鈕。
-![暫停按鈕](../../../docs/getting-started/pause_button.png)
-1. 如果機器人卡住了，請按下重新開始按鈕來觸發缺乏進展（lack of progress）。這會把機器人移回最後到達的檢查點，並扣 5 分。
-![缺乏進展按鈕](../../../docs/getting-started/lop_button.png)
-1. 按下 Reset 按鈕可以重設已載入的程式和進行中的比賽。如果你想在比賽結束後再次執行，請重新載入世界。
+1. 如果還沒載入機器人，按 **Robot setup**，用 **Robot JSON** 下的 **Load file** 載入你的機器人。
+1. 用 **Controller** 下的 **Load file** 載入 `maze.py`。檔案載入後會顯示它的名稱。
+1. 按 **Run match**。機器人出現在世界中並開始移動。
+1. 要暫時停止機器人，按 **Pause**。
+1. 如果機器人卡住了，按 **Relocate** 觸發缺乏進展。
+1. 按 **Reset** 重設比賽。你的程式和機器人仍保持載入，所以可以再執行一次。
 
 這個程式需要 OpenCV，你已經和其他 [Python 函式庫](/docs/installation/#python-libraries)一起安裝了它。程式的訊息和錯誤會顯示在 Webots 主控台中。
 
-比賽進行時，分數歷史紀錄會顯示在視窗底部。它會明確告訴你為什麼得分或失分，所以是檢查程式最好的工具。
+比賽進行時，比賽事件會顯示在視窗底部。它能準確告訴你為什麼得分或扣分，是檢查程式的最佳工具。
 
-![比賽中的控制視窗，顯示分數歷史紀錄](../../../docs/getting-started/control_window_running.png)
+![比賽中的控制視窗，以及比賽事件](../../../docs/getting-started/control_window_running.png)
 
-比賽結束時，同樣的資訊會儲存在 `game/logs` 資料夾中。
+`maze.py` 全速行駛且從不更換電池，所以在 `world1.wbt` 中，比賽會在不到兩分鐘後以 `Battery depleted` 結束。你將在[電池](/docs/programming/battery/)中學習如何管理電池。
+
+比賽結束時，同樣的資訊會儲存在 `game/logs` 資料夾中。比賽也會以可互動的 3D 重播儲存在 `match-results` 資料夾中：在瀏覽器中開啟 `recording/replay.html` 即可再看一次。
 
 ## 使用其他世界 \{#using-other-worlds\}
-按下 **Worlds** 可以切換到其他世界。每個世界都有一張縮圖，你也可以加入用 [World Editor](/docs/tools/world-editor/) 製作的自己的世界。
+按 **Worlds** 切換到另一個世界。用名稱搜尋世界，選取它，然後按 **Load world**。你也可以加入用[世界編輯器](/docs/tools/world-editor/)做的自己的世界。
 
-![控制視窗的 Worlds 分頁](../../../docs/getting-started/worlds.png)
+![控制視窗的 Worlds 面板](../../../docs/getting-started/worlds.png)
 
-Erebus v26.1 內建的世界有：
+Erebus v27 內附的世界有：
 
 | 世界 | 用途 |
 |---|---|
+| `2027_d1r1.wbt`、`2027_d1r2.wbt`、`2027_d2r1.wbt`、`2027_d2r2.wbt` | 2027 年規則的範例世界，含有接觸地塊和假受害者 |
 | `world1.wbt`、`world2.wbt` | 範例世界。`world2.wbt` 包含區域 4。 |
-| `world3.wbt`、`world4.wbt` | 較大的範例世界，也包含**假受害者**（fake victims） |
+| `world3.wbt`、`world4.wbt` | 較大的範例世界，也包含**假受害者** |
 | `mapping_example_1.wbt` 到 `mapping_example_3.wbt` | 用來測試建圖的世界。請參閱[地圖規則](/docs/rules/mapping/)。 |
+| `mapping_example_1_cyan_tiles.wbt` | 加了兩個接觸地塊的 `mapping_example_1.wbt` |
 | `NewPassages.wbt` | 區域之間通道的範例 |
 
-## 設定 \{#settings\}
-![控制視窗的 Settings 分頁](../../../docs/getting-started/settings.png)
+## Advanced setup \{#advanced-setup\}
+![控制視窗的 Advanced setup 面板](../../../docs/getting-started/settings.png)
 
 | 設定 | 用途 |
 |---|---|
-| Keep controller/robot files | 重新載入世界時，保持程式和機器人的載入狀態 |
-| Disable automatic LoP | 停用 20 秒後自動觸發的缺乏進展。僅供除錯使用。 |
-| Automatic camera | 讓視角跟隨機器人 |
-| Recording | 把比賽錄製成影片 |
-| Keep remote controller on | 重新載入世界時，保持 TOGGLE REMOTE 開啟 |
-| Enable debugging | 在 Webots 主控台中印出額外資訊，例如牆上標記的回報為什麼被拒絕 |
+| Show head-up display | 在 Webots 視窗中顯示分數、時間和最新事件 |
+| Automatic camera | 讓視角跟著機器人 |
+| HTML replay recording | 把每場比賽以可互動的 3D 重播儲存在 `match-results` 資料夾中 |
+| Automatic map result | 機器人一提交地圖，就儲存並開啟地圖的結果 |
+| Disable automatic LoP | 關閉 20 秒後的自動缺乏進展。僅供除錯使用。 |
+| Enable debugging | 在 Webots 主控台中輸出額外資訊，例如牆上標記的回報為什麼被拒絕 |
 
-頂端的連結會連到變更紀錄，以及製作世界和機器人的工具。要製作符合 2026 年規則的世界，請使用 [World Editor](https://world.erebus.rcj.cloud/)。
+視窗底部的 **References** 可以開啟更新紀錄、本文件以及製作世界和機器人的工具。要用 2027 年規則製作世界，請使用[世界編輯器](https://world.erebus.rcj.cloud/)。
 
-## 手動把機器人移到你想要的位置 \{#manually-move-the-robot-where-you-want-it-to-go\}
-在模擬視窗中點選機器人時，會出現紅色、綠色和藍色的箭頭。用滑鼠拖曳這些箭頭，就可以把機器人移到任何位置。請注意，在程式開始執行之前，機器人不會顯示。
-![在 Webots 中選取的機器人，帶有用來移動它的箭頭](../../../docs/getting-started/manual.png)
+## 手動把機器人移到想要的位置 \{#manually-move-the-robot-where-you-want-it-to-go\}
+在模擬視窗中點選機器人時，會出現紅、綠、藍三個箭頭。用滑鼠拖曳這些箭頭，就可以把機器人移到任何位置。注意，程式開始之前不會顯示機器人。
+![在 Webots 中選取的機器人，以及用來移動它的箭頭](../../../docs/getting-started/manual.png)
 
 
 ## 下一步 \{#next\}
-你已經看過機器人自己探索了。現在來學習自己為它撰寫程式：從[第一個程式](/docs/programming/first-program/)開始。
-
+你已經看到機器人自己探索了。現在來學習自己寫程式吧：從[你的第一個程式](/docs/programming/first-program/)開始。

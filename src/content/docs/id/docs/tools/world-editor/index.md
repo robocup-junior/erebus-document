@@ -10,12 +10,12 @@ Untuk itu, tersedia [Erebus World Editor](https://world.erebus.rcj.cloud/) darin
 
 ![Peta yang sudah jadi di World Editor](../../../../docs/tools/world-editor/overview.png)
 
-Jika kamu hanya membuat peta kecil untuk pengujian, apakah arenanya sesuai aturan atau tidak mungkin tidak terlalu penting. Namun, jika kamu berencana membuat arena kompetisi, bacalah [Aturan Simulasi](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf) resmi. Editor memeriksa petamu berdasarkan aturan selama kamu bekerja.
+Jika kamu hanya membuat peta kecil untuk pengujian, apakah arenanya sesuai aturan atau tidak mungkin tidak terlalu penting. Namun, jika kamu berencana membuat arena kompetisi, bacalah [Aturan Simulasi](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf) resmi. Editor memeriksa petamu berdasarkan aturan selama kamu bekerja.
 
 Editor ini punya panduan bawaan: tekan **Guide** di kanan bawah untuk pelajaran praktik yang membuat peta contoh (sekitar 15 menit), tur pengenalan layar, atau pelajaran tentang Room 4. Bahasa editor bisa diganti di sebelahnya.
 
 ## Memulai peta {#starting-a-map}
-Saat membuka editor, pilih **aturan tahun berapa** yang ingin kamu ikuti, lalu tekan **New map**. **Pilih aturan 2026 untuk Erebus v26.** Aturan 2027 adalah draf untuk versi Erebus berikutnya.
+Saat membuka editor, pilih **aturan tahun berapa** yang ingin kamu ikuti, lalu tekan **New map**. **Pilih aturan 2027 untuk Erebus v27.** Aturan 2026 untuk Erebus v26. Kamu bisa mengganti aturan sebuah peta nanti di bilah atas.
 
 ![Layar awal World Editor](../../../../docs/tools/world-editor/start.png)
 
@@ -33,9 +33,9 @@ Urutan kerja yang baik adalah ukuran dan garis luar, ruangan (room), lorong peng
 | Line | `L` | Menggambar dinding |
 | Curve | `A` | Menggambar dinding melengkung di Room 3 |
 | Eraser | `E` | Menghapus dinding, lantai, rintangan, dan korban |
-| Floor | `F` | Mengatur checkpoint, lubang, rawa, dan ubin awal |
+| Floor | `F` | Mengatur checkpoint, lubang, rawa, ubin kontak, dan ubin awal |
 | Obstacle | `O` | Menempatkan rintangan |
-| Victims | `V` | Menempatkan korban huruf, target kognitif, dan penanda palsu |
+| Victims | `V` | Menempatkan korban smiley, target kognitif, dan penanda palsu |
 
 Gunakan roda mouse untuk zoom, seret sambil menahan Spasi untuk menggeser tampilan, dan tekan `⌘Z` atau `Ctrl+Z` untuk undo.
 
@@ -57,7 +57,7 @@ Gunakan alat **Line** untuk menggambar dinding: di tepi ubin pada Room 1, dan di
 ![Alat Line untuk dinding](../../../../docs/tools/world-editor/walls.png)
 
 ## Lantai dan rintangan {#floors-and-obstacles}
-Dengan alat **Floor**, pilih jenis lantai dan klik ubin untuk mengaturnya. Ubin awal harus berada di Room 1, dan world tidak bisa diekspor tanpanya. Satu ubin hanya bisa menjadi salah satu dari lubang, rawa, checkpoint, rintangan, ubin awal, atau lorong penghubung.
+Dengan alat **Floor**, pilih jenis lantai dan klik sebuah ubin untuk mengaturnya: checkpoint, lubang, rawa, ubin kontak, atau start. Ubin start harus berada di Room 1, dan world tidak bisa diekspor tanpanya. Sebuah ubin hanya bisa menjadi salah satu dari lubang, rawa, checkpoint, ubin kontak, rintangan, start, atau lorong penghubung.
 
 ![Alat Floor](../../../../docs/tools/world-editor/floors.png)
 
@@ -68,8 +68,8 @@ Dengan alat **Obstacle**, pilih bentuk dan klik ubin. Di Room 1 sampai 3 ada sat
 ## Korban dan target kognitif {#victims-and-cognitive-targets}
 Dengan alat **Victims**, pilih jenisnya dan klik di dekat dinding. Kamu bisa menempatkan:
 
-- Korban huruf asli: terluka (harmed), stabil (stable), dan tidak terluka (unharmed)
-- Korban huruf palsu dengan simbol tiga dimensi
+- Korban smiley asli: terluka, stabil, dan tidak terluka
+- Korban smiley palsu dengan wajah tiga dimensi
 - Target kognitif: pilih hazmat-nya, dan pilih warna cincinnya jika kamu mau. Jumlahnya ditampilkan, dan jumlah itulah yang menentukan jenisnya
 - Target palsu, yang cincinnya berjumlah selain 0 sampai 3
 
@@ -105,8 +105,8 @@ Atur nama peta di bilah atas, lalu tekan tombol **.wbt** di kanan atas. Lalu:
 1. Salin berkas `.wbt` ke folder `game/worlds` milik Erebus. Berkas itu harus berada di folder tersebut, karena world-nya memakai berkas-berkas dari Erebus.
 1. Buka di Webots, atau pilih dengan tombol **Worlds** di [jendela kontrol](/docs/getting-started/).
 
-![Peta contoh dari panduan editor, berjalan di Erebus v26.1.](../../../../docs/tools/world-editor/exported_world.png)
+![Peta contoh dari panduan editor, berjalan di Erebus v27.](../../../../docs/tools/world-editor/exported_world.png)
 
-*Peta contoh dari panduan editor, berjalan di Erebus v26.1.*
+*Peta contoh dari panduan editor, berjalan di Erebus v27.*
 
 Berkas `.wbt` tidak bisa diubah kembali menjadi peta yang bisa kamu edit, jadi simpan juga berkas JSON-nya.

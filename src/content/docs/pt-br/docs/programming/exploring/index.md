@@ -39,7 +39,7 @@ Não se limite a seguir uma parede: assim você nunca chega aos [ladrilhos flutu
 3. Se não houver, encontre o ladrilho mais próximo com um vizinho não visitado usando uma busca em largura (breadth-first search) e vá até ele.
 4. Quando não restar nenhum ladrilho assim, ou o tempo estiver acabando, volte ao início do mesmo jeito.
 
-Trate os buracos como paredes. Os pântanos custam tempo, e mais a cada vez que você entra no mesmo, então visite-os só quando valer a pena.
+Trate os buracos como paredes. Os pântanos descarregam a bateria mais rápido, então só entre neles quando valer a pena. Lembre-se de onde ficam os ladrilhos de contato, para [substituir a bateria](/docs/programming/battery/) no caminho.
 
 ## Lide com o inesperado {#handle-the-unexpected}
 - **Falta de progresso:** o robô é levado ao último ponto de controle. [Fique atento à mensagem `L`](/docs/programming/communication/#lack-of-progress) e atualize a sua posição.
@@ -59,4 +59,4 @@ A [matriz do mapa](/docs/rules/mapping/) tem 4 células por ladrilho, mais uma. 
 
 O seu mapa pode começar em qualquer lugar: o Erebus [alinha a matriz](/docs/rules/mapping/#how-correctness-is-calculated) usando o ladrilho inicial e testa as quatro rotações. As [Regras do mapa](/docs/rules/mapping/) explicam cada valor da matriz. Depois, [envie-o](/docs/programming/map-bonus/).
 
-Teste com os mundos de exemplo, cujas respostas corretas estão nas [Regras do mapa](/docs/rules/mapping/#examples). O resultado aparece como `Map Correctness` no histórico da janela de controle.
+Teste com os mundos de exemplo, cujas respostas corretas estão nas [Regras do mapa](/docs/rules/mapping/#examples). O resultado aparece como `Map Correctness` nos eventos da partida da janela de controle.

@@ -1,32 +1,35 @@
 ---
 title: Renk sensörü
-description: "Renk sensörüyle robotun altındaki zemini gör: çukurlar, bataklıklar, kontrol noktaları ve geçitler."
+description: "Renk sensörüyle robotun altındaki zemini gör: çukurlar, bataklıklar, temas kareleri, kontrol noktaları ve geçitler."
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-Renk sensörü zemine bakar; böylece robota çukurlar, bataklıklar ve geçitler hakkında bilgi verir. Aşağıya bakan, tek piksellik bir kameradır. Başlangıç robotunda adı `color`'dır ve tekerlekler bir çukura ulaşmadan önce çukuru görebilmesi için robotun önündedir.
+Renk sensörü zemine bakar; böylece robota çukurlar, bataklıklar, temas kareleri ve geçitler hakkında bilgi verir. Aşağıya bakan, tek piksellik bir kameradır. Başlangıç robotunda adı `color`'dır ve tekerlekler bir çukura ulaşmadan önce çukuru görebilmesi için robotun önündedir.
 
 <CodeTabs file="read" />
 
 ## Zemin renkleri \{#floor-colours\}
 
-Bu değerler başlangıç robotuyla `world2.wbt` üzerinde ölçüldü:
+Bu değerler başlangıç robotuyla `world2.wbt` ve `mapping_example_1_cyan_tiles.wbt` üzerinde ölçüldü:
 
 | Zemin | Kırmızı | Yeşil | Mavi |
 |---|---:|---:|---:|
-| Normal | 252 | 252 | 252 |
-| Bataklık | 245 | 222 | 142 |
-| 1. ve 2. alanlar arasındaki geçit (mavi) | 91 | 91 | 255 |
-| 2. ve 3. alanlar arasındaki geçit (mor) | 193 | 91 | 251 |
-| 1. ve 4. alanlar arasındaki geçit (yeşil) | 48 | 255 | 48 |
-| 3. ve 4. alanlar arasındaki geçit (kırmızı) | 255 | 91 | 91 |
+| Normal | 242 | 242 | 242 |
+| Kontrol noktası | 254 | 254 | 254 |
+| Bataklık | 225 | 193 | 115 |
+| Temas karesi (camgöbeği) | 0 | 242 | 242 |
+| Çukur (siyah kenar) | 34 | 34 | 34 |
+| 1. ve 2. alanlar arasındaki geçit (mavi) | 72 | 72 | 254 |
+| 2. ve 3. alanlar arasındaki geçit (mor) | 161 | 72 | 238 |
+| 1. ve 4. alanlar arasındaki geçit (yeşil) | 38 | 253 | 38 |
+| 3. ve 4. alanlar arasındaki geçit (kırmızı) | 254 | 72 | 72 |
 
 :::caution
-Değerler dünyaya göre değişir: `world1.wbt` içinde normal zeminin değeri yaklaşık 240'tır. Tam değerler yerine aralıklar kullan ve bunları Erebus'un `player_controllers` klasöründeki `calibrateColourSensor.py` ile kontrol et.
+Değerler dünyaya ve grafik ayarlarına göre değişebilir. Kesin değerler yerine aralıklar kullan ve bunları Erebus'un `player_controllers` klasöründeki `calibrateColourSensor.py` ile kontrol et.
 :::
 
-Çukurların siyah bir kenarı vardır, bu yüzden zemin bir çukurun hemen önünde kararır. Kontrol noktaları bu sensöre neredeyse normal zemin gibi görünür, bu yüzden kalibrasyonu kendi dünyandaki bir kontrol noktası üzerinde yap.
+Çukurların siyah bir kenarı vardır, bu yüzden zemin bir çukurdan hemen önce kararır. Kontrol noktaları normal zeminden yalnızca biraz daha parlaktır, bu yüzden onlara güvenmeden önce dünyandaki bir kontrol noktasında kalibre et.
 
 ## Örnek: zemini izleme \{#example-watching-the-floor\}
 
