@@ -29,5 +29,5 @@ def report(tokenType):
     emitter.send(message)
     robot.step(timeStep)
 
-report("H")  # Reports a harmed victim (Φ) where the robot is
+report("H")  # Reports a harmed victim (sad face) where the robot is
 print("Reported")

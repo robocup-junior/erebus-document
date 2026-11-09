@@ -1,6 +1,6 @@
 ---
 title: Wall Tokens
-description: How to tell letter victims, cognitive targets and fakes apart.
+description: How to tell smiley victims, cognitive targets and fakes apart.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -10,8 +10,8 @@ Wall tokens are worth most of your points, and every wrong report costs 5 points
 
 | It is... | What to do |
 |---|---|
-| A letter victim (Φ, Ψ, Ω) | Report `H`, `S` or `U` |
-| A fake victim (the same symbols, three-dimensional) | Do not report it, and leave it out of the map |
+| A smiley victim (sad, neutral, happy) | Report `H`, `S` or `U` |
+| A fake victim (the same faces, three-dimensional) | Do not report it, and leave it out of the map |
 | A cognitive target with a sum of 0 to 3 | Report `F`, `P`, `C` or `O` |
 | A cognitive target with any other sum | It is fake: do not report it, and leave it out of the map |
 
@@ -20,14 +20,14 @@ See [Rules](/docs/rules/#wall-tokens) for the exact definitions, and [Communicat
 ## What the camera sees
 The camera of the starter robot has 64 × 40 pixels. At that resolution, a token is only a few pixels until the robot is close, so it is best to look for candidates from a distance, and then get closer to read them. Remember that a report needs the robot within half a tile of the token, and that custom cameras can have a higher resolution, at a cost.
 
-![Four images of the starter robot’s camera as it gets closer to a letter victim](./camera-distance.png)
+![Four images of the starter robot’s camera as it gets closer to a smiley victim](./camera-distance.png)
 
 ![A cognitive target seen by a 64 by 40 camera](./camera_target.png)
 
 
-Letter victims are black symbols on a white square, and they can be rotated to any angle, so your method must not depend on the orientation.
+Smiley victims are black faces on a white square, and they can be rotated to any angle, so your method must not depend on the orientation. The three faces differ in the shape of the mouth: it curves down on the sad face (`H`), is straight on the neutral face (`S`), and curves up on the happy face (`U`).
 
-![A letter victim on a wall in the simulator](./letter_victim.png)
+![A smiley victim on a wall in the simulator](./smiley_victim.png)
 
 
 ## Reading a cognitive target
@@ -51,7 +51,7 @@ Once you have the five colours, the code to report comes from their sum. Each of
 For example, `['Y', 'B', 'R', 'K', 'G']` adds up to 0, so it is `F`, and `['B', 'Y', 'K', 'K', 'K']` adds up to -4, so it is fake.
 
 ## Detecting fake victims
-Fake victims show the same symbols as real ones, but the letters are three-dimensional. From the front, a camera alone may not be able to tell them apart:
+Fake victims show the same faces as real ones, but the emoji are three-dimensional. From the front, a camera alone may not be able to tell them apart:
 
 ![A fake victim seen from the front](./fake_victim_front.png)
 
@@ -59,8 +59,10 @@ Fake victims show the same symbols as real ones, but the letters are three-dimen
 The rules state that the depth can be detected with one of the sensors available in the Robot Customizer. Some ideas to explore:
 
 - Compare distance measurements taken across the token, with a Lidar or with distance sensors, to look for a height difference.
-- Look at the token from an angle, where a relief changes the shape of the symbol.
+- Look at the token from an angle, where a relief changes the shape of the face.
 
-Worlds `world3.wbt` and `world4.wbt` include fake victims, and the [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) can add them to your own maps. Erebus also includes the script `scripts/update_maps_with_fakes.py`, which randomly transforms victims of existing worlds into fakes.
+![The same fake victim seen from an angle, where its relief shows](./fake_victim_angle.png)
+
+Worlds `world3.wbt`, `world4.wbt` and the four `2027_` worlds include fake victims, and the [World Editor](/docs/tools/world-editor/#victims-and-cognitive-targets) can add them to your own maps. Erebus also includes the script `scripts/update_maps_with_fakes.py`, which randomly transforms victims of existing worlds into fakes.
 
 Reporting a fake costs 5 points as a misidentification, while a real victim on a linear tile is worth 15 points with its type in Area 1, and more in other areas. Keep that in mind when you decide how sure your robot must be before it reports.

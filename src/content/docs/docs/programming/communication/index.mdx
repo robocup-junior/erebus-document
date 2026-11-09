@@ -1,6 +1,6 @@
 ---
 title: Communication
-description: Report wall tokens, call a lack of progress, ask for the score and end the game.
+description: Report wall tokens, call a lack of progress, ask for the score, the time and the battery, and end the game.
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
@@ -14,30 +14,30 @@ Each section below is a complete program for the [starter robot](/docs/robot/). 
 
 ## Scoring wall tokens
 
-To score a letter victim or a cognitive target, the robot must:
+To score a smiley victim or a cognitive target, the robot must:
 
 1. **Stop for more than 1 second** close to the token. Erebus ignores the report if the robot has moved in the last second.
 2. **Send the position and type** of the token: X and Z in **centimetres**, and the type as one letter.
 
 | Wall token | Type |
 |---|---|
-| Letter victim Φ (harmed) | `H` |
-| Letter victim Ψ (stable) | `S` |
-| Letter victim Ω (unharmed) | `U` |
+| Smiley victim, sad face (harmed) | `H` |
+| Smiley victim, neutral face (stable) | `S` |
+| Smiley victim, happy face (unharmed) | `U` |
 | Cognitive target, sum 0 (Flammable Gas) | `F` |
 | Cognitive target, sum 1 (Poison) | `P` |
 | Cognitive target, sum 2 (Corrosive) | `C` |
 | Cognitive target, sum 3 (Organic Peroxide) | `O` |
 
-The types are letters, even though victims show symbols since 2026. The GPS gives metres, so multiply by 100.
+The types are letters, even though victims show faces. The GPS gives metres, so multiply by 100.
 
 <CodeTabs file="report" />
 
-The robot must be on the same side of the wall as the token, and both the robot and the position you send must be close to it. The rules require at most half a tile, so aim for that. Erebus v26.1 checks a distance of 9 cm.
+The robot must be on the same side of the wall as the token, and both the centre of the robot and the position you send must be within half a tile (6 cm) of it.
 
-Run this program at the start of `world1.wbt`: there is no token there, so the history of the control window shows `Misidentification of Victim -5`. A wrong report, including a report of a fake, costs 5 points, and each token can only be scored once.
+Run this program at the start of `world1.wbt`: there is no token there, so the match events of the control window show `Misidentification of Victim -5`. A wrong report, including a report of a fake, costs 5 points, and each token can only be scored once.
 
-![The history of the control window after a wrong report and a map submission](./history.png)
+![The match events after a wrong report](./history.png)
 
 ## Lack of progress
 
@@ -49,11 +49,11 @@ The receiver can get different messages, so check the length of each one before 
 
 ## Game information
 
-Send `G` to get the score and the time left. The game replies with a 16-byte message: the letter `G`, the score, the game time left and the real time left, in seconds.
+Send `G` to get the score, the time left and the battery level. The game replies with a 20-byte message: the letter `G`, the score, the game time left and the real time left, in seconds, and the battery level, in percent.
 
 <CodeTabs file="gameinfo" />
 
-The game time runs faster in swamps, and the game ends when either time runs out. Use both to know when to head back to the start.
+The game ends when either time runs out, or when the battery is empty. Use them to know when to head back to the start, and when to [replace the battery](/docs/programming/battery/).
 
 ## Ending the game
 

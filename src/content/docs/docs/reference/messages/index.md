@@ -25,9 +25,9 @@ Erebus tells these messages apart by their length, so a report must be exactly 9
 | Message | Format | Length | Purpose |
 |---|---|---|---|
 | `L` | `c` | 1 byte | A lack of progress has happened |
-| `G` | `c f i i`: `G`, score, remaining game time, remaining real-world time | 16 bytes | Reply to `G`. The times are in seconds. |
+| `G` | `c f i i f`: `G`, score, remaining game time, remaining real-world time, battery level | 20 bytes | Reply to `G`. The times are in seconds, and the battery level is a percentage from 0 to 100. |
 
-Note that the packet of `G` includes padding, since the `struct` format above aligns the float: the score starts at byte 4, and the times at bytes 8 and 12.
+Note that the packet of `G` includes padding, since the `struct` format above aligns the float: the score starts at byte 4, the times at bytes 8 and 12, and the battery level at byte 16.
 
 ## Common Webots functions
 

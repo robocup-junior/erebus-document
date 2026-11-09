@@ -38,7 +38,7 @@ int main() {
 ```
 
 ## Compiling
-The easiest way on any system is the Webots editor: use **Wizards > New Robot Controller** to create a C++ controller with its `Makefile`, and press the **Build** button. See the [Webots guide](https://cyberbotics.com/doc/guide/using-cpp?version=R2023b).
+The easiest way on any system is the Webots editor: use **Wizards > New Robot Controller** to create a C++ controller with its `Makefile`, and press the **Build** button. See the [Webots guide](https://cyberbotics.com/doc/guide/using-cpp?version=R2025a).
 
 You can also compile from a terminal. This command was tested on macOS:
 
@@ -53,5 +53,5 @@ On Linux, the same options work with `WEBOTS=/usr/local/webots`. If you use Open
 
 ## Running
 
-- **On Windows,** load the `.exe` file with the left LOAD button of the control window.
-- **On macOS and Linux,** compiled programs have no file extension, and the LOAD button cannot select them. Run them with the [Remote Controller](/docs/competition/remote-controller/) instead, as you would at a competition.
+- **On Windows,** load the `.exe` file under **Controller** in **Robot setup** of the control window.
+- **On macOS and Linux,** compiled programs have no file extension, and **Load file** cannot select them. Run them with the [Remote Controller](/docs/competition/remote-controller/) instead, as you would at a competition.

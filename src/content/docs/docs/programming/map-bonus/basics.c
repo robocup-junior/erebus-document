@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
   int timeStep = (int)robot->getBasicTimeStep();
   
   const int width = 33, height = 33;
-  string map[33][33] = { // Answer map array for world1.wbt in v26. Your robot has to build this array by itself.
+  string map[33][33] = { // Answer map array for world1.wbt in v27. Your robot has to build this array by itself.
         {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"},
         {"1", "5", "0", "5", "0", "0", "0", "0", "0", "0", "0", "0", "0", "2", "0", "2", "1", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "3", "0", "3", "1"},
         {"1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", "0", "0", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},

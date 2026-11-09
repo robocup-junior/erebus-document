@@ -17,7 +17,8 @@ while robot.step(timeStep) != -1:
 
     while receiver.getQueueLength() > 0:
         data = receiver.getBytes()
-        if len(data) == 16:  # The game information is 16 bytes long
-            _, score, timeLeft, realTimeLeft = struct.unpack("c f i i", data)
-            print("Score:", round(score, 2), "Time left:", timeLeft, "s", "Real time left:", realTimeLeft, "s")
+        if len(data) == 20:  # The game information is 20 bytes long
+            _, score, timeLeft, realTimeLeft, battery = struct.unpack("c f i i f", data)
+            print("Score:", round(score, 2), "Time left:", timeLeft, "s", "Real time left:", realTimeLeft, "s",
+                  "Battery:", round(battery, 1), "%")
         receiver.nextPacket()

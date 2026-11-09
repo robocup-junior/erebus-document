@@ -48,7 +48,7 @@ int main() {
   leftWheel->setPosition(INFINITY);
   rightWheel->setPosition(INFINITY);
 
-  report('H'); // Reports a harmed victim (Φ) where the robot is
+  report('H'); // Reports a harmed victim (sad face) where the robot is
   std::cout << "Reported" << std::endl;
 
   delete robot;

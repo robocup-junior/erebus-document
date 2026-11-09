@@ -26,13 +26,15 @@ int main() {
 
     while (receiver->getQueueLength() > 0) {
       const char *data = (const char *)receiver->getData();
-      if (receiver->getDataSize() == 16 && data[0] == 'G') { // The game information is 16 bytes long
-        float score;
+      if (receiver->getDataSize() == 20 && data[0] == 'G') { // The game information is 20 bytes long
+        float score, battery;
         int timeLeft, realTimeLeft;
         memcpy(&score, data + 4, 4);
         memcpy(&timeLeft, data + 8, 4);
         memcpy(&realTimeLeft, data + 12, 4);
-        cout << "Score: " << score << " Time left: " << timeLeft << " s Real time left: " << realTimeLeft << " s" << endl;
+        memcpy(&battery, data + 16, 4);
+        cout << "Score: " << score << " Time left: " << timeLeft << " s Real time left: " << realTimeLeft << " s"
+             << " Battery: " << battery << " %" << endl;
       }
       receiver->nextPacket();
     }

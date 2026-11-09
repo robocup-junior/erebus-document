@@ -10,7 +10,7 @@ description: Sizes of the field, game times, scoring multipliers, robot limits a
 | Tile | 12 cm × 12 cm |
 | Quarter tile (Areas 2 and 3) | 6 cm × 6 cm |
 | Wall | 1 cm thick, 6 cm high |
-| Letter victim | 2 cm × 2 cm |
+| Smiley victim | 2 cm × 2 cm |
 | Cognitive target | 5 cm in diameter |
 
 ## Game
@@ -21,7 +21,10 @@ description: Sizes of the field, game times, scoring multipliers, robot limits a
 | Real-world time | 10 minutes |
 | Automatic lack of progress | After 20 seconds in a fixed location |
 | Stop time to report a wall token | At least 1 second |
-| Time multiplier in a swamp | x5 on the first entry, +1 on each new entry into the same swamp, up to x10 |
+| Distance to report a wall token | Half a tile (6 cm), for both the centre of the robot and the position sent |
+| Battery | 100% at the start. It drains with the speed of the wheels, about 1.25% per second with two wheels at full speed. |
+| Battery in a swamp | Drains 5 times faster |
+| Battery replacement | Stay still on a contact tile for 5 seconds |
 | Area multipliers | 1, 1.25, 1.5 and 2 for Areas 1, 2, 3 and 4 |
 | Exit bonus | +10% |
 | Mapping bonus multiplier | correctness × 1.2 + 1 |
@@ -38,7 +41,7 @@ description: Sizes of the field, game times, scoring multipliers, robot limits a
 | Maximum wheel velocity | 6.28 rad/s |
 | Lidar | 512 points per layer, 4 layers, 0.01 to 1 m |
 
-`timeStep` sets the number of milliseconds between sensor updates. `int(robot.getBasicTimeStep())` gets the basic time step of the world, which is 16 ms in the worlds of Erebus v26.1.
+`timeStep` sets the number of milliseconds between sensor updates. `int(robot.getBasicTimeStep())` gets the basic time step of the world, which is 16 ms in the worlds of Erebus v27.
 
 ## Device names of the starter robot
 

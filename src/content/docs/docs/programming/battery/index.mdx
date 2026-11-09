@@ -1,0 +1,53 @@
+---
+title: Battery
+description: Read the battery level of your robot, and replace the battery on a contact tile before it runs out.
+---
+
+import CodeTabs from '@/components/CodeTabs.astro';
+
+Your robot has a battery, and the game ends when it runs out. On this page, you learn how fast it drains, how your program can read it, and how to replace it.
+
+## How the battery works
+
+- The battery starts at 100% and **drains with the speed of the wheels**: the faster they turn, the faster it drains. With the default settings, a stopped robot uses no battery.
+- In **swamps**, it drains faster.
+- To replace it, the robot must **stay still on a contact tile for 5 seconds**. The battery is then at 100% again. Moving, or leaving the tile, starts the 5 seconds again.
+- If the battery reaches 0%, the game ends with `Battery depleted`. An empty battery cannot be replaced.
+
+The control window shows the battery level above the timers. Below 20%, it shows "Low battery":
+
+![The score, the battery level and the timers in the control window, with a low battery](./battery-low.png)
+
+The rules do not say how fast the battery drains: teams are expected to find it out by testing. With the default settings of Erebus v27, two wheels at full speed (6.28 rad/s) drain about 1.25% per second, so a robot that never stops would run out in less than a minute and a half, much less than the 8 minutes of a game. Organizers can change these settings, so measure them in your program rather than relying on these numbers.
+
+## Reading the battery level
+
+The battery level is the last value of the [game information](/docs/programming/communication/#game-information). This function asks for it once a second, and keeps the latest value in `battery`:
+
+<CodeTabs file="battery" region="battery" />
+
+## Replacing the battery
+
+Contact tiles are cyan, so the [colour sensor](/docs/programming/sensors/colour-sensor/) sees them: red is close to 0, green and blue are high.
+
+The colour sensor of the starter robot is at its front, but Erebus checks the position of the **centre** of the robot. So when the sensor sees cyan, the robot drives on for a moment before it stops. Then it waits until the battery is full, which takes 5 seconds:
+
+<CodeTabs file="battery" region="contact" />
+
+## The complete program
+
+This program drives around, avoiding walls, and replaces its battery when it crosses a contact tile with less than 50% left. Run it on `2027_d1r1.wbt`, where a contact tile is next to the starting tile.
+
+<CodeTabs file="battery" />
+
+The match events show each replacement as `Battery replaced`:
+
+![The match events, with two battery replacements](./battery-events.png)
+
+## Planning
+- Know where the contact tiles are: remember them while you explore, as you do for the map.
+- Before the battery gets low, head for the nearest contact tile you know. Leave a margin, since the way back can take longer than you expect.
+- Avoid swamps when you can, or cross them quickly.
+- Stopping costs game time, but no battery with the default settings, so the 1 second stop to report a wall token is free for the battery.
+
+Next, learn to keep track of where the robot has been in [Exploring and mapping](/docs/programming/exploring/).

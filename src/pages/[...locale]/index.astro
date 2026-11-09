@@ -12,6 +12,7 @@ import customizerScreenshot from '@/content/docs/docs/robot/customizer/customize
 import worldEditorScreenshot from '@/content/docs/docs/tools/world-editor/overview.png';
 import { copyright } from '@/data/copyright';
 import { downloadUrl as releaseZip, latestVersion } from '@/data/release';
+import { versions } from '@/data/versions';
 import { localeCodes } from '@/i18n/locales.mjs';
 import { splitAround } from '@/i18n/utils';
 
@@ -23,7 +24,8 @@ export const getStaticPaths = (() => [
 const { t } = Astro.locals;
 
 const version = latestVersion;
-const rulesYear = '2026';
+const rulesYear = '2027';
+const webots = versions.find((entry) => entry.current)?.webots;
 const downloadUrl = releaseZip(version);
 const [downloadBefore, downloadAfter] = splitAround(t, 'home.hero.download', 'version');
 
@@ -47,18 +49,18 @@ const tools = [
 	{ key: 'world', link: 'https://world.erebus.rcj.cloud/', screenshot: worldEditorScreenshot },
 ] as const;
 
-// The top of the real answer for world2.wbt.
+// Rows 6 to 15 of the real answer for 2027_d1r1.wbt, with the start tile (5) and a contact tile (k).
 const mapRows = [
-	'1111111111111111111111P11111111',
-	'1404000000001000020210000000030',
-	'1000000010001000000010000000000',
-	'14040000C0000000020210000000030',
-	'1111100010000000111110001111100',
-	'10100000000000001b0b00000000100',
-	'1U10000000000011100000000000O00',
-	'10000000000000001b0b00000000100',
-	'1000000010000000100011111111100',
-	'100000001p0p0000000004041000000',
+	'10000000000005050k0k000000001',
+	'U0000000000000000000000000001',
+	'10000000000005050k0k000000001',
+	'11111000000011111000100011F11',
+	'140410000404020210001x0x13031',
+	'1000S000000000001000C00010001',
+	'140410000404020210001x0x13031',
+	'1000100011P111S11000111110001',
+	'10000000000000000000000000001',
+	'10000000000000000000000000001',
 ];
 
 const cellClass = (cell: string) => {
@@ -219,7 +221,7 @@ const steps = [
 				</ol>
 				<div class="part-of"><PartOfRoboCupJunior /></div>
 				<p class="release">
-					Erebus v<span data-erebus-version>{version}</span> · {t('home.release.rules', { year: rulesYear })} · Webots R2023b ·{' '}
+					Erebus v<span data-erebus-version>{version}</span> · {t('home.release.rules', { year: rulesYear })} · Webots {webots} ·{' '}
 					<a href="https://github.com/robocup-junior/erebus">GitHub</a> ·{' '}
 					<a href="/docs/reference/versions/">{t('home.release.otherVersions')}</a> ·{' '}
 					<a href="/docs/privacy/">{t('home.release.privacy')}</a>
@@ -397,7 +399,7 @@ const steps = [
 	}
 
 	.hero .kicker {
-		color: #7fdcef;
+		color: var(--erebus-highlight);
 	}
 
 	h1 {
@@ -411,7 +413,7 @@ const steps = [
 
 	h1 span {
 		display: block;
-		background: linear-gradient(90deg, #7fdcef, #8ea2ff 55%, #c79bff);
+		background: var(--erebus-highlight-gradient);
 		background-clip: text;
 		color: transparent;
 	}
@@ -443,8 +445,8 @@ const steps = [
 	}
 
 	.primary {
-		background: #7fdcef;
-		color: #06222b;
+		background: var(--erebus-highlight);
+		color: var(--erebus-on-highlight);
 	}
 
 	.ghost {
@@ -677,7 +679,7 @@ const steps = [
 	}
 
 	.start ol a:hover {
-		background: rgb(127 220 239 / 0.2);
+		background: var(--erebus-highlight-soft);
 	}
 
 	.start b {
@@ -687,7 +689,7 @@ const steps = [
 
 	.start b::before {
 		content: counter(step) '. ';
-		color: #7fdcef;
+		color: var(--erebus-highlight);
 	}
 
 	.part-of {
@@ -702,7 +704,7 @@ const steps = [
 	}
 
 	.release a {
-		color: #7fdcef;
+		color: var(--erebus-highlight);
 	}
 
 	.copyright {

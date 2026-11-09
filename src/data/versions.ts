@@ -7,5 +7,6 @@ export const latestSite = 'https://erebus.rcj.cloud';
 export const archivedVersion: string = import.meta.env.PUBLIC_ARCHIVED_VERSION;
 
 export const versions = [
-	{ name: 'v26', rules: '2026', webots: 'R2023b', url: latestSite, current: true },
+	{ name: 'v27', rules: '2027', webots: 'R2025a', url: latestSite, current: true },
+	{ name: 'v26', rules: '2026', webots: 'R2023b', url: 'https://v26.erebus.rcj.cloud', current: false },
 ];

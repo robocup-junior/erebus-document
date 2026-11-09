@@ -183,6 +183,7 @@ export default defineConfig({
 						{ ...label('sidebar.navigateTheMaze'), slug: 'docs/programming/navigate-the-maze' },
 						{ ...label('sidebar.communication'), slug: 'docs/programming/communication' },
 						{ ...label('sidebar.wallTokens'), slug: 'docs/programming/wall-tokens' },
+						{ ...label('sidebar.battery'), slug: 'docs/programming/battery' },
 						{ ...label('sidebar.exploring'), slug: 'docs/programming/exploring' },
 						{ ...label('sidebar.mappingRules'), slug: 'docs/rules/mapping' },
 						{ ...label('sidebar.mapBonus'), slug: 'docs/programming/map-bonus' },

@@ -39,7 +39,7 @@ Do not just follow a wall: that never reaches [floating tiles](/docs/rules/#line
 3. If not, find the nearest tile with an unvisited neighbour with a breadth-first search, and go there.
 4. When no such tile is left, or time runs low, return to the start the same way.
 
-Treat holes as walls. Swamps cost time, and more each time you enter the same one, so visit them only when worthwhile.
+Treat holes as walls. Swamps drain the battery faster, so visit them only when worthwhile. Remember where the contact tiles are, to [replace the battery](/docs/programming/battery/) on the way.
 
 ## Handle the unexpected
 - **Lack of progress:** the robot is moved to the last checkpoint. [Listen for the `L` message](/docs/programming/communication/#lack-of-progress), and update your position.
@@ -59,4 +59,4 @@ The [map matrix](/docs/rules/mapping/) has 4 cells per tile, plus one. For a til
 
 Your map can start anywhere: Erebus [aligns the matrix](/docs/rules/mapping/#how-correctness-is-calculated) using the starting tile, and it tries the four rotations. The [Mapping rules](/docs/rules/mapping/) explain every value of the matrix. Then [submit it](/docs/programming/map-bonus/).
 
-Test it with the example worlds, whose correct answers are in [Mapping rules](/docs/rules/mapping/#examples). The result appears as `Map Correctness` in the history of the control window.
+Test it with the example worlds, whose correct answers are in [Mapping rules](/docs/rules/mapping/#examples). The result appears as `Map Correctness` in the match events of the control window.

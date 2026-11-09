@@ -10,12 +10,12 @@ For this, there is the online [Erebus World Editor](https://world.erebus.rcj.clo
 
 ![A finished map in the World Editor](./overview.png)
 
-If you are only building small maps for testing, whether the field follows the rules probably does not matter much. But if you plan to build a competition field, read the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2026/02/RCJRescueSimulation2026-final.pdf). The editor checks your map against the rules while you work.
+If you are only building small maps for testing, whether the field follows the rules probably does not matter much. But if you plan to build a competition field, read the official [Simulation Rules](https://junior.robocup.org/wp-content/uploads/2026/09/RCJRescueSimulation2027-draft.pdf). The editor checks your map against the rules while you work.
 
 The editor has a built-in guide: press **Guide** at the bottom right for a hands-on lesson that makes a sample map (about 15 minutes), a tour of the screen, or a lesson on Room 4. The language of the editor can be changed next to it.
 
 ## Starting a map
-When you open the editor, choose **which year's rules** you want to follow, and press **New map**. **Choose the 2026 rules for Erebus v26.** The 2027 rules are a draft for the next version of Erebus.
+When you open the editor, choose **which year's rules** you want to follow, and press **New map**. **Choose the 2027 rules for Erebus v27.** The 2026 rules are for Erebus v26. You can change the rules of a map later in the top bar.
 
 ![The start screen of the World Editor](./start.png)
 
@@ -33,9 +33,9 @@ A good order to work in is size and outline, rooms, passages, walls, floors, obs
 | Line | `L` | Draw walls |
 | Curve | `A` | Draw curved walls in Room 3 |
 | Eraser | `E` | Remove walls, floors, obstacles and victims |
-| Floor | `F` | Set checkpoints, holes, swamps and the start tile |
+| Floor | `F` | Set checkpoints, holes, swamps, contact tiles and the start tile |
 | Obstacle | `O` | Place obstacles |
-| Victims | `V` | Place letter victims, cognitive targets and fakes |
+| Victims | `V` | Place smiley victims, cognitive targets and fakes |
 
 The mouse wheel zooms, a drag with Space held moves the view, and undo is `⌘Z` or `Ctrl+Z`.
 
@@ -57,7 +57,7 @@ Use the **Line** tool to draw walls: on the tile edges in Room 1, and on quarter
 ![The Line tool for walls](./walls.png)
 
 ## Floors and obstacles
-With the **Floor** tool, pick a floor type and click a tile to set it. The start tile must be a Room 1 tile, and the world cannot be exported without it. A tile can only be one of hole, swamp, checkpoint, obstacle, start or passage.
+With the **Floor** tool, pick a floor type and click a tile to set it: checkpoint, hole, swamp, contact tile or start. The start tile must be a Room 1 tile, and the world cannot be exported without it. A tile can only be one of hole, swamp, checkpoint, contact tile, obstacle, start or passage.
 
 ![The Floor tool](./floors.png)
 
@@ -68,8 +68,8 @@ With the **Obstacle** tool, pick a shape and click a tile. In Rooms 1 to 3 there
 ## Victims and cognitive targets
 With the **Victims** tool, pick a kind and click near a wall. You can place:
 
-- Real letter victims: harmed, stable and unharmed
-- Fake letter victims with three-dimensional symbols
+- Real smiley victims: harmed, stable and unharmed
+- Fake smiley victims with three-dimensional faces
 - Cognitive targets: pick the hazmat, and choose the colours of the rings if you want. The sum is shown, and it decides the type
 - Fake targets, whose rings add up to something other than 0 to 3
 
@@ -105,8 +105,8 @@ Set the name of the map in the top bar, and press the **.wbt** button at the top
 1. Copy the `.wbt` file into the `game/worlds` folder of Erebus. It must be in that folder, since the world uses files from Erebus.
 1. Open it in Webots, or choose it with the **Worlds** button of the [control window](/docs/getting-started/).
 
-![The sample map of the editor's guide, running in Erebus v26.1.](./exported_world.png)
+![The sample map of the editor's guide, running in Erebus v27.](./exported_world.png)
 
-*The sample map of the editor's guide, running in Erebus v26.1.*
+*The sample map of the editor's guide, running in Erebus v27.*
 
 A `.wbt` file does not turn back into a map you can edit, so keep the JSON too.

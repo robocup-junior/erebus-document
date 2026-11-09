@@ -10,7 +10,7 @@ emitter = robot.getDevice("emitter")  # Retrieve the emitter by device name
 
 while robot.step(timeStep) != -1:
     #STEP1 Putting the map into an array
-    ## Answer map array for world1.wbt in v26. Your robot has to build this array by itself.
+    ## Answer map array for world1.wbt in v27. Your robot has to build this array by itself.
     subMatrix = np.array([
         ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'],
         ['1', '5', '0', '5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '2', '0', '2', '1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '3', '0', '3', '1'],

@@ -15,7 +15,7 @@ Python and C/C++ are covered in this documentation. Erebus can also load Java an
 No, see the [requirements](/docs/installation/). Slower computers may need [lower graphics settings](/docs/troubleshooting/#the-simulation-runs-too-slowly).
 
 ### Can I use a newer version of Webots?
-No. Erebus v26 runs on Webots **R2023b**. You can keep other versions installed next to it.
+No. Erebus v27 runs on Webots **R2025a**. You can keep other versions installed next to it, such as R2023b for Erebus v26.
 
 ### Can I use libraries like OpenCV or NumPy?
 Yes. External code is allowed, as long as you credit its creators and respect its license. Teams should prioritize learning, and must be able to explain how their solution works.
@@ -38,7 +38,13 @@ A lack of progress occurs: the robot returns to the last checkpoint it visited, 
 No, but returning to the starting tile and sending `E` gives a 10% exit bonus, as long as it has identified at least one wall token.
 
 ### How can my robot tell how much time is left?
-With the [`G` message](/docs/programming/communication/#game-information). There are two timers, and the game time runs faster in swamps.
+With the [`G` message](/docs/programming/communication/#game-information). There are two timers, and the game ends when either of them runs out.
+
+### What happens when the battery runs out?
+The game ends. To avoid it, stop on a cyan contact tile for 5 seconds, which replaces the battery. Your program can read the battery level with the [`G` message](/docs/programming/communication/#game-information). See [Battery](/docs/programming/battery/).
+
+### Does driving slowly save the battery?
+The battery drains with the speed of the motors, so a slower robot uses less battery per second, but it also covers less ground in that time. Find the best balance for your robot by testing.
 
 ### Do I have to explore Area 4?
 No. It is optional, but its tokens are worth the most: the highest points, multiplied by 2.

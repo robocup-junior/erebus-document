@@ -13,8 +13,10 @@ string floorType(int r, int g, int b) {
   int brightness = (r + g + b) / 3;
   if (brightness < 80)
     return "hole";
-  if (r > 220 && g > 200 && b < 190)
+  if (r > 200 && g > 170 && b < 150)
     return "swamp";
+  if (r < 60 && g > 200 && b > 200)
+    return "contact tile";
   if (b > 220 && g < 130)
     return r > 150 ? "purple passage" : "blue passage";
   if (r > 220 && g < 130 && b < 130)

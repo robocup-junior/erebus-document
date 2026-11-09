@@ -1,32 +1,35 @@
 ---
 title: Colour Sensor
-description: "Use the colour sensor to see the floor below the robot: holes, swamps, checkpoints and passages."
+description: "Use the colour sensor to see the floor below the robot: holes, swamps, contact tiles, checkpoints and passages."
 ---
 
 import CodeTabs from '@/components/CodeTabs.astro';
 
-The colour sensor looks at the floor, so it tells the robot about holes, swamps and passages. It is a camera of a single pixel, pointing down. On the starter robot it is named `color`, at the front of the robot, so that it sees a hole before the wheels reach it.
+The colour sensor looks at the floor, so it tells the robot about holes, swamps, contact tiles and passages. It is a camera of a single pixel, pointing down. On the starter robot it is named `color`, at the front of the robot, so that it sees a hole before the wheels reach it.
 
 <CodeTabs file="read" />
 
 ## Floor colours
 
-These values were measured with the starter robot on `world2.wbt`:
+These values were measured with the starter robot on `world2.wbt` and `mapping_example_1_cyan_tiles.wbt`:
 
 | Floor | Red | Green | Blue |
 |---|---:|---:|---:|
-| Normal | 252 | 252 | 252 |
-| Swamp | 245 | 222 | 142 |
-| Passage between areas 1 and 2 (blue) | 91 | 91 | 255 |
-| Passage between areas 2 and 3 (purple) | 193 | 91 | 251 |
-| Passage between areas 1 and 4 (green) | 48 | 255 | 48 |
-| Passage between areas 3 and 4 (red) | 255 | 91 | 91 |
+| Normal | 242 | 242 | 242 |
+| Checkpoint | 254 | 254 | 254 |
+| Swamp | 225 | 193 | 115 |
+| Contact tile (cyan) | 0 | 242 | 242 |
+| Hole (black edge) | 34 | 34 | 34 |
+| Passage between areas 1 and 2 (blue) | 72 | 72 | 254 |
+| Passage between areas 2 and 3 (purple) | 161 | 72 | 238 |
+| Passage between areas 1 and 4 (green) | 38 | 253 | 38 |
+| Passage between areas 3 and 4 (red) | 254 | 72 | 72 |
 
 :::caution
-Values change with the world: normal floor reads about 240 in `world1.wbt`. Use ranges instead of exact values, and check them with `calibrateColourSensor.py` in the `player_controllers` folder of Erebus.
+Values can change with the world and the graphics settings. Use ranges instead of exact values, and check them with `calibrateColourSensor.py` in the `player_controllers` folder of Erebus.
 :::
 
-Holes have a black edge, so the floor gets dark just before a hole. Checkpoints look almost like normal floor to this sensor, so calibrate on one in your world.
+Holes have a black edge, so the floor gets dark just before a hole. Checkpoints are only a little brighter than normal floor, so calibrate on one in your world before you rely on it.
 
 ## Example: watching the floor
 

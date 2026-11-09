@@ -1,32 +1,31 @@
 ---
-title: What's new in v26
-description: The changes in Erebus v26 and the 2026 rules that affect your robot.
+title: What's new in v27
+description: The changes in Erebus v27 and the 2027 rules that affect your robot.
 ---
 
-Erebus v26 implements the 2026 rules. If you are coming from an earlier version, these are the changes that affect your robot.
+Erebus v27 implements the 2027 rules. If you are coming from v26, these are the changes that affect your robot.
 
-| Topic | Until 2025 | From 2026 |
+| Topic | Until 2026 | From 2027 |
 |---|---|---|
-| Letter victims | Letters H, S, U | Symbols Φ (harmed), Ψ (stable), Ω (unharmed). They are still reported as `H`, `S`, `U`. |
-| Hazmat signs | Four hazmat labels | Replaced by [cognitive targets](/docs/rules/#cognitive-targets): concentric coloured rings whose values add up to the type. They are still reported as `F`, `P`, `C`, `O`. |
-| Fake tokens | - | New: [fake victims](/docs/rules/#fake-victims) with three-dimensional letters, and cognitive targets whose sum is not 0 to 3. Do not report or map them. |
-| Swamps | Time consumed 5x faster | The first entry into a swamp is x5, and each new entry into the same swamp adds 1, up to x10. |
-| Obstacles on the map | Not mapped | Tiles with an obstacle are mapped as `x`. |
-| Mapping bonus | Up to x2 | The multiplier is now correctness × 1.2 + 1. |
-| Sensor noise | - | The GPS has noise. Organizers will not change the noise levels for the competition. |
-| Game execution | Announced per event | Server-client setup: your controller runs on your own computer, connected to the game server by Ethernet. See [Remote Controller](/docs/competition/remote-controller/). |
-| Documents | TDP, Poster, Video | In addition, a short video showing how you run your controller in the server-client setup. |
-| Missed games | -50 points | 0 points. |
+| Battery | - | New: the robot has a [battery](/docs/rules/#the-battery) that drains with the speed of its motors. If it runs out, the game ends. |
+| Contact tiles | - | New: cyan [contact tiles](/docs/rules/#contact-tiles). Staying still on one for 5 seconds replaces the battery. They are mapped as `k`. |
+| Swamps | Game time runs faster: x5 on the first entry, up to x10 | The battery drains faster. The game time is not affected. |
+| Victims | Symbols Φ, Ψ, Ω | [Smiley faces](/docs/rules/#smiley-victims): sad (harmed), neutral (stable) and happy (unharmed). They are still reported as `H`, `S`, `U`. |
+| Fake victims | Three-dimensional symbols | Three-dimensional smiley faces |
+| Game information | The `G` reply is 16 bytes | The `G` reply is 20 bytes, and ends with the battery level. See [Game information](/docs/programming/communication/#game-information). |
+| Reporting distance | Erebus v26 accepted reports up to 9 cm from the token | Half a tile (6 cm), as the rules say |
+| Areas | Four areas, Area 4 optional | Up to four areas: Area 1 is always there, and organizers may leave out Areas 2 to 4 |
+| Webots | R2023b | **R2025a** |
+| Python | 3.9 or later | 3.10 or later |
 
-The Webots version has not changed: Erebus v26 still runs on Webots **R2023b**.
-
-The two versions released after v26.0.0 do not change the rules. v26.0.1 adds example worlds with fake victims and a script that turns victims of an existing world into fakes, and v26.1 fixes how obstacles are marked in Area 4.
+The control window has also changed. [Your first run](/docs/getting-started/) shows how to use it.
 
 ## Updating your program
 
-1. Update your victim detection to the new symbols. The letters you report do not change.
-2. Replace hazmat detection with [cognitive target reading](/docs/programming/wall-tokens/#reading-a-cognitive-target).
-3. Make sure your program does not report fakes, and leaves them out of the map.
-4. Add obstacles to your map, as `x`.
-5. Plan your route with the new swamps in mind: each time the robot enters the same swamp, it costs more time.
-6. Practice the [server-client setup](/docs/competition/remote-controller/).
+1. Read the `G` reply as 20 bytes. A program that only accepts 16 bytes no longer receives the game information.
+1. Watch the battery level, and plan your route so that the robot reaches a contact tile before the battery runs out. See [Battery](/docs/programming/battery/).
+1. Add contact tiles to your map, as `k`.
+1. Update your victim detection to the smiley faces. The letters you report do not change.
+1. Report tokens from closer: the centre of the robot, and the position you send, must be within half a tile of the token.
+1. Swamps now cost battery instead of time, so take them into account in your battery plan.
+1. Install Webots R2025a and Python 3.10 or later, and check that your program still works. See [Installation](/docs/installation/).

@@ -18,12 +18,19 @@ The mapping bonus multiplies your score by up to 2.2, so it is worth a lot. To e
 - Make sure there is time left. If the game ends before you send `M`, there is no map to evaluate.
 - You do not have to send `E` to get the bonus: it is also applied if the time runs out. But `E` is the way to get the exit bonus, and that bonus is added before the map bonus is applied.
 - The map must contain the starting tile (`5`), which is used to align it to the correct answer. Without it, the map cannot be evaluated.
-- The result is shown as `Map Correctness` in the history of the control window. If you get a `Map scoring error` in the Webots console, check your format.
+- The result is shown as `Map Correctness` in the match events of the control window. If you get a `Map scoring error` in the Webots console, check your format.
 
 The example below sends the correct answer for `world1.wbt`, which is useful to check your communication code. If you run it at the start of the game, it ends the game immediately, and the score stays at 0, since a multiplier has nothing to multiply.
 
 <CodeTabs file="basics" />
 
-![The history of the control window after the example: Map Correctness 100.0%](./map-history.png)
+![The match events after the example: Map Correctness 100.0%](./map-history.png)
+
+## Reviewing your map
+Press **Save map** in the control window to see how your map was scored. Erebus saves the result in the `map` folder of the match, in `match-results`, and opens it in your browser. With **Automatic map result** in **Advanced setup**, it opens as soon as the map is evaluated.
+
+![The map review of the example: every cell is correct](./map-review.png)
+
+Wrong cells are marked in red. Click a cell to see what your robot sent and what the correct answer is. **Save matrix** saves the map your robot sent, and **Save PNG** saves the picture.
 
 The example `MapScorerExample.py` in the `player_controllers` folder of the Erebus release works in the same way.

@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: Install Erebus and Webots R2023b on Windows.
+description: Install Erebus and Webots R2025a on Windows.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -8,7 +8,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 <Steps>
 
-1. Install **Python 3.9 or later** (64-bit) from the [official website](https://www.python.org/downloads/windows/). During the installation, make sure Python is added to your PATH:
+1. Install **Python 3.10 or later** (64-bit) from the [official website](https://www.python.org/downloads/windows/). During the installation, make sure Python is added to your PATH:
 
    ![The Add Python to PATH option of the Python installer](./python-path.png)
 
@@ -18,7 +18,7 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-3. Install **Webots R2023b** from the [official repository](https://github.com/cyberbotics/webots/releases/download/R2023b/webots-R2023b_setup.exe).
+3. Install **Webots R2025a** from the [official repository](https://github.com/cyberbotics/webots/releases/download/R2025a/webots-R2025a_setup.exe).
 
 4. Download <DownloadErebus /> and unzip it.
 
@@ -28,8 +28,10 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
 
 Double-click the world file `game/worlds/world1.wbt` to open it in Webots.
 
-Webots opens the Erebus control window in your web browser. The first time, Erebus installs some Python libraries, which may take a while. It is ready when the window shows the 08:00 game timer:
+Webots opens the Erebus control window in your web browser. The first time, Erebus installs some Python libraries and prepares the robot model, which may take a while. It is ready when the window shows **Ready** and the 08:00 game timer:
 
 ![The Erebus control window, ready to start](../control-window-ready.png)
+
+The first time, the Webots console may also show `ERROR: Skipped PROTO 'custom_robot'`. You can ignore it: Erebus prepares the robot model and reloads the world by itself.
 
 Next, read the [Rules summary](/docs/rules/) to understand the game. If something goes wrong, see [Troubleshooting](/docs/troubleshooting/).

@@ -1,15 +1,15 @@
-// The latest Erebus release of the version this documentation is for, such as v26.1 for v26.
+// The latest Erebus release of the version this documentation is for, such as v27.0.0 for v27.
 // It is read from GitHub when the site is built, and DownloadErebus.astro checks it again in the
 // browser, so that download links follow new releases without a new build of the site.
 import { versions } from './versions';
 
 export const repository = 'robocup-junior/erebus';
 
-/** The version series of this documentation, such as "v26". */
-export const series = versions.find((version) => version.current)?.name ?? 'v26';
+/** The version series of this documentation, such as "v27". */
+export const series = versions.find((version) => version.current)?.name ?? 'v27';
 
 // Used when GitHub cannot be reached during the build. Update it from time to time.
-const knownVersion = '26.1';
+const knownVersion = '27.0.0';
 
 async function fetchLatestVersion(): Promise<string> {
 	try {
@@ -29,7 +29,7 @@ async function fetchLatestVersion(): Promise<string> {
 	}
 }
 
-/** The latest version, without "v", such as "26.1". */
+/** The latest version, without "v", such as "27.0.0". */
 export const latestVersion = await fetchLatestVersion();
 
 /** The source code zip of a version. */

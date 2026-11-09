@@ -14,6 +14,7 @@ These are the main folders of the release you downloaded:
 |---|---|
 | `game/worlds` | The worlds (`.wbt` files). Open one of them to start. |
 | `game/logs` | The game logs written at the end of each game |
+| `match-results` | A folder for each match, with its replay and its map result |
 | `player_controllers` | Example controllers |
 
 ## The control window
@@ -22,68 +23,103 @@ These are the main folders of the release you downloaded:
 
 ![The Erebus control window](./control_window.png)
 
+From top to bottom:
+
 | Part | Use |
 |---|---|
-| Left **LOAD** (laptop icon) | Loads the controller program of your robot |
-| Right **LOAD** (robot icon) | Loads your robot (`.json` file) |
-| **TOGGLE REMOTE** | Lets a program running outside Webots control the robot. See [Remote Controller](/docs/competition/remote-controller/). |
-| **Docker path** | Folder with a `Dockerfile`, to run your controller in a container with the Docker button next to the play button. See the [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) repository. This is optional. |
-| **Settings** | Links and options, explained below |
+| World and status | The name of the world, and the state of the match: Ready, Running, Paused or Finished |
+| **Robot setup** | Loads your program and your robot, and connects a remote controller. See below. |
+| **Advanced setup** | Options, explained below |
 | **Worlds** | Changes to another world |
-| **Reset** | Resets the loaded program and the game |
-| **Give up!** | Ends the game |
-| Timers | The game time, and below it the real-world time in brackets. The game ends when either of them reaches 0. |
-| Calculator | The current score |
+| Score | The current score |
+| **Robot battery** | The battery level of the robot. It shows "Low battery" below 20%. See [Battery](/docs/programming/battery/). |
+| **Simulation remaining** | The game time left. **Real-world allowance** shows how much more real time is left than game time. The game ends when either of them runs out. |
+| Match controls | Run, pause, relocate, reset, give up and save the map. See below. |
+| **Match events** | The history of the match, newest first. **Export CSV** saves it as a file. |
+
+The button at the top right opens the same window as a separate, smaller browser window.
+
+:::note
+Unless [Wireshark](/docs/installation/#optional-wireshark) is installed, the window also shows a warning that network access is not monitored, and asks you to acknowledge it. This monitoring is for organizers at competitions, so you can acknowledge the warning and practice as usual.
+:::
+
+### Robot setup
+Press **Robot setup** to load your program and your robot.
+
+![The Robot setup panel, with a program and a robot loaded](./robot-setup.png)
+
+| Part | Use |
+|---|---|
+| **Controller** | **Load file** loads the program of your robot. Python files are loaded as they are. C and C++ programs must be compiled first. |
+| **Robot JSON** | **Load file** loads your robot, the `.json` file made with the [Robot Customizer](/docs/robot/customizer/) |
+| **Keep files after Reset** | Keeps your program and robot loaded when the game is reset. On by default. |
+| **Reload before Run** | Loads your program again from **Original controller file** each time you run a match, so that your latest changes are used. Write the path of the file on the computer that runs Webots. |
+| **Remote mode** | Lets a program running outside Webots control the robot. See [Remote Controller](/docs/competition/remote-controller/). **Keep on Reset** keeps it on when the game is reset. |
+| **Docker project path** | Folder with a `Dockerfile`, to run your controller in a container with **Run Docker**. See the [erebus-dockerfiles](https://github.com/robocup-junior/erebus-dockerfiles) repository. This is optional. |
+
+### Match controls
+
+![The match controls](./match-controls.png)
+
+| Button | Use |
+|---|---|
+| **Run match** | Starts the game. The robot appears in the world, and your program starts. |
+| **Pause** | Stops the robot temporarily. Press **Run match** to continue. |
+| **Relocate** | Calls a lack of progress: the robot moves back to the last checkpoint it reached, and you lose 5 points |
+| **Reset** | Resets the game, and the world |
+| **Give up** | Ends the game |
+| **Save map** | Saves the result of the map your robot submitted, and opens it. See [Submitting the map](/docs/programming/map-bonus/). |
 
 ## Run a program
 <a href={mazeUrl} download="maze.py">Download maze.py</a>, a complete program that drives the robot around the maze. It is the program you will write yourself in [Navigate the maze](/docs/programming/navigate-the-maze/).
 
 1. Open `game/worlds/world1.wbt`.
-1. Load your robot with the **right LOAD button**, if you have not done so yet. The world reloads with it.
-1. Load `maze.py` with the **left LOAD button**. When the program is loaded, the button turns into an orange REMOVE button.
-1. Press the start button. The robot appears in the world and starts moving.
-![Start button](./start_button.png)
-1. To stop the robot temporarily, press the pause button.
-![Pause button](./pause_button.png)
-1. If the robot is stuck, press the restart button to trigger a lack of progress. It moves the robot back to the last checkpoint it reached, and costs 5 points.
-![Lack of progress button](./lop_button.png)
-1. Press the Reset button to reset the loaded program and the game in progress. Reload the world if you want to run it again after a game has ended.
+1. Press **Robot setup**, and load your robot with **Load file** under **Robot JSON**, if you have not done so yet.
+1. Load `maze.py` with **Load file** under **Controller**. The name of each file appears when it is loaded.
+1. Press **Run match**. The robot appears in the world and starts moving.
+1. To stop the robot temporarily, press **Pause**.
+1. If the robot is stuck, press **Relocate** to trigger a lack of progress.
+1. Press **Reset** to reset the game. Your program and robot stay loaded, so you can run it again.
 
 The program needs OpenCV, which you installed with the other [Python libraries](/docs/installation/#python-libraries). Messages from your program, and errors, appear in the Webots console.
 
-While the game is running, the score history appears at the bottom of the window. It tells you exactly why you gained or lost points, so it is the best tool to check your program.
+While the game is running, the match events appear at the bottom of the window. They tell you exactly why you gained or lost points, so they are the best tool to check your program.
 
-![The control window during a game, with the score history](./control_window_running.png)
+![The control window during a game, with the match events](./control_window_running.png)
 
-At the end of the game, the same information is saved in the `game/logs` folder.
+`maze.py` drives at full speed and never replaces its battery, so on `world1.wbt` the game ends after less than two minutes, with `Battery depleted`. You will learn to look after the battery in [Battery](/docs/programming/battery/).
+
+At the end of the game, the same information is saved in the `game/logs` folder. The match is also saved as an interactive 3D replay in the `match-results` folder: open `recording/replay.html` in your browser to watch it again.
 
 ## Using other worlds
-Press **Worlds** to change to another world. Each world has a thumbnail, and you can also add your own, made with the [World Editor](/docs/tools/world-editor/).
+Press **Worlds** to change to another world. Search for a world by its name, choose it, and press **Load world**. You can also add your own, made with the [World Editor](/docs/tools/world-editor/).
 
-![The Worlds tab of the control window](./worlds.png)
+![The Worlds panel of the control window](./worlds.png)
 
-The worlds included in Erebus v26.1 are:
+The worlds included in Erebus v27 are:
 
 | World | Purpose |
 |---|---|
+| `2027_d1r1.wbt`, `2027_d1r2.wbt`, `2027_d2r1.wbt`, `2027_d2r2.wbt` | Example worlds for the 2027 rules, with contact tiles and fake victims |
 | `world1.wbt`, `world2.wbt` | Example worlds. `world2.wbt` includes Area 4. |
 | `world3.wbt`, `world4.wbt` | Larger example worlds, which also include **fake victims** |
 | `mapping_example_1.wbt` to `mapping_example_3.wbt` | Worlds to test your mapping. See [Mapping](/docs/rules/mapping/). |
+| `mapping_example_1_cyan_tiles.wbt` | `mapping_example_1.wbt` with two contact tiles |
 | `NewPassages.wbt` | Example of the passages between areas |
 
-## Settings
-![The Settings tab of the control window](./settings.png)
+## Advanced setup
+![The Advanced setup panel of the control window](./settings.png)
 
 | Setting | Use |
 |---|---|
-| Keep controller/robot files | Keeps your program and robot loaded when the world is reloaded |
-| Disable automatic LoP | Stops the automatic lack of progress after 20 seconds. Only for debugging. |
+| Show head-up display | Shows the score, the time and the latest events in the Webots window |
 | Automatic camera | Makes the view follow the robot |
-| Recording | Records the game as a video |
-| Keep remote controller on | Keeps TOGGLE REMOTE on when the world is reloaded |
+| HTML replay recording | Saves each match as an interactive 3D replay in the `match-results` folder |
+| Automatic map result | Saves and opens the result of the map as soon as the robot submits it |
+| Disable automatic LoP | Stops the automatic lack of progress after 20 seconds. Only for debugging. |
 | Enable debugging | Prints extra information in the Webots console, for example why a wall token report was rejected |
 
-The links at the top lead to the changelog and to tools for making worlds and robots. To make worlds with the 2026 rules, use the [World Editor](https://world.erebus.rcj.cloud/).
+The **References** at the bottom of the window lead to the changelog, this documentation and the tools for making worlds and robots. To make worlds with the 2027 rules, use the [World Editor](https://world.erebus.rcj.cloud/).
 
 ## Manually move the robot where you want it to go
 When you click a robot in the simulation window, red, green and blue arrows appear. Drag these arrows with the mouse to move the robot to any position. Note that the robot is not displayed until the program has started.
@@ -92,4 +128,3 @@ When you click a robot in the simulation window, red, green and blue arrows appe
 
 ## Next
 You have seen a robot explore on its own. Now learn to program it yourself: start with [Your first program](/docs/programming/first-program/).
-

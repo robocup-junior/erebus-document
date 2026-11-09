@@ -22,6 +22,9 @@ Webots does not know where Python is.
 
    ![The Python command field in the Webots preferences](./preferences.png)
 
+### `ERROR: Skipped PROTO 'custom_robot'`
+This appears the first time you open a world, before Erebus has prepared the robot model. Erebus prepares it and reloads the world by itself, so you can ignore it.
+
 ### The game timer does not appear
 The first start can take some minutes while Erebus installs libraries. If it never finishes, check the console for errors. If the automatic installation does not work, install the [required libraries](/docs/installation/#python-libraries) yourself.
 
@@ -30,9 +33,14 @@ The first start can take some minutes while Erebus installs libraries. If it nev
 ### The control window does not appear
 The control window is a web page opened by Webots.
 
-1. If your browser has blocked it, open [the control window](http://localhost:1234/robot_windows/MainSupervisorWindow/MainSupervisorWindow.html?name=robot) while the world is open.
+1. If you closed it, or your browser blocked it, reload the world with the reload button of Webots. Erebus opens the control window again.
 2. Otherwise, make sure the Scene Tree is displayed, with **Tools > Scene Tree**.
 3. Find **DEF MAINSUPERVISOR Robot** in the Scene Tree, right-click it and choose **Show Robot Window**.
+
+The control window has a private address, which changes each time the world is loaded. If you open the window at `localhost:1234` yourself, it shows **Read-only**, and its buttons do not work.
+
+### The control window says "Access log incomplete"
+This warning appears when [Wireshark](/docs/installation/#optional-wireshark) is not installed. It is meant for organizers at competitions: press **Acknowledge**, and practice as usual.
 
 ![The Show Robot Window option in the Scene Tree](./showrobot.png)
 
@@ -52,11 +60,8 @@ These settings change what the cameras see, and the competition uses [its own se
 
 ## Your robot
 
-### `PROTO parameter 'camera_width' has no matching IS field`
-Erebus v26.1 shows this error in red when it loads a robot made with the current Robot Customizer. You can ignore it: the robot works, and its cameras have the resolution you chose.
-
 ### My program says a device was not found
-See below. Also check that you loaded your robot with the **right** LOAD button before starting the game.
+See below. Also check that you loaded your robot under **Robot JSON** in **Robot setup** before starting the game.
 
 ## Your program
 
@@ -64,10 +69,16 @@ See below. Also check that you loaded your robot with the **right** LOAD button 
 The device name in your program does not match your robot. The names of the starter robot are in the [Reference](/docs/reference/parameters/#device-names-of-the-starter-robot). For your own robot, they are the names you set in the [Robot Customizer](/docs/robot/customizer/). Check that your robot has been loaded.
 
 ### Nothing happens when I report a wall token
-Turn on **Enable debugging** in the Settings tab of the control window, and check the console. The most common causes are that the robot had not been stopped for at least 1 second, and that the coordinates were not converted to centimetres. See [Communication](/docs/programming/communication/#scoring-wall-tokens).
+Turn on **Enable debugging** in **Advanced setup** in the control window, and check the console. The most common causes are that the robot had not been stopped for at least 1 second, that the coordinates were not converted to centimetres, and that the robot or the position was more than half a tile (6 cm) from the token. See [Communication](/docs/programming/communication/#scoring-wall-tokens).
 
 ### My reports are misidentifications
 The robot must be at most half a tile from the token and on the same side of the wall, and each token can only be scored once. Reporting a fake also counts as a misidentification.
+
+### The game ends with "Battery depleted"
+The battery ran out. Stop on a contact tile for 5 seconds to replace it before that happens. See [Battery](/docs/programming/battery/).
+
+### My program no longer receives the game information
+Since Erebus v27, the reply to `G` is 20 bytes long, with the battery level at the end. Update the check of the length in your program. See [Game information](/docs/programming/communication/#game-information).
 
 ### The map gets 0% or a scoring error
 Your map must contain the starting tile (`5`), and it can only be evaluated once. See [Submitting the map](/docs/programming/map-bonus/).

@@ -3,7 +3,7 @@ title: Preparing for a competition
 description: A checklist to get ready for a RoboCupJunior Rescue Simulation competition.
 ---
 
-This page is a guide for the international competition under the 2026 rules. Local and regional competitions may differ, so check with your organizer. The official [rules](/docs/rules/) always apply.
+This page is a guide for the international competition under the 2027 rules. Local and regional competitions may differ, so check with your organizer. The official [rules](/docs/rules/) always apply.
 
 ## Timeline
 
@@ -22,7 +22,7 @@ Templates and rubrics are on the [RCJ Rescue Community Website](https://rescue.r
 - [ ] **Technical Description Paper (TDP).** Follow the template strictly: otherwise, the score for the document is 0.
 - [ ] **Poster,** as a file and as a physical poster at the venue, no larger than A1.
 - [ ] **Video** showcasing your project.
-- [ ] **Server-client video,** new in 2026: a short video showing how you run your controller on an example map in the server-client setup.
+- [ ] **Server-client video:** a short video showing how you run your controller on an example map in the server-client setup.
 - [ ] **Source code** and the **web form** for the interviews.
 
 ## Competition setup
@@ -30,7 +30,7 @@ Games run in a server-client setup: organizers run the game server and provide o
 
 Bring:
 
-- [ ] A computer with your program and all its libraries installed, and Webots R2023b
+- [ ] A computer with your program and all its libraries installed, and Webots R2025a
 - [ ] An Ethernet cable, and an adapter if your computer needs one
 - [ ] Your robot's `.json` file, if you have a custom robot
 - [ ] The physical poster
@@ -47,9 +47,9 @@ Unless organizers announce otherwise, the following settings are used. They affe
 | Anti-aliasing | Disabled |
 
 ## Testing your robot
-- [ ] Run on every included world, especially `world3.wbt` and `world4.wbt`, which include fakes.
+- [ ] Run on every included world, especially the four `2027_` worlds, which include contact tiles and fakes.
 - [ ] Make your own maps with the [World Editor](/docs/tools/world-editor/), including all four areas.
-- [ ] Check the whole game: does it run to the end, submit the map and return to the start in time?
+- [ ] Check the whole game: does it run to the end, replace its battery in time, submit the map and return to the start?
 - [ ] Test what happens after a lack of progress.
 - [ ] Test on the computer you will bring, and with the OpenGL settings above.
 

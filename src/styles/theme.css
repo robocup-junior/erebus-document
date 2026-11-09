@@ -6,16 +6,26 @@
 	--sl-font: 'Inter Variable', system-ui, sans-serif;
 	--sl-font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 
-	/* Accent colours, taken from the walls of the Erebus maze. */
-	--sl-color-accent-low: #0d3640;
-	--sl-color-accent: #1f8ba3;
-	--sl-color-accent-high: #b4e6f0;
+	/*
+	 * Accent colours. Each version of the documentation has its own, so that readers can tell
+	 * them apart at a glance: v26 was teal, like the walls of the maze, and v27 is amber, like the
+	 * battery that the 2027 rules introduced. Change them for each new version.
+	 */
+	--sl-color-accent-low: #3a2608;
+	--sl-color-accent: #d98e1f;
+	--sl-color-accent-high: #ffe0ad;
+
+	/* The highlights of the home page, which is always dark. */
+	--erebus-highlight: #ffbf5c;
+	--erebus-on-highlight: #2b1700;
+	--erebus-highlight-soft: rgb(255 191 92 / 0.2);
+	--erebus-highlight-gradient: linear-gradient(90deg, #ffd27a, #ff9d4d 55%, #ff6f6f);
 }
 
 :root[data-theme='light'] {
-	--sl-color-accent-low: #cdeef5;
-	--sl-color-accent: #0c7088;
-	--sl-color-accent-high: #0a3a46;
+	--sl-color-accent-low: #fde8c6;
+	--sl-color-accent: #9a5800;
+	--sl-color-accent-high: #4a2900;
 }
 
 /* Screenshots and figures. */

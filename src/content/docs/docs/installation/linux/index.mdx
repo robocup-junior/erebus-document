@@ -1,6 +1,6 @@
 ---
 title: Linux (Ubuntu)
-description: Install Erebus and Webots R2023b on Ubuntu 20.04 or 22.04.
+description: Install Erebus and Webots R2025a on Ubuntu 22.04 or 24.04.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -15,11 +15,13 @@ import DownloadErebus from '@/components/DownloadErebus.astro';
    python3 -m pip install numpy termcolor requests overrides pillow opencv-python
    ```
 
-2. Download and install **Webots R2023b**:
+   On Ubuntu 24.04, pip refuses to install libraries into the Python of the system, with an `externally-managed-environment` error. Add `--break-system-packages` to the second command, or install the libraries in a [virtual environment](https://docs.python.org/3/library/venv.html) and set its Python in the Webots preferences.
+
+2. Download and install **Webots R2025a**:
 
    ```bash
-   wget https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb
-   sudo apt install ./webots_2023b_amd64.deb
+   wget https://github.com/cyberbotics/webots/releases/download/R2025a/webots_2025a_amd64.deb
+   sudo apt install ./webots_2025a_amd64.deb
    ```
 
 3. Download <DownloadErebus /> and unzip it.
@@ -34,8 +36,10 @@ Open the world from the terminal, changing the path to your Erebus folder:
 webots ~/EREBUS_FOLDER/game/worlds/world1.wbt
 ```
 
-Webots opens the Erebus control window in your web browser. The first time, Erebus installs some Python libraries, which may take a while. It is ready when the window shows the 08:00 game timer:
+Webots opens the Erebus control window in your web browser. The first time, Erebus installs some Python libraries and prepares the robot model, which may take a while. It is ready when the window shows **Ready** and the 08:00 game timer:
 
 ![The Erebus control window, ready to start](../control-window-ready.png)
+
+The first time, the Webots console may also show `ERROR: Skipped PROTO 'custom_robot'`. You can ignore it: Erebus prepares the robot model and reloads the world by itself.
 
 Next, read the [Rules summary](/docs/rules/) to understand the game. If something goes wrong, see [Troubleshooting](/docs/troubleshooting/).
